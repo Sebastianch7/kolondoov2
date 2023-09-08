@@ -14,114 +14,9 @@ import FormSuscripcion from '../Components/Forms/FormSuscripcion';
 import ButtonPrimary from '../Components/Button/ButtonPrimary';
 import InterSection from '../Components/Utils/InterSection';
 import BreadCrumb from '../Components/BreadCrumb/BreadCrumb';
+import TarjetasProductos from '../Content/TarjetaProducto.json'
+import Blog from '../Content/Blog.json'
 
-const productos = [
-    {
-        icon: '/img/monitor.png',
-        title: 'Televisión y streaming',
-        text: [
-            {
-                'item': 'Paquetes de TV',
-            },
-            {
-                'item': 'Plataformas de streaming',
-            }
-        ],
-        button: 'ver más'
-    },
-    {
-        icon: '/img/money.png',
-        title: 'Finanzas',
-        text: [
-            {
-                'item': 'Tarjetas de crédito',
-            },
-            {
-                'item': 'Hipotecas',
-            },
-            {
-                'item': 'Cuentas y ahorro',
-            },
-            {
-                'item': 'Préstamos',
-            }
-
-        ],
-        button: 'ver más'
-    },
-    {
-        icon: '/img/money.png',
-        title: 'Seguros',
-        text: [
-            {
-                'item': 'Hogar',
-            },
-            {
-                'item': 'Vida',
-            },
-            {
-                'item': 'Coche',
-            },
-            {
-                'item': 'Viaje',
-            }
-
-        ],
-        button: 'ver más'
-    },
-    {
-        icon: '/img/money.png',
-        title: 'Seguridad',
-        text: [
-            {
-                'item': 'Alarmas para casa',
-            },
-            {
-                'item': 'Alarmas para negocios',
-            },
-        ],
-        button: 'ver más'
-    },
-
-]
-
-const blog = [
-    {
-        img: '/img/bannerFull1.png',
-        date: '18 mayo 2023',
-        title: 'Opiniones sobre Gana Energía: ventajas e inconvenientes',
-        button: 'Ver más',
-        url: '',
-        type: 'max'
-    },
-    {
-        img: '/img/bannerFull2.png',
-        date: '18 mayo 2023',
-        title: 'Opiniones sobre Gana Energía: ventajas e inconvenientes',
-        button: 'Ver más',
-        url: '',
-        type: 'max'
-    },
-    {
-        img: '/img/bannerFull2.png',
-        date: '2 mayo 2023',
-        title: 'Vuelven los teléfonos tontos',
-        content: 'Los teléfonos tontos, también llamados dumbphones, son lo contrario a los smartphones o teléfonos inteligentes.',
-        button: 'Ver más',
-        url: '',
-        type: 'min'
-    },
-    {
-        img: '/img/bannerFull2.png',
-        date: '08 diciembre 2023',
-        title: 'La operadora con la mejor oferta de Netflix ',
-        content: 'Quieres saber qué operadoras lo ofrecen y en qué condiciones? Entonces no te pierdas el análisis que te mostramos a continuación. ¡Sigue leyendo!',
-        button: 'Ver más',
-        url: '',
-        type: 'min'
-    },
-
-]
 
 function Home(props) {
     return (
@@ -147,7 +42,7 @@ function Home(props) {
                 <InterSection></InterSection>
                 <ContenedorTarjeta>
                     {
-                        productos?.map((item, index) => {
+                        TarjetasProductos?.map((item, index) => {
                             return <TarjetaProducto key={index} data={item}></TarjetaProducto>
                         })
                     }
@@ -161,14 +56,14 @@ function Home(props) {
                         center
                     />
                     {
-                        blog?.map((item, index) => {
+                        Blog?.map((item, index) => {
                             return item.type == 'max' && <TarjetaBlogFull key={index} data={item}></TarjetaBlogFull>
                         })
                     }
                     <Col md={4}>
                         <Row>
                             <Col md={12}>
-                                {blog?.map((item, index) => {
+                                {Blog?.map((item, index) => {
                                     return item.type == 'min' && <TarjetaBlogMin key={index} data={item}></TarjetaBlogMin>
                                 })}
                             </Col>
