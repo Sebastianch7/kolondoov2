@@ -365,3 +365,14 @@ footer {
     }
   }
 }
+
+.rc-slider{
+  &-handle{
+    border: 2px solid black !important;
+    background-color: black !important;
+  }
+  &-track{
+    background-color: black !important;
+  }
+}
+

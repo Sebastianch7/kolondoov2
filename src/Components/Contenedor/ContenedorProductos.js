@@ -2,6 +2,7 @@ import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import InterSection from '../Utils/InterSection';
 import ItemFiltro from '../Items/ItemFiltro';
+import InputRange from '../Input/InputRange';
 
 function ContenedorProductos({ children }) {
     return (
@@ -27,6 +28,22 @@ function ContenedorProductos({ children }) {
                                 <ItemFiltro image={'/img/virgin.png'} />
                                 <ItemFiltro image={'/img/vodafone.png'} />
                                 <ItemFiltro image={'/img/yoigo.png'} />
+                            </Row>
+                            <Row>
+                                <InputRange 
+                                text={'Coste mensual'}
+                                min={0}
+                                max={60}
+                                type={'€'}
+                                />
+                                <InputRange 
+                                text={'Datos'}
+                                min={3}
+                                max={80}
+                                type={'GB'}
+                                />
+                                
+                                
                             </Row>
                         </Col>
                         <Col md={8}>
