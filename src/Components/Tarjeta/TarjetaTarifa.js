@@ -3,9 +3,10 @@ import { Card, Row, Col } from 'react-bootstrap';
 import ButtonPrimary from '../Button/ButtonPrimary';
 import ItemTarifaDescripcion from '../Items/ItemTarifaDescripcion';
 import ItemTarifaServicio from '../Items/ItemTarifaServicio';
+import { Link } from 'react-router-dom';
 
 function TarjetaTarifa({ data }) {
-    const { image, duration, feature = [], service = [] } = data;
+    const { image, duration, feature = [], service = [], price = [] } = data;
 
     return (
         <Col sm={12} md={12} className=''>
@@ -35,9 +36,16 @@ function TarjetaTarifa({ data }) {
 
                                 })
                             }
+                            {price.length > 0 &&
+                                price.length > 0 &&
+                                price.map((item) => {
+                                    return <ItemTarifaServicio data={item} />
+
+                                })
+                            }
                         </Row>
                     </Col>
-                    <Col md={2}><ButtonPrimary text={'Comprar'} /></Col>
+                    <Col md={2}><Link className='btn btn-primary' to={'/lead?light'}>{'Comprar'}</Link></Col>
                 </Row>
             </Card>
         </Col>

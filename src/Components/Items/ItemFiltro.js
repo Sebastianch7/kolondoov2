@@ -1,11 +1,26 @@
 import React from 'react';
 import { Col } from 'react-bootstrap';
-function ItemFiltro({ image }) {
+import { useState } from 'react';
+
+function ItemFiltro({ image, name, onValueChange }) {
+    const [isActive, setIsActive] = useState(false)
+    const handleFilterBrand = (newValue) => {
+        onValueChange(newValue);
+    };
     return (
         <Col md={6}>
-            <div className='filtro-producto-logo my-2'>
+            <button
+                key={name}
+                className={'filtro-producto-logo my-2'}
+                value={name}
+
+                onClick={() => {
+                    handleFilterBrand(name);
+                    setIsActive(true)
+                }}
+            >
                 <img src={image} />
-            </div>
+            </button>
         </Col>
     );
 }

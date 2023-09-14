@@ -7,7 +7,6 @@ import TitleSection from '../Components/Text/TitleSection';
 import TarjetaBlogFull from '../Components/Tarjeta/TarjetaBlogFull';
 import Footer from '../Components/Footer/Footer';
 import ContenedorTarjetaBlog from '../Components/Contenedor/ContenedorTarjetaBlog';
-import { Button, Col, Row } from 'react-bootstrap';
 import TarjetaBlogMin from '../Components/Tarjeta/TarjetaBlogMin';
 import BannerReverse from '../Components/Banner/BannerReverse';
 import FormSuscripcion from '../Components/Forms/FormSuscripcion';
@@ -16,25 +15,28 @@ import InterSection from '../Components/Utils/InterSection';
 import BreadCrumb from '../Components/BreadCrumb/BreadCrumb';
 import TarjetasProductos from '../Content/TarjetaProducto.json'
 import Blog from '../Content/Blog.json'
+import { useTranslation } from 'react-i18next';
+import { Col,Row } from 'react-bootstrap';
 
 
 function Home(props) {
+    const { t } = useTranslation();
     return (
         <div>
             <Header></Header>
             <BreadCrumb></BreadCrumb>
             <main>
                 <Banner
-                    title={'Comparador de tarifas y Ofertas Online'}
-                    subtitle='!Nuestros agentes te asesorarán para tomar las mejores decisiones y que empieces a ahorrar en tu hogar!'
+                    title={t('bannerHomeTitle')}
+                    subtitle={t('bannerHomeSubtitle')}
                     image={'/img/banner1.png'}
                     buttons={[
                         {
-                            title: 'Internet y telefonia',
+                            title: t('btn_net_phone'),
                             icon: '/img/flash.png'
                         },
                         {
-                            title: 'Energia',
+                            title: t('btn_energy'),
                             icon: '/img/phone.png'
                         }
                     ]}
@@ -73,7 +75,7 @@ function Home(props) {
                         <ButtonPrimary text={'Descubre más noticias'} />
                     </Col>
                 </ContenedorTarjetaBlog>
-                    <InterSection></InterSection>
+                <InterSection></InterSection>
                 <BannerReverse
                     title={'Suscríbete gratis y recibe nuestras mejores ofertas'}
                     subtitle='Únete a nuestra comunidad. Recibirás nuestros mejores contenidos semanalmente: guías prácticas para ahorrar y gestionar tu consumo, últimas noticias…¡Y mucho más!'

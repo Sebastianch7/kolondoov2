@@ -4,7 +4,7 @@ function ItemTarifaServicio({data}) {
     return (
         <Col md={6}>
             <div className='tarjeta-tarifa-item-service '>
-                <h5>{data.cant}</h5>
+                <h5>{data.cant.replace('.',',')}</h5>
                 <span>{data.service}</span>
             </div>
         </Col>

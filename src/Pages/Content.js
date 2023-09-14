@@ -6,32 +6,6 @@ import FormSuscripcion from '../Components/Forms/FormSuscripcion';
 import ContenedorProductos from '../Components/Contenedor/ContenedorProductos';
 import TarjetaTarifa from '../Components/Tarjeta/TarjetaTarifa';
 
-const tarifa = [
-    {
-        image: '/img/lemmon.png',
-        duration: '12 meses',
-        feature:
-            [
-                'Roaming ilimitado en la UE',
-                'Llamadas ilimitadas',
-                '5G'
-            ],
-        service:
-            [
-                {
-                    cant: '15GB',
-                    service: 'de datos'
-                },
-                {
-                    cant: 'Ilimitados',
-                    service: 'Minutos, sms'
-                },
-            ]
-    }
-]
-
-console.log(tarifa)
-
 function Content({ }) {
     return (
         <div>
@@ -48,12 +22,6 @@ function Content({ }) {
                 />
             </Banner>
             <ContenedorProductos>
-                {tarifa.length > 0 &&
-                    tarifa.map((item) => {
-                        console.log(item)
-                        return <TarjetaTarifa data={item} />
-                    })
-                }
             </ContenedorProductos>
             <Footer></Footer>
         </div>

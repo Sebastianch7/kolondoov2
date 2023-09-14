@@ -5,7 +5,7 @@ function ButtonPrimary({ icon, text, btnStatus, type, isSuccess }) {
     return (
         <Button 
         key={text} 
-        className={isSuccess } 
+        className={isSuccess} 
         type={type} 
         disabled={btnStatus}>{icon && <img src={icon} />} {text}</Button>
     );

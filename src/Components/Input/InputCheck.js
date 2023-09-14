@@ -2,10 +2,9 @@ import React, { useState } from 'react'
 import { Form } from 'react-bootstrap'
 
 export default function InputCheck(props) {
-    console.log(props)
     const [checkIn, setCheckIn] = useState(true);
     const enviarValorAlPadre = () => {
-        props.onValorChange(checkIn);
+        props.onChangeValue(checkIn);
     };
 
     return (

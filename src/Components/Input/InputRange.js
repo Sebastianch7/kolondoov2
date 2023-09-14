@@ -4,12 +4,18 @@ import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
 
 
-export default function InputRange({min = 0,max = 100, type, text}) {
+export default function InputRange({ min = 0, max = 100, type, text, onValueChange }) {
     const [range, setRange] = useState([min, max]);
 
     const handleRangeChange = (newRange) => {
         setRange(newRange);
+        handleFilterPrice(newRange)
     };
+
+    const handleFilterPrice = (newValue) => {
+        onValueChange(newValue);
+    };
+    
     return (
         <div className='my-4'>
             <b>{text}:</b>

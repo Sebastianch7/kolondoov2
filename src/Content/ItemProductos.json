@@ -1,0 +1,24 @@
+[
+    {
+        "name" : "Lemmon",
+        "image": "/img/lemmon.png",
+        "duration": "12 meses",
+        "feature": [
+            "Roaming ilimitado en la UE",
+            "Llamadas ilimitadas",
+            "5G"
+        ],
+        "service": [
+            {
+                "cant": "15GB",
+                "service": "de datos"
+            }
+        ],
+        "price": [
+            {
+                "cant": "6.90",
+                "service": "Al mes"
+            }
+        ]
+    }
+]
