@@ -6,11 +6,11 @@ import ItemTarifaServicio from '../Items/ItemTarifaServicio';
 import { Link } from 'react-router-dom';
 
 function TarjetaTarifa({ data }) {
-    const { image, duration, feature = [], service = [], price = [] } = data;
+    const { name, image, duration, feature = [], serviceCant, serviceProduct, priceCant, priceService } = data;
 
     return (
         <Col sm={12} md={12} className=''>
-            <Card className='tarjeta tarjeta-tarifa my-2'>
+            <Card key={name} className='tarjeta tarjeta-tarifa my-2'>
                 <Row>
                     <Col md={12}>
                         <div className='tarjeta-tarifa-item-title'>
@@ -29,20 +29,8 @@ function TarjetaTarifa({ data }) {
                     </Col>
                     <Col md={5}>
                         <Row>
-                            {service.length > 0 &&
-                                service.length > 0 &&
-                                service.map((item) => {
-                                    return <ItemTarifaServicio data={item} />
-
-                                })
-                            }
-                            {price.length > 0 &&
-                                price.length > 0 &&
-                                price.map((item) => {
-                                    return <ItemTarifaServicio data={item} />
-
-                                })
-                            }
+                            <ItemTarifaServicio cant={serviceCant} service={serviceProduct} />
+                            <ItemTarifaServicio cant={priceCant} service={priceService} />
                         </Row>
                     </Col>
                     <Col md={2}><Link className='btn btn-primary' to={'/lead?light'}>{'Comprar'}</Link></Col>

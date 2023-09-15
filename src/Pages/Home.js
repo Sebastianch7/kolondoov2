@@ -59,14 +59,14 @@ function Home(props) {
                     />
                     {
                         Blog?.map((item, index) => {
-                            return item.type == 'max' && <TarjetaBlogFull key={index} data={item}></TarjetaBlogFull>
+                            return item.type === 'max' && <TarjetaBlogFull key={index} data={item}></TarjetaBlogFull>
                         })
                     }
                     <Col md={4}>
                         <Row>
                             <Col md={12}>
                                 {Blog?.map((item, index) => {
-                                    return item.type == 'min' && <TarjetaBlogMin key={index} data={item}></TarjetaBlogMin>
+                                    return item.type === 'min' && <TarjetaBlogMin key={index} data={item}></TarjetaBlogMin>
                                 })}
                             </Col>
                         </Row>

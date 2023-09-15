@@ -6,7 +6,6 @@ import { useLocation } from 'react-router-dom';
 
 export default function Lead() {
   const location = useLocation();
-  const pathname = location.pathname;
   const params = location.search.split('?')
   params.shift()
   return (

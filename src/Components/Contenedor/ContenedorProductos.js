@@ -7,16 +7,20 @@ import TarjetaTarifa from '../Tarjeta/TarjetaTarifa';
 import axios from 'axios';
 
 function ContenedorProductos() {
-    const [filterBrand, setfilterBrand] = useState('');
+    const [filterBrand, setfilterBrand] = useState(null);
     const [filterPrice, setfilterPrice] = useState([0, 100]);
-    
+
     const [Tarifas, setTarifas] = useState([]);
+    const [filtros, setFiltros] = useState([]);
 
     useEffect(() => {
         axios.get('http://127.0.0.1:8000/api/productos').then((response) => {
             setTarifas(response.data)
+            setFiltros(response.data)
         });
     }, [])
+
+
 
     const handleFilterBrand = (value) => {
         setfilterBrand(value);
@@ -27,19 +31,19 @@ function ContenedorProductos() {
     };
 
     useEffect(() => {
-        let filteredTarifas = Tarifas?.filter((item) => {
-            return item.name?.toLowerCase().includes(filterBrand?.toLowerCase());
-        });
-        setTarifas(filteredTarifas);
+        const resultado = Tarifas.filter((item) => filterByBrand(item)).filter((item) => filterByPrice(item))
+        setFiltros(resultado);
+    }, [filterBrand, filterPrice])
 
-    }, [filterBrand]);
+    const filterByBrand = (item) => filterBrand !== null ? item.name.toLowerCase() === filterBrand.toLowerCase() : true;
 
-    useEffect(() => {
-        let filteredTarifas = Tarifas?.filter((item) => {
-            return item.price[0].cant >= filterPrice[0] && item.price[0].cant < filterPrice[1];
-        });
-        setTarifas(filteredTarifas);
-    }, [filterPrice]);
+    const filterByPrice = (item) => filterPrice !== null ? item.priceCant >= filterPrice[0] && item.priceCant < filterPrice[1] : true;
+
+    const cleanFilter = () => {
+        setfilterBrand(null)
+        setfilterPrice([0,100])
+        setFiltros(Tarifas)
+    }
 
     return (
         <>
@@ -48,8 +52,8 @@ function ContenedorProductos() {
                     <Row className='justify-content-around'>
                         <Col md={3}>
                             <Row>
-                                <Col className='my-2' md={12}>filtrar por: </Col>
-                                {/* <Col className='my-2' md={6}>Limpiar filtros</Col> */}
+                                <Col className='my-2' md={6}>filtrar por: </Col>
+                                <Col className='my-2' md={6}><button className='btn' onClick={cleanFilter}>Limpiar filtros</button></Col>
                                 <hr />
                             </Row>
                             <Row>
@@ -89,8 +93,8 @@ function ContenedorProductos() {
                                 <Col className='my-2' md={6}>filtrar por: {filterBrand} - ${filterPrice[0]} - {filterPrice[1]}</Col>
                             </Row>
                             <Row>
-                                {Tarifas?.length > 0 &&
-                                    Tarifas?.map((item) => {
+                                {filtros?.length > 0 &&
+                                    filtros?.map((item) => {
                                         return <TarjetaTarifa data={item} />
                                     })
                                 }

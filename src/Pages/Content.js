@@ -4,7 +4,6 @@ import Banner from '../Components/Banner/Banner';
 import Footer from '../Components/Footer/Footer';
 import FormSuscripcion from '../Components/Forms/FormSuscripcion';
 import ContenedorProductos from '../Components/Contenedor/ContenedorProductos';
-import TarjetaTarifa from '../Components/Tarjeta/TarjetaTarifa';
 
 function Content({ }) {
     return (
