@@ -313,10 +313,49 @@ footer {
       font-weight: 400;
       line-height: normal;
     }
+
+    &-dark {
+      .form-check-input {
+        background-color: $black !important;
+        border: 1px solid $black !important;
+
+        &:checked {
+          background-color: $black !important;
+          border: 1px solid $black !important;
+        }
+      }
+    }
   }
 
   &-input {
     border-radius: 0px;
+  }
+}
+
+.input {
+  &-check {
+    &-label {
+      color: #000;
+      //font-family: Mont;
+      font-size: 0.8rem;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+    }
+
+    &-dark {
+      .form-check-input {
+        border: 1px solid $black !important;
+
+        &:checked {
+          background-color: $black !important;
+          border: 1px solid $black !important;
+        }
+        &:focus{
+          box-shadow: 0px 0px 3px $black;
+        }
+      }
+    }
   }
 }
 
@@ -355,9 +394,11 @@ footer {
       background: #FFF;
       padding: 5px 10px;
       text-align: center;
-      &:hover{
+
+      &:hover {
         box-shadow: 0px 0px 5px lightgray;
       }
+
       img {
         height: 30px;
       }
@@ -366,13 +407,20 @@ footer {
   }
 }
 
-.rc-slider{
-  &-handle{
+.rc-slider {
+  &-handle {
     border: 2px solid black !important;
     background-color: black !important;
   }
-  &-track{
+
+  &-track {
     background-color: black !important;
   }
 }
 
+
+.text{
+  &-left{
+    text-align: left;
+  }
+}
