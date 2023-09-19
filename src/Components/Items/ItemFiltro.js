@@ -8,7 +8,7 @@ function ItemFiltro({ image, name, onValueChange }) {
         onValueChange(newValue);
     };
     return (
-        <Col md={6}>
+        <Col xs={4} md={6}>
             <button
                 key={name}
                 className={'filtro-producto-logo my-2'}

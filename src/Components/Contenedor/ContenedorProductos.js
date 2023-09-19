@@ -99,8 +99,8 @@ function ContenedorProductos() {
                     <Row className='justify-content-around'>
                         <Col md={3}>
                             <Row>
-                                <Col className='my-2' md={6}>filtrar por: </Col>
-                                <Col className='my-2' md={6}><button className='btn' onClick={cleanFilter}>Limpiar filtros</button></Col>
+                                <Col className='my-2' xs={6} md={6}>filtrar por: </Col>
+                                <Col className='my-2' xs={6} md={6}><button className='btn btn-dark' onClick={cleanFilter}>Limpiar filtros</button></Col>
                                 <hr />
                             </Row>
                             <Row>

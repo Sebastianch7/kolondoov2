@@ -23,7 +23,7 @@ function Banner({ title = '', subtitle = '', buttons = false, children, image })
                             </Col>
                         </Row>
                     </Col>
-                    <Col sm={12} md={5}>
+                    <Col sm={12} md={5} className='d-none d-md-block'>
                         <div>
                             <img className='img-fluid img-banner' src={image} />
                         </div>
