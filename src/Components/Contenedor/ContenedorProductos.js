@@ -24,6 +24,8 @@ function ContenedorProductos() {
     // Estado para comprobar si se cargaron los filtros
     const [isLoadFilter, setIsLoadFilter] = useState(false);
     const [isLoadInformation, setIsLoadInformation] = useState(false);
+    const [selectedBrand, setSelectedBrand] = useState(null);
+
 
     // Estados para filtros de marca, precio y capacidad
     const [filterBrand, setFilterBrand] = useState(null);
@@ -42,8 +44,8 @@ function ContenedorProductos() {
     const [rangePrice, setRangePrice] = useState([minPrice, maxPrice]);
     const [rangeCapacity, setRangeCapacity] = useState([minCapacity, maxCapacity]);
 
-     // Función para limpiar los filtros
-     const cleanFilter = () => {
+    // Función para limpiar los filtros
+    const cleanFilter = () => {
         setFilterTechnology(false);
         setFilterMessage(false);
         setFilterRoaming(false);
@@ -110,7 +112,6 @@ function ContenedorProductos() {
         });
     }, []);
 
-    
     // Carga de datos de tarifas desde la API (informacion tarifa)
     useEffect(() => {
         setIsLoadInformation(true)
@@ -141,12 +142,12 @@ function ContenedorProductos() {
     useEffect(() => {
         const resultado =
             Tarifas
-            .filter((item) => filterByBrand(item))
-            .filter((item) => filterByCapacity(item))
-            .filter((item) => filterByPrice(item))
-            .filter((item) => filterByTechnology(item))
-            .filter((item) => filterByMessage(item))
-            .filter((item) => filterByRoaming(item))
+                .filter((item) => filterByBrand(item))
+                .filter((item) => filterByCapacity(item))
+                .filter((item) => filterByPrice(item))
+                .filter((item) => filterByTechnology(item))
+                .filter((item) => filterByMessage(item))
+                .filter((item) => filterByRoaming(item))
 
         setFiltros(resultado);
     }, [filterBrand, filterPrice, filterCapacity, filterTechnology, filterMessage, filterRoaming]);
@@ -216,7 +217,15 @@ function ContenedorProductos() {
                                 </Col>
                                 {brand?.length > 0 &&
                                     brand.map((item, index) => {
-                                        return <ItemFiltro key={index} onValueChange={handleFilterBrand} id={item.id} logo={item.logo} name={item.nombre} />
+                                        return <Col xs={4} md={6}>
+                                            <button key={item.id}
+                                                className={`filtro-producto-logo my-2 ${selectedBrand === item.id ? 'pruebaBtn' : ''}`}
+                                                value={item.nombre}
+                                                onClick={() => {
+                                                    setSelectedBrand(item.id)
+                                                    setFilterBrand(item.id);
+                                                }}>
+                                                <img src={item.logo} alt={item.nombre} /></button></Col>
                                     })
                                 }
                             </Row>
@@ -293,16 +302,18 @@ function ContenedorProductos() {
                         </Col>
                         <Col md={8}>
                             <Row>
-                                <Col key={filterBrand} className='my-2' md={6}>{filtros?.length} de {Tarifas.length}</Col>
+                                <Col key={filterBrand} className='my-2' md={6}>Mostrando: {filtros?.length} resultados de {Tarifas.length}</Col>
                             </Row>
                             <Row>
-                                {isLoadInformation && <Load />}
-                                {filtros?.length > 0 ?
-                                    filtros?.map((item, index) => {
-                                        return <TarjetaTarifa key={index} data={item} />
-                                    }) :
-                                    <NotIfoItem key={0} title={'No se encontraron ofertas'} text={'Lo sentimos, no hemos encontrado ofertas con los filtros seleccionados.'} />
-                                }
+                                <div className='pruebaPos'>
+                                    {isLoadInformation && <Load />}
+                                    {filtros?.length > 0 ?
+                                        filtros?.map((item, index) => {
+                                            return <TarjetaTarifa key={index} data={item} />
+                                        }) :
+                                        <NotIfoItem key={0} title={'No se encontraron ofertas'} text={'Lo sentimos, no hemos encontrado ofertas con los filtros seleccionados.'} />
+                                    }
+                                </div>
                             </Row>
                         </Col>
                     </Row>
