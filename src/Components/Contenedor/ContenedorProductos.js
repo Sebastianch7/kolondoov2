@@ -1,95 +1,202 @@
+/**
+ * Este componente representa una página que muestra tarifas móviles y permite aplicar filtros.
+ * Utiliza componentes funcionales y hooks de React para gestionar el estado y los efectos secundarios.
+ */
 import React, { useEffect, useState } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import InterSection from '../Utils/InterSection';
 import ItemFiltro from '../Items/ItemFiltro';
-import InputRange from '../Input/InputRange';
 import TarjetaTarifa from '../Tarjeta/TarjetaTarifa';
 import axios from 'axios';
 import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
 import { Form } from 'react-bootstrap';
+import NotIfoItem from '../Utils/NotIfoItem';
+import Load from '../Utils/Load';
 
 function ContenedorProductos() {
-    const minPrice = 0, maxPrice = 100, minCapacity = 10, maxCapacity = 80;
+    // Estados para filtros de precio y capacidad
+    const [minPrice, setMinPrice] = useState(0);
+    const [maxPrice, setMaxPrice] = useState(1000);
+    const [minCapacity, setMinCapacity] = useState(0);
+    const [maxCapacity, setMaxCapacity] = useState(1000);
 
-    const [filterBrand, setfilterBrand] = useState(null);
-    const [filterPrice, setfilterPrice] = useState([minPrice, maxPrice]);
-    const [filterCapacity, setfilterCapacity] = useState([minCapacity, maxCapacity]);
-    const [filterTecnology, setFilterTecnology] = useState(false);
+    // Estado para comprobar si se cargaron los filtros
+    const [isLoadFilter, setIsLoadFilter] = useState(false);
+    const [isLoadInformation, setIsLoadInformation] = useState(false);
+
+    // Estados para filtros de marca, precio y capacidad
+    const [filterBrand, setFilterBrand] = useState(null);
+    const [filterPrice, setFilterPrice] = useState([minPrice, maxPrice]);
+    const [filterCapacity, setFilterCapacity] = useState([minCapacity, maxCapacity]);
+    const [filterTechnology, setFilterTechnology] = useState(false);
     const [filterMessage, setFilterMessage] = useState(false);
     const [filterRoaming, setFilterRoaming] = useState(false);
 
+    // Estados para almacenar datos de tarifas, filtros y marcas
     const [Tarifas, setTarifas] = useState([]);
     const [filtros, setFiltros] = useState([]);
+    const [brand, setBrand] = useState([]);
 
-    //informacion para filtro range por precio
+    // Estados para los rangos de precio y capacidad
     const [rangePrice, setRangePrice] = useState([minPrice, maxPrice]);
-
-    const handleRangeChangePrice = (newRange) => {
-        setRangePrice(newRange);
-        handleFilterPrice(newRange)
-    };
-
-    //informacion para filtro range por capacidad
     const [rangeCapacity, setRangeCapacity] = useState([minCapacity, maxCapacity]);
 
+     // Función para limpiar los filtros
+     const cleanFilter = () => {
+        setFilterTechnology(false);
+        setFilterMessage(false);
+        setFilterRoaming(false);
+        setFilterBrand(null);
+        setFilterCapacity([minCapacity, maxCapacity]);
+        setFilterPrice([minPrice, maxPrice]);
+        setRangePrice([minPrice, maxPrice]);
+        setRangeCapacity([minCapacity, maxCapacity]);
+        setFiltros(Tarifas);
+    }
+
+    // Función para manejar cambios en el rango de precio
+    const handleRangeChangePrice = (newRange) => {
+        setRangePrice(newRange);
+        handleFilterPrice(newRange);
+    };
+
+    // Función para manejar cambios en el rango de capacidad
     const handleRangeChangeCapacity = (newRange) => {
         setRangeCapacity(newRange);
-        handleFilterCapacity(newRange)
+        handleFilterCapacity(newRange);
     };
 
-
+    // Carga de datos de tarifas desde la API (filtros)
     useEffect(() => {
-        axios.get('http://127.0.0.1:8000/api/productos').then((response) => {
-            setTarifas(response.data)
-            setFiltros(response.data)
+        // Establecer isLoadFilter en falso mientras se cargan los datos
+        setIsLoadFilter(false);
+
+        axios.get('http://127.0.0.1:8000/api/filterMovilList').then((response) => {
+            // Actualizar los estados con los datos iniciales
+            // Obtener el valor mínimo de capacidad (min_gb) de la respuesta,
+            // asegurándose de que sea al menos 0
+            let i_minCapacity = parseInt(response.data[0].min_gb) > 0 ? parseInt(response.data[0].min_gb) : 0;
+
+            // Obtener el valor máximo de capacidad (max_gb) de la respuesta
+            let i_maxCapacity = parseInt(response.data[0].max_gb)
+
+            // Obtener el valor mínimo de precio (min_precio) de la respuesta,
+            // asegurándose de que sea al menos 0
+            let i_minPrice = parseInt(response.data[0].min_precio) > 0 ? parseInt(response.data[0].min_precio) : 0;
+
+            // Obtener el valor máximo de precio (max_precio) de la respuesta
+            let i_maxPrice = parseInt(response.data[0].max_precio);
+
+            // Actualizar los estados con los valores calculados
+            setMinCapacity(i_minCapacity);
+            setMaxCapacity(i_maxCapacity);
+            setRangeCapacity([parseInt(i_minCapacity), parseInt(i_maxCapacity)]);
+
+            setMaxPrice(i_maxPrice);
+            setMinPrice(i_minPrice);
+            setRangePrice([parseInt(i_minPrice), parseInt(i_maxPrice)]);
+
+            // Establecer isLoadFilter en verdadero una vez que se han actualizado los estados
+            setIsLoadFilter(true);
         });
-    }, [])
+    }, []);
 
+
+    // Carga de datos de marcas desde la API
+    useEffect(() => {
+        axios.get('http://127.0.0.1:8000/api/getOperadorasList').then((response) => {
+            setBrand(response.data);
+        });
+    }, []);
+
+    
+    // Carga de datos de tarifas desde la API (informacion tarifa)
+    useEffect(() => {
+        setIsLoadInformation(true)
+        axios.get('http://127.0.0.1:8000/api/getTarifasMovilList').then((response) => {
+            setFiltros(response.data);
+            setTarifas(response.data);
+            setIsLoadInformation(false)
+        });
+    }, [brand]);
+
+
+    // Función para manejar cambios en la marca seleccionada
     const handleFilterBrand = (value) => {
-        setfilterBrand(value);
+        setFilterBrand(value);
     };
 
+    // Función para manejar cambios en el filtro de precio
     const handleFilterPrice = (value) => {
-        setfilterPrice(value);
+        setFilterPrice(value);
     };
 
+    // Función para manejar cambios en el filtro de capacidad
     const handleFilterCapacity = (value) => {
-        setfilterCapacity(value);
+        setFilterCapacity(value);
     };
 
-    const handleFilterMessage = (value) => {
-        setFilterMessage(value);
-    };
-
+    // Filtrar las tarifas según los filtros seleccionados
     useEffect(() => {
         const resultado =
-            Tarifas.filter((item) => filterByBrand(item))
-                .filter((item) => filterByPrice(item))
-                .filter((item) => filterByCapacity(item))
-                .filter((item) => filterByTeconology(item))
-                .filter((item) => filterByMessage(item))
-                .filter((item) => filterByRoaming(item))
+            Tarifas
+            .filter((item) => filterByBrand(item))
+            .filter((item) => filterByCapacity(item))
+            .filter((item) => filterByPrice(item))
+            .filter((item) => filterByTechnology(item))
+            .filter((item) => filterByMessage(item))
+            .filter((item) => filterByRoaming(item))
+
         setFiltros(resultado);
-    }, [filterBrand, filterPrice, filterCapacity, filterTecnology, filterMessage, filterRoaming])
+    }, [filterBrand, filterPrice, filterCapacity, filterTechnology, filterMessage, filterRoaming]);
 
-    const filterByBrand = (item) => filterBrand !== null ? item.name.toLowerCase() === filterBrand.toLowerCase() : true;
-    const filterByPrice = (item) => filterPrice !== null ? item.priceCant >= filterPrice[0] && item.priceCant < filterPrice[1] : true;
-    const filterByCapacity = (item) => filterCapacity !== null ? item.serviceCant >= filterCapacity[0] && item.serviceCant < filterCapacity[1] : true;
-    const filterByTeconology = (item) => filterTecnology !== false ? item.feature.some(feature => feature.toLowerCase().includes('5g')) : true;
-    const filterByMessage = (item) => filterMessage !== false ? item.feature.some(feature => feature.toLowerCase().includes('mensajes ilimitado')) : true;
-    const filterByRoaming = (item) => filterRoaming !== false ? item.feature.some(feature => feature.toLowerCase().includes('roaming ilimitado')) : true;
+    // Función para filtrar por marca
+    const filterByBrand = (item) => filterBrand !== null ? item.operadora == filterBrand : true;
 
-    const cleanFilter = () => {
-        setfilterBrand(null)
-        setFilterTecnology(false)
-        setFilterMessage(false)
-        setFilterRoaming(false)
-        setfilterPrice([minPrice, maxPrice])
-        setRangePrice([minPrice, maxPrice])
-        setfilterCapacity([minCapacity, maxCapacity])
-        setRangeCapacity([minCapacity, maxCapacity])
-        setFiltros(Tarifas)
+    // Función para filtrar por precio
+    const filterByPrice = (item) => filterPrice !== null ? item.precio >= filterPrice[0] && item.precio < filterPrice[1] : true;
+
+    // Función para filtrar por tecnología
+    const filterByTechnology = (item) => filterTechnology !== false ? filterByFilter(filterTechnology, item, '5G!') : true;
+
+    // Función para filtrar por mensajes
+    const filterByMessage = (item) => filterMessage !== false ? filterByFilter(filterMessage, item, 'SMS incluidos') : true;
+
+    // Función para filtrar por roaming
+    const filterByRoaming = (item) => filterRoaming !== false ? filterByFilter(filterRoaming, item, 'Roaming en la UE sin coste') : true;
+
+    // Función para filtrar por capacidad
+    function filterByCapacity(item) {
+        if (filterCapacity !== null) {
+            if (item.parrilla_bloque_1.includes("GB Ilimitados")) {
+                return true;
+            } else {
+                return item.parrilla_bloque_1.replace("GB", "") >= filterCapacity[0] && item.parrilla_bloque_1.replace("GB", "") < filterCapacity[1];
+            }
+        } else {
+            return true;
+        }
+    }
+
+
+    // Función para filtrar por palabra clave
+    function filterByFilter(filter, item, word) {
+        if (filter !== false) {
+            if (item.parrilla_bloque_1.toLowerCase().includes(word.toLowerCase())) {
+                return true;
+            } else if (item.parrilla_bloque_2.toLowerCase().includes(word.toLowerCase())) {
+                return true;
+            } else if (item.parrilla_bloque_3.toLowerCase().includes(word.toLowerCase())) {
+                return true;
+            } else if (item.parrilla_bloque_4.toLowerCase().includes(word.toLowerCase())) {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return true;
+        }
     }
 
     return (
@@ -107,16 +214,13 @@ function ContenedorProductos() {
                                 <Col md={12}>
                                     Compañia:
                                 </Col>
-                                <ItemFiltro onValueChange={handleFilterBrand} name={'masmovil'} image={'/img/masmovil.png'} />
-                                <ItemFiltro onValueChange={handleFilterBrand} name={'finetwork'} image={'/img/finetwork.png'} />
-                                <ItemFiltro onValueChange={handleFilterBrand} name={'lemmon'} image={'/img/lemmon.png'} />
-                                <ItemFiltro onValueChange={handleFilterBrand} name={'lowi'} image={'/img/lowi.png'} />
-                                <ItemFiltro onValueChange={handleFilterBrand} name={'pepephone'} image={'/img/pepephone.png'} />
-                                <ItemFiltro onValueChange={handleFilterBrand} name={'virgin'} image={'/img/virgin.png'} />
-                                <ItemFiltro onValueChange={handleFilterBrand} name={'vodafone'} image={'/img/vodafone.png'} />
-                                <ItemFiltro onValueChange={handleFilterBrand} name={'yoigo'} image={'/img/yoigo.png'} />
+                                {brand?.length > 0 &&
+                                    brand.map((item, index) => {
+                                        return <ItemFiltro key={index} onValueChange={handleFilterBrand} id={item.id} logo={item.logo} name={item.nombre} />
+                                    })
+                                }
                             </Row>
-                            <Row>
+                            {isLoadFilter === true ? <Row>
                                 <div className='mt-4'>
                                     <b>{'Coste mensual'}:</b>
                                     <div className='my-4'>
@@ -151,8 +255,8 @@ function ContenedorProductos() {
                                         <Form.Switch
                                             className='input-check-dark mt-2 text-left'
                                             type='switch'
-                                            checked={filterTecnology}
-                                            onChange={(e) => setFilterTecnology(!filterTecnology)}
+                                            checked={filterTechnology}
+                                            onChange={(e) => setFilterTechnology(!filterTechnology)}
                                             label={'Mostrar solo ofertas 5G'}
                                             reverse
                                         />
@@ -184,17 +288,20 @@ function ContenedorProductos() {
                                         />
                                     </div>
                                 </div>
-                            </Row>
+                            </Row> :
+                                <Load />}
                         </Col>
                         <Col md={8}>
                             <Row>
-                                <Col className='my-2' md={6}>filtrar por: {filterBrand} - ${filterPrice[0]} - {filterPrice[1]}</Col>
+                                <Col key={filterBrand} className='my-2' md={6}>{filtros?.length} de {Tarifas.length}</Col>
                             </Row>
                             <Row>
-                                {filtros?.length > 0 &&
-                                    filtros?.map((item) => {
-                                        return <TarjetaTarifa data={item} />
-                                    })
+                                {isLoadInformation && <Load />}
+                                {filtros?.length > 0 ?
+                                    filtros?.map((item, index) => {
+                                        return <TarjetaTarifa key={index} data={item} />
+                                    }) :
+                                    <NotIfoItem key={0} title={'No se encontraron ofertas'} text={'Lo sentimos, no hemos encontrado ofertas con los filtros seleccionados.'} />
                                 }
                             </Row>
                         </Col>
