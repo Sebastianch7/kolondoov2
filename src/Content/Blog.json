@@ -1,6 +1,7 @@
 [
     {
         "img": "/img/bannerFull1.png",
+        "imgMobile": "/img/banner1Mobile.png",
         "date": "18 mayo 2023",
         "title": "Opiniones sobre Gana Energía: ventajas e inconvenientes",
         "button": "Ver más",
@@ -9,6 +10,7 @@
     },
     {
         "img": "/img/bannerFull2.png",
+        "imgMobile": "/img/banner1Mobile.png",
         "date": "18 mayo 2023",
         "title": "Opiniones sobre Gana Energía: ventajas e inconvenientes",
         "button": "Ver más",
@@ -17,18 +19,10 @@
     },
     {
         "img": "/img/bannerFull2.png",
+        "imgMobile": "/img/banner1Mobile.png",
         "date": "2 mayo 2023",
         "title": "Vuelven los teléfonos tontos",
         "content": "Los teléfonos tontos, también llamados dumbphones, son lo contrario a los smartphones o teléfonos inteligentes.",
-        "button": "Ver más",
-        "url": "",
-        "type": "min"
-    },
-    {
-        "img": "/img/bannerFull2.png",
-        "date": "08 diciembre 2023",
-        "title": "La operadora con la mejor oferta de Netflix ",
-        "content": "Quieres saber qué operadoras lo ofrecen y en qué condiciones? Entonces no te pierdas el análisis que te mostramos a continuación. ¡Sigue leyendo!",
         "button": "Ver más",
         "url": "",
         "type": "min"

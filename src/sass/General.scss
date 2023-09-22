@@ -109,6 +109,7 @@ $breakpoint-lg: 1360px;
     color: $colorPrimary;
     line-height: normal;
     font-size: 2rem;
+    margin-top: 40px;
   }
 }
 
@@ -121,6 +122,10 @@ $breakpoint-lg: 1360px;
   font-style: normal;
   font-weight: 800;
   line-height: normal;
+  @include media(xs){
+    width: 100% !important;
+    margin-top: 10px;
+  }
 
   &:disabled {
     background-color: gray;
@@ -181,23 +186,17 @@ $breakpoint-lg: 1360px;
   }
 
   &-blog {
-    &-min {
-      min-height: 296px;
-      margin: 22px auto;
-      padding: 10px 20px;
-      color: $black;
+    
 
-      a {
-        text-decoration: underline;
-        color: $black;
-      }
-    }
-
-    &-max {
+    /* &-max {
+      background-color: red;
       img {
         min-height: 558px;
+        @include media(xs){
+          height: 300px !important;
+        }
       }
-    }
+    } */
   }
 
   .info-card {
@@ -264,7 +263,15 @@ $breakpoint-lg: 1360px;
 }
 
 footer {
+
   .footer {
+    &-img{
+      &-mobile{
+        height: 34px;
+        width: 124px;
+        text-align: center;
+      }
+    }
     &-copyright {
       font-size: 0.7rem;
     }
@@ -375,6 +382,9 @@ footer {
 
 .interSeccion {
   height: 100px !important;
+  @include media(xs){
+    height: 40px !important;
+  }
 }
 
 
@@ -437,4 +447,36 @@ footer {
 
 .pruebaBtn{
   filter: blur(0px);
+}
+
+.acordion{
+  &-icon{
+    &-title{
+      margin-right: 10px;
+    }
+  }
+}
+
+.carrusel{
+  &-img{
+  }
+  &-caption{
+    text-shadow: 0px 0px 5px $black;
+    a{
+      color: $white;
+    }
+  }
+}
+
+.carousel{
+  &-indicators{
+    bottom: -70px;
+    [data-bs-target]{
+      background-color: #19467C;
+      height: 20px;
+      width: 20px;
+      border-radius: 50%;
+    }
+  }
+
 }

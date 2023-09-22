@@ -1,5 +1,9 @@
 import React from 'react';
-import { Container, Row, Col, Stack } from 'react-bootstrap';
+import { Container, Row, Col } from 'react-bootstrap';
+import { isMobile } from 'react-device-detect';
+import AcordionItem from '../Acordion/AcordionItem';
+import Accordion from 'react-bootstrap/Accordion';
+
 
 function ContenedorTarjeta({ children }) {
     return (
@@ -7,9 +11,14 @@ function ContenedorTarjeta({ children }) {
             <Container className='container-tarjeta'>
                 <Row>
                     <Col lg={12}>
-                        <Row className="justify-content-center mx-auto container-tarjeta-producto">
-                            {children}
-                        </Row>
+                        {!isMobile ?
+                            <Row className="justify-content-center mx-auto container-tarjeta-producto">
+                                {children}
+                            </Row> :
+                            <Accordion defaultActiveKey="0">
+                                {children}
+                            </Accordion>
+                            }
                     </Col>
                 </Row>
             </Container>

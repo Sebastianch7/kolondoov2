@@ -11,7 +11,7 @@ function Banner({ title = '', subtitle = '', buttons = false, children, image })
                 <div className="row justify-content-center align-items-center mt-0">
                     <Col sm={12} md={5}>
                         <Row>
-                            <Col sm={12} md={12}>
+                            <Col sm={12}>
                                 <TitleSection
                                     title={title}
                                     subtitle={subtitle}

@@ -6,6 +6,7 @@ import ButtonPrimary from '../Button/ButtonPrimary';
 import InputText from '../Input/InputText';
 import InputRange from '../Input/InputRange';
 import InputCheck from '../Input/InputCheck';
+import { isMobile } from 'react-device-detect';
 
 function FormSuscripcion({ text, button, check, politicy = false }) {
 
@@ -27,7 +28,9 @@ function FormSuscripcion({ text, button, check, politicy = false }) {
     return (
         <Form onSubmit={subscripcion}>
             <div className='mx-2'>
-                <InputGroup className="mt-3">
+                {
+                    !isMobile ?
+                    <InputGroup className="mt-3">
                     <InputText
                         text={inpEmail}
                         onChange={(e) => setInpEmail(e.target.value)}
@@ -41,6 +44,23 @@ function FormSuscripcion({ text, button, check, politicy = false }) {
                         isSuccess={isSend ? 'btn-success' : 'null'}
                     />
                 </InputGroup>
+                :
+                <>
+                    <InputText
+                        text={inpEmail}
+                        onChange={(e) => setInpEmail(e.target.value)}
+                        type='email'
+                        placeholder={text}
+                    />
+                    <ButtonPrimary
+                    className={'mt-5'}
+                        text={textButton}
+                        btnStatus={checkIn}
+                        type={'submit'}
+                        isSuccess={isSend ? 'btn-success' : 'null'}
+                    />
+                    </>
+                }
                 {check &&
                     <InputCheck
                         onChangeValue={changeValue}
