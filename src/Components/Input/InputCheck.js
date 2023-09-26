@@ -8,16 +8,18 @@ export default function InputCheck(props) {
     };
 
     return (
-        <Form.Switch
-            className='input-check mt-2'
-            type='switch'
-            checked={checkIn}
-            label={props.text}
-            onChange={(e) => {
-                enviarValorAlPadre()
-                setCheckIn(!checkIn)
-            }
-            }
-        />
+        <div className='my-3'>
+            <Form.Switch
+                className='input-check mt-2'
+                type='switch'
+                checked={checkIn}
+                label={props.text}
+                onChange={(e) => {
+                    enviarValorAlPadre()
+                    setCheckIn(!checkIn)
+                }
+                }
+            />
+        </div>
     )
 }

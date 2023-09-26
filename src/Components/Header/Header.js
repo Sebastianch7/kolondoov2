@@ -1,6 +1,6 @@
 import React from 'react';
 import ItemMenu from '../Items/ItemMenu';
-import { Navbar, Container, Nav, NavDropdown, Row, Col } from 'react-bootstrap';
+import { Navbar, Container, Nav } from 'react-bootstrap';
 import BreadCrumb from '../BreadCrumb/BreadCrumb';
 import items from '../../Content/ItemMenu.json'
 import ChangeLang from '../Utils/ChangeLang'
@@ -10,7 +10,7 @@ function Header({ }) {
     const { t } = useTranslation();
     return (
         <>
-            <Navbar expand={"lg"} className="navbar-light bg-white clean-navbar">
+            <Navbar expand={"lg"} className="navbar-light bg-white clean-navbar my-4 my-xxl-0">
                 <Container className='bg-body-tertiary container-header justify-content-between'>
                     <Navbar.Brand>
                         <a href='/'><img src="/img/Logo.png" alt="Logo" /></a>
@@ -22,7 +22,7 @@ function Header({ }) {
                             {items.map((item, key) => (
                                 <ItemMenu key={key} title={t(item.title)} children={item.children} />
                             ))}
-                            <ChangeLang></ChangeLang>
+                            {/* <ChangeLang></ChangeLang> */}
                         </Nav>
                     </Navbar.Collapse>
                 </Container>

@@ -13,7 +13,7 @@ function ContenedorTarjetaBlog({ children }) {
         <Container fluid className='container-tarjeta-blog'>
             {children}
             <Row className="d-flex justify-content-center align-items-center">
-                <Col lg={10}>
+                <Col md={10} lg={9} xxl={6}>
                     <Row className="justify-content-center mx-auto">
                         {!isMobile ? (
                             Blog.map((data, index) => {

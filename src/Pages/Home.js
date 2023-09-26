@@ -8,12 +8,9 @@ import Footer from '../Components/Footer/Footer';
 import ContenedorTarjetaBlog from '../Components/Contenedor/ContenedorTarjetaBlog';
 import BannerReverse from '../Components/Banner/BannerReverse';
 import FormSuscripcion from '../Components/Forms/FormSuscripcion';
-import ButtonPrimary from '../Components/Button/ButtonPrimary';
 import InterSection from '../Components/Utils/InterSection';
-import BreadCrumb from '../Components/BreadCrumb/BreadCrumb';
 import TarjetasProductos from '../Content/TarjetaProducto.json'
 import { useTranslation } from 'react-i18next';
-import { Col, Row } from 'react-bootstrap';
 import { isMobile } from 'react-device-detect';
 import AcordionItem from '../Components/Acordion/AcordionItem';
 
@@ -59,7 +56,6 @@ function Home(props) {
                         center
                     />
                 </ContenedorTarjetaBlog>
-                <InterSection></InterSection>
                 <BannerReverse
                     title={'Suscríbete gratis y recibe nuestras mejores ofertas'}
                     subtitle='Únete a nuestra comunidad. Recibirás nuestros mejores contenidos semanalmente: guías prácticas para ahorrar y gestionar tu consumo, últimas noticias…¡Y mucho más!'

@@ -1,26 +1,24 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Row, Col, Container } from 'react-bootstrap';
 import Breadcrumb from 'react-bootstrap/Breadcrumb';
 import { useLocation } from 'react-router-dom';
 
 
-function BreadCrumb(props) {
+function BreadCrumb({ url }) {
     const location = useLocation();
-    const pathname = location.pathname;
+    const pathname = url && url.length > 1 ? url : location.pathname;
     let locations = pathname.split('/');
     locations.shift();
-    if (locations.length > 0) {
-    }
     return (
         <Container>
             <Row>
                 <Col md={12}>
                     <Breadcrumb>
-                        {locations.length > 1 &&
+                        {locations.length > 0 &&
                             <>
                                 <Breadcrumb.Item href="/">Kolondoo</Breadcrumb.Item>
                                 {locations.map((item, index) => {
-                                    return <Breadcrumb.Item>{item.replaceAll('_', ' ')}</Breadcrumb.Item>
+                                    return <Breadcrumb.Item key={index}>{item.replaceAll('_', ' ')}</Breadcrumb.Item>
                                 })}
                             </>
                         }

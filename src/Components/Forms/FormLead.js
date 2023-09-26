@@ -1,21 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Form from 'react-bootstrap/Form';
-import InputGroup from 'react-bootstrap/InputGroup';
 import ButtonPrimary from '../Button/ButtonPrimary';
 import InputText from '../Input/InputText';
-import InputCheck from '../Input/InputCheck';
 
-export default function FormLead({ text, button, check, politicy = false }) {
-    const [checkIn, setCheckIn] = useState(false);
-
-    const changeValue = (valor) => {
-        setCheckIn(valor);
-    };
+export default function FormLead({ text, button, check, politicy = false, icon }) {
+    const [checkInAsesoria, setCheckInAsesoria] = useState(false);
+    const [checkInComercial, setCheckInComercial] = useState(false);
 
     const [inpEmail, setInpEmail] = useState('')
     const [isSend, setIsSend] = useState(false);
     const [textButton, setTextButton] = useState(button)
+
     const subscripcion = (e) => {
         e.preventDefault();
         //setIsSend(true)
@@ -29,21 +25,36 @@ export default function FormLead({ text, button, check, politicy = false }) {
                     onChange={(e) => setInpEmail(e.target.value)}
                     type='email'
                     placeholder={text}
+                    icon={icon}
                 />
-                <div className='m-4'></div>
-                <InputCheck
-                    onChangeValue={changeValue}
-                    text={'Acepto que Kolondoo me asesore telefónicamente sobre el producto y servicio elegido de acuerdo con su Política de Privacidad'}
-                />
-                <div className='m-4'></div>
-                <InputCheck
-                    onChangeValue={changeValue}
-                    text={'Acepto recibir comunicaciones comerciales de Kolondoo.'}
-                />
+                <div className='my-3'>
+                    <Form.Switch
+                        className='input-check mt-2'
+                        type='switch'
+                        checked={checkInAsesoria}
+                        label={'Acepto que Kolondoo me asesore telefónicamente sobre el producto y servicio elegido de acuerdo con su Política de Privacidad'}
+                        onChange={(e) => {
+                            setCheckInAsesoria(!checkInAsesoria)
+                        }
+                        }
+                    />
+                </div>
+                <div className='my-3'>
+                    <Form.Switch
+                        className='input-check mt-2'
+                        type='switch'
+                        checked={checkInComercial}
+                        label={'Acepto recibir comunicaciones comerciales de Kolondoo. Más información en Política de Privacidad'}
+                        onChange={(e) => {
+                            setCheckInComercial(!checkInComercial)
+                        }
+                        }
+                    />
+                </div>
                 <div className='text-center m-4'>
                     <ButtonPrimary
                         text={textButton}
-                        btnStatus={checkIn}
+                        btnStatus={(checkInAsesoria && checkInComercial) ? false : true}
                         type={'submit'}
                         isSuccess={isSend ? 'btn-success' : 'null'}
                     />
@@ -51,9 +62,6 @@ export default function FormLead({ text, button, check, politicy = false }) {
                 {politicy &&
                     <Link className='link-politicy' to="politicy"> Política de Privacidad</Link>
                 }
-                <p className='mt-3 mb-1 text-center'>O si lo prefieres llama gratis al
-                    <h5>911 821 808</h5>
-                </p>
             </div>
         </Form>
     )

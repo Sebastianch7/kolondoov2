@@ -1,22 +1,17 @@
 import React from 'react';
-import { Navbar, Container, Nav, NavDropdown, Row, Col } from 'react-bootstrap';
-import BreadCrumb from '../BreadCrumb/BreadCrumb';
+import { Navbar, Container } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 
-export default function HeaderLead() {
+export default function HeaderLead({logo}) {
     const { t } = useTranslation();
+    
     return (
         <>
-             <Navbar bg="dark" data-bs-theme="dark">
+            <Navbar bg="ligth" data-bs-theme="ligth">
                 <Container>
-                    <Navbar.Brand href="#home">
-                        <a href='/'><img src="/img/LogoReverse.png" alt="Logo" /></a>
-                    </Navbar.Brand>
+                <img className='img-fluid' src={logo} alt={logo} style={{ width: '200px' }} />
                 </Container>
             </Navbar>
-            <br />
-
-            <BreadCrumb></BreadCrumb>
         </>
     );
 }
