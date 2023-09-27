@@ -56,6 +56,9 @@ function Home(props) {
                         center
                     />
                 </ContenedorTarjetaBlog>
+                {
+                    !isMobile && <InterSection></InterSection>
+                }
                 <BannerReverse
                     title={'Suscríbete gratis y recibe nuestras mejores ofertas'}
                     subtitle='Únete a nuestra comunidad. Recibirás nuestros mejores contenidos semanalmente: guías prácticas para ahorrar y gestionar tu consumo, últimas noticias…¡Y mucho más!'

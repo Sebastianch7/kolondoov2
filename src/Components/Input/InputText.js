@@ -1,20 +1,13 @@
 import React from 'react';
-import { BsFillTelephoneFill } from "react-icons/bs";
 import { Form } from 'react-bootstrap';
-
-function InputText({ text, type = 'text', placeholder, icon }) {
+function InputText({text, type, placeholder}) {
     return (
-        <div className="input-group">
-            <span className="input-group-text"><BsFillTelephoneFill /></span>
-            <Form.Control
-                className={`form-control {isMobile}`}
-                placeholder={placeholder}
-                aria-label={text}
-                type={type}
-            />
-        </div>
-
+        <Form.Control
+            className={`form-input {isMobile}`}
+            placeholder={placeholder}
+            aria-label={text}
+            type={type}
+        />
     );
 }
-
 export default InputText;
