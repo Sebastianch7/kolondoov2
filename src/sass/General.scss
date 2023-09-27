@@ -200,6 +200,11 @@ $breakpoint-lg: 1360px;
         font-size: 0.9rem;
       }
 
+      &-lead{
+        border-bottom: 1px solid black;
+        margin: 20px auto;
+      }
+
       &-service {
         background: #F1F1F1;
         width: 100%;

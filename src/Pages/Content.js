@@ -5,7 +5,7 @@ import Footer from '../Components/Footer/Footer';
 import FormSuscripcion from '../Components/Forms/FormSuscripcion';
 import ContenedorProductos from '../Components/Contenedor/ContenedorProductos';
 
-function Content({ }) {
+function Content() {
     return (
         <div>
             <Header></Header>

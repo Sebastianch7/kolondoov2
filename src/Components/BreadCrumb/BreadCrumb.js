@@ -14,11 +14,11 @@ function BreadCrumb({ url }) {
             <Row>
                 <Col md={12}>
                     <Breadcrumb>
-                        {locations.length > 0 &&
+                        {locations.length > 1 &&
                             <>
                                 <Breadcrumb.Item href="/">Kolondoo</Breadcrumb.Item>
                                 {locations.map((item, index) => {
-                                    return <Breadcrumb.Item key={index}>{item.replaceAll('_', ' ')}</Breadcrumb.Item>
+                                    return <Breadcrumb.Item key={index} href={`/${item}`}>{item.replaceAll('_', ' ')}</Breadcrumb.Item>
                                 })}
                             </>
                         }

@@ -1,7 +1,6 @@
 import React from 'react';
 import { Col, Row } from 'react-bootstrap';
 import Container from 'react-bootstrap/Container';
-import ButtonPrimary from '../Button/ButtonPrimary';
 import TitleSection from '../Text/TitleSection';
 
 function BannerReverse({ title = '', subtitle = '', buttons = false, children, image }) {

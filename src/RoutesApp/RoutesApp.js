@@ -9,9 +9,9 @@ function RoutesApp() {
         <BrowserRouter>
         <Routes>
             <Route exact path="/" element={<Home />} />
+            <Route exact path="/Internet_y_telefonia/" element={<Content />} />
             <Route exact path="/Internet_y_telefonia/Movil" element={<Content />} />
             <Route exact path="/Internet_y_telefonia/Movil/:id" element={<Lead />} />
-            <Route exact path="/Lead" element={<Lead />} />
         </Routes>
     </BrowserRouter>
     );

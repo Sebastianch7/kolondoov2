@@ -44,7 +44,7 @@ function TarjetaTarifa({ data }) {
                 <Col xs={12} md={5} style={isMobile ? { order: 1 } : { order: 2 }}>
                     <Row>
                         <ItemTarifaServicio cant={parrilla_bloque_1} service={'datos'} />
-                        <ItemTarifaServicio cant={precio} service={''} money={moneda} />
+                        <ItemTarifaServicio cant={precio} service={'al mes'} money={moneda} />
                     </Row>
                 </Col>
                 {!isMobile && <Col md={2} style={isMobile ? { order: 3 } : { order: 3 }}>
