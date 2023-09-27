@@ -200,7 +200,7 @@ $breakpoint-lg: 1360px;
         font-size: 0.9rem;
       }
 
-      &-lead{
+      &-lead {
         border-bottom: 1px solid black;
         margin: 20px auto;
       }
@@ -546,17 +546,27 @@ footer {
   }
 }
 
-.text{
-  &-primary{
+.text {
+  &-primary {
     color: $colorPrimary !important;
   }
 }
 
-.input-group-text{
+.input-group-text {
   background-color: white;
   border-radius: 0px !important;
 }
 
-.no-radius{
+.no-radius {
   border-radius: 0px;
+}
+
+.dropdown {
+  &-menu {
+    border-top: 5px solid $black;
+    border-radius: 0px;
+  }
+  &-item{
+    margin: 10px 0px;
+  }
 }
