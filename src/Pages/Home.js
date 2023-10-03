@@ -24,7 +24,7 @@ function Home(props) {
                 <Banner
                     title={t('bannerHomeTitle')}
                     subtitle={t('bannerHomeSubtitle')}
-                    image={'/img/banner1.png'}
+                    image={'/img/foto.png'}
                     buttons={[
                         {
                             title: t('btn_net_phone'),

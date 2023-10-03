@@ -1,0 +1,158 @@
+[
+    {
+        "title": "Internet y Telefonía",
+        "children": [
+            {
+                "name": "Fibra óptica",
+                "url": "/Internet_y_telefonia/"
+            },
+            {
+                "name": "Móvil",
+                "url": "/Internet_y_telefonia/Movil"
+            },
+            {
+                "name": "Móvil y fibra",
+                "url": ""
+            },
+            {
+                "name": "Móvil, fibra y TV",
+                "url": ""
+            },
+            {
+                "name": "Teléfonos gratis con contrato",
+                "url": ""
+            }
+        ]
+    },
+    {
+        "title": "Televisión y streaming",
+        "children": [
+            {
+                "name": "paquetes de TV",
+                "url": ""
+            },
+            {
+                "name": "plataformas de streaming",
+                "url": ""
+            }
+        ]
+    },
+    {
+        "title": "Energía",
+        "children": [
+            {
+                "name": "Luz",
+                "url": ""
+            },
+            {
+                "name": "gas",
+                "url": ""
+            },
+            {
+                "name": "luz y gas",
+                "url": ""
+            },
+            {
+                "name": "solar",
+                "url": ""
+            },
+            {
+                "name": "Estaciones de carga de VE",
+                "url": ""
+            }
+        ]
+    },
+    {
+        "title": "Finanzas",
+        "children": [
+            {
+                "name": "Tarjetas de crédito",
+                "url": ""
+            },
+            {
+                "name": "hipotecas",
+                "url": ""
+            },
+            {
+                "name": "cuenta y ahorro",
+                "url": ""
+            },
+            {
+                "name": "préstamos",
+                "url": ""
+            }
+        ]
+    },
+    {
+        "title": "Seguros",
+        "children": [
+            {
+                "name": "hogar",
+                "url": ""
+            },
+            {
+                "name": "vida",
+                "url": ""
+            },
+            {
+                "name": "coche",
+                "url": ""
+            },
+            {
+                "name": "viaje",
+                "url": ""
+            }
+        ]
+    },
+    {
+        "title": "Seguridad",
+        "children": [
+            {
+                "name": "alarmas para casa",
+                "url": ""
+            },
+            {
+                "name": "alarmas para negocios",
+                "url": ""
+            }
+        ]
+    },
+    {
+        "title": "Gestiones",
+        "children": [
+            {
+                "name": "precio de la luz hoy",
+                "url": ""
+            },
+            {
+                "name": "test de velocidad",
+                "url": ""
+            },
+            {
+                "name": "suministros",
+                "url": ""
+            },
+            {
+                "name": "seguros",
+                "url": ""
+            },
+            {
+                "name": "cobertura",
+                "url": ""
+            }
+        ]
+    },
+    {
+        "title": "Usuario",
+        "children": [
+            {
+                "name": "Log in",
+                "url": ""
+            },
+            {
+                "name": "Log out",
+                "url": ""
+            }
+        ]
+    }
+]

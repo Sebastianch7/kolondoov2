@@ -3,16 +3,16 @@ import Header from '../Components/Header/Header';
 import Banner from '../Components/Banner/Banner';
 import Footer from '../Components/Footer/Footer';
 import FormSuscripcion from '../Components/Forms/FormSuscripcion';
-import ContenedorProductos from '../Components/Contenedor/ContenedorProductos';
+import ContenedorProductosLuz from '../Components/Contenedor/ContenedorProductosLuz';
 
-function Content() {
+function ComparadorEnergia() {
     return (
         <div>
             <Header></Header>
             <Banner
-                title={'Comparador de Tarifas Móvil'}
-                subtitle='¡Te ayudamos a encontrar la tarifa móvil que mejor se adapte a ti!'
-                image={'/img/banner3.png'}
+                title={'Comparador de Tarifas Luz y Gas'}
+                subtitle='¡Te ayudamos a encontrar la tarifa que mejor se adapte a ti!'
+                image={'/img/banner-energia.png'}
             >
                 <FormSuscripcion
                     text={'Introduce tu código postal'}
@@ -20,11 +20,11 @@ function Content() {
                     politicy
                 />
             </Banner>
-            <ContenedorProductos>
-            </ContenedorProductos>
+            <ContenedorProductosLuz>
+            </ContenedorProductosLuz>
             <Footer></Footer>
         </div>
     );
 }
 
-export default Content;
+export default ComparadorEnergia;

@@ -1,22 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Card, Row, Col } from 'react-bootstrap';
 import ItemTarjetaTarifaLead from '../Items/ItemTarjetaTarifaLead';
 import ItemTarifaServicio from '../Items/ItemTarifaServicio';
 import { isMobile } from 'react-device-detect';
 
-export default function TarjetaTarifaLead({ data }) {
+export default function TarjetaTarifaLead({ data, service }) {
+    const [serviceOne, setServiceOne] = useState(
+        service.toLowerCase() === 'movil' ? 'datos' : ''
+    );
+    const [serviceTwo, setServiceTwo] = useState('al mes');
+
     const {
-        id,
-        nombre_tarifa,
         parrilla_bloque_1,
-        parrilla_bloque_2,
-        parrilla_bloque_3,
-        parrilla_bloque_4,
         meses_permanencia,
         precio,
-        logo,
         moneda,
-        promocion
     } = data;
 
     return (
@@ -30,8 +28,8 @@ export default function TarjetaTarifaLead({ data }) {
                 </Col>
                 <Col xs={12} md={6} style={isMobile ? { order: 1 } : { order: 2 }}>
                     <Row>
-                        <ItemTarifaServicio cant={parrilla_bloque_1} service={'datos'} />
-                        <ItemTarifaServicio cant={precio} service={'al mes'} money={moneda} />
+                        <ItemTarifaServicio cant={parrilla_bloque_1} service={serviceOne} />
+                        <ItemTarifaServicio cant={precio} service={serviceTwo} money={moneda} />
                     </Row>
                 </Col>
             </Row>

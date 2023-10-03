@@ -3,6 +3,67 @@ body {
   font-size: 16px;
 }
 
+@font-face {
+  font-family: 'MontHeavy'; // El nombre de la fuente que deseas usar
+  src: url('../../public/fonts/MontHeavy.otf') format('opentype'); // Ruta de la fuente OTF
+  font-weight: bolder;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'MontRegular'; // El nombre de la fuente que deseas usar
+  src: url('../../public/fonts/MontLight.otf') format('opentype'); // Ruta de la fuente OTF
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'MontHeavy'; // El nombre de la fuente que deseas usar
+  src: url('../../public/fonts/MontHeavy.otf') format('opentype'); // Ruta de la fuente OTF
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'MontSemiBold'; // El nombre de la fuente que deseas usar
+  src: url('../../public/fonts/MontSemiBold.otf') format('opentype'); // Ruta de la fuente OTF
+  font-style: normal;
+}
+
+// Define una variable para la fuente
+$MontRegular: 'MontRegular', sans-serif;
+$MontHeavy: 'MontHeavy', sans-serif;
+$MontSemiBold: 'MontSemiBold', sans-serif;
+
+// Aplica la fuente a elementos específicos o a todo el documento
+* {
+  font-family: $MontRegular;
+  font-weight: 600 !important;
+}
+
+.font-semibold {
+  font-family: $MontSemiBold;
+  font-weight: 800 !important;
+}
+
+.btn {
+  font-weight: 800 !important;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+b,
+.card-title,
+.font-bold,
+.tarjeta-tarifa-item-service {
+  font-family: $MontHeavy !important;
+  font-weight: 800 !important;
+}
+
 /* Colors */
 $colorPrimary : #19467c;
 $colorSecundary: #79cfe2;
@@ -50,7 +111,7 @@ $breakpoint-lg: 1360px;
 .container {
   &-menu {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     width: 100%;
 
     a {
@@ -79,6 +140,7 @@ $breakpoint-lg: 1360px;
 
   &-header {
     background-color: white !important;
+    font-weight: 600;
 
     @include media(lg) {
       height: 100px;
@@ -86,18 +148,6 @@ $breakpoint-lg: 1360px;
 
     img {
       width: 138px;
-    }
-
-    &-avatar {
-      background-color: $colorPrimary;
-      padding: 10px;
-      color: $colorSecundary;
-      border-radius: 50%;
-
-      img {
-        height: 1.2rem;
-        width: 1.2rem
-      }
     }
   }
 
@@ -118,7 +168,7 @@ $breakpoint-lg: 1360px;
   padding-top: 10px;
   border-radius: 0px;
   height: 40px;
-  //font-family: Mont;
+  font-family: $MontHeavy;
   font-size: 1rem;
   font-style: normal;
   font-weight: 800;
@@ -213,6 +263,7 @@ $breakpoint-lg: 1360px;
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        padding: 10px;
 
         @include media(xs) {
           height: 100px;
@@ -225,7 +276,7 @@ $breakpoint-lg: 1360px;
         margin-bottom: 15px;
 
         img {
-          min-height: 45px !important;
+          height: 45px !important;
         }
 
         @include media(xs) {
@@ -447,13 +498,13 @@ footer {
       background: #FFF;
       padding: 5px 10px;
       text-align: center;
-      filter: blur(0.6px);
+      filter: grayscale(1);
       height: 40px;
       width: auto;
       overflow: hidden;
 
       &:hover {
-        filter: blur(0px);
+        filter: grayscale(0);
       }
 
       img {
@@ -566,7 +617,16 @@ footer {
     border-top: 5px solid $black;
     border-radius: 0px;
   }
-  &-item{
+
+  &-item {
     margin: 10px 0px;
   }
+}
+
+.dropdown-toggle::after {
+  display: none;
+}
+
+.subtitle {
+  font-size: 1.1rem;
 }

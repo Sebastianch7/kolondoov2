@@ -11,7 +11,7 @@ import TarjetaTarifa from '../Tarjeta/TarjetaTarifa';
 import NotInfoItem from '../Utils/NotInfoItem';
 import Load from '../Utils/Load';
 
-function ContenedorProductos() {
+function ContenedorProductosMovil() {
   // Estado para filtros de precio y capacidad
   const [minPrice, setMinPrice] = useState(0);
   const [maxPrice, setMaxPrice] = useState(1000);
@@ -75,7 +75,7 @@ function ContenedorProductos() {
     const fetchData = async () => {
       try {
         setIsLoadFilter(false);
-        const response = await axios.get('http://127.0.0.1:8000/api/filterMovilList');
+        const response = await axios.get('http://127.0.0.1:8000/api/filterMovil');
         const { min_gb, max_gb, min_precio, max_precio } = response.data[0];
 
         setMinCapacity(parseInt(min_gb) > 0 ? parseInt(min_gb) : 0);
@@ -100,7 +100,7 @@ function ContenedorProductos() {
   useEffect(() => {
     const fetchBrands = async () => {
       try {
-        const response = await axios.get('http://127.0.0.1:8000/api/getOperadorasList');
+        const response = await axios.get('http://127.0.0.1:8000/api/getOperadoras');
         setBrand(response.data);
       } catch (error) {
         console.error("Error al obtener las marcas de operadoras:", error);
@@ -116,7 +116,7 @@ function ContenedorProductos() {
     const fetchTariffs = async () => {
       try {
         setIsLoadInformation(true);
-        const response = await axios.get('http://127.0.0.1:8000/api/getTarifasMovilList');
+        const response = await axios.get('http://127.0.0.1:8000/api/getTarifasMovil');
         setFiltros(response.data);
         setTarifas(response.data);
         setIsLoadInformation(false);
@@ -211,7 +211,7 @@ function ContenedorProductos() {
           <Row className='justify-content-around'>
             <Col md={3}>
               <Row>
-                {!isMobile ? <Col className='my-3' xs={6} md={5}>filtrar por: </Col> : <Col className='my-2' xs={6} md={5}><Button variant="light" onClick={() => setShow(true)}>Filtrar por</Button></Col>}
+                {!isMobile ? <Col className='my-3 font-semibold' xs={6} md={5}>filtrar por: </Col> : <Col className='my-2' xs={6} md={5}><Button variant="light" onClick={() => setShow(true)}>Filtrar por</Button></Col>}
                 <Col className='my-2 text-center' xs={6} md={7}>
                   <button className='btn btn-light' onClick={cleanFilter}>Limpiar filtro</button>
                 </Col>
@@ -222,9 +222,9 @@ function ContenedorProductos() {
                   <Modal.Header closeButton></Modal.Header>
                   <Modal.Body>
                     <Row>
-                      {isMobile && <Col xs={12} key={filterBrand} className='my-2' md={6}>Se encontraron {filtros?.length} resultados de {Tarifas.length}</Col>}
+                      {isMobile && <Col xs={12} key={filterBrand} className='my-2' md={6}>Se encontraron <span className="font-bold">{filtros?.length}</span> resultados de <span className="font-bold">{Tarifas.length}</span></Col>}
                       <Col md={12}>
-                        Compañia:
+                        <span className="font-bold">Compañia:</span>
                       </Col>
                       {brand?.length > 0 &&
                         brand.map((item, index) => (
@@ -322,9 +322,10 @@ function ContenedorProductos() {
               ) : (
                 <>
                   <Row>
-                    {isMobile && <Col xs={12} key={filterBrand} className='my-2' md={6}>Se encontraron {filtros?.length} resultados de {Tarifas.length}</Col>}
+                    {isMobile && 
+                    <Col xs={12} key={filterBrand} className='my-2' md={6}>Se encontraron <span className="font-bold">{filtros?.length}</span> resultados de <span className="font-bold">{Tarifas.length}</span></Col>}
                     <Col md={12}>
-                      Compañia:
+                      <span className="font-semibold">Compañia:</span>
                     </Col>
                     {brand?.length > 0 &&
                       brand.map((item, index) => (
@@ -417,7 +418,7 @@ function ContenedorProductos() {
             </Col>
             <Col md={8}>
               <Row>
-                <Col key={filterBrand} className='my-2' md={6}>Mostrando: {filtros?.length} resultados de {Tarifas.length}</Col>
+                <Col key={filterBrand} className='my-2' md={6}>Mostrando: <span className="font-bold">{filtros?.length}</span> resultados de <span className="font-bold">{Tarifas.length}</span></Col>
               </Row>
               <Row>
                 <div className='pruebaPos'>
@@ -443,4 +444,4 @@ function ContenedorProductos() {
   );
 }
 
-export default ContenedorProductos;
+export default ContenedorProductosMovil;

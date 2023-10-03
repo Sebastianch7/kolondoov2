@@ -6,10 +6,10 @@ import TitleSection from '../Text/TitleSection';
 
 function Banner({ title = '', subtitle = '', buttons = false, children, image }) {
     return (
-        <section className="clean-block about-us p-0 mb-0">
+        <section className="clean-block p-0 mb-0">
             <Container>
                 <div className="row justify-content-center align-items-center mt-0">
-                    <Col sm={12} md={5}>
+                    <Col sm={12} md={6}>
                         <Row>
                             <Col sm={12}>
                                 <TitleSection

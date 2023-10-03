@@ -9,7 +9,7 @@ function TitleSection({ title, subtitle, center = false, buttons }) {
     return (
         <Container>
             <Row>
-                <Col md={12} className={center && 'text-center'}>
+                <Col md={12} className={center && 'text-center b-600'}>
                     <Title title={title} />
                     <Subtitle subtitle={subtitle} />
                     <Row>

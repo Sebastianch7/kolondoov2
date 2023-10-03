@@ -11,7 +11,7 @@ function Header({ }) {
     return (
         <>
             <Navbar expand={"lg"} className="navbar-light bg-white clean-navbar my-4 my-xxl-0">
-                <Container className='bg-body-tertiary container-header justify-content-between'>
+                <Container className='container-header justify-content-between'>
                     <Navbar.Brand>
                         <a href='/'><img src="/img/Logo.png" alt="Logo" /></a>
                     </Navbar.Brand>

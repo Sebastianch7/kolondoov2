@@ -12,7 +12,7 @@ function TarjetaTarifa({ data }) {
     const pathname = location.pathname;
     let locations = pathname.split('/');
     locations.shift();
-    const { id, nombre_tarifa, parrilla_bloque_1, parrilla_bloque_2, parrilla_bloque_3, parrilla_bloque_4, meses_permanencia, precio, logo, moneda, promocion } = data;
+    const { id, nombre_tarifa, parrilla_bloque_1, parrilla_bloque_2, parrilla_bloque_3, parrilla_bloque_4, meses_permanencia, precio, logo, moneda, promocion, landingLead } = data;
 
     return (
         <Card key={nombre_tarifa} className='tarjeta tarjeta-tarifa my-2'>
@@ -22,8 +22,8 @@ function TarjetaTarifa({ data }) {
                         <Col xs={12}>
                             <div className='tarjeta-tarifa-item-title'>
                                 <img src={logo} alt={logo} />
-                                {(promocion !== null && isMobile === false) && <span className='mx-4 align-middle'><b>Promoción: </b>{promocion}</span>}
-                                {(isMobile === true) && <Link className='btn btn-primary btn-primary-small' to={`/Internet_y_telefonia/Movil/${id}`}><BsArrowRight /></Link>}
+                                {((promocion !== null && promocion !== '') && isMobile === false) && <span className='mx-4 align-middle'><b>Promoción: </b>{promocion}</span>}
+                                {(isMobile === true) && <Link className='btn btn-primary btn-primary-small' to={`${landingLead}${id}`}><BsArrowRight /></Link>}
                             </div>
                         </Col>
                         {(promocion !== null && isMobile === true) &&
@@ -43,12 +43,12 @@ function TarjetaTarifa({ data }) {
                 </Col>
                 <Col xs={12} md={5} style={isMobile ? { order: 1 } : { order: 2 }}>
                     <Row>
-                        <ItemTarifaServicio cant={parrilla_bloque_1} service={'datos'} />
+                        <ItemTarifaServicio cant={parrilla_bloque_1} service={''} />
                         <ItemTarifaServicio cant={precio} service={'al mes'} money={moneda} />
                     </Row>
                 </Col>
                 {!isMobile && <Col md={2} style={isMobile ? { order: 3 } : { order: 3 }}>
-                    <Link className='btn btn-primary' to={`/Internet_y_telefonia/Movil/${id}`}>{`Comprar`}</Link>
+                    <Link className='btn btn-primary' to={`${landingLead}${id}`}>{`Comprar`}</Link>
                 </Col>}
             </Row>
         </Card>

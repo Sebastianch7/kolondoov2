@@ -4,7 +4,7 @@
         "children": [
             {
                 "name": "Fibra óptica",
-                "url": "/Internet_y_telefonia/"
+                "url": ""
             },
             {
                 "name": "Móvil",
@@ -42,7 +42,7 @@
         "children": [
             {
                 "name": "Luz",
-                "url": ""
+                "url": "/Energia/Luz"
             },
             {
                 "name": "gas",
@@ -58,86 +58,6 @@
             },
             {
                 "name": "Estaciones de carga de VE",
-                "url": ""
-            }
-        ]
-    },
-    {
-        "title": "Finanzas",
-        "children": [
-            {
-                "name": "Tarjetas de crédito",
-                "url": ""
-            },
-            {
-                "name": "hipotecas",
-                "url": ""
-            },
-            {
-                "name": "cuenta y ahorro",
-                "url": ""
-            },
-            {
-                "name": "préstamos",
-                "url": ""
-            }
-        ]
-    },
-    {
-        "title": "Seguros",
-        "children": [
-            {
-                "name": "hogar",
-                "url": ""
-            },
-            {
-                "name": "vida",
-                "url": ""
-            },
-            {
-                "name": "coche",
-                "url": ""
-            },
-            {
-                "name": "viaje",
-                "url": ""
-            }
-        ]
-    },
-    {
-        "title": "Seguridad",
-        "children": [
-            {
-                "name": "alarmas para casa",
-                "url": ""
-            },
-            {
-                "name": "alarmas para negocios",
-                "url": ""
-            }
-        ]
-    },
-    {
-        "title": "Gestiones",
-        "children": [
-            {
-                "name": "precio de la luz hoy",
-                "url": ""
-            },
-            {
-                "name": "test de velocidad",
-                "url": ""
-            },
-            {
-                "name": "suministros",
-                "url": ""
-            },
-            {
-                "name": "seguros",
-                "url": ""
-            },
-            {
-                "name": "cobertura",
                 "url": ""
             }
         ]

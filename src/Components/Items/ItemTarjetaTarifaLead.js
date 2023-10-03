@@ -13,12 +13,12 @@ export default function ItemTarjetaTarifaLead({ title, word,  data }) {
         } else if (data.parrilla_bloque_4.toLowerCase().includes(word.toLowerCase())) {
             return data.parrilla_bloque_4;
         } else {
-            return 'N/A';
+            return null;
         }
 
     }
     return (
-        <div className='tarjeta-tarifa-item-lead'>
+        (filterByFilter(data,word) !== null) && <div className='tarjeta-tarifa-item-lead'>
             {title}: <b>{filterByFilter(data,word)}</b>
         </div>
     )

@@ -3,7 +3,7 @@ import { Col } from 'react-bootstrap';
 function ItemTarifaServicio({cant, service, money}) {
     return (
         <Col xs={6}>
-            <div className='tarjeta-tarifa-item-service '>
+            <div className='tarjeta-tarifa-item-service text-center'>
                 <h5>{money} {cant}</h5>
                 <span>{service}</span>
             </div>

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="120" height="75" viewBox="0 0 120 75">
+  <defs>
+    <clipPath id="clip-vodafone">
+      <rect width="120" height="75"/>
+    </clipPath>
+  </defs>
+  <g id="vodafone" clip-path="url(#clip-vodafone)">
+    <rect width="120" height="75" fill="#fff"/>
+    <g id="Grupo_6412" data-name="Grupo 6412" transform="translate(-105.462 -276.444)">
+      <path id="Trazado_2942" data-name="Trazado 2942" d="M192.941,313.418A27.24,27.24,0,1,1,165.7,286.176a27.238,27.238,0,0,1,27.237,27.242" fill="#ee3023"/>
+      <path id="Trazado_2943" data-name="Trazado 2943" d="M204.541,336.244c-7.482.025-15.271-6.362-15.305-16.622a23.124,23.124,0,0,1,8.313-17.187,27.248,27.248,0,0,1,16.481-6.221,6.862,6.862,0,0,1,1.962.22,11.314,11.314,0,0,0-8.884,10.871,2.428,2.428,0,0,0,.035.445c8.293,2.022,12.057,7.027,12.082,13.949a14.579,14.579,0,0,1-14.685,14.544" transform="translate(-38.622 -7.636)" fill="#fff"/>
+      <path id="Trazado_2944" data-name="Trazado 2944" d="M138.462,286.176" fill="#fff"/>
+    </g>
+  </g>
+</svg>
