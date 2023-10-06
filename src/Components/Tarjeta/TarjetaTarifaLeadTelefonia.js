@@ -4,9 +4,9 @@ import ItemTarjetaTarifaLead from '../Items/ItemTarjetaTarifaLead';
 import ItemTarifaServicio from '../Items/ItemTarifaServicio';
 import { isMobile } from 'react-device-detect';
 
-export default function TarjetaTarifaLead({ data, service }) {
+export default function TarjetaTarifaLeadTelefonia({ data, service, thanks }) {
     const [serviceOne, setServiceOne] = useState(
-        service.toLowerCase() === 'movil' ? 'datos' : ''
+        service?.toLowerCase() === 'movil' ? 'datos' : ''
     );
     const [serviceTwo, setServiceTwo] = useState('al mes');
 
@@ -20,6 +20,9 @@ export default function TarjetaTarifaLead({ data, service }) {
     return (
         <Card className='tarjeta tarjeta-tarifa p-4'>
             <Row className='d-flex flex-column flex-md-row'>
+                {thanks && <Col xs={12} className='text-center color-primary'>
+                    <p><b>La oferta que has seleccionado</b></p>
+                </Col>}
                 <Col md={6} style={isMobile ? { order: 2 } : { order: 1 }}>
                     <div className='tarjeta-tarifa-item-lead'>{'Duración del contrato'}: <b>{meses_permanencia === 0 ? 'Sin contrato' : meses_permanencia}</b></div>
                     <ItemTarjetaTarifaLead title={'Roaming'} word={'roaming'} data={data} />

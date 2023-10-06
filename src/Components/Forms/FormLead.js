@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { Card, Form } from 'react-bootstrap';
 import ButtonPrimary from '../Button/ButtonPrimary';
-import { BsFillTelephoneFill } from "react-icons/bs";
+import { BsFillTelephoneFill, BsXCircle, BsFillTelephoneOutboundFill } from "react-icons/bs";
 import axios from 'axios';
+import { useNavigate } from "react-router-dom";
+import Load from '../Utils/Load';
 
 export default function FormLead({ idPlan, landing }) {
     const [checkInAsesoria, setCheckInAsesoria] = useState(true);
@@ -10,27 +12,33 @@ export default function FormLead({ idPlan, landing }) {
 
     const [phoneNumber, setPhoneNumber] = useState(null);
     const [isValidPhoneNumber, setIsValidPhoneNumber] = useState(false);
+    const [isSend, setIsSend] = useState(false);
+    let navigate = useNavigate();
 
     const handlePhoneNumberChange = (e) => {
         const inputPhoneNumber = e.target.value;
         setPhoneNumber(inputPhoneNumber);
-        const phoneNumberRegex = /^[6-8]\d{8}$/
+        const phoneNumberRegex = /^[6-9]\d{8}$/
         const isValid = phoneNumberRegex.test(inputPhoneNumber);
         setIsValidPhoneNumber(isValid);
     };
 
-    const [isSend, setIsSend] = useState(false);
+
+
     const [textButton, setTextButton] = useState('LLÁMAME AHORA')
 
     const subscripcion = (e) => {
         e.preventDefault();
         try {
-            const response = axios.post('http://127.0.0.1:8000/api/newLeadMobile', {idPlan, phoneNumber, landing});
+            const response = axios.post('http://127.0.0.1:8000/api/newLeadMobile', { idPlan, phoneNumber, landing });
             console.log('Respuesta de la API después de enviar datos:', response.data);
             setTextButton('Suscripcion exitosa')
             setIsSend(true)
             setPhoneNumber('')
             setIsValidPhoneNumber(false)
+            //setTimeout(() =>{
+                navigate(`/thank${landing}/${idPlan}`)
+            //}, 3000)
         } catch (error) {
             console.error('Error al enviar datos:', error);
         }
@@ -38,7 +46,7 @@ export default function FormLead({ idPlan, landing }) {
     return (
         <Card className='tarjeta-lead'>
             <Card.Header className="text-center">¡Oferta disponible!</Card.Header>
-            <Card.Body>
+            {!isSend ? <Card.Body>
                 <Card.Text className='text-center text-primary'>
                     Déjanos tu teléfono y <b>te llamamos gratis</b>
                 </Card.Text>
@@ -57,6 +65,7 @@ export default function FormLead({ idPlan, landing }) {
                                     isSuccess={isValidPhoneNumber}
                                 />
                             </div>
+                            {(!isValidPhoneNumber && phoneNumber?.length > 4) && <div class="text-danger"><BsXCircle />&nbsp;El número de teléfono ingresado no es valido</div>}
                             <div className='my-3'>
                                 <Form.Switch
                                     className='input-check mt-2'
@@ -86,7 +95,14 @@ export default function FormLead({ idPlan, landing }) {
                         </div>
                     </Form>
                 </Card.Text>
-            </Card.Body>
+            </Card.Body> :
+                <Card>
+                    <Card.Body className='text-center'>
+                        <h2><BsFillTelephoneOutboundFill /></h2>
+                        <h5>Tu información se ha enviado con exito</h5>
+                        <p>Gracias por permitirnos ayudarte!</p>
+                    </Card.Body>
+                </Card>}
         </Card>
     )
 }

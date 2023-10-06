@@ -12,7 +12,7 @@ import Footer from '../Components/Footer/Footer';
 import FormLead from '../Components/Forms/FormLead';
 import TarjetaTarifaLeadEnergia from '../Components/Tarjeta/TarjetaTarifaLeadEnergia';
 
-export default function Lead() {
+export default function ThankPage() {
   const [isLoading, setIsLoading] = useState(true);
   const [infoOffer, setInfoOffer] = useState([]);
   const [idPlan, setIdPlan] = useState(null);
@@ -24,9 +24,10 @@ export default function Lead() {
 
   useEffect(() => {
     let locations = location.pathname.split('/');
-    setIdPlan(locations[3]);
+    console.log(locations)
+    setIdPlan(locations[4]);
     locations.pop();
-    setOfferLooking(locations[2])
+    setOfferLooking(locations[3])
     setBreadUrl(locations.join('/'));
   }, [location.pathname]);
 
@@ -41,28 +42,24 @@ export default function Lead() {
   }, [idPlan]);
 
   return (
-    !isLoading ? (
       <>
         <HeaderLead logo={infoOffer?.logo} />
-        <BreadCrumb url={breadUrl} />
-        <Container className='mb-5'>
+        <Container fluid className='bg-primary p-5'>
           <Row className="justify-content-md-center d-flex flex-column flex-md-row">
-            <div className=''>
-              <Title title={`Oferta de ${infoOffer?.nombre}`} />
-            </div>
-            <Col xs={12} md={7} className='my-2' style={isMobile ? { order: 2 } : { order: 1 }}>
-              {offerLooking?.toLowerCase() === 'movil' && <TarjetaTarifaLeadTelefonia key={0} data={infoOffer} service={offerLooking}/>}
-              {offerLooking?.toLowerCase() === 'luz' && <TarjetaTarifaLeadEnergia data={infoOffer} />}
+            <Col xs={12} className='text-center text-white'>
+            <h3>Muchas gracias por dejarnos tus datos.</h3>
+            <p>En breve un agente contactará contigo.</p>
             </Col>
-            <Col xs={12} md={5} className='my-2' style={isMobile ? { order: 1 } : { order: 2 }}>
-              <FormLead idPlan={idPlan} landing={breadUrl}></FormLead>
+            <Col xs={12} md={7} className='my-2' style={isMobile ? { order: 2 } : { order: 1 }}>
+              {offerLooking?.toLowerCase() === 'movil' && <TarjetaTarifaLeadTelefonia key={0} data={infoOffer} service={offerLooking} thanks/>}
+              {offerLooking?.toLowerCase() === 'luz' && <TarjetaTarifaLeadEnergia data={infoOffer} />}
             </Col>
           </Row>
         </Container>
+        <Container>
+
+        </Container>
         <Footer />
       </>
-    ) : (
-      <Load />
-    )
   );
 }

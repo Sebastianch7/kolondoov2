@@ -188,13 +188,13 @@ function ContenedorProductosMovil() {
   // Función para filtrar por palabra clave en los bloques
   function filterByFilter(filter, item, word) {
     if (filter !== false) {
-      if (item.parrilla_bloque_1.toLowerCase().includes(word.toLowerCase())) {
+      if (item.parrilla_bloque_1?.toLowerCase().includes(word?.toLowerCase())) {
         return true;
-      } else if (item.parrilla_bloque_2.toLowerCase().includes(word.toLowerCase())) {
+      } else if (item.parrilla_bloque_2?.toLowerCase().includes(word?.toLowerCase())) {
         return true;
-      } else if (item.parrilla_bloque_3.toLowerCase().includes(word.toLowerCase())) {
+      } else if (item.parrilla_bloque_3?.toLowerCase().includes(word?.toLowerCase())) {
         return true;
-      } else if (item.parrilla_bloque_4.toLowerCase().includes(word.toLowerCase())) {
+      } else if (item.parrilla_bloque_4?.toLowerCase().includes(word?.toLowerCase())) {
         return true;
       } else {
         return false;

@@ -4,6 +4,7 @@ import Home from '../Pages/Home';
 import ComparadorMovil from '../Pages/ComparadorMovil';
 import Lead from '../Pages/Lead';
 import ComparadorEnergia from '../Pages/ComparadorEnergia';
+import ThankPage from '../Pages/ThankPage';
 
 function RoutesApp() {
     return (
@@ -17,6 +18,9 @@ function RoutesApp() {
             <Route exact path="/Energia/" element={<ComparadorEnergia />} />
             <Route exact path="/Energia/Luz/" element={<ComparadorEnergia />} />
             <Route exact path="/Energia/Luz/:id" element={<Lead />} />
+            
+            <Route exact path="/thank/Energia/Luz/:id" element={<ThankPage />} />
+            <Route exact path="/thank/Internet_y_telefonia/Movil/:id" element={<ThankPage />} />
         </Routes>
     </BrowserRouter>
     );

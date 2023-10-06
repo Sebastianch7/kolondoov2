@@ -71,6 +71,12 @@ $contrast: #252625;
 $white: #ffffff;
 $black: #000000;
 
+.color{
+  &-primary{
+    color: $colorPrimary;
+  }
+}
+
 /* media */
 $breakpoint-xs: 360px;
 $breakpoint-sm: 767px;
@@ -196,6 +202,7 @@ $breakpoint-lg: 1360px;
       max-width: 40px !important;
       float: right;
       text-align: center;
+      margin
 
       img {
         width: 15px;
@@ -214,6 +221,11 @@ $breakpoint-lg: 1360px;
   border-radius: 0px;
   background-color: $white;
 
+  &-footer{
+    &-small{
+      font-size: 0.65rem;
+    }
+  }
   &-lead {
     border-radius: 0px;
 
@@ -268,6 +280,9 @@ $breakpoint-lg: 1360px;
         @include media(xs) {
           height: 100px;
           margin-bottom: 15px;
+        }
+        &-small{
+          height: 95px;
         }
       }
 
@@ -629,4 +644,14 @@ footer {
 
 .subtitle {
   font-size: 1.1rem;
+}
+
+.br-black{
+  border-right: 2px solid black ;
+}
+
+.bg{
+  &-primary{
+    background-color: $colorPrimary !important;
+  }
 }
