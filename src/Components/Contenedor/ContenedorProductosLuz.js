@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { Container, Row, Col, Button, Form } from 'react-bootstrap';
 import axios from 'axios';
-import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
 import { isMobile } from 'react-device-detect';
 import Modal from 'react-bootstrap/Modal';
-
 import InterSection from '../Utils/InterSection';
 import TarjetaTarifa from '../Tarjeta/TarjetaTarifa';
 import NotInfoItem from '../Utils/NotInfoItem';
 import Load from '../Utils/Load';
+import TarjetaTarifaLeadEnergia from '../Tarjeta/TarjetaTarifaLeadEnergia'
+
 
 function ContenedorProductosMovil() {
   // Estados para el estado de carga de filtros e información
@@ -280,10 +280,11 @@ function ContenedorProductosMovil() {
               </Row>
               <Row>
                 <div className='pruebaPos'>
+                  
                   {!isLoadInformation ? (
                     filtros?.length > 0 ? (
                       filtros?.map((item, index) => (
-                        <TarjetaTarifa key={index} data={item} />
+                        <TarjetaTarifaLeadEnergia key={index} data={item} TarifaCard></TarjetaTarifaLeadEnergia>
                       ))
                     ) : (
                       <NotInfoItem key={0} title={'No se encontraron ofertas'} text={'Lo sentimos, no hemos encontrado ofertas con los filtros seleccionados.'} />
