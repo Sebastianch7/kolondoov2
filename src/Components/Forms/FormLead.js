@@ -65,7 +65,7 @@ export default function FormLead({ idPlan, landing }) {
                                     isSuccess={isValidPhoneNumber}
                                 />
                             </div>
-                            {(!isValidPhoneNumber && phoneNumber?.length > 4) && <div class="text-danger"><BsXCircle />&nbsp;El número de teléfono ingresado no es valido</div>}
+                            {(!isValidPhoneNumber && phoneNumber?.length > 4) && <div class="text-danger mt-3"><BsXCircle />&nbsp;El número de teléfono ingresado no es valido</div>}
                             <div className='my-3'>
                                 <Form.Switch
                                     className='input-check mt-2'
