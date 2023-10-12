@@ -4,7 +4,7 @@
         "children": [
             {
                 "name": "Fibra óptica",
-                "url": ""
+                "url": "/Internet_y_telefonia/Fibra"
             },
             {
                 "name": "Móvil",
@@ -12,7 +12,7 @@
             },
             {
                 "name": "Móvil y fibra",
-                "url": ""
+                "url": "/Internet_y_telefonia/Movil_y_fibra"
             },
             {
                 "name": "Móvil, fibra y TV",
@@ -46,11 +46,11 @@
             },
             {
                 "name": "gas",
-                "url": ""
+                "url": "/Energia/Gas"
             },
             {
                 "name": "luz y gas",
-                "url": ""
+                "url": "/Energia/LuzGas"
             },
             {
                 "name": "solar",

@@ -7,7 +7,7 @@ import { useLocation } from 'react-router-dom';
 import { isMobile } from 'react-device-detect';
 import { BsArrowRight } from "react-icons/bs";
 
-function TarjetaTarifa({ data }) {
+function TarjetaTarifa({ data, type }) {
     const location = useLocation();
     const pathname = location.pathname;
     let locations = pathname.split('/');
@@ -34,9 +34,9 @@ function TarjetaTarifa({ data }) {
                     </Row>
                 </Col>
                 <Col md={5} style={isMobile ? { order: 2 } : { order: 1 }}>
-                    Duración del contrato: <b>{meses_permanencia === 0 ? 'Sin contrato' : `${meses_permanencia} meses`}</b>
+                    Duración contrato: <b>{meses_permanencia === 0 ? 'Sin contrato' : `${meses_permanencia} meses`}</b>
                     <hr />
-                    <ItemTarifaDescripcion text={parrilla_bloque_1} />
+                    {type !== 'gas' && <ItemTarifaDescripcion text={parrilla_bloque_1} />}
                     <ItemTarifaDescripcion text={parrilla_bloque_2} />
                     <ItemTarifaDescripcion text={parrilla_bloque_3} />
                     <ItemTarifaDescripcion text={parrilla_bloque_4} />

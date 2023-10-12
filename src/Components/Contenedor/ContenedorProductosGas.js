@@ -11,7 +11,7 @@ import Load from '../Utils/Load';
 import TarjetaTarifaLeadEnergia from '../Tarjeta/TarjetaTarifaLeadEnergia'
 
 
-function ContenedorProductosMovil() {
+function ContenedorProductosGas() {
   // Estados para el estado de carga de filtros e información
   const [isLoadFilter, setIsLoadFilter] = useState(false);
   const [isLoadInformation, setIsLoadInformation] = useState(false);
@@ -21,8 +21,6 @@ function ContenedorProductosMovil() {
 
   // Estados para filtros seleccionados
   const [filterBrand, setFilterBrand] = useState(null);
-  const [filterPrice, setFilterPrice] = useState(false);
-  const [filterTramo, setFilterTramo] = useState(false);
   const [filterGas, setFilterGas] = useState(false);
   const [filterPermanencia, setFilterPermanencia] = useState(false);
 
@@ -37,14 +35,13 @@ function ContenedorProductosMovil() {
   // Función para limpiar los filtros
   const cleanFilter = () => {
     setFilterBrand(null);
-    setFilterPrice(false);
     setFiltros(Tarifas);
   };
 
   useEffect(() => {
     const fetchBrands = async () => {
       try {
-        const response = await axios.get('http://127.0.0.1:8000/api/getComercializadoras');
+        const response = await axios.get('http://127.0.0.1:8000/api/getComercializadorasGas');
         setBrand(response.data);
       } catch (error) {
         console.error("Error al obtener las marcas de operadoras:", error);
@@ -58,7 +55,7 @@ function ContenedorProductosMovil() {
     const fetchTariffs = async () => {
       try {
         setIsLoadInformation(true);
-        const response = await axios.get('http://127.0.0.1:8000/api/getTarifasLuz');
+        const response = await axios.get('http://127.0.0.1:8000/api/getTarifasGas');
         setFiltros(response.data);
         setTarifas(response.data);
         setIsLoadInformation(false);
@@ -74,21 +71,19 @@ function ContenedorProductosMovil() {
   useEffect(() => {
     const resultado = Tarifas
       .filter((item) => filterByBrand(item))
-      .filter((item) => filterByPrice(item))
-      .filter((item) => filterByTramo(item))
       .filter((item) => filterByPermanencia(item))
+      .filter((item) => filterByGas(item))
 
     setFiltros(resultado);
-  }, [filterBrand,filterPrice,filterTramo,filterPermanencia]);
+  }, [filterBrand,filterPermanencia,filterGas]);
 
   const filterByBrand = (item) => filterBrand !== null ? item.comercializadora === filterBrand : true;
-  const filterByPrice = (item) => filterPrice !== false ? filterByFilter(filterPrice, item, 'precio fijo') : true;
-  const filterByTramo = (item) => filterTramo !== false ? filterByFilter(filterTramo, item, 'sin tramos') : true;
   const filterByPermanencia = (item) => filterPermanencia !== false ? filterByFilter(filterPermanencia, item, 'sin permanencia') : true;
-
+  const filterByGas = (item) => filterGas !== false ? filterByFilter(filterGas, item, 'Gas RL1') : true;
 
   // Función para filtrar por palabra clave en los bloques
   function filterByFilter(filter, item, word) {
+    console.log('emtra ')
     if (filter !== false) {
       if (item.parrilla_bloque_1?.toLowerCase().includes(word?.toLowerCase())) {
         return true;
@@ -148,34 +143,12 @@ function ContenedorProductosMovil() {
                   </Row>
                   <Row>
                     <div className='mt-4'>
-                      <b>{'Precio'}:</b>
-                      <Form.Switch
-                        className='input-check-dark mt-2 text-left'
-                        type='switch'
-                        checked={filterPrice}
-                        onChange={() => setFilterPrice(!filterPrice)}
-                        label={'Precio fijo'}
-                        reverse
-                      />
-                    </div>
-                    <div className='mt-4'>
-                      <b>{'Tramos horarios'}:</b>
-                      <Form.Switch
-                        className='input-check-dark mt-2 text-left'
-                        type='switch'
-                        checked={filterTramo}
-                        onChange={() => setFilterTramo(!filterTramo)}
-                        label={'Sin tramos horarios'}
-                        reverse
-                      />
-                    </div>
-                    <div className='mt-4'>
                       <b>{'Gas'}:</b>
                       <Form.Switch
                         className='input-check-dark mt-2 text-left'
                         type='switch'
-                        checked={''}
-                        /* onChange={() => null} */
+                        checked={filterGas}
+                        onChange={() => setFilterGas(!filterGas)}
                         label={'Tarifa Gas RL1'}
                         reverse
                       />
@@ -226,34 +199,12 @@ function ContenedorProductosMovil() {
                   </Row>
                   <Row>
                     <div className='mt-4'>
-                      <b>{'Precio'}:</b>
-                      <Form.Switch
-                        className='input-check-dark mt-2 text-left'
-                        type='switch'
-                        checked={filterPrice}
-                        onChange={() => setFilterPrice(!filterPrice)}
-                        label={'Precio fijo'}
-                        reverse
-                      />
-                    </div>
-                    <div className='mt-4'>
-                      <b>{'Tramos horarios'}:</b>
-                      <Form.Switch
-                        className='input-check-dark mt-2 text-left'
-                        type='switch'
-                        checked={filterTramo}
-                        onChange={() => setFilterTramo(!filterTramo)}
-                        label={'Sin tramos horarios'}
-                        reverse
-                      />
-                    </div>
-                    <div className='mt-4'>
                       <b>{'Gas'}:</b>
                       <Form.Switch
                         className='input-check-dark mt-2 text-left'
                         type='switch'
-                        checked={''}
-                        /* onChange={() => null} */
+                        checked={filterGas}
+                        onChange={() => setFilterGas(!filterGas)}
                         label={'Tarifa Gas RL1'}
                         reverse
                       />
@@ -283,7 +234,7 @@ function ContenedorProductosMovil() {
                   {!isLoadInformation ? (
                     filtros?.length > 0 ? (
                       filtros?.map((item, index) => (
-                        <TarjetaTarifaLeadEnergia key={index} data={item} TarifaCard></TarjetaTarifaLeadEnergia>
+                        <TarjetaTarifa key={index} data={item} type={'gas'} />
                       ))
                     ) : (
                       <NotInfoItem key={0} title={'No se encontraron ofertas'} text={'Lo sentimos, no hemos encontrado ofertas con los filtros seleccionados.'} />
@@ -302,4 +253,4 @@ function ContenedorProductosMovil() {
   );
 }
 
-export default ContenedorProductosMovil;
+export default ContenedorProductosGas;

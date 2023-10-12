@@ -5,11 +5,12 @@ import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
 import { isMobile } from 'react-device-detect';
 import Modal from 'react-bootstrap/Modal';
-
+import api from '../../services/ApiServices'
 import InterSection from '../Utils/InterSection';
 import TarjetaTarifa from '../Tarjeta/TarjetaTarifa';
 import NotInfoItem from '../Utils/NotInfoItem';
 import Load from '../Utils/Load';
+import apiServices from '../../services/ApiServices';
 
 function ContenedorProductosMovil() {
   // Estado para filtros de precio y capacidad
@@ -89,7 +90,6 @@ function ContenedorProductosMovil() {
         setIsLoadFilter(true);
       } catch (error) {
         console.error("Error al obtener los datos iniciales de filtros:", error);
-        // Aquí puedes agregar lógica adicional para manejar el error, como mostrar un mensaje al usuario.
       }
     };
 
@@ -104,7 +104,6 @@ function ContenedorProductosMovil() {
         setBrand(response.data);
       } catch (error) {
         console.error("Error al obtener las marcas de operadoras:", error);
-        // Aquí puedes agregar lógica adicional para manejar el error, como mostrar un mensaje al usuario.
       }
     };
 
@@ -122,7 +121,6 @@ function ContenedorProductosMovil() {
         setIsLoadInformation(false);
       } catch (error) {
         console.error("Error al obtener las tarifas de móvil:", error);
-        // Aquí puedes agregar lógica adicional para manejar el error, como mostrar un mensaje al usuario.
       }
     };
 

@@ -551,8 +551,8 @@ footer {
 
 .pruebaPos {
   @include media(md) {
-    max-height: 1200px;
-    overflow: scroll;
+    //max-height: 1200px;
+    //overflow: scroll;
   }
 }
 
@@ -653,5 +653,13 @@ footer {
 .bg{
   &-primary{
     background-color: $colorPrimary !important;
+  }
+}
+
+.vertical{
+  &-items{
+    div{
+      font-size: 0.8rem;
+    }
   }
 }
