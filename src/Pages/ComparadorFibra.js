@@ -4,6 +4,7 @@ import Banner from '../Components/Banner/Banner';
 import Footer from '../Components/Footer/Footer';
 import FormSuscripcion from '../Components/Forms/FormSuscripcion';
 import ContenedorProductosLuz from '../Components/Contenedor/ContenedorProductosLuz';
+import ContenedorProductosFibra from '../Components/Contenedor/ContenedorProductosFibra';
 
 function ComparadorFibra() {
     return (
@@ -20,8 +21,8 @@ function ComparadorFibra() {
                     politicy
                 />
             </Banner>
-            <ContenedorProductosLuz>
-            </ContenedorProductosLuz>
+            <ContenedorProductosFibra>
+            </ContenedorProductosFibra>
             <Footer></Footer>
         </div>
     );
