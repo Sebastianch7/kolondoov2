@@ -8,12 +8,11 @@ import InterSection from '../Utils/InterSection';
 import TarjetaTarifa from '../Tarjeta/TarjetaTarifa';
 import NotInfoItem from '../Utils/NotInfoItem';
 import Load from '../Utils/Load';
-import TarjetaTarifaLeadEnergia from '../Tarjeta/TarjetaTarifaLeadEnergia'
+import { fetchComercializadorasGas, fetchTarifasGas } from '../../services/ApiServices'
 
 
 function ContenedorProductosGas() {
   // Estados para el estado de carga de filtros e información
-  const [isLoadFilter, setIsLoadFilter] = useState(false);
   const [isLoadInformation, setIsLoadInformation] = useState(false);
 
   // Estado para la marca seleccionada
@@ -41,8 +40,8 @@ function ContenedorProductosGas() {
   useEffect(() => {
     const fetchBrands = async () => {
       try {
-        const response = await axios.get('http://127.0.0.1:8000/api/getComercializadorasGas');
-        setBrand(response.data);
+        const response = await fetchComercializadorasGas()
+        setBrand(response);
       } catch (error) {
         console.error("Error al obtener las marcas de operadoras:", error);
       }
@@ -52,12 +51,12 @@ function ContenedorProductosGas() {
   }, []);
 
   useEffect(() => {
+    setIsLoadInformation(true);
     const fetchTariffs = async () => {
       try {
-        setIsLoadInformation(true);
-        const response = await axios.get('http://127.0.0.1:8000/api/getTarifasGas');
-        setFiltros(response.data);
-        setTarifas(response.data);
+        const response = await fetchTarifasGas()
+        setFiltros(response);
+        setTarifas(response);
         setIsLoadInformation(false);
       } catch (error) {
         console.error("Error al obtener las tarifas de luz:", error);
@@ -75,7 +74,7 @@ function ContenedorProductosGas() {
       .filter((item) => filterByGas(item))
 
     setFiltros(resultado);
-  }, [filterBrand,filterPermanencia,filterGas]);
+  }, [filterBrand, filterPermanencia, filterGas]);
 
   const filterByBrand = (item) => filterBrand !== null ? item.comercializadora === filterBrand : true;
   const filterByPermanencia = (item) => filterPermanencia !== false ? filterByFilter(filterPermanencia, item, 'sin permanencia') : true;
@@ -83,7 +82,6 @@ function ContenedorProductosGas() {
 
   // Función para filtrar por palabra clave en los bloques
   function filterByFilter(filter, item, word) {
-    console.log('emtra ')
     if (filter !== false) {
       if (item.parrilla_bloque_1?.toLowerCase().includes(word?.toLowerCase())) {
         return true;
@@ -118,53 +116,53 @@ function ContenedorProductosGas() {
                 <Modal show={show} onHide={() => setShow(false)}>
                   <Modal.Header closeButton></Modal.Header>
                   <Modal.Body>
-                  <Row>
-                    {isMobile &&
-                      <Col xs={12} key={filterBrand} className='my-2' md={6}>Se encontraron <span className="font-bold">{filtros?.length}</span> resultados de <span className="font-bold">{Tarifas.length}</span></Col>}
-                    <Col md={12}>
-                      <span className="font-semibold">Compañia:</span>
-                    </Col>
-                    {brand?.length > 0 &&
-                      brand.map((item, index) => (
-                        <Col xs={4} md={6} key={item.id}>
-                          <button
-                            className={`filtro-producto-logo my-2 ${selectedBrand === item.id ? 'pruebaBtn' : ''}`}
-                            value={item.nombre}
-                            onClick={() => {
-                              setSelectedBrand(item.id);
-                              setFilterBrand(item.id);
-                            }}
-                          >
-                            <img src={item.logo} alt={item.nombre} />
-                          </button>
-                        </Col>
-                      ))
-                    }
-                  </Row>
-                  <Row>
-                    <div className='mt-4'>
-                      <b>{'Gas'}:</b>
-                      <Form.Switch
-                        className='input-check-dark mt-2 text-left'
-                        type='switch'
-                        checked={filterGas}
-                        onChange={() => setFilterGas(!filterGas)}
-                        label={'Tarifa Gas RL1'}
-                        reverse
-                      />
-                    </div>
-                    <div className='mt-4'>
-                      <b>{'Permanencia'}:</b>
-                      <Form.Switch
-                        className='input-check-dark mt-2 text-left'
-                        type='switch'
-                        checked={filterPermanencia}
-                        onChange={() => setFilterPermanencia(!filterPermanencia)}
-                        label={'Tarifa sin permanencia'}
-                        reverse
-                      />
-                    </div>
-                  </Row>
+                    <Row>
+                      {isMobile &&
+                        <Col xs={12} key={filterBrand} className='my-2' md={6}>Se encontraron <span className="font-bold">{filtros?.length}</span> resultados de <span className="font-bold">{Tarifas.length}</span></Col>}
+                      <Col md={12}>
+                        <span className="font-semibold">Compañia:</span>
+                      </Col>
+                      {brand?.length > 0 &&
+                        brand.map((item, index) => (
+                          <Col xs={4} md={6} key={item.id}>
+                            <button
+                              className={`filtro-producto-logo my-2 ${selectedBrand === item.id ? 'pruebaBtn' : ''}`}
+                              value={item.nombre}
+                              onClick={() => {
+                                setSelectedBrand(item.id);
+                                setFilterBrand(item.id);
+                              }}
+                            >
+                              <img src={item.logo} alt={item.nombre} />
+                            </button>
+                          </Col>
+                        ))
+                      }
+                    </Row>
+                    <Row>
+                      <div className='mt-4'>
+                        <b>{'Gas'}:</b>
+                        <Form.Switch
+                          className='input-check-dark mt-2 text-left'
+                          type='switch'
+                          checked={filterGas}
+                          onChange={() => setFilterGas(!filterGas)}
+                          label={'Tarifa Gas RL1'}
+                          reverse
+                        />
+                      </div>
+                      <div className='mt-4'>
+                        <b>{'Permanencia'}:</b>
+                        <Form.Switch
+                          className='input-check-dark mt-2 text-left'
+                          type='switch'
+                          checked={filterPermanencia}
+                          onChange={() => setFilterPermanencia(!filterPermanencia)}
+                          label={'Tarifa sin permanencia'}
+                          reverse
+                        />
+                      </div>
+                    </Row>
                   </Modal.Body>
                   <Modal.Footer>
                     <Button variant="primary" onClick={() => setShow(false)}>
@@ -174,53 +172,60 @@ function ContenedorProductosGas() {
                 </Modal>
               ) : (
                 <>
-                  <Row>
-                    {isMobile &&
-                      <Col xs={12} key={filterBrand} className='my-2' md={6}>Se encontraron <span className="font-bold">{filtros?.length}</span> resultados de <span className="font-bold">{Tarifas.length}</span></Col>}
-                    <Col md={12}>
-                      <span className="font-semibold">Compañia:</span>
-                    </Col>
-                    {brand?.length > 0 &&
-                      brand.map((item, index) => (
-                        <Col xs={4} md={6} key={item.id}>
-                          <button
-                            className={`filtro-producto-logo my-2 ${selectedBrand === item.id ? 'pruebaBtn' : ''}`}
-                            value={item.nombre}
-                            onClick={() => {
-                              setSelectedBrand(item.id);
-                              setFilterBrand(item.id);
-                            }}
-                          >
-                            <img src={item.logo} alt={item.nombre} />
-                          </button>
-                        </Col>
-                      ))
-                    }
-                  </Row>
-                  <Row>
-                    <div className='mt-4'>
-                      <b>{'Gas'}:</b>
-                      <Form.Switch
-                        className='input-check-dark mt-2 text-left'
-                        type='switch'
-                        checked={filterGas}
-                        onChange={() => setFilterGas(!filterGas)}
-                        label={'Tarifa Gas RL1'}
-                        reverse
-                      />
-                    </div>
-                    <div className='mt-4'>
-                      <b>{'Permanencia'}:</b>
-                      <Form.Switch
-                        className='input-check-dark mt-2 text-left'
-                        type='switch'
-                        checked={filterPermanencia}
-                        onChange={() => setFilterPermanencia(!filterPermanencia)}
-                        label={'Tarifa sin permanencia'}
-                        reverse
-                      />
-                    </div>
-                  </Row>
+                  {
+                    (!isLoadInformation) ? (
+                      <>
+                        <Row>
+                          {isMobile &&
+                            <Col xs={12} key={filterBrand} className='my-2' md={6}>Se encontraron <span className="font-bold">{filtros?.length}</span> resultados de <span className="font-bold">{Tarifas.length}</span></Col>}
+                          <Col md={12}>
+                            <span className="font-semibold">Compañia:</span>
+                          </Col>
+                          {brand?.length > 0 &&
+                            brand.map((item, index) => (
+                              <Col xs={4} md={6} key={item.id}>
+                                <button
+                                  className={`filtro-producto-logo my-2 ${selectedBrand === item.id ? 'pruebaBtn' : ''}`}
+                                  value={item.nombre}
+                                  onClick={() => {
+                                    setSelectedBrand(item.id);
+                                    setFilterBrand(item.id);
+                                  }}
+                                >
+                                  <img src={item.logo} alt={item.nombre} />
+                                </button>
+                              </Col>
+                            ))
+                          }
+                        </Row>
+                        <Row>
+                          <div className='mt-4'>
+                            <b>{'Gas'}:</b>
+                            <Form.Switch
+                              className='input-check-dark mt-2 text-left'
+                              type='switch'
+                              checked={filterGas}
+                              onChange={() => setFilterGas(!filterGas)}
+                              label={'Tarifa Gas RL1'}
+                              reverse
+                            />
+                          </div>
+                          <div className='mt-4'>
+                            <b>{'Permanencia'}:</b>
+                            <Form.Switch
+                              className='input-check-dark mt-2 text-left'
+                              type='switch'
+                              checked={filterPermanencia}
+                              onChange={() => setFilterPermanencia(!filterPermanencia)}
+                              label={'Tarifa sin permanencia'}
+                              reverse
+                            />
+                          </div>
+                        </Row>
+                      </>
+                    )
+                      : <Load />
+                  }
                 </>
               )}
             </Col>
@@ -230,7 +235,6 @@ function ContenedorProductosGas() {
               </Row>
               <Row>
                 <div className='pruebaPos'>
-                  
                   {!isLoadInformation ? (
                     filtros?.length > 0 ? (
                       filtros?.map((item, index) => (

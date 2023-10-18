@@ -10,7 +10,7 @@ import InterSection from '../Utils/InterSection';
 import TarjetaTarifa from '../Tarjeta/TarjetaTarifa';
 import NotInfoItem from '../Utils/NotInfoItem';
 import Load from '../Utils/Load';
-import apiServices from '../../services/ApiServices';
+import { fetchFilterData, fetchOperadorasFibra, fetchTarifasFibra } from '../../services/ApiServices'
 
 function ContenedorProductosFibra() {
   // Estado para filtros de precio y capacidad
@@ -61,27 +61,15 @@ function ContenedorProductosFibra() {
     handleFilterPrice(newRange);
   };
 
-  // Función para manejar el cambio en el rango de capacidad
-  const handleRangeChangeCapacity = (newRange) => {
-    setRangeCapacity(newRange);
-    handleFilterCapacity(newRange);
-  };
-
-  // Función para obtener los datos iniciales de filtros
   useEffect(() => {
     const fetchData = async () => {
       try {
         setIsLoadFilter(false);
-        const response = await axios.get('http://127.0.0.1:8000/api/filterFibra');
-        const { min_gb, max_gb, min_precio, max_precio } = response.data[0];
-
-        setMinCapacity(parseInt(min_gb) > 0 ? parseInt(min_gb) : 0);
-        /* setMaxCapacity(parseInt(max_gb));
-        setRangeCapacity([parseInt(min_gb) > 0 ? parseInt(min_gb) : 0, parseInt(max_gb)]); */
-        setMaxPrice(parseInt(max_precio));
-        setMinPrice(parseInt(min_precio) > 0 ? parseInt(min_precio) : 0);
-        setRangePrice([parseInt(min_precio) > 0 ? parseInt(min_precio) : 0, parseInt(max_precio)]);
-
+        const filterData = await fetchFilterData();
+        setMinCapacity(filterData.minCapacity);
+        setMaxPrice(filterData.maxPrice);
+        setMinPrice(filterData.minPrice);
+        setRangePrice(filterData.rangePrice);
         setIsLoadFilter(true);
       } catch (error) {
         console.error("Error al obtener los datos iniciales de filtros:", error);
@@ -91,12 +79,11 @@ function ContenedorProductosFibra() {
     fetchData();
   }, []);
 
-  // Función para obtener las marcas de operadoras
   useEffect(() => {
     const fetchBrands = async () => {
       try {
-        const response = await axios.get('http://127.0.0.1:8000/api/getOperadorasFibra');
-        setBrand(response.data);
+        const brands = await fetchOperadorasFibra();
+        setBrand(brands);
       } catch (error) {
         console.error("Error al obtener las marcas de operadoras:", error);
       }
@@ -110,9 +97,9 @@ function ContenedorProductosFibra() {
     const fetchTariffs = async () => {
       try {
         setIsLoadInformation(true);
-        const response = await axios.get('http://127.0.0.1:8000/api/getTarifasFibra');
-        setFiltros(response.data);
-        setTarifas(response.data);
+        const response = await fetchTarifasFibra()
+        setFiltros(response);
+        setTarifas(response);
         setIsLoadInformation(false);
       } catch (error) {
         console.error("Error al obtener las tarifas de fibra:", error);
@@ -272,56 +259,63 @@ function ContenedorProductosFibra() {
                 </Modal>
               ) : (
                 <>
-                  <Row>
-                    {isMobile && 
-                    <Col xs={12} key={filterBrand} className='my-2' md={6}>Se encontraron <span className="font-bold">{filtros?.length}</span> resultados de <span className="font-bold">{Tarifas.length}</span></Col>}
-                    <Col md={12}>
-                      <span className="font-semibold">Compañia:</span>
-                    </Col>
-                    {brand?.length > 0 &&
-                      brand.map((item, index) => (
-                        <Col xs={4} md={6} key={item.id}>
-                          <button
-                            className={`filtro-producto-logo my-2 ${selectedBrand === item.id ? 'pruebaBtn' : ''}`}
-                            value={item.nombre}
-                            onClick={() => {
-                              setSelectedBrand(item.id);
-                              setFilterBrand(item.id);
-                            }}
-                          >
-                            <img src={item.logo} alt={item.nombre} />
-                          </button>
+                  {(isLoadFilter && !isLoadInformation) ? (
+                    <div>
+                      <Row>
+                        {isMobile && (
+                          <Col xs={12} key={filterBrand} className="my-2" md={6}>
+                            Se encontraron <span className="font-bold">{filtros?.length}</span> resultados de <span className="font-bold">{Tarifas.length}</span>
+                          </Col>
+                        )}
+                        <Col md={12}>
+                          <span className="font-semibold">Compañia:</span>
                         </Col>
-                      ))
-                    }
-                  </Row>
-                  <Row>
-                    <div className='mt-4'>
-                      <b>{'Coste mensual'}:</b>
-                      <div className='my-4'>
-                        {rangePrice[0]} {'€'} - {rangePrice[1]} {'€'}
-                      </div>
-                      <Slider
-                        range
-                        min={minPrice}
-                        max={maxPrice}
-                        value={rangePrice}
-                        onChange={handleRangeChangePrice}
-                        className='form-input-range'
-                      />
+                        {brand?.length > 0 &&
+                          brand.map((item, index) => (
+                            <Col xs={4} md={6} key={item.id}>
+                              <button
+                                className={`filtro-producto-logo my-2 ${selectedBrand === item.id ? 'pruebaBtn' : ''}`}
+                                value={item.nombre}
+                                onClick={() => {
+                                  setSelectedBrand(item.id);
+                                  setFilterBrand(item.id);
+                                }}
+                              >
+                                <img src={item.logo} alt={item.nombre} />
+                              </button>
+                            </Col>
+                          ))
+                        }
+                      </Row>
+                      <Row>
+                        <div className="mt-4">
+                          <b>{'Coste mensual'}:</b>
+                          <div className="my-4">
+                            {rangePrice[0]} {'€'} - {rangePrice[1]} {'€'}
+                          </div>
+                          <Slider
+                            range
+                            min={minPrice}
+                            max={maxPrice}
+                            value={rangePrice}
+                            onChange={handleRangeChangePrice}
+                            className="form-input-range"
+                          />
+                        </div>
+                        <div className="mt-4">
+                          <b>{'Permanencia'}:</b>
+                          <Form.Switch
+                            className="input-check-dark mt-2 text-left"
+                            type="switch"
+                            checked={filterPermanencia}
+                            onChange={() => setFilterPermanencia(!filterPermanencia)}
+                            label={'Tarifa sin permanencia'}
+                            reverse
+                          />
+                        </div>
+                      </Row>
                     </div>
-                    <div className='mt-4'>
-                      <b>{'Permanencia'}:</b>
-                      <Form.Switch
-                        className='input-check-dark mt-2 text-left'
-                        type='switch'
-                        checked={filterPermanencia}
-                        onChange={() => setFilterPermanencia(!filterPermanencia)}
-                        label={'Tarifa sin permanencia'}
-                        reverse
-                      />
-                    </div>
-                  </Row>
+                  ) : <Load />}
                 </>
               )}
             </Col>

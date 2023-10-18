@@ -4,15 +4,15 @@
         "children": [
             {
                 "name": "Fibra óptica",
-                "url": "/Internet_y_telefonia/Fibra"
+                "url": "/internet_y_telefonia/fibra"
             },
             {
                 "name": "Móvil",
-                "url": "/Internet_y_telefonia/Movil"
+                "url": "/internet_y_telefonia/movil"
             },
             {
                 "name": "Móvil y fibra",
-                "url": "/Internet_y_telefonia/Movil_y_fibra"
+                "url": "/internet_y_telefonia/movil_y_fibra"
             },
             {
                 "name": "Móvil, fibra y TV",
@@ -28,11 +28,11 @@
         "title": "Televisión y streaming",
         "children": [
             {
-                "name": "paquetes de TV",
+                "name": "Paquetes de TV",
                 "url": ""
             },
             {
-                "name": "plataformas de streaming",
+                "name": "Plataformas de streaming",
                 "url": ""
             }
         ]
@@ -42,18 +42,18 @@
         "children": [
             {
                 "name": "Luz",
-                "url": "/Energia/Luz"
+                "url": "/energia/luz"
             },
             {
-                "name": "gas",
-                "url": "/Energia/Gas"
+                "name": "Gas",
+                "url": "/energia/gas"
             },
             {
-                "name": "luz y gas",
-                "url": "/Energia/LuzGas"
+                "name": "Luz y gas",
+                "url": "/energia/luz_y_gas"
             },
             {
-                "name": "solar",
+                "name": "Solar",
                 "url": ""
             },
             {

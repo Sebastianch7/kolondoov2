@@ -9,11 +9,11 @@ import TarjetaTarifa from '../Tarjeta/TarjetaTarifa';
 import NotInfoItem from '../Utils/NotInfoItem';
 import Load from '../Utils/Load';
 import TarjetaTarifaLeadEnergia from '../Tarjeta/TarjetaTarifaLeadEnergia'
+import { fetchComercializadoras, fetchTarifasLuz } from '../../services/ApiServices'
 
 
 function ContenedorProductosMovil() {
   // Estados para el estado de carga de filtros e información
-  const [isLoadFilter, setIsLoadFilter] = useState(false);
   const [isLoadInformation, setIsLoadInformation] = useState(false);
 
   // Estado para la marca seleccionada
@@ -23,7 +23,6 @@ function ContenedorProductosMovil() {
   const [filterBrand, setFilterBrand] = useState(null);
   const [filterPrice, setFilterPrice] = useState(false);
   const [filterTramo, setFilterTramo] = useState(false);
-  const [filterGas, setFilterGas] = useState(false);
   const [filterPermanencia, setFilterPermanencia] = useState(false);
 
   // Estados para tarifas y marcas
@@ -44,8 +43,8 @@ function ContenedorProductosMovil() {
   useEffect(() => {
     const fetchBrands = async () => {
       try {
-        const response = await axios.get('http://127.0.0.1:8000/api/getComercializadoras');
-        setBrand(response.data);
+        const response = await fetchComercializadoras()
+        setBrand(response);
       } catch (error) {
         console.error("Error al obtener las marcas de operadoras:", error);
       }
@@ -58,9 +57,9 @@ function ContenedorProductosMovil() {
     const fetchTariffs = async () => {
       try {
         setIsLoadInformation(true);
-        const response = await axios.get('http://127.0.0.1:8000/api/getTarifasLuz');
-        setFiltros(response.data);
-        setTarifas(response.data);
+        const response = await fetchTarifasLuz()
+        setFiltros(response);
+        setTarifas(response);
         setIsLoadInformation(false);
       } catch (error) {
         console.error("Error al obtener las tarifas de luz:", error);
@@ -79,7 +78,7 @@ function ContenedorProductosMovil() {
       .filter((item) => filterByPermanencia(item))
 
     setFiltros(resultado);
-  }, [filterBrand,filterPrice,filterTramo,filterPermanencia]);
+  }, [filterBrand, filterPrice, filterTramo, filterPermanencia]);
 
   const filterByBrand = (item) => filterBrand !== null ? item.comercializadora === filterBrand : true;
   const filterByPrice = (item) => filterPrice !== false ? filterByFilter(filterPrice, item, 'precio fijo') : true;
@@ -123,75 +122,64 @@ function ContenedorProductosMovil() {
                 <Modal show={show} onHide={() => setShow(false)}>
                   <Modal.Header closeButton></Modal.Header>
                   <Modal.Body>
-                  <Row>
-                    {isMobile &&
-                      <Col xs={12} key={filterBrand} className='my-2' md={6}>Se encontraron <span className="font-bold">{filtros?.length}</span> resultados de <span className="font-bold">{Tarifas.length}</span></Col>}
-                    <Col md={12}>
-                      <span className="font-semibold">Compañia:</span>
-                    </Col>
-                    {brand?.length > 0 &&
-                      brand.map((item, index) => (
-                        <Col xs={4} md={6} key={item.id}>
-                          <button
-                            className={`filtro-producto-logo my-2 ${selectedBrand === item.id ? 'pruebaBtn' : ''}`}
-                            value={item.nombre}
-                            onClick={() => {
-                              setSelectedBrand(item.id);
-                              setFilterBrand(item.id);
-                            }}
-                          >
-                            <img src={item.logo} alt={item.nombre} />
-                          </button>
-                        </Col>
-                      ))
-                    }
-                  </Row>
-                  <Row>
-                    <div className='mt-4'>
-                      <b>{'Precio'}:</b>
-                      <Form.Switch
-                        className='input-check-dark mt-2 text-left'
-                        type='switch'
-                        checked={filterPrice}
-                        onChange={() => setFilterPrice(!filterPrice)}
-                        label={'Precio fijo'}
-                        reverse
-                      />
-                    </div>
-                    <div className='mt-4'>
-                      <b>{'Tramos horarios'}:</b>
-                      <Form.Switch
-                        className='input-check-dark mt-2 text-left'
-                        type='switch'
-                        checked={filterTramo}
-                        onChange={() => setFilterTramo(!filterTramo)}
-                        label={'Sin tramos horarios'}
-                        reverse
-                      />
-                    </div>
-                    <div className='mt-4'>
-                      <b>{'Gas'}:</b>
-                      <Form.Switch
-                        className='input-check-dark mt-2 text-left'
-                        type='switch'
-                        checked={''}
-                        /* onChange={() => null} */
-                        label={'Tarifa Gas RL1'}
-                        reverse
-                      />
-                    </div>
-                    <div className='mt-4'>
-                      <b>{'Permanencia'}:</b>
-                      <Form.Switch
-                        className='input-check-dark mt-2 text-left'
-                        type='switch'
-                        checked={filterPermanencia}
-                        onChange={() => setFilterPermanencia(!filterPermanencia)}
-                        label={'Tarifa sin permanencia'}
-                        reverse
-                      />
-                    </div>
-                  </Row>
+                    <Row>
+                      {isMobile &&
+                        <Col xs={12} key={filterBrand} className='my-2' md={6}>Se encontraron <span className="font-bold">{filtros?.length}</span> resultados de <span className="font-bold">{Tarifas.length}</span></Col>}
+                      <Col md={12}>
+                        <span className="font-semibold">Compañia:</span>
+                      </Col>
+                      {brand?.length > 0 &&
+                        brand.map((item, index) => (
+                          <Col xs={4} md={6} key={item.id}>
+                            <button
+                              className={`filtro-producto-logo my-2 ${selectedBrand === item.id ? 'pruebaBtn' : ''}`}
+                              value={item.nombre}
+                              onClick={() => {
+                                setSelectedBrand(item.id);
+                                setFilterBrand(item.id);
+                              }}
+                            >
+                              <img src={item.logo} alt={item.nombre} />
+                            </button>
+                          </Col>
+                        ))
+                      }
+                    </Row>
+                    <Row>
+                      <div className='mt-4'>
+                        <b>{'Precio'}:</b>
+                        <Form.Switch
+                          className='input-check-dark mt-2 text-left'
+                          type='switch'
+                          checked={filterPrice}
+                          onChange={() => setFilterPrice(!filterPrice)}
+                          label={'Precio fijo'}
+                          reverse
+                        />
+                      </div>
+                      <div className='mt-4'>
+                        <b>{'Tramos horarios'}:</b>
+                        <Form.Switch
+                          className='input-check-dark mt-2 text-left'
+                          type='switch'
+                          checked={filterTramo}
+                          onChange={() => setFilterTramo(!filterTramo)}
+                          label={'Sin tramos horarios'}
+                          reverse
+                        />
+                      </div>
+                      <div className='mt-4'>
+                        <b>{'Permanencia'}:</b>
+                        <Form.Switch
+                          className='input-check-dark mt-2 text-left'
+                          type='switch'
+                          checked={filterPermanencia}
+                          onChange={() => setFilterPermanencia(!filterPermanencia)}
+                          label={'Tarifa sin permanencia'}
+                          reverse
+                        />
+                      </div>
+                    </Row>
                   </Modal.Body>
                   <Modal.Footer>
                     <Button variant="primary" onClick={() => setShow(false)}>
@@ -201,75 +189,71 @@ function ContenedorProductosMovil() {
                 </Modal>
               ) : (
                 <>
-                  <Row>
-                    {isMobile &&
-                      <Col xs={12} key={filterBrand} className='my-2' md={6}>Se encontraron <span className="font-bold">{filtros?.length}</span> resultados de <span className="font-bold">{Tarifas.length}</span></Col>}
-                    <Col md={12}>
-                      <span className="font-semibold">Compañia:</span>
-                    </Col>
-                    {brand?.length > 0 &&
-                      brand.map((item, index) => (
-                        <Col xs={4} md={6} key={item.id}>
-                          <button
-                            className={`filtro-producto-logo my-2 ${selectedBrand === item.id ? 'pruebaBtn' : ''}`}
-                            value={item.nombre}
-                            onClick={() => {
-                              setSelectedBrand(item.id);
-                              setFilterBrand(item.id);
-                            }}
-                          >
-                            <img src={item.logo} alt={item.nombre} />
-                          </button>
-                        </Col>
-                      ))
-                    }
-                  </Row>
-                  <Row>
-                    <div className='mt-4'>
-                      <b>{'Precio'}:</b>
-                      <Form.Switch
-                        className='input-check-dark mt-2 text-left'
-                        type='switch'
-                        checked={filterPrice}
-                        onChange={() => setFilterPrice(!filterPrice)}
-                        label={'Precio fijo'}
-                        reverse
-                      />
-                    </div>
-                    <div className='mt-4'>
-                      <b>{'Tramos horarios'}:</b>
-                      <Form.Switch
-                        className='input-check-dark mt-2 text-left'
-                        type='switch'
-                        checked={filterTramo}
-                        onChange={() => setFilterTramo(!filterTramo)}
-                        label={'Sin tramos horarios'}
-                        reverse
-                      />
-                    </div>
-                    <div className='mt-4'>
-                      <b>{'Gas'}:</b>
-                      <Form.Switch
-                        className='input-check-dark mt-2 text-left'
-                        type='switch'
-                        checked={''}
-                        /* onChange={() => null} */
-                        label={'Tarifa Gas RL1'}
-                        reverse
-                      />
-                    </div>
-                    <div className='mt-4'>
-                      <b>{'Permanencia'}:</b>
-                      <Form.Switch
-                        className='input-check-dark mt-2 text-left'
-                        type='switch'
-                        checked={filterPermanencia}
-                        onChange={() => setFilterPermanencia(!filterPermanencia)}
-                        label={'Tarifa sin permanencia'}
-                        reverse
-                      />
-                    </div>
-                  </Row>
+                  {
+                    (!isLoadInformation) ? (
+                      <>
+                        <Row>
+                          {isMobile &&
+                            <Col xs={12} key={filterBrand} className='my-2' md={6}>Se encontraron <span className="font-bold">{filtros?.length}</span> resultados de <span className="font-bold">{Tarifas.length}</span></Col>}
+                          <Col md={12}>
+                            <span className="font-semibold">Compañia:</span>
+                          </Col>
+                          {brand?.length > 0 &&
+                            brand.map((item, index) => (
+                              <Col xs={4} md={6} key={item.id}>
+                                <button
+                                  className={`filtro-producto-logo my-2 ${selectedBrand === item.id ? 'pruebaBtn' : ''}`}
+                                  value={item.nombre}
+                                  onClick={() => {
+                                    setSelectedBrand(item.id);
+                                    setFilterBrand(item.id);
+                                  }}
+                                >
+                                  <img src={item.logo} alt={item.nombre} />
+                                </button>
+                              </Col>
+                            ))
+                          }
+                        </Row>
+                        <Row>
+                          <div className='mt-4'>
+                            <b>{'Precio'}:</b>
+                            <Form.Switch
+                              className='input-check-dark mt-2 text-left'
+                              type='switch'
+                              checked={filterPrice}
+                              onChange={() => setFilterPrice(!filterPrice)}
+                              label={'Precio fijo'}
+                              reverse
+                            />
+                          </div>
+                          <div className='mt-4'>
+                            <b>{'Tramos horarios'}:</b>
+                            <Form.Switch
+                              className='input-check-dark mt-2 text-left'
+                              type='switch'
+                              checked={filterTramo}
+                              onChange={() => setFilterTramo(!filterTramo)}
+                              label={'Sin tramos horarios'}
+                              reverse
+                            />
+                          </div>
+                          <div className='mt-4'>
+                            <b>{'Permanencia'}:</b>
+                            <Form.Switch
+                              className='input-check-dark mt-2 text-left'
+                              type='switch'
+                              checked={filterPermanencia}
+                              onChange={() => setFilterPermanencia(!filterPermanencia)}
+                              label={'Tarifa sin permanencia'}
+                              reverse
+                            />
+                          </div>
+                        </Row>
+                      </>
+                    )
+                      : <Load />
+                  }
                 </>
               )}
             </Col>
@@ -279,7 +263,7 @@ function ContenedorProductosMovil() {
               </Row>
               <Row>
                 <div className='pruebaPos'>
-                  
+
                   {!isLoadInformation ? (
                     filtros?.length > 0 ? (
                       filtros?.map((item, index) => (

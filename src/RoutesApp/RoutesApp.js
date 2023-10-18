@@ -14,24 +14,24 @@ function RoutesApp() {
         <Routes>
             <Route exact path="/" element={<Home />} />
             
-            <Route exact path="/Internet_y_telefonia/" element={<ComparadorMovil />} />
+            <Route exact path="/internet_y_telefonia/" element={<ComparadorMovil />} />
             
-            <Route exact path="/Internet_y_telefonia/Movil" element={<ComparadorMovil />} />
-            <Route exact path="/Internet_y_telefonia/Movil/:id" element={<Lead />} />
-            <Route exact path="/thank/Internet_y_telefonia/Movil/:id" element={<ThankPage />} />
+            <Route exact path="/internet_y_telefonia/movil" element={<ComparadorMovil />} />
+            <Route exact path="/internet_y_telefonia/movil/:id" element={<Lead />} />
+            <Route exact path="/thank/internet_y_telefonia/movil/:id" element={<ThankPage />} />
             
-            <Route exact path="/Internet_y_telefonia/Fibra" element={<ComparadorFibra />} />
-            <Route exact path="/Internet_y_telefonia/Fibra/:id" element={<Lead />} />
-            <Route exact path="/thank/Internet_y_telefonia/Fibra/:id" element={<ThankPage />} />
+            <Route exact path="/internet_y_telefonia/fibra" element={<ComparadorFibra />} />
+            <Route exact path="/internet_y_telefonia/fibra/:id" element={<Lead />} />
+            <Route exact path="/thank/internet_y_telefonia/fibra/:id" element={<ThankPage />} />
 
-            <Route exact path="/Energia/" element={<ComparadorEnergia />} />
-            <Route exact path="/Energia/Luz/" element={<ComparadorEnergia />} />
-            <Route exact path="/Energia/Luz/:id" element={<Lead />} />
-            <Route exact path="/thank/Energia/Luz/:id" element={<ThankPage />} />
+            <Route exact path="/energia/" element={<ComparadorEnergia />} />
+            <Route exact path="/energia/luz/" element={<ComparadorEnergia />} />
+            <Route exact path="/energia/luz/:id" element={<Lead />} />
+            <Route exact path="/thank/energia/luz/:id" element={<ThankPage />} />
 
-            <Route exact path="/Energia/Gas/" element={<ComparadorGas />} />
-            <Route exact path="/Energia/Gas/:id" element={<Lead />} />
-            <Route exact path="/thank/Energia/Gas/:id" element={<ThankPage />} />
+            <Route exact path="/energia/gas/" element={<ComparadorGas />} />
+            <Route exact path="/energia/gas/:id" element={<Lead />} />
+            <Route exact path="/thank/energia/gas/:id" element={<ThankPage />} />
             
         </Routes>
     </BrowserRouter>
