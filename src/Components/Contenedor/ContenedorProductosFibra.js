@@ -33,6 +33,7 @@ function ContenedorProductosFibra() {
   const [filterTechnology, setFilterTechnology] = useState(false);
   const [filterMessage, setFilterMessage] = useState(false);
   const [filterRoaming, setFilterRoaming] = useState(false);
+  const [filterPermanencia, setFilterPermanencia] = useState(false);
 
   // Estados para tarifas y marcas
   const [Tarifas, setTarifas] = useState([]);
@@ -309,19 +310,17 @@ function ContenedorProductosFibra() {
                         className='form-input-range'
                       />
                     </div>
-                    {/* <div className='my-2'>
-                      <b>{'Roaming'}:</b>
-                      <div className='my-2'>
-                        <Form.Switch
-                          className='input-check-dark mt-2 text-left'
-                          type='switch'
-                          checked={filterRoaming}
-                          onChange={() => setFilterRoaming(!filterRoaming)}
-                          label={'Roaming en la UE'}
-                          reverse
-                        />
-                      </div>
-                    </div> */}
+                    <div className='mt-4'>
+                      <b>{'Permanencia'}:</b>
+                      <Form.Switch
+                        className='input-check-dark mt-2 text-left'
+                        type='switch'
+                        checked={filterPermanencia}
+                        onChange={() => setFilterPermanencia(!filterPermanencia)}
+                        label={'Tarifa sin permanencia'}
+                        reverse
+                      />
+                    </div>
                   </Row>
                 </>
               )}
