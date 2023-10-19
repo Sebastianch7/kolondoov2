@@ -12,7 +12,7 @@ function ComparadorGas() {
             <Banner
                 title={'Comparador de Tarifas de Gas'}
                 subtitle='¡Te ayudamos a encontrar el mejor gas!'
-                image={'/img/banner-energia.png'}
+                image={'/img/banner3.png'}
             >
                 <FormSuscripcion
                     text={'Introduce tu código postal'}
