@@ -36,7 +36,6 @@ function Home(props) {
                         }
                     ]}
                 />
-                <InterSection></InterSection>
                 <ContenedorTarjeta>
                     {!isMobile ?
                         TarjetasProductos?.map((item, index) => {

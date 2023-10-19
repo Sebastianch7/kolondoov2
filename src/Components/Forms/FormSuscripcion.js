@@ -53,7 +53,6 @@ function FormSuscripcion({ text, button, check, politicy = false }) {
                         placeholder={text}
                     />
                     <ButtonPrimary
-                    className={'mt-5'}
                         text={textButton}
                         btnStatus={checkIn}
                         type={'submit'}

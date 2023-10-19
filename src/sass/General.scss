@@ -3,12 +3,6 @@ body {
   font-size: 16px;
 }
 
-@font-face {
-  font-family: 'MontHeavy'; // El nombre de la fuente que deseas usar
-  src: url('../../public/fonts/MontHeavy.otf') format('opentype'); // Ruta de la fuente OTF
-  font-weight: bolder;
-  font-style: normal;
-}
 
 @font-face {
   font-family: 'MontRegular'; // El nombre de la fuente que deseas usar
@@ -32,7 +26,7 @@ body {
 
 // Define una variable para la fuente
 $MontRegular: 'MontRegular', sans-serif;
-$MontHeavy: 'MontHeavy', sans-serif;
+$MontHeavy: 'MontSemiBold', sans-serif;
 $MontSemiBold: 'MontSemiBold', sans-serif;
 
 // Aplica la fuente a elementos específicos o a todo el documento
@@ -366,7 +360,10 @@ $breakpoint-lg: 1360px;
 }
 
 footer {
-
+font-size: 0.9rem;
+@include media(xs){
+  font-size: 0.8rem;
+}
   .footer {
     &-img {
       &-mobile {
@@ -488,7 +485,7 @@ footer {
 }
 
 .interSeccion {
-  height: 100px !important;
+  height: 80px !important;
 
   @include media(xs) {
     height: 40px !important;
@@ -549,17 +546,6 @@ footer {
 }
 
 
-.pruebaPos {
-  @include media(md) {
-    //max-height: 1200px;
-    //overflow: scroll;
-  }
-}
-
-.pruebaBtn {
-  filter: blur(0px);
-}
-
 .acordion {
   &-icon {
     &-title {
@@ -569,8 +555,6 @@ footer {
 }
 
 .carrusel {
-  &-img {}
-
   &-caption {
     text-shadow: 0px 0px 5px $black;
 
@@ -631,8 +615,13 @@ footer {
   &-menu {
     border-top: 5px solid $black;
     border-radius: 0px;
+    margin-top: 0px;
   }
 
+  .nav-link{
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+  }
   &-item {
     margin: 10px 0px;
   }
@@ -643,7 +632,8 @@ footer {
 }
 
 .subtitle {
-  font-size: 1.1rem;
+  font-size: 1rem;
+  line-height: 1.5;
 }
 
 .br-black{
@@ -666,4 +656,12 @@ footer {
 
 .capitalize{
   text-transform: capitalize;
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+.img-banner{
+  height: 400px !important;
 }

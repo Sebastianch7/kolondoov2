@@ -1,15 +1,15 @@
 import React from 'react';
 import { Col, Row } from 'react-bootstrap';
 import Container from 'react-bootstrap/Container';
-import ButtonPrimary from '../Button/ButtonPrimary';
 import TitleSection from '../Text/TitleSection';
+import InterSection from '../Utils/InterSection';
 
 function Banner({ title = '', subtitle = '', buttons = false, children, image }) {
     return (
         <section className="clean-block p-0 mb-0">
             <Container>
                 <div className="row justify-content-center align-items-center mt-0">
-                    <Col sm={12} md={6}>
+                    <Col sm={12} md={7}>
                         <Row>
                             <Col sm={12}>
                                 <TitleSection
@@ -30,6 +30,7 @@ function Banner({ title = '', subtitle = '', buttons = false, children, image })
                     </Col>
                 </div>
             </Container>
+            <InterSection></InterSection>
         </section >
     );
 }
