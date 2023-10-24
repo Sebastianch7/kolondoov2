@@ -9,10 +9,10 @@ import TarjetaTarifa from '../Tarjeta/TarjetaTarifa';
 import NotInfoItem from '../Utils/NotInfoItem';
 import Load from '../Utils/Load';
 import TarjetaTarifaLeadEnergia from '../Tarjeta/TarjetaTarifaLeadEnergia'
-import { fetchComercializadoras, fetchTarifasLuz } from '../../services/ApiServices'
+import { fetchComercializadorasLuzGas, fetchTarifasLuzGas } from '../../services/ApiServices'
 
 
-function ContenedorProductosLuz() {
+function ContenedorProductosLuzGas() {
   // Estados para el estado de carga de filtros e información
   const [isLoadInformation, setIsLoadInformation] = useState(false);
 
@@ -43,7 +43,7 @@ function ContenedorProductosLuz() {
   useEffect(() => {
     const fetchBrands = async () => {
       try {
-        const response = await fetchComercializadoras()
+        const response = await fetchComercializadorasLuzGas()
         setBrand(response);
       } catch (error) {
         console.error("Error al obtener las marcas de operadoras:", error);
@@ -57,7 +57,7 @@ function ContenedorProductosLuz() {
     const fetchTariffs = async () => {
       try {
         setIsLoadInformation(true);
-        const response = await fetchTarifasLuz()
+        const response = await fetchTarifasLuzGas()
         setFiltros(response);
         setTarifas(response);
         setIsLoadInformation(false);
@@ -286,4 +286,4 @@ function ContenedorProductosLuz() {
   );
 }
 
-export default ContenedorProductosLuz;
+export default ContenedorProductosLuzGas;

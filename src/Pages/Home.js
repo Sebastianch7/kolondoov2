@@ -28,11 +28,13 @@ function Home(props) {
                     buttons={[
                         {
                             title: t('btn_net_phone'),
-                            icon: '/img/flash.png'
+                            icon: '/img/flash.png',
+                            url: '/internet_y_telefonia/movil'
                         },
                         {
                             title: t('btn_energy'),
-                            icon: '/img/phone.png'
+                            icon: '/img/phone.png',
+                            url: '/energia/luz'
                         }
                     ]}
                 />

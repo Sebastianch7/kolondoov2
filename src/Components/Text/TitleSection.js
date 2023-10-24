@@ -4,6 +4,7 @@ import Title from './Title';
 import ButtonPrimary from '../Button/ButtonPrimary';
 import Subtitle from './Subtitle';
 import {isMobile} from 'react-device-detect';
+import { Link } from 'react-router-dom';
 
 function TitleSection({ title, subtitle, center = false, buttons }) {
     return (
@@ -16,7 +17,8 @@ function TitleSection({ title, subtitle, center = false, buttons }) {
                         {buttons &&
                             <Stack direction={!isMobile ? "horizontal" : "vertical"}  gap={3}>
                                 {buttons?.map((item, index) => {
-                                    return <ButtonPrimary key={index} icon={item.icon} text={item.title} />
+                                    return <Link to={item.url}><ButtonPrimary key={index} icon={item.icon} text={item.title} /></Link>
+                                     
                                 })}
                             </Stack>
                         }

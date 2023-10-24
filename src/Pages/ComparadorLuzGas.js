@@ -3,9 +3,9 @@ import Header from '../Components/Header/Header';
 import Banner from '../Components/Banner/Banner';
 import Footer from '../Components/Footer/Footer';
 import FormSuscripcion from '../Components/Forms/FormSuscripcion';
-import ContenedorProductosLuz from '../Components/Contenedor/ContenedorProductosLuz';
+import ContenedorProductosLuzGas from '../Components/Contenedor/ContenedorProductosLuzGas';
 
-function ComparadorEnergia() {
+function ComparadorLuzGas() {
     return (
         <div>
             <Header></Header>
@@ -20,11 +20,11 @@ function ComparadorEnergia() {
                     politicy
                 />
             </Banner>
-            <ContenedorProductosLuz>
-            </ContenedorProductosLuz>
+            <ContenedorProductosLuzGas>
+            </ContenedorProductosLuzGas>
             <Footer></Footer>
         </div>
     );
 }
 
-export default ComparadorEnergia;
+export default ComparadorLuzGas;

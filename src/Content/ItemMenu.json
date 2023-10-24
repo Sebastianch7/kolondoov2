@@ -12,7 +12,7 @@
             },
             {
                 "name": "Móvil y fibra",
-                "url": "/internet_y_telefonia/movil_y_fibra"
+                "url": "/internet_y_telefonia/movil_y_fibra/"
             },
             {
                 "name": "Móvil, fibra y TV",
@@ -58,19 +58,6 @@
             },
             {
                 "name": "Estaciones de carga de VE",
-                "url": ""
-            }
-        ]
-    },
-    {
-        "title": "Usuario",
-        "children": [
-            {
-                "name": "Log in",
-                "url": ""
-            },
-            {
-                "name": "Log out",
                 "url": ""
             }
         ]

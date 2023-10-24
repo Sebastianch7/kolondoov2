@@ -5,14 +5,13 @@ import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
 import { isMobile } from 'react-device-detect';
 import Modal from 'react-bootstrap/Modal';
-import api from '../../services/ApiServices'
 import InterSection from '../Utils/InterSection';
 import TarjetaTarifa from '../Tarjeta/TarjetaTarifa';
 import NotInfoItem from '../Utils/NotInfoItem';
 import Load from '../Utils/Load';
-import { fetchFilterFibra, fetchOperadorasFibra, fetchTarifasFibra } from '../../services/ApiServices'
+import { fetchFilterMovilFibra, fetchOperadorasFibraMovil, fetchTarifasMovilFibra } from '../../services/ApiServices'
 
-function ContenedorProductosFibra() {
+function ContenedorProductosMovilFibra() {
   // Estado para filtros de precio y capacidad
   const [minPrice, setMinPrice] = useState(0);
   const [maxPrice, setMaxPrice] = useState(1000);
@@ -30,10 +29,8 @@ function ContenedorProductosFibra() {
   const [filterBrand, setFilterBrand] = useState(null);
   const [filterPrice, setFilterPrice] = useState([minPrice, maxPrice]);
   const [filterCapacity, setFilterCapacity] = useState([minCapacity, maxCapacity]);
-  const [filterTechnology, setFilterTechnology] = useState(false);
-  const [filterMessage, setFilterMessage] = useState(false);
-  const [filterRoaming, setFilterRoaming] = useState(false);
-  const [filterPermanencia, setFilterPermanencia] = useState(false);
+  const [filterLlamadas, setFilterLlamadas] = useState(false);
+  const [filterPromo, setFilterPromo] = useState(false);
 
   // Estados para tarifas y marcas
   const [Tarifas, setTarifas] = useState([]);
@@ -49,9 +46,13 @@ function ContenedorProductosFibra() {
 
   // Función para limpiar los filtros
   const cleanFilter = () => {
+    setFilterLlamadas(false);
+    setFilterPromo(false);
     setFilterBrand(null);
+    setFilterCapacity([minCapacity, maxCapacity]);
     setFilterPrice([minPrice, maxPrice]);
     setRangePrice([minPrice, maxPrice]);
+    setRangeCapacity([minCapacity, maxCapacity]);
     setFiltros(Tarifas);
   };
 
@@ -61,15 +62,28 @@ function ContenedorProductosFibra() {
     handleFilterPrice(newRange);
   };
 
+  // Función para manejar el cambio en el rango de capacidad
+  const handleRangeChangeCapacity = (newRange) => {
+    setRangeCapacity(newRange);
+    handleFilterCapacity(newRange);
+  };
+
+  // Función para obtener los datos iniciales de filtros
   useEffect(() => {
+    setIsLoadFilter(false);
     const fetchData = async () => {
       try {
-        setIsLoadFilter(false);
-        const filterData = await fetchFilterFibra();
-        setMinCapacity(filterData.minCapacity);
-        setMaxPrice(filterData.maxPrice);
-        setMinPrice(filterData.minPrice);
-        setRangePrice(filterData.rangePrice);
+        const response = await fetchFilterMovilFibra();
+        const { min_gb, max_gb, min_precio, max_precio } = response;
+
+        setMinCapacity(parseInt(min_gb) > 0 ? parseInt(min_gb) : 0);
+        setMaxCapacity(parseInt(max_gb));
+        setRangeCapacity([parseInt(min_gb) > 0 ? parseInt(min_gb) : 0, parseInt(max_gb)]);
+
+        setMaxPrice(parseInt(max_precio));
+        setMinPrice(parseInt(min_precio) > 0 ? parseInt(min_precio) : 0);
+        setRangePrice([parseInt(min_precio) > 0 ? parseInt(min_precio) : 0, parseInt(max_precio)]);
+
         setIsLoadFilter(true);
       } catch (error) {
         console.error("Error al obtener los datos iniciales de filtros:", error);
@@ -79,11 +93,12 @@ function ContenedorProductosFibra() {
     fetchData();
   }, []);
 
+  // Función para obtener las marcas de operadoras
   useEffect(() => {
     const fetchBrands = async () => {
       try {
-        const brands = await fetchOperadorasFibra();
-        setBrand(brands);
+        const response = await fetchOperadorasFibraMovil();
+        setBrand(response);
       } catch (error) {
         console.error("Error al obtener las marcas de operadoras:", error);
       }
@@ -94,15 +109,15 @@ function ContenedorProductosFibra() {
 
   // Función para obtener las tarifas de móvil
   useEffect(() => {
+    setIsLoadInformation(true);
     const fetchTariffs = async () => {
       try {
-        setIsLoadInformation(true);
-        const response = await fetchTarifasFibra()
+        const response = await fetchTarifasMovilFibra()
         setFiltros(response);
         setTarifas(response);
         setIsLoadInformation(false);
       } catch (error) {
-        console.error("Error al obtener las tarifas de fibra:", error);
+        console.error("Error al obtener las tarifas de móvil:", error);
       }
     };
 
@@ -123,10 +138,13 @@ function ContenedorProductosFibra() {
   useEffect(() => {
     const resultado = Tarifas
       .filter((item) => filterByBrand(item))
+      .filter((item) => filterByCapacity(item))
       .filter((item) => filterByPrice(item))
+      .filter((item) => filterByTechnology(item))
+      .filter((item) => filterByPromo(item))
 
     setFiltros(resultado);
-  }, [filterBrand, filterPrice]);
+  }, [filterBrand, filterPrice, filterCapacity, filterLlamadas, filterPromo]);
 
   // Función para filtrar por marca
   const filterByBrand = (item) => filterBrand !== null ? item.operadora === filterBrand : true;
@@ -134,8 +152,24 @@ function ContenedorProductosFibra() {
   // Función para filtrar por precio
   const filterByPrice = (item) => filterPrice !== null ? item.precio >= filterPrice[0] && item.precio < filterPrice[1] : true;
 
-  // Función para filtrar por roaming
-  const filterByRoaming = (item) => filterRoaming !== false ? filterByFilter(filterRoaming, item, 'Roaming en la UE sin coste') : true;
+  // Función para filtrar por tecnología
+  const filterByTechnology = (item) => filterLlamadas !== false ? filterByFilter(filterLlamadas, item, 'Llamadas ilimitadas') : true;
+
+  // Función para filtrar por mensajes
+  const filterByPromo = (item) => filterPromo !== false ? item.promocion !== null : true;
+
+  // Función para filtrar por capacidad
+  function filterByCapacity(item) {
+    if (filterCapacity !== null) {
+      if (item.parrilla_bloque_1.includes("GB Ilimitados")) {
+        return true;
+      } else {
+        return parseInt(item.parrilla_bloque_1.replace("Fibra", "").replace("Mb", "")) >= filterCapacity[0] && parseInt(item.parrilla_bloque_1.replace("Fibra", "").replace("Mb", "")) < filterCapacity[1];
+      }
+    } else {
+      return true;
+    }
+  }
 
   // Función para filtrar por palabra clave en los bloques
   function filterByFilter(filter, item, word) {
@@ -210,41 +244,42 @@ function ContenedorProductosFibra() {
                           className='form-input-range'
                         />
                       </div>
+                      <div className='my-4'>
+                        <b>{'Fibra Mb'}:</b>
+                        <div className='my-4'>
+                          {rangeCapacity[0]} {'GB'} - {rangeCapacity[1]} {'GB'}
+                        </div>
+                        <Slider
+                          range
+                          min={minCapacity}
+                          max={maxCapacity}
+                          value={rangeCapacity}
+                          onChange={handleRangeChangeCapacity}
+                          className='form-input-range'
+                        />
+                      </div>
                       <div className='my-2'>
-                        <b>{'5G'}:</b>
+                        <b>{'Llamadas ilimitadas'}:</b>
                         <div className='my-2'>
                           <Form.Switch
                             className='input-check-dark mt-2 text-left'
                             type='switch'
-                            checked={filterTechnology}
-                            onChange={() => setFilterTechnology(!filterTechnology)}
-                            label={'Mostrar solo ofertas 5G'}
+                            checked={filterLlamadas}
+                            onChange={() => setFilterLlamadas(!filterLlamadas)}
+                            label={'Llamadas ilimitadas'}
                             reverse
                           />
                         </div>
                       </div>
                       <div className='my-2'>
-                        <b>{'Mensajes'}:</b>
+                        <b>{'Promoción'}:</b>
                         <div className='my-2'>
                           <Form.Switch
                             className='input-check-dark mt-2 text-left'
                             type='switch'
-                            checked={filterMessage}
-                            onChange={() => setFilterMessage(!filterMessage)}
-                            label={'Mensajes ilimitados'}
-                            reverse
-                          />
-                        </div>
-                      </div>
-                      <div className='my-2'>
-                        <b>{'Roaming'}:</b>
-                        <div className='my-2'>
-                          <Form.Switch
-                            className='input-check-dark mt-2 text-left'
-                            type='switch'
-                            checked={filterRoaming}
-                            onChange={() => setFilterRoaming(!filterRoaming)}
-                            label={'Roaming en la UE'}
+                            checked={filterPromo}
+                            onChange={() => setFilterPromo(!filterPromo)}
+                            label={'Tiene promoción'}
                             reverse
                           />
                         </div>
@@ -259,63 +294,93 @@ function ContenedorProductosFibra() {
                 </Modal>
               ) : (
                 <>
-                  {(isLoadFilter && !isLoadInformation) ? (
-                    <div>
-                      <Row>
-                        {isMobile && (
-                          <Col xs={12} key={filterBrand} className="my-2" md={6}>
-                            Se encontraron <span className="font-bold">{filtros?.length}</span> resultados de <span className="font-bold">{Tarifas.length}</span>
-                          </Col>
-                        )}
-                        <Col md={12}>
-                          <span className="font-semibold">Compañia:</span>
-                        </Col>
-                        {brand?.length > 0 &&
-                          brand.map((item, index) => (
-                            <Col xs={4} md={6} key={item.id}>
-                              <button
-                                className={`filtro-producto-logo my-2 ${selectedBrand === item.id ? 'pruebaBtn' : ''}`}
-                                value={item.nombre}
-                                onClick={() => {
-                                  setSelectedBrand(item.id);
-                                  setFilterBrand(item.id);
-                                }}
-                              >
-                                <img src={item.logo} alt={item.nombre} />
-                              </button>
+                  {
+                    ((isLoadFilter && !isLoadInformation)) ?
+                      (
+                        <>
+                          <Row>
+                            {isMobile &&
+                              <Col xs={12} key={filterBrand} className='my-2' md={6}>Se encontraron <span className="font-bold">{filtros?.length}</span> resultados de <span className="font-bold">{Tarifas.length}</span></Col>}
+                            <Col md={12}>
+                              <span className="font-semibold">Compañia:</span>
                             </Col>
-                          ))
-                        }
-                      </Row>
-                      <Row>
-                        <div className="mt-4">
-                          <b>{'Coste mensual'}:</b>
-                          <div className="my-4">
-                            {rangePrice[0]} {'€'} - {rangePrice[1]} {'€'}
-                          </div>
-                          <Slider
-                            range
-                            min={minPrice}
-                            max={maxPrice}
-                            value={rangePrice}
-                            onChange={handleRangeChangePrice}
-                            className="form-input-range"
-                          />
-                        </div>
-                        <div className="mt-4">
-                          <b>{'Permanencia'}:</b>
-                          <Form.Switch
-                            className="input-check-dark mt-2 text-left"
-                            type="switch"
-                            checked={filterPermanencia}
-                            onChange={() => setFilterPermanencia(!filterPermanencia)}
-                            label={'Tarifa sin permanencia'}
-                            reverse
-                          />
-                        </div>
-                      </Row>
-                    </div>
-                  ) : <Load />}
+                            {brand?.length > 0 &&
+                              brand.map((item, index) => (
+                                <Col xs={4} md={6} key={item.id}>
+                                  <button
+                                    className={`filtro-producto-logo my-2 ${selectedBrand === item.id ? 'pruebaBtn' : ''}`}
+                                    value={item.nombre}
+                                    onClick={() => {
+                                      setSelectedBrand(item.id);
+                                      setFilterBrand(item.id);
+                                    }}
+                                  >
+                                    <img src={item.logo} alt={item.nombre} />
+                                  </button>
+                                </Col>
+                              ))
+                            }
+                          </Row>
+                          <Row>
+                            <div className='mt-4'>
+                              <b>{'Coste mensual'}:</b>
+                              <div className='my-4'>
+                                {rangePrice[0]} {'€'} - {rangePrice[1]} {'€'}
+                              </div>
+                              <Slider
+                                range
+                                min={minPrice}
+                                max={maxPrice}
+                                value={rangePrice}
+                                onChange={handleRangeChangePrice}
+                                className='form-input-range'
+                              />
+                            </div>
+                            <div className='my-4'>
+                              <b>{'Fibra Mb'}:</b>
+                              <div className='my-4'>
+                                {rangeCapacity[0]} {'GB'} - {rangeCapacity[1]} {'GB'}
+                              </div>
+                              <Slider
+                                range
+                                min={minCapacity}
+                                max={maxCapacity}
+                                value={rangeCapacity}
+                                onChange={handleRangeChangeCapacity}
+                                className='form-input-range'
+                              />
+                            </div>
+                            <div className='my-2'>
+                              <b>{'Llamadas ilimitadas'}:</b>
+                              <div className='my-2'>
+                                <Form.Switch
+                                  className='input-check-dark mt-2 text-left'
+                                  type='switch'
+                                  checked={filterLlamadas}
+                                  onChange={() => setFilterLlamadas(!filterLlamadas)}
+                                  label={'Llamadas ilimitadas'}
+                                  reverse
+                                />
+                              </div>
+                            </div>
+                            <div className='my-2'>
+                              <b>{'Promoción'}:</b>
+                              <div className='my-2'>
+                                <Form.Switch
+                                  className='input-check-dark mt-2 text-left'
+                                  type='switch'
+                                  checked={filterPromo}
+                                  onChange={() => setFilterPromo(!filterPromo)}
+                                  label={'Tiene promoción'}
+                                  reverse
+                                />
+                              </div>
+                            </div>
+                          </Row>
+                        </>
+                      )
+                      : <Load />
+                  }
                 </>
               )}
             </Col>
@@ -325,7 +390,7 @@ function ContenedorProductosFibra() {
               </Row>
               <Row>
                 <div className='pruebaPos'>
-                  {!isLoadInformation ? (
+                  {(isLoadFilter && !isLoadInformation) ? (
                     filtros?.length > 0 ? (
                       filtros?.map((item, index) => (
                         <TarjetaTarifa key={index} data={item} />
@@ -347,4 +412,4 @@ function ContenedorProductosFibra() {
   );
 }
 
-export default ContenedorProductosFibra;
+export default ContenedorProductosMovilFibra;
