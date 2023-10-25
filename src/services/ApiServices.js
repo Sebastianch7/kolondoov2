@@ -6,7 +6,7 @@ const apiUrl = 'http://127.0.0.1:8000/api';
 export const fetchFilterFibra = async () => {
     try {
         const response = await axios.get(`${apiUrl}/filterFibra`);
-        const { min_gb, max_gb, min_precio, max_precio } = response.data[0];
+        const { min_gb, min_precio, max_precio } = response.data[0];
         return {
             minCapacity: parseInt(min_gb) > 0 ? parseInt(min_gb) : 0,
             maxPrice: parseInt(max_precio),
@@ -155,6 +155,26 @@ export const fetchTarifasLuzGas = async () => {
     try {
         const response = await axios.get(`${apiUrl}/getTarifasGasLuz`);
         return response.data;
+    } catch (error) {
+        console.error("Error al obtener las marcas de operadoras:", error);
+        throw error;
+    }
+};
+
+export const getDetailOffer = async (offerLooking, idPlan) => {
+    try {
+        const response = await axios.get(`http://127.0.0.1:8000/api/getDetailOffer${offerLooking}/${idPlan}`)
+        return response.data[0];
+    } catch (error) {
+        console.error("Error al obtener las marcas de operadoras:", error);
+        throw error;
+    }
+};
+
+export const postLead = async (offerLooking, idPlan) => {
+    try {
+        const response = await axios.get(`http://127.0.0.1:8000/api/getDetailOffer${offerLooking}/${idPlan}`)
+        return response.data[0];
     } catch (error) {
         console.error("Error al obtener las marcas de operadoras:", error);
         throw error;

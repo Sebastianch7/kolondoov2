@@ -12,7 +12,7 @@ import TarjetaTarifaLeadEnergia from '../Tarjeta/TarjetaTarifaLeadEnergia'
 import { fetchComercializadoras, fetchTarifasLuz } from '../../services/ApiServices'
 
 
-function ContenedorProductosLuz() {
+function ContenedorProductosMovil() {
   // Estados para el estado de carga de filtros e información
   const [isLoadInformation, setIsLoadInformation] = useState(false);
 
@@ -286,4 +286,4 @@ function ContenedorProductosLuz() {
   );
 }
 
-export default ContenedorProductosLuz;
+export default ContenedorProductosMovil;

@@ -134,8 +134,6 @@ function ContenedorProductosFibra() {
   // Función para filtrar por precio
   const filterByPrice = (item) => filterPrice !== null ? item.precio >= filterPrice[0] && item.precio < filterPrice[1] : true;
 
-  // Función para filtrar por roaming
-  const filterByRoaming = (item) => filterRoaming !== false ? filterByFilter(filterRoaming, item, 'Roaming en la UE sin coste') : true;
 
   // Función para filtrar por palabra clave en los bloques
   function filterByFilter(filter, item, word) {

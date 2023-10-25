@@ -27,19 +27,19 @@ function RoutesApp() {
             <Route path="/thank/internet_y_telefonia/fibra/:id" element={<ThankPage />} />
 
             <Route path="/energia/" element={<ComparadorLuz />} />
-            <Route path="/energia/luz/" element={<ComparadorLuz />} />
+            <Route path="/energia/luz" element={<ComparadorLuz />} />
             <Route path="/energia/luz/:id" element={<Lead />} />
             <Route path="/thank/energia/luz/:id" element={<ThankPage />} />
 
-            <Route path="/energia/gas/" element={<ComparadorGas />} />
+            <Route path="/energia/gas" element={<ComparadorGas />} />
             <Route path="/energia/gas/:id" element={<Lead />} />
             <Route path="/thank/energia/gas/:id" element={<ThankPage />} />
 
-            <Route path="/energia/luz_y_gas/" element={<ComparadorLuzGas />} />
+            <Route path="/energia/luz_y_gas" element={<ComparadorLuzGas />} />
             <Route path="/energia/luz_y_gas/:id" element={<Lead />} />
             <Route path="/thank/energia/luz_y_gas/:id" element={<ThankPage />} />
 
-            <Route path="/internet_y_telefonia/movil_y_fibra/" element={<ComparadorFibraMovil />} />
+            <Route path="/internet_y_telefonia/movil_y_fibra" element={<ComparadorFibraMovil />} />
             <Route path="/internet_y_telefonia/movil_y_fibra/:id" element={<Lead />} />
             <Route path="/thank/internet_y_telefonia/movil_y_fibra/:id" element={<ThankPage />} />
             

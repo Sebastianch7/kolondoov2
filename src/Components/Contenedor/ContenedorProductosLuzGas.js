@@ -23,6 +23,7 @@ function ContenedorProductosLuzGas() {
   const [filterBrand, setFilterBrand] = useState(null);
   const [filterPrice, setFilterPrice] = useState(false);
   const [filterTramo, setFilterTramo] = useState(false);
+  const [filterGas, setFilterGas] = useState(false);
   const [filterPermanencia, setFilterPermanencia] = useState(false);
 
   // Estados para tarifas y marcas
@@ -76,15 +77,16 @@ function ContenedorProductosLuzGas() {
       .filter((item) => filterByPrice(item))
       .filter((item) => filterByTramo(item))
       .filter((item) => filterByPermanencia(item))
+      .filter((item) => filterByGas(item))
 
     setFiltros(resultado);
-  }, [filterBrand, filterPrice, filterTramo, filterPermanencia]);
+  }, [filterBrand, filterPrice, filterTramo, filterPermanencia, filterGas]);
 
   const filterByBrand = (item) => filterBrand !== null ? item.comercializadora === filterBrand : true;
   const filterByPrice = (item) => filterPrice !== false ? filterByFilter(filterPrice, item, 'precio fijo') : true;
   const filterByTramo = (item) => filterTramo !== false ? filterByFilter(filterTramo, item, 'sin tramos') : true;
   const filterByPermanencia = (item) => filterPermanencia !== false ? filterByFilter(filterPermanencia, item, 'sin permanencia') : true;
-
+  const filterByGas = (item) => filterGas !== false ? filterByFilter(filterGas, item, 'Gas RL1') : true;
 
   // Función para filtrar por palabra clave en los bloques
   function filterByFilter(filter, item, word) {
@@ -179,6 +181,17 @@ function ContenedorProductosLuzGas() {
                           reverse
                         />
                       </div>
+                      <div className='mt-4'>
+                        <b>{'Gas'}:</b>
+                        <Form.Switch
+                          className='input-check-dark mt-2 text-left'
+                          type='switch'
+                          checked={filterGas}
+                          onChange={() => setFilterGas(!filterGas)}
+                          label={'Tarifa Gas RL1'}
+                          reverse
+                        />
+                      </div>
                     </Row>
                   </Modal.Body>
                   <Modal.Footer>
@@ -246,6 +259,17 @@ function ContenedorProductosLuzGas() {
                               checked={filterPermanencia}
                               onChange={() => setFilterPermanencia(!filterPermanencia)}
                               label={'Tarifa sin permanencia'}
+                              reverse
+                            />
+                          </div>
+                          <div className='mt-4'>
+                            <b>{'Gas'}:</b>
+                            <Form.Switch
+                              className='input-check-dark mt-2 text-left'
+                              type='switch'
+                              checked={filterGas}
+                              onChange={() => setFilterGas(!filterGas)}
+                              label={'Tarifa Gas RL1'}
                               reverse
                             />
                           </div>
