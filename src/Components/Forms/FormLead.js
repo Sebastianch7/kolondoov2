@@ -4,7 +4,7 @@ import ButtonPrimary from '../Button/ButtonPrimary';
 import { BsFillTelephoneFill, BsXCircle, BsFillTelephoneOutboundFill } from "react-icons/bs";
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
-import Load from '../Utils/Load';
+import { postLead } from '../../services/ApiServices'
 
 export default function FormLead({ idPlan, landing }) {
     const [checkInAsesoria, setCheckInAsesoria] = useState(true);
@@ -23,14 +23,12 @@ export default function FormLead({ idPlan, landing }) {
         setIsValidPhoneNumber(isValid);
     };
 
-
-
     const [textButton, setTextButton] = useState('LLÁMAME AHORA')
 
     const subscripcion = (e) => {
         e.preventDefault();
         try {
-            const response = axios.post('http://127.0.0.1:8000/api/newLeadMobile', { idPlan, phoneNumber, landing });
+            const response = postLead(idPlan, phoneNumber, landing);
             console.log('Respuesta de la API después de enviar datos:', response.data);
             setTextButton('Suscripcion exitosa')
             setIsSend(true)

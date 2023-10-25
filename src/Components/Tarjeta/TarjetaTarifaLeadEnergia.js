@@ -9,13 +9,9 @@ import { Link } from 'react-router-dom';
 
 
 export default function TarjetaTarifaLeadEnergia({ data, TarifaCard }) {
-    const [tarifa, setTarifa] = useState(null)
+    const [tarifa] = useState(null)
     const {
-        luz_precio_potencia_punta,
-        luz_precio_potencia_valle,
-        luz_precio_energia_punta,
-        luz_precio_energia_llano,
-        luz_precio_energia_valle,
+        
         luz_precio_energia_24h,
         logo,
         id,
@@ -38,7 +34,7 @@ export default function TarjetaTarifaLeadEnergia({ data, TarifaCard }) {
                             <div className='tarjeta-tarifa-item-title'>
                                 <img src={logo} alt={logo} />
                                 {((promocion !== null && promocion !== '') && isMobile === false) && <span className='mx-4 align-middle'><b>Promoción: </b>{promocion}</span>}
-                                {(isMobile === true) && <Link className='btn btn-primary btn-primary-small' to={`${landingLead}${id}`}><BsArrowRight /></Link>}
+                                {(isMobile === true) && <Link className='btn btn-primary btn-primary-small' to={`${landingLead}/${id}`}><BsArrowRight /></Link>}
                             </div>
                         </Col>}
                         <Col md={9}>
@@ -79,7 +75,7 @@ export default function TarjetaTarifaLeadEnergia({ data, TarifaCard }) {
                                 <ItemTarifaServicio cant={precio} service={''} design={"small"} money={'€'} />
                                 {!isMobile && TarifaCard && (
                                     <Col md={2} style={isMobile ? { order: 3 } : { order: 3 }}>
-                                        <Link className='btn btn-primary' to={`${landingLead}${id}`}>{`Comprar`}</Link>
+                                        <Link className='btn btn-primary' to={`${landingLead}/${id}`}>{`Comprar`}</Link>
                                     </Col>
                                 )}
                             </Row>

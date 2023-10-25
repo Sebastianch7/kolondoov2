@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-//const apiUrl = 'https://api.vuskoo.com/api';
-const apiUrl = 'http://127.0.0.1:8000/api';
+const apiUrl = 'https://api.vuskoo.com/api';
+//const apiUrl = 'http://127.0.0.1:8000/api';
 
 export const fetchFilterFibra = async () => {
     try {
@@ -163,7 +163,7 @@ export const fetchTarifasLuzGas = async () => {
 
 export const getDetailOffer = async (offerLooking, idPlan) => {
     try {
-        const response = await axios.get(`http://127.0.0.1:8000/api/getDetailOffer${offerLooking}/${idPlan}`)
+        const response = await axios.get(`${apiUrl}/getDetailOffer${offerLooking}/${idPlan}`)
         return response.data[0];
     } catch (error) {
         console.error("Error al obtener las marcas de operadoras:", error);
@@ -171,10 +171,21 @@ export const getDetailOffer = async (offerLooking, idPlan) => {
     }
 };
 
-export const postLead = async (offerLooking, idPlan) => {
+export const getExtraOffer = async (offerLooking) => {
     try {
-        const response = await axios.get(`http://127.0.0.1:8000/api/getDetailOffer${offerLooking}/${idPlan}`)
-        return response.data[0];
+        const response = await axios.get(`${apiUrl}/getExtraOffer${offerLooking}`)
+        return response.data;
+    } catch (error) {
+        console.error("Error al obtener las marcas de operadoras:", error);
+        throw error;
+    }
+};
+
+export const postLead = async (idPlan, phoneNumber, landing) => {
+    try {
+        const response = await axios.post(`${apiUrl}/newLeadMobile`, { idPlan, phoneNumber, landing });
+        console.log(response)
+        return response.data;
     } catch (error) {
         console.error("Error al obtener las marcas de operadoras:", error);
         throw error;
