@@ -95,7 +95,7 @@ function ContenedorProductosLuzGas() {
 
   function filterByBrand(item) {
     if (filterBrand.length > 0) {
-      return filterBrand.includes(item.operadora) ? true : false;
+      return filterBrand.includes(item.comercializadora) ? true : false;
     } else {
       return true;
     }

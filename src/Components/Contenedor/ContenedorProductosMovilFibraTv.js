@@ -145,7 +145,7 @@ function ContenedorProductosMovilFibraTv() {
   useEffect(() => {
     const resultado = Tarifas
       .filter((item) => filterByBrand(item))
-      .filter((item) => filterByCapacity(item))
+      /* .filter((item) => filterByCapacity(item)) */
       .filter((item) => filterByPrice(item))
       .filter((item) => filterByTechnology(item))
       .filter((item) => filterByPromo(item))
@@ -166,7 +166,7 @@ function ContenedorProductosMovilFibraTv() {
   const filterByPrice = (item) => filterPrice !== null ? item.precio >= filterPrice[0] && item.precio < filterPrice[1] : true;
 
   // Función para filtrar por tecnología
-  const filterByTechnology = (item) => filterLlamadas !== false ? filterByFilter(filterLlamadas, item, 'Llamadas ilimitadas') : true;
+  const filterByTechnology = (item) => filterLlamadas !== false ? filterByFilter(filterLlamadas, item, 'ilimitadas') : true;
 
   // Función para filtrar por promocion
   const filterByPromo = (item) => filterPromo !== false ? (item.promocion !== "" && item.promocion !== null) : true;
@@ -252,7 +252,7 @@ function ContenedorProductosMovilFibraTv() {
                           className='form-input-range'
                         />
                       </div>
-                      <div className='my-4'>
+                      {/* <div className='my-4'>
                         <b>{'Fibra Mb'}:</b>
                         <div className='my-4'>
                           {rangeCapacity[0]} {'GB'} - {rangeCapacity[1]} {'GB'}
@@ -265,7 +265,7 @@ function ContenedorProductosMovilFibraTv() {
                           onChange={handleRangeChangeCapacity}
                           className='form-input-range'
                         />
-                      </div>
+                      </div> */}
                       <div className='my-2'>
                         <b>{'Llamadas ilimitadas'}:</b>
                         <div className='my-2'>
@@ -339,7 +339,7 @@ function ContenedorProductosMovilFibraTv() {
                                 className='form-input-range'
                               />
                             </div>
-                            <div className='my-4'>
+                            {/* <div className='my-4'>
                               <b>{'Fibra Mb'}:</b>
                               <div className='my-4'>
                                 {rangeCapacity[0]} {'GB'} - {rangeCapacity[1]} {'GB'}
@@ -352,7 +352,7 @@ function ContenedorProductosMovilFibraTv() {
                                 onChange={handleRangeChangeCapacity}
                                 className='form-input-range'
                               />
-                            </div>
+                            </div> */}
                             <div className='my-2'>
                               <b>{'Llamadas ilimitadas'}:</b>
                               <div className='my-2'>
