@@ -12,7 +12,7 @@ function ComparadorLuz() {
             <Banner
                 title={'Comparador de Tarifas Luz'}
                 subtitle='¡Te ayudamos a encontrar la tarifa que mejor se adapte a ti!'
-                image={'/img/banner-energia.png'}
+                image={'/img/energia/banner_luz.png'}
             >
                 <FormSuscripcion
                     text={'Introduce tu código postal'}

@@ -13,7 +13,7 @@ function ComparadorFibraMovilTv() {
             <Banner
                 title={'Comparador de Tarifas movil con fibra y tv'}
                 subtitle='¡Te ayudamos a encontrar la tarifa movil con fibra y tv!'
-                image={'/img/banner-energia.png'}
+                image={'/img/internet_telefonia/banner_telefonia_fibra_tv.png'}
             >
                 <FormSuscripcion
                     text={'Introduce tu código postal'}

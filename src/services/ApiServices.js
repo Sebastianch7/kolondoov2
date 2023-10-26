@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-const apiUrl = 'https://api.vuskoo.com/api';
-//const apiUrl = 'http://127.0.0.1:8000/api';
+//const apiUrl = 'https://api.vuskoo.com/api';
+const apiUrl = 'http://127.0.0.1:8000/api';
 
 export const fetchFilterFibra = async () => {
     try {
@@ -213,7 +213,7 @@ export const getExtraOffer = async (offerLooking) => {
 
 export const postLead = async (idPlan, phoneNumber, landing) => {
     try {
-        const response = await axios.post(`${apiUrl}/newLeadMobile`, { idPlan, phoneNumber, landing });
+        const response = await axios.post(`${apiUrl}/LeadRegister`, { idPlan, phoneNumber, landing });
         console.log(response)
         return response.data;
     } catch (error) {

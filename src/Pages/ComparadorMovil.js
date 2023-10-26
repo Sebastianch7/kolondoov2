@@ -12,7 +12,7 @@ function ComparadorMovil() {
             <Banner
                 title={'Comparador de Tarifas Móvil'}
                 subtitle='¡Te ayudamos a encontrar la tarifa móvil que mejor se adapte a ti!'
-                image={'/img/banner3.png'}
+                image={'/img/internet_telefonia/banner_movil.png'}
             >
                 <FormSuscripcion
                     text={'Introduce tu código postal'}

@@ -12,7 +12,7 @@ function ComparadorLuzGas() {
             <Banner
                 title={'Comparador de Tarifas Luz y Gas'}
                 subtitle='¡Te ayudamos a encontrar la tarifa que mejor se adapte a ti!'
-                image={'/img/banner-energia.png'}
+                image={'/img/energia/banner_luz_y_gas.png'}
             >
                 <FormSuscripcion
                     text={'Introduce tu código postal'}
