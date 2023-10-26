@@ -26,7 +26,7 @@ export default function TarjetaTarifaLead({ data, service, thanks }) {
                     <ItemTarjetaTarifaLead title={'Líneas móviles'} word={'móviles'} data={data} />
                     <ItemTarjetaTarifaLead title={'Fijo'} word={'fijo'} data={data} />
                     <ItemTarjetaTarifaLead title={'Kwh'} word={'Kwh'} data={data} />
-                    <ItemTarjetaTarifaLead title={'Datos'} word={'GB'} data={data} />
+                    <ItemTarjetaTarifaLead title={'Datos'} word={'datos'} data={data} />
                     <ItemTarjetaTarifaLead title={'Tramos'} word={'tramos'} data={data} />
                     <ItemTarjetaTarifaLead title={'Tarifa'} word={'tarifa'} data={data} />
                     <ItemTarjetaTarifaLead title={'Energia verde'} word={'verde'} data={data} />

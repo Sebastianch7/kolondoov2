@@ -19,9 +19,10 @@ function ContenedorProductosGas() {
   const [selectedBrand, setSelectedBrand] = useState(null);
 
   // Estados para filtros seleccionados
-  const [filterBrand, setFilterBrand] = useState(null);
+  const [filterBrand, setFilterBrand] = useState([]);
   const [filterGas, setFilterGas] = useState(false);
   const [filterPermanencia, setFilterPermanencia] = useState(false);
+  const [filterPromo, setFilterPromo] = useState(false);
 
   // Estados para tarifas y marcas
   const [Tarifas, setTarifas] = useState([]);
@@ -33,7 +34,8 @@ function ContenedorProductosGas() {
 
   // Función para limpiar los filtros
   const cleanFilter = () => {
-    setFilterBrand(null);
+    setFilterBrand([]);
+    setFilterPromo(false);
     setFiltros(Tarifas);
   };
 
@@ -66,19 +68,35 @@ function ContenedorProductosGas() {
     fetchTariffs();
   }, [brand]);
 
+  function setFilterBrandMulti(value) {
+    if (!filterBrand?.includes(value)) {
+      setFilterBrand([...filterBrand, value])
+    } else {
+      setFilterBrand(filterBrand.filter((item) => item !== value))
+    }
+  }
+
   // Función para aplicar los filtros
   useEffect(() => {
     const resultado = Tarifas
       .filter((item) => filterByBrand(item))
       .filter((item) => filterByPermanencia(item))
       .filter((item) => filterByGas(item))
+      .filter((item) => filterByPromo(item))
 
     setFiltros(resultado);
-  }, [filterBrand, filterPermanencia, filterGas]);
+  }, [filterBrand, filterPermanencia, filterGas, filterPromo]);
 
-  const filterByBrand = (item) => filterBrand !== null ? item.comercializadora === filterBrand : true;
+  function filterByBrand(item) {
+    if (filterBrand.length > 0) {
+      return filterBrand.includes(item.operadora) ? true : false;
+    } else {
+      return true;
+    }
+  }
   const filterByPermanencia = (item) => filterPermanencia !== false ? filterByFilter(filterPermanencia, item, 'sin permanencia') : true;
   const filterByGas = (item) => filterGas !== false ? filterByFilter(filterGas, item, 'Gas RL1') : true;
+  const filterByPromo = (item) => filterPromo !== false ? (item.promocion !== "" && item.promocion !== null) : true;
 
   // Función para filtrar por palabra clave en los bloques
   function filterByFilter(filter, item, word) {
@@ -126,18 +144,13 @@ function ContenedorProductosGas() {
                         brand.map((item, index) => (
                           <Col xs={4} md={6} key={item.id}>
                             <button
-                              className={`filtro-producto-logo my-2 ${selectedBrand === item.id ? 'pruebaBtn' : ''}`}
+                              className={`filtro-producto-logo my-2 ${filterBrand.includes(item.id) ? 'logoFocus' : ''}`}
                               value={item.nombre}
-                              onClick={() => {
-                                setSelectedBrand(item.id);
-                                setFilterBrand(item.id);
-                              }}
-                            >
+                              onClick={() => setFilterBrandMulti(item.id)}>
                               <img src={item.logo} alt={item.nombre} />
                             </button>
                           </Col>
-                        ))
-                      }
+                        ))}
                     </Row>
                     <Row>
                       <div className='mt-4'>
@@ -162,6 +175,19 @@ function ContenedorProductosGas() {
                           reverse
                         />
                       </div>
+                      <div className='my-2'>
+                        <b>{'Promoción'}:</b>
+                        <div className='my-2'>
+                          <Form.Switch
+                            className='input-check-dark mt-2 text-left'
+                            type='switch'
+                            checked={filterPromo}
+                            onChange={() => setFilterPromo(!filterPromo)}
+                            label={'Tiene promoción'}
+                            reverse
+                          />
+                        </div>
+                      </div>
                     </Row>
                   </Modal.Body>
                   <Modal.Footer>
@@ -185,18 +211,13 @@ function ContenedorProductosGas() {
                             brand.map((item, index) => (
                               <Col xs={4} md={6} key={item.id}>
                                 <button
-                                  className={`filtro-producto-logo my-2 ${selectedBrand === item.id ? 'pruebaBtn' : ''}`}
+                                  className={`filtro-producto-logo my-2 ${filterBrand.includes(item.id) ? 'logoFocus' : ''}`}
                                   value={item.nombre}
-                                  onClick={() => {
-                                    setSelectedBrand(item.id);
-                                    setFilterBrand(item.id);
-                                  }}
-                                >
+                                  onClick={() => setFilterBrandMulti(item.id)}>
                                   <img src={item.logo} alt={item.nombre} />
                                 </button>
                               </Col>
-                            ))
-                          }
+                            ))}
                         </Row>
                         <Row>
                           <div className='mt-4'>
@@ -220,6 +241,19 @@ function ContenedorProductosGas() {
                               label={'Tarifa sin permanencia'}
                               reverse
                             />
+                          </div>
+                          <div className='my-2'>
+                            <b>{'Promoción'}:</b>
+                            <div className='my-2'>
+                              <Form.Switch
+                                className='input-check-dark mt-2 text-left'
+                                type='switch'
+                                checked={filterPromo}
+                                onChange={() => setFilterPromo(!filterPromo)}
+                                label={'Tiene promoción'}
+                                reverse
+                              />
+                            </div>
                           </div>
                         </Row>
                       </>

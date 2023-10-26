@@ -20,10 +20,11 @@ function ContenedorProductosMovil() {
   const [selectedBrand, setSelectedBrand] = useState(null);
 
   // Estados para filtros seleccionados
-  const [filterBrand, setFilterBrand] = useState(null);
+  const [filterBrand, setFilterBrand] = useState([]);
   const [filterPrice, setFilterPrice] = useState(false);
   const [filterTramo, setFilterTramo] = useState(false);
   const [filterPermanencia, setFilterPermanencia] = useState(false);
+  const [filterPromo, setFilterPromo] = useState(false);
 
   // Estados para tarifas y marcas
   const [Tarifas, setTarifas] = useState([]);
@@ -35,9 +36,10 @@ function ContenedorProductosMovil() {
 
   // Función para limpiar los filtros
   const cleanFilter = () => {
-    setFilterBrand(null);
+    setFilterBrand([]);
     setFilterPrice(false);
     setFiltros(Tarifas);
+    setFilterPromo(false);
   };
 
   useEffect(() => {
@@ -69,6 +71,14 @@ function ContenedorProductosMovil() {
     fetchTariffs();
   }, [brand]);
 
+  function setFilterBrandMulti(value) {
+    if (!filterBrand?.includes(value)) {
+      setFilterBrand([...filterBrand, value])
+    } else {
+      setFilterBrand(filterBrand.filter((item) => item !== value))
+    }
+  }
+
   // Función para aplicar los filtros
   useEffect(() => {
     const resultado = Tarifas
@@ -76,14 +86,22 @@ function ContenedorProductosMovil() {
       .filter((item) => filterByPrice(item))
       .filter((item) => filterByTramo(item))
       .filter((item) => filterByPermanencia(item))
+      .filter((item) => filterByPromo(item))
 
     setFiltros(resultado);
-  }, [filterBrand, filterPrice, filterTramo, filterPermanencia]);
+  }, [filterBrand, filterPrice, filterTramo, filterPermanencia, filterPromo]);
 
-  const filterByBrand = (item) => filterBrand !== null ? item.comercializadora === filterBrand : true;
+  function filterByBrand(item) {
+    if (filterBrand.length > 0) {
+      return filterBrand.includes(item.operadora) ? true : false;
+    } else {
+      return true;
+    }
+  }
   const filterByPrice = (item) => filterPrice !== false ? filterByFilter(filterPrice, item, 'precio fijo') : true;
   const filterByTramo = (item) => filterTramo !== false ? filterByFilter(filterTramo, item, 'sin tramos') : true;
   const filterByPermanencia = (item) => filterPermanencia !== false ? filterByFilter(filterPermanencia, item, 'sin permanencia') : true;
+  const filterByPromo = (item) => filterPromo !== false ? (item.promocion !== "" && item.promocion !== null) : true;
 
 
   // Función para filtrar por palabra clave en los bloques
@@ -132,18 +150,13 @@ function ContenedorProductosMovil() {
                         brand.map((item, index) => (
                           <Col xs={4} md={6} key={item.id}>
                             <button
-                              className={`filtro-producto-logo my-2 ${selectedBrand === item.id ? 'pruebaBtn' : ''}`}
+                              className={`filtro-producto-logo my-2 ${filterBrand.includes(item.id) ? 'logoFocus' : ''}`}
                               value={item.nombre}
-                              onClick={() => {
-                                setSelectedBrand(item.id);
-                                setFilterBrand(item.id);
-                              }}
-                            >
+                              onClick={() => setFilterBrandMulti(item.id)}>
                               <img src={item.logo} alt={item.nombre} />
                             </button>
                           </Col>
-                        ))
-                      }
+                        ))}
                     </Row>
                     <Row>
                       <div className='mt-4'>
@@ -179,6 +192,19 @@ function ContenedorProductosMovil() {
                           reverse
                         />
                       </div>
+                      <div className='my-2'>
+                        <b>{'Promoción'}:</b>
+                        <div className='my-2'>
+                          <Form.Switch
+                            className='input-check-dark mt-2 text-left'
+                            type='switch'
+                            checked={filterPromo}
+                            onChange={() => setFilterPromo(!filterPromo)}
+                            label={'Tiene promoción'}
+                            reverse
+                          />
+                        </div>
+                      </div>
                     </Row>
                   </Modal.Body>
                   <Modal.Footer>
@@ -202,18 +228,13 @@ function ContenedorProductosMovil() {
                             brand.map((item, index) => (
                               <Col xs={4} md={6} key={item.id}>
                                 <button
-                                  className={`filtro-producto-logo my-2 ${selectedBrand === item.id ? 'pruebaBtn' : ''}`}
+                                  className={`filtro-producto-logo my-2 ${filterBrand.includes(item.id) ? 'logoFocus' : ''}`}
                                   value={item.nombre}
-                                  onClick={() => {
-                                    setSelectedBrand(item.id);
-                                    setFilterBrand(item.id);
-                                  }}
-                                >
+                                  onClick={() => setFilterBrandMulti(item.id)}>
                                   <img src={item.logo} alt={item.nombre} />
                                 </button>
                               </Col>
-                            ))
-                          }
+                            ))}
                         </Row>
                         <Row>
                           <div className='mt-4'>
@@ -248,6 +269,19 @@ function ContenedorProductosMovil() {
                               label={'Tarifa sin permanencia'}
                               reverse
                             />
+                          </div>
+                          <div className='my-2'>
+                            <b>{'Promoción'}:</b>
+                            <div className='my-2'>
+                              <Form.Switch
+                                className='input-check-dark mt-2 text-left'
+                                type='switch'
+                                checked={filterPromo}
+                                onChange={() => setFilterPromo(!filterPromo)}
+                                label={'Tiene promoción'}
+                                reverse
+                              />
+                            </div>
                           </div>
                         </Row>
                       </>

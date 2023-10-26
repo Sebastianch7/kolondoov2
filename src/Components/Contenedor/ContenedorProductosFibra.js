@@ -27,13 +27,14 @@ function ContenedorProductosFibra() {
   const [selectedBrand, setSelectedBrand] = useState(null);
 
   // Estados para filtros seleccionados
-  const [filterBrand, setFilterBrand] = useState(null);
+  const [filterBrand, setFilterBrand] = useState([]);
   const [filterPrice, setFilterPrice] = useState([minPrice, maxPrice]);
   const [filterCapacity, setFilterCapacity] = useState([minCapacity, maxCapacity]);
   const [filterTechnology, setFilterTechnology] = useState(false);
   const [filterMessage, setFilterMessage] = useState(false);
   const [filterRoaming, setFilterRoaming] = useState(false);
   const [filterPermanencia, setFilterPermanencia] = useState(false);
+  const [filterPromo, setFilterPromo] = useState(false);
 
   // Estados para tarifas y marcas
   const [Tarifas, setTarifas] = useState([]);
@@ -49,9 +50,10 @@ function ContenedorProductosFibra() {
 
   // Función para limpiar los filtros
   const cleanFilter = () => {
-    setFilterBrand(null);
+    setFilterBrand([]);
     setFilterPrice([minPrice, maxPrice]);
     setRangePrice([minPrice, maxPrice]);
+    setFilterPromo(false);
     setFiltros(Tarifas);
   };
 
@@ -109,6 +111,14 @@ function ContenedorProductosFibra() {
     fetchTariffs();
   }, [brand]);
 
+  function setFilterBrandMulti(value) {
+    if (!filterBrand?.includes(value)) {
+      setFilterBrand([...filterBrand, value])
+    } else {
+      setFilterBrand(filterBrand.filter((item) => item !== value))
+    }
+  }
+
   // Función para manejar el filtro de precio
   const handleFilterPrice = (value) => {
     setFilterPrice(value);
@@ -124,16 +134,25 @@ function ContenedorProductosFibra() {
     const resultado = Tarifas
       .filter((item) => filterByBrand(item))
       .filter((item) => filterByPrice(item))
+      .filter((item) => filterByPromo(item))
 
     setFiltros(resultado);
-  }, [filterBrand, filterPrice]);
+  }, [filterBrand, filterPrice, filterPromo]);
 
   // Función para filtrar por marca
-  const filterByBrand = (item) => filterBrand !== null ? item.operadora === filterBrand : true;
+  function filterByBrand(item) {
+    if (filterBrand.length > 0) {
+      return filterBrand.includes(item.operadora) ? true : false;
+    } else {
+      return true;
+    }
+  }
 
   // Función para filtrar por precio
   const filterByPrice = (item) => filterPrice !== null ? item.precio >= filterPrice[0] && item.precio < filterPrice[1] : true;
 
+  // Función para filtrar por promocion
+  const filterByPromo = (item) => filterPromo !== false ? (item.promocion !== "" && item.promocion !== null) : true;
 
   // Función para filtrar por palabra clave en los bloques
   function filterByFilter(filter, item, word) {
@@ -180,18 +199,13 @@ function ContenedorProductosFibra() {
                         brand.map((item, index) => (
                           <Col xs={4} md={6} key={item.id}>
                             <button
-                              className={`filtro-producto-logo my-2 ${selectedBrand === item.id ? 'pruebaBtn' : ''}`}
+                              className={`filtro-producto-logo my-2 ${filterBrand.includes(item.id) ? 'logoFocus' : ''}`}
                               value={item.nombre}
-                              onClick={() => {
-                                setSelectedBrand(item.id);
-                                setFilterBrand(item.id);
-                              }}
-                            >
+                              onClick={() => setFilterBrandMulti(item.id)}>
                               <img src={item.logo} alt={item.nombre} />
                             </button>
                           </Col>
-                        ))
-                      }
+                        ))}
                     </Row>
                     <Row>
                       <div className='mt-4'>
@@ -247,6 +261,19 @@ function ContenedorProductosFibra() {
                           />
                         </div>
                       </div>
+                      <div className='my-2'>
+                        <b>{'Promoción'}:</b>
+                        <div className='my-2'>
+                          <Form.Switch
+                            className='input-check-dark mt-2 text-left'
+                            type='switch'
+                            checked={filterPromo}
+                            onChange={() => setFilterPromo(!filterPromo)}
+                            label={'Tiene promoción'}
+                            reverse
+                          />
+                        </div>
+                      </div>
                     </Row>
                   </Modal.Body>
                   <Modal.Footer>
@@ -272,18 +299,13 @@ function ContenedorProductosFibra() {
                           brand.map((item, index) => (
                             <Col xs={4} md={6} key={item.id}>
                               <button
-                                className={`filtro-producto-logo my-2 ${selectedBrand === item.id ? 'pruebaBtn' : ''}`}
+                                className={`filtro-producto-logo my-2 ${filterBrand.includes(item.id) ? 'logoFocus' : ''}`}
                                 value={item.nombre}
-                                onClick={() => {
-                                  setSelectedBrand(item.id);
-                                  setFilterBrand(item.id);
-                                }}
-                              >
+                                onClick={() => setFilterBrandMulti(item.id)}>
                                 <img src={item.logo} alt={item.nombre} />
                               </button>
                             </Col>
-                          ))
-                        }
+                          ))}
                       </Row>
                       <Row>
                         <div className="mt-4">
@@ -310,6 +332,19 @@ function ContenedorProductosFibra() {
                             label={'Tarifa sin permanencia'}
                             reverse
                           />
+                        </div>
+                        <div className='my-2'>
+                          <b>{'Promoción'}:</b>
+                          <div className='my-2'>
+                            <Form.Switch
+                              className='input-check-dark mt-2 text-left'
+                              type='switch'
+                              checked={filterPromo}
+                              onChange={() => setFilterPromo(!filterPromo)}
+                              label={'Tiene promoción'}
+                              reverse
+                            />
+                          </div>
                         </div>
                       </Row>
                     </div>

@@ -25,7 +25,7 @@ function ContenedorProductosMovilFibra() {
   const [selectedBrand, setSelectedBrand] = useState(null);
 
   // Estados para filtros seleccionados
-  const [filterBrand, setFilterBrand] = useState(null);
+  const [filterBrand, setFilterBrand] = useState([]);
   const [filterPrice, setFilterPrice] = useState([minPrice, maxPrice]);
   const [filterCapacity, setFilterCapacity] = useState([minCapacity, maxCapacity]);
   const [filterLlamadas, setFilterLlamadas] = useState(false);
@@ -47,7 +47,7 @@ function ContenedorProductosMovilFibra() {
   const cleanFilter = () => {
     setFilterLlamadas(false);
     setFilterPromo(false);
-    setFilterBrand(null);
+    setFilterBrand([]);
     setFilterCapacity([minCapacity, maxCapacity]);
     setFilterPrice([minPrice, maxPrice]);
     setRangePrice([minPrice, maxPrice]);
@@ -123,6 +123,14 @@ function ContenedorProductosMovilFibra() {
     fetchTariffs();
   }, [brand]);
 
+  function setFilterBrandMulti(value) {
+    if (!filterBrand?.includes(value)) {
+      setFilterBrand([...filterBrand, value])
+    } else {
+      setFilterBrand(filterBrand.filter((item) => item !== value))
+    }
+  }
+
   // Función para manejar el filtro de precio
   const handleFilterPrice = (value) => {
     setFilterPrice(value);
@@ -146,7 +154,13 @@ function ContenedorProductosMovilFibra() {
   }, [filterBrand, filterPrice, filterCapacity, filterLlamadas, filterPromo]);
 
   // Función para filtrar por marca
-  const filterByBrand = (item) => filterBrand !== null ? item.operadora === filterBrand : true;
+  function filterByBrand(item) {
+    if (filterBrand.length > 0) {
+      return filterBrand.includes(item.operadora) ? true : false;
+    } else {
+      return true;
+    }
+  }
 
   // Función para filtrar por precio
   const filterByPrice = (item) => filterPrice !== null ? item.precio >= filterPrice[0] && item.precio < filterPrice[1] : true;
@@ -155,12 +169,12 @@ function ContenedorProductosMovilFibra() {
   const filterByTechnology = (item) => filterLlamadas !== false ? filterByFilter(filterLlamadas, item, 'Llamadas ilimitadas') : true;
 
   // Función para filtrar por mensajes
-  const filterByPromo = (item) => filterPromo !== false ? item.promocion !== null : true;
+  const filterByPromo = (item) => filterPromo !== false ? (item.promocion !== "" && item.promocion !== null) : true;
 
   // Función para filtrar por capacidad
   function filterByCapacity(item) {
     if (filterCapacity !== null) {
-      if (item.parrilla_bloque_1.includes("GB Ilimitados")) {
+      if (item.parrilla_bloque_1?.toLowerCase().includes("ilimitados") || item.parrilla_bloque_2?.toLowerCase().includes("ilimitados") || item.parrilla_bloque_3?.toLowerCase().includes("ilimitados") || item.parrilla_bloque_4?.toLowerCase().includes("ilimitados")) {
         return true;
       } else {
         return parseInt(item.parrilla_bloque_1.replace("Fibra", "").replace("Mb", "")) >= filterCapacity[0] && parseInt(item.parrilla_bloque_1.replace("Fibra", "").replace("Mb", "")) < filterCapacity[1];
@@ -215,18 +229,13 @@ function ContenedorProductosMovilFibra() {
                         brand.map((item, index) => (
                           <Col xs={4} md={6} key={item.id}>
                             <button
-                              className={`filtro-producto-logo my-2 ${selectedBrand === item.id ? 'pruebaBtn' : ''}`}
+                              className={`filtro-producto-logo my-2 ${filterBrand.includes(item.id) ? 'logoFocus' : ''}`}
                               value={item.nombre}
-                              onClick={() => {
-                                setSelectedBrand(item.id);
-                                setFilterBrand(item.id);
-                              }}
-                            >
+                              onClick={() => setFilterBrandMulti(item.id)}>
                               <img src={item.logo} alt={item.nombre} />
                             </button>
                           </Col>
-                        ))
-                      }
+                        ))}
                     </Row>
                     <Row>
                       <div className='mt-4'>
@@ -307,18 +316,13 @@ function ContenedorProductosMovilFibra() {
                               brand.map((item, index) => (
                                 <Col xs={4} md={6} key={item.id}>
                                   <button
-                                    className={`filtro-producto-logo my-2 ${selectedBrand === item.id ? 'pruebaBtn' : ''}`}
+                                    className={`filtro-producto-logo my-2 ${filterBrand.includes(item.id) ? 'logoFocus' : ''}`}
                                     value={item.nombre}
-                                    onClick={() => {
-                                      setSelectedBrand(item.id);
-                                      setFilterBrand(item.id);
-                                    }}
-                                  >
+                                    onClick={() => setFilterBrandMulti(item.id)}>
                                     <img src={item.logo} alt={item.nombre} />
                                   </button>
                                 </Col>
-                              ))
-                            }
+                              ))}
                           </Row>
                           <Row>
                             <div className='mt-4'>

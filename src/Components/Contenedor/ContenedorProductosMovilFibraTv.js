@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { Container, Row, Col, Button, Form } from 'react-bootstrap';
-import axios from 'axios';
 import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
 import { isMobile } from 'react-device-detect';
@@ -9,9 +8,9 @@ import InterSection from '../Utils/InterSection';
 import TarjetaTarifa from '../Tarjeta/TarjetaTarifa';
 import NotInfoItem from '../Utils/NotInfoItem';
 import Load from '../Utils/Load';
-import { fetchFilterMovil, fetchOperadoras, fetchTarifasMovil } from '../../services/ApiServices'
+import { fetchFilterMovilFibraTv, fetchOperadorasFibraMovilTv, fetchTarifasMovilFibraTv } from '../../services/ApiServices'
 
-function ContenedorProductosMovil() {
+function ContenedorProductosMovilFibraTv() {
   // Estado para filtros de precio y capacidad
   const [minPrice, setMinPrice] = useState(0);
   const [maxPrice, setMaxPrice] = useState(1000);
@@ -22,13 +21,14 @@ function ContenedorProductosMovil() {
   const [isLoadFilter, setIsLoadFilter] = useState(false);
   const [isLoadInformation, setIsLoadInformation] = useState(false);
 
+  // Estado para la marca seleccionada
+  const [selectedBrand, setSelectedBrand] = useState(null);
+
   // Estados para filtros seleccionados
   const [filterBrand, setFilterBrand] = useState([]);
   const [filterPrice, setFilterPrice] = useState([minPrice, maxPrice]);
   const [filterCapacity, setFilterCapacity] = useState([minCapacity, maxCapacity]);
-  const [filterTechnology, setFilterTechnology] = useState(false);
-  const [filterMessage, setFilterMessage] = useState(false);
-  const [filterRoaming, setFilterRoaming] = useState(false);
+  const [filterLlamadas, setFilterLlamadas] = useState(false);
   const [filterPromo, setFilterPromo] = useState(false);
 
   // Estados para tarifas y marcas
@@ -45,9 +45,7 @@ function ContenedorProductosMovil() {
 
   // Función para limpiar los filtros
   const cleanFilter = () => {
-    setFilterTechnology(false);
-    setFilterMessage(false);
-    setFilterRoaming(false);
+    setFilterLlamadas(false);
     setFilterPromo(false);
     setFilterBrand([]);
     setFilterCapacity([minCapacity, maxCapacity]);
@@ -74,7 +72,7 @@ function ContenedorProductosMovil() {
     setIsLoadFilter(false);
     const fetchData = async () => {
       try {
-        const response = await fetchFilterMovil();
+        const response = await fetchFilterMovilFibraTv();
         const { min_gb, max_gb, min_precio, max_precio } = response;
 
         setMinCapacity(parseInt(min_gb) > 0 ? parseInt(min_gb) : 0);
@@ -98,7 +96,7 @@ function ContenedorProductosMovil() {
   useEffect(() => {
     const fetchBrands = async () => {
       try {
-        const response = await fetchOperadoras();
+        const response = await fetchOperadorasFibraMovilTv();
         setBrand(response);
       } catch (error) {
         console.error("Error al obtener las marcas de operadoras:", error);
@@ -113,7 +111,7 @@ function ContenedorProductosMovil() {
     setIsLoadInformation(true);
     const fetchTariffs = async () => {
       try {
-        const response = await fetchTarifasMovil()
+        const response = await fetchTarifasMovilFibraTv()
         setFiltros(response);
         setTarifas(response);
         setIsLoadInformation(false);
@@ -145,18 +143,15 @@ function ContenedorProductosMovil() {
 
   // Función para aplicar los filtros
   useEffect(() => {
-
     const resultado = Tarifas
       .filter((item) => filterByBrand(item))
       .filter((item) => filterByCapacity(item))
       .filter((item) => filterByPrice(item))
       .filter((item) => filterByTechnology(item))
-      .filter((item) => filterByMessage(item))
-      .filter((item) => filterByRoaming(item))
       .filter((item) => filterByPromo(item))
 
     setFiltros(resultado);
-  }, [filterBrand, filterPrice, filterCapacity, filterTechnology, filterMessage, filterRoaming, filterPromo]);
+  }, [filterBrand, filterPrice, filterCapacity, filterLlamadas, filterPromo]);
 
   // Función para filtrar por marca
   function filterByBrand(item) {
@@ -171,13 +166,7 @@ function ContenedorProductosMovil() {
   const filterByPrice = (item) => filterPrice !== null ? item.precio >= filterPrice[0] && item.precio < filterPrice[1] : true;
 
   // Función para filtrar por tecnología
-  const filterByTechnology = (item) => filterTechnology !== false ? filterByFilter(filterTechnology, item, '5G!') : true;
-
-  // Función para filtrar por mensajes
-  const filterByMessage = (item) => filterMessage !== false ? filterByFilter(filterMessage, item, 'SMS incluidos') : true;
-
-  // Función para filtrar por roaming
-  const filterByRoaming = (item) => filterRoaming !== false ? filterByFilter(filterRoaming, item, 'Roaming en la UE sin coste') : true;
+  const filterByTechnology = (item) => filterLlamadas !== false ? filterByFilter(filterLlamadas, item, 'Llamadas ilimitadas') : true;
 
   // Función para filtrar por promocion
   const filterByPromo = (item) => filterPromo !== false ? (item.promocion !== "" && item.promocion !== null) : true;
@@ -185,10 +174,10 @@ function ContenedorProductosMovil() {
   // Función para filtrar por capacidad
   function filterByCapacity(item) {
     if (filterCapacity !== null) {
-      if (item.parrilla_bloque_1?.toLowerCase().includes("ilimitados") || item.parrilla_bloque_2?.toLowerCase().includes("ilimitados") || item.parrilla_bloque_3?.toLowerCase().includes("ilimitados") || item.parrilla_bloque_4?.toLowerCase().includes("ilimitados")) {
+      if (item.parrilla_bloque_1.toLowerCase().includes("ilimitados") || item.parrilla_bloque_2.toLowerCase().includes("ilimitados") || item.parrilla_bloque_3.toLowerCase().includes("ilimitados") || item.parrilla_bloque_4.toLowerCase().includes("ilimitados")) {
         return true;
       } else {
-        return parseInt(item.parrilla_bloque_1.replace("GB", "")) >= filterCapacity[0] && parseInt(item.parrilla_bloque_1.replace("GB", "")) < filterCapacity[1];
+        return parseInt(item.parrilla_bloque_1.replace("Fibra", "").replace("Mb", "")) >= filterCapacity[0] && parseInt(item.parrilla_bloque_1.replace("Fibra", "").replace("Mb", "")) < filterCapacity[1];
       }
     } else {
       return true;
@@ -264,7 +253,7 @@ function ContenedorProductosMovil() {
                         />
                       </div>
                       <div className='my-4'>
-                        <b>{'Datos'}:</b>
+                        <b>{'Fibra Mb'}:</b>
                         <div className='my-4'>
                           {rangeCapacity[0]} {'GB'} - {rangeCapacity[1]} {'GB'}
                         </div>
@@ -278,40 +267,14 @@ function ContenedorProductosMovil() {
                         />
                       </div>
                       <div className='my-2'>
-                        <b>{'5G'}:</b>
+                        <b>{'Llamadas ilimitadas'}:</b>
                         <div className='my-2'>
                           <Form.Switch
                             className='input-check-dark mt-2 text-left'
                             type='switch'
-                            checked={filterTechnology}
-                            onChange={() => setFilterTechnology(!filterTechnology)}
-                            label={'Mostrar solo ofertas 5G'}
-                            reverse
-                          />
-                        </div>
-                      </div>
-                      <div className='my-2'>
-                        <b>{'Mensajes'}:</b>
-                        <div className='my-2'>
-                          <Form.Switch
-                            className='input-check-dark mt-2 text-left'
-                            type='switch'
-                            checked={filterMessage}
-                            onChange={() => setFilterMessage(!filterMessage)}
-                            label={'Mensajes ilimitados'}
-                            reverse
-                          />
-                        </div>
-                      </div>
-                      <div className='my-2'>
-                        <b>{'Roaming'}:</b>
-                        <div className='my-2'>
-                          <Form.Switch
-                            className='input-check-dark mt-2 text-left'
-                            type='switch'
-                            checked={filterRoaming}
-                            onChange={() => setFilterRoaming(!filterRoaming)}
-                            label={'Roaming en la UE'}
+                            checked={filterLlamadas}
+                            onChange={() => setFilterLlamadas(!filterLlamadas)}
+                            label={'Llamadas ilimitadas'}
                             reverse
                           />
                         </div>
@@ -377,7 +340,7 @@ function ContenedorProductosMovil() {
                               />
                             </div>
                             <div className='my-4'>
-                              <b>{'Datos'}:</b>
+                              <b>{'Fibra Mb'}:</b>
                               <div className='my-4'>
                                 {rangeCapacity[0]} {'GB'} - {rangeCapacity[1]} {'GB'}
                               </div>
@@ -391,40 +354,14 @@ function ContenedorProductosMovil() {
                               />
                             </div>
                             <div className='my-2'>
-                              <b>{'5G'}:</b>
+                              <b>{'Llamadas ilimitadas'}:</b>
                               <div className='my-2'>
                                 <Form.Switch
                                   className='input-check-dark mt-2 text-left'
                                   type='switch'
-                                  checked={filterTechnology}
-                                  onChange={() => setFilterTechnology(!filterTechnology)}
-                                  label={'Mostrar solo ofertas 5G'}
-                                  reverse
-                                />
-                              </div>
-                            </div>
-                            <div className='my-2'>
-                              <b>{'Mensajes'}:</b>
-                              <div className='my-2'>
-                                <Form.Switch
-                                  className='input-check-dark mt-2 text-left'
-                                  type='switch'
-                                  checked={filterMessage}
-                                  onChange={() => setFilterMessage(!filterMessage)}
-                                  label={'Mensajes ilimitados'}
-                                  reverse
-                                />
-                              </div>
-                            </div>
-                            <div className='my-2'>
-                              <b>{'Roaming'}:</b>
-                              <div className='my-2'>
-                                <Form.Switch
-                                  className='input-check-dark mt-2 text-left'
-                                  type='switch'
-                                  checked={filterRoaming}
-                                  onChange={() => setFilterRoaming(!filterRoaming)}
-                                  label={'Roaming en la UE'}
+                                  checked={filterLlamadas}
+                                  onChange={() => setFilterLlamadas(!filterLlamadas)}
+                                  label={'Llamadas ilimitadas'}
                                   reverse
                                 />
                               </div>
@@ -478,4 +415,4 @@ function ContenedorProductosMovil() {
   );
 }
 
-export default ContenedorProductosMovil;
+export default ContenedorProductosMovilFibraTv;

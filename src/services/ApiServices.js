@@ -39,6 +39,16 @@ export const fetchFilterMovilFibra = async () => {
     }
 };
 
+export const fetchFilterMovilFibraTv = async () => {
+    try {
+        const response = await axios.get(`${apiUrl}/filterMovilFibraTv`);
+        return response.data[0];
+    } catch (error) {
+        console.error("Error al obtener las marcas de operadoras:", error);
+        throw error;
+    }
+};
+
 export const fetchOperadorasFibra = async () => {
     try {
         const response = await axios.get(`${apiUrl}/getOperadorasFibra`);
@@ -63,6 +73,16 @@ export const fetchOperadoras = async () => {
 export const fetchOperadorasFibraMovil = async () => {
     try {
         const response = await axios.get(`${apiUrl}/getOperadorasFibraMovil`);
+        return response.data;
+    } catch (error) {
+        console.error("Error al obtener las marcas de operadoras:", error);
+        throw error;
+    }
+};
+
+export const fetchOperadorasFibraMovilTv = async () => {
+    try {
+        const response = await axios.get(`${apiUrl}/getOperadorasFibraMovilTv`);
         return response.data;
     } catch (error) {
         console.error("Error al obtener las marcas de operadoras:", error);
@@ -133,6 +153,16 @@ export const fetchTarifasFibra = async () => {
 export const fetchTarifasMovilFibra = async () => {
     try {
         const response = await axios.get(`${apiUrl}/getTarifasFibraMovil`);
+        return response.data;
+    } catch (error) {
+        console.error("Error al obtener las marcas de operadoras:", error);
+        throw error;
+    }
+};
+
+export const fetchTarifasMovilFibraTv = async () => {
+    try {
+        const response = await axios.get(`${apiUrl}/getTarifasFibraMovilTv`);
         return response.data;
     } catch (error) {
         console.error("Error al obtener las marcas de operadoras:", error);

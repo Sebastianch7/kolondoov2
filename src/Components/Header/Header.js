@@ -20,7 +20,7 @@ function Header({ }) {
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav
-                            className="mx-auto container-menu" navbarScroll>
+                            className="mx-auto container-menu">
                             {items.map((item, key) => (
                                 <ItemMenu key={key} title={t(item.title)} children={item.children} />
                             ))}

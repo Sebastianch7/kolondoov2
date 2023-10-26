@@ -87,20 +87,14 @@ export default function ThankPage() {
             {extraOffer.length > 0 &&
               extraOffer.map((item, index) => {
                 switch (offerLooking?.toLowerCase()) {
-                  case 'movil':
-                    return <TarjetaTarifa key={index} data={item} />;
                   case 'luz':
                     return <TarjetaTarifaLeadEnergia key={index} data={item} TarifaCard/>;
                     case 'gas':
                     return <TarjetaTarifa key={index} data={item} type={'gas'} />
                     case 'luz_y_gas':
                     return <TarjetaTarifa key={index} data={item} type={'gas'} />
-                    case 'fibra':
-                    return <TarjetaTarifa key={index} data={item} />
-                    case 'movil_y_fibra':
-                    return <TarjetaTarifa key={index} data={item} />
                   default:
-                    return null;
+                    return <TarjetaTarifa key={index} data={item} />
                 }
               })
             }
