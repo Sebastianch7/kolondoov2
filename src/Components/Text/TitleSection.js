@@ -13,9 +13,9 @@ function TitleSection({ title, subtitle, center = false, buttons }) {
                 <Col md={12} className={center && 'text-center b-600'}>
                     <Title title={title} />
                     <Subtitle subtitle={subtitle} />
-                    <Row>
+                    <Row className='text-center mx-auto'>
                         {buttons &&
-                            <Stack direction={!isMobile ? "horizontal" : "vertical"}  gap={3}>
+                            <Stack gap={3} className="col-6 mx-auto" direction={!isMobile ? "horizontal" : "vertical"}>
                                 {buttons?.map((item, index) => {
                                     return <Link to={item.url}><ButtonPrimary key={index} icon={item.icon} text={item.title} /></Link>
                                      

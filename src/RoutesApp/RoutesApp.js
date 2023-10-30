@@ -10,6 +10,7 @@ import ComparadorGas from '../Pages/ComparadorGas';
 import ComparadorLuzGas from '../Pages/ComparadorLuzGas';
 import ComparadorFibraMovil from '../Pages/ComparadorFibraMovil';
 import ComparadorFibraMovilTv from '../Pages/ComparadorFibraMovilTv';
+import ComparadorStreaming from '../Pages/ComparadorStreaming';
 
 function RoutesApp() {
     return (
@@ -52,6 +53,8 @@ function RoutesApp() {
             <Route path="/internet_y_telefonia/telefono_con_contrato/:id" element={<Lead />} />
             <Route path="/thank/internet_y_telefonia/telefono_con_contrato/:id" element={<ThankPage />} />
             
+            <Route path="/television_y_streaming/tv" element={<ComparadorStreaming />} />
+            <Route path="/television_y_streaming/streaming" element={<ComparadorStreaming />} />
         </Routes>
     </BrowserRouter>
     );

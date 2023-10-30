@@ -25,15 +25,16 @@ function Home(props) {
                     title={t('bannerHomeTitle')}
                     subtitle={t('bannerHomeSubtitle')}
                     image={'img/energia/banner_luz.png'}
+                    logo={'/img/icons/phone.svg'}
                     buttons={[
                         {
                             title: t('btn_net_phone'),
-                            icon: '/img/flash.png',
+                            icon: '/img/icons/lighting.svg',
                             url: '/internet_y_telefonia/movil'
                         },
                         {
                             title: t('btn_energy'),
-                            icon: '/img/phone.png',
+                            icon: '/img/icons/phone-light.svg',
                             url: '/energia/luz'
                         }
                     ]}

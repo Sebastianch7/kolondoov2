@@ -1,12 +1,9 @@
 import React from 'react';
 import { Container, Row, Col, Stack, Carousel, CarouselItem } from 'react-bootstrap';
 import ButtonPrimary from '../Button/ButtonPrimary';
-import InterSection from '../Utils/InterSection';
 import { isMobile } from 'react-device-detect'
-import CarruselItem from '../Carrusel/CarruselItem';
 import Blog from '../../Content/Blog.json'
 import TarjetaBlogFull from '../Tarjeta/TarjetaBlogFull';
-import { Card } from 'react-bootstrap';
 
 function ContenedorTarjetaBlog({ children }) {
     return (

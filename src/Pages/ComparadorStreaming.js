@@ -3,18 +3,17 @@ import Header from '../Components/Header/Header';
 import Banner from '../Components/Banner/Banner';
 import Footer from '../Components/Footer/Footer';
 import FormSuscripcion from '../Components/Forms/FormSuscripcion';
-import ContenedorProductosLuzGas from '../Components/Contenedor/ContenedorProductosLuzGas';
+import ContenedorProductosFibra from '../Components/Contenedor/ContenedorProductosFibra';
+import ContenedorProductosStreaming from '../Components/Contenedor/ContenedorProductosStreaming';
 
-function ComparadorLuzGas() {
+function ComparadorStreaming() {
     return (
         <div>
             <Header></Header>
             <Banner
-                title={'Comparador de Tarifas Luz y Gas'}
+                title={'Comparador de plataformas de streaming'}
                 subtitle='¡Te ayudamos a encontrar la tarifa que mejor se adapte a ti!'
-                image={'/img/energia/banner_luz_y_gas.png'}
-                logo={'/img/icons/luz.svg'}
-                logo2={'/img/icons/gas.svg'}
+                image={'/img/television_streaming/banner_streaming.png'}
             >
                 <FormSuscripcion
                     text={'Introduce tu código postal'}
@@ -22,11 +21,11 @@ function ComparadorLuzGas() {
                     politicy
                 />
             </Banner>
-            <ContenedorProductosLuzGas>
-            </ContenedorProductosLuzGas>
+            <ContenedorProductosStreaming>
+            </ContenedorProductosStreaming>
             <Footer></Footer>
         </div>
     );
 }
 
-export default ComparadorLuzGas;
+export default ComparadorStreaming;

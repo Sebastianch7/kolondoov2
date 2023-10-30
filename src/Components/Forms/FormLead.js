@@ -69,7 +69,7 @@ export default function FormLead({ idPlan, landing }) {
                                     className='input-check mt-2'
                                     type='switch'
                                     checked={checkInAsesoria}
-                                    label={'Acepto que Kolondoo me asesore telefónicamente sobre el producto y servicio elegido de acuerdo con su Política de Privacidad'}
+                                    label={'Acepto que Vuskoo me asesore telefónicamente sobre el producto y servicio elegido de acuerdo con su Política de Privacidad'}
                                     onChange={() => setCheckInAsesoria(!checkInAsesoria)}
                                 />
                             </div>
@@ -78,7 +78,7 @@ export default function FormLead({ idPlan, landing }) {
                                     className='input-check mt-2'
                                     type='switch'
                                     checked={checkInComercial}
-                                    label={'Acepto recibir comunicaciones comerciales de Kolondoo. Más información en Política de Privacidad'}
+                                    label={'Acepto recibir comunicaciones comerciales de Vuskoo. Más información en Política de Privacidad'}
                                     onChange={() => setCheckInComercial(!checkInComercial)}
                                 />
                             </div>

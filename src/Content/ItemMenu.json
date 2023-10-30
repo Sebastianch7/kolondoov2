@@ -29,11 +29,11 @@
         "children": [
             {
                 "name": "Paquetes de TV",
-                "url": ""
+                "url": "/television_y_streaming/tv"
             },
             {
                 "name": "Plataformas de streaming",
-                "url": ""
+                "url": "/television_y_streaming/streaming"
             }
         ]
     },

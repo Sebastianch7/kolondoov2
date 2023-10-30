@@ -21,7 +21,7 @@ function Footer(props) {
                         <ul>
                             <li>Calle Barquillo, 8</li>
                             <li>28004 Madrid - España</li>
-                            <li>hola@kolondoo.com</li>
+                            <li>hola@vuskoo.com</li>
                         </ul>
                     </Col>
                     {!isMobile &&
@@ -48,9 +48,9 @@ function Footer(props) {
                             </Col>
                         </>}
                     <Col xs={6} sm={3}>
-                        <h5>kolondoo.com</h5>
+                        <h5>vuskoo.com</h5>
                         <ul>
-                            <li><a href="#">Kolondoo.com</a></li>
+                            <li><a href="#">vuskoo.com</a></li>
                             <li><a href="#">Quiénes somos</a></li>
                             <li><a href="#">Contacta</a></li>
                         </ul>
@@ -58,7 +58,7 @@ function Footer(props) {
                 </Row>
             </Container>
             <div className="footer-copyright text-white px-3">
-                <p>COPYRIGHT © 2021 KOLONDOO. TODOS LOS DERECHOS RESERVADOS | POLÍTICA DE PRIVACIDAD | AVISO LEGAL | POLÍTICA DE COOKIES | MAPA WEB</p>
+                <p>COPYRIGHT © 2021 VUSKOO. TODOS LOS DERECHOS RESERVADOS | POLÍTICA DE PRIVACIDAD | AVISO LEGAL | POLÍTICA DE COOKIES | MAPA WEB</p>
             </div>
         </footer>
     );

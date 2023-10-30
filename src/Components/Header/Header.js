@@ -15,7 +15,7 @@ function Header({ }) {
             <Navbar sticky='top' expand={"lg"} className="navbar-light bg-white clean-navbar my-4 my-xxl-0">
                 <Container className='container-header justify-content-between'>
                     <Navbar.Brand>
-                        <a href='/'><img src="/img/Logo.png" alt="Logo" /></a>
+                        <a href='/'><img src="/img/logos/logo.svg" alt="Logo" /></a>
                     </Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
