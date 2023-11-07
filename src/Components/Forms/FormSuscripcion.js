@@ -4,7 +4,6 @@ import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import ButtonPrimary from '../Button/ButtonPrimary';
 import InputText from '../Input/InputText';
-import InputRange from '../Input/InputRange';
 import InputCheck from '../Input/InputCheck';
 import { isMobile } from 'react-device-detect';
 

@@ -3,8 +3,8 @@ import { Card, Col } from 'react-bootstrap';
 function TarjetaBlogFull({ data }) {
     const { date, img, title, button, url, type, content } = data
     return (
-        <Col md={4}>
-            <Card className='tarjeta tarjeta-blog-max'>
+        <Col className='mx-3'>
+            <Card className='tarjeta'>
                 <Card.Img src={img} alt={img} />
                 <Card.ImgOverlay>
                     <div className='info-card'>

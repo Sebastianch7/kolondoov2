@@ -13,12 +13,16 @@ export default function InputCheck(props) {
                 className='input-check mt-2'
                 type='switch'
                 checked={checkIn}
-                label={props.text}
+                label={
+                    <div>
+                        {props.text} 
+                        {props.politica && <a href="politica-privacidad">la Política de Privacidad</a>}
+                    </div>
+                }
                 onChange={(e) => {
-                    enviarValorAlPadre()
-                    setCheckIn(!checkIn)
-                }
-                }
+                    enviarValorAlPadre();
+                    setCheckIn(!checkIn);
+                }}
             />
         </div>
     )

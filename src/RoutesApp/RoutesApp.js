@@ -11,6 +11,8 @@ import ComparadorLuzGas from '../Pages/ComparadorLuzGas';
 import ComparadorFibraMovil from '../Pages/ComparadorFibraMovil';
 import ComparadorFibraMovilTv from '../Pages/ComparadorFibraMovilTv';
 import ComparadorStreaming from '../Pages/ComparadorStreaming';
+import QuienesSomos from '../Pages/QuienesSomos';
+import Contactenos from '../Pages/Contactenos';
 
 function RoutesApp() {
     return (
@@ -55,6 +57,9 @@ function RoutesApp() {
             
             <Route path="/television_y_streaming/tv" element={<ComparadorStreaming />} />
             <Route path="/television_y_streaming/streaming" element={<ComparadorStreaming />} />
+
+            <Route path="/quienes_somos" element={<QuienesSomos />} />
+            <Route path="/contactenos" element={<Contactenos />} />
         </Routes>
     </BrowserRouter>
     );

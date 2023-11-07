@@ -2,7 +2,7 @@
     {
         "icon": "/img/icons/tv.svg",
         "title": "Televisión y streaming",
-        "text": [
+        "list": [
             {
                 "item": "Paquetes de TV"
             },
@@ -15,7 +15,7 @@
     {
         "icon": "/img/icons/euro.svg",
         "title": "Finanzas",
-        "text": [
+        "list": [
             {
                 "item": "Tarjetas de crédito"
             },
@@ -35,7 +35,7 @@
     {
         "icon": "/img/icons/hogar.svg",
         "title": "Seguros",
-        "text": [
+        "list": [
             {
                 "item": "Hogar"
             },
@@ -55,7 +55,7 @@
     {
         "icon": "/img/icons/check.svg",
         "title": "Seguridad",
-        "text": [
+        "list": [
             {
                 "item": "Alarmas para casa"
             },

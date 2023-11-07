@@ -3,31 +3,34 @@ import { Col } from 'react-bootstrap';
 import Card from 'react-bootstrap/Card';
 import ButtonPrimary from '../Button/ButtonPrimary';
 
-function TarjetaProducto({ data }) {
-    const { icon, title, text, button } = data
+function TarjetaProducto({ data, media = 3, large }) {
+    const { icon, title, list = null, button, text, } = data
     return (
-        <Col sm={12} md={3} className=''>
-            <Card className='tarjeta tarjeta-producto'>
-                <Card.Body className='card-icon'>
-                    <img src={icon} alt={icon} />
-                </Card.Body>
-                <Card.Body>
-                    <Card.Title>{title}</Card.Title>
-                </Card.Body>
-                <Card.Body className='py-0'>
-                    <ul>
-                        {
-                            text.map((item, index) => {
-                                return <li key={index}>{item.item}</li>
-                            })
-                        }
-                    </ul>
-                </Card.Body>
-                {button && <Card.Body>
-                    <ButtonPrimary text={button} />
-                </Card.Body>}
-            </Card>
-        </Col>
+
+        <Card className={`tarjeta tarjeta-producto m-1`}>
+            <Card.Body className='card-icon'>
+                <img src={icon} alt={icon} />
+            </Card.Body>
+            <Card.Title>
+                <h6>{title}</h6>
+            </Card.Title>
+            <Card.Body className='p-0'>
+                {list && <ul>
+                    {
+                        list?.map((item, index) => {
+                            return <li key={index}>{item.item}</li>
+                        })
+                    }
+                </ul>}
+                {text &&
+                    <p className='font-09'>{text}</p>
+                }
+            </Card.Body>
+            {button && <Card.Body>
+                <ButtonPrimary text={button} />
+            </Card.Body>}
+        </Card>
+
     );
 }
 
