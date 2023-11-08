@@ -9,15 +9,18 @@ function BannerImageFull({ title = '', text1 = '', text2 = '', buttons = false, 
         <section className="clean-block">
             <Container fluid>
                 <div className="row banner-full align-items-center mt-3">
-                    <Col sm={12} md={{ span: 5, offset: 1 }} xxl={{ span: 3, offset: 3}}>
+                    <Col sm={12} md={{ span: 5, offset: 1 }} xxl={{ span: 3, offset: 3 }}>
                         <Row>
                             <Col sm={12} className='text-left'>
-                                {children ? <TitleSection
-                                    title={title}
-                                    text1={text1}
-                                    text2={text2}
-                                    buttons={buttons}
-                                /> : children}
+                                {!children ?
+                                    <TitleSection
+                                        title={title}
+                                        text1={text1}
+                                        text2={text2}
+                                        buttons={buttons}
+                                    />
+                                    :
+                                    children}
                             </Col>
                         </Row>
                     </Col>

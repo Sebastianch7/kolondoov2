@@ -8,10 +8,10 @@ import { CardGroup } from 'react-bootstrap';
 
 function ContenedorTarjetaBlog({ children }) {
     return (
-        <Container fluid className='container-tarjeta-blog'>
+        <Container className='container-tarjeta-blog'>
             {children}
             <Row className="d-flex justify-content-center align-items-center">
-                <Col md={10} lg={9} xxl={6}>
+                <Col md={12}>
                     {/* <Row className="justify-content-center mx-auto"> */}
                     {!isMobile ? (
                         <CardGroup>

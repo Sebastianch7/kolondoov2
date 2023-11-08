@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import { isMobile } from 'react-device-detect';
-
+import { Link } from 'react-router-dom';
 
 function Footer(props) {
     return (
@@ -38,21 +38,21 @@ function Footer(props) {
                             <Col sm={3}>
                                 <h5>Tarifas</h5>
                                 <ul>
-                                    <li><a href="#">Tarifas</a></li>
-                                    <li><a href="#">Sólo fibra</a></li>
-                                    <li><a href="#">Tarifa móvil</a></li>
-                                    <li><a href="#">Fibra+móvil+TV</a></li>
-                                    <li><a href="#">Fibra+móvil</a></li>
-                                    <li><a href="#">Luz</a></li>
+                                    {/* <li><Link to={''}>Tarifas</Link></li> */}
+                                    <li><Link to={'/internet_y_telefonia/fibra'}>Sólo fibra</Link></li>
+                                    <li><Link to={'/internet_y_telefonia/movil'}>Tarifa móvil</Link></li>
+                                    <li><Link to={'/internet_y_telefonia/movil_fibra_tv'}>Fibra+móvil+TV</Link></li>
+                                    <li><Link to={'/internet_y_telefonia/movil_y_fibra'}>Fibra+móvil</Link></li>
+                                    <li><Link to={'/energia/luz'}>Luz</Link></li>
                                 </ul>
                             </Col>
                         </>}
                     <Col xs={6} sm={3}>
                         <h5>vuskoo.com</h5>
                         <ul>
-                            <li><a href="#">vuskoo.com</a></li>
-                            <li><a href="#">Quiénes somos</a></li>
-                            <li><a href="#">Contacta</a></li>
+                            <li><Link to="/">vuskoo.com</Link></li>
+                            <li><Link to="/about">Quiénes Somos</Link></li>
+                            <li><Link to="/about">Contactanos</Link></li>
                         </ul>
                     </Col>
                 </Row>

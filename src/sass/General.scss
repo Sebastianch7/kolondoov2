@@ -161,8 +161,8 @@ $breakpoint-lg: 1360px;
     &-blog {
       background-image: url('../../public/img/backgroud-container-blog.png');
       background-repeat: no-repeat;
-      background-size: cover;
-      background-attachment: fixed;
+      /* background-size: cover;
+      background-attachment: fixed; */
 
     }
   }
@@ -735,7 +735,7 @@ footer {
 }
 
 .subtitle {
-  font-size: 1rem;
+  //font-size: 1rem;
   line-height: 1.5;
 }
 
@@ -829,4 +829,9 @@ footer {
   @include media(xs) {
     margin-right: 15px;
   }
+}
+
+.load{
+  width: 200px;
+  height: auto;
 }

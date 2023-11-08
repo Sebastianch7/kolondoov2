@@ -6,9 +6,7 @@ export default function Load() {
     return (
         <Row>
             <Col xs={12} className='text-center'>
-                <Spinner animation="border" role="status">
-                    <span className="visually-hidden">caargando información...</span>
-                </Spinner>
+                <img className='img-fluid load' src='/img/Loader_Kolondoo.png' />
             </Col>
         </Row>
     );
