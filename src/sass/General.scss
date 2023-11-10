@@ -65,11 +65,29 @@ $contrast: #252625;
 $white: #ffffff;
 $black: #000000;
 $gray: #F1F1F1;
+$green: #3BB68A;
+$red: #E84225;
 
 .color {
   &-primary {
     color: $colorPrimary;
   }
+
+  &-secundary{
+    color: $colorSecundary;
+  }
+
+  &-green {
+    color: $green;
+  }
+
+  &-red {
+    color: $red;
+  }
+}
+
+.b-gray {
+  background-color: $gray !important;
 }
 
 /* media */
@@ -831,7 +849,14 @@ footer {
   }
 }
 
-.load{
-  width: 200px;
+.load {
+  width: 150px;
   height: auto;
+  padding: 10px;
+}
+
+tr,
+td,
+th {
+  font-family: $MontHeavy !important;
 }

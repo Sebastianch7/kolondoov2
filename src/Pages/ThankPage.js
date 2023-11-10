@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import HeaderLead from '../Components/Header/HeaderLead';
-import { Container, Row, Col, Card } from 'react-bootstrap';
+import { Container, Row, Col } from 'react-bootstrap';
 import { useLocation } from 'react-router-dom';
-import TarjetaTarifaLeadTelefonia from '../Components/Tarjeta/TarjetaTarifaLeadTelefonia';
 import { isMobile } from 'react-device-detect';
 import Footer from '../Components/Footer/Footer';
 import TarjetaTarifaLeadEnergia from '../Components/Tarjeta/TarjetaTarifaLeadEnergia';
 import TarjetaTarifa from '../Components/Tarjeta/TarjetaTarifa'
 import { getDetailOffer, getExtraOffer } from '../services/ApiServices'
-import Header from '../Components/Header/Header';
 import TarjetaTarifaLead from '../Components/Tarjeta/TarjetaTarifaLead';
 
 export default function ThankPage() {
@@ -45,7 +43,7 @@ export default function ThankPage() {
 
     fetchTariffs();
   }, [idPlan]);
-  
+
   useEffect(() => {
     const fetchTariffs = async () => {
       try {
@@ -64,7 +62,7 @@ export default function ThankPage() {
 
   return (
     <>
-    {/* <Header></Header> */}
+      {/* <Header></Header> */}
       <HeaderLead logo={infoOffer?.logo} />
       <Container fluid className='bg-primary p-5'>
         <Row className="justify-content-md-center d-flex flex-column flex-md-row">
@@ -73,7 +71,7 @@ export default function ThankPage() {
             <p>En breve un agente contactará contigo.</p>
           </Col>
           <Col xs={12} xxl={5} md={8} className='my-2' style={isMobile ? { order: 2 } : { order: 1 }}>
-             <TarjetaTarifaLead key={0} data={infoOffer} service={offerLooking} thanks />;
+            <TarjetaTarifaLead key={0} data={infoOffer} service={offerLooking} thanks />;
           </Col>
 
         </Row>
@@ -88,10 +86,10 @@ export default function ThankPage() {
               extraOffer.map((item, index) => {
                 switch (offerLooking?.toLowerCase()) {
                   case 'luz':
-                    return <TarjetaTarifaLeadEnergia key={index} data={item} TarifaCard/>;
-                    case 'gas':
+                    return <TarjetaTarifaLeadEnergia key={index} data={item} TarifaCard />;
+                  case 'gas':
                     return <TarjetaTarifa key={index} data={item} type={'gas'} />
-                    case 'luz_y_gas':
+                  case 'luz_y_gas':
                     return <TarjetaTarifa key={index} data={item} type={'gas'} />
                   default:
                     return <TarjetaTarifa key={index} data={item} />
