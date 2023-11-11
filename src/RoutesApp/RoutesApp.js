@@ -15,6 +15,7 @@ import QuienesSomos from '../Pages/QuienesSomos';
 import Contactenos from '../Pages/Contactenos';
 import HerramientaLuz from '../Pages/HerramientaLuz';
 import HerramientaTest from '../Pages/HerramientaTest';
+import RaizTelefonia from '../Pages/RaizTelefonia';
 
 function RoutesApp() {
     return (
@@ -22,7 +23,7 @@ function RoutesApp() {
         <Routes>
             <Route path="/" element={<Home />} />
             
-            <Route path="/internet_y_telefonia/" element={<ComparadorMovil />} />
+            <Route path="/internet_y_telefonia/" element={<RaizTelefonia />} />
             
             <Route path="/internet_y_telefonia/movil" element={<ComparadorMovil />} />
             <Route path="/internet_y_telefonia/movil/:id" element={<Lead />} />
