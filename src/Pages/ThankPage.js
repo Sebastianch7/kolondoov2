@@ -6,7 +6,7 @@ import { isMobile } from 'react-device-detect';
 import Footer from '../Components/Footer/Footer';
 import TarjetaTarifaLeadEnergia from '../Components/Tarjeta/TarjetaTarifaLeadEnergia';
 import TarjetaTarifa from '../Components/Tarjeta/TarjetaTarifa'
-import { getDetailOffer, getExtraOffer } from '../services/ApiServices'
+import { getDetailOffer, getExtraOffer } from '../services/ApiServices';
 import TarjetaTarifaLead from '../Components/Tarjeta/TarjetaTarifaLead';
 
 export default function ThankPage() {

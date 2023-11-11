@@ -3,9 +3,9 @@ import Header from '../Components/Header/Header';
 import Banner from '../Components/Banner/Banner';
 import TarjetaProducto from '../Components/Tarjeta/TarjetaProducto';
 import ContenedorTarjeta from '../Components/Contenedor/ContenedorTarjeta';
+import ContenedorTarjetaBlog from '../Components/Contenedor/ContenedorTarjetaBlog';
 import TitleSection from '../Components/Text/TitleSection';
 import Footer from '../Components/Footer/Footer';
-import ContenedorTarjetaBlog from '../Components/Contenedor/ContenedorTarjetaBlog';
 import BannerReverse from '../Components/Banner/BannerReverse';
 import FormSuscripcion from '../Components/Forms/FormSuscripcion';
 import InterSection from '../Components/Utils/InterSection';
@@ -50,14 +50,7 @@ function Home(props) {
                         })
                     }
                 </ContenedorTarjeta>
-                <InterSection></InterSection>
-                <ContenedorTarjetaBlog>
-                    <TitleSection
-                        title={'últimas noticias'}
-                        subtitle={'¡Échale un vistazo a nuestro blog y mantente siempre actualizado!'}
-                        center
-                    />
-                </ContenedorTarjetaBlog>
+                <ContenedorTarjetaBlog />
                 {
                     !isMobile && <InterSection></InterSection>
                 }

@@ -1,13 +1,15 @@
 import React from 'react';
 import { Button, Col } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
-function ButtonPrimary({ icon, text, btnStatus, type, isSuccess }) {
+function ButtonPrimary({ icon, text, btnStatus, type, isSuccess, url }) {
     return (
-        <Button 
+        <Link 
         key={text} 
-        className={`${isSuccess} mt-2 mt-md-0`} 
+        className={`${isSuccess} mt-2 mt-md-0 btn btn-primary`} 
         type={type} 
-        disabled={btnStatus}>{icon && <img src={icon} />} {text}</Button>
+        to={url}
+        disabled={btnStatus}>{icon && <img src={icon} />} {text}</Link>
     );
 }
 

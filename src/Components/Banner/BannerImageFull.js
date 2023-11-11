@@ -4,7 +4,7 @@ import Container from 'react-bootstrap/Container';
 import TitleSection from '../Text/TitleSection';
 import InterSection from '../Utils/InterSection';
 
-function BannerImageFull({ title = '', text1 = '', text2 = '', buttons = false, children, image, logo = '', logo2 = '' }) {
+function BannerImageFull({ title = '', text1 = '', text2 = '', buttons = false, children, image, logo = '', logo2 = '', imgFluid = false }) {
     return (
         <section className="clean-block">
             <Container fluid>
@@ -26,7 +26,7 @@ function BannerImageFull({ title = '', text1 = '', text2 = '', buttons = false, 
                     </Col>
                     <Col sm={12} md={6} className='d-none d-md-block'>
                         <div>
-                            <img className='' src={image} />
+                            <img className={imgFluid && 'img-fluid'} src={image} />
                         </div>
                     </Col>
                 </div>

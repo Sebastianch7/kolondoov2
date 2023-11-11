@@ -75,7 +75,7 @@ $red: #E84225;
     color: $colorPrimary;
   }
 
-  &-secundary{
+  &-secundary {
     color: $colorSecundary;
   }
 
@@ -158,14 +158,17 @@ $breakpoint-lg: 1360px;
 
 
 /* container */
-.container-fluid{
+.container-fluid {
   overflow: hidden !important;
+  max-width: 1440px !important;
 }
+
 .container {
   &-menu {
     display: flex;
     justify-content: space-evenly;
     width: 100%;
+
     a {
       font-size: 1rem;
       font-style: normal;
@@ -184,11 +187,15 @@ $breakpoint-lg: 1360px;
     &-blog {
       background-image: url('../../public/img/backgroud-container-blog.png');
       background-repeat: no-repeat;
+      background-size: cover;
       /* background-size: cover;
       background-attachment: fixed; */
     }
+
     &-pregunta {
       background-image: url('../../public/img/backgroud-container-pregunta.png');
+      background-repeat: no-repeat;
+      background-size: cover;
     }
   }
 
@@ -268,6 +275,7 @@ $breakpoint-lg: 1360px;
   border-radius: 0px;
   background-color: $white;
   margin: 1.5rem auto;
+
   &-footer {
     &-small {
       font-size: 0.65rem;
@@ -443,7 +451,7 @@ $breakpoint-lg: 1360px;
         color: $colorPrimary;
         font-weight: 600;
         font-size: 1rem;
-        height: 60px;
+        //height: 60px;
         margin-top: 10px;
         display: flex;
         align-items: center;
@@ -868,15 +876,16 @@ th {
   font-family: $MontSemiBold !important;
 }
 
-.pregunta-frecuente{
-  &-item{
+.pregunta-frecuente {
+  &-item {
     border-radius: 20px !important;
     margin-bottom: 15px;
     border: 0px solid transparent;
     box-shadow: 0px 0px 10px $gray;
   }
-  &-header{
-    button{
+
+  &-header {
+    button {
       padding: 10px;
       border-radius: 20px !important;
       background-color: white;
@@ -885,22 +894,42 @@ th {
   }
 }
 
-.accordion-button:not(.collapsed){
+.accordion-button:not(.collapsed) {
   background-color: white;
-  box-shadow: none;  
+  box-shadow: none;
 }
 
-.accordion-button::after{
+.accordion-button::after {
   background-image: url('../../public/img/icons/flechaAcordionDown.svg');
   margin-left: 15px;
-  
+
 }
 
-.accordion-button:not(.collapsed)::after{
+.accordion-button:not(.collapsed)::after {
   background-image: url('../../public/img/icons/flechaAcordionUp.svg')
 }
 
-.shadow{
+.shadow {
   box-shadow: 0px 0px 10px #19467C1A !important;
   border: 0px solid transparent;
+}
+
+.listaAlternativa {
+  li {
+    list-style-type: none !important;
+    padding-left: 20px;
+    color: $colorSecundary;
+    background-image: url('../../public/img/icons/circleli.svg');
+    background-position: 0 6px;
+    background-size: 10px;
+    background-repeat: no-repeat;
+
+    p {
+      color: $black;
+    }
+
+    h5 {
+      color: $colorPrimary;
+    }
+  }
 }

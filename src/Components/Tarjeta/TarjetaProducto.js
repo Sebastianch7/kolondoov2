@@ -7,7 +7,7 @@ function TarjetaProducto({ data, media = 3, large }) {
     const { icon, title, list = null, button, text, } = data
     return (
 
-        <Card className={`tarjeta tarjeta-producto m-1`}>
+        <Card className={`tarjeta tarjeta-producto m-1 shadow`}>
             <Card.Body className='card-icon'>
                 <img src={icon} alt={icon} />
             </Card.Body>

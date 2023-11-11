@@ -20,19 +20,16 @@ function ContenedorTarjeta({ children, media, title, subtitle, fluid }) {
                 <Row>
                     <Col lg={12}>
                         {!isMobile ?
-                            
                             <CardGroup>
-                                { children }
+                                {children}
                             </CardGroup>
-                            
-                                
-                             :
-                <Accordion defaultActiveKey="0">
-                    {children}
-                </Accordion>
+                            :
+                            <Accordion defaultActiveKey="0">
+                                {children}
+                            </Accordion>
                         }
-            </Col>
-        </Row >
+                    </Col>
+                </Row >
             </Container >
         </>
     );

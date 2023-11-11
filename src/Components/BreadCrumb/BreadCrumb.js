@@ -18,7 +18,7 @@ function BreadCrumb({ url }) {
                             <>
                                 <Breadcrumb.Item href="/">Vuskoo</Breadcrumb.Item>
                                 {locations.map((item, index) => {
-                                    return <Breadcrumb.Item key={index} className='capitalize'>{item.replaceAll('_', ' ')}</Breadcrumb.Item>
+                                    return <Breadcrumb.Item key={index} href={`/${item}`} className='capitalize'>{item.replaceAll('_', ' ')}</Breadcrumb.Item>
                                 })}
                             </>
                         }

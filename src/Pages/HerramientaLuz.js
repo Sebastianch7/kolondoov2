@@ -76,7 +76,7 @@ export default function HerramientaLuz() {
     return (
         <>
             <Header></Header>
-            <Container fluid className='p-0 m-0'>
+            <Container fluid className='p-md-0 m-md-0 mx-xxl-auto'>
                 <Card className='tarjeta mb-4 px-4 p-sm-5 b-gray border-0'>
                     <TitleSection
                         center
