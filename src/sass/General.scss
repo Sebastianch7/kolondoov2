@@ -26,8 +26,9 @@ body {
 
 // Define una variable para la fuente
 $MontRegular: 'MontRegular', sans-serif;
-$MontHeavy: 'MontSemiBold', sans-serif;
 $MontSemiBold: 'MontSemiBold', sans-serif;
+$MontHeavy: 'MontHeavy', sans-serif;
+
 
 // Aplica la fuente a elementos específicos o a todo el documento
 * {
@@ -54,9 +55,10 @@ b,
 .card-title,
 .font-bold,
 .tarjeta-tarifa-item-service {
-  font-family: $MontHeavy !important;
+  font-family: $MontSemiBold !important;
   font-weight: 800 !important;
 }
+
 
 /* Colors */
 $colorPrimary : #19467c;
@@ -124,10 +126,10 @@ $breakpoint-lg: 1360px;
 
 .banner {
 
-  &-full {
+  /* &-full {
     width: 100% !important;
     height: auto !important;
-  }
+  } */
 
   &-icon {
     background-color: #F1F1F1;
@@ -154,13 +156,16 @@ $breakpoint-lg: 1360px;
   padding: 0px;
 }
 
+
 /* container */
+.container-fluid{
+  overflow: hidden !important;
+}
 .container {
   &-menu {
     display: flex;
     justify-content: space-evenly;
     width: 100%;
-
     a {
       font-size: 1rem;
       font-style: normal;
@@ -181,7 +186,9 @@ $breakpoint-lg: 1360px;
       background-repeat: no-repeat;
       /* background-size: cover;
       background-attachment: fixed; */
-
+    }
+    &-pregunta {
+      background-image: url('../../public/img/backgroud-container-pregunta.png');
     }
   }
 
@@ -215,7 +222,7 @@ $breakpoint-lg: 1360px;
   padding-top: 10px;
   border-radius: 0px;
   height: 40px;
-  font-family: $MontHeavy;
+  font-family: $MontSemiBold;
   font-size: 1rem;
   font-style: normal;
   font-weight: 800;
@@ -260,7 +267,7 @@ $breakpoint-lg: 1360px;
 .tarjeta {
   border-radius: 0px;
   background-color: $white;
-
+  margin: 1.5rem auto;
   &-footer {
     &-small {
       font-size: 0.65rem;
@@ -858,5 +865,42 @@ footer {
 tr,
 td,
 th {
-  font-family: $MontHeavy !important;
+  font-family: $MontSemiBold !important;
+}
+
+.pregunta-frecuente{
+  &-item{
+    border-radius: 20px !important;
+    margin-bottom: 15px;
+    border: 0px solid transparent;
+    box-shadow: 0px 0px 10px $gray;
+  }
+  &-header{
+    button{
+      padding: 10px;
+      border-radius: 20px !important;
+      background-color: white;
+      box-shadow: none;
+    }
+  }
+}
+
+.accordion-button:not(.collapsed){
+  background-color: white;
+  box-shadow: none;  
+}
+
+.accordion-button::after{
+  background-image: url('../../public/img/icons/flechaAcordionDown.svg');
+  margin-left: 15px;
+  
+}
+
+.accordion-button:not(.collapsed)::after{
+  background-image: url('../../public/img/icons/flechaAcordionUp.svg')
+}
+
+.shadow{
+  box-shadow: 0px 0px 10px #19467C1A !important;
+  border: 0px solid transparent;
 }

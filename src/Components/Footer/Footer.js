@@ -10,14 +10,14 @@ function Footer(props) {
                 {isMobile &&
                     <Row className="justify-content-center text-center mb-4">
                         <Col>
-                            <img className='footer-img-mobile' src='/img/logoReverse.png' alt="Logo" />
+                            <img className='footer-img-mobile' src='/img/logoReverse.svg' alt="Logo" />
                         </Col>
                     </Row>
 
                 }
                 <Row>
                     <Col xs={6} sm={3}>
-                        {!isMobile && <img src='/img/logoReverse.png' />}
+                        {!isMobile && <img src='/img/logoReverse.svg' />}
                         <ul>
                             <li>Calle Barquillo, 8</li>
                             <li>28004 Madrid - España</li>

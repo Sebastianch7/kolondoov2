@@ -5,15 +5,15 @@ import TitleSection from '../Text/TitleSection';
 
 function BannerReverse({ title = '', subtitle = '', buttons = false, children, image }) {
     return (
-        <section className="clean-block about-us p-0 mb-0">
+        <section className="">
             <Container>
                 <div className="row justify-content-center align-items-center mt-0">
-                    <Col sm={12} md={5} className='d-none d-md-block'>
+                    <Col sm={12} md={6} className='d-none d-md-block'>
                         <div>
                             <img className='img-fluid' src={image} />
                         </div>
                     </Col>
-                    <Col sm={12} md={5}>
+                    <Col sm={12} md={6}>
                         <Row>
                             <Col sm={12} md={12}>
                                 <TitleSection

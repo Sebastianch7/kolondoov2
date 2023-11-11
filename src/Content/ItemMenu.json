@@ -61,5 +61,30 @@
                 "url": ""
             }
         ]
+    },
+    {
+        "title": "Herramientas",
+        "children": [
+            {
+                "name": "Precio de la luz hoy",
+                "url": "/herramientas/precio_de_la_luz_hoy"
+            },
+            {
+                "name": "Test de valocidad",
+                "url": "/herramientas/test_de_velocidad"
+            },
+            {
+                "name": "Suministros",
+                "url": "/energia/luz_y_gas"
+            },
+            {
+                "name": "Seguros",
+                "url": ""
+            },
+            {
+                "name": "Cobertura",
+                "url": ""
+            }
+        ]
     }
 ]

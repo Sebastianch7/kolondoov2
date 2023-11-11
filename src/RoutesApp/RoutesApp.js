@@ -14,6 +14,7 @@ import ComparadorStreaming from '../Pages/ComparadorStreaming';
 import QuienesSomos from '../Pages/QuienesSomos';
 import Contactenos from '../Pages/Contactenos';
 import HerramientaLuz from '../Pages/HerramientaLuz';
+import HerramientaTest from '../Pages/HerramientaTest';
 
 function RoutesApp() {
     return (
@@ -60,7 +61,9 @@ function RoutesApp() {
             <Route path="/television_y_streaming/streaming" element={<ComparadorStreaming />} />
 
             <Route path="/about" element={<QuienesSomos />} />
-            <Route path="/herramienta_luz" element={<HerramientaLuz />} />
+            
+            <Route path="/herramientas/precio_de_la_luz_hoy" element={<HerramientaLuz />} />
+            <Route path="/herramientas/test_de_velocidad" element={<HerramientaTest />} />
             
             <Route path="/contactenos" element={<Contactenos />} />
         </Routes>
