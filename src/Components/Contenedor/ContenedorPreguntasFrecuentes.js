@@ -13,7 +13,7 @@ export default function ContenedorPreguntasFrecuentes({data, image}) {
                 center
                 title={'Preguntas'}
                 titleAlt={'frecuentes'}
-                i
+                
             />
             <Container fluid className='p-md-0 m-md-0 mx-xxl-auto'>
                 <BannerImageFull

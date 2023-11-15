@@ -42,21 +42,21 @@ export default function TarjetaTarifaLeadEnergia({ data, TarifaCard }) {
                                 <Col md={6} xs={6}>
                                     <h6>Potencia</h6>
                                     <Row className='d-flex'>
-                                        <ItemTarifaLuz title={'Valle'} value={data.luz_precio_potencia_valle} extension={'€/kW'} />
-                                        <ItemTarifaLuz title={'Punta'} value={data.luz_precio_potencia_punta} extension={'€/kW'} />
+                                        <ItemTarifaLuz title={'Valle'} value={data?.luz_precio_potencia_valle} extension={'€/kW'} />
+                                        <ItemTarifaLuz title={'Punta'} value={data?.luz_precio_potencia_punta} extension={'€/kW'} />
                                     </Row>
                                 </Col>
                                 <Col md={6} xs={6}>
                                     <h6>Energía</h6>
                                     {parseInt(luz_precio_energia_24h) !== 0 ?
                                         <Row className='d-flex'>
-                                            <ItemTarifaLuz title={'Valle'} value={data.luz_precio_energia_punta} extension={'€/kWh'} />
-                                            <ItemTarifaLuz title={'LLano'} value={data.luz_precio_energia_llano} extension={'€/kWh'} />
-                                            <ItemTarifaLuz title={'Punta'} value={data.luz_precio_energia_punta} extension={'€/kWh'} />
+                                            <ItemTarifaLuz title={'Valle'} value={data?.luz_precio_energia_punta} extension={'€/kWh'} />
+                                            <ItemTarifaLuz title={'LLano'} value={data?.luz_precio_energia_llano} extension={'€/kWh'} />
+                                            <ItemTarifaLuz title={'Punta'} value={data?.luz_precio_energia_punta} extension={'€/kWh'} />
                                         </Row>
                                         :
                                         <Row className='d-flex'>
-                                            <ItemTarifaLuz title={'24h'} value={data.luz_precio_energia_24h} extension={'€/kWh'} />
+                                            <ItemTarifaLuz title={'24h'} value={data?.luz_precio_energia_24h} extension={'€/kWh'} />
                                         </Row>
                                     }
                                 </Col>

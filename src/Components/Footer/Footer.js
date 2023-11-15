@@ -52,7 +52,7 @@ function Footer(props) {
                         <ul>
                             <li className='my-md-3'><Link to="/">vuskoo.com</Link></li>
                             <li className='my-md-3'><Link to="/quienes-somos">Quiénes Somos</Link></li>
-                            <li className='my-md-3'><Link to="/quienes-somos">Contactanos</Link></li>
+                            <li className='my-md-3'><Link to="/contactenos">Contactanos</Link></li>
                             <li className='my-3'><img className='img-fluid' src='/img/parner-google.svg' /></li>
                         </ul>
                     </Col>

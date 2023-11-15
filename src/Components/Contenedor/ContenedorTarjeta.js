@@ -17,7 +17,7 @@ function ContenedorTarjeta({ children, media, title, subtitle, fluid }) {
                 />
             </Col>
             <Container fluid={false} className='container-tarjeta'>
-                <Row>
+                <Row className='mx-auto'>
                     <Col lg={12}>
                         {!isMobile ?
                             <CardGroup>

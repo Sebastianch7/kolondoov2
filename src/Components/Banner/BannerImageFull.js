@@ -19,6 +19,7 @@ function BannerImageFull({ title = '', text1 = '', text2 = '', buttons = false, 
                                         text1={text1}
                                         text2={text2}
                                         buttons={buttons}
+                                        btnLeft
                                     />
                                     :
                                     children}

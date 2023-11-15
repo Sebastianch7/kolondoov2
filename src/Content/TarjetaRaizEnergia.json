@@ -1,0 +1,21 @@
+[
+    {
+        "icon": "/img/icons/luz.svg",
+        "title": "Luz",
+        "button": "Comparar",
+        "url": "/energia/luz"
+    },
+    {
+        "icon": "/img/icons/gas.svg",
+        "title": "Gas",
+        "button": "Comparar",
+        "url": "/energia/gas"
+    },
+    {
+        "icon": "/img/icons/luz.svg",
+        "title": "Luz + Gas",
+        "button": "Comparar",
+        "url": "/energia/luz_y_gas"
+    }
+    
+]

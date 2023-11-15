@@ -53,7 +53,7 @@ export default function FormContactenos({ }) {
 
                 <InputCheck
                     onChangeValue={changeValue}
-                    text={'He leído y acepto '}
+                    text={`He leído y acepto <a href="politica-privacidad" target='_blank'>la Política de Privacidad</a> y quiero recibir comunicaciones comerciales.`}
                     politica
                 />
 

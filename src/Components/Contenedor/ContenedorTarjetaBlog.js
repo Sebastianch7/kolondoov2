@@ -17,9 +17,8 @@ function ContenedorTarjetaBlog({ children }) {
             />
             <Container fluid className='container-tarjeta-blog'>
                 <Container>
-                    <Row className="d-flex justify-content-center align-items-center">
+                    <Row>
                         <Col md={12}>
-                            {/* <Row className="justify-content-center mx-auto"> */}
                             {!isMobile ? (
                                 <CardGroup>
                                     {Blog.map((data, index) => {
@@ -27,7 +26,7 @@ function ContenedorTarjetaBlog({ children }) {
                                     })}
                                 </CardGroup>
                             ) : (
-                                <Carousel className="p-0">
+                                <Carousel>
                                     {Blog.map((data, index) => {
                                         return (
                                             <Carousel.Item key={index}>
@@ -51,7 +50,6 @@ function ContenedorTarjetaBlog({ children }) {
                             <Col md={12} className='mx-auto text-center py-5'>
                                 <ButtonPrimary text={'Descubre más noticias'} />
                             </Col>
-                            {/* </Row> */}
                         </Col>
                     </Row>
                 </Container>

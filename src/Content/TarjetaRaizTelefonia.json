@@ -3,25 +3,25 @@
         "icon": "/img/icons/router.svg",
         "title": "Sólo Fibra",
         "button": "Comparar",
-        "url": ""
+        "url": "/internet_y_telefonia/fibra"
     },
     {
         "icon": "/img/icons/mobile.svg",
         "title": "Tarifa Móvil",
         "button": "Comparar",
-        "url": ""
+        "url": "/internet_y_telefonia/movil"
     },
     {
         "icon": "/img/icons/tv.svg",
         "title": "Fibra + Móvil + TV",
         "button": "Comparar",
-        "url": ""
+        "url": "/internet_y_telefonia/movil_fibra_tv"
     },
     {
         "icon": "/img/icons/tv.svg",
         "title": "Fibra + Móvil",
         "button": "Comparar",
-        "url": ""
+        "url": "/internet_y_telefonia/movil_y_fibra"
     }
     
 ]

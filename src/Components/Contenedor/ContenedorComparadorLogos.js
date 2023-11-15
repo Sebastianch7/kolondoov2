@@ -25,21 +25,34 @@ const responsive = {
     }
 };
 
-function ContenedorComparadorLogos({ children }) {
+const DataStreaming = [
+    {
+        logo: '/img/logos/hbomax.svg'
+    },
+    {
+        logo: '/img/logos/prime.svg'
+    },
+    {
+        logo: '/img/logos/netflix.svg'
+    }
+]
+
+function ContenedorComparadorLogos({ subtitle }) {
     const location = useLocation();
     const [infoLogo, setInfoLogo] = useState();
     let response;
     useEffect(() => {
         const fechtData = async () => {
             try {
-                switch (location.pathname.replace('/','')) {
-                    case 'Internet_y_telefonia':
-                        console.log('aa')
+                switch (location.pathname.replace('/', '')) {
+                    case 'internet_y_telefonia':
                         response = await fetchOperadoras()
                         break;
                     case 'energia':
-                        console.log('bb')
                         response = await fetchComercializadoras()
+                        break;
+                    case 'television_y_streaming':
+                        response = DataStreaming;
                         break;
                 }
                 setInfoLogo(response);
@@ -56,12 +69,12 @@ function ContenedorComparadorLogos({ children }) {
             <TitleSection
                 title={'Comparamos las'}
                 titleAlt={'mejores compañías'}
-                subtitle={'Cada compañía telefónica es única y brilla con luz propia, de hecho por eso es tan difícil decantarnos por una u otra. Lo importante es <b>tener claro qué aspectos son los que más valoras dentro de un operador y comparar entre ellos</b> para saber con certeza en qué es mejor cada uno. Aquí te mostramos los principales y sus peculiaridades. ¿Cuál consideras el más afín a ti?'}
+                subtitle={subtitle}
                 center
             />
             <Container>
                 <Row>
-                    <Col xs={12} md={8} className='mx-auto'>
+                    <Col xs={12} md={8} className='mx-auto mt-md-4'>
                         <div
                             style={{
                                 paddingBottom: '30px',

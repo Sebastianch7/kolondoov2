@@ -34,7 +34,7 @@ function QuienesSomos(props) {
                 >
                     {!isMobile ?
                         TarjetaQuienesSomos?.map((item, index) => {
-                            return <TarjetaProducto media={2} large key={index} data={item} />
+                            return <TarjetaProducto media={2} large key={index} data={item} columna={2} />
                         })
                         :
                         TarjetaQuienesSomos?.map((item, index) => {
@@ -42,7 +42,6 @@ function QuienesSomos(props) {
                         })
                     }
                 </ContenedorTarjeta>
-                <InterSection></InterSection>
                 <ContenedorTarjetaBlog>
                     <TitleSection
                         title={'últimas noticias'}

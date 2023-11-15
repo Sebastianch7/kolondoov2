@@ -89,7 +89,7 @@ export default function RaizTelefonia() {
         image={'/img/bannerRaizTelefonia.png'}
         title='Comparador de Internet y Telefonía Móvil'
         text1='<ul class="listaAlternativa"><li><p>Encuentra una tarifa para hablar y navegar a tu medida a golpe de clic.</p></li><li><p>Compara las mejores ofertas y compañías de telefonía actuales en un solo lugar y gratis.</p></li><li><p>Te asesoramos de forma personalizada para que, elijas lo que elijas, quedes satisfecho.</p></li></ul>'
-        imgFluid
+        btnLeft
         buttons={[
           {
             title: '¡Empieza a ahorrar!',
@@ -141,17 +141,19 @@ export default function RaizTelefonia() {
         </Row>
       </Container>
       <ContenedorTarjetaBlog />
-      <ContenedorComparadorLogos />
+      <ContenedorComparadorLogos
+        subtitle={'Cada compañía telefónica es única y brilla con luz propia, de hecho por eso es tan difícil decantarnos por una u otra. Lo importante es <b>tener claro qué aspectos son los que más valoras dentro de un operador y comparar entre ellos</b> para saber con certeza en qué es mejor cada uno. Aquí te mostramos los principales y sus peculiaridades. ¿Cuál consideras el más afín a ti?'}
+      />
       <ContenedorPreguntasFrecuentes
         data={preguntasFrecuentes}
         image={'/img/preguntas-raiz-telefonia.png'}
       />
-      <Container fluid  className='p-0 m-0'>
+      <Container fluid className='p-0 m-0'>
         <Row className='mx-auto bg-gray'>
           <TitleSection
             center
             title={'¿Por qué comparar'}
-            titleAlt={'tarifas de Luz y Gas'}
+            titleAlt={'tarifas de Internet y Telefonía'}
             titleThird={'es tan importante?'}
           />
           <Col xs={12} md={10} className='mx-auto p-4'>
@@ -159,30 +161,30 @@ export default function RaizTelefonia() {
               <Card className='border-0 bg-gray p-3'>
                 <Card.Body>
                   <Card.Title className='mb-5 text-center  header-img-card'>
-                    <img className='img-fluid header-img-card' src='/img/icons/factura.svg' />
+                    <img className='header-img-card' src='/img/icons/www.svg' />
                   </Card.Title>
                   <Card.Text className='my-4'>
-                  ¿Has oído hablar de las tarifas de electricidad a precio de coste o indexado? ¿Y las de mercado libre? ¿Sabes en qué consiste la tarifa plana de luz? Desde Kolondoo te recomendamos que compares las tarifas de gas y electricidad antes de formalizar cualquier contratación, y que estudies todos los tipos de tarifas que existen a día de hoy hasta saber cuál es la más acorde a tus hábitos de consumo y también a tu presupuesto.
+                    <b>Las Tecnologías de la Información y la Comunicación (TIC) han crecido exponencialmente en los últimos tiempos,</b> hasta el punto de no imaginarnos hoy sin acceso a Internet o sin móvil. Desde que a partir de 1966 comenzase la liberalización del sector, las compañías privadas no han dejado de multiplicarse, y ahora son más de 40, ¡wow!
                   </Card.Text>
                 </Card.Body>
               </Card>
               <Card className='border-0 bg-gray p-3'>
                 <Card.Body>
                   <Card.Title className='mb-5 text-center  header-img-card'>
-                    <img className='img-fluid header-img-card' src='/img/icons/obtener-dinero.svg' />
+                    <img className='header-img-card' src='/img/icons/internet.svg' />
                   </Card.Title>
                   <Card.Text className='my-2'>
-                  Por razones obvias, las tarifas de luz y de gas baratas son las más buscadas, pero…¡Ojo! no te dejes llevar por un precio bajo y pases por alto aspectos también esenciales. Sin ir más lejos, para saber qué potencia es la adecuada para tu vivienda, debes estudiar las características de esta.Con tantos tipos de tarifas y tantísimas comercializadoras compitiendo en el mercado, te puede resultar complicado el proceso de buscar y saber elegir bien la tarifa de luz o de gas -y el precio- que necesitas para tu hogar.
+                    Pero ¿por qué comparar es tan importante? Ahora, <b>los productos de fibra y móvil suelen presentarse en forma de paquetes,</b> de modo que puedes contratar conjuntamente el Internet de tu hogar con el de tu móvil (o varias líneas móviles). Además, tienes la posibilidad de añadir teléfono fijo, y otras alternativas como escoger TV de pago, con distintos tipos de contenido como <b>cine y series, moda, deportes, historia o cocina, entre otras categorías.</b> Vamos, que se ha convertido en algo que puedes customizar a tu gusto.
                   </Card.Text>
                 </Card.Body>
               </Card>
               <Card className='border-0 bg-gray p-3'>
                 <Card.Body>
                   <Card.Title className='mb-5 text-center  header-img-card'>
-                    <img className='img-fluid' src='/img/icons/operador.svg' />
+                    <img className='header-img-card' src='/img/icons/cursor.svg' />
                   </Card.Title>
                   <Card.Text className='my-2'>
-                  <b>Algo muy positivo en los comparadores online como Kolondoo, es que te asesoramos de forma gratuita y personalizada, resolviendo tus dudas y aconsejándote siempre lo más adecuado para ti,</b> desde la empatía y la transparencia. ¿Ya te hemos dejado claro lo importante que es realizar una comparativa antes de contratar? ;)
+                    Al haber tantas operadoras y servicios encima de la mesa, elegir bien qué nos interesa puede volverse un poco ‘caótico’. En nuestro <b>Comparador de Telefonía e Internet</b> te lo ponemos muy fácil: <b>tienes toda la información y herramientas necesarias a golpe de ‘clic’</b> para conseguir el precio y el paquete que más se adapte a tus necesidades.
                   </Card.Text>
                 </Card.Body>
               </Card>

@@ -7,7 +7,7 @@ function TarjetaBlogFull({ data }) {
             <Card className='tarjeta'>
                 <Card.Img src={img} alt={img} />
                 <Card.ImgOverlay>
-                    <div className='info-card'>
+                    <div className='info-card p-3'>
                         <Card.Text>{date}</Card.Text>
                         <Card.Text>{title}</Card.Text>
                         <Card.Link href="#">{button}</Card.Link>

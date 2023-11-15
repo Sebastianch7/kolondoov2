@@ -6,7 +6,7 @@ import Subtitle from './Subtitle';
 import { isMobile } from 'react-device-detect';
 import { Link } from 'react-router-dom';
 
-function TitleSection({ title, titleAlt, titleThird, subtitle, center = false, buttons, text1, text2, left }) {
+function TitleSection({ title, titleAlt, titleThird, subtitle, center = false, buttons, text1, text2, left, btnLeft = false }) {
     return (
         <Container>
             <Row>
@@ -17,10 +17,10 @@ function TitleSection({ title, titleAlt, titleThird, subtitle, center = false, b
                     {!left && text2 && <p dangerouslySetInnerHTML={{ __html: text2 }}></p>}
                     {left && <p className='text-left' dangerouslySetInnerHTML={{ __html: text1 }}></p>}
                     {left && <p className='text-left' dangerouslySetInnerHTML={{ __html: text2 }}></p>}
-                    {buttons && <Row className='text-center mx-auto'>
+                    {buttons && <Row className={`${!btnLeft && 'text-center'} mx-auto`}>
                         <Stack gap={3} className="mx-auto d-block" direction={!isMobile ? "horizontal" : "vertical"}>
                             {buttons?.map((item, index) => {
-                                return <Link to={item.url} className='m-2'><ButtonPrimary key={index} icon={item.icon} text={item.title} /></Link>
+                                return <Link to={item.url} className={`m-2`}><ButtonPrimary key={index} icon={item.icon} text={item.title} /></Link>
 
                             })}
                         </Stack>

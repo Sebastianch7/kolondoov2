@@ -16,6 +16,9 @@ import Contactenos from '../Pages/Contactenos';
 import HerramientaLuz from '../Pages/HerramientaLuz';
 import HerramientaTest from '../Pages/HerramientaTest';
 import RaizTelefonia from '../Pages/RaizTelefonia';
+import RaizEnergia from '../Pages/RaizEnergia';
+import RaizStreaming from '../Pages/RaizStreaming';
+import PoliticaPrivacidad from '../Pages/PoliticaPrivacidad';
 
 function RoutesApp() {
     return (
@@ -24,6 +27,8 @@ function RoutesApp() {
             <Route path="/" element={<Home />} />
             
             <Route path="/internet_y_telefonia/" element={<RaizTelefonia />} />
+            <Route path="/energia/" element={<RaizEnergia />} />
+            <Route path="/television_y_streaming/" element={<RaizStreaming />} />
             
             <Route path="/internet_y_telefonia/movil" element={<ComparadorMovil />} />
             <Route path="/internet_y_telefonia/movil/:id" element={<Lead />} />
@@ -67,7 +72,7 @@ function RoutesApp() {
             <Route path="/herramientas/test_de_velocidad" element={<HerramientaTest />} />
             
             <Route path="/contactenos" element={<Contactenos />} />
-            <Route path="/politica-privacidad" element={<Contactenos />} />
+            <Route path="/politica-privacidad" element={<PoliticaPrivacidad />} />
         </Routes>
     </BrowserRouter>
     );

@@ -6,14 +6,14 @@ body {
 
 @font-face {
   font-family: 'MontRegular'; // El nombre de la fuente que deseas usar
-  src: url('../../public/fonts/MontLight.otf') format('opentype'); // Ruta de la fuente OTF
+  src: url('../../public/fonts/MontExtraLight.otf') format('opentype'); // Ruta de la fuente OTF
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'MontHeavy'; // El nombre de la fuente que deseas usar
-  src: url('../../public/fonts/MontHeavy.otf') format('opentype'); // Ruta de la fuente OTF
+  src: url('../../public/fonts/MontRegular.otf') format('opentype'); // Ruta de la fuente OTF
   font-weight: bold;
   font-style: normal;
 }
@@ -439,7 +439,8 @@ $breakpoint-lg: 1360px;
     border-radius: 0px;
   }
 
-  &-producto {
+  &
+   {
     border: none;
     box-shadow: 0px 0px 5px lightgray;
     text-align: center;
@@ -480,8 +481,15 @@ $breakpoint-lg: 1360px;
         background-color: rgba(121, 207, 226, 0.19);
         margin: 0 auto;
         margin-top: 40px;
-        max-width: auto;
-        max-height: 60px;
+        max-width: 60px !important;
+        max-height: 60px !important;
+        text-align: center;
+        padding: 0px;
+        img{
+          text-align: center;
+          margin: 0 auto;
+          padding: 10px;
+        }
       }
     }
   }
@@ -638,7 +646,8 @@ footer {
 }
 
 .filtro {
-  &-producto {
+  &
+   {
     &-logo {
       cursor: pointer;
       border: 0.8px solid #8E8E8E;
@@ -684,7 +693,7 @@ footer {
 .acordion {
   &-icon {
     &-title {
-      margin-right: 10px;
+      margin-right: 10px !important;
     }
   }
 }
@@ -936,8 +945,17 @@ th {
 }
 
 .header-img-card{
-  min-height: 100px !important;
+  min-height: 60px !important;
   img{
-    height: 100%;
+    height: 10px;
   }
+}
+
+.card-icon{
+  max-height: 60px !important; 
+  min-height: 60px !important;
+  text-align: center !important;
+  vertical-align: middle !important;
+  display: flex;
+  align-items: center;
 }
