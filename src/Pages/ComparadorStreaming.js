@@ -16,11 +16,11 @@ function ComparadorStreaming() {
                 image={'/img/television_streaming/banner_streaming.png'}
                 logo={'/img/icons/streaming.svg'}
             >
-                <FormSuscripcion
+                {/* <FormSuscripcion
                     text={'Introduce tu código postal'}
                     button={'Buscar Ofertas'}
                     politicy
-                />
+                /> */}
             </Banner>
             <ContenedorProductosStreaming>
             </ContenedorProductosStreaming>

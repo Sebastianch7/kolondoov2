@@ -14,11 +14,11 @@ function ComparadorLuz() {
                 subtitle='¡Te ayudamos a encontrar la tarifa que mejor se adapte a ti!'
                 image={'/img/energia/banner_luz.png'}
             >
-                <FormSuscripcion
+                {/* <FormSuscripcion
                     text={'Introduce tu código postal'}
                     button={'Buscar Ofertas'}
                     politicy
-                />
+                /> */}
             </Banner>
             <ContenedorProductosLuz>
             </ContenedorProductosLuz>

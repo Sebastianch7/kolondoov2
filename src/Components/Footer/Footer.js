@@ -19,9 +19,9 @@ function Footer(props) {
                     <Col xs={6} sm={3}>
                         {!isMobile && <img src='/img/logoReverse.svg' />}
                         <ul>
-                            <li>Calle Barquillo, 8</li>
-                            <li>28004 Madrid - España</li>
-                            <li>hola@vuskoo.com</li>
+                            <li className='my-md-3'>Calle Barquillo, 8</li>
+                            <li className='my-md-3'>28004 Madrid - España</li>
+                            <li className='my-md-3'>hola@vuskoo.com</li>
                         </ul>
                     </Col>
                     {!isMobile &&
@@ -29,30 +29,31 @@ function Footer(props) {
                             <Col sm={3}>
                                 <h5>Redes sociales</h5>
                                 <ul>
-                                    <li><a href="#">Linkedin</a></li>
-                                    <li><a href="#">Facebook</a></li>
-                                    <li><a href="#">Twitter</a></li>
-                                    <li><a href="#">Instagram</a></li>
+                                    <li className='my-md-3'><a href="#">Linkedin</a></li>
+                                    <li className='my-md-3'><a href="#">Facebook</a></li>
+                                    <li className='my-md-3'><a href="#">Twitter</a></li>
+                                    <li className='my-md-3'><a href="#">Instagram</a></li>
                                 </ul>
                             </Col>
                             <Col sm={3}>
                                 <h5>Tarifas</h5>
                                 <ul>
-                                    {/* <li><Link to={''}>Tarifas</Link></li> */}
-                                    <li><Link to={'/internet_y_telefonia/fibra'}>Sólo fibra</Link></li>
-                                    <li><Link to={'/internet_y_telefonia/movil'}>Tarifa móvil</Link></li>
-                                    <li><Link to={'/internet_y_telefonia/movil_fibra_tv'}>Fibra+móvil+TV</Link></li>
-                                    <li><Link to={'/internet_y_telefonia/movil_y_fibra'}>Fibra+móvil</Link></li>
-                                    <li><Link to={'/energia/luz'}>Luz</Link></li>
+                                    {/* <li className='my-md-3'><Link to={''}>Tarifas</Link></li> */}
+                                    <li className='my-md-3'><Link to={'/internet_y_telefonia/fibra'}>Sólo fibra</Link></li>
+                                    <li className='my-md-3'><Link to={'/internet_y_telefonia/movil'}>Tarifa móvil</Link></li>
+                                    <li className='my-md-3'><Link to={'/internet_y_telefonia/movil_fibra_tv'}>Fibra+móvil+TV</Link></li>
+                                    <li className='my-md-3'><Link to={'/internet_y_telefonia/movil_y_fibra'}>Fibra+móvil</Link></li>
+                                    <li className='my-md-3'><Link to={'/energia/luz'}>Luz</Link></li>
                                 </ul>
                             </Col>
                         </>}
                     <Col xs={6} sm={3}>
                         <h5>vuskoo.com</h5>
                         <ul>
-                            <li><Link to="/">vuskoo.com</Link></li>
-                            <li><Link to="/about">Quiénes Somos</Link></li>
-                            <li><Link to="/about">Contactanos</Link></li>
+                            <li className='my-md-3'><Link to="/">vuskoo.com</Link></li>
+                            <li className='my-md-3'><Link to="/quienes-somos">Quiénes Somos</Link></li>
+                            <li className='my-md-3'><Link to="/quienes-somos">Contactanos</Link></li>
+                            <li className='my-3'><img className='img-fluid' src='/img/parner-google.svg' /></li>
                         </ul>
                     </Col>
                 </Row>

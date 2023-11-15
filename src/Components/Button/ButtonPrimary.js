@@ -6,10 +6,10 @@ function ButtonPrimary({ icon, text, btnStatus, type, isSuccess, url }) {
     return (
         <Link 
         key={text} 
-        className={`${isSuccess} mt-2 mt-md-0 btn btn-primary`} 
+        className={`${isSuccess} mt-2 mt-md-0 btn btn-primary ${btnStatus && 'disabled'}`} 
         type={type} 
         to={url}
-        disabled={btnStatus}>{icon && <img src={icon} />} {text}</Link>
+        >{icon && <img src={icon} />} {text}</Link>
     );
 }
 

@@ -15,6 +15,11 @@ import ContenedorDescipcionTarifa from '../Components/Contenedor/ContenedorDesci
 import TarjetaTarifa from '../Components/Tarjeta/TarjetaTarifa'
 import { getDetailOffer, getExtraOffer } from '../services/ApiServices';
 import ButtonPrimary from '../Components/Button/ButtonPrimary';
+import ContenedorComparadorLogos from '../Components/Contenedor/ContenedorComparadorLogos';
+import ContenedorPreguntasFrecuentes from '../Components/Contenedor/ContenedorPreguntasFrecuentes';
+import { Card, CardGroup } from 'react-bootstrap';
+import BannerReverse from '../Components/Banner/BannerReverse';
+import FormSuscripcion from '../Components/Forms/FormSuscripcion';
 
 const data = [
   {
@@ -33,7 +38,34 @@ const data = [
     title: 'Trámites',
     text: 'Tener en cuenta que siempre es el titular del contrato el único que puede realizar todos los trámites que conlleva la portabilidad o el alta en cualquier contrato. Para realizar un cambio de titularidad, basta con que acudas a cualquier tienda de la compañía o llames a su departamento de Atención al Cliente. Esta gestión es gratuita.'
   },
-]
+];
+
+const preguntasFrecuentes = [
+  {
+    title: '¿Cuántas tarifas de telefonía e Internet hay en España?',
+    texto: 'La cifra te puede sorprender, pero en nuestro país existen ahora mismo más de 1000 tarifas de telefonía que pueden contratarse para llamadas, navegar por la red e incluso para ver la televisión. Eso sí, la mayoría seguramente no cumpla con tus expectativas. En Vuskoo te mostramos las compañías de telefonía móvil, Internet y televisión , y te informamos de los detalles de sus tarifas y servicios que ofrecen, para que puedas encontrar la perfecta para ti.'
+  },
+  {
+    title: '¿Cuáles son las operadoras con cobertura propia?',
+    texto: 'texto2'
+  },
+  {
+    title: '¿Qué es una Operadora Móvil Virtual (OMV)?',
+    texto: 'texto3'
+  },
+  {
+    title: '¿Cuántas compañías telefónicas hay en España?',
+    texto: 'texto3'
+  },
+  {
+    title: '¿Qué diferencia hay entre ADSL y fibra óptica?',
+    texto: 'texto3'
+  },
+  {
+    title: '¿Qué implica tener permanencia?',
+    texto: 'texto3'
+  }
+];
 
 export default function RaizTelefonia() {
   const [extraOffer, setExtraOffer] = useState([]);
@@ -109,9 +141,56 @@ export default function RaizTelefonia() {
         </Row>
       </Container>
       <ContenedorTarjetaBlog />
-      {
-        !isMobile && <InterSection></InterSection>
-      }
+      <ContenedorComparadorLogos />
+      <ContenedorPreguntasFrecuentes
+        data={preguntasFrecuentes}
+        image={'/img/preguntas-raiz-telefonia.png'}
+      />
+      <Container fluid  className='p-0 m-0'>
+        <Row className='mx-auto bg-gray'>
+          <TitleSection
+            center
+            title={'¿Por qué comparar'}
+            titleAlt={'tarifas de Luz y Gas'}
+            titleThird={'es tan importante?'}
+          />
+          <Col xs={12} md={10} className='mx-auto p-4'>
+            <CardGroup>
+              <Card className='border-0 bg-gray p-3'>
+                <Card.Body>
+                  <Card.Title className='mb-5 text-center  header-img-card'>
+                    <img className='img-fluid header-img-card' src='/img/icons/factura.svg' />
+                  </Card.Title>
+                  <Card.Text className='my-4'>
+                  ¿Has oído hablar de las tarifas de electricidad a precio de coste o indexado? ¿Y las de mercado libre? ¿Sabes en qué consiste la tarifa plana de luz? Desde Kolondoo te recomendamos que compares las tarifas de gas y electricidad antes de formalizar cualquier contratación, y que estudies todos los tipos de tarifas que existen a día de hoy hasta saber cuál es la más acorde a tus hábitos de consumo y también a tu presupuesto.
+                  </Card.Text>
+                </Card.Body>
+              </Card>
+              <Card className='border-0 bg-gray p-3'>
+                <Card.Body>
+                  <Card.Title className='mb-5 text-center  header-img-card'>
+                    <img className='img-fluid header-img-card' src='/img/icons/obtener-dinero.svg' />
+                  </Card.Title>
+                  <Card.Text className='my-2'>
+                  Por razones obvias, las tarifas de luz y de gas baratas son las más buscadas, pero…¡Ojo! no te dejes llevar por un precio bajo y pases por alto aspectos también esenciales. Sin ir más lejos, para saber qué potencia es la adecuada para tu vivienda, debes estudiar las características de esta.Con tantos tipos de tarifas y tantísimas comercializadoras compitiendo en el mercado, te puede resultar complicado el proceso de buscar y saber elegir bien la tarifa de luz o de gas -y el precio- que necesitas para tu hogar.
+                  </Card.Text>
+                </Card.Body>
+              </Card>
+              <Card className='border-0 bg-gray p-3'>
+                <Card.Body>
+                  <Card.Title className='mb-5 text-center  header-img-card'>
+                    <img className='img-fluid' src='/img/icons/operador.svg' />
+                  </Card.Title>
+                  <Card.Text className='my-2'>
+                  <b>Algo muy positivo en los comparadores online como Kolondoo, es que te asesoramos de forma gratuita y personalizada, resolviendo tus dudas y aconsejándote siempre lo más adecuado para ti,</b> desde la empatía y la transparencia. ¿Ya te hemos dejado claro lo importante que es realizar una comparativa antes de contratar? ;)
+                  </Card.Text>
+                </Card.Body>
+              </Card>
+            </CardGroup>
+          </Col>
+        </Row>
+      </Container>
+      <FormSuscripcion />
       <Footer></Footer>
     </>
 

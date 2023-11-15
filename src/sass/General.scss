@@ -890,6 +890,8 @@ th {
       border-radius: 20px !important;
       background-color: white;
       box-shadow: none;
+      font-family: $MontSemiBold;
+      font-weight: bolder;
     }
   }
 }
@@ -901,7 +903,6 @@ th {
 
 .accordion-button::after {
   background-image: url('../../public/img/icons/flechaAcordionDown.svg');
-  margin-left: 15px;
 
 }
 
@@ -931,5 +932,12 @@ th {
     h5 {
       color: $colorPrimary;
     }
+  }
+}
+
+.header-img-card{
+  min-height: 100px !important;
+  img{
+    height: 100%;
   }
 }

@@ -14,9 +14,8 @@ export default function InputCheck(props) {
                 type='switch'
                 checked={checkIn}
                 label={
-                    <div>
-                        {props.text} 
-                        {props.politica && <a href="politica-privacidad">la Política de Privacidad</a>}
+                    <div dangerouslySetInnerHTML={{ __html: props.text }}>
+                        {props.politica && <a href="politica-privacidad" target='_blank'>la Política de Privacidad</a>}
                     </div>
                 }
                 onChange={(e) => {

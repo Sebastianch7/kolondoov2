@@ -14,11 +14,11 @@ function ComparadorMovil() {
                 subtitle='¡Te ayudamos a encontrar la tarifa móvil que mejor se adapte a ti!'
                 image={'/img/internet_telefonia/banner_movil.png'}
             >
-                <FormSuscripcion
+                {/* <FormSuscripcion
                     text={'Introduce tu código postal'}
                     button={'Buscar Ofertas'}
                     politicy
-                />
+                /> */}
             </Banner>
             <ContenedorProductosMovil>
             </ContenedorProductosMovil>

@@ -4,7 +4,6 @@ import Banner from '../Components/Banner/Banner';
 import TarjetaProducto from '../Components/Tarjeta/TarjetaProducto';
 import ContenedorTarjeta from '../Components/Contenedor/ContenedorTarjeta';
 import ContenedorTarjetaBlog from '../Components/Contenedor/ContenedorTarjetaBlog';
-import TitleSection from '../Components/Text/TitleSection';
 import Footer from '../Components/Footer/Footer';
 import BannerReverse from '../Components/Banner/BannerReverse';
 import FormSuscripcion from '../Components/Forms/FormSuscripcion';
@@ -51,24 +50,9 @@ function Home(props) {
                     }
                 </ContenedorTarjeta>
                 <ContenedorTarjetaBlog />
-                {
-                    !isMobile && <InterSection></InterSection>
-                }
-                <BannerReverse
-                    title={'Suscríbete gratis y recibe nuestras mejores ofertas'}
-                    subtitle='Únete a nuestra comunidad. Recibirás nuestros mejores contenidos semanalmente: guías prácticas para ahorrar y gestionar tu consumo, últimas noticias…¡Y mucho más!'
-                    image={'/img/bannerFooter.png'}
-                >
-                    <FormSuscripcion
-                        text={'Escribe tu mail aqui'}
-                        button={'Suscríbete gratis'}
-                        check={isMobile ? false : true}
-                    />
-                </BannerReverse>
+                <FormSuscripcion />
             </main>
-            {
-                isMobile && <InterSection></InterSection>
-            }
+            
             <Footer />
         </div>
     );

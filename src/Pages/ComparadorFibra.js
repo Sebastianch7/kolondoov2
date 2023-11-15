@@ -15,11 +15,11 @@ function ComparadorFibra() {
                 subtitle='¡Te ayudamos a encontrar la tarifa de fibra!'
                 image={'/img/internet_telefonia/banner_fibra.png'}
             >
-                <FormSuscripcion
+                {/* <FormSuscripcion
                     text={'Introduce tu código postal'}
                     button={'Buscar Ofertas'}
                     politicy
-                />
+                /> */}
             </Banner>
             <ContenedorProductosFibra>
             </ContenedorProductosFibra>

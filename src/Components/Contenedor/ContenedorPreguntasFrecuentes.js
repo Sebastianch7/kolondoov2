@@ -23,7 +23,7 @@ export default function ContenedorPreguntasFrecuentes({data, image}) {
                         <Col>
                             <Accordion defaultActiveKey="1">
                                 {
-                                    data.map((item, index) =>
+                                    data?.map((item, index) =>
                                         <Accordion.Item eventKey={index} className='pregunta-frecuente-item'>
                                             <Accordion.Header className='pregunta-frecuente-header m-2 px-2'>{item.title}</Accordion.Header>
                                             <Accordion.Body>

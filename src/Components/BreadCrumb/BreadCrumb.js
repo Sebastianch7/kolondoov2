@@ -12,7 +12,7 @@ function BreadCrumb({ url }) {
     return (
         <Container>
             <Row>
-                <Col md={12}>
+                <Col md={12} className='mt-md-3'>
                     <Breadcrumb>
                         {locations.length > 1 &&
                             <>

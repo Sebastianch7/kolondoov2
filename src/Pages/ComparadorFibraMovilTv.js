@@ -15,11 +15,11 @@ function ComparadorFibraMovilTv() {
                 subtitle='¡Te ayudamos a encontrar la tarifa movil con fibra y tv!'
                 image={'/img/internet_telefonia/banner_telefonia_fibra_tv.png'}
             >
-                <FormSuscripcion
+                {/* <FormSuscripcion
                     text={'Introduce tu código postal'}
                     button={'Buscar Ofertas'}
                     politicy
-                />
+                /> */}
             </Banner>
             <ContenedorProductosMovilFibraTv>
             </ContenedorProductosMovilFibraTv>

@@ -14,11 +14,11 @@ function ComparadorGas() {
                 subtitle='¡Te ayudamos a encontrar el mejor gas!'
                 image={'/img/energia/banner_gas.png'}
             >
-                <FormSuscripcion
+                {/* <FormSuscripcion
                     text={'Introduce tu código postal'}
                     button={'Buscar Ofertas'}
                     politicy
-                />
+                /> */}
             </Banner>
             <ContenedorProductosGas>
             </ContenedorProductosGas>

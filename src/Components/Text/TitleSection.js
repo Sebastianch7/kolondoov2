@@ -6,12 +6,12 @@ import Subtitle from './Subtitle';
 import { isMobile } from 'react-device-detect';
 import { Link } from 'react-router-dom';
 
-function TitleSection({ title, titleAlt, subtitle, center = false, buttons, text1, text2, left }) {
+function TitleSection({ title, titleAlt, titleThird, subtitle, center = false, buttons, text1, text2, left }) {
     return (
         <Container>
             <Row>
                 <Col md={12} className={center && 'text-center b-600'}>
-                    <Title title={title} titleAlt={titleAlt} />
+                    <Title title={title} titleAlt={titleAlt} titleThird={titleThird} />
                     {subtitle && <Subtitle subtitle={subtitle} />}
                     {!left && text1 && <p dangerouslySetInnerHTML={{ __html: text1 }}></p>}
                     {!left && text2 && <p dangerouslySetInnerHTML={{ __html: text2 }}></p>}

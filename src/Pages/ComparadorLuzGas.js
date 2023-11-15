@@ -16,11 +16,11 @@ function ComparadorLuzGas() {
                 logo={'/img/icons/luz.svg'}
                 logo2={'/img/icons/gas.svg'}
             >
-                <FormSuscripcion
+                {/* <FormSuscripcion
                     text={'Introduce tu código postal'}
                     button={'Buscar Ofertas'}
                     politicy
-                />
+                /> */}
             </Banner>
             <ContenedorProductosLuzGas>
             </ContenedorProductosLuzGas>

@@ -61,12 +61,13 @@ function RoutesApp() {
             <Route path="/television_y_streaming/tv" element={<ComparadorStreaming />} />
             <Route path="/television_y_streaming/streaming" element={<ComparadorStreaming />} />
 
-            <Route path="/about" element={<QuienesSomos />} />
+            <Route path="/quienes-somos" element={<QuienesSomos />} />
             
             <Route path="/herramientas/precio_de_la_luz_hoy" element={<HerramientaLuz />} />
             <Route path="/herramientas/test_de_velocidad" element={<HerramientaTest />} />
             
             <Route path="/contactenos" element={<Contactenos />} />
+            <Route path="/politica-privacidad" element={<Contactenos />} />
         </Routes>
     </BrowserRouter>
     );
