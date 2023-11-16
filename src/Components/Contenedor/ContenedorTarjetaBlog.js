@@ -9,13 +9,13 @@ import TitleSection from '../Text/TitleSection';
 
 function ContenedorTarjetaBlog({ children }) {
     return (
-        <div className='my-md-5'>
+        <div className='my-md-5 container-tarjeta-blog'>
             <TitleSection
                 title={'últimas noticias'}
                 subtitle={'¡Échale un vistazo a nuestro blog y mantente siempre actualizado!'}
                 center
             />
-            <Container fluid className='container-tarjeta-blog'>
+            <Container fluid>
                 <Container>
                     <Row>
                         <Col md={12}>

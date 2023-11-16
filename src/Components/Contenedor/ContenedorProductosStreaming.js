@@ -1,10 +1,28 @@
 import React, { useEffect, useState } from 'react';
-import { Container, Row, Col, Carousel, CarouselItem, Card } from 'react-bootstrap';
+import { Container, Row, Col, Card, CardGroup } from 'react-bootstrap';
 import 'rc-slider/assets/index.css';
 import { isMobile } from 'react-device-detect';
 import InterSection from '../Utils/InterSection';
-import { Link } from 'react-router-dom';
 import TarjetaTarifaStreaming from '../Tarjeta/TarjetaTarifaStreaming';
+import TitleSection from '../Text/TitleSection';
+import Carousel from "react-multi-carousel";
+
+const responsive = {
+  desktop: {
+    breakpoint: { max: 3000, min: 1024 },
+    items: 3
+  },
+  tablet: {
+    breakpoint: { max: 1024, min: 464 },
+    items: 1,
+
+  },
+  mobile: {
+    breakpoint: { max: 464, min: 0 },
+    items: 1,
+
+  }
+};
 
 const data = [
   {
@@ -57,7 +75,40 @@ const data = [
 function ContenedorProductosStreaming(logo = null, landingLead = null, id = null) {
   return (
     <>
-      <Container>
+      <Container >
+        
+            <div
+              style={{
+                paddingBottom: '10px',
+                position: 'relative'
+              }}
+            >
+              {data?.length > 0 &&
+                <Carousel
+                  arrows={false}
+                  centerMode={false}
+                  dotListClass=""
+                  draggable
+                  focusOnSelect={false}
+                  infinite
+                  keyBoardControl
+                  pauseOnHover
+                  renderDotsOutside={true}
+                  responsive={responsive}
+                  rewind={false}
+                  showDots={false}
+                  slidesToSlide={1}
+                >
+                  {data?.map((item) => {
+                    return (
+                      <TarjetaTarifaStreaming data={item} />
+                    );
+                  })}
+                </Carousel>
+              }
+            </div>
+      </Container>
+      {/*  <Container>
         <Row>
           <Carousel>
             {!isMobile ?
@@ -81,34 +132,8 @@ function ContenedorProductosStreaming(logo = null, landingLead = null, id = null
             }
           </Carousel>
         </Row>
-      </Container>
-      <InterSection>
-      </InterSection>
-      <Container fluid className='bg-gray'>
-        <Row className='d-flex justify-content-evenly p-5'>
-          <Col xs={12} md={3} xxl={2} className=''>
-            <div className='text-center mb-2'><img className='h-40' src='/img/icons/transmision.svg' /></div>
-            <h6 className='text-center h-40'>¿Qué plataforma elegir?</h6>
-            <p className='font-09'>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </p>
-          </Col>
-          <Col xs={12} md={3} xxl={2} >
-          <div className='text-center mb-2'><img className='h-40' src='/img/icons/familia.svg' /></div>
-            <h6 className='text-left h-40'>¿Cuál es la mejor opción para familias?</h6>
-            <p className='font-09'>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </p>
-          </Col>
-          <Col xs={12} md={3} xxl={2} >
-          <div className='text-center mb-2'><img className='h-40 p-2' src='/img/icons/llamadaTelefonica.svg' /></div>
-            <h6 className='text-left h-40'>¿Qué plataforma tiene planes incluidos en paquetes con operadoras?</h6>
-            <p className='font-09'>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </p>
-          </Col>
-        </Row>
-      </Container>
+      </Container> */}
+      <InterSection></InterSection>
     </>
   );
 }

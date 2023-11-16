@@ -34,7 +34,7 @@ function QuienesSomos(props) {
                 >
                     {!isMobile ?
                         TarjetaQuienesSomos?.map((item, index) => {
-                            return <TarjetaProducto media={2} large key={index} data={item} columna={2} />
+                            return <TarjetaProducto key={index} data={item} />
                         })
                         :
                         TarjetaQuienesSomos?.map((item, index) => {

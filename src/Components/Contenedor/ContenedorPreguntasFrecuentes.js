@@ -8,7 +8,7 @@ import { Accordion } from 'react-bootstrap'
 
 export default function ContenedorPreguntasFrecuentes({data, image}) {
     return (
-        <div className='mt-4 container-tarjeta-pregunta'>
+        <div className='container-tarjeta-pregunta'>
             <TitleSection
                 center
                 title={'Preguntas'}

@@ -148,50 +148,52 @@ export default function RaizTelefonia() {
         data={preguntasFrecuentes}
         image={'/img/preguntas-raiz-telefonia.png'}
       />
-      <Container fluid className='p-0 m-0'>
-        <Row className='mx-auto bg-gray'>
-          <TitleSection
-            center
-            title={'¿Por qué comparar'}
-            titleAlt={'tarifas de Internet y Telefonía'}
-            titleThird={'es tan importante?'}
-          />
-          <Col xs={12} md={10} className='mx-auto p-4'>
-            <CardGroup>
-              <Card className='border-0 bg-gray p-3'>
-                <Card.Body>
-                  <Card.Title className='mb-5 text-center  header-img-card'>
-                    <img className='header-img-card' src='/img/icons/www.svg' />
-                  </Card.Title>
-                  <Card.Text className='my-4'>
-                    <b>Las Tecnologías de la Información y la Comunicación (TIC) han crecido exponencialmente en los últimos tiempos,</b> hasta el punto de no imaginarnos hoy sin acceso a Internet o sin móvil. Desde que a partir de 1966 comenzase la liberalización del sector, las compañías privadas no han dejado de multiplicarse, y ahora son más de 40, ¡wow!
-                  </Card.Text>
-                </Card.Body>
-              </Card>
-              <Card className='border-0 bg-gray p-3'>
-                <Card.Body>
-                  <Card.Title className='mb-5 text-center  header-img-card'>
-                    <img className='header-img-card' src='/img/icons/internet.svg' />
-                  </Card.Title>
-                  <Card.Text className='my-2'>
-                    Pero ¿por qué comparar es tan importante? Ahora, <b>los productos de fibra y móvil suelen presentarse en forma de paquetes,</b> de modo que puedes contratar conjuntamente el Internet de tu hogar con el de tu móvil (o varias líneas móviles). Además, tienes la posibilidad de añadir teléfono fijo, y otras alternativas como escoger TV de pago, con distintos tipos de contenido como <b>cine y series, moda, deportes, historia o cocina, entre otras categorías.</b> Vamos, que se ha convertido en algo que puedes customizar a tu gusto.
-                  </Card.Text>
-                </Card.Body>
-              </Card>
-              <Card className='border-0 bg-gray p-3'>
-                <Card.Body>
-                  <Card.Title className='mb-5 text-center  header-img-card'>
-                    <img className='header-img-card' src='/img/icons/cursor.svg' />
-                  </Card.Title>
-                  <Card.Text className='my-2'>
-                    Al haber tantas operadoras y servicios encima de la mesa, elegir bien qué nos interesa puede volverse un poco ‘caótico’. En nuestro <b>Comparador de Telefonía e Internet</b> te lo ponemos muy fácil: <b>tienes toda la información y herramientas necesarias a golpe de ‘clic’</b> para conseguir el precio y el paquete que más se adapte a tus necesidades.
-                  </Card.Text>
-                </Card.Body>
-              </Card>
-            </CardGroup>
-          </Col>
-        </Row>
-      </Container>
+      <div className='p-0 m-0 mx-auto bg-gray'>
+        <Container>
+          <Row className='mx-auto bg-gray'>
+            <TitleSection
+              center
+              title={'¿Por qué comparar'}
+              titleAlt={'tarifas de Internet y Telefonía'}
+              titleThird={'es tan importante?'}
+            />
+            <Col xs={12} md={12} className='mx-auto my-4'>
+              <CardGroup>
+                <Card className='border-0 bg-gray'>
+                  <Card.Body>
+                    <Card.Title className='mb-3 text-center  header-img-card'>
+                      <img className='' src='/img/icons/www.svg' />
+                    </Card.Title>
+                    <Card.Text className=''>
+                      <b>Las Tecnologías de la Información y la Comunicación (TIC) han crecido exponencialmente en los últimos tiempos,</b> hasta el punto de no imaginarnos hoy sin acceso a Internet o sin móvil. Desde que a partir de 1966 comenzase la liberalización del sector, las compañías privadas no han dejado de multiplicarse, y ahora son más de 40, ¡wow!
+                    </Card.Text>
+                  </Card.Body>
+                </Card>
+                <Card className='border-0 bg-gray'>
+                  <Card.Body>
+                    <Card.Title className='mb-3 text-center  header-img-card'>
+                      <img className='' src='/img/icons/internet.svg' />
+                    </Card.Title>
+                    <Card.Text className=''>
+                      Pero ¿por qué comparar es tan importante? Ahora, <b>los productos de fibra y móvil suelen presentarse en forma de paquetes,</b> de modo que puedes contratar conjuntamente el Internet de tu hogar con el de tu móvil (o varias líneas móviles). Además, tienes la posibilidad de añadir teléfono fijo, y otras alternativas como escoger TV de pago, con distintos tipos de contenido como <b>cine y series, moda, deportes, historia o cocina, entre otras categorías.</b> Vamos, que se ha convertido en algo que puedes customizar a tu gusto.
+                    </Card.Text>
+                  </Card.Body>
+                </Card>
+                <Card className='border-0 bg-gray'>
+                  <Card.Body>
+                    <Card.Title className='mb-3 text-center  header-img-card'>
+                      <img className='' src='/img/icons/cursor.svg' />
+                    </Card.Title>
+                    <Card.Text className=''>
+                      Al haber tantas operadoras y servicios encima de la mesa, elegir bien qué nos interesa puede volverse un poco ‘caótico’. En nuestro <b>Comparador de Telefonía e Internet</b> te lo ponemos muy fácil: <b>tienes toda la información y herramientas necesarias a golpe de ‘clic’</b> para conseguir el precio y el paquete que más se adapte a tus necesidades.
+                    </Card.Text>
+                  </Card.Body>
+                </Card>
+              </CardGroup>
+            </Col>
+          </Row>
+        </Container>
+      </div>
       <FormSuscripcion />
       <Footer></Footer>
     </>

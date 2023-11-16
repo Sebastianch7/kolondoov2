@@ -33,7 +33,7 @@ function TarjetaTarifa({ data, type }) {
                         }
                     </Row>
                 </Col>
-                <Col md={5} style={isMobile ? { order: 2 } : { order: 1 }}>
+                <Col md={5} className='text-left' style={isMobile ? { order: 2 } : { order: 1 }}>
                     Duración contrato: <b>{meses_permanencia === 0 ? 'Sin contrato' : `${meses_permanencia} meses`}</b>
                     <hr />
                     {type !== 'gas' && <ItemTarifaDescripcion text={parrilla_bloque_1} />}

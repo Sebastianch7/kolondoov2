@@ -21,7 +21,6 @@ function Footer(props) {
                         <ul>
                             <li className='my-md-3'>Calle Barquillo, 8</li>
                             <li className='my-md-3'>28004 Madrid - España</li>
-                            <li className='my-md-3'>hola@vuskoo.com</li>
                         </ul>
                     </Col>
                     {!isMobile &&

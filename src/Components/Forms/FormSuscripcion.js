@@ -50,7 +50,7 @@ function FormSuscripcion({ }) {
                                         text={'Suscríbete gratis'}
                                         btnStatus={checkIn}
                                         type={'submit'}
-                                        isSuccess={isSend ? 'btn-success' : 'null'}
+                                        isSuccess={isSend && 'btn-success'}
                                     />
                                 </InputGroup>
                                 :

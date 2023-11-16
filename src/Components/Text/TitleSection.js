@@ -20,8 +20,8 @@ function TitleSection({ title, titleAlt, titleThird, subtitle, center = false, b
                     {buttons && <Row className={`${!btnLeft && 'text-center'} mx-auto`}>
                         <Stack gap={3} className="mx-auto d-block" direction={!isMobile ? "horizontal" : "vertical"}>
                             {buttons?.map((item, index) => {
-                                return <Link to={item.url} className={`m-2`}><ButtonPrimary key={index} icon={item.icon} text={item.title} /></Link>
-
+                            console.log(item.url)
+                                return <Link to={item.url} className={'m-2'}><ButtonPrimary key={index} icon={item.icon} text={item.title} /></Link>
                             })}
                         </Stack>
                     </Row>}

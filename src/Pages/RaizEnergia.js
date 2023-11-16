@@ -127,7 +127,7 @@ export default function RaizEnergia() {
             }
           </Col>
           <Col xs={12} md={9}>
-          <p className='font-09'>*Todos los precios incluyen el IVA.**Los precios están estimados en base a un consumo anual de 3.600kWh (300kWh al mes).***Los precios no incluyen costes derivados de la compensación del tope del gas.</p>
+            <p className='font-09'>*Todos los precios incluyen el IVA.**Los precios están estimados en base a un consumo anual de 3.600kWh (300kWh al mes).***Los precios no incluyen costes derivados de la compensación del tope del gas.</p>
           </Col>
           <Col md={12} className='mx-auto text-center mt-md-4'>
             <ButtonPrimary text={'Ver más ofertas'} url={'/energia/luz_y_gas'} />
@@ -136,56 +136,58 @@ export default function RaizEnergia() {
       </Container>
       <ContenedorTarjetaBlog />
       <ContenedorComparadorLogos
-       subtitle={'Hoy en día cada vez se vuelve más <b>importante conocer cuáles son las principales compañías energéticas</b> que operan en el mercado de luz y gas natural, ya que en función de ello podrás escoger una tarifa u otra, o incluso el tipo de trámite que puedes realizar.</p><p> Te lo ponemos fácil, ya que <b>reunimos las compañías en un solo lugar</b> para evitarte el mal rato de tener que visitar una a una las páginas web de cada una de ellas. <b>¡Tu compañía ideal está a tan solo un clic!</b>'}
-       />
+        subtitle={'Hoy en día cada vez se vuelve más <b>importante conocer cuáles son las principales compañías energéticas</b> que operan en el mercado de luz y gas natural, ya que en función de ello podrás escoger una tarifa u otra, o incluso el tipo de trámite que puedes realizar.</p><p> Te lo ponemos fácil, ya que <b>reunimos las compañías en un solo lugar</b> para evitarte el mal rato de tener que visitar una a una las páginas web de cada una de ellas. <b>¡Tu compañía ideal está a tan solo un clic!</b>'}
+      />
       <ContenedorPreguntasFrecuentes
         data={preguntasFrecuentes}
         image={'/img/preguntas-raiz-energia.png'}
       />
-      <Container fluid className='p-0 m-0'>
-        <Row className='mx-auto bg-gray'>
-          <TitleSection
-            center
-            title={'¿Por qué comparar'}
-            titleAlt={'tarifas de Luz y Gas'}
-            titleThird={'es tan importante?'}
-          />
-          <Col xs={12} md={10} className='mx-auto p-4'>
-            <CardGroup>
-              <Card className='border-0 bg-gray p-3'>
-                <Card.Body>
-                  <Card.Title className='mb-5 text-center  header-img-card'>
-                    <img className='img-fluid header-img-card' src='/img/icons/factura.svg' />
-                  </Card.Title>
-                  <Card.Text className='my-4'>
-                    ¿Has oído hablar de las <b>tarifas de electricidad</b> a precio de coste o indexado? ¿Y las de mercado libre? ¿Sabes en qué consiste la tarifa plana de luz? <b>Desde Kolondoo te recomendamos que compares las tarifas de gas y electricidad antes de formalizar cualquier contratación,</b> y que estudies todos los tipos de tarifas que existen a día de hoy hasta saber cuál es la más acorde a tus hábitos de consumo y también a tu presupuesto.
-                  </Card.Text>
-                </Card.Body>
-              </Card>
-              <Card className='border-0 bg-gray p-3'>
-                <Card.Body>
-                  <Card.Title className='mb-5 text-center  header-img-card'>
-                    <img className='img-fluid header-img-card' src='/img/icons/obtener-dinero.svg' />
-                  </Card.Title>
-                  <Card.Text className='my-2'>
-                    Por razones obvias, <b>las tarifas de luz y de gas baratas</b> son las más buscadas, pero…¡Ojo! <b>no te dejes llevar por un precio bajo y pases por alto aspectos también esenciales.</b> Sin ir más lejos, para saber qué potencia es la adecuada para tu vivienda, debes estudiar las características de esta.Con tantos tipos de tarifas y tantísimas comercializadoras compitiendo en el mercado, te puede resultar complicado el proceso de buscar y saber elegir bien la tarifa de luz o de gas -y el precio- que necesitas para tu hogar.
-                  </Card.Text>
-                </Card.Body>
-              </Card>
-              <Card className='border-0 bg-gray p-3'>
-                <Card.Body>
-                  <Card.Title className='mb-5 text-center  header-img-card'>
-                    <img className='img-fluid' src='/img/icons/operador.svg' />
-                  </Card.Title>
-                  <Card.Text className='my-2'>
-                    <b>Algo muy positivo en los comparadores online como Kolondoo, es que te asesoramos de forma gratuita y personalizada, resolviendo tus dudas y aconsejándote siempre lo más adecuado para ti,</b> desde la empatía y la transparencia. ¿Ya te hemos dejado claro lo importante que es realizar una comparativa antes de contratar? ;)
-                  </Card.Text>
-                </Card.Body>
-              </Card>
-            </CardGroup>
-          </Col>
-        </Row>
-      </Container>
+      <div className='p-0 m-0 mx-auto bg-gray'>
+        <Container>
+          <Row className='mx-auto'>
+            <TitleSection
+              center
+              title={'¿Por qué comparar'}
+              titleAlt={'tarifas de Luz y Gas'}
+              titleThird={'es tan importante?'}
+            />
+            <Col xs={12} md={12} className='mx-auto my-4'>
+              <CardGroup>
+                <Card className='border-0 bg-gray'>
+                  <Card.Body>
+                    <Card.Title className='mb-3 text-center  header-img-card'>
+                      <img className='' src='/img/icons/factura.svg' />
+                    </Card.Title>
+                    <Card.Text className=''>
+                      ¿Has oído hablar de las <b>tarifas de electricidad</b> a precio de coste o indexado? ¿Y las de mercado libre? ¿Sabes en qué consiste la tarifa plana de luz? <b>Desde Kolondoo te recomendamos que compares las tarifas de gas y electricidad antes de formalizar cualquier contratación,</b> y que estudies todos los tipos de tarifas que existen a día de hoy hasta saber cuál es la más acorde a tus hábitos de consumo y también a tu presupuesto.
+                    </Card.Text>
+                  </Card.Body>
+                </Card>
+                <Card className='border-0 bg-gray'>
+                  <Card.Body>
+                    <Card.Title className='mb-3 text-center  header-img-card'>
+                      <img className='' src='/img/icons/obtener-dinero.svg' />
+                    </Card.Title>
+                    <Card.Text className=''>
+                      Por razones obvias, <b>las tarifas de luz y de gas baratas</b> son las más buscadas, pero…¡Ojo! <b>no te dejes llevar por un precio bajo y pases por alto aspectos también esenciales.</b> Sin ir más lejos, para saber qué potencia es la adecuada para tu vivienda, debes estudiar las características de esta.Con tantos tipos de tarifas y tantísimas comercializadoras compitiendo en el mercado, te puede resultar complicado el proceso de buscar y saber elegir bien la tarifa de luz o de gas -y el precio- que necesitas para tu hogar.
+                    </Card.Text>
+                  </Card.Body>
+                </Card>
+                <Card className='border-0 bg-gray'>
+                  <Card.Body>
+                    <Card.Title className='mb-3 text-center  header-img-card'>
+                      <img className='' src='/img/icons/operador.svg' />
+                    </Card.Title>
+                    <Card.Text className=''>
+                      <b>Algo muy positivo en los comparadores online como Kolondoo, es que te asesoramos de forma gratuita y personalizada, resolviendo tus dudas y aconsejándote siempre lo más adecuado para ti,</b> desde la empatía y la transparencia. ¿Ya te hemos dejado claro lo importante que es realizar una comparativa antes de contratar? ;)
+                    </Card.Text>
+                  </Card.Body>
+                </Card>
+              </CardGroup>
+            </Col>
+          </Row>
+        </Container>
+      </div>
       <FormSuscripcion />
       <Footer></Footer>
     </>

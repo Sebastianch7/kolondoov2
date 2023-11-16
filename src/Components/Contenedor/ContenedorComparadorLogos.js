@@ -86,16 +86,15 @@ function ContenedorComparadorLogos({ subtitle }) {
                                     className="text-center"
                                     additionalTransfrom={0}
                                     autoPlay
-                                    autoPlaySpeed={2000}
-                                    arrows
-                                    centerMode={true}
+                                    autoPlaySpeed={1500}
+                                    arrows={false}
+                                    centerMode={false}
                                     containerClass="container"
                                     dotListClass=""
                                     draggable
                                     focusOnSelect={false}
                                     infinite
                                     keyBoardControl
-                                    pauseOnHover
                                     minimumTouchDrag={80}
                                     renderDotsOutside={false}
                                     responsive={responsive}
