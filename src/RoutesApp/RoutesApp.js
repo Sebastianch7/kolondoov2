@@ -19,6 +19,8 @@ import RaizTelefonia from '../Pages/RaizTelefonia';
 import RaizEnergia from '../Pages/RaizEnergia';
 import RaizStreaming from '../Pages/RaizStreaming';
 import PoliticaPrivacidad from '../Pages/PoliticaPrivacidad';
+import Blog from '../Pages/Blog';
+import BlogItem from '../Pages/BlogItem';
 
 function RoutesApp() {
     return (
@@ -73,6 +75,9 @@ function RoutesApp() {
             
             <Route path="/contactenos" element={<Contactenos />} />
             <Route path="/politica-privacidad" element={<PoliticaPrivacidad />} />
+            
+            <Route path="/blog" element={<Blog />} />
+            <Route path="/blog/:id" element={<BlogItem />} />
         </Routes>
     </BrowserRouter>
     );

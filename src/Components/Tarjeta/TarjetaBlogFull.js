@@ -10,7 +10,7 @@ function TarjetaBlogFull({ data }) {
                     <div className='info-card p-3'>
                         <Card.Text>{date}</Card.Text>
                         <Card.Text>{title}</Card.Text>
-                        <Card.Link href="#">{button}</Card.Link>
+                        <Card.Link href={url}>{button}</Card.Link>
                     </div>
                 </Card.ImgOverlay>
             </Card>

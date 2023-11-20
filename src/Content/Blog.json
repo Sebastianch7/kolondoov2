@@ -5,7 +5,7 @@
         "date": "18 mayo 2023",
         "title": "Opiniones sobre Gana Energía: ventajas e inconvenientes",
         "button": "Ver más",
-        "url": "",
+        "url": "/blog",
         "type": "max"
     },
     {
@@ -14,7 +14,7 @@
         "date": "18 mayo 2023",
         "title": "Opiniones sobre Gana Energía: ventajas e inconvenientes",
         "button": "Ver más",
-        "url": "",
+        "url": "/blog",
         "type": "max"
     },
     {
@@ -24,7 +24,7 @@
         "title": "Vuelven los teléfonos tontos",
         "content": "Los teléfonos tontos, también llamados dumbphones, son lo contrario a los smartphones o teléfonos inteligentes.",
         "button": "Ver más",
-        "url": "",
+        "url": "/blog",
         "type": "min"
     }
 ]

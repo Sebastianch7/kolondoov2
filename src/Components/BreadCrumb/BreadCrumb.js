@@ -14,7 +14,7 @@ function BreadCrumb({ url }) {
             <Row>
                 <Col md={12} className='mt-md-3'>
                     <Breadcrumb>
-                        {locations.length > 1 &&
+                        {locations.length > 0 &&
                             <>
                                 <Breadcrumb.Item href="/">Vuskoo</Breadcrumb.Item>
                                 {locations.map((item, index) => {
