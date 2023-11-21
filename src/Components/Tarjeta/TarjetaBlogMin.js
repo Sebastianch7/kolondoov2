@@ -9,7 +9,7 @@ function TarjetaBlogMin({ data }) {
             <Card className='m-2 tarjeta tarjeta-blog tarjeta-blog-min'>
                 <Card.Body>
                     <Card.Title><span>{'18 de mayo'}</span></Card.Title>
-                    <Card.Title><b>{'Ofertas'}</b></Card.Title>
+                    <Card.Title><b className='font-09'>{'Ofertas'}</b></Card.Title>
                     <Card.Text className='font-09'>
                         Las mejores ofertas móviles - Agosto 2023
                     </Card.Text>

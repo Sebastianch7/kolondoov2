@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 export default function TarjetaItemBlog() {
     return (
         <Col xs={12} md={6}>
-            <Card className='m-2 tarjeta tarjeta-blog'>
+            <Card className='m-2 tarjeta tarjeta-blog border-0'>
                 <Card.Img variant="top" src="/img/imgBlogDemo.png" />
                 <Card.Body className='bg-gray'>
                     <Card.Title><span>{'18 de mayo'}</span></Card.Title>
@@ -15,7 +15,7 @@ export default function TarjetaItemBlog() {
                     </Card.Text>
                 </Card.Body>
                 <Card.Footer className='bg-gray border-0 bg-white d-flex justify-content-between'>
-                    <Link className='font-09' to={''}>Ver más</Link>
+                    <Link className='font-09' to={'/blog/1'}>Ver más</Link>
                     <span>
                     2 min de lectura, Leída 40 veces
                     </span>

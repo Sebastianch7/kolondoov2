@@ -11,7 +11,7 @@ export default function Blog() {
             <Header></Header>
             <TitleSection 
             title={'ultimas noticias'}
-            text1={'¡Échale un vistazo a nuestro blog y mantente siempre actualizado!'}
+            subtitle={'¡Échale un vistazo a nuestro blog y mantente siempre actualizado!'}
             center
             />
             <ContenedorBlog></ContenedorBlog>

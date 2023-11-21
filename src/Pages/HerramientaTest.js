@@ -71,10 +71,86 @@ export default function HerramientaTest() {
                     text1={'Te averiguamos en un pispás cuál es la velocidad real de tu conexión a Internet :)'}
                 />
                 <Card className='tarjeta shadow'>
-                    &nbsp;
+                    <div id="speedtest" class="container section_speedtest wow fadeInDown margin_block" data-wow-delay="0.2s">
+                        <div class="row">
+                            <div id="testWrapper">
+
+                                <div id="test">
+                                    <div class="testGroup">
+                                        <div class="testArea">
+                                            <div class="testName">Bajada</div>
+                                            <canvas id="dlMeter" class="meter"></canvas>
+                                            <div id="dlText" class="meterText"></div>
+                                            <div class="unit">Mbps</div>
+                                        </div>
+                                        <div class="testArea2">
+                                            <div>
+                                                <div class="testName">Ping</div>
+                                                <div id="pingText" class="meterText"></div>
+                                                <div class="unit">ms</div>
+                                            </div>
+                                            <div>
+                                                <div class="testName mt-20">Fluctuación</div>
+                                                <div id="jitText" class="meterText"></div>
+                                                <div class="unit">ms</div>
+                                            </div>
+                                        </div>
+                                        <div class="testArea">
+                                            <div class="testName">Subida</div>
+                                            <canvas id="ulMeter" class="meter"></canvas>
+                                            <div id="ulText" class="meterText"></div>
+                                            <div class="unit">Mbps</div>
+                                        </div>
+                                    </div>
+                                    <div class="ipContainer">
+                                        <span id="ip">&nbsp;</span>
+                                    </div>
+                                    <div id="shareArea">
+                                        <h3>Share results</h3>
+                                        <p>Test ID: <span id="testId"></span></p>
+                                        <input type="text" value="" id="resultsURL" readonly="readonly" onclick="this.select();this.focus();this.select();document.execCommand('copy');alert('Link copied')" />
+                                        <img src="" id="resultsImg" />
+                                    </div>
+                                </div>
+
+                                <div id="startStopBtn" class="btn btn-primary btn-resaltar" onclick="startStop()"></div>
+                            </div>
+                        </div>
+                    </div>
                 </Card>
+
                 <Card className='tarjeta shadow'>
-                    &nbsp;
+                    <div id="resumen" class="container section_speedtest wow">
+                        <div class="row">
+                            <div class="resumeArea">
+                                <div>
+                                    <div id="textBoxLogo" class="testBox">
+                                        <img src="{{url('resources/images/logo_kolondoo.svg')}}" alt="Kolondoo" />
+                                    </div>
+                                    <div class="testBox">
+                                        <div class="testName">Bajada</div>
+                                        <div id="dlTextResume" class="meterText"></div>
+                                        <div class="unit">Mbps</div>
+                                    </div>
+                                    <div class="testBox">
+                                        <div class="testName">Subida</div>
+                                        <div id="ulTextResume" class="meterText"></div>
+                                        <div class="unit">Mbps</div>
+                                    </div>
+                                    <div class="testBox">
+                                        <div class="testName">Ping</div>
+                                        <div id="pingTextResume" class="meterText"></div>
+                                        <div class="unit">ms</div>
+                                    </div>
+                                    <div id="textBoxJit" class="testBox">
+                                        <div class="testName">Fluctuación</div>
+                                        <div id="jitTextResume" class="meterText"></div>
+                                        <div class="unit">ms</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </Card>
                 <Row className='justify-content-md-center mb-md-5'>
                     <Col md={9}>
@@ -104,8 +180,8 @@ export default function HerramientaTest() {
                         </p>
                     </Col>
                 </Row>
-            </Container>
-            <ContenedorPreguntasFrecuentes data={data} image={'/img/preguntas-test.png'}/>
+            </Container >
+            <ContenedorPreguntasFrecuentes data={data} image={'/img/preguntas-test.png'} />
             <Footer></Footer>
         </>
     )

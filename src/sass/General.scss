@@ -552,7 +552,7 @@ footer {
 
   ul {
     list-style: none;
-    margin-left: -30px;
+    //margin-left: -30px;
     color: $white;
   }
 
@@ -976,4 +976,29 @@ th {
     text-align: center !important;
     vertical-align: middle !important;
   }
+}
+
+ul {
+  list-style-type: none;
+  padding: 0px;
+  height: 90px;
+
+  li {
+    text-align: center;
+    //font-family: Mont;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    margin-bottom: 5px;
+  }
+}
+
+.no-enlace{
+  color: $black;
+  text-decoration: none;
+}
+
+.h-categorias{
+  height: 320px !important;
 }

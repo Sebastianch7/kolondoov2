@@ -13,10 +13,9 @@ function Footer(props) {
                             <img className='footer-img-mobile' src='/img/logoReverse.svg' alt="Logo" />
                         </Col>
                     </Row>
-
                 }
-                <Row>
-                    <Col xs={6} sm={3}>
+                <Row className='text-center'>
+                    <Col xs={6} md={3}>
                         {!isMobile && <img src='/img/logoReverse.svg' />}
                         <ul>
                             <li className='my-md-3'>Calle Barquillo, 8</li>
@@ -25,8 +24,8 @@ function Footer(props) {
                     </Col>
                     {!isMobile &&
                         <>
-                            <Col sm={3}>
-                                <h5>Redes sociales</h5>
+                            <Col md={3}>
+                                <h5 className='text-center'>Redes sociales</h5>
                                 <ul>
                                     <li className='my-md-3'><a href="#">Linkedin</a></li>
                                     <li className='my-md-3'><a href="#">Facebook</a></li>
@@ -34,10 +33,10 @@ function Footer(props) {
                                     <li className='my-md-3'><a href="#">Instagram</a></li>
                                 </ul>
                             </Col>
-                            <Col sm={3}>
+                            <Col md={3}>
                                 <h5>Tarifas</h5>
                                 <ul>
-                                    {/* <li className='my-md-3'><Link to={''}>Tarifas</Link></li> */}
+                                    <li className='my-md-3'><Link to={''}>Tarifas</Link></li>
                                     <li className='my-md-3'><Link to={'/internet_y_telefonia/fibra'}>Sólo fibra</Link></li>
                                     <li className='my-md-3'><Link to={'/internet_y_telefonia/movil'}>Tarifa móvil</Link></li>
                                     <li className='my-md-3'><Link to={'/internet_y_telefonia/movil_fibra_tv'}>Fibra+móvil+TV</Link></li>
@@ -45,8 +44,9 @@ function Footer(props) {
                                     <li className='my-md-3'><Link to={'/energia/luz'}>Luz</Link></li>
                                 </ul>
                             </Col>
-                        </>}
-                    <Col xs={6} sm={3}>
+                        </>
+                    }
+                    <Col xs={6} md={3}>
                         <h5>vuskoo.com</h5>
                         <ul>
                             <li className='my-md-3'><Link to="/">vuskoo.com</Link></li>
@@ -56,10 +56,13 @@ function Footer(props) {
                         </ul>
                     </Col>
                 </Row>
+                <Row>
+                    <Col xs={12} className="footer-copyright text-white pt-5 mt-5">
+                        <p>COPYRIGHT © 2021 VUSKOO. TODOS LOS DERECHOS RESERVADOS | POLÍTICA DE PRIVACIDAD | AVISO LEGAL | POLÍTICA DE COOKIES | MAPA WEB</p>
+                    </Col>
+                </Row>
             </Container>
-            <div className="footer-copyright text-white px-3">
-                <p>COPYRIGHT © 2021 VUSKOO. TODOS LOS DERECHOS RESERVADOS | POLÍTICA DE PRIVACIDAD | AVISO LEGAL | POLÍTICA DE COOKIES | MAPA WEB</p>
-            </div>
+
         </footer>
     );
 }
