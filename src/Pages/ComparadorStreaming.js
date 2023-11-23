@@ -8,7 +8,7 @@ import TitleSection from '../Components/Text/TitleSection';
 function ComparadorStreaming() {
     return (
         <div>
-            <Header></Header>
+            <Header breadCrumb></Header>
             <Banner
                 title={'Comparador de plataformas de streaming'}
                 subtitle='¡Te ayudamos a encontrar la tarifa que mejor se adapte a ti!'

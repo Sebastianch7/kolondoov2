@@ -7,7 +7,7 @@ import ChangeLang from '../Utils/ChangeLang'
 import { useTranslation } from 'react-i18next';
 import { useState } from 'react';
 
-function Header({ }) {
+function Header({ breadCrumb }) {
     const { t } = useTranslation();
 
     return (
@@ -29,7 +29,9 @@ function Header({ }) {
                     </Navbar.Collapse>
                 </Container>
             </Navbar>
-            <BreadCrumb></BreadCrumb>
+            {breadCrumb &&
+                <BreadCrumb></BreadCrumb>
+            }
         </>
     );
 }

@@ -8,7 +8,7 @@ import FormSuscripcion from '../Components/Forms/FormSuscripcion'
 export default function Blog() {
     return (
         <>
-            <Header></Header>
+            <Header breadCrumb></Header>
             <TitleSection 
             title={'ultimas noticias'}
             subtitle={'¡Échale un vistazo a nuestro blog y mantente siempre actualizado!'}

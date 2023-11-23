@@ -9,7 +9,7 @@ import ContenedorProductosFibra from '../Components/Contenedor/ContenedorProduct
 function ComparadorFibra() {
     return (
         <div>
-            <Header></Header>
+            <Header breadCrumb></Header>
             <Banner
                 title={'Comparador de Tarifas fibra'}
                 subtitle='¡Te ayudamos a encontrar la tarifa de fibra!'

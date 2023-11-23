@@ -1,36 +1,70 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Image from 'react-bootstrap/Image';
 import { Container, Row, Col, Card } from 'react-bootstrap';
 import TitleSection from '../Text/TitleSection';
 import ContenedorDestacados from '../Blog/ContenedorDestacados';
 import FormSuscripcion from '../Forms/FormSuscripcion';
+import { getBlogById } from '../../services/ApiServices';
+import { useLocation } from 'react-router-dom';
+import Load from '../Utils/Load'
+import { Link } from 'react-router-dom';
+import ButtonPrimary from '../Button/ButtonPrimary';
 
-export default function ContenedorBlogItem({children}) {
+export default function ContenedorBlogItem({ children }) {
+    const [fetchBlog, setFetchBlog] = useState([])
+    const [idBlog, setIdBlog] = useState(null)
+    const location = useLocation();
+    const [load, setLoad] = useState(false)
+
+    useEffect(() => {
+        const pathname = location.pathname;
+        let locations = pathname.split('/');
+        setIdBlog(locations[2]);
+    }, [idBlog])
+
+    useEffect(() => {
+        setLoad(true)
+        const fetchBlogId = async () => {
+            try {
+                if (idBlog !== null) {
+                    const response = await getBlogById(idBlog);
+                    setFetchBlog(response);
+                    setLoad(false);
+                    console.log(fetchBlog);
+                }
+            } catch (error) {
+                console.error("Error al obtener blog:", error);
+            }
+        };
+
+        fetchBlogId();
+    }, [idBlog]);
     return (
         <>
-            <Container>
+            {!load ? <Container>
                 <Row>
                     <Col xs={12} md={8}>
-                        <Image src="/img/banner-blog-item.png" fluid />
+                        <Image src={`kolondoo.com/images/blog/es/desktop/${fetchBlog.imagen_principal_escritorio}`} alt={`https://kolondoo.com/images/blog/es/desktop/${fetchBlog.imagen_principal_escritorio}`} fluid />
                         <TitleSection
                             left
-                            title={'¿Cómo puedo limpiar los filtros del aire acondicionado?'}
-                            subtitle={'HOGAR / 28 AGOSTO 2023 ALMUDENA DEL VAL'}
-                            clave={'#aireacondicionado #filtros #trucoshogar #limpieza #mantenimientohogar'}
-                            text1={'Tras los meses más calurosos del año, algunos electrodomésticos dejarán de estar activos hasta el año siguiente. Es el caso del <b>aire acondicionado.</b> Si no quieres llevarte sorpresas el próximo verano, presta atención: te contamos cómo limpiar sus filtros de forma efectiva.'}
+                            title={fetchBlog?.titulo}
+                            text1={fetchBlog?.entrada}
+                            subtitle={fetchBlog?.metatitulo}
+                            clave={fetchBlog?.hashtags?.replaceAll('[', '').replaceAll('"', '').replaceAll(']', '').replaceAll(',', ' ')}
+                            textBlog={fetchBlog?.cuerpo}
                         />
-                        <TitleSection 
-                        left
-                        title={'¿Por qué es importante limpiar los filtros del aire acondicionado?'}
-                        text1={'<p>El mantenimiento de los electrodomésticos del hogar es sinónimo de garantía en su funcionamiento. Sobre todo cuando han estado mucho tiempo apagados o sin utilizar.</p><p>Uno de los aparatos que suele pasar desapercibido con mayor frecuencia es el aire acondicionado. ¿Por qué resulta importante limpiar sus filtros?</p>'}
-                        />
+                        <Col xs={12} className='text-center my-5'>
+                            <Link to={'/blog'} className={'my-5'}><ButtonPrimary text={'volver'} /></Link>
+                        </Col>
                     </Col>
                     <ContenedorDestacados />
                 </Row>
                 <Row>
-                <FormSuscripcion />
+                    <FormSuscripcion />
                 </Row>
-            </Container>
+            </Container> :
+                <Load></Load>
+            }
 
         </>
     )

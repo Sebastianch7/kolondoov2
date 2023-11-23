@@ -8,7 +8,7 @@ import ContenedorProductosMovil from '../Components/Contenedor/ContenedorProduct
 function ComparadorMovil() {
     return (
         <div>
-            <Header></Header>
+            <Header breadCrumb></Header>
             <Banner
                 title={'Comparador de Tarifas Móvil'}
                 subtitle='¡Te ayudamos a encontrar la tarifa móvil que mejor se adapte a ti!'

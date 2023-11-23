@@ -8,7 +8,7 @@ import ContenedorProductosGas from '../Components/Contenedor/ContenedorProductos
 function ComparadorGas() {
     return (
         <div>
-            <Header></Header>
+            <Header breadCrumb></Header>
             <Banner
                 title={'Comparador de Tarifas de Gas'}
                 subtitle='¡Te ayudamos a encontrar el mejor gas!'

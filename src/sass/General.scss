@@ -1002,3 +1002,14 @@ ul {
 .h-categorias{
   height: 320px !important;
 }
+
+.blog{
+  h2{
+    color: $colorPrimary;
+  }
+  a{
+    color: $colorPrimary !important;
+    text-decoration: none;
+    font-family: $MontSemiBold;
+  }
+}

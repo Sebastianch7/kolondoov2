@@ -75,7 +75,7 @@ export default function RaizEnergia() {
   }, []);
   return (
     <>
-      <Header></Header>
+      <Header breadCrumb></Header>
       <BannerImageFull
         image={'/img/bannerRaizEnergia.png'}
         title='Comparador de Energía'

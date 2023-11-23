@@ -19,7 +19,7 @@ function QuienesSomos(props) {
     const { t } = useTranslation();
     return (
         <div>
-            <Header></Header>
+            <Header breadCrumb></Header>
             <main>
                 <BannerImageFull
                     title={t('bannerQuienesSomosTitle')}

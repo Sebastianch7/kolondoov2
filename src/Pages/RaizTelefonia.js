@@ -84,7 +84,7 @@ export default function RaizTelefonia() {
   }, []);
   return (
     <>
-      <Header></Header>
+      <Header breadCrumb></Header>
       <BannerImageFull
         image={'/img/bannerRaizTelefonia.png'}
         title='Comparador de Internet y Telefonía Móvil'

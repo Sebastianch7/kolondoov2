@@ -8,7 +8,7 @@ import ContenedorProductosLuzGas from '../Components/Contenedor/ContenedorProduc
 function ComparadorLuzGas() {
     return (
         <div>
-            <Header></Header>
+            <Header breadCrumb></Header>
             <Banner
                 title={'Comparador de Tarifas Luz y Gas'}
                 subtitle='¡Te ayudamos a encontrar la tarifa que mejor se adapte a ti!'

@@ -61,7 +61,7 @@ const preguntasFrecuentes = [
 export default function RaizStreaming() {
   return (
     <>
-      <Header></Header>
+      <Header breadCrumb></Header>
       <BannerImageFull
         image={'/img/bannerRaizStreaming.png'}
         title='Comparador televisión y streaming'

@@ -6,7 +6,7 @@ import Footer from '../Components/Footer/Footer'
 export default function PoliticaPrivacidad() {
     return (
         <>
-            <Header></Header>
+            <Header breadCrumb></Header>
             <div className='mb-5'>
                 <TitleSection
                     left

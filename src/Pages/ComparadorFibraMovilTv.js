@@ -9,7 +9,7 @@ import ContenedorProductosMovilFibraTv from '../Components/Contenedor/Contenedor
 function ComparadorFibraMovilTv() {
     return (
         <div>
-            <Header></Header>
+            <Header breadCrumb></Header>
             <Banner
                 title={'Comparador de Tarifas movil con fibra y tv'}
                 subtitle='¡Te ayudamos a encontrar la tarifa movil con fibra y tv!'

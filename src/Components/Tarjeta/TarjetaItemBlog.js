@@ -2,25 +2,29 @@ import React from 'react'
 import { Col, Card } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 
-export default function TarjetaItemBlog() {
+
+export default function TarjetaItemBlog({ data }) {
+    const { id, fecha_publicacion, visitas, categoria_id, hashtags, imagen_principal_escritorio, imagen_principal_movil, titulo, entradilla } = data
     return (
-        <Col xs={12} md={6}>
-            <Card className='m-2 tarjeta tarjeta-blog border-0'>
-                <Card.Img variant="top" src="/img/imgBlogDemo.png" />
-                <Card.Body className='bg-gray'>
-                    <Card.Title><span>{'18 de mayo'}</span></Card.Title>
-                    <Card.Title><b>{'¿Cómo puedo limpiar los filtros del aire acondicionado?'}</b></Card.Title>
-                    <Card.Text className='font-09'>
-                        Tras los meses más calurosos del año, algunos electrodomésticos dejarán de estar activos hasta el año siguiente. Es el caso del <b>aire acondicionado.</b> Si no quieres llevarte sorpresas el próximo verano, presta atención: te contamos <b>cómo limpiar sus filtros de forma efectiva.</b>
-                    </Card.Text>
-                </Card.Body>
-                <Card.Footer className='bg-gray border-0 bg-white d-flex justify-content-between'>
-                    <Link className='font-09' to={'/blog/1'}>Ver más</Link>
-                    <span>
-                    2 min de lectura, Leída 40 veces
-                    </span>
-                </Card.Footer>
-            </Card>
-        </Col>
+        <>
+            <Col xs={12} md={6}>
+                <Card className='m-2 tarjeta tarjeta-blog border-0'>
+                    <Card.Img variant="top" className='img-fluid' src={`https://kolondoo.com/images/blog/es/desktop/${imagen_principal_escritorio}`} />
+                    <Card.Body className='bg-gray'>
+                        <Card.Title><span>{fecha_publicacion}</span></Card.Title>
+                        <Card.Title><b>{titulo}</b></Card.Title>
+                        <Card.Text className='font-09'>
+                            <p dangerouslySetInnerHTML={{ __html: entradilla }}></p>
+                        </Card.Text>
+                    </Card.Body>
+                    <Card.Footer className='bg-gray border-0 bg-white d-flex justify-content-between'>
+                        <Link className='font-09' to={`/blog/${id}`}>Ver más</Link>
+                        <span>
+                            2 min de lectura, Leída {visitas} veces
+                        </span>
+                    </Card.Footer>
+                </Card>
+            </Col>
+        </>
     )
 }
