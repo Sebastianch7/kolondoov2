@@ -241,3 +241,20 @@ export const postLead = async (idPlan, phoneNumber, landing) => {
         throw error;
     }
 };
+
+export const getPriceLightService = async () => {
+    try {
+        let fecha = new Date();
+        let año = fecha.getFullYear();
+        let mes = fecha.getMonth(); // Los meses en JavaScript son indexados desde 0, por lo que sumamos 1
+        let dia = fecha.getDate();
+
+        const actual = `${año}-${mes}-${dia}`;
+        const response = await axios.get(`https://apidatos.ree.es/es/datos/mercados/precios-mercados-tiempo-real?start_date=${actual}T00:00&end_date=${actual}T23:00&time_trunc=hour`, {});
+        const data = response.data.included[0].attributes.values;
+        return data;
+    } catch (error) {
+        console.error("Error al obtener la informacion de las tarifas de luz", error);
+        throw error;
+    }
+};

@@ -20,8 +20,7 @@ function ComparadorLuz() {
                     politicy
                 /> */}
             </Banner>
-            <ContenedorProductosLuz>
-            </ContenedorProductosLuz>
+            <ContenedorProductosLuz />
             <Footer></Footer>
         </div>
     );

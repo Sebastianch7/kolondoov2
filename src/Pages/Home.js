@@ -38,7 +38,7 @@ function Home(props) {
                         }
                     ]}
                 />
-                <ContenedorTarjeta>
+                <ContenedorTarjeta cols={12}>
                     {!isMobile ?
                         TarjetasProductos?.map((item, index) => {
                             return <TarjetaProducto key={index} data={item} />

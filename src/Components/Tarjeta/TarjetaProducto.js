@@ -3,7 +3,7 @@ import { Col } from 'react-bootstrap';
 import Card from 'react-bootstrap/Card';
 import ButtonPrimary from '../Button/ButtonPrimary';
 
-function TarjetaProducto({ data, large, columna = 3 }) {
+function TarjetaProducto({ data, large }) {
     const { icon, title, list = null, button, text } = data
     return (
         <Card className={`tarjeta tarjeta-producto m-1 shadow`}>

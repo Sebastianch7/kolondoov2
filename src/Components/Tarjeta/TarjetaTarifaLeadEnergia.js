@@ -11,7 +11,6 @@ import { Link } from 'react-router-dom';
 export default function TarjetaTarifaLeadEnergia({ data, TarifaCard }) {
     const [tarifa] = useState(null)
     const {
-        
         luz_precio_energia_24h,
         logo,
         id,

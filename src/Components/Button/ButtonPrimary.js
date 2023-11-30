@@ -2,7 +2,7 @@ import React from 'react';
 import { Button, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
-function ButtonPrimary({ icon, text, btnStatus, type, isSuccess, url }) {
+function ButtonPrimary({ icon, text, btnStatus = false, type, isSuccess, url }) {
     return (
         <Link 
         key={text} 

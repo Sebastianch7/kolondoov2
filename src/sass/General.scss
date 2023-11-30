@@ -13,7 +13,7 @@ body {
 
 @font-face {
   font-family: 'MontHeavy'; // El nombre de la fuente que deseas usar
-  src: url('../../public/fonts/MontBook.otf') format('opentype'); // Ruta de la fuente OTF
+  src: url('../../public/fonts/MontHeavy.otf') format('opentype'); // Ruta de la fuente OTF
   font-weight: bold;
   font-style: normal;
 }
@@ -59,6 +59,11 @@ b,
   font-weight: bolder !important;
 }
 
+.font{
+  &-heavy{
+    font-family: $MontHeavy !important;
+  }
+}
 
 /* Colors */
 $colorPrimary : #19467c;
@@ -273,6 +278,17 @@ $breakpoint-lg: 1360px;
   border-radius: 0px;
   background-color: $white;
   margin: 1.5rem auto;
+
+  &-herramienta{
+    &-luz{
+      padding: 20px 0px 0px;
+      min-height: 210px;
+      .card-title{
+        color: $colorPrimary;
+        padding: 0px 15px;
+      }
+    }
+  }
 
   &-blog{
     max-width: 400px;
@@ -955,7 +971,7 @@ th {
     background-position: 0 6px;
     background-size: 10px;
     background-repeat: no-repeat;
-
+    text-align: left !important;
     p {
       color: $black;
     }
@@ -981,7 +997,7 @@ th {
 ul {
   list-style-type: none;
   padding: 0px;
-  height: 90px;
+  //height: 90px;
 
   li {
     text-align: center;
@@ -1012,4 +1028,12 @@ ul {
     text-decoration: none;
     font-family: $MontSemiBold;
   }
+}
+
+.text-left{
+  text-align: left !important;
+}
+
+.column-2{
+  columns: 2;
 }

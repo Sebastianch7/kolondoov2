@@ -6,7 +6,8 @@ import { getBlog } from '../../services/ApiServices'
 import Load from '../Utils/Load'
 
 
-export default function ContenedorBlog() {
+export default function ContenedorBlog({categoria}) {
+
     const [fetchBlog, setFetchBlog] = useState([])
     const [load, setLoad] = useState(false)
 

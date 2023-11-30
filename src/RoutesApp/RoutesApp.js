@@ -40,7 +40,6 @@ function RoutesApp() {
             <Route path="/internet_y_telefonia/fibra/:id" element={<Lead />} />
             <Route path="/thank/internet_y_telefonia/fibra/:id" element={<ThankPage />} />
 
-            <Route path="/energia/" element={<ComparadorLuz />} />
             <Route path="/energia/luz" element={<ComparadorLuz />} />
             <Route path="/energia/luz/:id" element={<Lead />} />
             <Route path="/thank/energia/luz/:id" element={<ThankPage />} />
@@ -77,7 +76,8 @@ function RoutesApp() {
             <Route path="/politica-privacidad" element={<PoliticaPrivacidad />} />
             
             <Route path="/blog" element={<Blog />} />
-            <Route path="/blog/:id" element={<BlogItem />} />
+            <Route path="/blog/:categoria" element={<Blog />} />
+            <Route path="/noticia/:id" element={<BlogItem />} />
         </Routes>
     </BrowserRouter>
     );

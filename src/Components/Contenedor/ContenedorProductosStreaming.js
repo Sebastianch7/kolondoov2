@@ -75,8 +75,7 @@ const data = [
 function ContenedorProductosStreaming(logo = null, landingLead = null, id = null) {
   return (
     <>
-      <Container >
-        
+      <Container>
             <div
               style={{
                 paddingBottom: '10px',

@@ -97,7 +97,9 @@ export default function RaizEnergia() {
           text2={' Y no se nos ocurre mejor forma de lograrlo que utilizando <b>comparadores de energía</b> como los de Kolondoo, mediante los cuales agrupamos las mejores ofertas de electricidad, las de gas, y también las que reúnen ambos servicios. <b>Muchos clientes ya han comprobado su gran utilidad, ¡eres el próximo!</b>'}
           left
         />
-        <ContenedorTarjeta>
+        <ContenedorTarjeta 
+        cols={8}
+        >
           {!isMobile ?
             TarjetaRaizEnergia?.map((item, index) => {
               return <TarjetaProducto key={index} data={item} />

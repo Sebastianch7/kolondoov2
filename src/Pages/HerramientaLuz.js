@@ -7,6 +7,8 @@ import { getExtraOffer } from '../services/ApiServices'
 import TarjetaTarifaLeadEnergia from '../Components/Tarjeta/TarjetaTarifaLeadEnergia'
 import ContenedorPreguntasFrecuentes from '../Components/Contenedor/ContenedorPreguntasFrecuentes';
 import { isMobile } from 'react-device-detect';
+import { getPriceLightService } from '../services/ApiServices';
+import ContenedorHerramientasLuz from '../Components/Contenedor/ContenedorHerramientasLuz';
 
 const data = [
     {
@@ -55,8 +57,32 @@ const data = [
 export default function HerramientaLuz() {
 
     const [isLoading, setIsLoading] = useState(true);
-    const [infoOffer, setInfoOffer] = useState([]);
+    const [infoPrice, setInfoPrice] = useState([]);
+    const [infoPriceMedia, setInfoPriceMedia] = useState(null);
+    const [infoPriceSort, setInfoPriceSort] = useState([]);
     const [extraOffer, setExtraOffer] = useState([]);
+    const fechaActual = new Date();
+    const meses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre']
+
+    useEffect(() => {
+        const fetchTarifasLuz = async () => {
+            try {
+                const response = await getPriceLightService();
+                setInfoPrice(response)
+            } catch (error) {
+                console.error("Error al obtener informacion:", error);
+            }
+        };
+        fetchTarifasLuz();
+    }, [])
+
+    useEffect(() => {
+        setInfoPriceSort(infoPrice)
+        const sumaDeValores = infoPrice.reduce((acumulador, elemento) => acumulador + elemento.value, 0);
+        const cantidadDeElementos = infoPrice.length;
+        setInfoPriceMedia(Math.round(sumaDeValores / 24))
+    }, [infoPrice])
+
 
     useEffect(() => {
         const fetchTariffs = async () => {
@@ -65,7 +91,7 @@ export default function HerramientaLuz() {
                 setExtraOffer(response);
                 setIsLoading(false);
             } catch (error) {
-                console.error("Error al obtener oferta extra:", error);
+                console.error("Error al obtener informacion:", error);
             }
         };
 
@@ -77,13 +103,14 @@ export default function HerramientaLuz() {
         <>
             <Header breadCrumb></Header>
             <Container fluid className='p-md-0 m-md-0 mx-xxl-auto'>
-                <Card className='tarjeta mb-4 px-4 p-sm-5 b-gray border-0'>
+                <Card className='tarjeta p-sm-5 b-gray border-0'>
                     <TitleSection
                         center
                         title={'Precio de la luz'}
                         titleAlt={'hoy'}
                     />
-                    <p>La media del <b>precio de la luz hoy 26 de Octubre de 2023,</b> es de <b>0.120 €/kWh</b> en el mercado regulado. <b>Te mostramos a continuación el precio de la luz en estos momentos,</b> así como el periodo del día en el que está resultando más económica y también más costosa. ¡Así puedes saber cuándo es la hora clave para poner tus electrodomésticos! ;)</p>
+                    <ContenedorHerramientasLuz promedio={infoPriceMedia} data={infoPriceSort}/>
+                    <p>La media del <b>precio de la luz hoy {fechaActual.getDate()} de {meses[fechaActual.getMonth() - 1]} de {fechaActual.getFullYear()},</b> es de <b>{infoPriceMedia / 1000} €/kWh</b> en el mercado regulado. <b>Te mostramos a continuación el precio de la luz en estos momentos,</b> así como el periodo del día en el que está resultando más económica y también más costosa. ¡Así puedes saber cuándo es la hora clave para poner tus electrodomésticos! ;)</p>
                 </Card>
             </Container>
             <Container>
@@ -116,51 +143,39 @@ export default function HerramientaLuz() {
                         />
                         <div className='p-3'>
                             {!isMobile ?
-                                <table className='text-center col-md-6 mx-auto'>
-                                    <tbody>
-                                        <tr>
-                                            <th>02h-03h:</th><td className='color-green'>0.076 €/kWh</td>
-                                            <th>02h-03h:</th><td className='color-red'>0.076 €/kWh</td>
-                                        </tr>
-                                        <tr>
-                                            <th>15h-16h:</th><td className='color-green'>0.076 €/kWh</td>
-                                            <th>15h-16h:</th><td className='color-red'>0.076 €/kWh</td>
-                                        </tr>
-                                        <tr>
-                                            <th>04h-05h:</th><td className='color-green'>0.077 €/kWh</td>
-                                            <th>04h-05h:</th><td className='color-red'>0.077 €/kWh</td>
-                                        </tr>
-                                        <tr>
-                                            <th>05h-06h:</th><td className='color-green'>0.077 €/kWh</td>
-                                            <th>05h-06h:</th><td className='color-red'>0.077 €/kWh</td>
-                                        </tr>
-                                        <tr>
-                                            <th>03h-04h:</th><td className='color-green'>0.078 €/kWh</td>
-                                            <th>03h-04h:</th><td className='color-red'>0.078 €/kWh</td>
-                                        </tr>
-                                        <tr>
-                                            <th>01h-02h:</th><td className='color-green'>0.080 €/kWh</td>
-                                            <th>01h-02h:</th><td className='color-red'>0.080 €/kWh</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                : <table className='text-center col-md-6 mx-auto'>
-                                    <tbody>
-                                        <tr><th>02h-03h:</th><td className='color-green'>0.076 €/kWh</td></tr>
-                                        <tr><th>15h-16h:</th><td className='color-green'>0.076 €/kWh</td></tr>
-                                        <tr><th>04h-05h:</th><td className='color-green'>0.077 €/kWh</td></tr>
-                                        <tr><th>05h-06h:</th><td className='color-green'>0.077 €/kWh</td></tr>
-                                        <tr><th>03h-04h:</th><td className='color-green'>0.078 €/kWh</td></tr>
-                                        <tr><th>01h-02h:</th><td className='color-green'>0.080 €/kWh</td></tr>
-                                        <tr><td>&nbsp;</td></tr>
-                                        <tr><th>02h-03h:</th><td className='color-red'>0.076 €/kWh</td></tr>
-                                        <tr><th>15h-16h:</th><td className='color-red'>0.076 €/kWh</td></tr>
-                                        <tr><th>04h-05h:</th><td className='color-red'>0.077 €/kWh</td></tr>
-                                        <tr><th>05h-06h:</th><td className='color-red'>0.077 €/kWh</td></tr>
-                                        <tr><th>03h-04h:</th><td className='color-red'>0.078 €/kWh</td></tr>
-                                        <tr><th>01h-02h:</th><td className='color-red'>0.080 €/kWh</td></tr>
-                                    </tbody>
-                                </table>
+                                <Row className="d-flex justify-content-center text-center">
+                                    <Col md={1}>
+                                        <img src="/img/flechaIncremento.svg" />
+                                    </Col>
+                                    <Col md={2}>
+                                        {
+                                            infoPriceSort.sort((a, b) => a.value - b.value).map((item, index) => {
+                                                if (index < 6) {
+                                                    let fecha = new Date(item.datetime)
+                                                    let fecha2 = item.datetime.split('T')
+                                                    return <p><b className="">{fecha2[1].split(':')[0]}h - {parseInt(fecha2[1].split(':')[0]) + 1 < 10 ? `0${parseInt(fecha2[1].split(':')[0]) + 1}` : parseInt(fecha2[1].split(':')[0]) + 1}h:</b>&nbsp;<b className="color-green font-heavy">0.{Math.round(item.value)} €/kWh</b></p>
+                                                }
+                                            })
+                                        }
+                                    </Col>
+                                    <Col md={{ span: 1, offset: 1 }}></Col>
+                                    <Col md={1}>
+                                        <img src="/img/flechaIncremento.svg" />
+                                    </Col>
+                                    <Col md={2}>
+                                        {
+                                            infoPriceSort.sort((a, b) => a.value + b.value).reverse().map((item, index) => {
+                                                if (index < 6) {
+                                                    let fecha = new Date(item.datetime)
+                                                    let fecha2 = item.datetime.split('T')
+                                                    return <p><b className="">{fecha2[1].split(':')[0]}h - {parseInt(fecha2[1].split(':')[0]) + 1 < 10 ? `0${parseInt(fecha2[1].split(':')[0]) + 1}` : parseInt(fecha2[1].split(':')[0]) + 1}h:</b>&nbsp;<b className="color-red font-heavy">0.{Math.round(item.value)} €/kWh</b></p>
+                                                }
+                                            })
+                                        }
+                                    </Col>
+                                </Row>
+                                :
+                                null
                             }
                         </div>
                     </Card>

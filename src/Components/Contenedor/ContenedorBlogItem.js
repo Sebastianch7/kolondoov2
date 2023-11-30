@@ -13,8 +13,8 @@ import ButtonPrimary from '../Button/ButtonPrimary';
 export default function ContenedorBlogItem({ children }) {
     const [fetchBlog, setFetchBlog] = useState([])
     const [idBlog, setIdBlog] = useState(null)
-    const location = useLocation();
     const [load, setLoad] = useState(false)
+    const location = useLocation();
 
     useEffect(() => {
         const pathname = location.pathname;
@@ -44,7 +44,7 @@ export default function ContenedorBlogItem({ children }) {
             {!load ? <Container>
                 <Row>
                     <Col xs={12} md={8}>
-                        <Image src={`kolondoo.com/images/blog/es/desktop/${fetchBlog.imagen_principal_escritorio}`} alt={`https://kolondoo.com/images/blog/es/desktop/${fetchBlog.imagen_principal_escritorio}`} fluid />
+                        <Image src={`kolondoo.com/images/blog/es/desktop/${fetchBlog?.imagen_principal_escritorio}`} alt={`https://kolondoo.com/images/blog/es/desktop/${fetchBlog?.imagen_principal_escritorio}`} fluid />
                         <TitleSection
                             left
                             title={fetchBlog?.titulo}
@@ -54,7 +54,7 @@ export default function ContenedorBlogItem({ children }) {
                             textBlog={fetchBlog?.cuerpo}
                         />
                         <Col xs={12} className='text-center my-5'>
-                            <Link to={'/blog'} className={'my-5'}><ButtonPrimary text={'volver'} /></Link>
+                        <Link className='font-09 btn btn-primary' to={`/blog`}>Volver</Link>
                         </Col>
                     </Col>
                     <ContenedorDestacados />

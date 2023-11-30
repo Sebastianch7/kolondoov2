@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 
 export default function TarjetaItemBlog({ data }) {
-    const { id, fecha_publicacion, visitas, categoria_id, hashtags, imagen_principal_escritorio, imagen_principal_movil, titulo, entradilla } = data
+    const { id, fecha_publicacion, visitas, categoria_id, hashtags, imagen_principal_escritorio, imagen_principal_movil, titulo, entradilla, url_amigable } = data
     return (
         <>
             <Col xs={12} md={6}>
@@ -18,7 +18,7 @@ export default function TarjetaItemBlog({ data }) {
                         </Card.Text>
                     </Card.Body>
                     <Card.Footer className='bg-gray border-0 bg-white d-flex justify-content-between'>
-                        <Link className='font-09' to={`/blog/${id}`}>Ver más</Link>
+                        <Link className='font-09' to={`/noticia/${url_amigable}`}>Ver más</Link>
                         <span>
                             2 min de lectura, Leída {visitas} veces
                         </span>
