@@ -12,10 +12,11 @@ export default function ContenedorHerramientasLuz({ promedio }) {
     const [infoValueUp, setInfoValueUp] = useState(null)
     const [infoHoraDown, setInfoHoraDown] = useState(null)
     const [infoValueDown, setInfoValueDown] = useState(null)
+    const [infoValueCurrent, setInfoValueCurrent] = useState(null)
 
     const fechaActual = new Date();
     const horaActual = new Date()
-    function getDate(data) {
+    function getDate(data = null) {
         data = new Date(data)
         return data?.getHours()
     }
@@ -25,6 +26,7 @@ export default function ContenedorHerramientasLuz({ promedio }) {
             try {
                 const response = await getPriceLightService();
                 setInfoPrice(response)
+                setInfoValueCurrent(response[fechaActual?.getHours()]?.value)
                 setInfoPriceFilter(response)
             } catch (error) {
                 console.error("Error al obtener oferta extra:", error);
@@ -34,27 +36,26 @@ export default function ContenedorHerramientasLuz({ promedio }) {
     }, [])
 
     useEffect(() => {
-        infoPriceFilter.sort((a, b) => a.value - b.value)
+        setInfoPriceFilter(infoPriceFilter.sort((a, b) => a.value - b.value))
     }, [infoPrice])
-    
+
     useEffect(() => {
         const item = infoPriceFilter[0];
         let fecha2 = item?.datetime?.split('T');
-        if(fecha2 !== undefined){
+        if (fecha2 !== undefined) {
             setInfoHoraUp(parseInt(fecha2[1].split(':')[0]))
             setInfoValueUp(Math.round(infoPriceFilter[0]?.value))
         }
     }, [infoPriceFilter])
-    
+
     useEffect(() => {
         const item = infoPriceFilter[23];
         let fecha2 = item?.datetime?.split('T');
-        if(fecha2 !== undefined){
+        if (fecha2 !== undefined) {
             setInfoHoraDown(parseInt(fecha2[1].split(':')[0]))
             setInfoValueDown(Math.round(infoPriceFilter[23]?.value))
         }
     }, [infoValueUp])
-
     return (
         <Container>
             <Row className='d-flex justify-content-center text-center'>
@@ -65,7 +66,8 @@ export default function ContenedorHerramientasLuz({ promedio }) {
                         </Card.Title>
                         <Card.Body>
                             <Card.Text>
-                                <h2 className='color-primary font-heavy'>0.{Math.round(infoPrice[fechaActual?.getHours()]?.value)}</h2>
+                                <h2 className='color-primary font-heavy'>0.{Math.round(infoValueCurrent)}</h2>
+                                <small>{`${fechaActual.getHours()}:00`}</small>
                                 <h6>{`${fechaActual.getDate()}/${fechaActual.getMonth()}/${fechaActual.getFullYear()}`}</h6>
                             </Card.Text>
                         </Card.Body>
@@ -106,7 +108,7 @@ export default function ContenedorHerramientasLuz({ promedio }) {
                         </Card.Title>
                         <Card.Body>
                             <Card.Text>
-                            <h2 className='color-primary font-heavy'>{infoHoraDown}h</h2>
+                                <h2 className='color-primary font-heavy'>{infoHoraDown}h</h2>
                                 <small>&nbsp;</small>
                                 <h5 className='color-red'><BsArrowUp />0.{infoValueDown} €/kWh</h5>
                             </Card.Text>
