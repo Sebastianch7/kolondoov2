@@ -6,6 +6,7 @@ import Blog from '../../Content/Blog.json'
 import TarjetaBlogFull from '../Tarjeta/TarjetaBlogFull';
 import { CardGroup } from 'react-bootstrap';
 import TitleSection from '../Text/TitleSection';
+import { Link } from 'react-router-dom';
 
 function ContenedorTarjetaBlog({ children }) {
     return (
@@ -48,7 +49,7 @@ function ContenedorTarjetaBlog({ children }) {
                                 </Carousel>
                             )}
                             <Col md={12} className='mx-auto text-center py-5'>
-                                <ButtonPrimary text={'Descubre más noticias'} />
+                            <Link to={'/blog'} className='btn btn-primary'>Descubre más noticias</Link>
                             </Col>
                         </Col>
                     </Row>

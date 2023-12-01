@@ -32,7 +32,7 @@ const ChartLuzMonth = () => {
             }
         },
         xaxis: {
-            categories: infoPrice.map((item) => meses[Math.round(item.month)])
+            categories: infoPrice.map((item) => {return meses[Math.round(item.month)]+'-'+item.year})
         },
     };
 

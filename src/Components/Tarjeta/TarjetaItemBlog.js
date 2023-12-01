@@ -1,5 +1,5 @@
 import React from 'react'
-import { Col, Card } from 'react-bootstrap'
+import { Col, Card, Row } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 
 
@@ -8,19 +8,19 @@ export default function TarjetaItemBlog({ data }) {
     return (
         <>
             <Col xs={12} md={6}>
-                <Card className='m-2 tarjeta tarjeta-blog border-0'>
-                    <Card.Img variant="top" className='img-fluid' src={`https://kolondoo.com/images/blog/es/desktop/${imagen_principal_escritorio}`} />
+                <Card className='m-2 tarjeta tarjeta-blog tarjeta-blog-blog  border-0'>
+                    {/* <Card.Img variant="top" className='img-fluid' src={`https://kolondoo.com/images/blog/es/desktop/${imagen_principal_escritorio}`} /> */}
                     <Card.Body className='bg-gray'>
-                        <Card.Title><span>{fecha_publicacion}</span></Card.Title>
+                        <span>{fecha_publicacion}</span>
                         <Card.Title><b>{titulo}</b></Card.Title>
                         <Card.Text className='font-09'>
-                            <p dangerouslySetInnerHTML={{ __html: entradilla }}></p>
+                            <span dangerouslySetInnerHTML={{ __html: `${entradilla}` }}></span>
                         </Card.Text>
                     </Card.Body>
                     <Card.Footer className='bg-gray border-0 bg-white d-flex justify-content-between'>
                         <Link className='font-09' to={`/noticia/${url_amigable}`}>Ver más</Link>
                         <span>
-                            2 min de lectura, Leída {visitas} veces
+                            {/* 2 min de lectura,  */}Leída {visitas} veces
                         </span>
                     </Card.Footer>
                 </Card>

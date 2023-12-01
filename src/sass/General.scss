@@ -59,8 +59,8 @@ b,
   font-weight: bolder !important;
 }
 
-.font{
-  &-heavy{
+.font {
+  &-heavy {
     font-family: $MontHeavy !important;
   }
 }
@@ -279,36 +279,62 @@ $breakpoint-lg: 1360px;
   background-color: $white;
   margin: 1.5rem auto;
 
-  &-herramienta{
-    &-luz{
+  &-herramienta {
+    &-luz {
       padding: 20px 0px 0px;
       min-height: 210px;
-      .card-title{
+
+      .card-title {
         color: $colorPrimary;
         padding: 0px 15px;
       }
     }
   }
 
-  &-blog{
+  &-blog {
+
+    &-blog {
+      .card {
+        &-title {
+          min-height: 70px !important;
+        }
+        &-text {
+          height: 150px !important;
+          overflow: scroll;
+          margin-bottom: 10px;
+          @include media(xs){
+            min-height: auto;
+          }
+          @include media(lg){
+            min-height: 150px !important;
+          }
+        }
+      }
+    }
+
     max-width: 400px;
-    span{
+
+    span {
       font-size: 0.8rem;
     }
-    .card{
-      &-title{
+
+    .card {
+      &-title {
         font-size: 1.12rem;
       }
-      &-text{
+
+      &-text {
         font-size: 0.9rem;
       }
-      &-footer{
-        a{
+
+      &-footer {
+        a {
           color: $black;
         }
       }
     }
-    &-min{
+
+    &-min {
       border: 1px solid $colorSecundary;
       background-image: url('../../public/img/backgroud-tarjeta-min.svg');
       background-size: both;
@@ -316,6 +342,7 @@ $breakpoint-lg: 1360px;
       background-position: 100% 0px;
     }
   }
+
   &-footer {
     &-small {
       font-size: 0.65rem;
@@ -972,6 +999,7 @@ th {
     background-size: 10px;
     background-repeat: no-repeat;
     text-align: left !important;
+
     p {
       color: $black;
     }
@@ -1010,30 +1038,43 @@ ul {
   }
 }
 
-.no-enlace{
+.no-enlace {
   color: $black;
   text-decoration: none;
 }
 
-.h-categorias{
+.h-categorias {
   height: 320px !important;
 }
 
-.blog{
-  h2{
+.blog {
+  h2 {
     color: $colorPrimary;
   }
-  a{
+
+  a {
     color: $colorPrimary !important;
     text-decoration: none;
     font-family: $MontSemiBold;
   }
 }
 
-.text-left{
+.text-left {
   text-align: left !important;
 }
 
-.column-2{
-  columns: 2;
+
+.page-link {
+  color: $colorPrimary !important;
+  outline: 0px solid transparent !important;
+}
+
+.page-link.active,
+.active>.page-link {
+  background-color: $colorPrimary;
+  color: white !important;
+}
+
+.card-footer:last-child {
+  border-radius: 0px !important;
 }

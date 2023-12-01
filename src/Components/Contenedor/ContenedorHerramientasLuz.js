@@ -17,7 +17,6 @@ export default function ContenedorHerramientasLuz({ promedio }) {
 
     const fechaActual = new Date();
 
-
     useEffect(() => {
         setIsLoading(true)
         const fetchTarifasLuz = async () => {
@@ -67,7 +66,7 @@ export default function ContenedorHerramientasLuz({ promedio }) {
                             {!isLoading ? <Card.Text>
                                 <h2 className='color-primary font-heavy'>0.{Math.round(infoValueCurrent)}</h2>
                                 <small>{`${fechaActual.getHours()}:00`}</small>
-                                <h6>{`${fechaActual.getDate()}/${fechaActual.getMonth()}/${fechaActual.getFullYear()}`}</h6>
+                                <h6>{`${fechaActual.getDate()}/${fechaActual.getMonth()+ 1}/${fechaActual.getFullYear()}`}</h6>
                             </Card.Text>
                                 :
                                 <Load />
@@ -84,7 +83,7 @@ export default function ContenedorHerramientasLuz({ promedio }) {
                             {!isLoading ? <Card.Text>
                                 <h2 className='color-primary font-heavy'>{Math.round(promedio) / 1000}</h2>
                                 <small>€/kWh (Precio sin impuestos)</small>
-                                <h6>{`${fechaActual.getDate()}/${fechaActual.getMonth()}/${fechaActual.getFullYear()}`}</h6>
+                                <h6>{`${fechaActual.getDate()}/${fechaActual.getMonth()+ 1}/${fechaActual.getFullYear()}`}</h6>
                             </Card.Text>
                                 :
                                 <Load />

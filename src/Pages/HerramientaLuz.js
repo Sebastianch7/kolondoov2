@@ -64,7 +64,7 @@ export default function HerramientaLuz() {
     const [infoPriceSort, setInfoPriceSort] = useState([]);
     const [extraOffer, setExtraOffer] = useState([]);
     const fechaActual = new Date();
-    const meses = ['', 'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre']
+    const meses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre']
 
     useEffect(() => {
         setIsLoading(true)
@@ -113,7 +113,7 @@ export default function HerramientaLuz() {
                         titleAlt={'hoy'}
                     />
                     <ContenedorHerramientasLuz promedio={infoPriceMedia} />
-                    <p>La media del <b>precio de la luz hoy {fechaActual.getDate()} de {meses[fechaActual.getMonth() - 1]} de {fechaActual.getFullYear()},</b> es de <b>{infoPriceMedia / 1000} €/kWh</b> en el mercado regulado. <b>Te mostramos a continuación el precio de la luz en estos momentos,</b> así como el periodo del día en el que está resultando más económica y también más costosa. ¡Así puedes saber cuándo es la hora clave para poner tus electrodomésticos! ;)</p>
+                    <p>La media del <b>precio de la luz hoy {fechaActual.getDate()} de {meses[fechaActual.getMonth()]} de {fechaActual.getFullYear()},</b> es de <b>{infoPriceMedia / 1000} €/kWh</b> en el mercado regulado. <b>Te mostramos a continuación el precio de la luz en estos momentos,</b> así como el periodo del día en el que está resultando más económica y también más costosa. ¡Así puedes saber cuándo es la hora clave para poner tus electrodomésticos! ;)</p>
                 </Card>
             </Container>
             <Container>
@@ -150,7 +150,7 @@ export default function HerramientaLuz() {
                                     <Col md={1} className='d-none d-md-block'>
                                         <img src="/img/flechaIncremento.svg" />
                                     </Col>
-                                    <Col md={2}>
+                                    <Col xs={12} md={3}>
                                         {
                                             infoPriceSort.sort((a, b) => a.value - b.value).map((item, index) => {
                                                 if (index < 6) {
@@ -165,7 +165,7 @@ export default function HerramientaLuz() {
                                     <Col md={1} className='d-none d-md-block'>
                                         <img src="/img/flechaIncremento.svg" />
                                     </Col>
-                                    <Col md={2}>
+                                    <Col xs={12} md={3}>
                                         {
                                             infoPriceSort.sort((a, b) => a.value + b.value).reverse().map((item, index) => {
                                                 if (index < 6) {
