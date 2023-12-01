@@ -2,10 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { Container, Row, Col, Card } from 'react-bootstrap'
 import { getPriceLightService } from '../../services/ApiServices';
 import { BsArrowUp, BsArrowDown } from "react-icons/bs";
+import Load from '../Utils/Load';
 
 
 export default function ContenedorHerramientasLuz({ promedio }) {
-
+    const [isLoading, setIsLoading] = useState(true);
     const [infoPrice, setInfoPrice] = useState([]);
     const [infoPriceFilter, setInfoPriceFilter] = useState([]);
     const [infoHoraUp, setInfoHoraUp] = useState(null)
@@ -15,13 +16,10 @@ export default function ContenedorHerramientasLuz({ promedio }) {
     const [infoValueCurrent, setInfoValueCurrent] = useState(null)
 
     const fechaActual = new Date();
-    const horaActual = new Date()
-    function getDate(data = null) {
-        data = new Date(data)
-        return data?.getHours()
-    }
+
 
     useEffect(() => {
+        setIsLoading(true)
         const fetchTarifasLuz = async () => {
             try {
                 const response = await getPriceLightService();
@@ -54,6 +52,7 @@ export default function ContenedorHerramientasLuz({ promedio }) {
         if (fecha2 !== undefined) {
             setInfoHoraDown(parseInt(fecha2[1].split(':')[0]))
             setInfoValueDown(Math.round(infoPriceFilter[23]?.value))
+            setIsLoading(false)
         }
     }, [infoValueUp])
     return (
@@ -65,11 +64,14 @@ export default function ContenedorHerramientasLuz({ promedio }) {
                             Precio de la luz ahora mismo
                         </Card.Title>
                         <Card.Body>
-                            <Card.Text>
+                            {!isLoading ? <Card.Text>
                                 <h2 className='color-primary font-heavy'>0.{Math.round(infoValueCurrent)}</h2>
                                 <small>{`${fechaActual.getHours()}:00`}</small>
                                 <h6>{`${fechaActual.getDate()}/${fechaActual.getMonth()}/${fechaActual.getFullYear()}`}</h6>
                             </Card.Text>
+                                :
+                                <Load />
+                            }
                         </Card.Body>
                     </Card>
                 </Col>
@@ -79,11 +81,14 @@ export default function ContenedorHerramientasLuz({ promedio }) {
                             Precio medio de la luz hoy
                         </Card.Title>
                         <Card.Body>
-                            <Card.Text>
+                            {!isLoading ? <Card.Text>
                                 <h2 className='color-primary font-heavy'>{Math.round(promedio) / 1000}</h2>
                                 <small>€/kWh (Precio sin impuestos)</small>
                                 <h6>{`${fechaActual.getDate()}/${fechaActual.getMonth()}/${fechaActual.getFullYear()}`}</h6>
                             </Card.Text>
+                                :
+                                <Load />
+                            }
                         </Card.Body>
                     </Card>
                 </Col>
@@ -93,11 +98,14 @@ export default function ContenedorHerramientasLuz({ promedio }) {
                             Precio de la luz más barato
                         </Card.Title>
                         <Card.Body>
-                            <Card.Text>
+                            {!isLoading ? <Card.Text>
                                 <h2 className='color-primary font-heavy'>{infoHoraUp}h</h2>
                                 <small>&nbsp;</small>
                                 <h5 className='color-green'><BsArrowDown />0.{infoValueUp} €/kWh</h5>
                             </Card.Text>
+                                :
+                                <Load />
+                            }
                         </Card.Body>
                     </Card>
                 </Col>
@@ -107,11 +115,14 @@ export default function ContenedorHerramientasLuz({ promedio }) {
                             Precio de la luz más caro
                         </Card.Title>
                         <Card.Body>
-                            <Card.Text>
+                            {!isLoading ? <Card.Text>
                                 <h2 className='color-primary font-heavy'>{infoHoraDown}h</h2>
                                 <small>&nbsp;</small>
                                 <h5 className='color-red'><BsArrowUp />0.{infoValueDown} €/kWh</h5>
                             </Card.Text>
+                                :
+                                <Load />
+                            }
                         </Card.Body>
                     </Card>
                 </Col>

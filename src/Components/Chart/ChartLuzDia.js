@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Chart from "react-apexcharts";
 import { getPriceLightService } from '../../services/ApiServices';
+import Load from "../Utils/Load";
 
 const ChartLineal = () => {
     const [infoPrice, setInfoPrice] = useState([]);
@@ -11,7 +12,6 @@ const ChartLineal = () => {
             try {
                 const response = await getPriceLightService();
                 setInfoPrice(response);
-                console.log(response)
                 setIsLoading(false);
             } catch (error) {
                 console.error("Error al obtener informacion:", error);
@@ -47,7 +47,7 @@ const ChartLineal = () => {
             <div className="row d-flex">
                 <div className="col-12 col-md-8 mx-auto">
                     {isLoading ? (
-                        <p>Loading...</p>
+                        <Load></Load>
                     ) : (
                         <Chart options={options} series={series} type="line" width="100%" />
                     )}

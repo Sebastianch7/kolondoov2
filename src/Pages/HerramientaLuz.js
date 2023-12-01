@@ -6,11 +6,11 @@ import TitleSection from '../Components/Text/TitleSection'
 import { getExtraOffer } from '../services/ApiServices'
 import TarjetaTarifaLeadEnergia from '../Components/Tarjeta/TarjetaTarifaLeadEnergia'
 import ContenedorPreguntasFrecuentes from '../Components/Contenedor/ContenedorPreguntasFrecuentes';
-import { isMobile } from 'react-device-detect';
 import { getPriceLightService } from '../services/ApiServices';
 import ContenedorHerramientasLuz from '../Components/Contenedor/ContenedorHerramientasLuz';
 import ChartLineal from '../Components/Chart/ChartLuzDia';
 import ChartLuzMonth from '../Components/Chart/ChartLuzMonth';
+import Load from '../Components/Utils/Load';
 
 const data = [
     {
@@ -64,9 +64,10 @@ export default function HerramientaLuz() {
     const [infoPriceSort, setInfoPriceSort] = useState([]);
     const [extraOffer, setExtraOffer] = useState([]);
     const fechaActual = new Date();
-    const meses = ['','Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre']
+    const meses = ['', 'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre']
 
     useEffect(() => {
+        setIsLoading(true)
         const fetchTarifasLuz = async () => {
             try {
                 const response = await getPriceLightService();
@@ -79,19 +80,19 @@ export default function HerramientaLuz() {
     }, [])
 
     useEffect(() => {
+        setIsLoading(true)
         setInfoPriceSort(infoPrice)
         const sumaDeValores = infoPrice.reduce((acumulador, elemento) => acumulador + elemento.value, 0);
         const cantidadDeElementos = infoPrice.length;
         setInfoPriceMedia(Math.round(sumaDeValores / 24))
     }, [infoPrice])
 
-
     useEffect(() => {
         const fetchTariffs = async () => {
             try {
                 const response = await getExtraOffer('luz')
                 setExtraOffer(response);
-                setIsLoading(false);
+                setIsLoading(false)
             } catch (error) {
                 console.error("Error al obtener informacion:", error);
             }
@@ -111,7 +112,7 @@ export default function HerramientaLuz() {
                         title={'Precio de la luz'}
                         titleAlt={'hoy'}
                     />
-                    <ContenedorHerramientasLuz promedio={infoPriceMedia}/>
+                    <ContenedorHerramientasLuz promedio={infoPriceMedia} />
                     <p>La media del <b>precio de la luz hoy {fechaActual.getDate()} de {meses[fechaActual.getMonth() - 1]} de {fechaActual.getFullYear()},</b> es de <b>{infoPriceMedia / 1000} €/kWh</b> en el mercado regulado. <b>Te mostramos a continuación el precio de la luz en estos momentos,</b> así como el periodo del día en el que está resultando más económica y también más costosa. ¡Así puedes saber cuándo es la hora clave para poner tus electrodomésticos! ;)</p>
                 </Card>
             </Container>
@@ -144,9 +145,9 @@ export default function HerramientaLuz() {
                             titleAlt={'de la luz hoy'}
                         />
                         <div className='p-3'>
-                            {!isMobile ?
+                            {!isLoading ?
                                 <Row className="d-flex justify-content-center text-center">
-                                    <Col md={1}>
+                                    <Col md={1} className='d-none d-md-block'>
                                         <img src="/img/flechaIncremento.svg" />
                                     </Col>
                                     <Col md={2}>
@@ -161,7 +162,7 @@ export default function HerramientaLuz() {
                                         }
                                     </Col>
                                     <Col md={{ span: 1, offset: 1 }}></Col>
-                                    <Col md={1}>
+                                    <Col md={1} className='d-none d-md-block'>
                                         <img src="/img/flechaIncremento.svg" />
                                     </Col>
                                     <Col md={2}>
@@ -177,7 +178,7 @@ export default function HerramientaLuz() {
                                     </Col>
                                 </Row>
                                 :
-                                null
+                                <Load />
                             }
                         </div>
                     </Card>
@@ -188,7 +189,7 @@ export default function HerramientaLuz() {
                             titleAlt={'hora a hora'}
                         />
                         <p>El gráfico que verás a continuación <b>muestra el precio de la luz hora a hora, pudiéndose apreciar al mismo tiempo los picos</b> que reflejan cuándo está más elevado. Tener en el radar estos picos de precio <b>te ayudará a saber en qué períodos es más adecuado utilizar la electricidad en el hogar para ahorrar en tus facturas.</b></p>
-                        <ChartLineal></ChartLineal>
+                        <ChartLineal />
                     </Card>
                     <Card className='tarjeta my-4 p-4 p-md-4 shadow border-0'>
                         <TitleSection
