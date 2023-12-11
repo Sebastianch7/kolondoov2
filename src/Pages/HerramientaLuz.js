@@ -145,41 +145,38 @@ export default function HerramientaLuz() {
                             titleAlt={'de la luz hoy'}
                         />
                         <div className='p-3'>
-                            {!isLoading ?
-                                <Row className="d-flex justify-content-center text-center">
-                                    <Col md={1} className='d-none d-md-block'>
-                                        <img src="/img/flechaIncremento.svg" />
-                                    </Col>
-                                    <Col xs={12} md={3}>
-                                        {
-                                            infoPriceSort.sort((a, b) => a.value - b.value).map((item, index) => {
-                                                if (index < 6) {
-                                                    let fecha = new Date(item.datetime)
-                                                    let fecha2 = item.datetime.split('T')
-                                                    return <p><b className="">{fecha2[1].split(':')[0]}h - {parseInt(fecha2[1].split(':')[0]) + 1 < 10 ? `0${parseInt(fecha2[1].split(':')[0]) + 1}` : parseInt(fecha2[1].split(':')[0]) + 1}h:</b>&nbsp;<b className="color-green font-heavy">0.{Math.round(item.value)} €/kWh</b></p>
-                                                }
-                                            })
-                                        }
-                                    </Col>
-                                    <Col md={{ span: 1, offset: 1 }}></Col>
-                                    <Col md={1} className='d-none d-md-block'>
-                                        <img src="/img/flechaIncremento.svg" />
-                                    </Col>
-                                    <Col xs={12} md={3}>
-                                        {
-                                            infoPriceSort.sort((a, b) => a.value + b.value).reverse().map((item, index) => {
-                                                if (index < 6) {
-                                                    let fecha = new Date(item.datetime)
-                                                    let fecha2 = item.datetime.split('T')
-                                                    return <p><b className="">{fecha2[1].split(':')[0]}h - {parseInt(fecha2[1].split(':')[0]) + 1 < 10 ? `0${parseInt(fecha2[1].split(':')[0]) + 1}` : parseInt(fecha2[1].split(':')[0]) + 1}h:</b>&nbsp;<b className="color-red font-heavy">0.{Math.round(item.value)} €/kWh</b></p>
-                                                }
-                                            })
-                                        }
-                                    </Col>
-                                </Row>
-                                :
-                                <Load />
-                            }
+
+                            <Row className="d-flex justify-content-center text-center">
+                                <Col md={1} className='d-none d-md-block'>
+                                    <img src="/img/flechaIncremento.svg" />
+                                </Col>
+                                <Col xs={12} md={3}>
+                                    {
+                                        infoPriceSort.sort((a, b) => a.value - b.value).map((item, index) => {
+                                            if (index < 6) {
+                                                let fecha = new Date(item.datetime)
+                                                let fecha2 = item.datetime.split('T')
+                                                return <p><b className="">{fecha2[1].split(':')[0]}h - {parseInt(fecha2[1].split(':')[0]) + 1 < 10 ? `0${parseInt(fecha2[1].split(':')[0]) + 1}` : parseInt(fecha2[1].split(':')[0]) + 1}h:</b>&nbsp;<b className="color-green font-heavy">0.{Math.round(item.value)} €/kWh</b></p>
+                                            }
+                                        })
+                                    }
+                                </Col>
+                                <Col md={{ span: 1, offset: 1 }}></Col>
+                                <Col md={1} className='d-none d-md-block'>
+                                    <img src="/img/flechaIncremento.svg" />
+                                </Col>
+                                <Col xs={12} md={3}>
+                                    {
+                                        infoPriceSort.sort((a, b) => a.value + b.value).reverse().map((item, index) => {
+                                            if (index < 6) {
+                                                let fecha = new Date(item.datetime)
+                                                let fecha2 = item.datetime.split('T')
+                                                return <p><b className="">{fecha2[1].split(':')[0]}h - {parseInt(fecha2[1].split(':')[0]) + 1 < 10 ? `0${parseInt(fecha2[1].split(':')[0]) + 1}` : parseInt(fecha2[1].split(':')[0]) + 1}h:</b>&nbsp;<b className="color-red font-heavy">0.{Math.round(item.value)} €/kWh</b></p>
+                                            }
+                                        })
+                                    }
+                                </Col>
+                            </Row>
                         </div>
                     </Card>
                     <Card className='tarjeta my-4 p-4 p-md-4 shadow border-0'>

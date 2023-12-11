@@ -8,7 +8,7 @@ import { getBlogById } from '../../services/ApiServices';
 import { useLocation } from 'react-router-dom';
 import Load from '../Utils/Load'
 import { Link } from 'react-router-dom';
-import ButtonPrimary from '../Button/ButtonPrimary';
+import { isMobile } from 'react-device-detect';
 
 export default function ContenedorBlogItem({ children }) {
     const [fetchBlog, setFetchBlog] = useState([])
@@ -44,7 +44,7 @@ export default function ContenedorBlogItem({ children }) {
             {!load ? <Container>
                 <Row>
                     <Col xs={12} md={8}>
-                        <Image src={`kolondoo.com/images/blog/es/desktop/${fetchBlog?.imagen_principal_escritorio}`} alt={`https://kolondoo.com/images/blog/es/desktop/${fetchBlog?.imagen_principal_escritorio}`} fluid />
+                        <Image className='w-100' src={`/img/blog/${isMobile ? 'mobile' : 'desktop'}/${fetchBlog?.imagen_principal_escritorio}`} alt={`/img/blog/${isMobile ? 'mobile' : 'desktop'}/${fetchBlog?.imagen_principal_escritorio}`} />
                         <TitleSection
                             left
                             title={fetchBlog?.titulo}

@@ -14,7 +14,7 @@ export default function ContenedorBlog({ categoria = null }) {
         setIsLoading(true);
         const fetchBlogList = async () => {
             try {
-                const response = await getBlog();
+                const response = await getBlog(categoria);
                 setFetchBlog(response);
                 setIsLoading(false);
             } catch (error) {
@@ -28,7 +28,7 @@ export default function ContenedorBlog({ categoria = null }) {
         return (
             <>
                 <Row>
-                    {currentItems && currentItems.map((item, index) => (
+                    {currentItems && currentItems?.map((item, index) => (
                         <TarjetaItemBlog data={item} key={index} />
                     ))}
                 </Row>
@@ -43,12 +43,12 @@ export default function ContenedorBlog({ categoria = null }) {
 
         useEffect(() => {
             const endOffset = itemOffset + itemsPerPage;
-            setCurrentItems(fetchBlog.slice(itemOffset, endOffset));
-            setPageCount(Math.ceil(fetchBlog.length / itemsPerPage));
+            setCurrentItems(fetchBlog?.slice(itemOffset, endOffset));
+            setPageCount(Math.ceil(fetchBlog?.length / itemsPerPage));
         }, [itemOffset, itemsPerPage, fetchBlog]);
 
         const handlePageClick = (event) => {
-            const newOffset = event.selected * itemsPerPage % fetchBlog.length;
+            const newOffset = event.selected * itemsPerPage % fetchBlog?.length;
             console.log(`User requested page number ${event.selected}, which is offset ${newOffset}`);
             setItemOffset(newOffset);
         };
@@ -94,7 +94,7 @@ export default function ContenedorBlog({ categoria = null }) {
                 <Col xs={12} md={8}>
                     {!isLoading ? <PaginatedItems itemsPerPage={10} /> : <Load></Load>}
                 </Col>
-                {/* <ContenedorDestacados /> */}
+                <ContenedorDestacados />
             </Row>
         </Container>
     );

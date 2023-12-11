@@ -6,7 +6,7 @@ import Footer from '../Components/Footer/Footer'
 export default function BlogItem() {
   return (
     <>
-      <Header></Header>
+      <Header breadCrumb></Header>
       <ContenedorBlogItem />
       <Footer></Footer>
     </>

@@ -201,9 +201,29 @@ export const getDetailOffer = async (offerLooking, idPlan) => {
     }
 };
 
-export const getBlog = async () => {
+export const getBlog = async (categoria) => {
     try {
-        const response = await axios.get(`${apiUrl}/getBlog`)
+            const response = await axios.get(`${apiUrl}/getBlog/${categoria}`)
+        return response.data;
+    } catch (error) {
+        console.error("Error al obtener los blog", error);
+        throw error;
+    }
+};
+
+export const getBlogHome = async () => {
+    try {
+            const response = await axios.get(`${apiUrl}/getBlogHome`)
+        return response.data;
+    } catch (error) {
+        console.error("Error al obtener los blog", error);
+        throw error;
+    }
+};
+
+export const getBlogDestacados = async () => {
+    try {
+        const response = await axios.get(`${apiUrl}/getBlogDestacados`)
         return response.data;
     } catch (error) {
         console.error("Error al obtener los blog", error);

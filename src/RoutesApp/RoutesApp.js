@@ -76,7 +76,7 @@ function RoutesApp() {
             <Route path="/politica-privacidad" element={<PoliticaPrivacidad />} />
             
             <Route path="/blog" element={<Blog />} />
-            <Route path="/blog/:categoria" element={<Blog />} />
+            <Route path="/blog/:id" element={<Blog />} />
             <Route path="/noticia/:id" element={<BlogItem />} />
         </Routes>
     </BrowserRouter>

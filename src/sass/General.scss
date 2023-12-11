@@ -193,6 +193,11 @@ $breakpoint-lg: 1360px;
       background-image: url('../../public/img/backgroud-container-blog.png');
       background-repeat: no-repeat;
       background-size: cover;
+
+      .tarjeta-blog {
+        min-height: 400px !important;
+        background-color: $colorPrimary;
+      }
     }
 
     &-pregunta {
@@ -298,14 +303,17 @@ $breakpoint-lg: 1360px;
         &-title {
           min-height: 70px !important;
         }
+
         &-text {
           height: 150px !important;
-          overflow: scroll;
+          overflow: hidden;
           margin-bottom: 10px;
-          @include media(xs){
+
+          @include media(xs) {
             min-height: auto;
           }
-          @include media(lg){
+
+          @include media(lg) {
             min-height: 150px !important;
           }
         }
@@ -494,6 +502,11 @@ $breakpoint-lg: 1360px;
     position: absolute;
     bottom: 35px;
     text-shadow: 0px 0px 7px $black;
+
+    span {
+      min-height: 30px;
+      display: block;
+    }
 
     a {
       text-decoration: underline;
@@ -1077,4 +1090,8 @@ ul {
 
 .card-footer:last-child {
   border-radius: 0px !important;
+}
+
+.grill_data {
+  display: none !important;
 }

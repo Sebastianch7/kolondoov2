@@ -3,19 +3,19 @@ import { Card, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 function TarjetaBlogMin({ data }) {
-    /* const { date = '', img = '', title = '', button = '', url = '', type = '', content = '' } = data */
+    const { blog_item_url_amigable, atributo_imagen_principal, titulo, cat_categoria, id, fecha_publicacion } = data
     return (
         <Col xs={12} md={12}>
             <Card className='m-2 tarjeta tarjeta-blog tarjeta-blog-min'>
                 <Card.Body>
-                    <Card.Title><span>{'18 de mayo'}</span></Card.Title>
+                    {/* <Card.Title><span>{fecha_publicacion}</span></Card.Title> */}
                     <Card.Title><b className='font-09'>{'Ofertas'}</b></Card.Title>
                     <Card.Text className='font-09'>
-                        Las mejores ofertas móviles - Agosto 2023
+                        {titulo}
                     </Card.Text>
                 </Card.Body>
                 <Card.Footer className='border-0 bg-white d-flex justify-content-between'>
-                    <Link className='font-09' to={'/'}>Ver más</Link>
+                    <a className='font-09' href={`/noticia/${blog_item_url_amigable}`}>Ver más</a>
                 </Card.Footer>
             </Card>
         </Col>

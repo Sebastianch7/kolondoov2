@@ -1,14 +1,29 @@
-import React from 'react';
+import {React, useEffect, useState} from 'react';
 import { Container, Row, Col, Stack, Carousel, CarouselItem } from 'react-bootstrap';
-import ButtonPrimary from '../Button/ButtonPrimary';
 import { isMobile } from 'react-device-detect'
 import Blog from '../../Content/Blog.json'
 import TarjetaBlogFull from '../Tarjeta/TarjetaBlogFull';
 import { CardGroup } from 'react-bootstrap';
 import TitleSection from '../Text/TitleSection';
 import { Link } from 'react-router-dom';
+import { getBlogHome } from '../../services/ApiServices';
 
 function ContenedorTarjetaBlog({ children }) {
+    const [fetchBlog, setFetchBlog] = useState(null)
+    const [isLoading, setIsLoading] = useState(false)
+    useEffect(() => {
+        setIsLoading(true);
+        const fetchBlogList = async () => {
+            try {
+                const response = await getBlogHome();
+                setFetchBlog(response);
+                setIsLoading(false);
+            } catch (error) {
+                console.error('Error al obtener blog:', error);
+            }
+        };
+        fetchBlogList();
+    }, []);
     return (
         <div className='my-md-5 container-tarjeta-blog'>
             <TitleSection
@@ -22,13 +37,13 @@ function ContenedorTarjetaBlog({ children }) {
                         <Col md={12}>
                             {!isMobile ? (
                                 <CardGroup>
-                                    {Blog.map((data, index) => {
+                                    {fetchBlog?.map((data, index) => {
                                         return <TarjetaBlogFull key={index} data={data} />;
                                     })}
                                 </CardGroup>
                             ) : (
                                 <Carousel>
-                                    {Blog.map((data, index) => {
+                                    {fetchBlog?.map((data, index) => {
                                         return (
                                             <Carousel.Item key={index}>
                                                 <img
@@ -49,7 +64,7 @@ function ContenedorTarjetaBlog({ children }) {
                                 </Carousel>
                             )}
                             <Col md={12} className='mx-auto text-center py-5'>
-                            <Link to={'/blog'} className='btn btn-primary'>Descubre más noticias</Link>
+                                <Link to={'/blog'} className='btn btn-primary'>Descubre más noticias</Link>
                             </Col>
                         </Col>
                     </Row>

@@ -18,7 +18,11 @@ function BreadCrumb({ url }) {
                             <>
                                 <Breadcrumb.Item href="/">Vuskoo</Breadcrumb.Item>
                                 {locations.map((item, index) => {
-                                    return <Breadcrumb.Item key={index} href={`/${item}`} className='capitalize'>{item.replaceAll('_', ' ')}</Breadcrumb.Item>
+                                    if(item == 'noticia'){
+                                        return <Breadcrumb.Item key={index} href={`/blog`} className='capitalize'>{item.replaceAll('_', ' ')}</Breadcrumb.Item>
+                                    }else{
+                                        return <Breadcrumb.Item key={index} href={`/${item}`} className='capitalize'>{item.replaceAll('_', ' ').replaceAll('-',' ')}</Breadcrumb.Item>
+                                    }
                                 })}
                             </>
                         }
