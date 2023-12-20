@@ -289,3 +289,26 @@ export const getPriceLightServiceMonth = async () => {
         throw error;
     }
 };
+
+
+export const getDataLocation = async () => {
+    try {
+        const response = await axios.get(`${apiUrl}/getDataLocation`);
+        const data = response.data
+        return data;
+    } catch (error) {
+        console.error("Error al obtener la informacion de localizacion", error);
+        throw error;
+    }
+};
+
+export const getIp = async () => {
+    try {
+        const response = await axios.get(`${apiUrl}/getDataIp`);
+        const data = response.data
+        return data;
+    } catch (error) {
+        console.error("Error al obtener la informacion de localizacion", error);
+        throw error;
+    }
+};

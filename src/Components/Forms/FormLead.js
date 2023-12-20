@@ -32,7 +32,7 @@ export default function FormLead({ idPlan, landing }) {
             console.log('Respuesta de la API después de enviar datos:', response.data);
             setTextButton('Suscripcion exitosa')
             setIsSend(true)
-            setPhoneNumber('')
+            setPhoneNumber('+34')
             setIsValidPhoneNumber(false)
             //setTimeout(() =>{
                 navigate(`/thank${landing}/${idPlan}`)
@@ -43,7 +43,7 @@ export default function FormLead({ idPlan, landing }) {
     }
     return (
         <Card className='tarjeta-lead'>
-            <Card.Header className="text-center">¡Oferta disponible!</Card.Header>
+            <Card.Header className="text-center">t('Oferta disponible')</Card.Header>
             {!isSend ? <Card.Body>
                 <Card.Text className='text-center text-primary'>
                     Déjanos tu teléfono y <b>te llamamos gratis</b>

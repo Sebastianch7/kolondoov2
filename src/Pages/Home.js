@@ -27,12 +27,12 @@ function Home(props) {
                     logo={'/img/icons/phone.svg'}
                     buttons={[
                         {
-                            title: t('btn_net_phone'),
+                            title: t('Internet y Telefonía'),
                             icon: '/img/icons/lighting.svg',
                             url: '/internet_y_telefonia/movil'
                         },
                         {
-                            title: t('btn_energy'),
+                            title: t('Energía'),
                             icon: '/img/icons/phone-light.svg',
                             url: '/energia/luz'
                         }

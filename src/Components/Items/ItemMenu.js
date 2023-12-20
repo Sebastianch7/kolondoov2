@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import { Nav, NavDropdown } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 function ItemMenu({ title, children }) {
+    const { t } = useTranslation();
     const [show, setShow] = useState(false);
 
     const showDropdown = (e) => {
@@ -19,7 +21,7 @@ function ItemMenu({ title, children }) {
                 aria-expanded={true}
                 >
                 {children.map((item, key) => 
-                    <Link className='dropdown-item' to={item.url} key={key}>{item.name}</Link>
+                    <Link className='dropdown-item' to={item.url} key={key}>{t(item.name)}</Link>
                     )}
             </NavDropdown>
         </Nav>

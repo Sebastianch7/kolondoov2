@@ -1,9 +1,25 @@
 {
     "bannerHomeTitle": "Comparador de Tarifas y Ofertas Online",
     "bannerHomeSubtitle": "¡Nuestros agentes te asesorarán para tomar las mejores decisiones y que empieces a ahorrar en tu hogar!",
-    "btn_energy": "Energia",
-    "btn_net_phone": "Internet y telefonia",
+    "bannerQuienesSomosTitle": "Quiénes somos",
+    "Energía": "Energía",
+    "Fibra óptica": "Fibra óptica",
+    "Móvil": "Móvil",
+    "Móvil y fibra": "Móvil y fibra",
+    "Móvil, fibra y TV": "Móvil, fibra y TV",
+    "Teléfonos gratis con contrato": "Teléfonos gratis con contrato",
+    "Paquetes de TV": "Paquetes de TV",
+    "Plataformas de streaming": "Plataformas de streaming",
+    "Luz": "Luz",
+    "Gas": "Gas",
+    "Luz y gas": "Luz y gas",
+    "Solar": "Solar",
+    "Estaciones de carga de VE": "Estaciones de carga de VE",
+    "Precio de la luz hoy": "Precio de la luz hoy",
+    "Test de valocidad": "Test de valocidad",
+    "Suministros": "Suministros",
+    "Seguros": "Seguros",
+    "Cobertura": "Cobertura",
     "Internet y Telefonía": "Internet y Telefonía",
-    
-    "bannerQuienesSomosTitle": "Quiénes somos"
+    "Oferta disponible": "!¡Oferta disponible!"
 }

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
@@ -19,7 +19,7 @@ i18n
         translation: langEs,
       },
     },
-    lng: 'es', // Idioma predeterminado
+    lng: 'en', // Idioma predeterminado
     fallbackLng: 'en', // Idioma de respaldo en caso de que no se encuentre una traducción
     interpolation: {
       escapeValue: false,

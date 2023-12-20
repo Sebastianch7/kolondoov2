@@ -24,7 +24,7 @@ function Header({ breadCrumb }) {
                             {items.map((item, key) => (
                                 <ItemMenu key={key} title={t(item.title)} children={item.children} />
                             ))}
-                            {/* <ChangeLang></ChangeLang> */}
+                            <ChangeLang></ChangeLang>
                         </Nav>
                     </Navbar.Collapse>
                 </Container>
