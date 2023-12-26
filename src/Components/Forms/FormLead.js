@@ -1,18 +1,28 @@
 import React, { useEffect, useState } from 'react';
-import { Card, Form } from 'react-bootstrap';
+import { Button, Card, Form } from 'react-bootstrap';
 import ButtonPrimary from '../Button/ButtonPrimary';
 import { BsFillTelephoneFill, BsXCircle, BsFillTelephoneOutboundFill } from "react-icons/bs";
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 import { postLead } from '../../services/ApiServices'
+import { useTranslation } from 'react-i18next';
+
 
 export default function FormLead({ idPlan, landing }) {
+    const { t } = useTranslation();
+
     const [checkInAsesoria, setCheckInAsesoria] = useState(true);
     const [checkInComercial, setCheckInComercial] = useState(false);
 
     const [phoneNumber, setPhoneNumber] = useState(null);
-    const [isValidPhoneNumber, setIsValidPhoneNumber] = useState(false);
+    const [name, setName] = useState(null);
+    const [lastName, setLastName] = useState(null);
+    const [email, setEmail] = useState(null);
+
+
+    const [isValidPhoneNumber, setIsValidPhoneNumber] = useState(true);
     const [isSend, setIsSend] = useState(false);
+    const [isError, setIsError] = useState(false);
     let navigate = useNavigate();
 
     const handlePhoneNumberChange = (e) => {
@@ -25,25 +35,30 @@ export default function FormLead({ idPlan, landing }) {
 
     const [textButton, setTextButton] = useState('LLÁMAME AHORA')
 
-    const subscripcion = (e) => {
+    async function subscripcion(e) {
         e.preventDefault();
+        setIsError(null)
+        
         try {
-            const response = postLead(idPlan, phoneNumber, landing);
-            console.log('Respuesta de la API después de enviar datos:', response.data);
-            setTextButton('Suscripcion exitosa')
-            setIsSend(true)
-            setPhoneNumber('+34')
-            setIsValidPhoneNumber(false)
+            const response = await postLead(idPlan, phoneNumber, landing);
+            console.log(response)
+            //console.log('Respuesta de la API después de enviar datos:', response.data);
+            //setTextButton('Suscripcion exitosa')
+            //setIsSend(true)
+            //setPhoneNumber('+34')
+            //setIsValidPhoneNumber(false)
             //setTimeout(() =>{
-                navigate(`/thank${landing}/${idPlan}`)
-            //}, 3000)
-        } catch (error) {
-            console.error('Error al enviar datos:', error);
+                //navigate(`/thank${landing}/${idPlan}`)
+                //}, 3000)
+            } catch (error) {
+                console.error('Error al enviar datos:', error);
+                setIsError(error)
         }
     }
+
     return (
         <Card className='tarjeta-lead'>
-            <Card.Header className="text-center">t('Oferta disponible')</Card.Header>
+            <Card.Header className="text-center">{t('Oferta disponible')}</Card.Header>
             {!isSend ? <Card.Body>
                 <Card.Text className='text-center text-primary'>
                     Déjanos tu teléfono y <b>te llamamos gratis</b>
@@ -55,8 +70,8 @@ export default function FormLead({ idPlan, landing }) {
                                 <span className="input-group-text"><BsFillTelephoneFill /></span>
                                 <Form.Control
                                     className={'form-control no-radius'}
-                                    placeholder={'Introduce tu teléfono'}
-                                    aria-label={'Introduce tu teléfono'}
+                                    placeholder={t('Introduce tu teléfono')}
+                                    aria-label={t('Introduce tu teléfono')}
                                     type={'phone'}
                                     onChange={handlePhoneNumberChange}
                                     value={phoneNumber}
@@ -82,13 +97,18 @@ export default function FormLead({ idPlan, landing }) {
                                     onChange={() => setCheckInComercial(!checkInComercial)}
                                 />
                             </div>
+                            {isError !== null &&
+                                <div className='my-3'>
+                                    <span className='color-red'>La información es incorrecta</span>
+                                </div>
+                            }
                             <div className='text-center m-4'>
-                                <ButtonPrimary
-                                    text={textButton}
+                                <Button
                                     btnStatus={(checkInAsesoria && isValidPhoneNumber) ? false : true}
-                                    type={'submit'}
-                                    isSuccess={isSend ? 'btn-success' : 'null'}
-                                />
+                                    type="submit"
+                                >
+                                    {textButton}
+                                </Button>
                             </div>
                         </div>
                     </Form>
@@ -100,8 +120,9 @@ export default function FormLead({ idPlan, landing }) {
                         <h5>Tu información se ha enviado con exito</h5>
                         <p>Gracias por permitirnos ayudarte!</p>
                     </Card.Body>
-                </Card>}
-        </Card>
+                </Card>
+            }
+        </Card >
     )
 }
 

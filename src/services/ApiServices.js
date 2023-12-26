@@ -251,14 +251,14 @@ export const getExtraOffer = async (offerLooking) => {
     }
 };
 
-export const postLead = async (idPlan, phoneNumber, landing) => {
+export const postLead = async (idOferta, phone, landing) => {
+    console.log(idOferta, phone, landing)
     try {
-        const response = await axios.post(`${apiUrl}/LeadRegister`, { idPlan, phoneNumber, landing });
-        console.log(response)
+        const response = await axios.post(`${apiUrl}/LeadRegister`, { idOferta, phone, landing });
         return response.data;
     } catch (error) {
-        console.error("Error al obtener las marcas de operadoras:", error);
-        throw error;
+        //console.error("Error al enviar la informacion del Lead:", error);
+        throw new Error('Error en la solicitud POST:', error);
     }
 };
 

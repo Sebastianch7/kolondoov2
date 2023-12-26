@@ -19,7 +19,7 @@ i18n
         translation: langEs,
       },
     },
-    lng: 'en', // Idioma predeterminado
+    lng: 'es', // Idioma predeterminado
     fallbackLng: 'en', // Idioma de respaldo en caso de que no se encuentre una traducción
     interpolation: {
       escapeValue: false,
