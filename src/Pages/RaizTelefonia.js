@@ -93,7 +93,7 @@ export default function RaizTelefonia() {
         buttons={[
           {
             title: '¡Empieza a ahorrar!',
-            url: '/internet_y_telefonia/movil'
+            url: '/internet-telefonia/comparador-movil'
           }
         ]}
       />

@@ -70,7 +70,7 @@ export default function RaizStreaming() {
         buttons={[
           {
             title: '¡Empieza a ahorrar!',
-            url: '/energia/luz'
+            url: '/energia/comparador-tarifas-luz'
           }
         ]}
       />

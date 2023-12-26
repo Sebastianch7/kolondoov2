@@ -28,51 +28,51 @@ function RoutesApp() {
         <Routes>
             <Route path="/" element={<Home />} />
             
-            <Route path="/internet_y_telefonia/" element={<RaizTelefonia />} />
-            <Route path="/energia/" element={<RaizEnergia />} />
-            <Route path="/television_y_streaming/" element={<RaizStreaming />} />
+            <Route path="/internet-telefonia" element={<RaizTelefonia />} />
+            <Route path="/energia" element={<RaizEnergia />} />
+            <Route path="/television-streaming" element={<RaizStreaming />} />
             
-            <Route path="/internet_y_telefonia/movil" element={<ComparadorMovil />} />
-            <Route path="/internet_y_telefonia/movil/:id" element={<Lead />} />
-            <Route path="/thank/internet_y_telefonia/movil/:id" element={<ThankPage />} />
+            <Route path="/internet-telefonia/comparador-movil" element={<ComparadorMovil />} />
+            <Route path="/internet-telefonia/comparador-movil/:id" element={<Lead />} />
+            <Route path="/thank/internet-telefonia/comparador-movil/:id" element={<ThankPage />} />
             
-            <Route path="/internet_y_telefonia/fibra" element={<ComparadorFibra />} />
-            <Route path="/internet_y_telefonia/fibra/:id" element={<Lead />} />
-            <Route path="/thank/internet_y_telefonia/fibra/:id" element={<ThankPage />} />
+            <Route path="/internet-telefonia/comparador-fibra" element={<ComparadorFibra />} />
+            <Route path="/internet-telefonia/comparador-fibra/:id" element={<Lead />} />
+            <Route path="/thank/internet-telefonia/comparador-fibra/:id" element={<ThankPage />} />
 
-            <Route path="/energia/luz" element={<ComparadorLuz />} />
-            <Route path="/energia/luz/:id" element={<Lead />} />
-            <Route path="/thank/energia/luz/:id" element={<ThankPage />} />
+            <Route path="/energia/comparador-tarifas-luz" element={<ComparadorLuz />} />
+            <Route path="/energia/comparador-tarifas-luz/:id" element={<Lead />} />
+            <Route path="/thank/energia/comparador-tarifas-luz/:id" element={<ThankPage />} />
 
-            <Route path="/energia/gas" element={<ComparadorGas />} />
-            <Route path="/energia/gas/:id" element={<Lead />} />
-            <Route path="/thank/energia/gas/:id" element={<ThankPage />} />
+            <Route path="/energia/comparador-tarifas-gas" element={<ComparadorGas />} />
+            <Route path="/energia/comparador-tarifas-gas/:id" element={<Lead />} />
+            <Route path="/thank/energia/comparador-tarifas-gas/:id" element={<ThankPage />} />
 
-            <Route path="/energia/luz_y_gas" element={<ComparadorLuzGas />} />
-            <Route path="/energia/luz_y_gas/:id" element={<Lead />} />
-            <Route path="/thank/energia/luz_y_gas/:id" element={<ThankPage />} />
+            <Route path="/energia/comparador-tarifas-luz-y-gas" element={<ComparadorLuzGas />} />
+            <Route path="/energia/comparador-tarifas-luz-y-gas/:id" element={<Lead />} />
+            <Route path="/thank/energia/comparador-tarifas-luz-y-gas/:id" element={<ThankPage />} />
 
-            <Route path="/internet_y_telefonia/movil_y_fibra" element={<ComparadorFibraMovil />} />
-            <Route path="/internet_y_telefonia/movil_y_fibra/:id" element={<Lead />} />
-            <Route path="/thank/internet_y_telefonia/movil_y_fibra/:id" element={<ThankPage />} />
+            <Route path="/internet-telefonia/comparador-tarifas-fibra-y-movil" element={<ComparadorFibraMovil />} />
+            <Route path="/internet-telefonia/comparador-tarifas-fibra-y-movil/:id" element={<Lead />} />
+            <Route path="/thank/internet-telefonia/comparador-tarifas-fibra-y-movil/:id" element={<ThankPage />} />
 
-            <Route path="/internet_y_telefonia/movil_fibra_tv" element={<ComparadorFibraMovilTv />} />
-            <Route path="/internet_y_telefonia/movil_fibra_tv/:id" element={<Lead />} />
-            <Route path="/thank/internet_y_telefonia/movil_fibra_tv/:id" element={<ThankPage />} />
+            <Route path="/internet-telefonia/comparador-fibra-movil-tv" element={<ComparadorFibraMovilTv />} />
+            <Route path="/internet-telefonia/comparador-fibra-movil-tv/:id" element={<Lead />} />
+            <Route path="/thank/internet-telefonia/comparador-fibra-movil-tv/:id" element={<ThankPage />} />
             
-            <Route path="/internet_y_telefonia/telefono_con_contrato" element={<ComparadorFibraMovilTv />} />
-            <Route path="/internet_y_telefonia/telefono_con_contrato/:id" element={<Lead />} />
-            <Route path="/thank/internet_y_telefonia/telefono_con_contrato/:id" element={<ThankPage />} />
+            <Route path="/internet-telefonia/telefono_con_contrato" element={<ComparadorFibraMovilTv />} />
+            <Route path="/internet-telefonia/telefono_con_contrato/:id" element={<Lead />} />
+            <Route path="/thank/internet-telefonia/telefono_con_contrato/:id" element={<ThankPage />} />
             
-            <Route path="/television_y_streaming/tv" element={<ComparadorStreaming />} />
-            <Route path="/television_y_streaming/streaming" element={<ComparadorStreaming />} />
+            <Route path="/television-streaming/comparador-de-television" element={<ComparadorStreaming />} />
+            <Route path="/television-streaming/comparador-plataformas-streaming" element={<ComparadorStreaming />} />
 
             <Route path="/quienes-somos" element={<QuienesSomos />} />
             
-            <Route path="/herramientas/precio_de_la_luz_hoy" element={<HerramientaLuz />} />
-            <Route path="/herramientas/test_de_velocidad" element={<HerramientaTest />} />
+            <Route path="/herramientas/precio-de-la-luz-hoy" element={<HerramientaLuz />} />
+            <Route path="/herramientas/test-de-velocidad" element={<HerramientaTest />} />
             
-            <Route path="/contactenos" element={<Contactenos />} />
+            <Route path="/contactanos" element={<Contactenos />} />
             <Route path="/politica-privacidad" element={<PoliticaPrivacidad />} />
             
             <Route path="/blog" element={<Blog />} />

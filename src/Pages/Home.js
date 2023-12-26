@@ -29,12 +29,12 @@ function Home(props) {
                         {
                             title: t('Internet y Telefonía'),
                             icon: '/img/icons/lighting.svg',
-                            url: '/internet_y_telefonia/movil'
+                            url: '/internet-telefonia/comparador-movil'
                         },
                         {
                             title: t('Energía'),
                             icon: '/img/icons/phone-light.svg',
-                            url: '/energia/luz'
+                            url: '/energia/comparador-tarifas-luz'
                         }
                     ]}
                 />

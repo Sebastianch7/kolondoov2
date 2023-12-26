@@ -84,7 +84,7 @@ export default function RaizEnergia() {
         buttons={[
           {
             title: '¡Empieza a ahorrar!',
-            url: '/energia/luz'
+            url: '/energia/comparador-tarifas-luz'
           }
         ]}
       />
@@ -132,7 +132,7 @@ export default function RaizEnergia() {
             <p className='font-09'>*Todos los precios incluyen el IVA.**Los precios están estimados en base a un consumo anual de 3.600kWh (300kWh al mes).***Los precios no incluyen costes derivados de la compensación del tope del gas.</p>
           </Col>
           <Col md={12} className='mx-auto text-center mt-md-4'>
-            <ButtonPrimary text={'Ver más ofertas'} url={'/energia/luz_y_gas'} />
+            <ButtonPrimary text={'Ver más ofertas'} url={'/energia/comparador-tarifas-luz-y-gas'} />
           </Col>
         </Row>
       </Container>

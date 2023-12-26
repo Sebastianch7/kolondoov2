@@ -3,19 +3,19 @@
         "icon": "/img/icons/luz.svg",
         "title": "Luz",
         "button": "Comparar",
-        "url": "/energia/luz"
+        "url": "/energia/comparador-tarifas-luz"
     },
     {
         "icon": "/img/icons/gas.svg",
         "title": "Gas",
         "button": "Comparar",
-        "url": "/energia/gas"
+        "url": "/energia/comparador-tarifas-gas"
     },
     {
         "icon": "/img/icons/luz.svg",
         "title": "Luz + Gas",
         "button": "Comparar",
-        "url": "/energia/luz_y_gas"
+        "url": "/energia/comparador-tarifas-luz-y-gas"
     }
     
 ]

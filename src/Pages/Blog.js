@@ -31,7 +31,7 @@ export default function Blog() {
             <Container>
                 <Row>
                     <Col>
-                        {categoria !== null && <h3>Estas viendo noticias de {categoria}</h3>}
+                        {categoria && <h3>Estas viendo noticias <u>{categoria?.replaceAll('-',' ')}</u></h3>}
                     </Col>
                 </Row>
             </Container>

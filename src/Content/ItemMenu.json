@@ -4,23 +4,19 @@
         "children": [
             {
                 "name": "Fibra óptica",
-                "url": "/internet_telefonia/fibra"
+                "url": "/internet-telefonia/comparador-fibra"
             },
             {
                 "name": "Móvil",
-                "url": "/internet_y_telefonia/movil"
+                "url": "/internet-telefonia/comparador-movil"
             },
             {
                 "name": "Móvil y fibra",
-                "url": "/internet_y_telefonia/movil_y_fibra/"
+                "url": "/internet-telefonia/comparador-tarifas-fibra-y-movil"
             },
             {
                 "name": "Móvil, fibra y TV",
-                "url": "/internet_y_telefonia/movil_fibra_tv"
-            },
-            {
-                "name": "Teléfonos gratis con contrato",
-                "url": "/internet_y_telefonia/telefono_con_contrato"
+                "url": "/internet-telefonia/comparador-fibra-movil-tv"
             }
         ]
     },
@@ -29,11 +25,11 @@
         "children": [
             {
                 "name": "Paquetes de TV",
-                "url": "/television_y_streaming/tv"
+                "url": "/television-streaming/comparador-de-television"
             },
             {
                 "name": "Plataformas de streaming",
-                "url": "/television_y_streaming/streaming"
+                "url": "/television-streaming/comparador-plataformas-streaming"
             }
         ]
     },
@@ -42,15 +38,15 @@
         "children": [
             {
                 "name": "Luz",
-                "url": "/energia/luz"
+                "url": "/energia/comparador-tarifas-luz"
             },
             {
                 "name": "Gas",
-                "url": "/energia/gas"
+                "url": "/energia/comparador-tarifas-gas"
             },
             {
                 "name": "Luz y gas",
-                "url": "/energia/luz_y_gas"
+                "url": "/energia/comparador-tarifas-luz-y-gas"
             },
             {
                 "name": "Solar",
@@ -67,15 +63,11 @@
         "children": [
             {
                 "name": "Precio de la luz hoy",
-                "url": "/herramientas/precio_de_la_luz_hoy"
+                "url": "/herramientas/precio-de-la-luz-hoy"
             },
             {
                 "name": "Test de valocidad",
-                "url": "/herramientas/test_de_velocidad"
-            },
-            {
-                "name": "Suministros",
-                "url": "/energia/luz_y_gas"
+                "url": "/herramientas/test-de-velocidad"
             },
             {
                 "name": "Seguros",
@@ -84,6 +76,51 @@
             {
                 "name": "Cobertura",
                 "url": ""
+            }
+        ]
+    },
+    {
+        "title": "Blog",
+        "children": [
+            {
+                "name": "Todas",
+                "url": "/blog"
+            },
+            {
+                "name": "Mas visitadas",
+                "url": "/blog/mas-visitadas"
+            },
+            {
+                "name": "Internet",
+                "url": "/blog/internet"
+            },
+            {
+                "name": "Móvil",
+                "url": "/blog/movil"
+            },
+            {
+                "name": "Televisión",
+                "url": "/blog/television"
+            },
+            {
+                "name": "Energía",
+                "url": "/blog/energia"
+            },
+            {
+                "name": "Hogar",
+                "url": "/blog/hogar"
+            },
+            {
+                "name": "Seguros",
+                "url": "/blog/seguros"
+            },
+            {
+                "name": "Mejores ofertas",
+                "url": "/blog/mejores-ofertas"
+            },
+            {
+                "name": "Suministros",
+                "url": "/blog/suministros"
             }
         ]
     }

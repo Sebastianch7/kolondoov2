@@ -37,11 +37,11 @@ function Footer(props) {
                                 <h5>Tarifas</h5>
                                 <ul>
                                     <li className='my-md-3'><Link to={''}>Tarifas</Link></li>
-                                    <li className='my-md-3'><Link to={'/internet_y_telefonia/fibra'}>Sólo fibra</Link></li>
-                                    <li className='my-md-3'><Link to={'/internet_y_telefonia/movil'}>Tarifa móvil</Link></li>
-                                    <li className='my-md-3'><Link to={'/internet_y_telefonia/movil_fibra_tv'}>Fibra+móvil+TV</Link></li>
-                                    <li className='my-md-3'><Link to={'/internet_y_telefonia/movil_y_fibra'}>Fibra+móvil</Link></li>
-                                    <li className='my-md-3'><Link to={'/energia/luz'}>Luz</Link></li>
+                                    <li className='my-md-3'><Link to={'/internet-telefonia/comparador-fibra'}>Sólo fibra</Link></li>
+                                    <li className='my-md-3'><Link to={'/internet-telefonia/comparador-movil'}>Tarifa móvil</Link></li>
+                                    <li className='my-md-3'><Link to={'/internet-telefonia/comparador-fibra-movil-tv'}>Fibra+móvil+TV</Link></li>
+                                    <li className='my-md-3'><Link to={'/internet-telefonia/comparador-tarifas-fibra-y-movil'}>Fibra+móvil</Link></li>
+                                    <li className='my-md-3'><Link to={'/energia/comparador-tarifas-luz'}>Luz</Link></li>
                                 </ul>
                             </Col>
                         </>
@@ -51,7 +51,7 @@ function Footer(props) {
                         <ul>
                             <li className='my-md-3'><Link to="/">vuskoo.com</Link></li>
                             <li className='my-md-3'><Link to="/quienes-somos">Quiénes Somos</Link></li>
-                            <li className='my-md-3'><Link to="/contactenos">Contactanos</Link></li>
+                            <li className='my-md-3'><Link to="/contactanos">Contáctanos</Link></li>
                             <li className='my-3'><img className='img-fluid' src='/img/parner-google.svg' /></li>
                         </ul>
                     </Col>

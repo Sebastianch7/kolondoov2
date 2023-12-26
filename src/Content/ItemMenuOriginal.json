@@ -4,11 +4,11 @@
         "children": [
             {
                 "name": "Fibra óptica",
-                "url": "/Internet_y_telefonia/"
+                "url": "/internet-telefonia/"
             },
             {
                 "name": "Móvil",
-                "url": "/Internet_y_telefonia/Movil"
+                "url": "/internet-telefonia/Movil"
             },
             {
                 "name": "Móvil y fibra",

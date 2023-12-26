@@ -21,7 +21,7 @@ function ItemMenu({ title, children }) {
                 aria-expanded={true}
                 >
                 {children.map((item, key) => 
-                    <Link className='dropdown-item' to={item.url} key={key}>{t(item.name)}</Link>
+                    <a className='dropdown-item' href={item.url} key={key}>{t(item.name)}</a>
                     )}
             </NavDropdown>
         </Nav>

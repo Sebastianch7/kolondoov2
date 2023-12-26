@@ -16,6 +16,7 @@ export default function TarjetaItemBlog({ data }) {
                         <Card.Title><b>{titulo}</b></Card.Title>
                         <Card.Text className='font-09'>
                         <span dangerouslySetInnerHTML={{ __html: `${entradilla}` }}></span>
+                        <small className='font-09'>{hashtags?.replaceAll('[','').replaceAll(']','').replaceAll('"','').replaceAll(',',' ')}</small>
                         </Card.Text>
                     </Card.Body>
                     <Card.Footer className='bg-gray border-0 bg-white d-flex justify-content-between'>
