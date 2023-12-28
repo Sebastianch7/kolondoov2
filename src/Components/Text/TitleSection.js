@@ -19,12 +19,10 @@ function TitleSection({ title, titleAlt, titleThird, subtitle, center = false, b
                     {left && <p className='text-left' dangerouslySetInnerHTML={{ __html: text1 }}></p>}
                     {left && <p className='text-left' dangerouslySetInnerHTML={{ __html: text2 }}></p>}
                     {textBlog && <p className='blog' dangerouslySetInnerHTML={{ __html: textBlog }}></p>}
-                    {buttons && <Row className={`${!btnLeft && 'text-center'} mx-auto`}>
+                    {buttons && <Row key={buttons} className={`${!btnLeft && 'text-center'} mx-auto`}>
                         <Stack gap={3} className="mx-auto d-block" direction={!isMobile ? "horizontal" : "vertical"}>
                             {buttons?.map((item, index) => {
-                                console.log(item.icon)
-                                //return <Link to={item.url} className={'m-2'}><ButtonPrimary key={index} icon={item.icon} text={item.title} /></Link>
-                                return <Link to={item.url} className={'m-2 btn btn-primary'}> <img src={item.icon} />{item.title}</Link>
+                                return <Link to={item.url} className={'m-2 btn btn-primary'}> {item.icon && <img src={item.icon} />}{item.title}</Link>
                             })}
                         </Stack>
                     </Row>}

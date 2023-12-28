@@ -23,9 +23,9 @@ export default function Lead() {
 
   useEffect(() => {
     let locations = location.pathname.split('/');
-    setIdPlan(locations[3]);
+    setIdPlan(locations[4]);
     locations.pop();
-    setOfferLooking(locations[2])
+    setOfferLooking(locations[3])
     setBreadUrl(locations.join('/'));
   }, [location.pathname]);
 
@@ -52,7 +52,7 @@ export default function Lead() {
         <BreadCrumb url={breadUrl} />
         <Container className='mb-5'>
           <Row className="justify-content-md-center d-flex flex-column flex-md-row">
-            <div className=''>
+            <div>
               <Title title={`Oferta de ${infoOffer?.nombre}`} />
             </div>
             <Col xs={12} md={7} className='my-2' style={isMobile ? { order: 2 } : { order: 1 }}>

@@ -12,9 +12,6 @@ import AcordionItem from '../Components/Acordion/AcordionItem';
 import TarjetaProducto from '../Components/Tarjeta/TarjetaProducto';
 import InterSection from '../Components/Utils/InterSection';
 import ContenedorDescipcionTarifa from '../Components/Contenedor/ContenedorDescipcionTarifa'
-import TarjetaTarifa from '../Components/Tarjeta/TarjetaTarifa'
-import { getExtraOffer } from '../services/ApiServices';
-import ButtonPrimary from '../Components/Button/ButtonPrimary';
 import ContenedorComparadorLogos from '../Components/Contenedor/ContenedorComparadorLogos';
 import ContenedorPreguntasFrecuentes from '../Components/Contenedor/ContenedorPreguntasFrecuentes';
 import { Card, CardGroup } from 'react-bootstrap';

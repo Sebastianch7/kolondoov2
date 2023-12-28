@@ -12,7 +12,7 @@ function ComparadorStreaming() {
             <Banner
                 title={'Comparador de plataformas de streaming'}
                 subtitle='¡Te ayudamos a encontrar la tarifa que mejor se adapte a ti!'
-                image={'/img/television_streaming/banner_streaming.png'}
+                image={'/img/television-streaming/banner_streaming.png'}
                 logo={'/img/icons/streaming.svg'}
             >
                 {/* <FormSuscripcion

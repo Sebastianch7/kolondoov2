@@ -12,8 +12,8 @@ function Banner({ title = '', subtitle = '', buttons = false, children, image, l
                     <Col sm={12} md={7}>
                         <Row>
                             {logo !== '' && <Col md={4} className='d-flex mx-auto'>
-                                {logo && <div className='banner-icon'><img src={logo} /></div>}
-                                {logo2 && <div className='banner-icon'><img src={logo2} /></div>}
+                                {logo && <div className='banner-icon'><img src={logo} alt={logo} /></div>}
+                                {logo2 && <div className='banner-icon'><img src={logo2} alt={logo2} /></div>}
                             </Col>}
                             <Col sm={12} className='text-center'>
                                 <TitleSection

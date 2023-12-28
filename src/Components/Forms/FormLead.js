@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Card, Form } from 'react-bootstrap';
-import ButtonPrimary from '../Button/ButtonPrimary';
 import { BsFillTelephoneFill, BsXCircle, BsFillTelephoneOutboundFill } from "react-icons/bs";
-import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 import { postLead } from '../../services/ApiServices'
 import { useTranslation } from 'react-i18next';

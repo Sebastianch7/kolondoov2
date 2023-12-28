@@ -28,7 +28,7 @@ function BannerImageFull({ title = '', text1 = '', text2 = '', buttons = false, 
                     </Col>
                     <Col sm={12} md={6} className='d-none d-md-block'>
                         <div>
-                            <img className={imgFluid && 'img-fluid'} src={image} />
+                            <img className={imgFluid && 'img-fluid'} src={image} alt={image} />
                         </div>
                     </Col>
                 </div>

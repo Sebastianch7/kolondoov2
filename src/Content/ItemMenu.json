@@ -1,6 +1,7 @@
 [
     {
         "title": "Internet y Telefonía",
+        "url": "/internet-telefonia",
         "children": [
             {
                 "name": "Fibra óptica",
@@ -22,11 +23,9 @@
     },
     {
         "title": "Televisión y streaming",
+        "url": "/television-streaming/",
         "children": [
-            {
-                "name": "Paquetes de TV",
-                "url": "/television-streaming/comparador-de-television"
-            },
+            
             {
                 "name": "Plataformas de streaming",
                 "url": "/television-streaming/comparador-plataformas-streaming"
@@ -35,6 +34,7 @@
     },
     {
         "title": "Energía",
+        "url": "/energia/",
         "children": [
             {
                 "name": "Luz",
@@ -47,19 +47,12 @@
             {
                 "name": "Luz y gas",
                 "url": "/energia/comparador-tarifas-luz-y-gas"
-            },
-            {
-                "name": "Solar",
-                "url": ""
-            },
-            {
-                "name": "Estaciones de carga de VE",
-                "url": ""
             }
         ]
     },
     {
         "title": "Herramientas",
+        "url": "/herramientas/",
         "children": [
             {
                 "name": "Precio de la luz hoy",
@@ -71,16 +64,17 @@
             },
             {
                 "name": "Seguros",
-                "url": ""
+                "url": "/"
             },
             {
                 "name": "Cobertura",
-                "url": ""
+                "url": "/"
             }
         ]
     },
     {
         "title": "Blog",
+        "url": "/blog",
         "children": [
             {
                 "name": "Todas",

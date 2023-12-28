@@ -5,17 +5,25 @@ import BreadCrumb from '../BreadCrumb/BreadCrumb';
 import items from '../../Content/ItemMenu.json'
 import ChangeLang from '../Utils/ChangeLang'
 import { useTranslation } from 'react-i18next';
-import { useState } from 'react';
-
+import { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 function Header({ breadCrumb }) {
     const { t } = useTranslation();
+
+    const [lang, setLang] = useState(null)
+    const location = useLocation();
+
+    useEffect(() => {
+        setLang(location.pathname.split('/')[1])
+    },[])
+
 
     return (
         <>
             <Navbar sticky='top' expand={"lg"} className="navbar-light bg-white clean-navbar my-4 my-xxl-0">
                 <Container className='container-header justify-content-between'>
                     <Navbar.Brand>
-                        <a href='/'><img src="/img/logos/logo.svg" alt="Logo" /></a>
+                        <a href={`/${lang}`}><img src="/img/logos/logo.svg" alt="Logo" /></a>
                     </Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">

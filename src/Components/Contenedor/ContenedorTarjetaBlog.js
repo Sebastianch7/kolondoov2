@@ -55,7 +55,7 @@ function ContenedorTarjetaBlog({ children }) {
                                                     <div className="carrusel-caption">
                                                         <h6>{data.date}</h6>
                                                         <h2>{data.title}</h2>
-                                                        <a href="">{data.button}</a>
+                                                        <Link to="">{data.button}</Link>
                                                     </div>
                                                 </Carousel.Caption>
                                             </Carousel.Item>
@@ -64,7 +64,7 @@ function ContenedorTarjetaBlog({ children }) {
                                 </Carousel>
                             )}
                             <Col md={12} className='mx-auto text-center py-5'>
-                                <Link to={'/blog'} className='btn btn-primary'>Descubre más noticias</Link>
+                                <Link to={'blog'} className='btn btn-primary'>Descubre más noticias</Link>
                             </Col>
                         </Col>
                     </Row>

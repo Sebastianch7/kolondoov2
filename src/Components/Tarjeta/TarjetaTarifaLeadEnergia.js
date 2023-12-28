@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Card, Row, Col } from 'react-bootstrap'
 import ItemTarifaServicio from '../Items/ItemTarifaServicio'
 import ItemTarifaLuz from '../Items/ItemTarifaLuz'
@@ -6,10 +6,21 @@ import ItemTarifaDescripcion from '../Items/ItemTarifaDescripcion'
 import { isMobile } from 'react-device-detect';
 import { BsArrowRight } from "react-icons/bs";
 import { Link } from 'react-router-dom';
-
+import { useLocation } from 'react-router-dom';
 
 export default function TarjetaTarifaLeadEnergia({ data, TarifaCard }) {
     const [tarifa] = useState(null)
+    
+    const [lang, setLang] = useState(null)
+    const location = useLocation();
+    const pathname = location.pathname;
+    let locations = pathname.split('/');
+    locations.shift();
+    
+    useEffect(() => {
+        setLang(locations[0])
+    },[])
+
     const {
         luz_precio_energia_24h,
         logo,
@@ -33,7 +44,7 @@ export default function TarjetaTarifaLeadEnergia({ data, TarifaCard }) {
                             <div className='tarjeta-tarifa-item-title'>
                                 <img src={logo} alt={logo} />
                                 {((promocion !== null && promocion !== '') && isMobile === false) && <span className='mx-4 align-middle'><b>Promoción: </b>{promocion}</span>}
-                                {(isMobile === true) && <Link className='btn btn-primary btn-primary-small' to={`${landingLead}/${id}`}><BsArrowRight /></Link>}
+                                {(isMobile === true) && <Link className='btn btn-primary btn-primary-small' to={`/${lang}${landingLead}${id}`}><BsArrowRight /></Link>}
                             </div>
                         </Col>}
                         <Col md={9}>
@@ -74,7 +85,7 @@ export default function TarjetaTarifaLeadEnergia({ data, TarifaCard }) {
                                 <ItemTarifaServicio cant={precio} service={''} design={"small"} money={'€'} />
                                 {!isMobile && TarifaCard && (
                                     <Col md={2} style={isMobile ? { order: 3 } : { order: 3 }}>
-                                        <Link className='btn btn-primary' to={`${landingLead}/${id}`}>{`Comprar`}</Link>
+                                        <Link className='btn btn-primary' to={`/${lang}${landingLead}${id}`}>{`Comprar`}</Link>
                                     </Col>
                                 )}
                             </Row>

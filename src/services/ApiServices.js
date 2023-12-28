@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-const apiUrl = 'https://api.vuskoo.com/api';
-//const apiUrl = 'http://127.0.0.1:8000/api';
+//const apiUrl = 'https://api.vuskoo.com/api';
+const apiUrl = 'http://127.0.0.1:8000/api';
 
 export const fetchFilterFibra = async () => {
     try {
@@ -193,7 +193,8 @@ export const fetchTarifasLuzGas = async () => {
 
 export const getDetailOffer = async (offerLooking, idPlan) => {
     try {
-        const response = await axios.get(`${apiUrl}/getDetailOffer${offerLooking}/${idPlan}`)
+        
+        const response = await axios.get(`${apiUrl}/getDetailOffer${offerLooking.replaceAll('-','')}/${idPlan}`)
         return response.data[0];
     } catch (error) {
         console.error("Error al obtener las marcas de operadoras:", error);
@@ -251,17 +252,6 @@ export const getExtraOffer = async (offerLooking) => {
     }
 };
 
-export const postLead = async (idOferta, phone, landing) => {
-    console.log(idOferta, phone, landing)
-    try {
-        const response = await axios.post(`${apiUrl}/LeadRegister`, { idOferta, phone, landing });
-        return response.data;
-    } catch (error) {
-        //console.error("Error al enviar la informacion del Lead:", error);
-        throw new Error('Error en la solicitud POST:', error);
-    }
-};
-
 export const getPriceLightService = async () => {
     try {
         let fecha = new Date();
@@ -310,5 +300,26 @@ export const getIp = async () => {
     } catch (error) {
         console.error("Error al obtener la informacion de localizacion", error);
         throw error;
+    }
+};
+
+export const postLead = async (idOferta, phone, landing) => {
+    console.log(idOferta, phone, landing)
+    try {
+        const response = await axios.post(`${apiUrl}/LeadRegister`, { idOferta, phone, landing });
+        return response.data;
+    } catch (error) {
+        //console.error("Error al enviar la informacion del Lead:", error);
+        throw new Error('Error en la solicitud POST:', error);
+    }
+};
+
+export const postFormContactanos = async (nombre, consulta, email) => {
+    try {
+        const response = await axios.post(`${apiUrl}/contactanosRegister`, { nombre, consulta, email });
+        return response.data;
+    } catch (error) {
+        //console.error("Error al enviar la informacion del Lead:", error);
+        throw new Error('Error en la solicitud POST:', error);
     }
 };

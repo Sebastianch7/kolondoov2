@@ -11,15 +11,21 @@ import { Link } from 'react-router-dom';
 import { isMobile } from 'react-device-detect';
 
 export default function ContenedorBlogItem({ children }) {
+
     const [fetchBlog, setFetchBlog] = useState([])
     const [idBlog, setIdBlog] = useState(null)
     const [load, setLoad] = useState(false)
+    const [lang, setLang] = useState(null)
     const location = useLocation();
+
+    useEffect(() => {
+        setLang(location.pathname.split('/')[1])
+    },[])
 
     useEffect(() => {
         const pathname = location.pathname;
         let locations = pathname.split('/');
-        setIdBlog(locations[2]);
+        setIdBlog(locations[3]);
     }, [idBlog])
 
     useEffect(() => {
@@ -30,7 +36,6 @@ export default function ContenedorBlogItem({ children }) {
                     const response = await getBlogById(idBlog);
                     setFetchBlog(response);
                     setLoad(false);
-                    console.log(fetchBlog);
                 }
             } catch (error) {
                 console.error("Error al obtener blog:", error);
@@ -54,7 +59,7 @@ export default function ContenedorBlogItem({ children }) {
                             textBlog={fetchBlog?.cuerpo}
                         />
                         <Col xs={12} className='text-center my-5'>
-                        <Link className='font-09 btn btn-primary' to={`/blog`}>Volver</Link>
+                        <Link className='font-09 btn btn-primary' to={`${lang}/blog`}>Volver</Link>
                         </Col>
                     </Col>
                     <ContenedorDestacados />

@@ -64,7 +64,7 @@ export default function RaizEnergia() {
   useEffect(() => {
     const fetchTariffs = async () => {
       try {
-        const response = await getExtraOffer('luz_y_gas')
+        const response = await getExtraOffer('luzygas')
         setExtraOffer(response);
       } catch (error) {
         console.error("Error al obtener oferta extra:", error);

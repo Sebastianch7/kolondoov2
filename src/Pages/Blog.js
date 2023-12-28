@@ -16,7 +16,7 @@ export default function Blog() {
         setIsLoading(true)
         const pathname = location.pathname;
         let locations = pathname.split('/');
-        setCategoria(locations[2]);
+        setCategoria(locations[3]);
         setIsLoading(false)
     }, [])
 

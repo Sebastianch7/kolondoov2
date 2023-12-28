@@ -20,7 +20,7 @@ i18n
       },
     },
     lng: 'es', // Idioma predeterminado
-    fallbackLng: 'en', // Idioma de respaldo en caso de que no se encuentre una traducción
+    fallbackLng: 'es', // Idioma de respaldo en caso de que no se encuentre una traducción
     interpolation: {
       escapeValue: false,
     },

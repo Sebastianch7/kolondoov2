@@ -89,7 +89,7 @@ export default function ThankPage() {
                     return <TarjetaTarifaLeadEnergia key={index} data={item} TarifaCard />;
                   case 'gas':
                     return <TarjetaTarifa key={index} data={item} type={'gas'} />
-                  case 'luz_y_gas':
+                  case 'luzygas':
                     return <TarjetaTarifa key={index} data={item} type={'gas'} />
                   default:
                     return <TarjetaTarifa key={index} data={item} />

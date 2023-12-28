@@ -73,7 +73,7 @@ export default function RaizTelefonia() {
   useEffect(() => {
     const fetchTariffs = async () => {
       try {
-        const response = await getExtraOffer('movil_y_fibra')
+        const response = await getExtraOffer('movilyfibra')
         setExtraOffer(response);
       } catch (error) {
         console.error("Error al obtener oferta extra:", error);
