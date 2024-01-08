@@ -1,4 +1,8 @@
+import { dblClick } from '@testing-library/user-event/dist/click';
 import axios from 'axios';
+import { FormControl } from 'react-bootstrap';
+import { BsBack } from 'react-icons/bs';
+import { json } from 'react-router-dom';
 
 //const apiUrl = 'https://api.vuskoo.com/api';
 const apiUrl = 'http://127.0.0.1:8000/api';
@@ -193,8 +197,7 @@ export const fetchTarifasLuzGas = async () => {
 
 export const getDetailOffer = async (offerLooking, idPlan) => {
     try {
-        
-        const response = await axios.get(`${apiUrl}/getDetailOffer${offerLooking.replaceAll('-','')}/${idPlan}`)
+        const response = await axios.get(`${apiUrl}/getDetailOffer${offerLooking.replaceAll('-', '')}/${idPlan}`)
         return response.data[0];
     } catch (error) {
         console.error("Error al obtener las marcas de operadoras:", error);
@@ -204,7 +207,7 @@ export const getDetailOffer = async (offerLooking, idPlan) => {
 
 export const getBlog = async (categoria) => {
     try {
-            const response = await axios.get(`${apiUrl}/getBlog/${categoria}`)
+        const response = await axios.get(`${apiUrl}/getBlog/${categoria}`)
         return response.data;
     } catch (error) {
         console.error("Error al obtener los blog", error);
@@ -214,7 +217,7 @@ export const getBlog = async (categoria) => {
 
 export const getBlogHome = async () => {
     try {
-            const response = await axios.get(`${apiUrl}/getBlogHome`)
+        const response = await axios.get(`${apiUrl}/getBlogHome`)
         return response.data;
     } catch (error) {
         console.error("Error al obtener los blog", error);
@@ -256,7 +259,7 @@ export const getPriceLightService = async () => {
     try {
         let fecha = new Date();
         let año = fecha.getFullYear();
-        let mes = fecha.getMonth() +1; // Los meses en JavaScript son indexados desde 0, por lo que sumamos 1
+        let mes = fecha.getMonth() + 1; // Los meses en JavaScript son indexados desde 0, por lo que sumamos 1
         let dia = fecha.getDate();
 
         const actual = `${año}-${mes}-${dia}`;
@@ -303,11 +306,11 @@ export const getIp = async () => {
     }
 };
 
-export const postLead = async (idOferta, phone, landing) => {
-    console.log(idOferta, phone, landing)
+export const postLead = async (idOferta, phone, landing, urlOffer, company) => {
     try {
-        const response = await axios.post(`${apiUrl}/LeadRegister`, { idOferta, phone, landing });
-        return response.data;
+        const response = await axios.post(`${apiUrl}/LeadRegister`, { idOferta, phone, landing, urlOffer, company });
+        console.log(response.data);
+        return response;
     } catch (error) {
         //console.error("Error al enviar la informacion del Lead:", error);
         throw new Error('Error en la solicitud POST:', error);
@@ -323,3 +326,4 @@ export const postFormContactanos = async (nombre, consulta, email) => {
         throw new Error('Error en la solicitud POST:', error);
     }
 };
+

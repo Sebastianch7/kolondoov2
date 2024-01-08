@@ -15,6 +15,7 @@ export default function Lead() {
   const [isLoading, setIsLoading] = useState(true);
   const [infoOffer, setInfoOffer] = useState([]);
   const [idPlan, setIdPlan] = useState(null);
+  const [service, setService] = useState(null);
 
   const location = useLocation();
   const [breadUrl, setBreadUrl] = useState(null);
@@ -23,7 +24,8 @@ export default function Lead() {
 
   useEffect(() => {
     let locations = location.pathname.split('/');
-    setIdPlan(locations[4]);
+    let idSplit = locations[4].split('-');
+    setIdPlan(idSplit[idSplit.length - 1]);
     locations.pop();
     setOfferLooking(locations[3])
     setBreadUrl(locations.join('/'));
@@ -44,7 +46,7 @@ export default function Lead() {
 
     fetchTariffs();
   }, [idPlan]);
-
+  
   return (
     !isLoading ? (
       <>
@@ -59,7 +61,7 @@ export default function Lead() {
               <TarjetaTarifaLead key={0} data={infoOffer} service={offerLooking} />
             </Col>
             <Col xs={12} md={5} className='my-2' style={isMobile ? { order: 1 } : { order: 2 }}>
-              <FormLead idPlan={idPlan} landing={breadUrl}></FormLead>
+              <FormLead idPlan={idPlan} landing={offerLooking} urlOffers={location.pathname} company={infoOffer.operadora}></FormLead>
             </Col>
           </Row>
         </Container>

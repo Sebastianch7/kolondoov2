@@ -4,7 +4,6 @@ import { isMobile } from 'react-device-detect';
 import { Link } from 'react-router-dom';
 function TarjetaBlogFull({ data }) {
     const { fecha_publicacion, imagen_principal_escritorio, titulo, button, url_amigable } = data
-    console.log(data)
     return (
         <Col className='mx-3'>
             <Card className='tarjeta tarjeta-blog'>

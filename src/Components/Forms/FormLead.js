@@ -4,29 +4,37 @@ import { BsFillTelephoneFill, BsXCircle, BsFillTelephoneOutboundFill } from "rea
 import { useNavigate } from "react-router-dom";
 import { postLead } from '../../services/ApiServices'
 import { useTranslation } from 'react-i18next';
+import { useLocation } from 'react-router-dom';
 
-
-export default function FormLead({ idPlan, landing }) {
+export default function FormLead({ idPlan, landing, offerLooking, urlOffers, company }) {
     const { t } = useTranslation();
 
-    const [checkInAsesoria, setCheckInAsesoria] = useState(true);
+    const [lang, setLang] = useState(null)
+    const location = useLocation();
+
+    const [checkInAsesoria, setCheckInAsesoria] = useState(false);
     const [checkInComercial, setCheckInComercial] = useState(false);
 
-    const [phoneNumber, setPhoneNumber] = useState(null);
+    const [phoneNumber, setPhoneNumber] = useState('+34');
     const [name, setName] = useState(null);
     const [lastName, setLastName] = useState(null);
     const [email, setEmail] = useState(null);
-
+    const [urlOffer, setUrlOffer] = useState(urlOffers);
 
     const [isValidPhoneNumber, setIsValidPhoneNumber] = useState(true);
     const [isSend, setIsSend] = useState(false);
     const [isError, setIsError] = useState(false);
     let navigate = useNavigate();
 
+    useEffect(() => {
+        setLang(location.pathname.split('/')[1])
+    }, [])
+
+
     const handlePhoneNumberChange = (e) => {
         const inputPhoneNumber = e.target.value;
         setPhoneNumber(inputPhoneNumber);
-        const phoneNumberRegex = /^[6-9]\d{8}$/
+        const phoneNumberRegex = /^\+34[6-9]\d{8}$/;
         const isValid = phoneNumberRegex.test(inputPhoneNumber);
         setIsValidPhoneNumber(isValid);
     };
@@ -35,29 +43,29 @@ export default function FormLead({ idPlan, landing }) {
 
     async function subscripcion(e) {
         e.preventDefault();
-        setIsError(null)
-        
+        setIsError(false)
+        setIsSend(true)
         try {
-            const response = await postLead(idPlan, phoneNumber, landing);
-            console.log(response)
-            //console.log('Respuesta de la API después de enviar datos:', response.data);
-            //setTextButton('Suscripcion exitosa')
-            //setIsSend(true)
-            //setPhoneNumber('+34')
-            //setIsValidPhoneNumber(false)
-            //setTimeout(() =>{
-                //navigate(`/thank${landing}/${idPlan}`)
-                //}, 3000)
-            } catch (error) {
-                console.error('Error al enviar datos:', error);
-                setIsError(error)
+            const response = await postLead(idPlan, phoneNumber, landing, urlOffer, company);
+            if (response?.data.status === 201) {
+                setTextButton('Tu solicitud ha sido registrada.')
+                setCheckInAsesoria(false)
+                setTimeout(() => {
+                    navigate(`/${lang}/thank/${landing}/${idPlan}`)
+                }, 3000)
+            } else {
+                setIsError(response?.data?.message)
+            }
+        } catch (error) {
+            setTextButton('Error al procesa la solicitud')
+            setIsError(error.statusText)
         }
     }
 
     return (
         <Card className='tarjeta-lead'>
             <Card.Header className="text-center">{t('Oferta disponible')}</Card.Header>
-            {!isSend ? <Card.Body>
+            <Card.Body>
                 <Card.Text className='text-center text-primary'>
                     Déjanos tu teléfono y <b>te llamamos gratis</b>
                 </Card.Text>
@@ -76,7 +84,9 @@ export default function FormLead({ idPlan, landing }) {
                                     isSuccess={isValidPhoneNumber}
                                 />
                             </div>
-                            {(!isValidPhoneNumber && phoneNumber?.length > 4) && <div className="text-danger mt-3"><BsXCircle />&nbsp;El número de teléfono ingresado no es valido</div>}
+                            {(!isValidPhoneNumber && phoneNumber?.length > 4) &&
+                                <div className="text-danger mt-3"><BsXCircle />&nbsp;El número de teléfono ingresado no es valido</div>
+                            }
                             <div className='my-3'>
                                 <Form.Switch
                                     className='input-check mt-2'
@@ -95,14 +105,15 @@ export default function FormLead({ idPlan, landing }) {
                                     onChange={() => setCheckInComercial(!checkInComercial)}
                                 />
                             </div>
-                            {isError !== null &&
+                            {isError !== false &&
                                 <div className='my-3'>
-                                    <span className='color-red'>La información es incorrecta</span>
+                                    <span className='color-red' dangerouslySetInnerHTML={{ __html: isError }}></span>
                                 </div>
                             }
+
                             <div className='text-center m-4'>
                                 <Button
-                                    btnStatus={(checkInAsesoria && isValidPhoneNumber) ? false : true}
+                                    disabled={(checkInAsesoria && isValidPhoneNumber) ? false : true}
                                     type="submit"
                                 >
                                     {textButton}
@@ -111,15 +122,7 @@ export default function FormLead({ idPlan, landing }) {
                         </div>
                     </Form>
                 </Card.Text>
-            </Card.Body> :
-                <Card>
-                    <Card.Body className='text-center'>
-                        <h2><BsFillTelephoneOutboundFill /></h2>
-                        <h5>Tu información se ha enviado con exito</h5>
-                        <p>Gracias por permitirnos ayudarte!</p>
-                    </Card.Body>
-                </Card>
-            }
+            </Card.Body>
         </Card >
     )
 }

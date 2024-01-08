@@ -10,16 +10,16 @@ import { useLocation } from 'react-router-dom';
 
 export default function TarjetaTarifaLeadEnergia({ data, TarifaCard }) {
     const [tarifa] = useState(null)
-    
+
     const [lang, setLang] = useState(null)
     const location = useLocation();
     const pathname = location.pathname;
     let locations = pathname.split('/');
     locations.shift();
-    
+
     useEffect(() => {
         setLang(locations[0])
-    },[])
+    }, [])
 
     const {
         luz_precio_energia_24h,
@@ -30,8 +30,10 @@ export default function TarjetaTarifaLeadEnergia({ data, TarifaCard }) {
         parrilla_bloque_3,
         parrilla_bloque_4,
         precio,
+        nombre_tarifa,
         landingLead,
-        promocion, } = data
+        promocion
+    } = data
 
 
     return (
@@ -44,7 +46,7 @@ export default function TarjetaTarifaLeadEnergia({ data, TarifaCard }) {
                             <div className='tarjeta-tarifa-item-title'>
                                 <img src={logo} alt={logo} />
                                 {((promocion !== null && promocion !== '') && isMobile === false) && <span className='mx-4 align-middle'><b>Promoción: </b>{promocion}</span>}
-                                {(isMobile === true) && <Link className='btn btn-primary btn-primary-small' to={`/${lang}${landingLead}${id}`}><BsArrowRight /></Link>}
+                                {(isMobile === true) && <Link className='btn btn-primary btn-primary-small' to={`/${lang}${landingLead}${nombre_tarifa.toLowerCase().replaceAll(' ', '-')}-${id}`}><BsArrowRight /></Link>}
                             </div>
                         </Col>}
                         <Col md={9}>
@@ -85,7 +87,7 @@ export default function TarjetaTarifaLeadEnergia({ data, TarifaCard }) {
                                 <ItemTarifaServicio cant={precio} service={''} design={"small"} money={'€'} />
                                 {!isMobile && TarifaCard && (
                                     <Col md={2} style={isMobile ? { order: 3 } : { order: 3 }}>
-                                        <Link className='btn btn-primary' to={`/${lang}${landingLead}${id}`}>{`Comprar`}</Link>
+                                        <Link className='btn btn-primary' to={`/${lang}${landingLead}${nombre_tarifa.toLowerCase().replaceAll(' ', '-')}-${id}`}>{`Comprar`}</Link>
                                     </Col>
                                 )}
                             </Row>
