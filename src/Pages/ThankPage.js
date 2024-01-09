@@ -8,8 +8,10 @@ import TarjetaTarifaLeadEnergia from '../Components/Tarjeta/TarjetaTarifaLeadEne
 import TarjetaTarifa from '../Components/Tarjeta/TarjetaTarifa'
 import { getDetailOffer, getExtraOffer } from '../services/ApiServices';
 import TarjetaTarifaLead from '../Components/Tarjeta/TarjetaTarifaLead';
+import Header from '../Components/Header/Header';
 
 export default function ThankPage() {
+  
   const [isLoading, setIsLoading] = useState(true);
   const [infoOffer, setInfoOffer] = useState([]);
   const [extraOffer, setExtraOffer] = useState([]);
@@ -22,8 +24,8 @@ export default function ThankPage() {
 
   useEffect(() => {
     let locations = location.pathname.split('/');
-    setIdPlan(locations[4]);
-    locations.pop();
+    let idSplit = locations[5].split('-');
+    setIdPlan(idSplit[idSplit.length - 1]);
     setOfferLooking(locations[3])
     setBreadUrl(locations.join('/'));
   }, [location.pathname]);
@@ -40,10 +42,10 @@ export default function ThankPage() {
         console.error("Error al obtener detalle de oferta:", error);
       }
     };
-
+    
     fetchTariffs();
   }, [idPlan]);
-
+  
   useEffect(() => {
     const fetchTariffs = async () => {
       try {
@@ -56,9 +58,9 @@ export default function ThankPage() {
         console.error("Error al obtener oferta extra:", error);
       }
     };
-
+    
     fetchTariffs();
-  }, [idPlan]);
+  }, [idPlan]); 
 
   return (
     <>
@@ -70,10 +72,9 @@ export default function ThankPage() {
             <h3>Muchas gracias por dejarnos tus datos.</h3>
             <p>En breve un agente contactará contigo.</p>
           </Col>
-          <Col xs={12} xxl={5} md={8} className='my-2' style={isMobile ? { order: 2 } : { order: 1 }}>
+          <Col xs={12} xxl={6} md={8} className='my-2' style={isMobile ? { order: 2 } : { order: 1 }}>
             <TarjetaTarifaLead key={0} data={infoOffer} service={offerLooking} thanks />;
           </Col>
-
         </Row>
       </Container>
       <Container>

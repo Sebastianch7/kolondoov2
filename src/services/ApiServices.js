@@ -247,7 +247,7 @@ export const getBlogById = async (id) => {
 
 export const getExtraOffer = async (offerLooking) => {
     try {
-        const response = await axios.get(`${apiUrl}/getExtraOffer${offerLooking}`)
+        const response = await axios.get(`${apiUrl}/getExtraOffer${offerLooking.replaceAll('-', '')}`)
         return response.data;
     } catch (error) {
         console.error("Error al obtener las marcas de operadoras:", error);

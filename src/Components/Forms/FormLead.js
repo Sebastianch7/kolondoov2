@@ -15,11 +15,12 @@ export default function FormLead({ idPlan, landing, offerLooking, urlOffers, com
     const [checkInAsesoria, setCheckInAsesoria] = useState(false);
     const [checkInComercial, setCheckInComercial] = useState(false);
 
-    const [phoneNumber, setPhoneNumber] = useState('+34');
+    const [phoneNumber, setPhoneNumber] = useState('');
     const [name, setName] = useState(null);
     const [lastName, setLastName] = useState(null);
     const [email, setEmail] = useState(null);
     const [urlOffer, setUrlOffer] = useState(urlOffers);
+    const [urlSplit, setUrlSplit] = useState([])
 
     const [isValidPhoneNumber, setIsValidPhoneNumber] = useState(true);
     const [isSend, setIsSend] = useState(false);
@@ -27,6 +28,7 @@ export default function FormLead({ idPlan, landing, offerLooking, urlOffers, com
     let navigate = useNavigate();
 
     useEffect(() => {
+        setUrlSplit(location.pathname.split('/'))
         setLang(location.pathname.split('/')[1])
     }, [])
 
@@ -34,7 +36,7 @@ export default function FormLead({ idPlan, landing, offerLooking, urlOffers, com
     const handlePhoneNumberChange = (e) => {
         const inputPhoneNumber = e.target.value;
         setPhoneNumber(inputPhoneNumber);
-        const phoneNumberRegex = /^\+34[6-9]\d{8}$/;
+        const phoneNumberRegex = /^[6-9]\d{8}$/;
         const isValid = phoneNumberRegex.test(inputPhoneNumber);
         setIsValidPhoneNumber(isValid);
     };
@@ -51,7 +53,7 @@ export default function FormLead({ idPlan, landing, offerLooking, urlOffers, com
                 setTextButton('Tu solicitud ha sido registrada.')
                 setCheckInAsesoria(false)
                 setTimeout(() => {
-                    navigate(`/${lang}/thank/${landing}/${idPlan}`)
+                    navigate(`/${lang}/${urlSplit[2]}/${urlSplit[3]}/thank/${urlSplit[4]}`)
                 }, 3000)
             } else {
                 setIsError(response?.data?.message)

@@ -25,7 +25,7 @@ function ContenedorTarjetaBlog({ children }) {
         fetchBlogList();
     }, []);
     return (
-        <div className='my-md-5 container-tarjeta-blog'>
+        <Container className='my-md-5 container-tarjeta-blog'>
             <TitleSection
                 title={'últimas noticias'}
                 subtitle={'¡Échale un vistazo a nuestro blog y mantente siempre actualizado!'}
@@ -70,7 +70,7 @@ function ContenedorTarjetaBlog({ children }) {
                     </Row>
                 </Container>
             </Container>
-        </div>
+        </Container>
     );
 }
 

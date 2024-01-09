@@ -28,9 +28,9 @@ function Footer(props) {
                             <li className='my-md-3'>Calle Barquillo, 8</li>
                             <li className='my-md-3'>28004 Madrid - España</li>
                             <ul className='d-flex justify-content-evenly'>
-                                <li><a href="/mx">mx</a></li>
-                                <li><a href="/es">es</a></li>
-                                <li><a href="/en">en</a></li>
+                                <li><a href="/es-mx">mx</a></li>
+                                <li><a href="/es-es">es</a></li>
+                                <li><a href="/en-en">en</a></li>
                                 
                             </ul>
                         </ul>

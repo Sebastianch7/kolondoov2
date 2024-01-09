@@ -28,38 +28,39 @@ function RoutesApp() {
             <Routes>
                { <Route
                     path="/"
-                    element={<Navigate to="/es" exact />}
+                    element={<Navigate to="/es-es" exact />}
                 />}
 
                 <Route path="/:lang" element={<Home />} />
 
                 <Route path="/:lang/internet-telefonia" element={<RaizTelefonia />} />
+                <Route path="/:lang/network-phone" element={<RaizTelefonia />} />
                 <Route path="/:lang/energia" element={<RaizEnergia />} />
                 <Route path="/:lang/television-streaming" element={<RaizStreaming />} />
 
                 <Route path="/:lang/internet-telefonia/comparador-movil" element={<ComparadorMovil />} />
                 <Route path="/:lang/internet-telefonia/comparador-movil/:id" element={<Lead />} />
-                <Route path="/:lang/thank/internet-telefonia/comparador-movil/:id" element={<ThankPage />} />
+                <Route path="/:lang/internet-telefonia/comparador-movil/thank/:id" element={<ThankPage />} />
 
                 <Route path="/:lang/internet-telefonia/comparador-fibra" element={<ComparadorFibra />} />
                 <Route path="/:lang/internet-telefonia/comparador-fibra/:id" element={<Lead />} />
-                <Route path="/:lang/thank/internet-telefonia/comparador-fibra/:id" element={<ThankPage />} />
+                <Route path="/:lang/internet-telefonia/comparador-fibra/thank/:id" element={<ThankPage />} />
 
                 <Route path="/:lang/energia/comparador-tarifas-luz" element={<ComparadorLuz />} />
                 <Route path="/:lang/energia/comparador-tarifas-luz/:id" element={<Lead />} />
-                <Route path="/:lang/thank/energia/comparador-tarifas-luz/:id" element={<ThankPage />} />
+                <Route path="/:lang/energia/comparador-tarifas-luz/thank/:id" element={<ThankPage />} />
 
                 <Route path="/:lang/energia/comparador-tarifas-gas" element={<ComparadorGas />} />
                 <Route path="/:lang/energia/comparador-tarifas-gas/:id" element={<Lead />} />
-                <Route path="/:lang/thank/energia/comparador-tarifas-gas/:id" element={<ThankPage />} />
+                <Route path="/:lang/energia/comparador-tarifas-gas/thank/:id" element={<ThankPage />} />
 
                 <Route path="/:lang/energia/comparador-tarifas-luz-y-gas" element={<ComparadorLuzGas />} />
                 <Route path="/:lang/energia/comparador-tarifas-luz-y-gas/:id" element={<Lead />} />
-                <Route path="/:lang/thank/energia/comparador-tarifas-luz-y-gas/:id" element={<ThankPage />} />
+                <Route path="/:lang/energia/comparador-tarifas-luz-y-gas/thank/:id" element={<ThankPage />} />
 
                 <Route path="/:lang/internet-telefonia/comparador-tarifas-fibra-y-movil" element={<ComparadorFibraMovil />} />
                 <Route path="/:lang/internet-telefonia/comparador-tarifas-fibra-y-movil/:id" element={<Lead />} />
-                <Route path="/:lang/thank/internet-telefonia/comparador-tarifas-fibra-y-movil/:id" element={<ThankPage />} />
+                <Route path="/:lang/internet-telefonia/comparador-tarifas-fibra-y-movil/thank/:id" element={<ThankPage />} />
 
                 <Route path="/:lang/internet-telefonia/comparador-fibra-movil-tv" element={<ComparadorFibraMovilTv />} />
                 <Route path="/:lang/internet-telefonia/comparador-fibra-movil-tv/:id" element={<Lead />} />

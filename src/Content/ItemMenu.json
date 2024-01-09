@@ -79,42 +79,6 @@
             {
                 "name": "Todas",
                 "url": "/blog"
-            },
-            {
-                "name": "Mas visitadas",
-                "url": "/blog/mas-visitadas"
-            },
-            {
-                "name": "Internet",
-                "url": "/blog/internet"
-            },
-            {
-                "name": "Móvil",
-                "url": "/blog/movil"
-            },
-            {
-                "name": "Televisión",
-                "url": "/blog/television"
-            },
-            {
-                "name": "Energía",
-                "url": "/blog/energia"
-            },
-            {
-                "name": "Hogar",
-                "url": "/blog/hogar"
-            },
-            {
-                "name": "Seguros",
-                "url": "/blog/seguros"
-            },
-            {
-                "name": "Mejores ofertas",
-                "url": "/blog/mejores-ofertas"
-            },
-            {
-                "name": "Suministros",
-                "url": "/blog/suministros"
             }
         ]
     }
