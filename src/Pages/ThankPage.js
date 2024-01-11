@@ -64,7 +64,7 @@ export default function ThankPage() {
 
   return (
     <>
-      {/* <Header></Header> */}
+      <Header></Header>
       <HeaderLead logo={infoOffer?.logo} />
       <Container fluid className='bg-primary p-5'>
         <Row className="justify-content-md-center d-flex flex-column flex-md-row">

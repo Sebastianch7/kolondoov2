@@ -50,13 +50,19 @@ export default function FormLead({ idPlan, landing, offerLooking, urlOffers, com
         try {
             const response = await postLead(idPlan, phoneNumber, landing, urlOffer, company);
             if (response?.data.status === 201) {
-                setTextButton('Tu solicitud ha sido registrada.')
-                setCheckInAsesoria(false)
+                setTextButton('Tu solicitud ha sido registrada.');
+                setCheckInAsesoria(false);
                 setTimeout(() => {
-                    navigate(`/${lang}/${urlSplit[2]}/${urlSplit[3]}/thank/${urlSplit[4]}`)
-                }, 3000)
+                    navigate(`/${lang}/${urlSplit[2]}/${urlSplit[3]}/thank/${urlSplit[4]}`);
+                }, 3000);
+            } else if (response?.data.status === 308) {
+                setTextButton('Tu solicitud ha sido registrada.');
+                setCheckInAsesoria(false);
+                setTimeout(() => {
+                    navigate(``);
+                }, 3000);
             } else {
-                setIsError(response?.data?.message)
+                setIsError(response?.data?.message);
             }
         } catch (error) {
             setTextButton('Error al procesa la solicitud')

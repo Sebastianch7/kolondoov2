@@ -38,7 +38,7 @@ function Home(props) {
                         }
                     ]}
                 />
-                <ContenedorTarjeta cols={12}>
+                {/* <ContenedorTarjeta cols={12}>
                     {!isMobile ?
                         TarjetasProductos?.map((item, index) => {
                             return <TarjetaProducto key={index} data={item} />
@@ -48,7 +48,7 @@ function Home(props) {
                             return <AcordionItem key={index} data={item} />
                         })
                     }
-                </ContenedorTarjeta>
+                </ContenedorTarjeta> */}
                 <ContenedorTarjetaBlog />
                 <FormSuscripcion />
             </main>

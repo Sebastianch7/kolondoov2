@@ -30,7 +30,7 @@ function Header({ breadCrumb }) {
                         <Nav
                             className="mx-auto container-menu">
                             {items.map((item, key) => (
-                                <ItemMenu key={key} title={t(item.title)} children={item.children} />
+                                <ItemMenu key={key} data={item} />
                             ))}
                             <ChangeLang></ChangeLang>
                         </Nav>

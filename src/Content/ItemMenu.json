@@ -1,7 +1,7 @@
 [
     {
         "title": "Internet y Telefonía",
-        "url": "/internet-telefonia",
+        "titleUrl": "/internet-telefonia",
         "children": [
             {
                 "name": "Fibra óptica",
@@ -23,7 +23,7 @@
     },
     {
         "title": "Televisión y streaming",
-        "url": "/television-streaming/",
+        "titleUrl": "/television-streaming/",
         "children": [
             
             {
@@ -34,7 +34,7 @@
     },
     {
         "title": "Energía",
-        "url": "/energia/",
+        "titleUrl": "/energia/",
         "children": [
             {
                 "name": "Luz",
@@ -52,7 +52,7 @@
     },
     {
         "title": "Herramientas",
-        "url": "/herramientas/",
+        "titleUrl": "/herramientas/",
         "children": [
             {
                 "name": "Precio de la luz hoy",
@@ -74,7 +74,7 @@
     },
     {
         "title": "Blog",
-        "url": "/blog",
+        "titleUrl": "/blog",
         "children": [
             {
                 "name": "Todas",
