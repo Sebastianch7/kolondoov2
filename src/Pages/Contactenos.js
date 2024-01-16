@@ -19,7 +19,7 @@ export default function Contactenos() {
                     <Col sm={12} md={6}>
                         <TitleSection
                             title={'¿Algo que decir? Contacta con nosotros'}
-                            text1={'Si tienes alguna duda acerca del funcionamiento de Kolondoo, necesitas que te ayudemos a resolver algún problemilla, o simplemente quieres dejarnos una reseña o sugerencia, no lo dudes, ponte en contacto con nosotros rellenando el siguiente formulario, o bien enviando un email a hola@kolondoo.com. ¡Te atenderemos lo antes posible de forma personalizada!'}
+                            text1={'Si tienes alguna duda acerca del funcionamiento de Vuskoo, necesitas que te ayudemos a resolver algún problemilla, o simplemente quieres dejarnos una reseña o sugerencia, no lo dudes, ponte en contacto con nosotros rellenando el siguiente formulario, o bien enviando un email a hola@Vuskoo.com. ¡Te atenderemos lo antes posible de forma personalizada!'}
                         />
                         <FormContactenos></FormContactenos>
                     </Col>

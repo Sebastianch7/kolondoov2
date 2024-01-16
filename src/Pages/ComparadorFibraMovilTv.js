@@ -2,8 +2,6 @@ import React from 'react';
 import Header from '../Components/Header/Header';
 import Banner from '../Components/Banner/Banner';
 import Footer from '../Components/Footer/Footer';
-import FormSuscripcion from '../Components/Forms/FormSuscripcion';
-import ContenedorProductosMovilFibra from '../Components/Contenedor/ContenedorProductosMovilFibra';
 import ContenedorProductosMovilFibraTv from '../Components/Contenedor/ContenedorProductosMovilFibraTv';
 
 function ComparadorFibraMovilTv() {
@@ -11,7 +9,7 @@ function ComparadorFibraMovilTv() {
         <div>
             <Header breadCrumb></Header>
             <Banner
-                title={'Comparador de Tarifas movil con fibra y tv'}
+                title={'Comparador de Fibra, Móvil y TV'}
                 subtitle='¡Te ayudamos a encontrar la tarifa movil con fibra y tv!'
                 image={'/img/internet-telefonia/banner_telefonia_fibra_tv.png'}
             >

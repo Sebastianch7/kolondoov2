@@ -2,16 +2,17 @@ import React from 'react';
 import Header from '../Components/Header/Header';
 import Banner from '../Components/Banner/Banner';
 import Footer from '../Components/Footer/Footer';
-import FormSuscripcion from '../Components/Forms/FormSuscripcion';
 import ContenedorProductosMovil from '../Components/Contenedor/ContenedorProductosMovil';
+import { useTranslation } from 'react-i18next';
 
 function ComparadorMovil() {
+    const { t } = useTranslation();
     return (
         <div>
             <Header breadCrumb></Header>
             <Banner
-                title={'Comparador de Tarifas Móvil'}
-                subtitle='¡Te ayudamos a encontrar la tarifa móvil que mejor se adapte a ti!'
+                title={t('title-baner-comparador-de-internet-y-comparador-movil')}
+                subtitle={t('subtitle-baner-comparador-de-internet-y-comparador-movil')}
                 image={'/img/internet-telefonia/banner_movil.png'}
             >
                 {/* <FormSuscripcion

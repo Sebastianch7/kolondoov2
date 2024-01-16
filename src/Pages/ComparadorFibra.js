@@ -11,7 +11,7 @@ function ComparadorFibra() {
         <div>
             <Header breadCrumb></Header>
             <Banner
-                title={'Comparador de Tarifas fibra'}
+                title={'Comparador de Fibras'}
                 subtitle='¡Te ayudamos a encontrar la tarifa de fibra!'
                 image={'/img/internet-telefonia/banner_fibra.png'}
             >

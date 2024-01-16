@@ -23,9 +23,9 @@ function QuienesSomos(props) {
             <main>
                 <BannerImageFull
                     title={t('bannerQuienesSomosTitle')}
-                    text1={'Kolondoo es una comunidad online especializada en Internet, Telefonía y Energía. Nuestro propósito es el de ayudar a los usuarios a tomar las mejores decisiones sobre los servicios más importantes del hogar, y hacer más sencillas gestiones que a menudo resultan complejas. ¿Las bases de nuestro ADN? la imparcialidad y la confianza.'}
+                    text1={'Vuskoo es una comunidad online especializada en Internet, Telefonía y Energía. Nuestro propósito es el de ayudar a los usuarios a tomar las mejores decisiones sobre los servicios más importantes del hogar, y hacer más sencillas gestiones que a menudo resultan complejas. ¿Las bases de nuestro ADN? la imparcialidad y la confianza.'}
                     text2={'Gracias a nuestro amplio knowledge de estos sectores, te ofrecemos un recorrido experiencial en el que no solo comparas las tarifas actuales disponibles en el mercado y eliges la que más encaja con tu visión del consumo. También, recibirás el asesoramiento que necesitas de forma clara y transparente, podrás contratar tu fibra o tu suministro de luz con nosotros … ¡y mucho más! ;)'}
-                    image={'img/banner_quienes_somos.png'}
+                    image={'/img/banner_quienes_somos.png'}
                 />
                 <ContenedorTarjeta 
                 fluid
@@ -42,13 +42,7 @@ function QuienesSomos(props) {
                         })
                     }
                 </ContenedorTarjeta>
-                <ContenedorTarjetaBlog>
-                    <TitleSection
-                        title={'últimas noticias'}
-                        subtitle={'¡Échale un vistazo a nuestro blog y mantente siempre actualizado!'}
-                        center
-                    />
-                </ContenedorTarjetaBlog>
+                <ContenedorTarjetaBlog />
                 <FormSuscripcion />
             </main>
             {

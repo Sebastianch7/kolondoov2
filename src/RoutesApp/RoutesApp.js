@@ -34,7 +34,6 @@ function RoutesApp() {
                 <Route path="/:lang" element={<Home />} />
 
                 <Route path="/:lang/internet-telefonia" element={<RaizTelefonia />} />
-                <Route path="/:lang/network-phone" element={<RaizTelefonia />} />
                 <Route path="/:lang/energia" element={<RaizEnergia />} />
                 <Route path="/:lang/television-streaming" element={<RaizStreaming />} />
 

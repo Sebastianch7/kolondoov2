@@ -23,9 +23,6 @@ function ContenedorProductosFibra() {
   const [isLoadFilter, setIsLoadFilter] = useState(false);
   const [isLoadInformation, setIsLoadInformation] = useState(false);
 
-  // Estado para la marca seleccionada
-  const [selectedBrand, setSelectedBrand] = useState(null);
-
   // Estados para filtros seleccionados
   const [filterBrand, setFilterBrand] = useState([]);
   const [filterPrice, setFilterPrice] = useState([minPrice, maxPrice]);
@@ -43,7 +40,7 @@ function ContenedorProductosFibra() {
 
   // Estados para rangos de precio y capacidad
   const [rangePrice, setRangePrice] = useState([minPrice, maxPrice]);
-  const [rangeCapacity, setRangeCapacity] = useState([minCapacity, maxCapacity]);
+  
 
   // Estado para el modal de filtros
   const [show, setShow] = useState(false);

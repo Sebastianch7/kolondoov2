@@ -27,7 +27,7 @@ export default function ContenedorPreguntasFrecuentes({data, image}) {
                                         <Accordion.Item eventKey={index} className='pregunta-frecuente-item'>
                                             <Accordion.Header className='pregunta-frecuente-header m-2 px-2'>{item.title}</Accordion.Header>
                                             <Accordion.Body>
-                                                <p dangerouslySetInnerHTML={{ __html: item.texto }}></p>
+                                                <p dangerouslySetInnerHTML={{ __html: item.texto.replaceAll(['.'],'.<br>') }}></p>
                                             </Accordion.Body>
                                         </Accordion.Item>
                                     )

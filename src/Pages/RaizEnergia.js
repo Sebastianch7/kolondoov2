@@ -19,6 +19,24 @@ import ContenedorComparadorLogos from '../Components/Contenedor/ContenedorCompar
 import ContenedorPreguntasFrecuentes from '../Components/Contenedor/ContenedorPreguntasFrecuentes';
 import { Card, CardGroup } from 'react-bootstrap';
 import FormSuscripcion from '../Components/Forms/FormSuscripcion';
+import { useTranslation } from 'react-i18next';
+import ContenedorPorQueComparar from '../Components/Contenedor/ContenedorPorQueComparar';
+import preguntasFrecuentes from '../Content/PreguntasFrecuentesEnergia.json'
+
+const dataPorQueComparar = [
+  {
+    logo: "/img/icons/factura.svg",
+    content: "¿Has oído hablar de las <b>tarifas de electricidad</b> a precio de coste o indexado? ¿Y las de mercado libre? ¿Sabes en qué consiste la tarifa plana de luz? <b>Desde Vuskoo te recomendamos que compares las tarifas de gas y electricidad antes de formalizar cualquier contratación,</b> y que estudies todos los tipos de tarifas que existen a día de hoy hasta saber cuál es la más acorde a tus hábitos de consumo y también a tu presupuesto."
+  },
+  {
+    logo: "/img/icons/obtener-dinero.svg",
+    content: "Por razones obvias, <b>las tarifas de luz y de gas baratas</b> son las más buscadas, pero…¡Ojo! <b>no te dejes llevar por un precio bajo y pases por alto aspectos también esenciales.</b> Sin ir más lejos, para saber qué potencia es la adecuada para tu vivienda, debes estudiar las características de esta.Con tantos tipos de tarifas y tantísimas comercializadoras compitiendo en el mercado, te puede resultar complicado el proceso de buscar y saber elegir bien la tarifa de luz o de gas -y el precio- que necesitas para tu hogar."
+  },
+  {
+    logo: "/img/icons/operador.svg",
+    content: "<b>Algo muy positivo en los comparadores online como Vuskoo, es que te asesoramos de forma gratuita y personalizada, resolviendo tus dudas y aconsejándote siempre lo más adecuado para ti,</b> desde la empatía y la transparencia. ¿Ya te hemos dejado claro lo importante que es realizar una comparativa antes de contratar? ;)"
+  },
+]
 
 const data = [
   {
@@ -39,27 +57,9 @@ const data = [
   },
 ];
 
-const preguntasFrecuentes = [
-  {
-    title: '¿Por qué utilizar un comparador de electricidad?',
-    texto: 'Si quieres elegir bien tu tarifa eléctrica, es casi obligatorio que comiences a familiarizarte con un comparador de luz, y es que puede convertirse en tu mayor aliado para que encuentres las opciones del mercado más interesantes hoy en día, en un solo site y totalmente gratis.</p><p> En Kolondoo puedes hacer una comparativa de compañías eléctricas a través de la cuál comprobarás cuáles son mejores precios y las características de cada una de sus ofertas. Además, también te será muy útil para averiguar si las compañías presumen de alguna promoción que haga que su precio sea más bajo.'
-  },
-  {
-    title: '¿Cuáles son las compañías energéticas más importantes?',
-    texto: 'texto2'
-  },
-  {
-    title: '¿Qué trámites de luz y gas puedes realizar como consumidor?',
-    texto: 'texto3'
-  },
-  {
-    title: '¿Cada cuánto se pagan la luz y el gas?',
-    texto: 'texto3'
-  }
-];
-
 export default function RaizEnergia() {
   const [extraOffer, setExtraOffer] = useState([]);
+  const { t } = useTranslation();
 
   useEffect(() => {
     const fetchTariffs = async () => {
@@ -78,7 +78,7 @@ export default function RaizEnergia() {
       <Header breadCrumb></Header>
       <BannerImageFull
         image={'/img/bannerRaizEnergia.png'}
-        title='Comparador de Energía'
+        title={t('title-baner-comparador-de-energia')}
         text1='<ul class="listaAlternativa"><li><p>Comparamos las <b>tarifas de luz y gas</b> del mercado para que ahorres en tus facturas.</p></li><li><p>Te dotamos de <b>herramientas y de información</b> útil basada en la claridad y transparencia.</p></li><li><p>Una de nuestras misiones es la de <b>ayudarte a simplificar tus decisiones</b> sobre el consumo de energía.</p></li></ul>'
         btnLeft
         buttons={[
@@ -91,14 +91,14 @@ export default function RaizEnergia() {
       <Container>
         <TitleSection
           center
-          title={'Comparadores de'}
+          title={t('title-baner-comparador-de-energia')}
           titleAlt={'Energía'}
-          text1={'<b>El precio de la luz y del gas natural no deja de subir y subir,</b> llegando a alcanzar límites históricos. En este contexto de tanta incertidumbre <b>surge más que nunca la necesidad de escoger las tarifas energéticas</b> que mejor se adapten a nuestras necesidades y presupuesto, ya no nos vale con cualquiera.'}
-          text2={' Y no se nos ocurre mejor forma de lograrlo que utilizando <b>comparadores de energía</b> como los de Kolondoo, mediante los cuales agrupamos las mejores ofertas de electricidad, las de gas, y también las que reúnen ambos servicios. <b>Muchos clientes ya han comprobado su gran utilidad, ¡eres el próximo!</b>'}
+          text1={t('es-raiz-energia-content-description')}
+          text2={t('es-raiz-energia-content-description-2')}
           left
         />
-        <ContenedorTarjeta 
-        cols={8}
+        <ContenedorTarjeta
+          cols={8}
         >
           {!isMobile ?
             TarjetaRaizEnergia?.map((item, index) => {
@@ -144,52 +144,7 @@ export default function RaizEnergia() {
         data={preguntasFrecuentes}
         image={'/img/preguntas-raiz-energia.png'}
       />
-      <div className='p-0 m-0 mx-auto bg-gray'>
-        <Container>
-          <Row className='mx-auto'>
-            <TitleSection
-              center
-              title={'¿Por qué comparar'}
-              titleAlt={'tarifas de Luz y Gas'}
-              titleThird={'es tan importante?'}
-            />
-            <Col xs={12} md={12} className='mx-auto my-4'>
-              <CardGroup>
-                <Card className='border-0 bg-gray'>
-                  <Card.Body>
-                    <Card.Title className='mb-3 text-center  header-img-card'>
-                      <img className='' src='/img/icons/factura.svg' />
-                    </Card.Title>
-                    <Card.Text className=''>
-                      ¿Has oído hablar de las <b>tarifas de electricidad</b> a precio de coste o indexado? ¿Y las de mercado libre? ¿Sabes en qué consiste la tarifa plana de luz? <b>Desde Kolondoo te recomendamos que compares las tarifas de gas y electricidad antes de formalizar cualquier contratación,</b> y que estudies todos los tipos de tarifas que existen a día de hoy hasta saber cuál es la más acorde a tus hábitos de consumo y también a tu presupuesto.
-                    </Card.Text>
-                  </Card.Body>
-                </Card>
-                <Card className='border-0 bg-gray'>
-                  <Card.Body>
-                    <Card.Title className='mb-3 text-center  header-img-card'>
-                      <img className='' src='/img/icons/obtener-dinero.svg' />
-                    </Card.Title>
-                    <Card.Text className=''>
-                      Por razones obvias, <b>las tarifas de luz y de gas baratas</b> son las más buscadas, pero…¡Ojo! <b>no te dejes llevar por un precio bajo y pases por alto aspectos también esenciales.</b> Sin ir más lejos, para saber qué potencia es la adecuada para tu vivienda, debes estudiar las características de esta.Con tantos tipos de tarifas y tantísimas comercializadoras compitiendo en el mercado, te puede resultar complicado el proceso de buscar y saber elegir bien la tarifa de luz o de gas -y el precio- que necesitas para tu hogar.
-                    </Card.Text>
-                  </Card.Body>
-                </Card>
-                <Card className='border-0 bg-gray'>
-                  <Card.Body>
-                    <Card.Title className='mb-3 text-center  header-img-card'>
-                      <img className='' src='/img/icons/operador.svg' />
-                    </Card.Title>
-                    <Card.Text className=''>
-                      <b>Algo muy positivo en los comparadores online como Kolondoo, es que te asesoramos de forma gratuita y personalizada, resolviendo tus dudas y aconsejándote siempre lo más adecuado para ti,</b> desde la empatía y la transparencia. ¿Ya te hemos dejado claro lo importante que es realizar una comparativa antes de contratar? ;)
-                    </Card.Text>
-                  </Card.Body>
-                </Card>
-              </CardGroup>
-            </Col>
-          </Row>
-        </Container>
-      </div>
+      <ContenedorPorQueComparar title={"¿Por qué comparar"} titleAlt={"tarifas de Luz y Gas"} titleThird={"es tan importante?"} dataPorQueComparar={dataPorQueComparar} />
       <FormSuscripcion />
       <Footer></Footer>
     </>

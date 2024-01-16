@@ -96,7 +96,7 @@ export default function HerramientaTest() {
                             titleAlt={'de hacer un test de velocidad?'}
                         />
                         <p className='font-09 my-md-3 px-2 p-md-0'>
-                            Sabemos que pueden surgirte ciertas dudas antes de realizar el test de velocidad de Kolondoo. Estas son algunas de nuestras recomendaciones que pueden servirte de ayuda:
+                            Sabemos que pueden surgirte ciertas dudas antes de realizar el test de velocidad de Vuskoo. Estas son algunas de nuestras recomendaciones que pueden servirte de ayuda:
                             <ol type='1' className='font-09 my-4'>
                                 <li>Para hacer nuestro test de velocidad, <b>asegúrate de tener siempre un cable de red conectado a tu dispositivo.</b> En caso de que lo realices solo con WiFi correrás el riesgo de no recibir los datos reales de tu <u>velocidad de Internet.</u></li>
                                 <li><b>Procura cerrar todos y cada uno de los programas</b> que estén abiertos y <b>cerciórate de que no tienes más dispositivos conectados</b> a la red sobre la que vas a hacer el test. Estos dos chequeos se traducirán en una mayor precisión de la prueba.</li>

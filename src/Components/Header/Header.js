@@ -32,7 +32,7 @@ function Header({ breadCrumb }) {
                             {items.map((item, key) => (
                                 <ItemMenu key={key} data={item} />
                             ))}
-                            <ChangeLang></ChangeLang>
+                            {/* <ChangeLang></ChangeLang> */}
                         </Nav>
                     </Navbar.Collapse>
                 </Container>

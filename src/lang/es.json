@@ -23,6 +23,32 @@
     "Internet y Telefonía": "Internet y Telefonía",
     "Oferta disponible": "¡Oferta disponible!",
     "Nombre": "Nombre",
-    "Tu consulta aqui":"Tu consulta aqui",
-    "email": "Tu email"
+    "Tu consulta aqui": "Tu consulta aqui",
+    "email": "Tu email",
+
+    "title-baner-comparador-de-internet-y-comparador-movil" : "Comparador de Internet y comparador Móvil",
+    "subtitle-baner-comparador-de-internet-y-comparador-movil" : "¡Te ayudamos a encontrar la tarifa móvil que mejor se adapte a ti!",
+    "title-baner-comparador-de-fibras" : "Comparador de Fibras",
+    "title-baner-comparador-de-tarifas-movil" : "Comparador de Tarifas Móvil",
+    "title-baner-comparador-tarifas-fibra-y-movil" : "Comparador tarifas Fibra y Móvil",
+    "title-baner-comparador-de-fibra-movil-y-tv" : "Comparador de Fibra, Móvil y TV",
+    "title-baner-moviles-gratis-con-contrato" : "Móviles gratis con contrato",
+    "title-baner-comparador-television-y-streaming" : "Comparador televisión y streaming",
+    "title-baner-comparador-de-television" : "Comparador de televisión",
+    "title-baner-comparador-de-plataformas-de-streaming" : "Comparador de plataformas de streaming",
+    "title-baner-comparador-de-energia" : "Comparadores de Energía",
+    "title-baner-comparador-de-tarifas-luz" : "Comparador de Tarifas Luz",
+    "title-baner-comparador-de-tarifas-gas" : "Comparador de Tarifas Gas",
+    "title-baner-comparador-de-tarifas-luz-y-gas" : "Comparador de Tarifas Luz y Gas",
+    "title-baner-herramientas" : "Herramientas",
+    "title-baner-precio-de-la-luz-hoy" : "Precio de la luz hoy",
+    "title-baner-test-de-velocidad-de-vuskoo" : "Test de velocidad de Vuskoo",
+    "title-baner-quienes-somos" : "Quienes somos",
+    "title-baner-contáctanos" : "Contáctanos",
+
+    "es-raiz-telefonia-content-description": "Como cada vez hay más compañías compitiendo en el mercado, desde <b>Vuskoo</b> te recomendamos que sepas escoger la oferta de telefonía móvil y fibra, y es que tienes casi la obligación de comparar detenidamente todas las ofertas para que te acabe saliendo lo más rentable posible.A continuación, puedes ver nuestros comparadores con las ofertas de los distintos servicios (y combinaciones) que pueden contratarse.",
+    "es-raiz-telefonia-content-description-2": "¿Qué es lo que más te conviene? No pierdas más tiempo y comienza a comparar:",
+    "es-raiz-energia-content-description": "El precio de la luz y del gas natural no deja de subir y subir, llegando a alcanzar límites históricos. En este contexto de tanta incertidumbre surge más que nunca la necesidad de escoger las tarifas energéticas que mejor se adapten a nuestras necesidades y presupuesto, ya no nos vale con cualquiera.",
+    "es-raiz-energia-content-description-2": "Y no se nos ocurre mejor forma de lograrlo que utilizando comparadores de energía como los de <b>Vuskoo</b>, mediante los cuales agrupamos las mejores ofertas de electricidad, las de gas, y también las que reúnen ambos servicios. Muchos clientes ya han comprobado su gran utilidad, ¡eres el próximo!"
+
 }

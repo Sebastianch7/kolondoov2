@@ -1,4 +1,4 @@
-import {React, useEffect, useState} from 'react';
+import { React, useEffect, useState } from 'react';
 import { Container, Row, Col, Stack, Carousel, CarouselItem } from 'react-bootstrap';
 import { isMobile } from 'react-device-detect'
 import Blog from '../../Content/Blog.json'
@@ -7,6 +7,7 @@ import { CardGroup } from 'react-bootstrap';
 import TitleSection from '../Text/TitleSection';
 import { Link } from 'react-router-dom';
 import { getBlogHome } from '../../services/ApiServices';
+import Load from '../Utils/Load'
 
 function ContenedorTarjetaBlog({ children }) {
     const [fetchBlog, setFetchBlog] = useState(null)
@@ -25,13 +26,13 @@ function ContenedorTarjetaBlog({ children }) {
         fetchBlogList();
     }, []);
     return (
-        <div className='my-md-5 container-tarjeta-blog'>
+        <div className='mb-md-5 container-tarjeta-blog'>
             <TitleSection
                 title={'últimas noticias'}
                 subtitle={'¡Échale un vistazo a nuestro blog y mantente siempre actualizado!'}
                 center
             />
-            <Container fluid>
+            {!isLoading ? <Container fluid>
                 <Container>
                     <Row>
                         <Col md={12}>
@@ -69,7 +70,8 @@ function ContenedorTarjetaBlog({ children }) {
                         </Col>
                     </Row>
                 </Container>
-            </Container>
+            </Container> :
+                <Load></Load>}
         </div>
     );
 }

@@ -19,10 +19,10 @@ function BreadCrumb({ url }) {
                         {locations.length > 0 &&
                             <>
                                 <Breadcrumb.Item href="/">Vuskoo</Breadcrumb.Item>
-                                {/* {locations.map((item, index) => {
+                                {locations.map((item, index) => {
                                     ruta = (ruta !== undefined && ruta !== null) ? `${ruta}/${item}` : `/${item}`;
-                                        return <Breadcrumb.Item key={index} href={ruta} className='capitalize'>{item.replaceAll('-',' ')}</Breadcrumb.Item>
-                                })} */}
+                                        return <Breadcrumb.Item key={index} href={''} className='capitalize'>{item.replaceAll('-',' ')}</Breadcrumb.Item>
+                                })}
                             </>
                         }
                     </Breadcrumb>

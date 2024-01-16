@@ -10,12 +10,12 @@ import CardGroup from 'react-bootstrap/CardGroup';
 function ContenedorTarjeta({ children, media, title, subtitle, fluid, cols = 12 }) {
     return (
         <>
-            <Col sm={12} md={6} className='text-center mx-auto'>
+            {title && <Col sm={12} md={6} className='text-center mx-auto'>
                 <TitleSection
                     title={title}
                     subtitle={subtitle}
                 />
-            </Col>
+            </Col>}
             <Container fluid={false} className='container-tarjeta'>
                 <Row className='mx-auto justify-content-center'>
                     <Col lg={cols}>

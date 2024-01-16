@@ -10,7 +10,7 @@ function ComparadorFibraMovil() {
         <div>
             <Header breadCrumb></Header>
             <Banner
-                title={'Comparador de Tarifas movil y fibra'}
+                title={'Comparador tarifas Fibra y Móvil'}
                 subtitle='¡Te ayudamos a encontrar la tarifa de fibra con movil!'
                 image={'/img/internet-telefonia/banner_movil_fibra.png'}
             >
