@@ -22,24 +22,31 @@ export default function FormContactenos({ }) {
     const [textButton, setTextButton] = useState('Enviar consulta')
 
     async function subscripcion(e) {
-        console.log(inpName)
         e.preventDefault();
+        setIsSend(false)
         setIsError(null)
         try {
             const response = await postFormContactanos(inpName, inpMessage, inpEmail);
-            console.log(response)
+            if (response.status === 201) {
+                setInpName('')
+                setInpMessage('')
+                setInpEmail('')
+                setIsSend(true)
+            }
         } catch (error) {
             console.error('Error al enviar datos:', error);
-            setIsError(error)
+            setIsError('Error al procesar tu solicitud')
         }
     }
+
+
     return (
         <Form onSubmit={subscripcion}>
             <div className='mx-2'>
                 {
                     <>
                         <Form.Control
-                            className={'form-control no-radius'}
+                            className={'form-control no-radius my-md-3'}
                             placeholder={t('Nombre')}
                             aria-label={t('Nombre')}
                             type={'text'}
@@ -47,7 +54,7 @@ export default function FormContactenos({ }) {
                             value={inpName}
                         />
                         <Form.Control
-                            className={'form-control no-radius'}
+                            className={'form-control no-radius my-md-3'}
                             placeholder={t('Tu consulta aqui')}
                             aria-label={t('Tu consulta aqui')}
                             type={'text'}
@@ -55,7 +62,7 @@ export default function FormContactenos({ }) {
                             value={inpMessage}
                         />
                         <Form.Control
-                            className={'form-control no-radius'}
+                            className={'form-control no-radius my-md-3'}
                             placeholder={t('email')}
                             aria-label={t('email')}
                             type={'text'}
@@ -71,13 +78,20 @@ export default function FormContactenos({ }) {
                     politica
                 />
 
+                {
+                    isError &&
+                    <p className='color-red'>No pudimos registrar tu mensaje en estos momentos, intenta de nuevo</p>
+                }
+                {
+                    isSend &&
+                    <p className='color-green'>Gracias por enviar tu mensaje, pronto te contactaremos</p>
+                }
                 <Button
                     type='submit'
-                    disabled={checkIn}
+                    disabled={(!checkIn && inpName?.length > 3 && inpMessage?.length > 3 && inpEmail?.length > 3) ? false : true}
                 >
                     Enviar consulta
                 </Button>
-
             </div>
         </Form>
     )

@@ -13,8 +13,8 @@ function ComparadorLuzGas() {
                 title={'Comparador de Tarifas Luz y Gas'}
                 subtitle='¡Te ayudamos a encontrar la tarifa que mejor se adapte a ti!'
                 image={'/img/energia/banner_luz_y_gas.png'}
-                logo={'/img/icons/luz.svg'}
-                logo2={'/img/icons/gas.svg'}
+                /* logo={'/img/icons/luz.svg'}
+                logo2={'/img/icons/gas.svg'} */
             >
                 {/* <FormSuscripcion
                     text={'Introduce tu código postal'}

@@ -81,12 +81,12 @@ export default function RaizTelefonia() {
         title={t('title-baner-comparador-de-internet-y-comparador-movil')}
         text1='<ul class="listaAlternativa"><li><p>Encuentra una tarifa para hablar y navegar a tu medida a golpe de clic.</p></li><li><p>Compara las mejores ofertas y compañías de telefonía actuales en un solo lugar y gratis.</p></li><li><p>Te asesoramos de forma personalizada para que, elijas lo que elijas, quedes satisfecho.</p></li></ul>'
         btnLeft
-        buttons={[
+        /* buttons={[
           {
             title: '¡Empieza a ahorrar!',
             url: '/internet-telefonia/comparador-movil'
           }
-        ]}
+        ]} */
       />
       <Container>
         <TitleSection
@@ -126,9 +126,9 @@ export default function RaizTelefonia() {
               })
             }
           </Col>
-          <Col md={12} className='mx-auto text-center mt-md-4'>
+          {/* <Col md={12} className='mx-auto text-center mt-md-4'>
             <ButtonPrimary text={'Ver más ofertas'} url={''} />
-          </Col>
+          </Col> */}
         </Row>
       </Container>
       <ContenedorTarjetaBlog />

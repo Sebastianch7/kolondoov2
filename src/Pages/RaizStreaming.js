@@ -61,12 +61,12 @@ export default function RaizStreaming() {
         title='Comparador televisión y streaming'
         text1='<ul class="listaAlternativa"><li><p>¡Descubre la manera más inteligente de disfrutar de la mejor televisión con nuestros paquetes exclusivos! Con la posibilidad de combinar diversos servicios bajo una única tarifa</p></li><li><p>Encuentra ofertas exclusivas en nuestro comparador de televisión y streaming y obtén acceso privilegiado a promociones que transformarán tu experiencia de entretenimiento.</p></li><li><p>¡Optimiza tu tiempo y simplifica tu elección! Decidir entre las numerosas opciones del mercado nunca fue tan fácil y eficiente.</p></li></ul>'
         btnLeft
-        buttons={[
+        /* buttons={[
           {
             title: '¡Empieza a ahorrar!',
             url: '/energia/comparador-tarifas-luz'
           }
-        ]}
+        ]} */
       />
       <Container>
         <TitleSection
@@ -98,9 +98,6 @@ export default function RaizStreaming() {
         <ContenedorDescipcionTarifa data={data} />
       </Container>
       <ContenedorTarjetaBlog />
-      <ContenedorComparadorLogos
-        subtitle={'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.'}
-      />
       <ContenedorPreguntasFrecuentes
         data={preguntasFrecuentes}
         image={'/img/preguntas-raiz-energia.png'}

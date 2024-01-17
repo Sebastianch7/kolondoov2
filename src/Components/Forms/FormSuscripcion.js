@@ -1,32 +1,41 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
-import ButtonPrimary from '../Button/ButtonPrimary';
+import { Button } from 'react-bootstrap';
 import InputText from '../Input/InputText';
 import InputCheck from '../Input/InputCheck';
 import { isMobile } from 'react-device-detect';
 import BannerReverse from '../Banner/BannerReverse';
+import { postFormNews } from '../../services/ApiServices';
 
 function FormSuscripcion({ }) {
 
     const [checkIn, setCheckIn] = useState(false);
-    const text = 'Escribe tu mail aqui';
+    const [isError, setIsError] = useState(null)
 
     const changeValue = (valor) => {
-        console.log(checkIn)
         setCheckIn(valor);
     };
 
-    const [inpEmail, setInpEmail] = useState('')
+    const [inpEmail, setInpEmail] = useState(null)
     const [isSend, setIsSend] = useState(false);
-    const [textButton, setTextButton] = useState('button')
-    const subscripcion = (e) => {
-        e.preventDefault();
-        //setIsSend(true)
-        setTextButton('Suscripción exitosa!')
-    }
 
+    async function subscripcion(e) {
+        e.preventDefault();
+        setIsSend(false)
+        setIsError(null)
+        try {
+            const response = await postFormNews(inpEmail);
+            if (response.status === 201) {
+                setInpEmail('')
+                setCheckIn(false);
+                setIsSend(true)
+            }
+        } catch (error) {
+            console.error('Error al enviar datos:', error);
+            setIsError('Error al procesar tu solicitud')
+        }
+    }
 
     return (
         <>
@@ -39,41 +48,48 @@ function FormSuscripcion({ }) {
                     <div className='mx-2'>
                         {
                             !isMobile ?
-                                <InputGroup className="mt-3">
-                                    <InputText
-                                        text={text}
+                                <InputGroup className="">
+                                    <Form.Control
+                                        className={'form-control no-radius'}
+                                        placeholder={('Escribe tu mail aqui')}
+                                        aria-label={('Escribe tu mail aqui')}
+                                        type={'text'}
                                         onChange={(e) => setInpEmail(e.target.value)}
-                                        type='email'
-                                        placeholder={text}
+                                        value={inpEmail}
                                     />
-                                    <ButtonPrimary
-                                        text={'Suscríbete gratis'}
-                                        btnStatus={checkIn}
-                                        type={'submit'}
-                                        isSuccess={isSend && 'btn-success'}
-                                    />
+                                    <Button
+                                        type='submit'
+                                        disabled={(!checkIn && inpEmail?.length > 3) ? false : true}
+                                    >
+                                        Suscribete gratis
+                                    </Button>
                                 </InputGroup>
                                 :
                                 <>
-                                    <InputText
-                                        text={text}
+                                    <Form.Control
+                                        className={'form-control no-radius'}
+                                        placeholder={('Escribe tu mail aqui')}
+                                        aria-label={('Escribe tu mail aqui')}
+                                        type={'text'}
                                         onChange={(e) => setInpEmail(e.target.value)}
-                                        type='email'
-                                        placeholder={text}
+                                        value={inpEmail}
                                     />
-                                    <ButtonPrimary
-                                        text={'Suscríbete gratis'}
-                                        btnStatus={checkIn}
-                                        type={'submit'}
-                                        isSuccess={isSend ? 'btn-success' : 'null'}
-                                    />
+                                    <Button
+                                        type='submit'
+                                        disabled={(!checkIn && inpEmail?.length > 3) ? false : true}
+                                    >
+                                        Suscribete gratis
+                                    </Button>
                                 </>
                         }
-
+                        {
+                            isSend && 
+                            <p className='color-green'>Tu suscripción se realizó con exito</p>
+                        }
                         <InputCheck
                             onChangeValue={changeValue}
                             text={`He leído y acepto <a href="politica-privacidad" target='_blank'>la Política de Privacidad</a> y quiero recibir comunicaciones comerciales.`}
-                            />
+                        />
                     </div>
                 </Form>
             </BannerReverse>

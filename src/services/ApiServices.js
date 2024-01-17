@@ -4,8 +4,8 @@ import { FormControl } from 'react-bootstrap';
 import { BsBack } from 'react-icons/bs';
 import { json } from 'react-router-dom';
 
-//const apiUrl = 'https://api.vuskoo.com/api';
-const apiUrl = 'http://127.0.0.1:8000/api';
+const apiUrl = 'https://api.vuskoo.com/api';
+//const apiUrl = 'http://127.0.0.1:8000/api';
 
 export const fetchFilterFibra = async () => {
     try {
@@ -320,6 +320,16 @@ export const postLead = async (idOferta, phone, landing, urlOffer, company) => {
 export const postFormContactanos = async (nombre, consulta, email) => {
     try {
         const response = await axios.post(`${apiUrl}/contactanosRegister`, { nombre, consulta, email });
+        return response.data;
+    } catch (error) {
+        //console.error("Error al enviar la informacion del Lead:", error);
+        throw new Error('Error en la solicitud POST:', error);
+    }
+};
+
+export const postFormNews = async (email) => {
+    try {
+        const response = await axios.post(`${apiUrl}/NewsletterRegister`, { email });
         return response.data;
     } catch (error) {
         //console.error("Error al enviar la informacion del Lead:", error);

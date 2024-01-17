@@ -81,12 +81,12 @@ export default function RaizEnergia() {
         title={t('title-baner-comparador-de-energia')}
         text1='<ul class="listaAlternativa"><li><p>Comparamos las <b>tarifas de luz y gas</b> del mercado para que ahorres en tus facturas.</p></li><li><p>Te dotamos de <b>herramientas y de información</b> útil basada en la claridad y transparencia.</p></li><li><p>Una de nuestras misiones es la de <b>ayudarte a simplificar tus decisiones</b> sobre el consumo de energía.</p></li></ul>'
         btnLeft
-        buttons={[
+        /* buttons={[
           {
             title: '¡Empieza a ahorrar!',
             url: '/energia/comparador-tarifas-luz'
           }
-        ]}
+        ]} */
       />
       <Container>
         <TitleSection
@@ -131,9 +131,9 @@ export default function RaizEnergia() {
           <Col xs={12} md={9}>
             <p className='font-09'>*Todos los precios incluyen el IVA.**Los precios están estimados en base a un consumo anual de 3.600kWh (300kWh al mes).***Los precios no incluyen costes derivados de la compensación del tope del gas.</p>
           </Col>
-          <Col md={12} className='mx-auto text-center mt-md-4'>
+          {/* <Col md={12} className='mx-auto text-center mt-md-4'>
             <ButtonPrimary text={'Ver más ofertas'} url={'/energia/comparador-tarifas-luz-y-gas'} />
-          </Col>
+          </Col> */}
         </Row>
       </Container>
       <ContenedorTarjetaBlog />

@@ -65,7 +65,7 @@ function ContenedorTarjetaBlog({ children }) {
                                 </Carousel>
                             )}
                             <Col md={12} className='mx-auto text-center py-5'>
-                                <Link to={'blog'} className='btn btn-primary'>Descubre más noticias</Link>
+                                <Link to={'/es-es/blog'} className='btn btn-primary'>Descubre más noticias</Link>
                             </Col>
                         </Col>
                     </Row>

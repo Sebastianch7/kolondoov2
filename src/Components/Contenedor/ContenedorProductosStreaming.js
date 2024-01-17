@@ -30,6 +30,7 @@ const data = [
     series: 'Nowhere, Boksoon debe morir, El rey mono, Soy Georgina.',
     precio_min: '5,49€/mes',
     precio_max: '17,99€/mes*',
+    url: 'https://www.netflix.com/',
     productos: [
       {
         titulo: 'Estándar con anuncios',
@@ -53,6 +54,7 @@ const data = [
     logo: '/img/logos/hbomax.svg',
     series: 'Elvis, Cinco lobitos,Expediente Warren: Obligado por el demonio.',
     precio_estandar: '9,99€/mes*',
+    url: 'https://www.hbomax.com/',
     productos: [
       {
         titulo: 'Estándar',
@@ -64,6 +66,7 @@ const data = [
     logo: '/img/logos/prime.svg',
     series: 'Guy Ritchie: El pacto, Guns Akimbo, Jackass Forever, Halloween.',
     precio_estandar: '4,99€/mes*',
+    url: 'https://www.primevideo.com/',
     productos: [
       {
         titulo: 'Estándar',

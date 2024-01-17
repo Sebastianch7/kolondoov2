@@ -65,19 +65,15 @@ export default function HerramientaTest() {
         <>
             <Header></Header>
             <Container>
-                <TitleSection
+                {/* <TitleSection
                     center
                     title={'Test de velocidad'}
                     titleAlt={'de Vuskoo'}
                     text1={'Te averiguamos en un pispás cuál es la velocidad real de tu conexión a Internet :)'}
-                />
-                <Card className='tarjeta shadow'>
+                /> */}
+                {/* <Card className='tarjeta shadow'>
                     <ToolSpeedTest></ToolSpeedTest>
-                </Card>
-
-                <Card className='tarjeta shadow'>
-                    
-                </Card>
+                </Card> */}
                 <Row className='justify-content-md-center mb-md-5'>
                     <Col md={9}>
                         {extraOffer.length > 0 &&

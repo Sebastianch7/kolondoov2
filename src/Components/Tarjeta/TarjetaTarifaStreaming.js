@@ -9,7 +9,7 @@ import { BsArrowRight } from "react-icons/bs";
 import ItemTarifaStreaming from '../Items/ItemTarifaStreaming';
 
 function TarjetaTarifaStreaming({ data }) {
-    const { logo, productos, series, precio_min, precio_max, precio_estandar } = data;
+    const { logo, productos, series, precio_min, precio_max, precio_estandar, url } = data;
     return (
         <>
 
@@ -55,7 +55,7 @@ function TarjetaTarifaStreaming({ data }) {
                         </Row>
                     </Col>
                     <Col xs={12} md={12}>
-                        <Link className='btn btn-primary w-100' /* to={`${'landingLead'}/${1}`} */>{`Contratar`}</Link>
+                        <Link className='btn btn-primary w-100' to={`${url}`} target="_blank">{`Contratar`}</Link>
                     </Col>
                 </Row>
             </Card>
