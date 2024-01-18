@@ -124,7 +124,7 @@ function ContenedorProductosGas() {
           <Row className='justify-content-around'>
             <Col md={3}>
               <Row>
-                {!isMobile ? <Col className='my-3 font-semibold' xs={6} md={5}>filtrar por: </Col> : <Col className='my-2' xs={6} md={5}><Button variant="light" onClick={() => setShow(true)}>Filtrar por</Button></Col>}
+                {!isMobile ? <Col className='my-3 font-semibold' xs={6} md={5}>Filtrar por: </Col> : <Col className='my-2' xs={6} md={5}><Button variant="light" onClick={() => setShow(true)}>Filtrar por</Button></Col>}
                 <Col className='my-2 text-center' xs={6} md={7}>
                   <button className='btn btn-light' onClick={cleanFilter}>Limpiar filtro</button>
                 </Col>
@@ -138,7 +138,7 @@ function ContenedorProductosGas() {
                       {isMobile &&
                         <Col xs={12} key={filterBrand} className='my-2' md={6}>Se encontraron <span className="font-bold">{filtros?.length}</span> resultados de <span className="font-bold">{Tarifas.length}</span></Col>}
                       <Col md={12}>
-                        <span className="font-semibold">Compañia:</span>
+                        <span className="font-semibold">Compañía:</span>
                       </Col>
                       {brand?.length > 0 &&
                         brand.map((item, index) => (
@@ -205,7 +205,7 @@ function ContenedorProductosGas() {
                           {isMobile &&
                             <Col xs={12} key={filterBrand} className='my-2' md={6}>Se encontraron <span className="font-bold">{filtros?.length}</span> resultados de <span className="font-bold">{Tarifas.length}</span></Col>}
                           <Col md={12}>
-                            <span className="font-semibold">Compañia:</span>
+                            <span className="font-semibold">Compañía:</span>
                           </Col>
                           {brand?.length > 0 &&
                             brand.map((item, index) => (

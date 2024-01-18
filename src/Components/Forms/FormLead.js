@@ -90,6 +90,7 @@ export default function FormLead({ idPlan, landing, offerLooking, urlOffers, com
                                     onChange={handlePhoneNumberChange}
                                     value={phoneNumber}
                                     isSuccess={isValidPhoneNumber}
+                                    maxLength={9}
                                 />
                             </div>
                             {(!isValidPhoneNumber && phoneNumber?.length > 4) &&

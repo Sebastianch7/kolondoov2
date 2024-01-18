@@ -23,7 +23,7 @@
     },
     {
         "title": "Televisión y streaming",
-        "titleUrl": "/television-streaming/",
+        "titleUrl": "/television-streaming",
         "children": [
             
             {
@@ -34,7 +34,7 @@
     },
     {
         "title": "Energía",
-        "titleUrl": "/energia/",
+        "titleUrl": "/energia",
         "children": [
             {
                 "name": "Luz",
@@ -52,7 +52,7 @@
     },
     {
         "title": "Herramientas",
-        "titleUrl": "/herramientas/",
+        "titleUrl": "/herramientas",
         "children": [
             {
                 "name": "Precio de la luz hoy",

@@ -7,8 +7,15 @@ import InputCheck from '../Input/InputCheck';
 import { isMobile } from 'react-device-detect';
 import BannerReverse from '../Banner/BannerReverse';
 import { postFormNews } from '../../services/ApiServices';
+import { useLocation } from 'react-router-dom';
 
 function FormSuscripcion({ }) {
+    const [lang, setLang] = useState(null)
+    const location = useLocation();
+
+    useEffect(() => {
+        setLang(location.pathname.split('/')[1])
+    }, [])
 
     const [checkIn, setCheckIn] = useState(false);
     const [isError, setIsError] = useState(null)
@@ -41,7 +48,7 @@ function FormSuscripcion({ }) {
         <>
             <BannerReverse
                 title={'Suscríbete gratis y recibe nuestras mejores ofertas'}
-                subtitle='Únete a nuestra comunidad. Recibirás nuestros mejores contenidos semanalmente: guías prácticas para ahorrar y gestionar tu consumo, últimas noticias…¡Y mucho más!'
+                subtitle='Únete a nuestra comunidad. Recibirás nuestros mejores contenidos semanalmente: guías prácticas para ahorrar y gestionar tu consumo, últimas noticias…¡ Y mucho más!'
                 image={'/img/bannerFooter.png'}
             >
                 <Form onSubmit={subscripcion}>
@@ -51,8 +58,8 @@ function FormSuscripcion({ }) {
                                 <InputGroup className="">
                                     <Form.Control
                                         className={'form-control no-radius'}
-                                        placeholder={('Escribe tu mail aqui')}
-                                        aria-label={('Escribe tu mail aqui')}
+                                        placeholder={('Escribe tu email aquí')}
+                                        aria-label={('Escribe tu email aquí')}
                                         type={'text'}
                                         onChange={(e) => setInpEmail(e.target.value)}
                                         value={inpEmail}
@@ -68,8 +75,8 @@ function FormSuscripcion({ }) {
                                 <>
                                     <Form.Control
                                         className={'form-control no-radius'}
-                                        placeholder={('Escribe tu mail aqui')}
-                                        aria-label={('Escribe tu mail aqui')}
+                                        placeholder={('Escribe tu email aquí')}
+                                        aria-label={('Escribe tu email aquí')}
                                         type={'text'}
                                         onChange={(e) => setInpEmail(e.target.value)}
                                         value={inpEmail}
@@ -84,11 +91,11 @@ function FormSuscripcion({ }) {
                         }
                         {
                             isSend && 
-                            <p className='color-green'>Tu suscripción se realizó con exito</p>
+                            <p className='color-green'>Tu suscripción se realizó con éxito</p>
                         }
                         <InputCheck
                             onChangeValue={changeValue}
-                            text={`He leído y acepto <a href="politica-privacidad" target='_blank'>la Política de Privacidad</a> y quiero recibir comunicaciones comerciales.`}
+                            text={`He leído y acepto <a href='/${lang}/politica-privacidad' target='_blank'>la Política de Privacidad</a> y quiero recibir comunicaciones comerciales.`}
                         />
                     </div>
                 </Form>

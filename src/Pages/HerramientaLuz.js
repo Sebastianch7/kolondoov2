@@ -10,51 +10,8 @@ import { getPriceLightService } from '../services/ApiServices';
 import ContenedorHerramientasLuz from '../Components/Contenedor/ContenedorHerramientasLuz';
 import ChartLineal from '../Components/Chart/ChartLuzDia';
 import ChartLuzMonth from '../Components/Chart/ChartLuzMonth';
-import Load from '../Components/Utils/Load';
+import preguntasFrecuentes from '../Content/PreguntasFrecuentesPrecioLuz.json'
 
-const data = [
-    {
-        title: '¿Qué tres franjas horarias de consumo tiene el mercado eléctrico en España?',
-        texto: '<p>Desde el pasado 1 de junio de 2021 son tres las franjas horarias de consumo las que nos encontramos:<ul><li>Horario valle (de 0:00 a 8:00). En este periodo la electricidad es más barata. Este se aplica también los fines de semana completos y festivos.</li><li>Horario punta (de 10:00 a 14:00 y de 18:00 a 22:00). Este horario es en el que el precio de la luz es más elevado. Durante estas horas lo más recomendable es hacer el menor consumo posible de la electricidad.</li><li>Horario llano (de 8:00 a 10:00 y de 14:00 a 18:00): en esta etapa el valor es intermedio. En otras palabras, el coste es menor que en horario punta pero más alto que en valle.</li></ul>Con estos horarios en mente, podrás planificar mejor tus actividades y ahorrar en el consumo de tu hogar</p>'
-    },
-    {
-        title: '¿Cómo puedo contratar la mejor tarifa de luz en España hoy?',
-        texto: 'texto2'
-    },
-    {
-        title: '¿Qué documentos necesito para dar de alta mi contrato de luz?',
-        texto: 'texto3'
-    },
-    {
-        title: '¿En qué conceptos tengo que fijarme en las facturas de luz?',
-        texto: 'texto3'
-    },
-    {
-        title: '¿Qué se tiene en cuenta para actualizar el precio de la electricidad en el mercado regulado?',
-        texto: 'texto3'
-    },
-    {
-        title: '¿Qué diferencia hay entre el mercado libre y el regulado?',
-        texto: 'texto3'
-    },
-    {
-        title: '¿Qué organismo es el encargado de fijar el precio de la luz en España?',
-        texto: 'texto3'
-    },
-    {
-        title: '¿Cuáles son los electrodomésticos que más energía consumen?',
-        texto: 'texto3'
-    },
-    {
-        title: '¿De dónde extraemos los datos del precio de la luz y cada cuánto se actualizan?',
-        texto: 'texto3'
-    },
-    {
-        title: '¿Qué es el kWh de luz y cómo afecta al precio de la electricidad?',
-        texto: 'texto3'
-    },
-
-];
 
 export default function HerramientaLuz() {
 
@@ -199,7 +156,7 @@ export default function HerramientaLuz() {
                     </Card>
                 </Row>
             </Container>
-            <ContenedorPreguntasFrecuentes data={data} image={'/img/preguntas-luz.png'} />
+            <ContenedorPreguntasFrecuentes data={preguntasFrecuentes} image={'/img/preguntas-luz.png'} />
             <Footer></Footer>
         </>
     )

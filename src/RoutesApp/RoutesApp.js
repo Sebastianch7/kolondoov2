@@ -74,6 +74,7 @@ function RoutesApp() {
 
                 <Route path="/:lang/quienes-somos" element={<QuienesSomos />} />
 
+                <Route path="/:lang/herramientas" element={<HerramientaLuz />} />
                 <Route path="/:lang/herramientas/precio-de-la-luz-hoy" element={<HerramientaLuz />} />
                 <Route path="/:lang/herramientas/test-de-velocidad" element={<HerramientaTest />} />
 

@@ -23,7 +23,7 @@ function Home(props) {
                 <Banner
                     title={t('bannerHomeTitle')}
                     subtitle={t('bannerHomeSubtitle')}
-                    image={'/img/energia/banner_luz.png'}
+                    image={'/img/banner-home.png'}
                     logo={'/img/icons/phone.svg'}
                     buttons={[
                         {

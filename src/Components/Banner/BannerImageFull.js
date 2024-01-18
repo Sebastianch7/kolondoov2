@@ -33,7 +33,7 @@ function BannerImageFull({ title = '', text1 = '', text2 = '', buttons = false, 
                     </Col>
                 </div>
             </Container>
-            <InterSection></InterSection>
+            {!isMobile && <InterSection></InterSection>}
         </section >
     );
 }

@@ -42,18 +42,18 @@ const data = [
       },
       {
         titulo: 'Estándar',
-        precio: '12’99€ /mes'
+        precio: '12’99€ /mes*'
       },
       {
         titulo: 'Premium',
-        precio: '17’99€ /mes'
+        precio: '17’99€ /mes*'
       }
     ]
   },
   {
     logo: '/img/logos/hbomax.svg',
     series: 'Elvis, Cinco lobitos,Expediente Warren: Obligado por el demonio.',
-    precio_estandar: '9,99€/mes*',
+    precio_estandar: '9,99€/mes',
     url: 'https://www.hbomax.com/',
     productos: [
       {
@@ -65,7 +65,7 @@ const data = [
   {
     logo: '/img/logos/prime.svg',
     series: 'Guy Ritchie: El pacto, Guns Akimbo, Jackass Forever, Halloween.',
-    precio_estandar: '4,99€/mes*',
+    precio_estandar: '4,99€/mes',
     url: 'https://www.primevideo.com/',
     productos: [
       {
@@ -109,6 +109,7 @@ function ContenedorProductosStreaming(logo = null, landingLead = null, id = null
                 </Carousel>
               }
             </div>
+      <small>*Se pueden añadir pases de suscriptor/a extra** por 5,99 € al mes</small>
       </Container>
       {/*  <Container>
         <Row>

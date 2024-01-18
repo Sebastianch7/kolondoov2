@@ -4,8 +4,8 @@ import { FormControl } from 'react-bootstrap';
 import { BsBack } from 'react-icons/bs';
 import { json } from 'react-router-dom';
 
-const apiUrl = 'https://api.vuskoo.com/api';
-//const apiUrl = 'http://127.0.0.1:8000/api';
+//const apiUrl = 'https://api.vuskoo.com/api';
+const apiUrl = 'http://127.0.0.1:8000/api';
 
 export const fetchFilterFibra = async () => {
     try {

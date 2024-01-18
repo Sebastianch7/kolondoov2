@@ -9,20 +9,22 @@ export default function InputCheck(props) {
 
     return (
         <div className='my-3'>
-            <Form.Switch
-                className='input-check mt-2'
-                type='switch'
-                checked={checkIn}
-                label={
-                    <div>
-                        <p dangerouslySetInnerHTML={{ __html: props.text }}></p>
-                    </div>
-                }
-                onChange={(e) => {
-                    enviarValorAlPadre();
-                    setCheckIn(!checkIn);
-                }}
-            />
+            <Form.Group controlId="switchControlId">
+                <Form.Switch
+                    className='input-check mt-2'
+                    type='switch'
+                    checked={checkIn}
+                    label={
+                        <div>
+                            <p dangerouslySetInnerHTML={{ __html: props.text }}></p>
+                        </div>
+                    }
+                    onChange={(e) => {
+                        enviarValorAlPadre();
+                        setCheckIn(!checkIn);
+                    }}
+                />
+            </Form.Group>
         </div>
     )
 }

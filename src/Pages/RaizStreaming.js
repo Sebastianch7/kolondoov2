@@ -78,7 +78,7 @@ export default function RaizStreaming() {
           text2={'Descubre el entretenimiento a tu medida con nuestra selección de comparadores de televisión y streaming.'}
           left
         />
-        <ContenedorTarjeta>
+        <ContenedorTarjeta cols={3}>
           {!isMobile ?
             TarjetaRaizStreaming?.map((item, index) => {
               return <TarjetaProducto key={index} data={item} />
@@ -89,7 +89,6 @@ export default function RaizStreaming() {
             })
           }
         </ContenedorTarjeta>
-        <InterSection></InterSection>
         <TitleSection
           center
           title={'Las mejores ofertas de '}

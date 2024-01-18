@@ -59,7 +59,7 @@ export default function ContenedorBlogItem({ children }) {
                             textBlog={fetchBlog?.cuerpo}
                         />
                         <Col xs={12} className='text-center my-5'>
-                        <Link className='font-09 btn btn-primary' to={`${lang}/blog`}>Volver</Link>
+                        <Link className='font-09 btn btn-primary' to={`/${lang}/blog`}>Volver</Link>
                         </Col>
                     </Col>
                     <ContenedorDestacados />

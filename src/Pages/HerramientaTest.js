@@ -6,44 +6,11 @@ import TitleSection from '../Components/Text/TitleSection'
 import { getExtraOffer } from '../services/ApiServices'
 import TarjetaTarifa from '../Components/Tarjeta/TarjetaTarifa'
 import ContenedorPreguntasFrecuentes from '../Components/Contenedor/ContenedorPreguntasFrecuentes';
-import ToolSpeedTest from '../Components/Utils/ToolSpeedTest';
-
-const data = [
-    {
-        title: '¿Qué significa el ping o latencia?',
-        texto: 'El ping, <b>también conocido como latencia,</b> hace referencia al tiempo que se invierte en transmitir los datos en la red. Es decir, cuanto más bajo es su valor, menor es la latencia, y por tanto disfrutas de una mejor velocidad en tu conexión.'
-    },
-    {
-        title: '¿Y la fluctuación?',
-        texto: 'Mauris luctus semper sapien, vel sagittis diam eleifend non. Phasellus viverra metus at rhoncus mollis. Phasellus et tincidunt diam. Proin sed semper mauris. Sed ut nulla at lacus commodo porta. Quisque commodo, mauris eu vehicula condimentum, arcu nunc lobortis augue, in mollis tortor orci in ex.'
-    },
-    {
-        title: 'A mi WiFi siempre llega menos velocidad, ¿a qué se debe?',
-        texto: 'Mauris luctus semper sapien, vel sagittis diam eleifend non. Phasellus viverra metus at rhoncus mollis. Phasellus et tincidunt diam. Proin sed semper mauris. Sed ut nulla at lacus commodo porta. Quisque commodo, mauris eu vehicula condimentum, arcu nunc lobortis augue, in mollis tortor orci in ex.'
-    },
-    {
-        title: '¿Cómo hacer que mi conexión a Internet mejore?',
-        texto: 'Mauris luctus semper sapien, vel sagittis diam eleifend non. Phasellus viverra metus at rhoncus mollis. Phasellus et tincidunt diam. Proin sed semper mauris. Sed ut nulla at lacus commodo porta. Quisque commodo, mauris eu vehicula condimentum, arcu nunc lobortis augue, in mollis tortor orci in ex.'
-    },
-    {
-        title: '¿Puede ocurrir que los resultados del test de velocidad varíen de un dispositivo a otro?',
-        texto: 'Mauris luctus semper sapien, vel sagittis diam eleifend non. Phasellus viverra metus at rhoncus mollis. Phasellus et tincidunt diam. Proin sed semper mauris. Sed ut nulla at lacus commodo porta. Quisque commodo, mauris eu vehicula condimentum, arcu nunc lobortis augue, in mollis tortor orci in ex.'
-    },
-    {
-        title: '¿Los datos del test de velocidad se quedan guardados?',
-        texto: 'Mauris luctus semper sapien, vel sagittis diam eleifend non. Phasellus viverra metus at rhoncus mollis. Phasellus et tincidunt diam. Proin sed semper mauris. Sed ut nulla at lacus commodo porta. Quisque commodo, mauris eu vehicula condimentum, arcu nunc lobortis augue, in mollis tortor orci in ex.'
-    },
-    {
-        title: '¿Por qué a veces varían los datos del test de velocidad?',
-        texto: 'Mauris luctus semper sapien, vel sagittis diam eleifend non. Phasellus viverra metus at rhoncus mollis. Phasellus et tincidunt diam. Proin sed semper mauris. Sed ut nulla at lacus commodo porta. Quisque commodo, mauris eu vehicula condimentum, arcu nunc lobortis augue, in mollis tortor orci in ex.'
-    },
-]
-
+import preguntasFrecuentes from '../Content/PreguntasFrecuentesTestVelocidad.json'
 
 export default function HerramientaTest() {
 
     const [isLoading, setIsLoading] = useState(true);
-    const [infoOffer, setInfoOffer] = useState([]);
     const [extraOffer, setExtraOffer] = useState([]);
 
     useEffect(() => {
@@ -63,7 +30,7 @@ export default function HerramientaTest() {
 
     return (
         <>
-            <Header></Header>
+            <Header breadCrumb></Header>
             <Container>
                 {/* <TitleSection
                     center
@@ -103,7 +70,7 @@ export default function HerramientaTest() {
                     </Col>
                 </Row>
             </Container >
-            <ContenedorPreguntasFrecuentes data={data} image={'/img/preguntas-test.png'} />
+            <ContenedorPreguntasFrecuentes data={preguntasFrecuentes} image={'/img/preguntas-test.png'} />
             <Footer></Footer>
         </>
     )

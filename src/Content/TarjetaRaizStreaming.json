@@ -1,20 +1,10 @@
 [
     {
-        "icon": "/img/icons/tv.svg",
-        "title": "Televisión",
-        "button": "Comparar",
-        "url": "/television-streaming/comparador-de-television"
-    },
-    {
         "icon": "/img/icons/streaming.svg",
         "title": "Streaming",
         "button": "Comparar",
         "url": "/television-streaming/comparador-plataformas-streaming"
-    },
-    {
-        "icon": "/img/icons/mobile.svg",
-        "title": "Tv + Streaming",
-        "button": "Comparar",
-        "url": "/television-streaming/tv_y_streaming"
     }
 ]
+
+ 

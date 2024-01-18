@@ -1,12 +1,19 @@
 import React, { useEffect, useState } from 'react';
-import InputText from '../Input/InputText';
 import InputCheck from '../Input/InputCheck';
 import { isMobile } from 'react-device-detect';
 import { postFormContactanos } from '../../services/ApiServices'
 import { Button, Card, Form } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
+import { useLocation } from 'react-router-dom';
 
 export default function FormContactenos({ }) {
+    const [lang, setLang] = useState(null)
+    const location = useLocation();
+
+    useEffect(() => {
+        setLang(location.pathname.split('/')[1])
+    }, [])
+
     const [checkIn, setCheckIn] = useState(false);
     const { t } = useTranslation();
     const [isError, setIsError] = useState(null)
@@ -74,7 +81,7 @@ export default function FormContactenos({ }) {
 
                 <InputCheck
                     onChangeValue={changeValue}
-                    text={`He leído y acepto <a href="politica-privacidad" target='_blank'>la Política de Privacidad</a> y quiero recibir comunicaciones comerciales.`}
+                    text={`He leído y acepto <a href={"/${lang}/politica-privacidad"} target='_blank'>la Política de Privacidad</a> y quiero recibir comunicaciones comerciales.`}
                     politica
                 />
 
