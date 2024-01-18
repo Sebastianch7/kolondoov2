@@ -1,11 +1,16 @@
-import { dblClick } from '@testing-library/user-event/dist/click';
 import axios from 'axios';
-import { FormControl } from 'react-bootstrap';
-import { BsBack } from 'react-icons/bs';
-import { json } from 'react-router-dom';
 
-//const apiUrl = 'https://api.vuskoo.com/api';
-const apiUrl = 'http://127.0.0.1:8000/api';
+
+const currentUrl = window.location.href;
+const productionUrl = 'https://api.vuskoo.com/api';
+const localhostUrl = 'http://127.0.0.1:8000/api';
+if (currentUrl.includes('localhost')) {
+  const apiUrl = localhostUrl;
+  console.log('Estás en localhost');
+} else {
+  const apiUrl = productionUrl;
+  console.log('Estás en producción');
+}
 
 export const fetchFilterFibra = async () => {
     try {
@@ -18,7 +23,7 @@ export const fetchFilterFibra = async () => {
             rangePrice: [parseInt(min_precio) > 0 ? parseInt(min_precio) : 0, parseInt(max_precio)],
         };
     } catch (error) {
-        console.error("Error al obtener los datos iniciales de filtros:", error);
+        console.error("Error al procesar la solicitud", error);
         throw error;
     }
 };
@@ -28,7 +33,7 @@ export const fetchFilterMovil = async () => {
         const response = await axios.get(`${apiUrl}/filterMovil`);
         return response.data[0];
     } catch (error) {
-        console.error("Error al obtener las marcas de operadoras:", error);
+        console.error("Error al procesar la solicitud", error);
         throw error;
     }
 };
@@ -38,7 +43,7 @@ export const fetchFilterMovilFibra = async () => {
         const response = await axios.get(`${apiUrl}/filterMovilFibra`);
         return response.data[0];
     } catch (error) {
-        console.error("Error al obtener las marcas de operadoras:", error);
+        console.error("Error al procesar la solicitud", error);
         throw error;
     }
 };
@@ -48,7 +53,7 @@ export const fetchFilterMovilFibraTv = async () => {
         const response = await axios.get(`${apiUrl}/filterMovilFibraTv`);
         return response.data[0];
     } catch (error) {
-        console.error("Error al obtener las marcas de operadoras:", error);
+        console.error("Error al procesar la solicitud", error);
         throw error;
     }
 };
@@ -58,7 +63,7 @@ export const fetchOperadorasFibra = async () => {
         const response = await axios.get(`${apiUrl}/getOperadorasFibra`);
         return response.data;
     } catch (error) {
-        console.error("Error al obtener las marcas de operadoras:", error);
+        console.error("Error al procesar la solicitud", error);
         throw error;
     }
 };
@@ -69,7 +74,7 @@ export const fetchOperadoras = async () => {
         const response = await axios.get(`${apiUrl}/getOperadoras`);
         return response.data;
     } catch (error) {
-        console.error("Error al obtener las marcas de operadoras:", error);
+        console.error("Error al procesar la solicitud", error);
         throw error;
     }
 };
@@ -79,7 +84,7 @@ export const fetchOperadorasFibraMovil = async () => {
         const response = await axios.get(`${apiUrl}/getOperadorasFibraMovil`);
         return response.data;
     } catch (error) {
-        console.error("Error al obtener las marcas de operadoras:", error);
+        console.error("Error al procesar la solicitud", error);
         throw error;
     }
 };
@@ -89,7 +94,7 @@ export const fetchOperadorasFibraMovilTv = async () => {
         const response = await axios.get(`${apiUrl}/getOperadorasFibraMovilTv`);
         return response.data;
     } catch (error) {
-        console.error("Error al obtener las marcas de operadoras:", error);
+        console.error("Error al procesar la solicitud", error);
         throw error;
     }
 };
@@ -99,7 +104,7 @@ export const fetchTarifasMovil = async () => {
         const response = await axios.get(`${apiUrl}/getTarifasMovil`);
         return response.data;
     } catch (error) {
-        console.error("Error al obtener las marcas de operadoras:", error);
+        console.error("Error al procesar la solicitud", error);
         throw error;
     }
 };
@@ -109,7 +114,7 @@ export const fetchComercializadorasGas = async () => {
         const response = await axios.get(`${apiUrl}/getComercializadorasGas`);
         return response.data;
     } catch (error) {
-        console.error("Error al obtener las marcas de operadoras:", error);
+        console.error("Error al procesar la solicitud", error);
         throw error;
     }
 };
@@ -119,7 +124,7 @@ export const fetchComercializadoras = async () => {
         const response = await axios.get(`${apiUrl}/getComercializadorasLuz`);
         return response.data;
     } catch (error) {
-        console.error("Error al obtener las marcas de operadoras:", error);
+        console.error("Error al procesar la solicitud", error);
         throw error;
     }
 };
@@ -129,7 +134,7 @@ export const fetchComercializadorasLuzGas = async () => {
         const response = await axios.get(`${apiUrl}/getComercializadorasLuzGas`);
         return response.data;
     } catch (error) {
-        console.error("Error al obtener las marcas de operadoras:", error);
+        console.error("Error al procesar la solicitud", error);
         throw error;
     }
 };
@@ -139,7 +144,7 @@ export const fetchTarifasGas = async () => {
         const response = await axios.get(`${apiUrl}/getTarifasGas`);
         return response.data;
     } catch (error) {
-        console.error("Error al obtener las marcas de operadoras:", error);
+        console.error("Error al procesar la solicitud", error);
         throw error;
     }
 };
@@ -149,7 +154,7 @@ export const fetchTarifasFibra = async () => {
         const response = await axios.get(`${apiUrl}/getTarifasFibra`);
         return response.data;
     } catch (error) {
-        console.error("Error al obtener las marcas de operadoras:", error);
+        console.error("Error al procesar la solicitud", error);
         throw error;
     }
 };
@@ -159,7 +164,7 @@ export const fetchTarifasMovilFibra = async () => {
         const response = await axios.get(`${apiUrl}/getTarifasFibraMovil`);
         return response.data;
     } catch (error) {
-        console.error("Error al obtener las marcas de operadoras:", error);
+        console.error("Error al procesar la solicitud", error);
         throw error;
     }
 };
@@ -169,7 +174,7 @@ export const fetchTarifasMovilFibraTv = async () => {
         const response = await axios.get(`${apiUrl}/getTarifasFibraMovilTv`);
         return response.data;
     } catch (error) {
-        console.error("Error al obtener las marcas de operadoras:", error);
+        console.error("Error al procesar la solicitud", error);
         throw error;
     }
 };
@@ -180,7 +185,7 @@ export const fetchTarifasLuz = async () => {
         const response = await axios.get(`${apiUrl}/getTarifasLuz`);
         return response.data;
     } catch (error) {
-        console.error("Error al obtener las marcas de operadoras:", error);
+        console.error("Error al procesar la solicitud", error);
         throw error;
     }
 };
@@ -190,7 +195,7 @@ export const fetchTarifasLuzGas = async () => {
         const response = await axios.get(`${apiUrl}/getTarifasGasLuz`);
         return response.data;
     } catch (error) {
-        console.error("Error al obtener las marcas de operadoras:", error);
+        console.error("Error al procesar la solicitud", error);
         throw error;
     }
 };
@@ -200,7 +205,7 @@ export const getDetailOffer = async (offerLooking, idPlan) => {
         const response = await axios.get(`${apiUrl}/getDetailOffer${offerLooking.replaceAll('-', '')}/${idPlan}`)
         return response.data[0];
     } catch (error) {
-        console.error("Error al obtener las marcas de operadoras:", error);
+        console.error("Error al procesar la solicitud", error);
         throw error;
     }
 };
@@ -210,7 +215,7 @@ export const getBlog = async (categoria) => {
         const response = await axios.get(`${apiUrl}/getBlog/${categoria}`)
         return response.data;
     } catch (error) {
-        console.error("Error al obtener los blog", error);
+        console.error("Error al procesar la solicitud", error);
         throw error;
     }
 };
@@ -220,7 +225,7 @@ export const getBlogHome = async () => {
         const response = await axios.get(`${apiUrl}/getBlogHome`)
         return response.data;
     } catch (error) {
-        console.error("Error al obtener los blog", error);
+        console.error("Error al procesar la solicitud", error);
         throw error;
     }
 };
@@ -230,7 +235,7 @@ export const getBlogDestacados = async () => {
         const response = await axios.get(`${apiUrl}/getBlogDestacados`)
         return response.data;
     } catch (error) {
-        console.error("Error al obtener los blog", error);
+        console.error("Error al procesar la solicitud", error);
         throw error;
     }
 };
@@ -240,7 +245,7 @@ export const getBlogById = async (id) => {
         const response = await axios.get(`${apiUrl}/getBlogById/${id}`)
         return response.data[0];
     } catch (error) {
-        console.error("Error al obtener los blog", error);
+        console.error("Error al procesar la solicitud", error);
         throw error;
     }
 };
@@ -250,7 +255,7 @@ export const getExtraOffer = async (offerLooking) => {
         const response = await axios.get(`${apiUrl}/getExtraOffer${offerLooking.replaceAll('-', '')}`)
         return response.data;
     } catch (error) {
-        console.error("Error al obtener las marcas de operadoras:", error);
+        console.error("Error al procesar la solicitud", error);
         throw error;
     }
 };
@@ -259,7 +264,7 @@ export const getPriceLightService = async () => {
     try {
         let fecha = new Date();
         let año = fecha.getFullYear();
-        let mes = fecha.getMonth() + 1; // Los meses en JavaScript son indexados desde 0, por lo que sumamos 1
+        let mes = fecha.getMonth() + 1;
         let dia = fecha.getDate();
 
         const actual = `${año}-${mes}-${dia}`;
@@ -267,7 +272,7 @@ export const getPriceLightService = async () => {
         const data = response.data.included[0].attributes.values;
         return data;
     } catch (error) {
-        console.error("Error al obtener la informacion de las tarifas de luz", error);
+        console.error("Error al procesar la solicitud", error);
         throw error;
     }
 };
@@ -278,7 +283,7 @@ export const getPriceLightServiceMonth = async () => {
         const data = response.data
         return data;
     } catch (error) {
-        console.error("Error al obtener la informacion de las tarifas de luz", error);
+        console.error("Error al procesar la solicitud", error);
         throw error;
     }
 };
@@ -290,7 +295,7 @@ export const getDataLocation = async () => {
         const data = response.data
         return data;
     } catch (error) {
-        console.error("Error al obtener la informacion de localizacion", error);
+        console.error("Error al procesar la solicitud", error);
         throw error;
     }
 };
@@ -301,7 +306,7 @@ export const getIp = async () => {
         const data = response.data
         return data;
     } catch (error) {
-        console.error("Error al obtener la informacion de localizacion", error);
+        console.error("Error al procesar la solicitud", error);
         throw error;
     }
 };
@@ -312,7 +317,7 @@ export const postLead = async (idOferta, phone, landing, urlOffer, company) => {
         console.log(response.data);
         return response;
     } catch (error) {
-        //console.error("Error al enviar la informacion del Lead:", error);
+        //console.error("Error al procesar la solicitud", error);
         throw new Error('Error en la solicitud POST:', error);
     }
 };
@@ -322,7 +327,7 @@ export const postFormContactanos = async (nombre, consulta, email) => {
         const response = await axios.post(`${apiUrl}/contactanosRegister`, { nombre, consulta, email });
         return response.data;
     } catch (error) {
-        //console.error("Error al enviar la informacion del Lead:", error);
+        //console.error("Error al procesar la solicitud", error);
         throw new Error('Error en la solicitud POST:', error);
     }
 };
@@ -332,7 +337,7 @@ export const postFormNews = async (email) => {
         const response = await axios.post(`${apiUrl}/NewsletterRegister`, { email });
         return response.data;
     } catch (error) {
-        //console.error("Error al enviar la informacion del Lead:", error);
+        //console.error("Error al procesar la solicitud", error);
         throw new Error('Error en la solicitud POST:', error);
     }
 };
