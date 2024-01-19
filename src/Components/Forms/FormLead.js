@@ -22,7 +22,7 @@ export default function FormLead({ idPlan, landing, offerLooking, urlOffers, com
     const [urlOffer, setUrlOffer] = useState(urlOffers);
     const [urlSplit, setUrlSplit] = useState([])
 
-    const [isValidPhoneNumber, setIsValidPhoneNumber] = useState(true);
+    const [isValidPhoneNumber, setIsValidPhoneNumber] = useState(false);
     const [isSend, setIsSend] = useState(false);
     const [isError, setIsError] = useState(false);
     let navigate = useNavigate();
@@ -34,7 +34,8 @@ export default function FormLead({ idPlan, landing, offerLooking, urlOffers, com
 
 
     const handlePhoneNumberChange = (e) => {
-        const inputPhoneNumber = e.target.value;
+        const inputValue = e.target.value;
+        const inputPhoneNumber = inputValue.replace(/\D/g, '');
         setPhoneNumber(inputPhoneNumber);
         const phoneNumberRegex = /^[6-9]\d{8}$/;
         const isValid = phoneNumberRegex.test(inputPhoneNumber);
@@ -86,7 +87,8 @@ export default function FormLead({ idPlan, landing, offerLooking, urlOffers, com
                                     className={'form-control no-radius'}
                                     placeholder={t('Introduce tu teléfono')}
                                     aria-label={t('Introduce tu teléfono')}
-                                    type={'phone'}
+                                    type={'tel'}
+                                    pattern="[0-9]*"  // Esto permite solo números
                                     onChange={handlePhoneNumberChange}
                                     value={phoneNumber}
                                     isSuccess={isValidPhoneNumber}
@@ -97,22 +99,26 @@ export default function FormLead({ idPlan, landing, offerLooking, urlOffers, com
                                 <div className="text-danger mt-3"><BsXCircle />&nbsp;El número de teléfono ingresado no es valido</div>
                             }
                             <div className='my-3'>
-                                <Form.Switch
-                                    className='input-check mt-2'
-                                    type='switch'
-                                    checked={checkInAsesoria}
-                                    label={'Acepto que Vuskoo me asesore telefónicamente sobre el producto y servicio elegido de acuerdo con su Política de Privacidad'}
-                                    onChange={() => setCheckInAsesoria(!checkInAsesoria)}
-                                />
+                                <Form.Group controlId="switchControlId">
+                                    <Form.Switch
+                                        className='input-check mt-2'
+                                        type='switch'
+                                        checked={checkInAsesoria}
+                                        label={'Acepto que Vuskoo me asesore telefónicamente sobre el producto y servicio elegido de acuerdo con su Política de Privacidad'}
+                                        onChange={() => setCheckInAsesoria(!checkInAsesoria)}
+                                    />
+                                </Form.Group>
                             </div>
                             <div className='my-3'>
-                                <Form.Switch
-                                    className='input-check mt-2'
-                                    type='switch'
-                                    checked={checkInComercial}
-                                    label={'Acepto recibir comunicaciones comerciales de Vuskoo. Más información en Política de Privacidad'}
-                                    onChange={() => setCheckInComercial(!checkInComercial)}
-                                />
+                                <Form.Group controlId="switchControlId1">
+                                    <Form.Switch
+                                        className='input-check mt-2'
+                                        type='switch'
+                                        checked={checkInComercial}
+                                        label={'Acepto recibir comunicaciones comerciales de Vuskoo. Más información en Política de Privacidad'}
+                                        onChange={() => setCheckInComercial(!checkInComercial)}
+                                    />
+                                </Form.Group>
                             </div>
                             {isError !== false &&
                                 <div className='my-3'>

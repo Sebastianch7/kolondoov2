@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import Header from '../Components/Header/Header';
 import Banner from '../Components/Banner/Banner';
 import TarjetaProducto from '../Components/Tarjeta/TarjetaProducto';
@@ -52,7 +52,7 @@ function Home(props) {
                 <ContenedorTarjetaBlog />
                 <FormSuscripcion />
             </main>
-            
+
             <Footer />
         </div>
     );

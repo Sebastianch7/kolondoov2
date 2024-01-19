@@ -958,7 +958,6 @@ footer {
 }
 
 tr,
-td,
 th {
   font-family: $MontSemiBold !important;
 }
@@ -1105,7 +1104,16 @@ ul {
   text-decoration: none !important;
 }
 
-.icon-list{
+.icon-list {
+
+  ul,
+  li {
+    list-style: disc !important;
+    margin-left: 15px;
+    text-align: left !important;
+    margin: 10px 0px;
+  }
+
   list-style: disc !important;
   margin-left: 15px;
 }

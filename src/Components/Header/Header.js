@@ -15,7 +15,11 @@ function Header({ breadCrumb }) {
 
     useEffect(() => {
         setLang(location.pathname.split('/')[1])
-    },[])
+    }, [])
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
 
 
     return (

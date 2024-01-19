@@ -74,7 +74,7 @@ function Footer(props) {
                 </Row>
                 <Row>
                     <Col xs={12} className="footer-copyright text-white pt-5 mt-5 pt-md-0 mt-md-0">
-                        <p>COPYRIGHT © 2021 VUSKOO. TODOS LOS DERECHOS RESERVADOS | <Link to={`/${lang}/politica-privacidad`}>POLÍTICA DE PRIVACIDAD</Link> | <a href=''>AVISO LEGAL</a>| <a href=''>POLÍTICA DE COOKIES</a> | <a href=''>MAPA WEB</a></p>
+                        <p>COPYRIGHT © 2021 VUSKOO. TODOS LOS DERECHOS RESERVADOS | <Link to={`/es-es/politica-privacidad`}>POLÍTICA DE PRIVACIDAD</Link> | <Link to={`/es-es/politica-legal`}>AVISO LEGAL</Link> | <Link to={`/es-es/politica-cookies`}>POLÍTICA DE COOKIES</Link> | <a href=''>MAPA WEB</a></p>
                     </Col>
                 </Row>
             </Container>

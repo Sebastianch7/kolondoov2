@@ -1,16 +1,8 @@
 import axios from 'axios';
 
+const apiUrl = 'https://api.vuskoo.com/api';
+//const apiUrl = 'http://127.0.0.1:8000/api';
 
-const currentUrl = window.location.href;
-const productionUrl = 'https://api.vuskoo.com/api';
-const localhostUrl = 'http://127.0.0.1:8000/api';
-if (currentUrl.includes('localhost')) {
-  const apiUrl = localhostUrl;
-  console.log('Estás en localhost');
-} else {
-  const apiUrl = productionUrl;
-  console.log('Estás en producción');
-}
 
 export const fetchFilterFibra = async () => {
     try {

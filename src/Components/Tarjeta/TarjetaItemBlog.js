@@ -5,13 +5,13 @@ import { isMobile } from 'react-device-detect'
 
 export default function TarjetaItemBlog({ data }) {
     const { id, fecha_publicacion, visitas, categoria_id, hashtags, imagen_principal_escritorio, imagen_principal_movil, titulo, entradilla, url_amigable } = data
-    const meses = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre']
+    const meses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre']
     const cambiarFecha = (data) => {
         let fecha = new Date(data);
 
         // Obtener día, mes y año
         let dia = fecha.getDate();
-        let mes = fecha.getMonth() + 1; // Los meses en JavaScript son de 0 a 11
+        let mes = parseInt(fecha.getMonth()); // Los meses en JavaScript son de 0 a 11
         let año = fecha.getFullYear();
 
         // Formatear la cadena con ceros a la izquierda si es necesario

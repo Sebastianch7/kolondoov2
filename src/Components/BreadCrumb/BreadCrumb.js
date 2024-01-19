@@ -2,17 +2,17 @@ import React, { useEffect, useState } from 'react';
 import { Row, Col, Container } from 'react-bootstrap';
 import Breadcrumb from 'react-bootstrap/Breadcrumb';
 import { useLocation } from 'react-router-dom';
-
+import { useTranslation } from 'react-i18next';
 
 function BreadCrumb({ url }) {
-
+    const { t } = useTranslation();
     const [lang, setLang] = useState(null)
     const location = useLocation();
 
     useEffect(() => {
         setLang(location.pathname.split('/')[1])
-    },[])
-    
+    }, [])
+
     const pathname = url && url.length > 1 ? url : location.pathname;
     let locations = pathname.split('/');
     locations.shift();
@@ -27,8 +27,17 @@ function BreadCrumb({ url }) {
                             <>
                                 <Breadcrumb.Item href="/">Vuskoo</Breadcrumb.Item>
                                 {locations.map((item, index) => {
+                                    console.log(item)
                                     ruta = (ruta !== undefined && ruta !== null) ? `${ruta}/${item}` : `/${item}`;
-                                        return <Breadcrumb.Item key={index} href={`/${lang}${ruta}`} className='capitalize'>{item.replaceAll('-',' ')}</Breadcrumb.Item>
+                                    if (!item.includes('herramientas')) {
+                                        return <Breadcrumb.Item
+                                            key={index}
+                                            href={!item === 'herramientas' ? 'null' : `/${lang}${ruta}`}
+                                            className='capitalize'
+                                        >
+                                            {t(item).replaceAll('-', ' ')}
+                                        </Breadcrumb.Item>
+                                    }
                                 })}
                             </>
                         }

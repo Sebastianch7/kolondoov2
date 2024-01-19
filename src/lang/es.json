@@ -16,7 +16,7 @@
     "Solar": "Solar",
     "Estaciones de carga de VE": "Estaciones de carga de VE",
     "Precio de la luz hoy": "Precio de la luz hoy",
-    "Test de valocidad": "Test de valocidad",
+    "Test de valocidad": "Test de velocidad",
     "Suministros": "Suministros",
     "Seguros": "Seguros",
     "Cobertura": "Cobertura",
@@ -49,6 +49,11 @@
     "es-raiz-telefonia-content-description": "Como cada vez hay más compañías compitiendo en el mercado, desde <b>Vuskoo</b> te recomendamos que sepas escoger la oferta de telefonía móvil y fibra, y es que tienes casi la obligación de comparar detenidamente todas las ofertas para que te acabe saliendo lo más rentable posible.A continuación, puedes ver nuestros comparadores con las ofertas de los distintos servicios (y combinaciones) que pueden contratarse.",
     "es-raiz-telefonia-content-description-2": "¿Qué es lo que más te conviene? No pierdas más tiempo y comienza a comparar:",
     "es-raiz-energia-content-description": "El precio de la luz y del gas natural no deja de subir y subir, llegando a alcanzar límites históricos. En este contexto de tanta incertidumbre surge más que nunca la necesidad de escoger las tarifas energéticas que mejor se adapten a nuestras necesidades y presupuesto, ya no nos vale con cualquiera.",
-    "es-raiz-energia-content-description-2": "Y no se nos ocurre mejor forma de lograrlo que utilizando comparadores de energía como los de <b>Vuskoo</b>, mediante los cuales agrupamos las mejores ofertas de electricidad, las de gas, y también las que reúnen ambos servicios. Muchos clientes ya han comprobado su gran utilidad, ¡eres el próximo!"
-
+    "es-raiz-energia-content-description-2": "Y no se nos ocurre mejor forma de lograrlo que utilizando comparadores de energía como los de <b>Vuskoo</b>, mediante los cuales agrupamos las mejores ofertas de electricidad, las de gas, y también las que reúnen ambos servicios. Muchos clientes ya han comprobado su gran utilidad, ¡eres el próximo!",
+    "internet-telefonia" : "internet y telefonía",
+    "comparador-movil": "Comparador Móvil",
+    "comparador-tarifas-fibra-y-movil": "Comparador Tarifas Fibra Y Móvil",
+    "comparador-fibra-movil-tv": "comparador fibra, móvil y tv",
+    "television-streaming":"televisión y Streaming",
+    "energia" : "Energía"
 }

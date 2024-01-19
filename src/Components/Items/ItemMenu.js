@@ -14,12 +14,10 @@ function ItemMenu({ data }) {
     }, [])
 
     const { t } = useTranslation();
-
     return (
         <Nav className='no-link'>
             <NavDropdown
-                title={<Link to={`/${lang}${data.titleUrl}`} className='no-link'>{data.title}</Link>}
-
+                title={!data.titleUrl.includes('herramientas') ? <Link to={`/${lang}${data.titleUrl}`} className='no-link'>{data.title}</Link> : data.title }
                 id="collasible-nav-dropdown"
                 show={show}
                 onMouseEnter={() => setShow(true)}

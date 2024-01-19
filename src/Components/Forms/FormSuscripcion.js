@@ -19,13 +19,21 @@ function FormSuscripcion({ }) {
 
     const [checkIn, setCheckIn] = useState(false);
     const [isError, setIsError] = useState(null)
+    const [inpEmail, setInpEmail] = useState(null)
+    const [isSend, setIsSend] = useState(false);
+    const [isValidEmail, setIsValidEmail] = useState(null)
+
+    const handleEmailChange = (input) => {
+        setInpEmail(input);
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        setIsValidEmail(emailRegex.test(input));
+        console.log(emailRegex.test(input))
+    };
 
     const changeValue = (valor) => {
         setCheckIn(valor);
     };
 
-    const [inpEmail, setInpEmail] = useState(null)
-    const [isSend, setIsSend] = useState(false);
 
     async function subscripcion(e) {
         e.preventDefault();
@@ -60,15 +68,15 @@ function FormSuscripcion({ }) {
                                         className={'form-control no-radius'}
                                         placeholder={('Escribe tu email aquí')}
                                         aria-label={('Escribe tu email aquí')}
-                                        type={'text'}
-                                        onChange={(e) => setInpEmail(e.target.value)}
+                                        type={'email'}
+                                        onChange={(e) => handleEmailChange(e.target.value)}
                                         value={inpEmail}
                                     />
                                     <Button
                                         type='submit'
-                                        disabled={(!checkIn && inpEmail?.length > 3) ? false : true}
+                                        disabled={(!checkIn && isValidEmail) ? false : true}
                                     >
-                                        Suscribete gratis
+                                        Suscríbete gratis
                                     </Button>
                                 </InputGroup>
                                 :
@@ -77,15 +85,15 @@ function FormSuscripcion({ }) {
                                         className={'form-control no-radius'}
                                         placeholder={('Escribe tu email aquí')}
                                         aria-label={('Escribe tu email aquí')}
-                                        type={'text'}
-                                        onChange={(e) => setInpEmail(e.target.value)}
+                                        type={'email'}
+                                        onChange={(e) => handleEmailChange(e.target.value)}
                                         value={inpEmail}
                                     />
                                     <Button
                                         type='submit'
-                                        disabled={(!checkIn && inpEmail?.length > 3) ? false : true}
+                                        disabled={(!checkIn && isValidEmail) ? false : true}
                                     >
-                                        Suscribete gratis
+                                        Suscríbete gratis
                                     </Button>
                                 </>
                         }
@@ -95,7 +103,7 @@ function FormSuscripcion({ }) {
                         }
                         <InputCheck
                             onChangeValue={changeValue}
-                            text={`He leído y acepto <a href='/${lang}/politica-privacidad' target='_blank'>la Política de Privacidad</a> y quiero recibir comunicaciones comerciales.`}
+                            text={`He leído y acepto <a href='/es-es/politica-privacidad' target='_blank'>la Política de Privacidad</a> y quiero recibir comunicaciones comerciales.`}
                         />
                     </div>
                 </Form>

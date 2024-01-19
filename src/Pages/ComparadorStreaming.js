@@ -37,7 +37,7 @@ function ComparadorStreaming() {
                 /> */}
             </Banner>
             <ContenedorProductosStreaming />
-            <ContenedorPorQueComparar title={'¿Por qué comparar'} titleAlt={'tarifas de Tv y Streaming'} titleThird={'es tan importante?'} dataPorQueComparar={dataPorQueComparar} />
+            <ContenedorPorQueComparar title={'¿Por qué comparar'} titleAlt={'tarifas de Streaming'} titleThird={'es tan importante?'} dataPorQueComparar={dataPorQueComparar} />
             <Footer></Footer>
         </div>
     );

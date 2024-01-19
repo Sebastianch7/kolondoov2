@@ -17,7 +17,7 @@ export default function FormContactenos({ }) {
     const [checkIn, setCheckIn] = useState(false);
     const { t } = useTranslation();
     const [isError, setIsError] = useState(null)
-
+    
     const changeValue = (valor) => {
         setCheckIn(valor);
     };
@@ -27,6 +27,13 @@ export default function FormContactenos({ }) {
     const [inpEmail, setInpEmail] = useState(null)
     const [isSend, setIsSend] = useState(false);
     const [textButton, setTextButton] = useState('Enviar consulta')
+    
+    const [isValidEmail, setIsValidEmail] = useState(null)
+    const handleEmailChange = (input) => {
+        setInpEmail(input);
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        setIsValidEmail(emailRegex.test(input));
+    };
 
     async function subscripcion(e) {
         e.preventDefault();
@@ -62,8 +69,8 @@ export default function FormContactenos({ }) {
                         />
                         <Form.Control
                             className={'form-control no-radius my-md-3'}
-                            placeholder={t('Tu consulta aqui')}
-                            aria-label={t('Tu consulta aqui')}
+                            placeholder={t('Tu consulta aquí')}
+                            aria-label={t('Tu consulta aquí')}
                             type={'text'}
                             onChange={(e) => setInpMessage(e.target.value)}
                             value={inpMessage}
@@ -72,8 +79,8 @@ export default function FormContactenos({ }) {
                             className={'form-control no-radius my-md-3'}
                             placeholder={t('email')}
                             aria-label={t('email')}
-                            type={'text'}
-                            onChange={(e) => setInpEmail(e.target.value)}
+                            type={'email'}
+                            onChange={(e) => handleEmailChange(e.target.value)}
                             value={inpEmail}
                         />
                     </>
@@ -81,7 +88,7 @@ export default function FormContactenos({ }) {
 
                 <InputCheck
                     onChangeValue={changeValue}
-                    text={`He leído y acepto <a href={"/${lang}/politica-privacidad"} target='_blank'>la Política de Privacidad</a> y quiero recibir comunicaciones comerciales.`}
+                    text={`He leído y acepto <a href='/es-es/politica-privacidad' target='_blank'>la Política de Privacidad</a> y quiero recibir comunicaciones comerciales.`}
                     politica
                 />
 
@@ -95,7 +102,7 @@ export default function FormContactenos({ }) {
                 }
                 <Button
                     type='submit'
-                    disabled={(!checkIn && inpName?.length > 3 && inpMessage?.length > 3 && inpEmail?.length > 3) ? false : true}
+                    disabled={(!checkIn && inpName?.length > 3 && inpMessage?.length > 3 && isValidEmail) ? false : true}
                 >
                     Enviar consulta
                 </Button>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Home from '../Pages/Home';
 import ComparadorMovil from '../Pages/ComparadorMovil';
@@ -21,12 +21,16 @@ import RaizStreaming from '../Pages/RaizStreaming';
 import PoliticaPrivacidad from '../Pages/PoliticaPrivacidad';
 import Blog from '../Pages/Blog';
 import BlogItem from '../Pages/BlogItem';
+import PoliticaCookies from '../Pages/PoliticaCookies';
+import PoliticaLegal from '../Pages/PoliticaLegal';
+import { useLocation } from 'react-router-dom';
+
 
 function RoutesApp() {
     return (
         <BrowserRouter>
             <Routes>
-               { <Route
+                {<Route
                     path="/"
                     element={<Navigate to="/es-es" exact />}
                 />}
@@ -69,7 +73,7 @@ function RoutesApp() {
                 <Route path="/:lang/internet-telefonia/telefono_con_contrato/:id" element={<Lead />} />
                 <Route path="/:lang/thank/internet-telefonia/telefono_con_contrato/:id" element={<ThankPage />} />
 
-                <Route path="/:lang/television-streaming/comparador-de-television" element={<ComparadorStreaming />} />
+                {/* <Route path="/:lang/television-streaming/comparador-de-television" element={<ComparadorStreaming />} /> */}
                 <Route path="/:lang/television-streaming/comparador-plataformas-streaming" element={<ComparadorStreaming />} />
 
                 <Route path="/:lang/quienes-somos" element={<QuienesSomos />} />
@@ -80,6 +84,8 @@ function RoutesApp() {
 
                 <Route path="/:lang/contactanos" element={<Contactenos />} />
                 <Route path="/:lang/politica-privacidad" element={<PoliticaPrivacidad />} />
+                <Route path="/:lang/politica-cookies" element={<PoliticaCookies />} />
+                <Route path="/:lang/politica-legal" element={<PoliticaLegal />} />
 
                 <Route path="/:lang/blog" element={<Blog />} />
                 {/* <Route path="/:lang/blog/:id" element={<Blog />} /> */}
