@@ -25,7 +25,7 @@ export default function ContenedorBlogItem({ children }) {
     useEffect(() => {
         const pathname = location.pathname;
         let locations = pathname.split('/');
-        setIdBlog(locations[3]);
+        setIdBlog(locations[4]);
     }, [idBlog])
 
     useEffect(() => {

@@ -29,7 +29,7 @@ function BreadCrumb({ url }) {
                                 {locations.map((item, index) => {
                                     console.log(item)
                                     ruta = (ruta !== undefined && ruta !== null) ? `${ruta}/${item}` : `/${item}`;
-                                    if (!item.includes('herramientas')) {
+                                    if (!item.includes('herramientas') && !item.includes('destacados') ) {
                                         return <Breadcrumb.Item
                                             key={index}
                                             href={!item === 'herramientas' ? 'null' : `/${lang}${ruta}`}

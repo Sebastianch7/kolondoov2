@@ -88,9 +88,8 @@ function RoutesApp() {
                 <Route path="/:lang/politica-legal" element={<PoliticaLegal />} />
 
                 <Route path="/:lang/blog" element={<Blog />} />
-                {/* <Route path="/:lang/blog/:id" element={<Blog />} /> */}
-                <Route path="/:lang/blog/:id" element={<BlogItem />} />
-                {/* <Route path="/:lang/noticia/:id" element={<BlogItem />} /> */}
+                <Route path="/:lang/blog/:categoria" element={<Blog />} />
+                <Route path="/:lang/blog/:categoria/:id" element={<BlogItem />} />
             </Routes>
         </BrowserRouter>
     );

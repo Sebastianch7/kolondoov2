@@ -22,7 +22,7 @@ export default function Blog() {
 
     return (
         <>
-            <Header></Header>
+            <Header breadCrumb/>
             <TitleSection
                 title={'Últimas noticias'}
                 subtitle={'¡Échale un vistazo a nuestro blog y mantente siempre actualizado!'}
@@ -31,7 +31,7 @@ export default function Blog() {
             <Container>
                 <Row>
                     <Col>
-                        {categoria && <h3>Estas viendo noticias <u>{categoria?.replaceAll('-',' ')}</u></h3>}
+                        {categoria && <h5>Categoria: <u>{categoria?.replaceAll('-',' ')}</u></h5>}
                     </Col>
                 </Row>
             </Container>

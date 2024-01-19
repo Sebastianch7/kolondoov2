@@ -63,15 +63,5 @@
                 "url": "/herramientas/test-de-velocidad"
             }
         ]
-    },
-    {
-        "title": "Blog",
-        "titleUrl": "/blog",
-        "children": [
-            {
-                "name": "Ver blog",
-                "url": "/blog"
-            }
-        ]
     }
 ]

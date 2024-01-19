@@ -36,7 +36,23 @@ function Header({ breadCrumb }) {
                             {items.map((item, key) => (
                                 <ItemMenu key={key} data={item} />
                             ))}
-                            {/* <ChangeLang></ChangeLang> */}
+                            <div class="no-link navbar-nav">
+                                <a aria-expanded="false" class="nav-item dropdown" href="/es-es/blog/hogar">
+                                    <a id="collasible-nav-dropdown" aria-expanded="false" role="button" class="dropdown-toggle nav-link" tabindex="0" href="#">
+                                        <a class="no-link" href="/es-es/blog">Blog</a>
+                                    </a>
+                                    <div aria-labelledby="collasible-nav-dropdown" data-bs-popper="static" class="dropdown-menu">
+                                        <a class="dropdown-item" href="/es-es/blog">Todas</a>
+                                        <a class="dropdown-item" href="/es-es/blog/internet">Internet</a>
+                                        <a class="dropdown-item" href="/es-es/blog/movil">Móvil</a>
+                                        <a class="dropdown-item" href="/es-es/blog/television">Televisión</a>
+                                        <a class="dropdown-item" href="/es-es/blog/energia">Energía</a>
+                                        <a class="dropdown-item" href="/es-es/blog/hogar">hogar</a>
+                                        <a class="dropdown-item" href="/es-es/blog/mejores-ofertas">Mejores ofertas</a>
+                                        <a class="dropdown-item" href="/es-es/blog/seguros">Seguros</a>
+                                    </div>
+                                </a>
+                            </div>
                         </Nav>
                     </Navbar.Collapse>
                 </Container>
