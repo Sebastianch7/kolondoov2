@@ -4,7 +4,7 @@
         "titleUrl": "/internet-telefonia",
         "children": [
             {
-                "name": "Fibra óptica",
+                "name": "Fibra",
                 "url": "/internet-telefonia/comparador-fibra"
             },
             {
@@ -12,17 +12,17 @@
                 "url": "/internet-telefonia/comparador-movil"
             },
             {
-                "name": "Móvil y fibra",
+                "name": "Fibra y móvil",
                 "url": "/internet-telefonia/comparador-tarifas-fibra-y-movil"
             },
             {
-                "name": "Móvil, fibra y TV",
+                "name": "Fibra móvil y TV",
                 "url": "/internet-telefonia/comparador-fibra-movil-tv"
             }
         ]
     },
     {
-        "title": "Televisión y streaming",
+        "title": "TV y streaming",
         "titleUrl": "/television-streaming",
         "children": [
             

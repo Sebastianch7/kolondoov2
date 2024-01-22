@@ -6,7 +6,7 @@ import { postLead } from '../../services/ApiServices'
 import { useTranslation } from 'react-i18next';
 import { useLocation } from 'react-router-dom';
 
-export default function FormLead({ idPlan, landing, offerLooking, urlOffers, company }) {
+export default function FormLead({ idPlan, landing, offerLooking, urlOffers, company, data }) {
     const { t } = useTranslation();
 
     const [lang, setLang] = useState(null)
@@ -54,7 +54,7 @@ export default function FormLead({ idPlan, landing, offerLooking, urlOffers, com
                 setTextButton('Tu solicitud ha sido registrada.');
                 setCheckInAsesoria(false);
                 setTimeout(() => {
-                    navigate(`/${lang}/${urlSplit[2]}/${urlSplit[3]}/thank/${urlSplit[4]}`);
+                    navigate(`/es-es/${urlSplit[2]}/${urlSplit[3]}/thank/${urlSplit[4]}`);
                 }, 3000);
             } else if (response?.data.status === 308) {
                 setTextButton('Tu solicitud ha sido registrada.');
@@ -104,9 +104,17 @@ export default function FormLead({ idPlan, landing, offerLooking, urlOffers, com
                                         className='input-check mt-2'
                                         type='switch'
                                         checked={checkInAsesoria}
-                                        label={'Acepto que Vuskoo me asesore telefónicamente sobre el producto y servicio elegido de acuerdo con su Política de Privacidad'}
+                                        label={
+                                            <span
+                                                dangerouslySetInnerHTML={{
+                                                    __html:
+                                                        'Acepto que Vuskoo me asesore telefónicamente sobre el producto y servicio elegido de acuerdo con su <a href="/es-es/politica-privacidad" target="_blank">Política de Privacidad</a>',
+                                                }}
+                                            />
+                                        }
                                         onChange={() => setCheckInAsesoria(!checkInAsesoria)}
                                     />
+
                                 </Form.Group>
                             </div>
                             <div className='my-3'>
@@ -115,7 +123,14 @@ export default function FormLead({ idPlan, landing, offerLooking, urlOffers, com
                                         className='input-check mt-2'
                                         type='switch'
                                         checked={checkInComercial}
-                                        label={'Acepto recibir comunicaciones comerciales de Vuskoo. Más información en Política de Privacidad'}
+                                        label={
+                                            <span
+                                                dangerouslySetInnerHTML={{
+                                                    __html:
+                                                    `Acepto recibir comunicaciones comerciales de Vuskoo. Más información en <a href="${data.politica_privacidad}" target="_blank">Política de Privacidad</a>`,
+                                                }}
+                                            />
+                                        }
                                         onChange={() => setCheckInComercial(!checkInComercial)}
                                     />
                                 </Form.Group>

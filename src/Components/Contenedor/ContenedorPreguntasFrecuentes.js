@@ -15,7 +15,7 @@ export default function ContenedorPreguntasFrecuentes({data, image}) {
                 titleAlt={'frecuentes'}
                 
             />
-            <Container fluid className='p-md-0 m-md-0 mx-xxl-auto'>
+            <Container fluid className='p-md-0 m-md-0 mx-xxl-auto mb-5'>
                 <BannerImageFull
                     image={image}
                 >

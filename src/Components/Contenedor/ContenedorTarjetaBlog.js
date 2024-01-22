@@ -1,7 +1,6 @@
 import { React, useEffect, useState } from 'react';
 import { Container, Row, Col, Stack, Carousel, CarouselItem } from 'react-bootstrap';
 import { isMobile } from 'react-device-detect'
-import Blog from '../../Content/Blog.json'
 import TarjetaBlogFull from '../Tarjeta/TarjetaBlogFull';
 import { CardGroup } from 'react-bootstrap';
 import TitleSection from '../Text/TitleSection';
@@ -25,10 +24,28 @@ function ContenedorTarjetaBlog({ children }) {
         };
         fetchBlogList();
     }, []);
+
+    const meses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre']
+    const cambiarFecha = (data) => {
+        let fecha = new Date(data);
+
+        // Obtener día, mes y año
+        let dia = fecha.getDate();
+        let mes = fecha.getMonth(); // Los meses en JavaScript son de 0 a 11
+        let año = fecha.getFullYear();
+
+        // Formatear la cadena con ceros a la izquierda si es necesario
+        let diaStr = dia < 10 ? '0' + dia : dia;
+
+        // Construir la cadena en el formato "día-mes-año"
+        let fechaFormateada = `${diaStr} ${meses[mes]} de ${año}`;
+
+        return fechaFormateada;
+    };
     return (
         <div className='mb-md-5 container-tarjeta-blog'>
             <TitleSection
-                title={'últimas noticias'}
+                title={'Últimas entradas'}
                 subtitle={'¡Échale un vistazo a nuestro blog y mantente siempre actualizado!'}
                 center
             />
@@ -46,17 +63,16 @@ function ContenedorTarjetaBlog({ children }) {
                                 <Carousel>
                                     {fetchBlog?.map((data, index) => {
                                         return (
-                                            <Carousel.Item key={index}>
+                                            <Carousel.Item key={index} className='carrusel-blog'>
                                                 <img
-                                                    className="carrusel-img"
-                                                    src={data.imgMobile}
-                                                    alt={data.imgMobile}
+                                                    src={`/img/blog/mobile/${data.imagen_principal_movil}`}
+                                                    alt={`/img/blog/mobile/${data.imagen_principal_movil}`}
+                                                    className="img-fluid carrusel-blog"
                                                 />
                                                 <Carousel.Caption>
                                                     <div className="carrusel-caption">
-                                                        <h6>{data.date}</h6>
-                                                        <h2>{data.title}</h2>
-                                                        <Link to="">{data.button}</Link>
+                                                        <h3><Link rel="alternate" hreflang="es-es" to={`/es-es/blog/${data.categoria_url}/${data.url_amigable}`}>{data.titulo}</Link></h3>
+                                                        <h6>{cambiarFecha(data.fecha_publicacion)}</h6>
                                                     </div>
                                                 </Carousel.Caption>
                                             </Carousel.Item>
@@ -65,7 +81,7 @@ function ContenedorTarjetaBlog({ children }) {
                                 </Carousel>
                             )}
                             <Col md={12} className='mx-auto text-center py-5'>
-                                <Link to={'/es-es/blog'} className='btn btn-primary'>Descubre más noticias</Link>
+                                <Link to={'/es-es/blog'} className='btn btn-primary'>Descubre más artículos</Link>
                             </Col>
                         </Col>
                     </Row>

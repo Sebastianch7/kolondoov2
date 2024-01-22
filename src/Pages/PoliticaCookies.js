@@ -125,33 +125,33 @@ export default function PoliticaCookies() {
                             <ol type='a'>
                                 <li>Si utiliza Microsoft Internet Explorer, encontrará la opción en el menú Herramientas > Opciones de Internet > Privacidad > Configuración. Para saber más visite:</li>
                                 <ul className='icon-list'>
-                                    <li><a target='_blank' href='https://windows.microsoft.com/es-es/windows-vista/block-or-allow-Cookies' className='color-primary no-link'><b>Bloquear o permitir Cookies</b></a></li>
-                                    <li><a target='_blank' href='https://windows.microsoft.com/es-es/windows7/how-to-manage-Cookies-in-internet-explorer-9' className='color-primary no-link'><b>Gestión de Cookies en I.Explorer 9</b></a></li>
+                                    <li><a target='_blank' rel='nofollow noopener noreferrer' href='https://windows.microsoft.com/es-es/windows-vista/block-or-allow-Cookies' className='color-primary no-link'><b>Bloquear o permitir Cookies</b></a></li>
+                                    <li><a target='_blank' rel='nofollow noopener noreferrer' href='https://windows.microsoft.com/es-es/windows7/how-to-manage-Cookies-in-internet-explorer-9' className='color-primary no-link'><b>Gestión de Cookies en I.Explorer 9</b></a></li>
                                 </ul>
                                 <li>Si utiliza Firefox, encontrará la opción en el menú Herramientas > Opciones > Privacidad > Cookies. Para saber más visite:</li>
                                 <ul className='icon-list'>
-                                    <li><a target='_blank' href='https://support.mozilla.org/es/kb/habilitar-y-deshabilitar-cookies-sitios-web-rastrear-preferencias?redirectlocale=es&redirectslug=habilitar-y-deshabilitar-cookies-que-los-sitios-we' className='color-primary no-link'><b>Habilitar y deshabilitar Cookies</b></a></li>
+                                    <li><a target='_blank' rel='nofollow noopener noreferrer' href='https://support.mozilla.org/es/kb/habilitar-y-deshabilitar-cookies-sitios-web-rastrear-preferencias?redirectlocale=es&redirectslug=habilitar-y-deshabilitar-cookies-que-los-sitios-we' className='color-primary no-link'><b>Habilitar y deshabilitar Cookies</b></a></li>
                                 </ul>
                                 <li>Si utiliza Chrome, en la sección de Opciones > Opciones avanzadas > Privacidad. Para saber más:</li>
                                 <ul className='icon-list'>
-                                    <li><a target='_blank' href='https://support.google.com/accounts/answer/61416?hl=es' className='color-primary no-link'><b>Gestión de Cookies</b></a></li>
+                                    <li><a target='_blank' rel='nofollow noopener noreferrer' href='https://support.google.com/accounts/answer/61416?hl=es' className='color-primary no-link'><b>Gestión de Cookies</b></a></li>
                                 </ul>
                                 <li>Si utiliza Opera, en la opción de Seguridad y Privacidad, podrá configurar el navegador. Para saber más visite:</li>
                                 <ul className='icon-list'>
-                                    <li><a target='_blank' href='https://help.opera.com/Windows/11.50/es-ES/cookies.html' className='color-primary no-link'><b>Gestión de Cookies</b></a></li>
+                                    <li><a target='_blank' rel='nofollow noopener noreferrer' href='https://help.opera.com/Windows/11.50/es-ES/cookies.html' className='color-primary no-link'><b>Gestión de Cookies</b></a></li>
                                 </ul>
                                 <li>Si utiliza Safari encontrará la opción en el menú Preferencias/Privacidad. Más información en:</li>
                                 <ul className='icon-list'>
-                                    <li><a target='_blank' href='https://support.apple.com/kb/HT1677?viewlocale=es_ES' className='color-primary no-link'><b>Gestión de Cookies</b></a></li>
+                                    <li><a target='_blank' rel='nofollow noopener noreferrer' href='https://support.apple.com/kb/HT1677?viewlocale=es_ES' className='color-primary no-link'><b>Gestión de Cookies</b></a></li>
                                 </ul>
                             </ol>
                             <p>Asimismo, recuerda que, al igual que sucede en los navegadores de ordenadores, los navegadores de los dispositivos móviles permiten realizar cambios en las opciones o ajustes de privacidad para desactivar o eliminar las cookies. Para ello, si deseas modificar las opciones de privacidad, debes seguir las instrucciones específicas por el desarrollador de tu navegador para dispositivo móvil.</p>
                             <p>A continuación, podrás encontrar algunos ejemplos que te guiarán para modificar las opciones de privacidad en tu dispositivo móvil:</p>
                             <ol type='a'>
-                                <li>Safari para IOS: <a target='_blank' href='https://support.apple.com/es-es/HT201265' className='color-primary no-link'><b>Safari «Support»</b></a></li>
-                                <li>Firefox <a target='_blank' href='https://support.mozilla.org/es/kb/bloquear-cookies-en-firefox-focus-para-android' className='color-primary no-link'><b>Firefox «Support»</b></a></li>
-                                <li>Chrome para Android: <a target='_blank' href='https://support.google.com/accounts/answer/32050?co=GENIE.Platform%3DAndroid&hl=es&oco=0' className='color-primary no-link'><b>Chrome para Android «Support»</b></a></li>
-                                <li>Chrome para IOS: <a target='_blank' href='https://support.google.com/accounts/answer/32050?co=GENIE.Platform%3DiOS&hl=es&oco=0' className='color-primary no-link'><b>Chrome para IOS «Support»</b></a></li>
+                                <li>Safari para IOS: <a target='_blank' rel='nofollow noopener noreferrer' href='https://support.apple.com/es-es/HT201265' className='color-primary no-link'><b>Safari «Support»</b></a></li>
+                                <li>Firefox <a target='_blank' rel='nofollow noopener noreferrer' href='https://support.mozilla.org/es/kb/bloquear-cookies-en-firefox-focus-para-android' className='color-primary no-link'><b>Firefox «Support»</b></a></li>
+                                <li>Chrome para Android: <a target='_blank' rel='nofollow noopener noreferrer' href='https://support.google.com/accounts/answer/32050?co=GENIE.Platform%3DAndroid&hl=es&oco=0' className='color-primary no-link'><b>Chrome para Android «Support»</b></a></li>
+                                <li>Chrome para IOS: <a target='_blank' rel='nofollow noopener noreferrer' href='https://support.google.com/accounts/answer/32050?co=GENIE.Platform%3DiOS&hl=es&oco=0' className='color-primary no-link'><b>Chrome para IOS «Support»</b></a></li>
                             </ol>
                             <Title title={'Actualización en la'} titleAlt={'Política de Cookies'} />
                             <p>Nuestra Política de Cookies podrá sufrir actualizaciones, como consecuencia de cambios y necesidades legales, así como debidas a mejoras y cambios incluidos en la forma de ofrecer y prestar nuestros servicios e información de interés. Por ello, te recomendamos que visites y accedas a nuestra Política de Cookies periódicamente, para poder tener acceso y conocer los últimos cambios que hayan podido ser incorporados. En caso de que dichos cambios guarden relación con el consentimiento prestado, te será enviada una notificación independiente y por separado para recabarlo nuevamente.</p>

@@ -3,6 +3,7 @@ import { Row, Col, Container } from 'react-bootstrap';
 import Breadcrumb from 'react-bootstrap/Breadcrumb';
 import { useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { BrowserView, isMobile } from 'react-device-detect';
 
 function BreadCrumb({ url }) {
     const { t } = useTranslation();
@@ -18,6 +19,9 @@ function BreadCrumb({ url }) {
     locations.shift();
     locations.shift();
     let ruta;
+    if(isMobile){
+        locations.pop();
+    }
     return (
         <Container>
             <Row>
@@ -29,10 +33,10 @@ function BreadCrumb({ url }) {
                                 {locations.map((item, index) => {
                                     console.log(item)
                                     ruta = (ruta !== undefined && ruta !== null) ? `${ruta}/${item}` : `/${item}`;
-                                    if (!item.includes('herramientas') && !item.includes('destacados') ) {
+                                    if (!item.includes('herramientas') && !item.includes('destacados')) {
                                         return <Breadcrumb.Item
                                             key={index}
-                                            href={!item === 'herramientas' ? 'null' : `/${lang}${ruta}`}
+                                            href={!item === 'herramientas' ? 'null' : `/es-es${ruta}`}
                                             className='capitalize'
                                         >
                                             {t(item).replaceAll('-', ' ')}

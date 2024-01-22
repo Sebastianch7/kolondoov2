@@ -17,11 +17,11 @@ import { getDetailOffer, getExtraOffer } from '../services/ApiServices';
 import ButtonPrimary from '../Components/Button/ButtonPrimary';
 import ContenedorComparadorLogos from '../Components/Contenedor/ContenedorComparadorLogos';
 import ContenedorPreguntasFrecuentes from '../Components/Contenedor/ContenedorPreguntasFrecuentes';
-import { Card, CardGroup } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 import FormSuscripcion from '../Components/Forms/FormSuscripcion';
 import preguntasFrecuentes from '../Content/PreguntasFrecuentesTelefonia.json'
 import ContenedorPorQueComparar from '../Components/Contenedor/ContenedorPorQueComparar';
+import ItemStack from '../Components/ItemStack';
 
 const dataPorQueComparar = [
   {
@@ -103,7 +103,7 @@ export default function RaizTelefonia() {
             })
             :
             TarjetaRaizTelefonia?.map((item, index) => {
-              return <AcordionItem key={index} data={item} />
+              return <ItemStack key={index} data={item} />
             })
           }
         </ContenedorTarjeta>

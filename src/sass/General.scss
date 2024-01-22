@@ -184,8 +184,8 @@ $breakpoint-lg: 1360px;
   }
 
   &-tarjeta {
-    background-image: url('../../public/img/backgroud-container-card.png');
-    padding-top: 50px;
+    /* background-image: url('../../public/img/backgroud-container-card.png'); */
+    /* padding-top: 50px; */
     background-repeat: no-repeat;
     background-position-x: center;
 
@@ -236,14 +236,14 @@ $breakpoint-lg: 1360px;
   border: none;
   padding-top: 10px;
   border-radius: 0px;
-  height: 40px;
   font-family: $MontSemiBold;
   font-size: 1rem;
   font-style: normal;
   font-weight: 800;
-  line-height: normal;
-
+  line-height: 1;
   @include media(xs) {
+    height: 50px;
+    line-height: 2;
     width: 100% !important;
   }
 
@@ -445,7 +445,7 @@ $breakpoint-lg: 1360px;
         }
 
         @include media(xs) {
-          margin-bottom: 5px;
+          padding-bottom: 13px !important;
         }
       }
     }
@@ -501,7 +501,7 @@ $breakpoint-lg: 1360px;
     color: $white;
     position: absolute;
     bottom: 35px;
-    text-shadow: 0px 0px 7px $black;
+    text-shadow: 0px 0px 7px red;
 
     span {
       min-height: 30px;
@@ -511,7 +511,7 @@ $breakpoint-lg: 1360px;
     a {
       text-decoration: underline;
       color: $white;
-      text-shadow: 0px 0px 3px $black;
+      text-shadow: 0px 0px 3px $red;
     }
   }
 
@@ -710,7 +710,7 @@ footer {
   height: 80px !important;
 
   @include media(xs) {
-    //height: 40px !important;
+    height: 20px !important;
   }
 }
 
@@ -777,10 +777,13 @@ footer {
 }
 
 .carrusel {
+  &-img{
+    width: 100vw;
+  }
   &-caption {
-    text-shadow: 0px 0px 5px $black;
-
+    text-shadow: 0px 0px 6px $black;
     a {
+      font-family: $MontHeavy;
       color: $white;
     }
   }
@@ -788,7 +791,7 @@ footer {
 
 .carousel {
   &-indicators {
-    bottom: -70px;
+    bottom: -60px;
 
     [data-bs-target] {
       background-color: #19467C;
@@ -870,6 +873,11 @@ footer {
 
   &-gray {
     background-color: $gray !important;
+  }
+
+  &-notInfo{
+    background-color: #79CFE230;
+    color: $colorPrimary;
   }
 }
 
@@ -1116,4 +1124,53 @@ ul {
 
   list-style: disc !important;
   margin-left: 15px;
+}
+
+.submenu {
+  display: none;
+  position: absolute;
+  background-color: #fff;
+  border-top: 3px solid black;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  text-align: left !important;
+  .dropdown-item{
+    padding: 10px 20px;
+    &:hover{
+      background-color: #f9f9f9;
+    }
+  }
+}
+
+.nav-item:hover .submenu {
+  display: block;
+}
+
+.stack{
+  &-raices{
+    background-color: $white;
+    box-shadow: 0px 0px 6px #cfcece;
+    display: flex;
+    align-items: center;
+    &-title{
+      background-color: #79CFE230;
+      margin: 0px 10px 0px 0px;
+      width: 50px;
+      height: 50px !important;
+      text-align: center;
+      img{
+        vertical-align: text-top !important;
+        width: 40px;
+      }
+    }
+  }
+}
+
+.icon-full{
+  width: 45px !important;
+}
+
+.carrusel-blog{
+  height: 350px !important;
+  background-color: red;
 }

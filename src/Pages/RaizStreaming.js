@@ -8,15 +8,13 @@ import TarjetaRaizStreaming from '../Content/TarjetaRaizStreaming.json'
 import ContenedorTarjeta from '../Components/Contenedor/ContenedorTarjeta';
 import ContenedorTarjetaBlog from '../Components/Contenedor/ContenedorTarjetaBlog';
 import { isMobile } from 'react-device-detect';
-import AcordionItem from '../Components/Acordion/AcordionItem';
 import TarjetaProducto from '../Components/Tarjeta/TarjetaProducto';
-import InterSection from '../Components/Utils/InterSection';
 import ContenedorDescipcionTarifa from '../Components/Contenedor/ContenedorDescipcionTarifa'
-import ContenedorComparadorLogos from '../Components/Contenedor/ContenedorComparadorLogos';
 import ContenedorPreguntasFrecuentes from '../Components/Contenedor/ContenedorPreguntasFrecuentes';
 import FormSuscripcion from '../Components/Forms/FormSuscripcion';
 import ContenedorPorQueComparar from '../Components/Contenedor/ContenedorPorQueComparar';
 import preguntasFrecuentes from '../Content/PreguntasFrecuentesStreaming.json';
+import ItemStack from '../Components/ItemStack';
 
 const dataPorQueComparar = [
   {
@@ -58,7 +56,7 @@ export default function RaizStreaming() {
       <Header breadCrumb></Header>
       <BannerImageFull
         image={'/img/bannerRaizStreaming.png'}
-        title='Comparador televisión y streaming'
+        title='Comparador TV y streaming'
         text1='<ul class="listaAlternativa"><li><p>¡Descubre la manera más inteligente de disfrutar de la mejor televisión con nuestros paquetes exclusivos! Con la posibilidad de combinar diversos servicios bajo una única tarifa</p></li><li><p>Encuentra ofertas exclusivas en nuestro comparador de televisión y streaming y obtén acceso privilegiado a promociones que transformarán tu experiencia de entretenimiento.</p></li><li><p>¡Optimiza tu tiempo y simplifica tu elección! Decidir entre las numerosas opciones del mercado nunca fue tan fácil y eficiente.</p></li></ul>'
         btnLeft
         /* buttons={[
@@ -85,7 +83,7 @@ export default function RaizStreaming() {
             })
             :
             TarjetaRaizStreaming?.map((item, index) => {
-              return <AcordionItem key={index} data={item} />
+              return <ItemStack data={item} index={index}/>
             })
           }
         </ContenedorTarjeta>

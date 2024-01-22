@@ -25,12 +25,12 @@ function TarjetaBlogFull({ data }) {
     return (
         <Col className='mx-3'>
             <Card className='tarjeta tarjeta-blog'>
-                <Card.Img src={`/img/blog/${isMobile ? 'mobile' : 'desktop'}/${imagen_principal_escritorio}`} alt={`/img/blog/${isMobile ? 'mobile' : 'desktop'}/${imagen_principal_escritorio}`} />
+                <Card.Img src={`/img/blog/desktop/${imagen_principal_escritorio}`} alt={`/img/blog/desktop/${imagen_principal_escritorio}`} />
                 <Card.ImgOverlay>
                     <div className='info-card p-3'>
                         <span>{cambiarFecha(fecha_publicacion)}</span>
-                        <p><Link to={`/es-es/blog/${categoria_url}/${url_amigable}`}>{titulo}</Link></p>
-                        <Link to={`/es-es/blog/${categoria_url}/${url_amigable}`}>ver más</Link>
+                        <p><Link  rel="alternate" hreflang="es-es" to={`/es-es/blog/${categoria_url}/${url_amigable}`}>{titulo}</Link></p>
+                        <Link  rel="alternate" hreflang="es-es" to={`/es-es/blog/${categoria_url}/${url_amigable}`}>ver más</Link>
                     </div>
                 </Card.ImgOverlay>
             </Card>

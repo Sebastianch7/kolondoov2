@@ -3,6 +3,7 @@ import { Accordion } from 'react-bootstrap';
 
 export default function AccordionItem({ data }) {
     const { icon, title, list, text } = data;
+    console.log(data)
     return (
         <Accordion.Item eventKey={title}>
             <Accordion.Header><img src={icon} className='accordion-icon-title' alt={icon} /> {title}</Accordion.Header>

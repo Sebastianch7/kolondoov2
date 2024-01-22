@@ -6,12 +6,13 @@ import Footer from '../Components/Footer/Footer'
 import FormSuscripcion from '../Components/Forms/FormSuscripcion'
 import { useLocation } from 'react-router-dom'
 import { Col, Container, Row } from 'react-bootstrap'
+import { useTranslation } from 'react-i18next';
 
 export default function Blog() {
     const location = useLocation();
     const [categoria, setCategoria] = useState(null)
     const [isLoading, setIsLoading] = useState(true)
-
+    const { t } = useTranslation();
     useEffect(() => {
         setIsLoading(true)
         const pathname = location.pathname;
@@ -22,16 +23,16 @@ export default function Blog() {
 
     return (
         <>
-            <Header breadCrumb/>
+            <Header breadCrumb />
             <TitleSection
-                title={'Últimas noticias'}
+                title={'Últimas entradas'}
                 subtitle={'¡Échale un vistazo a nuestro blog y mantente siempre actualizado!'}
                 center
             />
             <Container>
                 <Row>
                     <Col>
-                        {categoria && <h5>Categoria: <u>{categoria?.replaceAll('-',' ')}</u></h5>}
+                        {categoria && <h5>Categoría: <u>{t(categoria?.replaceAll('-', ' '))}</u></h5>}
                     </Col>
                 </Row>
             </Container>

@@ -33,7 +33,7 @@
     "title-baner-comparador-tarifas-fibra-y-movil" : "Comparador tarifas Fibra y Móvil",
     "title-baner-comparador-de-fibra-movil-y-tv" : "Comparador de Fibra, Móvil y TV",
     "title-baner-moviles-gratis-con-contrato" : "Móviles gratis con contrato",
-    "title-baner-comparador-television-y-streaming" : "Comparador televisión y streaming",
+    "title-baner-comparador-television-y-streaming" : "Comparador TV y streaming",
     "title-baner-comparador-de-television" : "Comparador de televisión",
     "title-baner-comparador-de-plataformas-de-streaming" : "Comparador de plataformas de streaming",
     "title-baner-comparador-de-energia" : "Comparadores de Energía",
@@ -55,5 +55,8 @@
     "comparador-tarifas-fibra-y-movil": "Comparador Tarifas Fibra Y Móvil",
     "comparador-fibra-movil-tv": "comparador fibra, móvil y tv",
     "television-streaming":"televisión y Streaming",
-    "energia" : "Energía"
+    "energia" : "Energía",
+    "television": "televisión",
+    "Tv-streaming": "Tv y Streaming",
+    "movil": "Móvil"
 }

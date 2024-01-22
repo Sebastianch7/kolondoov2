@@ -24,6 +24,7 @@ import BlogItem from '../Pages/BlogItem';
 import PoliticaCookies from '../Pages/PoliticaCookies';
 import PoliticaLegal from '../Pages/PoliticaLegal';
 import { useLocation } from 'react-router-dom';
+import PageNotFound from '../Pages/PageNotFound';
 
 
 function RoutesApp() {
@@ -35,61 +36,64 @@ function RoutesApp() {
                     element={<Navigate to="/es-es" exact />}
                 />}
 
-                <Route path="/:lang" element={<Home />} />
+                <Route path="/es-es" element={<Home />} />
 
-                <Route path="/:lang/internet-telefonia" element={<RaizTelefonia />} />
-                <Route path="/:lang/energia" element={<RaizEnergia />} />
-                <Route path="/:lang/television-streaming" element={<RaizStreaming />} />
+                <Route path="/es-es/internet-telefonia" element={<RaizTelefonia />} />
+                <Route path="/es-es/energia" element={<RaizEnergia />} />
+                <Route path="/es-es/television-streaming" element={<RaizStreaming />} />
 
-                <Route path="/:lang/internet-telefonia/comparador-movil" element={<ComparadorMovil />} />
-                <Route path="/:lang/internet-telefonia/comparador-movil/:id" element={<Lead />} />
-                <Route path="/:lang/internet-telefonia/comparador-movil/thank/:id" element={<ThankPage />} />
+                <Route path="/es-es/internet-telefonia/comparador-movil" element={<ComparadorMovil />} />
+                <Route path="/es-es/internet-telefonia/comparador-movil/:id" element={<Lead />} />
+                <Route path="/es-es/internet-telefonia/comparador-movil/thank/:id" element={<ThankPage />} />
 
-                <Route path="/:lang/internet-telefonia/comparador-fibra" element={<ComparadorFibra />} />
-                <Route path="/:lang/internet-telefonia/comparador-fibra/:id" element={<Lead />} />
-                <Route path="/:lang/internet-telefonia/comparador-fibra/thank/:id" element={<ThankPage />} />
+                <Route path="/es-es/internet-telefonia/comparador-fibra" element={<ComparadorFibra />} />
+                <Route path="/es-es/internet-telefonia/comparador-fibra/:id" element={<Lead />} />
+                <Route path="/es-es/internet-telefonia/comparador-fibra/thank/:id" element={<ThankPage />} />
 
-                <Route path="/:lang/energia/comparador-tarifas-luz" element={<ComparadorLuz />} />
-                <Route path="/:lang/energia/comparador-tarifas-luz/:id" element={<Lead />} />
-                <Route path="/:lang/energia/comparador-tarifas-luz/thank/:id" element={<ThankPage />} />
+                <Route path="/es-es/energia/comparador-tarifas-luz" element={<ComparadorLuz />} />
+                <Route path="/es-es/energia/comparador-tarifas-luz/:id" element={<Lead />} />
+                <Route path="/es-es/energia/comparador-tarifas-luz/thank/:id" element={<ThankPage />} />
 
-                <Route path="/:lang/energia/comparador-tarifas-gas" element={<ComparadorGas />} />
-                <Route path="/:lang/energia/comparador-tarifas-gas/:id" element={<Lead />} />
-                <Route path="/:lang/energia/comparador-tarifas-gas/thank/:id" element={<ThankPage />} />
+                <Route path="/es-es/energia/comparador-tarifas-gas" element={<ComparadorGas />} />
+                <Route path="/es-es/energia/comparador-tarifas-gas/:id" element={<Lead />} />
+                <Route path="/es-es/energia/comparador-tarifas-gas/thank/:id" element={<ThankPage />} />
 
-                <Route path="/:lang/energia/comparador-tarifas-luz-y-gas" element={<ComparadorLuzGas />} />
-                <Route path="/:lang/energia/comparador-tarifas-luz-y-gas/:id" element={<Lead />} />
-                <Route path="/:lang/energia/comparador-tarifas-luz-y-gas/thank/:id" element={<ThankPage />} />
+                <Route path="/es-es/energia/comparador-tarifas-luz-y-gas" element={<ComparadorLuzGas />} />
+                <Route path="/es-es/energia/comparador-tarifas-luz-y-gas/:id" element={<Lead />} />
+                <Route path="/es-es/energia/comparador-tarifas-luz-y-gas/thank/:id" element={<ThankPage />} />
 
-                <Route path="/:lang/internet-telefonia/comparador-tarifas-fibra-y-movil" element={<ComparadorFibraMovil />} />
-                <Route path="/:lang/internet-telefonia/comparador-tarifas-fibra-y-movil/:id" element={<Lead />} />
-                <Route path="/:lang/internet-telefonia/comparador-tarifas-fibra-y-movil/thank/:id" element={<ThankPage />} />
+                <Route path="/es-es/internet-telefonia/comparador-tarifas-fibra-y-movil" element={<ComparadorFibraMovil />} />
+                <Route path="/es-es/internet-telefonia/comparador-tarifas-fibra-y-movil/:id" element={<Lead />} />
+                <Route path="/es-es/internet-telefonia/comparador-tarifas-fibra-y-movil/thank/:id" element={<ThankPage />} />
 
-                <Route path="/:lang/internet-telefonia/comparador-fibra-movil-tv" element={<ComparadorFibraMovilTv />} />
-                <Route path="/:lang/internet-telefonia/comparador-fibra-movil-tv/:id" element={<Lead />} />
-                <Route path="/:lang/thank/internet-telefonia/comparador-fibra-movil-tv/:id" element={<ThankPage />} />
+                <Route path="/es-es/internet-telefonia/comparador-fibra-movil-tv" element={<ComparadorFibraMovilTv />} />
+                <Route path="/es-es/internet-telefonia/comparador-fibra-movil-tv/:id" element={<Lead />} />
+                <Route path="/es-es/thank/internet-telefonia/comparador-fibra-movil-tv/:id" element={<ThankPage />} />
 
-                <Route path="/:lang/internet-telefonia/telefono_con_contrato" element={<ComparadorFibraMovilTv />} />
-                <Route path="/:lang/internet-telefonia/telefono_con_contrato/:id" element={<Lead />} />
-                <Route path="/:lang/thank/internet-telefonia/telefono_con_contrato/:id" element={<ThankPage />} />
+                <Route path="/es-es/internet-telefonia/telefono_con_contrato" element={<ComparadorFibraMovilTv />} />
+                <Route path="/es-es/internet-telefonia/telefono_con_contrato/:id" element={<Lead />} />
+                <Route path="/es-es/thank/internet-telefonia/telefono_con_contrato/:id" element={<ThankPage />} />
 
-                {/* <Route path="/:lang/television-streaming/comparador-de-television" element={<ComparadorStreaming />} /> */}
-                <Route path="/:lang/television-streaming/comparador-plataformas-streaming" element={<ComparadorStreaming />} />
+                {/* <Route path="/es-es/television-streaming/comparador-de-television" element={<ComparadorStreaming />} /> */}
+                <Route path="/es-es/television-streaming/comparador-plataformas-streaming" element={<ComparadorStreaming />} />
 
-                <Route path="/:lang/quienes-somos" element={<QuienesSomos />} />
+                <Route path="/es-es/quienes-somos" element={<QuienesSomos />} />
 
-                <Route path="/:lang/herramientas" element={<HerramientaLuz />} />
-                <Route path="/:lang/herramientas/precio-de-la-luz-hoy" element={<HerramientaLuz />} />
-                <Route path="/:lang/herramientas/test-de-velocidad" element={<HerramientaTest />} />
+                <Route path="/es-es/herramientas" element={<PageNotFound />} />
+                <Route path="/es-es/herramientas/precio-de-la-luz-hoy" element={<HerramientaLuz />} />
+                <Route path="/es-es/herramientas/test-de-velocidad" element={<HerramientaTest />} />
 
-                <Route path="/:lang/contactanos" element={<Contactenos />} />
-                <Route path="/:lang/politica-privacidad" element={<PoliticaPrivacidad />} />
-                <Route path="/:lang/politica-cookies" element={<PoliticaCookies />} />
-                <Route path="/:lang/politica-legal" element={<PoliticaLegal />} />
+                <Route path="/es-es/contactanos" element={<Contactenos />} />
+                <Route path="/es-es/politica-privacidad" element={<PoliticaPrivacidad />} />
+                <Route path="/es-es/politica-cookies" element={<PoliticaCookies />} />
+                <Route path="/es-es/politica-legal" element={<PoliticaLegal />} />
 
-                <Route path="/:lang/blog" element={<Blog />} />
-                <Route path="/:lang/blog/:categoria" element={<Blog />} />
-                <Route path="/:lang/blog/:categoria/:id" element={<BlogItem />} />
+                <Route path="/es-es/blog" element={<Blog />} />
+                <Route path="/es-es/blog/:categoria" element={<Blog />} />
+                <Route path="/es-es/blog/:categoria/:id" element={<BlogItem />} />
+                {/* Ruta 404 */}
+                {/* <Route path="/*" element={<PageNotFound />} /> */}
+                <Route path="/es-es/404" element={<PageNotFound />} />
             </Routes>
         </BrowserRouter>
     );

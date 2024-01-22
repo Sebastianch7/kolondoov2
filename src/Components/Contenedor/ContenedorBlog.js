@@ -5,10 +5,12 @@ import ContenedorDestacados from '../Blog/ContenedorDestacados';
 import { getBlog } from '../../services/ApiServices';
 import Load from '../Utils/Load';
 import ReactPaginate from 'react-paginate';
+import { useNavigate } from 'react-router-dom';
 
 export default function ContenedorBlog({ categoria = null }) {
     const [fetchBlog, setFetchBlog] = useState([]);
     const [isLoading, setIsLoading] = useState(true)
+    let navigate = useNavigate();
 
     useEffect(() => {
         setIsLoading(true);
@@ -18,7 +20,9 @@ export default function ContenedorBlog({ categoria = null }) {
                 setFetchBlog(response);
                 setIsLoading(false);
             } catch (error) {
+                navigate(`/es-es/404`);
                 console.error('Error al obtener blog:', error);
+
             }
         };
         fetchBlogList();
@@ -68,7 +72,7 @@ export default function ContenedorBlog({ categoria = null }) {
                         pageRangeDisplayed={3}
                         marginPagesDisplayed={2}
                         pageCount={pageCount}
-                        previousLxabel="<"
+                        previousLabel="<"
                         pageClassName="page-item"
                         pageLinkClassName="page-link"
                         previousClassName="page-item"

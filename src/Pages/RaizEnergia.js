@@ -1,27 +1,25 @@
 import React, { useState, useEffect } from 'react';
 import Header from '../Components/Header/Header'
 import BannerImageFull from '../Components/Banner/BannerImageFull'
-import { Container, Row, Col } from 'react-bootstrap'
+import { Container, Row, Col, Stack } from 'react-bootstrap'
 import TitleSection from '../Components/Text/TitleSection'
 import Footer from '../Components/Footer/Footer';
 import TarjetaRaizEnergia from '../Content/TarjetaRaizEnergia.json'
 import ContenedorTarjeta from '../Components/Contenedor/ContenedorTarjeta';
 import ContenedorTarjetaBlog from '../Components/Contenedor/ContenedorTarjetaBlog';
 import { isMobile } from 'react-device-detect';
-import AcordionItem from '../Components/Acordion/AcordionItem';
 import TarjetaProducto from '../Components/Tarjeta/TarjetaProducto';
 import InterSection from '../Components/Utils/InterSection';
 import ContenedorDescipcionTarifa from '../Components/Contenedor/ContenedorDescipcionTarifa'
 import TarjetaTarifa from '../Components/Tarjeta/TarjetaTarifa'
 import { getExtraOffer } from '../services/ApiServices';
-import ButtonPrimary from '../Components/Button/ButtonPrimary';
 import ContenedorComparadorLogos from '../Components/Contenedor/ContenedorComparadorLogos';
 import ContenedorPreguntasFrecuentes from '../Components/Contenedor/ContenedorPreguntasFrecuentes';
-import { Card, CardGroup } from 'react-bootstrap';
 import FormSuscripcion from '../Components/Forms/FormSuscripcion';
 import { useTranslation } from 'react-i18next';
 import ContenedorPorQueComparar from '../Components/Contenedor/ContenedorPorQueComparar';
 import preguntasFrecuentes from '../Content/PreguntasFrecuentesEnergia.json'
+import ItemStack from '../Components/ItemStack';
 
 const dataPorQueComparar = [
   {
@@ -81,12 +79,12 @@ export default function RaizEnergia() {
         title={t('title-baner-comparador-de-energia')}
         text1='<ul class="listaAlternativa"><li><p>Comparamos las <b>tarifas de luz y gas</b> del mercado para que ahorres en tus facturas.</p></li><li><p>Te dotamos de <b>herramientas y de información</b> útil basada en la claridad y transparencia.</p></li><li><p>Una de nuestras misiones es la de <b>ayudarte a simplificar tus decisiones</b> sobre el consumo de energía.</p></li></ul>'
         btnLeft
-        /* buttons={[
-          {
-            title: '¡Empieza a ahorrar!',
-            url: '/energia/comparador-tarifas-luz'
-          }
-        ]} */
+      /* buttons={[
+        {
+          title: '¡Empieza a ahorrar!',
+          url: '/energia/comparador-tarifas-luz'
+        }
+      ]} */
       />
       <Container>
         <TitleSection
@@ -95,7 +93,7 @@ export default function RaizEnergia() {
           titleAlt={'Energía'}
           text1={t('es-raiz-energia-content-description')}
           text2={t('es-raiz-energia-content-description-2')}
-          left
+          left 
         />
         <ContenedorTarjeta
           cols={8}
@@ -106,9 +104,13 @@ export default function RaizEnergia() {
             })
             :
             TarjetaRaizEnergia?.map((item, index) => {
-              return <AcordionItem key={index} data={item} />
+              return (
+                <ItemStack data={item} index={index}/>
+              );
             })
           }
+
+
         </ContenedorTarjeta>
         <InterSection></InterSection>
         <TitleSection

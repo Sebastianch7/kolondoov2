@@ -7,7 +7,6 @@ import { getExtraOffer } from '../services/ApiServices'
 import TarjetaTarifa from '../Components/Tarjeta/TarjetaTarifa'
 import ContenedorPreguntasFrecuentes from '../Components/Contenedor/ContenedorPreguntasFrecuentes';
 import preguntasFrecuentes from '../Content/PreguntasFrecuentesTestVelocidad.json'
-
 export default function HerramientaTest() {
 
     const [isLoading, setIsLoading] = useState(true);

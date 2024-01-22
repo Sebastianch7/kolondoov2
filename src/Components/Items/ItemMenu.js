@@ -17,7 +17,7 @@ function ItemMenu({ data }) {
     return (
         <Nav className='no-link'>
             <NavDropdown
-                title={!data.titleUrl.includes('herramientas') ? <Link to={`/${lang}${data.titleUrl}`} className='no-link'>{data.title}</Link> : data.title }
+                title={!data.titleUrl.includes('herramientas') ? <Link to={`/es-es${data.titleUrl}`} className='no-link'>{data.title}</Link> : data.title }
                 id="collasible-nav-dropdown"
                 show={show}
                 onMouseEnter={() => setShow(true)}
@@ -26,9 +26,7 @@ function ItemMenu({ data }) {
                 as={Link}
             >
                 {data.children.map((item, key) => (
-                    <Link className='dropdown-item' to={`/${lang}${item.url}`} key={key}>
-                        {t(item.name)}
-                    </Link>
+                    <Link className='dropdown-item' to={`/es-es${item.url}`} key={key}>{t(item.name)}</Link>
                 ))}
             </NavDropdown>
         </Nav>

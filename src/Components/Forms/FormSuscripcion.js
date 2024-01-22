@@ -56,7 +56,7 @@ function FormSuscripcion({ }) {
         <>
             <BannerReverse
                 title={'Suscríbete gratis y recibe nuestras mejores ofertas'}
-                subtitle='Únete a nuestra comunidad. Recibirás nuestros mejores contenidos semanalmente: guías prácticas para ahorrar y gestionar tu consumo, últimas noticias…¡ Y mucho más!'
+                subtitle='Únete a nuestra comunidad. Recibirás nuestros mejores contenidos semanalmente: guías prácticas para ahorrar y gestionar tu consumo, últimas entradas…¡ Y mucho más!'
                 image={'/img/bannerFooter.png'}
             >
                 <Form onSubmit={subscripcion}>

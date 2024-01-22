@@ -27,7 +27,7 @@ export default function TarjetaItemBlog({ data }) {
         <>
             <Col xs={12} md={6}>
                 <Card className='m-2 tarjeta tarjeta-blog tarjeta-blog-blog  border-0'>
-                    <Card.Img variant="top" className='img-fluid' src={`/img/blog/${isMobile ? 'mobile' : 'desktop'}/${imagen_principal_escritorio}`} alt={`/img/blog/${isMobile ? 'mobile' : 'desktop'}/${imagen_principal_escritorio}`} />
+                    <a href={`/es-es/blog/${data.categoria_url}/${data.url_amigable}`}><Card.Img variant="top" className='img-fluid' src={`/img/blog/desktop/${imagen_principal_escritorio}`} alt={`/img/blogdesktop/${imagen_principal_escritorio}`} /></a>
                     <Card.Body className='bg-gray'>
                         <span>{cambiarFecha(fecha_publicacion)}</span> - <span>{categoria}</span>
                         <Card.Title>

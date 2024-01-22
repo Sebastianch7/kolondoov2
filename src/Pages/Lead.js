@@ -36,6 +36,7 @@ export default function Lead() {
       try {
         if (idPlan !== null) {
           const response = await getDetailOffer(offerLooking, idPlan)
+          console.log(response)
           setInfoOffer(response);
           setIsLoading(false);
         }
@@ -56,12 +57,13 @@ export default function Lead() {
           <Row className="justify-content-md-center d-flex flex-column flex-md-row">
             <div>
               <Title title={`Oferta de ${infoOffer?.nombre}`} />
+              <b>{infoOffer?.nombre_tarifa}</b>
             </div>
             <Col xs={12} md={7} className='my-2' style={isMobile ? { order: 2 } : { order: 1 }}>
               <TarjetaTarifaLead key={0} data={infoOffer} service={offerLooking} />
             </Col>
             <Col xs={12} md={5} className='my-2' style={isMobile ? { order: 1 } : { order: 2 }}>
-              <FormLead idPlan={idPlan} landing={offerLooking} urlOffers={location.pathname} company={infoOffer.operadora}></FormLead>
+              <FormLead data={infoOffer} idPlan={idPlan} landing={offerLooking} urlOffers={location.pathname} company={infoOffer.operadora}></FormLead>
             </Col>
           </Row>
         </Container>

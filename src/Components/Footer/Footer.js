@@ -8,6 +8,10 @@ import { Bs1CircleFill } from "react-icons/bs";
 
 
 function Footer(props) {
+    function codificarEnlace(enlace) {
+        return encodeURIComponent(enlace);
+    }
+
     const [lang, setLang] = useState(null)
     const location = useLocation();
 
@@ -43,21 +47,21 @@ function Footer(props) {
                             <Col md={3}>
                                 <h5 className='text-center'>Redes sociales</h5>
                                 <ul>
-                                    <li className='my-md-3'><a href="#">Linkedin</a></li>
-                                    <li className='my-md-3'><a href="#">Facebook</a></li>
-                                    <li className='my-md-3'><a href="#">Twitter</a></li>
-                                    <li className='my-md-3'><a href="#">Instagram</a></li>
+                                    <li className='my-md-3'><a target='_blank' rel='nofollow noopener noreferrer' href={"https://www.linkedin.com/company/kolondoo"}>Linkedin</a></li>
+                                    <li className='my-md-3'><a target='_blank' rel='nofollow noopener noreferrer' href={"https://www.facebook.com/Kolondoo"}>Facebook</a></li>
+                                    <li className='my-md-3'><a target='_blank' rel='nofollow noopener noreferrer' href={"https://twitter.com/kolondoo"}>Twitter</a></li>
+                                    <li className='my-md-3'><a target='_blank' rel='nofollow noopener noreferrer' href={"https://www.instagram.com/kolondoo"}>Instagram</a></li>
                                 </ul>
                             </Col>
                             <Col md={3}>
                                 <h5>Tarifas</h5>
                                 <ul>
                                     {/* <li className='my-md-3'><Link to={''}>Tarifas</Link></li> */}
-                                    <li className='my-md-3'><Link to={`/${lang}/internet-telefonia/comparador-fibra`}>Sólo fibra</Link></li>
-                                    <li className='my-md-3'><Link to={`/${lang}/internet-telefonia/comparador-movil`}>Tarifa móvil</Link></li>
-                                    <li className='my-md-3'><Link to={`/${lang}/internet-telefonia/comparador-fibra-movil-tv`}>Fibra+móvil+TV</Link></li>
-                                    <li className='my-md-3'><Link to={`/${lang}/internet-telefonia/comparador-tarifas-fibra-y-movil`}>Fibra+móvil</Link></li>
-                                    <li className='my-md-3'><Link to={`/${lang}/energia/comparador-tarifas-luz`}>Luz</Link></li>
+                                    <li className='my-md-3'><Link to={`/es-es/internet-telefonia/comparador-fibra`}>Sólo fibra</Link></li>
+                                    <li className='my-md-3'><Link to={`/es-es/internet-telefonia/comparador-movil`}>Tarifa móvil</Link></li>
+                                    <li className='my-md-3'><Link to={`/es-es/internet-telefonia/comparador-fibra-movil-tv`}>Fibra+móvil+TV</Link></li>
+                                    <li className='my-md-3'><Link to={`/es-es/internet-telefonia/comparador-tarifas-fibra-y-movil`}>Fibra+móvil</Link></li>
+                                    <li className='my-md-3'><Link to={`/es-es/energia/comparador-tarifas-luz`}>Luz</Link></li>
                                 </ul>
                             </Col>
                         </>
@@ -65,15 +69,14 @@ function Footer(props) {
                     <Col xs={6} md={3}>
                         <h5>vuskoo.com</h5>
                         <ul>
-                            <li className='my-md-3'><Link to={`/${lang}`}>vuskoo.com</Link></li>
-                            <li className='my-md-3'><Link to={`/${lang}/quienes-somos`}>Quiénes Somos</Link></li>
-                            <li className='my-md-3'><Link to={`/${lang}/contactanos`}>Contáctanos</Link></li>
+                            <li className='my-md-3'><Link to={`/es-es`}>vuskoo.com</Link></li>
+                            <li className='my-md-3'><Link to={`/es-es/quienes-somos`}>Quiénes Somos</Link></li>
+                            <li className='my-md-3'><Link to={`/es-es/contactanos`}>Contáctanos</Link></li>
                             <li className='my-3'><img className='img-fluid' src='/img/parner-google.svg' /></li>
                         </ul>
                     </Col>
-                </Row>
-                <Row>
-                    <Col xs={12} className="footer-copyright text-white pt-5 mt-5 pt-md-0 mt-md-0">
+
+                    <Col xs={12} className="footer-copyright text-white pt-md-0 mt-md-0">
                         <p>COPYRIGHT © 2021 VUSKOO. TODOS LOS DERECHOS RESERVADOS | <Link to={`/es-es/politica-privacidad`}>POLÍTICA DE PRIVACIDAD</Link> | <Link to={`/es-es/politica-legal`}>AVISO LEGAL</Link> | <Link to={`/es-es/politica-cookies`}>POLÍTICA DE COOKIES</Link> | <a href=''>MAPA WEB</a></p>
                     </Col>
                 </Row>

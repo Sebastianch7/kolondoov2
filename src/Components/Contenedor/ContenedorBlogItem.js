@@ -49,17 +49,16 @@ export default function ContenedorBlogItem({ children }) {
             {!load ? <Container>
                 <Row>
                     <Col xs={12} md={8}>
-                        <Image className='w-100' src={`/img/blog/${isMobile ? 'mobile' : 'desktop'}/${fetchBlog?.imagen_principal_escritorio}`} alt={`/img/blog/${isMobile ? 'mobile' : 'desktop'}/${fetchBlog?.imagen_principal_escritorio}`} />
+                        <Image className='w-100' src={`/img/blog/desktop/${fetchBlog?.imagen_principal_escritorio}`} alt={`/img/blog/desktop/${fetchBlog?.imagen_principal_escritorio}`} />
                         <TitleSection
                             left
                             title={fetchBlog?.titulo}
                             text1={fetchBlog?.entrada}
-                            subtitle={fetchBlog?.metatitulo}
                             clave={fetchBlog?.hashtags?.replaceAll('[', '').replaceAll('"', '').replaceAll(']', '').replaceAll(',', ' ')}
                             textBlog={fetchBlog?.cuerpo}
                         />
                         <Col xs={12} className='text-center my-5'>
-                        <Link className='font-09 btn btn-primary' to={`/${lang}/blog`}>Volver</Link>
+                        <Link className='font-09 btn btn-primary' to={`/es-es/blog`}>Volver</Link>
                         </Col>
                     </Col>
                     <ContenedorDestacados />
