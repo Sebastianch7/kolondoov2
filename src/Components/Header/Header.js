@@ -1,14 +1,15 @@
 
 import ItemMenu from '../Items/ItemMenu';
-import { Navbar, Container, Nav, NavDropdown } from 'react-bootstrap';
+import { Navbar, Container, Nav } from 'react-bootstrap';
 import BreadCrumb from '../BreadCrumb/BreadCrumb';
 import items from '../../Content/ItemMenu.json'
-import ChangeLang from '../Utils/ChangeLang'
 import { useTranslation } from 'react-i18next';
 import { useState, useEffect } from 'react';
 import { useLocation, Link } from 'react-router-dom';
 import ItemMenuDesktop from '../Items/ItemMenuDesktop';
 import { isMobile } from 'react-device-detect';
+import Accordion from 'react-bootstrap/Accordion';
+
 
 function Header({ breadCrumb }) {
     const { t } = useTranslation();
@@ -27,19 +28,31 @@ function Header({ breadCrumb }) {
     return (
         <>
             <Navbar sticky='top' expand={"lg"} className="navbar-light bg-white clean-navbar my-4 my-xxl-0">
-                <Container className='container-header justify-content-between'>
+                <Container className='container-header'>
                     <Navbar.Brand>
                         <a href={`/es-es`}><img src="/img/logos/logo.svg" alt="Logo" /></a>
                     </Navbar.Brand>
                     {isMobile && (
                         <>
                             <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                            <Navbar.Collapse id="basic-navbar-nav">
+                            <Navbar.Collapse>
                                 <Nav className="mx-auto container-menu">
                                     {items.map((item, key) => (
-                                        <ItemMenu key={key} data={item} />
+                                        <Accordion className='no-radius'>
+                                            <Accordion.Item eventKey={key} className='no-radius'>
+                                                <Accordion.Header>{item.title}</Accordion.Header>
+                                                <Accordion.Body>
+                                                    <ul>
+                                                    {
+                                                        item.children.map((sub, index) => {
+                                                            return <a className='no-link text-left' href={`/es-es${sub.url}`}><li className='text-left'>{sub.name}</li></a>
+                                                        })
+                                                    }
+                                                    </ul>
+                                                </Accordion.Body>
+                                            </Accordion.Item>
+                                        </Accordion>
                                     ))}
-
                                 </Nav>
                             </Navbar.Collapse>
                         </>

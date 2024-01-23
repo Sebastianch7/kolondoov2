@@ -20,7 +20,8 @@ function BreadCrumb({ url }) {
     locations.shift();
     let ruta;
     if(isMobile){
-        locations.pop();
+        
+        locations.shift();
     }
     return (
         <Container>
