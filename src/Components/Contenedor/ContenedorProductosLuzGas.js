@@ -16,9 +16,6 @@ function ContenedorProductosLuzGas() {
   // Estados para el estado de carga de filtros e información
   const [isLoadInformation, setIsLoadInformation] = useState(false);
 
-  // Estado para la marca seleccionada
-  const [selectedBrand, setSelectedBrand] = useState(null);
-
   // Estados para filtros seleccionados
   const [filterBrand, setFilterBrand] = useState([]);
   const [filterPrice, setFilterPrice] = useState(false);
@@ -41,6 +38,9 @@ function ContenedorProductosLuzGas() {
     setFilterPrice(false);
     setFiltros(Tarifas);
     setFilterPromo(false);
+    setFilterTramo(false)
+    setFilterPermanencia(false)
+    setFilterGas(false)
   };
 
   useEffect(() => {

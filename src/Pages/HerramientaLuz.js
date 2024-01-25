@@ -11,7 +11,7 @@ import ContenedorHerramientasLuz from '../Components/Contenedor/ContenedorHerram
 import ChartLineal from '../Components/Chart/ChartLuzDia';
 import ChartLuzMonth from '../Components/Chart/ChartLuzMonth';
 import preguntasFrecuentes from '../Content/PreguntasFrecuentesPrecioLuz.json'
-
+import MetaData from '../Components/Header/SeoMetadata';
 
 export default function HerramientaLuz() {
 
@@ -61,6 +61,7 @@ export default function HerramientaLuz() {
 
     return (
         <>
+        <MetaData titulo={'Precio de la Luz Hoy: Tarifas actualizadas y tendencias | Vuskoo'} descripcion={'Descubre el precio de la luz hoy y mantente informado sobre las tarifas eléctricas actuales. Analiza las tendencias del mercado energético y del consumo'}/>
             <Header breadCrumb></Header>
             <Container fluid className='p-md-0 m-md-0 mx-xxl-auto'>
                 <Card className='tarjeta p-sm-5 b-gray border-0'>

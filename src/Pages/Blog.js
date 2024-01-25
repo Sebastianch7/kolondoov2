@@ -7,6 +7,7 @@ import FormSuscripcion from '../Components/Forms/FormSuscripcion'
 import { useLocation } from 'react-router-dom'
 import { Col, Container, Row } from 'react-bootstrap'
 import { useTranslation } from 'react-i18next';
+import MetaData from '../Components/Header/SeoMetadata';
 
 export default function Blog() {
     const location = useLocation();
@@ -23,6 +24,7 @@ export default function Blog() {
 
     return (
         <>
+            <MetaData titulo={'Explora nuestros Blog: Consejos, tendencia y actualidad | Vuskoo'} descripcion={'Sumérgete en el universo informativo de Vuskoo. Descubre tendencias, consejos y análisis en nuestro blog de comparadores de servicios.'} />
             <Header breadCrumb />
             <TitleSection
                 title={'Últimas entradas'}

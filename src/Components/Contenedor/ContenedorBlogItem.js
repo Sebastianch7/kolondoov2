@@ -8,7 +8,8 @@ import { getBlogById } from '../../services/ApiServices';
 import { useLocation } from 'react-router-dom';
 import Load from '../Utils/Load'
 import { Link } from 'react-router-dom';
-import { isMobile } from 'react-device-detect';
+import { useNavigate } from 'react-router-dom';
+import MetaData from '../../Components/Header/SeoMetadata';
 
 export default function ContenedorBlogItem({ children }) {
 
@@ -17,6 +18,7 @@ export default function ContenedorBlogItem({ children }) {
     const [load, setLoad] = useState(false)
     const [lang, setLang] = useState(null)
     const location = useLocation();
+    let navigate = useNavigate();
 
     useEffect(() => {
         setLang(location.pathname.split('/')[1])
@@ -34,6 +36,9 @@ export default function ContenedorBlogItem({ children }) {
             try {
                 if (idBlog !== null) {
                     const response = await getBlogById(idBlog);
+                    if(response === undefined){
+                        navigate(`/es-es/404`);
+                    }
                     setFetchBlog(response);
                     setLoad(false);
                 }
@@ -46,6 +51,7 @@ export default function ContenedorBlogItem({ children }) {
     }, [idBlog]);
     return (
         <>
+            <MetaData titulo={fetchBlog.seo_titulo} descripcion={fetchBlog.seo_descripcion} imagen_destacada={`/img/blog/desktop/${fetchBlog?.imagen_principal_escritorio}`} />
             {!load ? <Container>
                 <Row>
                     <Col xs={12} md={8}>

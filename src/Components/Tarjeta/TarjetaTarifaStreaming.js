@@ -55,7 +55,7 @@ function TarjetaTarifaStreaming({ data }) {
                         </Row>
                     </Col>
                     <Col xs={12} md={12}>
-                        <Link className='btn btn-primary w-100' to={`${url}`} target="_blank">{`Contratar`}</Link>
+                        <Link className='btn btn-primary w-100' rel='nofollow noopener noreferrer' to={`${url}`} target="_blank">{`Contratar`}</Link>
                     </Col>
                 </Row>
             </Card>

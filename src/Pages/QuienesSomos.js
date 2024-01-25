@@ -13,12 +13,13 @@ import TarjetaQuienesSomos from '../Content/TarjetaQuienesSomos.json'
 import { useTranslation } from 'react-i18next';
 import { isMobile } from 'react-device-detect';
 import AcordionItem from '../Components/Acordion/AcordionItem';
-
+import MetaData from '../Components/Header/SeoMetadata';
 
 function QuienesSomos(props) {
     const { t } = useTranslation();
     return (
         <div>
+            <MetaData titulo={'Quiénes Somos: Tu Guía de comparadores de servicios | Vuskoo'} descripcion={'En Vuskoo, te ayudamos a encontrar la mejor oferta y cómo puedes tomar decisiones informadas con nuestros comparadores de servicios. Conoce quiénes somos'}/>
             <Header breadCrumb></Header>
             <main>
                 <BannerImageFull

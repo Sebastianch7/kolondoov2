@@ -52,6 +52,7 @@ function ContenedorProductosFibra() {
     setRangePrice([minPrice, maxPrice]);
     setFilterPromo(false);
     setFiltros(Tarifas);
+    setFilterPermanencia(false)
   };
 
   // Función para manejar el cambio en el rango de precio

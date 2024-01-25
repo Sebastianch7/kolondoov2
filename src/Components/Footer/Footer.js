@@ -34,11 +34,11 @@ function Footer(props) {
                         <ul>
                             <li className='my-md-3'>Calle Barquillo, 8</li>
                             <li className='my-md-3'>28004 Madrid - España</li>
-                            <li>
+                            {/* <li>
                                 <Form.Select onChange={(e) => (window.location.href = e.target.value)}>
                                     <option value="/es-es">España</option>
                                 </Form.Select>
-                            </li>
+                            </li> */}
                         </ul>
 
                     </Col>

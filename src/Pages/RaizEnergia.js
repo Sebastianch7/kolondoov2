@@ -20,6 +20,7 @@ import { useTranslation } from 'react-i18next';
 import ContenedorPorQueComparar from '../Components/Contenedor/ContenedorPorQueComparar';
 import preguntasFrecuentes from '../Content/PreguntasFrecuentesEnergia.json'
 import ItemStack from '../Components/ItemStack';
+import MetaData from '../Components/Header/SeoMetadata';
 
 const dataPorQueComparar = [
   {
@@ -73,6 +74,7 @@ export default function RaizEnergia() {
   }, []);
   return (
     <>
+    <MetaData titulo={''} descripcion={''}/>
       <Header breadCrumb></Header>
       <BannerImageFull
         image={'/img/bannerRaizEnergia.png'}

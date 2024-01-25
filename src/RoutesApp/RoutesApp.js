@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Home from '../Pages/Home';
 import ComparadorMovil from '../Pages/ComparadorMovil';
@@ -23,7 +23,6 @@ import Blog from '../Pages/Blog';
 import BlogItem from '../Pages/BlogItem';
 import PoliticaCookies from '../Pages/PoliticaCookies';
 import PoliticaLegal from '../Pages/PoliticaLegal';
-import { useLocation } from 'react-router-dom';
 import PageNotFound from '../Pages/PageNotFound';
 
 
@@ -92,7 +91,7 @@ function RoutesApp() {
                 <Route path="/es-es/blog/:categoria" element={<Blog />} />
                 <Route path="/es-es/blog/:categoria/:id" element={<BlogItem />} />
                 {/* Ruta 404 */}
-                {/* <Route path="/*" element={<PageNotFound />} /> */}
+                <Route path="/*" element={<PageNotFound />} />
                 <Route path="/es-es/404" element={<PageNotFound />} />
             </Routes>
         </BrowserRouter>

@@ -30,9 +30,8 @@ function BreadCrumb({ url }) {
                     <Breadcrumb>
                         {locations.length > 0 &&
                             <>
-                                <Breadcrumb.Item href="/">Vuskoo</Breadcrumb.Item>
+                                <Breadcrumb.Item href="/">Home</Breadcrumb.Item>
                                 {locations.map((item, index) => {
-                                    console.log(item)
                                     ruta = (ruta !== undefined && ruta !== null) ? `${ruta}/${item}` : `/${item}`;
                                     if (!item.includes('herramientas') && !item.includes('destacados')) {
                                         return <Breadcrumb.Item

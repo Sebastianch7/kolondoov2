@@ -4,10 +4,12 @@ import Header from '../Components/Header/Header'
 import Footer from '../Components/Footer/Footer'
 import { Container, Row, Col } from 'react-bootstrap'
 import Title from '../Components/Text/Title'
+import MetaData from '../Components/Header/SeoMetadata';
 
 export default function PoliticaLegal() {
     return (
         <>
+        <MetaData titulo={''} descripcion={''}/>
             <Header breadCrumb></Header>
             <div className='mb-5'>
                 <Container>
@@ -15,7 +17,7 @@ export default function PoliticaLegal() {
                         <Col md={12}>
                             <Title title={'Aviso'} titleAlt={'Legal'} />
                             <p>A continuación, desde Kolondoo queremos explicar los términos y condiciones generales de uso aplicables al acceder al sitio web y/o utilizar los servicios ofrecidos en el mismo.</p>
-                            <p>Los presentes términos y condiciones generales de uso (en adelante, los “Términos de Uso”) regulan los derechos y obligaciones derivados del acceso, la navegación y el uso por parte de los usuarios del dominio <a className='color-primary no-link' href='https://vuskoo.com'><b>https://vuskoo.com</b></a> (en adelante, el “ Sitio Web”).</p>
+                            <p>Los presentes términos y condiciones generales de uso (en adelante, los “Términos de Uso”) regulan los derechos y obligaciones derivados del acceso, la navegación y el uso por parte de los usuarios del dominio <a className='color-primary no-link' href='https://www.vuskoo.com'><b>https://vuskoo.com</b></a> (en adelante, el “ Sitio Web”).</p>
                             <Title title={'1. - Responsable'} />
                             <p>El titular del Sitio Web y resposanle del tratamiento de los datos que se recaben es KOLONDOO MEDIA S.L. (en adelante, “Kolondoo” o la “Sociedad”) con DNI/ NIF: B-16756041 y domicilio social: C/Barquillo nº8. Iº1zq , 28004 Madrid, (España). Datos registrales: Registro Mercantil de Madrid, Tomo 42273, Folio 180, Inscripción 1, Hoja M-748395 E-mail de contacto hola@kolondoo.com o través de la sección de “Contacto” habilitada a tal efecto en el Sitio Web.</p>
                             <Title title={'2. - Acceso, navegación y seguridad'} />

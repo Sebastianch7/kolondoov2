@@ -39,7 +39,9 @@ function ContenedorProductosMovil() {
     setFilterBrand([]);
     setFilterPrice(false);
     setFiltros(Tarifas);
-    setFilterPromo(false);
+    setFilterTramo(false)
+    setFilterPermanencia(false)
+    setFilterPromo(false)
   };
 
   useEffect(() => {

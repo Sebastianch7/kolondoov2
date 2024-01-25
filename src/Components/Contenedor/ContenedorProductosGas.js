@@ -37,6 +37,8 @@ function ContenedorProductosGas() {
     setFilterBrand([]);
     setFilterPromo(false);
     setFiltros(Tarifas);
+    setFilterGas(false)
+    setFilterPermanencia(false)
   };
 
   useEffect(() => {

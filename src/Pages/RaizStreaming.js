@@ -15,6 +15,7 @@ import FormSuscripcion from '../Components/Forms/FormSuscripcion';
 import ContenedorPorQueComparar from '../Components/Contenedor/ContenedorPorQueComparar';
 import preguntasFrecuentes from '../Content/PreguntasFrecuentesStreaming.json';
 import ItemStack from '../Components/ItemStack';
+import MetaData from '../Components/Header/SeoMetadata';
 
 const dataPorQueComparar = [
   {
@@ -53,18 +54,19 @@ const data = [
 export default function RaizStreaming() {
   return (
     <>
+      <MetaData titulo={'Comparador de televisión y de plataformas streaming | Vuskoo'} descripcion={'Explora las mejores opciones de televisión y plataformas de streaming. Encuentra ofertas, compara canales, programas y beneficios. Entretenimiento a tu medida'}/>
       <Header breadCrumb></Header>
       <BannerImageFull
         image={'/img/bannerRaizStreaming.png'}
         title='Comparador TV y streaming'
         text1='<ul class="listaAlternativa"><li><p>¡Descubre la manera más inteligente de disfrutar de la mejor televisión con nuestros paquetes exclusivos! Con la posibilidad de combinar diversos servicios bajo una única tarifa</p></li><li><p>Encuentra ofertas exclusivas en nuestro comparador de televisión y streaming y obtén acceso privilegiado a promociones que transformarán tu experiencia de entretenimiento.</p></li><li><p>¡Optimiza tu tiempo y simplifica tu elección! Decidir entre las numerosas opciones del mercado nunca fue tan fácil y eficiente.</p></li></ul>'
         btnLeft
-        /* buttons={[
-          {
-            title: '¡Empieza a ahorrar!',
-            url: '/energia/comparador-tarifas-luz'
-          }
-        ]} */
+      /* buttons={[
+        {
+          title: '¡Empieza a ahorrar!',
+          url: '/energia/comparador-tarifas-luz'
+        }
+      ]} */
       />
       <Container>
         <TitleSection
@@ -83,7 +85,7 @@ export default function RaizStreaming() {
             })
             :
             TarjetaRaizStreaming?.map((item, index) => {
-              return <ItemStack data={item} index={index}/>
+              return <ItemStack data={item} index={index} />
             })
           }
         </ContenedorTarjeta>

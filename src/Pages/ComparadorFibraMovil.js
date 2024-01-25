@@ -2,12 +2,13 @@ import React from 'react';
 import Header from '../Components/Header/Header';
 import Banner from '../Components/Banner/Banner';
 import Footer from '../Components/Footer/Footer';
-import FormSuscripcion from '../Components/Forms/FormSuscripcion';
 import ContenedorProductosMovilFibra from '../Components/Contenedor/ContenedorProductosMovilFibra';
+import MetaData from '../Components/Header/SeoMetadata';
 
 function ComparadorFibraMovil() {
     return (
         <div>
+            <MetaData titulo={'Comparador tarifas Fibra y Móvil: contrata y ahorra | Vuskoo'} descripcion={'Descubre y contrata las mejores tarifas de Fibra y Móvil. Explora las ofertas, compara precios, velocidades y beneficios para encontrar la combinación perfecta'}/>
             <Header breadCrumb></Header>
             <Banner
                 title={'Comparador tarifas Fibra y Móvil'}

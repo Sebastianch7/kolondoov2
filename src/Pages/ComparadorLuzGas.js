@@ -2,12 +2,13 @@ import React from 'react';
 import Header from '../Components/Header/Header';
 import Banner from '../Components/Banner/Banner';
 import Footer from '../Components/Footer/Footer';
-import FormSuscripcion from '../Components/Forms/FormSuscripcion';
 import ContenedorProductosLuzGas from '../Components/Contenedor/ContenedorProductosLuzGas';
+import MetaData from '../Components/Header/SeoMetadata';
 
 function ComparadorLuzGas() {
     return (
         <div>
+            <MetaData titulo={'Comparador tarifas luz y gas: precios, ofertas y más | Vuskoo'} descripcion={'Simplificamos tu elección para que ahorres en tus facturas de energía. Optimiza tu experiencia con nuestro comparador de tarifas de luz y gas. ¡Encuentra la opción ideal!'}/>
             <Header breadCrumb></Header>
             <Banner
                 title={'Comparador de Tarifas Luz y Gas'}

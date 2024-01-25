@@ -241,6 +241,7 @@ $breakpoint-lg: 1360px;
   font-style: normal;
   font-weight: 800;
   line-height: 1;
+
   @include media(xs) {
     height: 50px;
     line-height: 2;
@@ -777,11 +778,13 @@ footer {
 }
 
 .carrusel {
-  &-img{
+  &-img {
     width: 100vw;
   }
+
   &-caption {
     text-shadow: 0px 0px 6px $black;
+
     a {
       font-family: $MontHeavy;
       color: $white;
@@ -832,8 +835,15 @@ footer {
   border-radius: 0px !important;
 }
 
-.no-radius {
-  border-radius: 0px !important;
+.no {
+  &-radius {
+    border-radius: 0px !important;
+  }
+  &-border{
+    &-bottom{
+      border-bottom: 0px solid transparent !important;
+    }
+  }
 }
 
 .dropdown {
@@ -875,7 +885,7 @@ footer {
     background-color: $gray !important;
   }
 
-  &-notInfo{
+  &-notInfo {
     background-color: #79CFE230;
     color: $colorPrimary;
   }
@@ -907,7 +917,7 @@ footer {
   div {
     @include media(xs) {
       width: 95vw;
-      border-bottom: 1px solid gray;
+      //border-bottom: 1px solid gray;
     }
   }
 }
@@ -1134,9 +1144,11 @@ ul {
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
   text-align: left !important;
-  .dropdown-item{
+
+  .dropdown-item {
     padding: 10px 20px;
-    &:hover{
+
+    &:hover {
       background-color: #f9f9f9;
     }
   }
@@ -1146,19 +1158,21 @@ ul {
   display: block;
 }
 
-.stack{
-  &-raices{
+.stack {
+  &-raices {
     background-color: $white;
     box-shadow: 0px 0px 6px #cfcece;
     display: flex;
     align-items: center;
-    &-title{
+
+    &-title {
       background-color: #79CFE230;
       margin: 0px 10px 0px 0px;
       width: 50px;
       height: 50px !important;
       text-align: center;
-      img{
+
+      img {
         vertical-align: text-top !important;
         width: 40px;
       }
@@ -1166,11 +1180,10 @@ ul {
   }
 }
 
-.icon-full{
+.icon-full {
   width: 45px !important;
 }
 
-.carrusel-blog{
+.carrusel-blog {
   height: 350px !important;
-  background-color: red;
 }

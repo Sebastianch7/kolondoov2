@@ -4,10 +4,12 @@ import Header from '../Components/Header/Header'
 import Footer from '../Components/Footer/Footer'
 import { Container, Row, Col } from 'react-bootstrap'
 import Title from '../Components/Text/Title'
+import MetaData from '../Components/Header/SeoMetadata';
 
 export default function PoliticaCookies() {
     return (
         <>
+        <MetaData titulo={''} descripcion={''}/>
             <Header breadCrumb></Header>
             <div className='mb-5'>
                 <Container>
@@ -123,16 +125,16 @@ export default function PoliticaCookies() {
                             <Title title={'¿Cómo'} titleAlt={'aceptar, rechazar, bloquear o eliminar'} titleThird={'Cookies?'} />
                             <p>Puede permitir, bloquear o eliminar las cookies a través de las herramientas de configuración del navegador, o bien, puede configurar su navegador para que le avise cuando un servidor quiera guardar una cookie:</p>
                             <ol type='a'>
-                                <li>Si utiliza Microsoft Internet Explorer, encontrará la opción en el menú Herramientas > Opciones de Internet > Privacidad > Configuración. Para saber más visite:</li>
+                                <li>Si utiliza Microsoft Internet Explorer, encontrará la opción en el menú Herramientas / Opciones de Internet / Privacidad / Configuración. Para saber más visite:</li>
                                 <ul className='icon-list'>
                                     <li><a target='_blank' rel='nofollow noopener noreferrer' href='https://windows.microsoft.com/es-es/windows-vista/block-or-allow-Cookies' className='color-primary no-link'><b>Bloquear o permitir Cookies</b></a></li>
                                     <li><a target='_blank' rel='nofollow noopener noreferrer' href='https://windows.microsoft.com/es-es/windows7/how-to-manage-Cookies-in-internet-explorer-9' className='color-primary no-link'><b>Gestión de Cookies en I.Explorer 9</b></a></li>
                                 </ul>
-                                <li>Si utiliza Firefox, encontrará la opción en el menú Herramientas > Opciones > Privacidad > Cookies. Para saber más visite:</li>
+                                <li>Si utiliza Firefox, encontrará la opción en el menú Herramientas / Opciones / Privacidad / Cookies. Para saber más visite:</li>
                                 <ul className='icon-list'>
                                     <li><a target='_blank' rel='nofollow noopener noreferrer' href='https://support.mozilla.org/es/kb/habilitar-y-deshabilitar-cookies-sitios-web-rastrear-preferencias?redirectlocale=es&redirectslug=habilitar-y-deshabilitar-cookies-que-los-sitios-we' className='color-primary no-link'><b>Habilitar y deshabilitar Cookies</b></a></li>
                                 </ul>
-                                <li>Si utiliza Chrome, en la sección de Opciones > Opciones avanzadas > Privacidad. Para saber más:</li>
+                                <li>Si utiliza Chrome, en la sección de Opciones / Opciones avanzadas / Privacidad. Para saber más:</li>
                                 <ul className='icon-list'>
                                     <li><a target='_blank' rel='nofollow noopener noreferrer' href='https://support.google.com/accounts/answer/61416?hl=es' className='color-primary no-link'><b>Gestión de Cookies</b></a></li>
                                 </ul>

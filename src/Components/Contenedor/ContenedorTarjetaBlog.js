@@ -22,7 +22,6 @@ function ContenedorTarjetaBlog({ children }) {
                 console.error('Error al obtener blog:', error);
             }
         };
-        fetchBlogList();
     }, []);
 
     const meses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre']
@@ -42,6 +41,7 @@ function ContenedorTarjetaBlog({ children }) {
 
         return fechaFormateada;
     };
+
     return (
         <div className='mb-md-5 container-tarjeta-blog'>
             <TitleSection

@@ -1,8 +1,6 @@
 import axios from 'axios';
 
-//const apiUrl = 'https://api.vuskoo.com/api';
-const apiUrl = 'http://127.0.0.1:8000/api';
-
+const apiUrl = process.env.REACT_APP_API_SERVICES_URL;
 
 export const fetchFilterFibra = async () => {
     try {

@@ -38,21 +38,38 @@ function Header({ breadCrumb }) {
                             <Navbar.Collapse>
                                 <Nav className="mx-auto container-menu">
                                     {items.map((item, key) => (
-                                        <Accordion className='no-radius'>
+                                        <Accordion className='no-radius no-border-bottom'>
                                             <Accordion.Item eventKey={key} className='no-radius'>
                                                 <Accordion.Header>{item.title}</Accordion.Header>
                                                 <Accordion.Body>
                                                     <ul>
-                                                    {
-                                                        item.children.map((sub, index) => {
-                                                            return <a className='no-link text-left' href={`/es-es${sub.url}`}><li className='text-left'>{sub.name}</li></a>
-                                                        })
-                                                    }
+                                                        {
+                                                            item.children.map((sub, index) => {
+                                                                return <a className='no-link text-left' href={`/es-es${sub.url}`}><li className='text-left'>{sub.name}</li></a>
+                                                            })
+                                                        }
                                                     </ul>
                                                 </Accordion.Body>
                                             </Accordion.Item>
                                         </Accordion>
                                     ))}
+                                    <Accordion className='no-radius no-border-bottom'>
+                                        <Accordion.Item eventKey={100} className='no-radius'>
+                                            <Accordion.Header>{'Blog'}</Accordion.Header>
+                                            <Accordion.Body>
+                                                <ul>
+                                                    <a className="no-link text-left" href="/es-es/blog"><li className='text-left'>{'Todas'}</li></a>
+                                                    <a className="no-link text-left" href="/es-es/blog/internet"><li className='text-left'>{'Internet'}</li></a>
+                                                    <a className="no-link text-left" href="/es-es/blog/movil"><li className='text-left'>Móvil</li></a>
+                                                    <a className="no-link text-left" href="/es-es/blog/television"><li className='text-left'>Televisión</li></a>
+                                                    <a className="no-link text-left" href="/es-es/blog/energia"><li className='text-left'>Energía</li></a>
+                                                    <a className="no-link text-left" href="/es-es/blog/hogar"><li className='text-left'>Hogar</li></a>
+                                                    <a className="no-link text-left" href="/es-es/blog/mejores-ofertas"><li className='text-left'>Mejores ofertas</li></a>
+                                                    <a className="no-link text-left" href="/es-es/blog/seguros"><li className='text-left'>Seguros</li></a>
+                                                </ul>
+                                            </Accordion.Body>
+                                        </Accordion.Item>
+                                    </Accordion>
                                 </Nav>
                             </Navbar.Collapse>
                         </>
@@ -76,7 +93,7 @@ function Header({ breadCrumb }) {
                                                         <a className="dropdown-item" href="/es-es/blog/movil">Móvil</a>
                                                         <a className="dropdown-item" href="/es-es/blog/television">Televisión</a>
                                                         <a className="dropdown-item" href="/es-es/blog/energia">Energía</a>
-                                                        <a className="dropdown-item" href="/es-es/blog/hogar">hogar</a>
+                                                        <a className="dropdown-item" href="/es-es/blog/hogar">Hogar</a>
                                                         <a className="dropdown-item" href="/es-es/blog/mejores-ofertas">Mejores ofertas</a>
                                                         <a className="dropdown-item" href="/es-es/blog/seguros">Seguros</a>
                                                     </div>

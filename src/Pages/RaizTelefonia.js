@@ -22,6 +22,7 @@ import FormSuscripcion from '../Components/Forms/FormSuscripcion';
 import preguntasFrecuentes from '../Content/PreguntasFrecuentesTelefonia.json'
 import ContenedorPorQueComparar from '../Components/Contenedor/ContenedorPorQueComparar';
 import ItemStack from '../Components/ItemStack';
+import MetaData from '../Components/Header/SeoMetadata';
 
 const dataPorQueComparar = [
   {
@@ -75,18 +76,19 @@ export default function RaizTelefonia() {
   }, []);
   return (
     <>
+      <MetaData titulo={'Comparador de Internet y Telefonía: descubre las Ofertas | Vuskoo'} descripcion={'Encuentra las mejores ofertas en Internet y telefonía con nuestro comparador. Compara precios, planes, soluciones y beneficios para tomar decisiones informadas'}/>
       <Header breadCrumb></Header>
       <BannerImageFull
         image={'/img/bannerRaizTelefonia.png'}
         title={t('title-baner-comparador-de-internet-y-comparador-movil')}
         text1='<ul class="listaAlternativa"><li><p>Encuentra una tarifa para hablar y navegar a tu medida a golpe de clic.</p></li><li><p>Compara las mejores ofertas y compañías de telefonía actuales en un solo lugar y gratis.</p></li><li><p>Te asesoramos de forma personalizada para que, elijas lo que elijas, quedes satisfecho.</p></li></ul>'
         btnLeft
-        /* buttons={[
-          {
-            title: '¡Empieza a ahorrar!',
-            url: '/internet-telefonia/comparador-movil'
-          }
-        ]} */
+      /* buttons={[
+        {
+          title: '¡Empieza a ahorrar!',
+          url: '/internet-telefonia/comparador-movil'
+        }
+      ]} */
       />
       <Container>
         <TitleSection
@@ -126,9 +128,6 @@ export default function RaizTelefonia() {
               })
             }
           </Col>
-          {/* <Col md={12} className='mx-auto text-center mt-md-4'>
-            <ButtonPrimary text={'Ver más ofertas'} url={''} />
-          </Col> */}
         </Row>
       </Container>
       <ContenedorTarjetaBlog />

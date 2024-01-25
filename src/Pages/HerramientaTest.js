@@ -7,6 +7,8 @@ import { getExtraOffer } from '../services/ApiServices'
 import TarjetaTarifa from '../Components/Tarjeta/TarjetaTarifa'
 import ContenedorPreguntasFrecuentes from '../Components/Contenedor/ContenedorPreguntasFrecuentes';
 import preguntasFrecuentes from '../Content/PreguntasFrecuentesTestVelocidad.json'
+import MetaData from '../Components/Header/SeoMetadata';
+
 export default function HerramientaTest() {
 
     const [isLoading, setIsLoading] = useState(true);
@@ -29,6 +31,7 @@ export default function HerramientaTest() {
 
     return (
         <>
+        <MetaData titulo={'Test de Velocidad: Mide la rapidez de tu Conexión | Vuskoo'} descripcion={'Ejecuta un test de velocidad ahora mismo y obtén datos precisos sobre la velocidad de tu conexión a Internet. Descubre la rapidez de descarga y carga.'}/>
             <Header breadCrumb></Header>
             <Container>
                 {/* <TitleSection

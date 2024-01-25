@@ -4,10 +4,12 @@ import { Container, Row, Col } from 'react-bootstrap'
 import FormContactenos from '../Components/Forms/FormContactenos'
 import TitleSection from '../Components/Text/TitleSection'
 import Footer from '../Components/Footer/Footer'
+import MetaData from '../Components/Header/SeoMetadata';
 
 export default function Contactenos() {
     return (
         <>
+        <MetaData titulo={'¡Conéctate con Nosotros! Contáctanos | Vuskoo'} descripcion={'¿Tienes preguntas o necesitas asistencia? ¡Contacta con nosotros en Vuskoo! Estamos aquí para ayudarte a aprovechar al máximo nuestros comparadores de servicios'}/>
             <Header></Header>
             <Container className='mb-5'>
                 <Row>

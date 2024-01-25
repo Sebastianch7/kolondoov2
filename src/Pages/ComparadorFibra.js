@@ -2,13 +2,13 @@ import React from 'react';
 import Header from '../Components/Header/Header';
 import Banner from '../Components/Banner/Banner';
 import Footer from '../Components/Footer/Footer';
-import FormSuscripcion from '../Components/Forms/FormSuscripcion';
-import ContenedorProductosLuz from '../Components/Contenedor/ContenedorProductosLuz';
 import ContenedorProductosFibra from '../Components/Contenedor/ContenedorProductosFibra';
+import MetaData from '../Components/Header/SeoMetadata';
 
 function ComparadorFibra() {
     return (
         <div>
+            <MetaData titulo={'Comparador de fibra óptica: Encuentra la mejor oferta | Vuskoo'} descripcion={'Descubre las mejores opciones de fibra óptica con nuestro comparador. Compara velocidades, precios y beneficios de distintos proveedores en un solo lugar.'}/>
             <Header breadCrumb></Header>
             <Banner
                 title={'Comparador de Fibras'}

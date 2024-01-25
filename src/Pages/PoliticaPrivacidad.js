@@ -4,10 +4,12 @@ import Header from '../Components/Header/Header'
 import Footer from '../Components/Footer/Footer'
 import { Container, Row, Col } from 'react-bootstrap'
 import Title from '../Components/Text/Title'
+import MetaData from '../Components/Header/SeoMetadata';
 
 export default function PoliticaPrivacidad() {
     return (
         <>
+        <MetaData titulo={''} descripcion={''}/>
             <Header breadCrumb></Header>
             <div className='mb-5'>
                 <Container>

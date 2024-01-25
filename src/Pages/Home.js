@@ -1,23 +1,18 @@
 import React, {useEffect} from 'react';
 import Header from '../Components/Header/Header';
 import Banner from '../Components/Banner/Banner';
-import TarjetaProducto from '../Components/Tarjeta/TarjetaProducto';
-import ContenedorTarjeta from '../Components/Contenedor/ContenedorTarjeta';
 import ContenedorTarjetaBlog from '../Components/Contenedor/ContenedorTarjetaBlog';
 import Footer from '../Components/Footer/Footer';
-import BannerReverse from '../Components/Banner/BannerReverse';
 import FormSuscripcion from '../Components/Forms/FormSuscripcion';
-import InterSection from '../Components/Utils/InterSection';
-import TarjetasProductos from '../Content/TarjetaProducto.json'
 import { useTranslation } from 'react-i18next';
-import { isMobile } from 'react-device-detect';
-import AcordionItem from '../Components/Acordion/AcordionItem';
+import MetaData from '../Components/Header/SeoMetadata';
 
 
 function Home(props) {
     const { t } = useTranslation();
     return (
         <div>
+            <MetaData imagen_destacada='/img/banner-home.png' descripcion={'Descubre una nueva era en la toma de decisiones con Vuskoo. Comparadores de servicios que te ofrecen información detallada, ofertas, promociones para que elijas'} titulo={'Optimiza tus elecciones con Vuskoo: Expertos en Comparadores de Servicios'} />
             <Header></Header>
             <main>
                 <Banner
@@ -29,7 +24,7 @@ function Home(props) {
                         {
                             title: t('Internet y Telefonía'),
                             icon: '/img/icons/lighting.svg',
-                            url: 'internet-telefonia/comparador-movil'
+                            url: 'internet-telefonia/comparador-tarifas-fibra-y-movil'
                         },
                         {
                             title: t('Energía'),
