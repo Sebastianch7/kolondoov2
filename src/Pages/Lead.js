@@ -17,6 +17,7 @@ export default function Lead() {
   const [infoOffer, setInfoOffer] = useState([]);
   const [idPlan, setIdPlan] = useState(null);
   const [title, setTitle] = useState(null);
+  const [textDataLanding, setTextDataLanding] = useState(null);
 
   const location = useLocation();
   const [breadUrl, setBreadUrl] = useState(null);
@@ -55,8 +56,30 @@ export default function Lead() {
   function replaceSubcategory(data) {
     switch (data?.toLowerCase()) {
       case 'comparador-movil':
-        return 'móvil';
+      case 'comparador-fibra':
+        //setTextDataLanding(`¡Experimenta la velocidad sin límites de ${infoOffer.nombre} con el servicio de 'móvil' con sus ${title?.replaceAll(',', ' ')}! Conéctate a la potencia de la rapidez y mantén la libertad de la comunicación en tus manos con el servicio móvil de ${infoOffer.nombre} ¡Haz que tu conexión sea tan rápida como tus sueños!`);
         break;
+      case 'comparador-tarifas-fibra-y-movil':
+        setTextDataLanding('');
+        return 'fibra y móvil';
+        break;
+      case 'comparador-fibra-movil-tv':
+        setTextDataLanding('');
+        return 'fibra, móvil y TV';
+        break;
+      case 'comparador-tarifas-luz':
+        setTextDataLanding('');
+        return 'luz';
+        break;
+      case 'comparador-tarifas-gas':
+        setTextDataLanding('');
+        return 'gas';
+        break;
+      case 'comparador-tarifas-luz-y-gas':
+        setTextDataLanding('');
+        return 'luz y gas';
+        break;
+
     }
   }
 
@@ -70,10 +93,10 @@ export default function Lead() {
         <Container className='mb-5'>
           <Row className="justify-content-md-center d-flex flex-column flex-md-row">
 
-            <Title title={`${infoOffer?.nombre} ofertas - ${title?.replaceAll(',', ' ')}`} />
+            <Title title={`${infoOffer?.nombre} ofertas - ${infoOffer.nombre_tarifa}`} />
 
             <Col xs={12}>
-              {!isMobile && <p className='font-09'>¡Experimenta la velocidad sin límites de {infoOffer.nombre} con el servicio de {replaceSubcategory(offerLooking)} con sus {title?.replaceAll(',', ' ')}! Conéctate a la potencia de la rapidez y mantén la libertad de la comunicación en tus manos con el servicio móvil de {infoOffer.nombre} ¡Haz que tu conexión sea tan rápida como tus sueños!</p>}
+              <p className='font-09'>{textDataLanding}</p>
             </Col>
             <Col xs={12} md={7} className='my-2' style={isMobile ? { order: 2 } : { order: 1 }}>
               <TarjetaTarifaLead key={0} data={infoOffer} service={offerLooking} />

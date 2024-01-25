@@ -11,9 +11,12 @@ import Load from '../Utils/Load'
 function ContenedorTarjetaBlog({ children }) {
     const [fetchBlog, setFetchBlog] = useState(null)
     const [isLoading, setIsLoading] = useState(false)
+
     useEffect(() => {
         setIsLoading(true);
+        console.log('1')
         const fetchBlogList = async () => {
+            console.log('2')
             try {
                 const response = await getBlogHome();
                 setFetchBlog(response);
@@ -22,6 +25,7 @@ function ContenedorTarjetaBlog({ children }) {
                 console.error('Error al obtener blog:', error);
             }
         };
+        fetchBlogList();
     }, []);
 
     const meses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre']
