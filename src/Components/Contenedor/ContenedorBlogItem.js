@@ -11,10 +11,11 @@ import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import MetaData from '../../Components/Header/SeoMetadata';
 
-export default function ContenedorBlogItem({ children }) {
+export default function ContenedorBlogItem({}) {
 
     const [fetchBlog, setFetchBlog] = useState([])
     const [idBlog, setIdBlog] = useState(null)
+    const [validarCategoria, setValidarCategoria] = useState(null)
     const [load, setLoad] = useState(false)
     const [lang, setLang] = useState(null)
     const location = useLocation();
@@ -27,6 +28,7 @@ export default function ContenedorBlogItem({ children }) {
     useEffect(() => {
         const pathname = location.pathname;
         let locations = pathname.split('/');
+        setValidarCategoria(locations[3].toLowerCase())
         setIdBlog(locations[4]);
     }, [idBlog])
 
@@ -36,7 +38,7 @@ export default function ContenedorBlogItem({ children }) {
             try {
                 if (idBlog !== null) {
                     const response = await getBlogById(idBlog);
-                    if(response === undefined){
+                    if(response === undefined || response.categoria.toLowerCase() !== validarCategoria){
                         navigate(`/es-es/404`);
                     }
                     setFetchBlog(response);
@@ -49,6 +51,7 @@ export default function ContenedorBlogItem({ children }) {
 
         fetchBlogId();
     }, [idBlog]);
+
     return (
         <>
             <MetaData titulo={fetchBlog.seo_titulo} descripcion={fetchBlog.seo_descripcion} imagen_destacada={`/img/blog/desktop/${fetchBlog?.imagen_principal_escritorio}`} />

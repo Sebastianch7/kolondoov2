@@ -14,6 +14,7 @@ export default function ContenedorBlog({ categoria = null }) {
 
     useEffect(() => {
         setIsLoading(true);
+        console.log(categoria)
         const fetchBlogList = async () => {
             try {
                 const response = await getBlog(categoria);

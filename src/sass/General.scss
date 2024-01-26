@@ -502,7 +502,7 @@ $breakpoint-lg: 1360px;
     color: $white;
     position: absolute;
     bottom: 35px;
-    
+
 
     span {
       min-height: 30px;
@@ -838,8 +838,9 @@ footer {
   &-radius {
     border-radius: 0px !important;
   }
-  &-border{
-    &-bottom{
+
+  &-border {
+    &-bottom {
       border-bottom: 0px solid transparent !important;
     }
   }
@@ -1185,4 +1186,29 @@ ul {
 
 .carrusel-blog {
   height: 350px !important;
+}
+
+.title {
+  &-404 {
+    font-size: 8rem !important;
+    color: $colorPrimary !important;
+  }
+}
+
+.prioridad {
+  border: 3px solid $colorPrimary;
+  &-oferta {
+    background-color: $colorPrimary;
+    color: $white;
+    width: 200px;
+    height: 36px;
+    position: relative;
+    top: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    vertical-align: middle;
+    font-size: 1rem;
+    font-family: $MontSemiBold;
+  }
 }

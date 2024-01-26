@@ -9,21 +9,22 @@ import MetaData from '../Components/Header/SeoMetadata';
 export default function PageNotFound() {
     return (
         <>
-        <MetaData titulo={''} descripcion={''}/>
+            <MetaData titulo={''} descripcion={''} />
             <Header></Header>
-            <Container>
-                <Row>
-                    <Col xs={12}>
-                        <Load></Load>
+            <Container className='mt-5'>
+                <Row className='mt-5 justify-content-center'>
+                    <Col xs={12} md={6}>
+                        <Col xs={12} className='text-left'>
+                            <h1 className='title-404'>404</h1>
+                            <h2>Página no encontrada</h2>
+                            <h4>No podmeos encontrar la página solicitada.</h4>
+                            <Link className='btn btn-primary mt-5' to={'/'}>Volver a vuskoo</Link>
+                        </Col>
                     </Col>
-                    <Col xs={12} className='text-center'>
-                        <h1>404</h1>
-                        <h2>Pagina no encontrada</h2>
+                    <Col xs={12} md={4} className='d-none d-md-block'>
+                        <img className='img-fluid' src='/img/404.png' alt='imagen error 404' />
                     </Col>
-                    <InterSection></InterSection>
-                    <Col xs={12} className='text-center'>
-                        <Link className='btn btn-primary' to={'/'}>Volver a vuskoo</Link>
-                    </Col>
+
                 </Row>
             </Container>
         </>

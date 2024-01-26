@@ -21,8 +21,7 @@ function ComparadorFibra() {
                     politicy
                 /> */}
             </Banner>
-            <ContenedorProductosFibra>
-            </ContenedorProductosFibra>
+            <ContenedorProductosFibra />
             <Footer></Footer>
         </div>
     );

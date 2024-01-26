@@ -74,7 +74,7 @@ export default function RaizEnergia() {
   }, []);
   return (
     <>
-    <MetaData titulo={''} descripcion={''}/>
+    <MetaData titulo={'Comparador de Energía para Hogares: ahorra y contrata | Vuskoo'} descripcion={'Encuentra las mejores tarifas de energía. Compara precios, planes y beneficios, simplificamos tu elección para que optimices tu consumo de manera eficiente'}/>
       <Header breadCrumb></Header>
       <BannerImageFull
         image={'/img/bannerRaizEnergia.png'}
