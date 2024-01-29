@@ -27,7 +27,6 @@ function FormSuscripcion({ }) {
         setInpEmail(input);
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         setIsValidEmail(emailRegex.test(input));
-        console.log(emailRegex.test(input))
     };
 
     const changeValue = (valor) => {

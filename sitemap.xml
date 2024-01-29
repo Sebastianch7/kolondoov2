@@ -1,21 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>http://vuskoo.com/</loc>
-    <changefreq>daily</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>https://vuskoo.com/es-es/internet-telefonia</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://vuskoo.com/es-es/television-streaming</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
-  <!-- Agrega más URL según sea necesario -->
+  <!-- Enlace al primer sitemap -->
+  <sitemap>
+    <loc>https://vuskoo.com/sitemap.xml</loc>
+    <lastmod>2024-01-26T00:00:00+00:00</lastmod>
+  </sitemap>
 
-</urlset>
+  <!-- Enlace al segundo sitemap -->
+  <sitemap>
+    <loc>https://vuskoo.com/sitemap_blog.xml</loc>
+    <lastmod>2024-01-26T00:00:00+00:00</lastmod>
+  </sitemap>
+
+</sitemapindex>

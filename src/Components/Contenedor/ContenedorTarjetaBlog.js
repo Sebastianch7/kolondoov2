@@ -14,9 +14,7 @@ function ContenedorTarjetaBlog({ children }) {
 
     useEffect(() => {
         setIsLoading(true);
-        console.log('1')
         const fetchBlogList = async () => {
-            console.log('2')
             try {
                 const response = await getBlogHome();
                 setFetchBlog(response);

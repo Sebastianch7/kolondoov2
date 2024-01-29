@@ -11,7 +11,7 @@ import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import MetaData from '../../Components/Header/SeoMetadata';
 
-export default function ContenedorBlogItem({}) {
+export default function ContenedorBlogItem({ }) {
 
     const [fetchBlog, setFetchBlog] = useState([])
     const [idBlog, setIdBlog] = useState(null)
@@ -23,7 +23,7 @@ export default function ContenedorBlogItem({}) {
 
     useEffect(() => {
         setLang(location.pathname.split('/')[1])
-    },[])
+    }, [])
 
     useEffect(() => {
         const pathname = location.pathname;
@@ -38,7 +38,9 @@ export default function ContenedorBlogItem({}) {
             try {
                 if (idBlog !== null) {
                     const response = await getBlogById(idBlog);
-                    if(response === undefined || response.categoria.toLowerCase() !== validarCategoria){
+                    console.log(response.categoria.toLowerCase())
+                    console.log(validarCategoria)
+                    if (response === undefined || !response.categoria.toLowerCase().includes(validarCategoria)) {
                         navigate(`/es-es/404`);
                     }
                     setFetchBlog(response);
@@ -67,7 +69,7 @@ export default function ContenedorBlogItem({}) {
                             textBlog={fetchBlog?.cuerpo}
                         />
                         <Col xs={12} className='text-center my-5'>
-                        <Link className='font-09 btn btn-primary' to={`/es-es/blog`}>Volver</Link>
+                            <Link className='font-09 btn btn-primary' to={`/es-es/blog`}>Volver</Link>
                         </Col>
                     </Col>
                     <ContenedorDestacados />

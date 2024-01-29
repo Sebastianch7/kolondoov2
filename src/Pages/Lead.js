@@ -59,12 +59,12 @@ export default function Lead() {
       case 'comparador-fibra':
         return titleSeo = `¡Experimenta la velocidad sin límites de ${infoOffer.nombre} con el servicio de móvil y fibra con sus ${title?.replaceAll(',', ' ')}! Conéctate a la potencia de la rapidez y mantén la libertad de la comunicación en tus manos con el servicio móvil de ${infoOffer.nombre} ¡Haz que tu conexión sea tan rápida como tus sueños!`;
       case 'comparador-tarifas-fibra-y-movil':
-        return titleSeo = `¡Experimenta la velocidad sin límites de ${infoOffer.nombre} con el servicio de móvil, fibra y TV con sus ${title?.replaceAll(',', ' ')}! Conéctate a la potencia de la rapidez y mantén la libertad de la comunicación en tus manos con el servicio móvil de ${infoOffer.nombre} ¡Haz que tu conexión sea tan rápida como tus sueños!`;
+        return titleSeo  = `Conéctate al futuro con nuestra oferta imparable: ${title?.replaceAll(',', ' ')}. Navega a la velocidad de ${infoOffer.nombre} y mantén tu movilidad con una conexión confiable en tus manos. Descubre la libertad de estar siempre conectado. ¡Haz de cada experiencia digital algo extraordinario con nuestra combinación perfecta de Fibra y Móvil!`;
+        //return titleSeo = `¡Experimenta la velocidad sin límites de ${infoOffer.nombre} con el servicio de móvil y fibra con sus ${title?.replaceAll(',', ' ')}! Conéctate a la potencia de la rapidez y mantén la libertad de la comunicación en tus manos con el servicio móvil de ${infoOffer.nombre} ¡Haz que tu conexión sea tan rápida como tus sueños!`;
       case 'comparador-fibra-movil-tv':
         return titleSeo = `¡Experimenta la velocidad sin límites de ${infoOffer.nombre} con el servicio móvil, fibra y TV con sus ${title?.replaceAll(',', ' ')}! Conéctate a la potencia de la rapidez y disfruta de un mundo digital sin interrupciones. Conéctate a la velocidad y disfruta de un mundo de entretenimiento en tu hogar, donde la rapidez y la diversión se encuentran en cada pantalla.`;
       case 'comparador-tarifas-luz':
         return titleSeo = `Ilumina tu hogar con el servicio de energía de ${infoOffer.nombre}. Descubre la eficiencia y confiabilidad en cada rincón con las ofertas de luz. ¡Haz que tu espacio resplandezca con la luminosidad de ${title?.replaceAll(',', ' ')}, donde la comodidad y el ahorro se encuentran en cada interruptor!`;
-        descriptionSeo = `Optimiza tu hogar con la oferta integral de luz y gas de ${infoOffer.nombre}. Descubre la eficiencia energética de ${title?.replaceAll(',', ' ')} que ilumina tus espacios y mantiene el calor necesario.`
       case 'comparador-tarifas-gas':
         return titleSeo = `¡Haz que tu hogar brille con la calidez que merece! Descubre la potencia del servicio de gas de ${infoOffer.nombre}, la elección perfecta para cocinar y mantener tu espacio acogedor. Conéctate al ahorro y la eficiencia energética de la ${title?.replaceAll(',', ' ')}. ¡Haz de cada día en casa una experiencia cálida y reconfortante con el servicio de gas de ${infoOffer.nombre} de alta calidad!`;
       case 'comparador-tarifas-luz-y-gas':
@@ -77,19 +77,19 @@ export default function Lead() {
   function descripcionLanding() {
     switch (offerLooking?.toLowerCase()) {
       case 'comparador-movil':
-        return descriptionSeo  = `¡Experimenta la velocidad sin límites de ${infoOffer.nombre} con el servicio de móvil con sus ${title?.replaceAll(',', ' ')}! Conéctate a la potencia de la rapidez y mantén la libertad de la comunicación en tus manos con el servicio móvil de ${infoOffer.nombre} ¡Haz que tu conexión sea tan rápida como tus sueños!`;
+        return descriptionSeo  = `Explora las ofertas móvil con el servicio de ${infoOffer.nombre} de ${title?.replaceAll(',', ' ')}. Navega a la máxima velocidad y mantén la conexión vayas donde vayas.`;
       case 'comparador-fibra':
-        return descriptionSeo  = `¡Experimenta la velocidad sin límites de ${infoOffer.nombre} con el servicio de móvil y fibra con sus ${title?.replaceAll(',', ' ')}! Conéctate a la potencia de la rapidez y mantén la libertad de la comunicación en tus manos con el servicio móvil de ${infoOffer.nombre} ¡Haz que tu conexión sea tan rápida como tus sueños!`;
+        return descriptionSeo  = `Explora las ofertas fibra con el servicio de ${infoOffer.nombre} de ${title?.replaceAll(',', ' ')}. Navega a la máxima velocidad y mantén la conexión vaya donde vayas.`;
       case 'comparador-tarifas-fibra-y-movil':
-        return descriptionSeo  = `¡Experimenta la velocidad sin límites de ${infoOffer.nombre} con el servicio de móvil, fibra y TV con sus ${title?.replaceAll(',', ' ')}! Conéctate a la potencia de la rapidez y mantén la libertad de la comunicación en tus manos con el servicio móvil de ${infoOffer.nombre} ¡Haz que tu conexión sea tan rápida como tus sueños!`;
+        return descriptionSeo  = `Explora las ofertas fibra y móvil con el servicio de ${infoOffer.nombre} ${title?.replaceAll(',', ' ')}. Navega a la máxima velocidad y mantén la conexión vaya donde vayas.`;
       case 'comparador-fibra-movil-tv':
-        return descriptionSeo  = `¡Experimenta la velocidad sin límites de ${infoOffer.nombre} con el servicio móvil, fibra y TV con sus ${title?.replaceAll(',', ' ')}! Conéctate a la potencia de la rapidez y disfruta de un mundo digital sin interrupciones. Conéctate a la velocidad y disfruta de un mundo de entretenimiento en tu hogar, donde la rapidez y la diversión se encuentran en cada pantalla.`;
+        return descriptionSeo  = `Explora las ofertas de fibra, móvil y TV con el servicio de ${infoOffer.nombre} ${title?.replaceAll(',', ' ')}. Navega a la máxima velocidad y mantén la conexión vayas donde vayas.`;
       case 'comparador-tarifas-luz':
-        return descriptionSeo  = `Ilumina tu hogar con el servicio de energía de ${infoOffer.nombre}. Descubre la eficiencia y confiabilidad en cada rincón con las ofertas de luz. ¡Haz que tu espacio resplandezca con la luminosidad de ${title?.replaceAll(',', ' ')}, donde la comodidad y el ahorro se encuentran en cada interruptor!`;
+        return descriptionSeo  = `Enciende tu vida con el servicio de luz de ${infoOffer.nombre}. Descubre la iluminación perfecta para tu hogar con la oferta energética confiable y eficiente de ${title?.replaceAll(',', ' ')}.`;
       case 'comparador-tarifas-gas':
-        return descriptionSeo  = `¡Haz que tu hogar brille con la calidez que merece! Descubre la potencia del servicio de gas de ${infoOffer.nombre}, la elección perfecta para cocinar y mantener tu espacio acogedor. Conéctate al ahorro y la eficiencia energética de la ${title?.replaceAll(',', ' ')}. ¡Haz de cada día en casa una experiencia cálida y reconfortante con el servicio de gas de ${infoOffer.nombre} de alta calidad!`;
+        return descriptionSeo  = `Transforma tu hogar con el servicio de gas de ${infoOffer.nombre}. Descubre la comodidad de cocinar y calentar tu espacio con la potencia de ${title?.replaceAll(',', ' ')}.`;
       case 'comparador-tarifas-luz-y-gas':
-        return descriptionSeo  = `Obtén confort y ahorro con la oferta integral de luz y gas. Descubre la perfecta combinación entre eficiencia y comodidad y ¡Haz que tu vida brille y se mantenga cálida con el servicio ${title?.replaceAll(',', ' ')} de ${infoOffer.nombre}, donde la calidad y el ahorro van de la mano!`;
+        return descriptionSeo  = `Optimiza tu hogar con la oferta integral de luz y gas de ${infoOffer.nombre}. Descubre la eficiencia energética de ${title?.replaceAll(',', ' ')} que ilumina tus espacios y mantiene el calor necesario.`;
       default:
         return descriptionSeo  = '';
     }
@@ -100,7 +100,7 @@ export default function Lead() {
       <>
         <MetaData titulo={`Ofertas ${infoOffer.funcion}: ${title?.replaceAll(',', ' ')} - ${infoOffer.nombre} | Vuskoo`} descripcion={descripcionLanding()} />
         <HeaderLead logo={infoOffer?.logo} />
-        <BreadCrumb url={breadUrl} />
+        <BreadCrumb lead={true}/>
         <Container className='mb-5'>
           <Row className="justify-content-md-center d-flex flex-column flex-md-row">
             <Title title={`${infoOffer?.nombre} ofertas - ${infoOffer.nombre_tarifa}`} />

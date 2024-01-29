@@ -86,7 +86,7 @@ function Header({ breadCrumb }) {
                                         <div className="collapse navbar-collapse" id="navbarNav">
                                             <ul className="no-link navbar-nav">
                                                 <li className="nav-item">
-                                                    <a className="nav-link no-link" href={`/es-es/Blog`}>{'Blog'}</a>
+                                                    <a className="nav-link no-link" href={`/es-es/blog`}>{'Blog'}</a>
                                                     <div className="submenu">
                                                         <a className="dropdown-item" href="/es-es/blog">Todas</a>
                                                         <a className="dropdown-item" href="/es-es/blog/internet">Internet</a>

@@ -304,7 +304,6 @@ export const getIp = async () => {
 export const postLead = async (idOferta, phone, landing, urlOffer, company) => {
     try {
         const response = await axios.post(`${apiUrl}/LeadRegister`, { idOferta, phone, landing, urlOffer, company });
-        console.log(response.data);
         return response;
     } catch (error) {
         //console.error("Error al procesar la solicitud", error);

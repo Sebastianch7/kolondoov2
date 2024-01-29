@@ -30,6 +30,11 @@ function Home(props) {
                             title: t('Energía'),
                             icon: '/img/icons/phone-light.svg',
                             url: 'energia/comparador-tarifas-luz'
+                        },
+                        {
+                            title: t('Streaming'),
+                            icon: '/img/icons/streaming.svg',
+                            url: 'energia/comparador-tarifas-luz'
                         }
                     ]}
                 />
