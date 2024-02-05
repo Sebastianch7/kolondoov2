@@ -33,8 +33,8 @@ function Home(props) {
                         },
                         {
                             title: t('Streaming'),
-                            icon: '/img/icons/streaming.svg',
-                            url: 'energia/comparador-tarifas-luz'
+                            icon: '/img/icons/btn_streaming.svg',
+                            url: 'television-streaming/comparador-plataformas-streaming'
                         }
                     ]}
                 />

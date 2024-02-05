@@ -87,7 +87,7 @@ function ContenedorProductosStreaming(logo = null, landingLead = null, id = null
             >
               {data?.length > 0 &&
                 <Carousel
-                  arrows={false}
+                  arrows={true}
                   centerMode={false}
                   dotListClass=""
                   draggable
@@ -97,7 +97,7 @@ function ContenedorProductosStreaming(logo = null, landingLead = null, id = null
                   pauseOnHover
                   renderDotsOutside={true}
                   responsive={responsive}
-                  rewind={false}
+                  rewind={true}
                   showDots={false}
                   slidesToSlide={1}
                 >

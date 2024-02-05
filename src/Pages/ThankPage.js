@@ -11,7 +11,7 @@ import TarjetaTarifaLead from '../Components/Tarjeta/TarjetaTarifaLead';
 import Header from '../Components/Header/Header';
 
 export default function ThankPage() {
-  
+
   const [isLoading, setIsLoading] = useState(true);
   const [infoOffer, setInfoOffer] = useState([]);
   const [extraOffer, setExtraOffer] = useState([]);
@@ -42,10 +42,10 @@ export default function ThankPage() {
         console.error("Error al obtener detalle de oferta:", error);
       }
     };
-    
+
     fetchTariffs();
   }, [idPlan]);
-  
+
   useEffect(() => {
     const fetchTariffs = async () => {
       try {
@@ -58,9 +58,9 @@ export default function ThankPage() {
         console.error("Error al obtener oferta extra:", error);
       }
     };
-    
+
     fetchTariffs();
-  }, [idPlan]); 
+  }, [idPlan]);
 
   return (
     <>

@@ -6,6 +6,13 @@ import { Link, useSearchParams } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 import { isMobile } from 'react-device-detect';
 import { BsArrowRight } from "react-icons/bs";
+import { RiNetflixFill } from "react-icons/ri";
+import { SiHbo } from "react-icons/si";
+import { SiAmazonprime } from "react-icons/si";
+import { SiDazn } from "react-icons/si";
+import { PiTelevisionFill } from "react-icons/pi";
+import { FaAmazon } from "react-icons/fa";
+
 
 function TarjetaTarifa({ data, type }) {
     const [lang, setLang] = useState(null)
@@ -31,7 +38,12 @@ function TarjetaTarifa({ data, type }) {
         logo,
         moneda,
         promocion,
-        landingLead
+        landingLead,
+        TV,
+        Netflix,
+        HBO,
+        AmazonPrime,
+        DAZN
     } = data;
     return (
         <>
@@ -61,6 +73,11 @@ function TarjetaTarifa({ data, type }) {
                         <ItemTarifaDescripcion text={parrilla_bloque_2} />
                         <ItemTarifaDescripcion text={parrilla_bloque_3} />
                         <ItemTarifaDescripcion text={parrilla_bloque_4} />
+                        {TV === 1 && <PiTelevisionFill className='m-2' />}
+                        {Netflix === 1 && <RiNetflixFill className='m-2' />}
+                        {HBO === 1 && <SiHbo className='m-2' />}
+                        {AmazonPrime === 1 && <FaAmazon className='m-2' />}
+                        {DAZN === 1 && <SiDazn className='m-2' />}
                     </Col>
                     <Col xs={12} md={5} style={isMobile ? { order: 1 } : { order: 2 }}>
                         <Row>

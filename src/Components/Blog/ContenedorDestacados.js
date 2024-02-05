@@ -24,15 +24,15 @@ export default function ContenedorDestacados() {
         fetchBlogList();
     }, []);
     return (
-        <Col xs={12} md={4}>
-            <TitleSection
+        <Col xs={12} md={12}>
+            {/* <TitleSection
                 title={'Destacados'}
                 center
-            />
+            /> */}
             {!isLoading ?
                 fetchBlog.length > 0 &&
                 fetchBlog.map((item, index) => {
-                    return <TarjetaBlogMin data={item} />
+                    return <TarjetaBlogMin categorias={'Oferta'} key={index} data={item} />
                 })
                 :
                 <Load></Load>

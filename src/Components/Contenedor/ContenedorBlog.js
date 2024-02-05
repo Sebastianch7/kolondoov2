@@ -98,7 +98,9 @@ export default function ContenedorBlog({ categoria = null }) {
                 <Col xs={12} md={8}>
                     {!isLoading ? <PaginatedItems itemsPerPage={10} /> : <Load></Load>}
                 </Col>
-                <ContenedorDestacados />
+                <Col xs={12} md={4}>
+                    <ContenedorDestacados />
+                </Col>
             </Row>
         </Container>
     );

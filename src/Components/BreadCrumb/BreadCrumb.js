@@ -52,7 +52,6 @@ function BreadCrumb({ lead = false }) {
                         <Breadcrumb>
                             {locations.length > 0 &&
                                 <>
-                                    <Breadcrumb.Item className='text-decoration-underline' href="/">Home</Breadcrumb.Item>
                                     {locations.map((item, index) => {
                                         ruta = (ruta !== undefined && ruta !== null) ? `${ruta}/${item}` : `/${item}`;
                                         if (!item.includes('herramientas') && !item.includes('destacados')) {

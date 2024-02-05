@@ -240,6 +240,27 @@ export const getBlogById = async (id) => {
     }
 };
 
+export const getSuministros = async () => {
+    try {
+        const response = await axios.get(`${apiUrl}/getSuministros`)
+        return response.data;
+    } catch (error) {
+        console.error("Error al procesar la solicitud", error);
+        throw error;
+    }
+};
+
+export const getSuministrosById = async (id) => {
+    try {
+        const response = await axios.get(`${apiUrl}/getSuministrosById/${id}`)
+        return response.data[0];
+    } catch (error) {
+        console.error("Error al procesar la solicitud", error);
+        throw error;
+    }
+};
+
+
 export const getExtraOffer = async (offerLooking) => {
     try {
         const response = await axios.get(`${apiUrl}/getExtraOffer${offerLooking.replaceAll('-', '')}`)

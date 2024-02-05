@@ -111,8 +111,6 @@ export default function RaizEnergia() {
               );
             })
           }
-
-
         </ContenedorTarjeta>
         <InterSection></InterSection>
         <TitleSection

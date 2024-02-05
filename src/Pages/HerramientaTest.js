@@ -31,7 +31,7 @@ export default function HerramientaTest() {
 
     return (
         <>
-        <MetaData titulo={'Test de Velocidad: Mide la rapidez de tu Conexión | Vuskoo'} descripcion={'Ejecuta un test de velocidad ahora mismo y obtén datos precisos sobre la velocidad de tu conexión a Internet. Descubre la rapidez de descarga y carga.'}/>
+            <MetaData titulo={'Test de Velocidad: Mide la rapidez de tu Conexión | Vuskoo'} descripcion={'Ejecuta un test de velocidad ahora mismo y obtén datos precisos sobre la velocidad de tu conexión a Internet. Descubre la rapidez de descarga y carga.'} />
             <Header breadCrumb></Header>
             <Container>
                 {/* <TitleSection
@@ -43,15 +43,16 @@ export default function HerramientaTest() {
                 {/* <Card className='tarjeta shadow'>
                     <ToolSpeedTest></ToolSpeedTest>
                 </Card> */}
-                <Row className='justify-content-md-center mb-md-5'>
-                    <Col md={9}>
-                        {extraOffer.length > 0 &&
-                            extraOffer.map((item, index) => {
-                                return <TarjetaTarifa key={index} data={item} />;
-                            })
-                        }
-                    </Col>
-                </Row>
+                {extraOffer.length > 0 &&
+                    <Row className='justify-content-md-center mb-md-5'>
+                        <Col md={9}>
+                            {extraOffer.length > 0 &&
+                                extraOffer.map((item, index) => {
+                                    return <TarjetaTarifa key={index} data={item} />;
+                                })
+                            }
+                        </Col>
+                    </Row>}
                 <Row>
 
                     <Col md={12}>

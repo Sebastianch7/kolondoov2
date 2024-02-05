@@ -346,9 +346,9 @@ $breakpoint-lg: 1360px;
     &-min {
       border: 1px solid $colorSecundary;
       background-image: url('../../public/img/backgroud-tarjeta-min.svg');
-      background-size: both;
+      background-size: auto;
       background-repeat: no-repeat;
-      background-position: 100% 0px;
+      background-position: 100% -20px;
     }
   }
 
@@ -568,6 +568,7 @@ $breakpoint-lg: 1360px;
 
         img {
           text-align: center;
+          width: 30px;
         }
       }
     }
@@ -1216,7 +1217,14 @@ ul {
 
 .no-cursor-link {
   cursor: default !important;
+
   a {
     cursor: default !important;
+  }
+}
+
+p {
+  a {
+    font-family: $MontSemiBold !important;
   }
 }

@@ -339,20 +339,6 @@ function ContenedorProductosMovilFibraTv() {
                                 className='form-input-range'
                               />
                             </div>
-                            {/* <div className='my-4'>
-                              <b>{'Fibra Mb'}:</b>
-                              <div className='my-4'>
-                                {rangeCapacity[0]} {'GB'} - {rangeCapacity[1]} {'GB'}
-                              </div>
-                              <Slider
-                                range
-                                min={minCapacity}
-                                max={maxCapacity}
-                                value={rangeCapacity}
-                                onChange={handleRangeChangeCapacity}
-                                className='form-input-range'
-                              />
-                            </div> */}
                             <div className='my-2'>
                               <b>{'Llamadas ilimitadas'}:</b>
                               <div className='my-2'>

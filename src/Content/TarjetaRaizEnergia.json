@@ -12,7 +12,7 @@
         "url": "/energia/comparador-tarifas-gas"
     },
     {
-        "icon": "/img/icons/luz.svg",
+        "icon": "/img/icons/luzmasgas.png",
         "title": "Luz + Gas",
         "button": "Comparar",
         "url": "/energia/comparador-tarifas-luz-y-gas"

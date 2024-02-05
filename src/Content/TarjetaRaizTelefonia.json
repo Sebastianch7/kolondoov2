@@ -12,13 +12,13 @@
         "url": "/internet-telefonia/comparador-movil"
     },
     {
-        "icon": "/img/icons/tv.svg",
+        "icon": "/img/icons/fibramasmovilmastv.png",
         "title": "Fibra + Móvil + TV",
         "button": "Comparar",
         "url": "/internet-telefonia/comparador-fibra-movil-tv"
     },
     {
-        "icon": "/img/icons/tv.svg",
+        "icon": "/img/icons/fibramasmovil.png",
         "title": "Fibra + Móvil",
         "button": "Comparar",
         "url": "/internet-telefonia/comparador-tarifas-fibra-y-movil"

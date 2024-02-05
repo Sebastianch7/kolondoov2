@@ -9,6 +9,7 @@ import { Link } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 
 export default function TarjetaTarifaLeadEnergia({ data, TarifaCard }) {
+    console.log(data)
     const [tarifa] = useState(null)
 
     const [lang, setLang] = useState(null)
@@ -22,6 +23,7 @@ export default function TarjetaTarifaLeadEnergia({ data, TarifaCard }) {
     }, [])
 
     const {
+        landing_link,
         luz_precio_energia_24h,
         logo,
         id,
@@ -47,7 +49,7 @@ export default function TarjetaTarifaLeadEnergia({ data, TarifaCard }) {
                             <div className='tarjeta-tarifa-item-title'>
                                 <img src={logo} alt={logo} />
                                 {((promocion !== null && promocion !== '') && isMobile === false) && <span className='mx-4 align-middle'><b>Promoción: </b>{promocion}</span>}
-                                {(isMobile === true) && <Link className='btn btn-primary btn-primary-small' to={`/es-es${landingLead}${slug_tarifa.toLowerCase()}-${id}`}><BsArrowRight /></Link>}
+                                {(isMobile === true) && <Link className='btn btn-primary btn-primary-small' to={landing_link === null ? `/es-es${landingLead}${slug_tarifa.toLowerCase()}-${id}` : landing_link}>{landing_link}<BsArrowRight /></Link>}
                             </div>
                         </Col>}
                         <Col md={9}>
@@ -88,7 +90,7 @@ export default function TarjetaTarifaLeadEnergia({ data, TarifaCard }) {
                                 <ItemTarifaServicio cant={precio} service={''} design={"small"} money={'€'} />
                                 {!isMobile && TarifaCard && (
                                     <Col md={2} style={isMobile ? { order: 3 } : { order: 3 }}>
-                                        <Link className='btn btn-primary' to={`/es-es${landingLead}${slug_tarifa.toLowerCase()}-${id}`}>{`Comprar`}</Link>
+                                        <Link className='btn btn-primary' target={landing_link !== null && '_blank'} to={landing_link === null ? `/es-es${landingLead}${slug_tarifa.toLowerCase()}-${id}` : landing_link}>{`Comprar`}</Link>
                                     </Col>
                                 )}
                             </Row>

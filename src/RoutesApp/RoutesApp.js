@@ -24,6 +24,7 @@ import BlogItem from '../Pages/BlogItem';
 import PoliticaCookies from '../Pages/PoliticaCookies';
 import PoliticaLegal from '../Pages/PoliticaLegal';
 import PageNotFound from '../Pages/PageNotFound';
+import HerramientasSuministros from '../Pages/HerramientasSuministros';
 
 
 function RoutesApp() {
@@ -82,6 +83,9 @@ function RoutesApp() {
                 <Route path="/es-es/herramientas/precio-de-la-luz-hoy" element={<HerramientaLuz />} />
                 <Route path="/es-es/herramientas/test-de-velocidad" element={<HerramientaTest />} />
 
+                <Route path="/es-es/herramientas/suministros" element={<HerramientasSuministros />} />
+                <Route path="/es-es/herramientas/suministros/:id" element={<BlogItem />} />
+
                 <Route path="/es-es/contactanos" element={<Contactenos />} />
                 <Route path="/es-es/politica-privacidad" element={<PoliticaPrivacidad />} />
                 <Route path="/es-es/politica-cookies" element={<PoliticaCookies />} />
@@ -90,6 +94,7 @@ function RoutesApp() {
                 <Route path="/es-es/blog" element={<Blog />} />
                 <Route path="/es-es/blog/:categoria" element={<Blog />} />
                 <Route path="/es-es/blog/:categoria/:id" element={<BlogItem />} />
+                
                 {/* Ruta 404 */}
                 <Route path="/*" element={<PageNotFound />} />
                 <Route path="/es-es/404" element={<PageNotFound />} />
