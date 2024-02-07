@@ -33,8 +33,7 @@ function TitleSection({ fecha, autor, title, titleAlt, titleThird, subtitle, cen
                 <Col md={12} className={center && 'text-center b-600'}>
                     <Title title={title} titleAlt={titleAlt} titleThird={titleThird} />
                     {subtitle && <Subtitle subtitle={subtitle} />}
-                    {fecha && <p className='color-primary'><b><BsFillCalendar2Fill />&nbsp;{cambiarFecha(fecha)}</b></p>}
-                    {autor && <p className='color-primary'><b><BsFillFilePersonFill />&nbsp;{autor[1]}</b></p>}
+                    {fecha && <div className='color-primary d-flex justify-content-between'><b><BsFillCalendar2Fill />&nbsp;{cambiarFecha(fecha)} </b><b><BsFillFilePersonFill />&nbsp;{autor}</b></div>}
                     {clave && <p className='color-primary'><b>{clave}</b></p>}
                     {!left && text1 && <p dangerouslySetInnerHTML={{ __html: text1 }}></p>}
                     {!left && text2 && <p dangerouslySetInnerHTML={{ __html: text2 }}></p>}

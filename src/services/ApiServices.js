@@ -230,9 +230,9 @@ export const getBlogDestacados = async () => {
     }
 };
 
-export const getBlogById = async (id) => {
+export const getBlogById = async (categoria, id) => {
     try {
-        const response = await axios.get(`${apiUrl}/getBlogById/${id}`)
+        const response = await axios.get(`${apiUrl}/getBlog/${categoria}/${id}`)
         return response.data[0];
     } catch (error) {
         console.error("Error al procesar la solicitud", error);
@@ -240,9 +240,9 @@ export const getBlogById = async (id) => {
     }
 };
 
-export const getSuministros = async () => {
+export const getGestion = async (gestion) => {
     try {
-        const response = await axios.get(`${apiUrl}/getSuministros`)
+        const response = await axios.get(`${apiUrl}/getGestion/${gestion}`)
         return response.data;
     } catch (error) {
         console.error("Error al procesar la solicitud", error);
@@ -250,9 +250,9 @@ export const getSuministros = async () => {
     }
 };
 
-export const getSuministrosById = async (id) => {
+export const getGestionById = async (gestion,id) => {
     try {
-        const response = await axios.get(`${apiUrl}/getSuministrosById/${id}`)
+        const response = await axios.get(`${apiUrl}/getGestion/${gestion}/${id}`)
         return response.data[0];
     } catch (error) {
         console.error("Error al procesar la solicitud", error);
@@ -303,6 +303,17 @@ export const getPriceLightServiceMonth = async () => {
 export const getDataLocation = async () => {
     try {
         const response = await axios.get(`${apiUrl}/getDataLocation`);
+        const data = response.data
+        return data;
+    } catch (error) {
+        console.error("Error al procesar la solicitud", error);
+        throw error;
+    }
+};
+
+export const getMenuBlog = async () => {
+    try {
+        const response = await axios.get(`${apiUrl}/getMenuBlog`);
         const data = response.data
         return data;
     } catch (error) {

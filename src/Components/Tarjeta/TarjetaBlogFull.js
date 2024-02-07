@@ -29,8 +29,8 @@ function TarjetaBlogFull({ data }) {
                 <Card.ImgOverlay>
                     <div className='info-card p-3'>
                         <span>{cambiarFecha(fecha_publicacion)}</span>
-                        <p><Link  rel="alternate" hreflang="es-es" to={`/es-es/blog/${categoria_url}/${url_amigable}`}>{titulo}</Link></p>
-                        <Link  rel="alternate" hreflang="es-es" to={`/es-es/blog/${categoria_url}/${url_amigable}`}>ver más</Link>
+                        <p><Link  rel="alternate" hreflang="es-es" to={`/es/blog/${categoria_url}/${url_amigable}`}>{titulo}</Link></p>
+                        <Link  rel="alternate" hreflang="es-es" to={`/es/blog/${categoria_url}/${url_amigable}`}>ver más</Link>
                     </div>
                 </Card.ImgOverlay>
             </Card>

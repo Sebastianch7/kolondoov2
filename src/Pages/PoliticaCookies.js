@@ -16,7 +16,7 @@ export default function PoliticaCookies() {
                     <Row>
                         <Col md={12}>
                             <Title title={'Política de'} titleAlt={'Cookies'} />
-                            <p>Esta Política de Cookies forma parte y complementa la  <a className='color-primary no-link' href='/es-es/politica-privacidad'><b>Política de Privacidad</b></a> del sitio web (en adelante, el “sitio web”). El titular es KOLONDOO MEDIA, S. L., sociedad de nacionalidad española, con NIF B-16756041, y domicilio social en la Calle Barquillo, 8 planta, 1º izquierda, 28004 Madrid (España), (en adelante conjuntamente designadas como “Kolondoo”).</p>
+                            <p>Esta Política de Cookies forma parte y complementa la  <a className='color-primary no-link' href='/es/politica-privacidad'><b>Política de Privacidad</b></a> del sitio web (en adelante, el “sitio web”). El titular es KOLONDOO MEDIA, S. L., sociedad de nacionalidad española, con NIF B-16756041, y domicilio social en la Calle Barquillo, 8 planta, 1º izquierda, 28004 Madrid (España), (en adelante conjuntamente designadas como “Kolondoo”).</p>
                             <p>Este sitio web utiliza cookies u otros dispositivos de almacenamiento y recuperación de datos de funcionalidad similar (en adelante, “cookies”) para brindarte una mejor experiencia, más rápida y segura. A continuación, te explicamos cuáles son estas tecnologías, para qué se utilizan, (por ejemplo, para iniciar sesión de navegación, guardar tus preferencias, personalizar el contenido que se difunde y mostrarte anuncios más pertinentes) y por quién son gestionadas.</p>
                             <Title title={'¿Qué es una'} titleAlt={'cookie?'} />
                             <p>Las cookies son pequeños archivos de texto que se almacenan en su dispositivo (ordenador, tablet o móvil), que incluidos en el Sitios Web que se descargan cuando accedes al mismo. Su finalidad principal es reconocer al usuario cada vez que accede al sitio web permitiendo, además, mejorar la calidad y ofrecer un mejor uso del sitio web.</p>
@@ -54,13 +54,13 @@ export default function PoliticaCookies() {
                                         <td>XSRF-TOKEN</td>
                                         <td>Esta cookie está escrita para ayudar a la seguridad del sitio en la prevención de los ataques de falsificación de solicitud de sitio cruzado</td>
                                         <td>1 minuto</td>
-                                        <td><a href="https://kolondoo.com/es-es/politica-privacidad" target="_blank">Pol.Priv.</a></td>
+                                        <td><a href="https://kolondoo.com/es/politica-privacidad" target="_blank">Pol.Priv.</a></td>
                                     </tr>
                                     <tr>
                                         <td>kolondoo_comparador_session</td>
                                         <td>Cookie propia del sitio kolondoo.com. Las cookies de sesión permiten a los usuarios ser reconocidos en un sitio web de forma anónima y que cualquier cambio que realices, artículo que selecciones o dato que introduzcas se recuerda de una a otra página.</td>
                                         <td>Caduca al finalizar la sesión</td>
-                                        <td><a href="https://kolondoo.com/es-es/politica-privacidad" target="_blank">Pol.Priv.</a></td>
+                                        <td><a href="https://kolondoo.com/es/politica-privacidad" target="_blank">Pol.Priv.</a></td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -127,8 +127,8 @@ export default function PoliticaCookies() {
                             <ol type='a'>
                                 <li>Si utiliza Microsoft Internet Explorer, encontrará la opción en el menú Herramientas / Opciones de Internet / Privacidad / Configuración. Para saber más visite:</li>
                                 <ul className='icon-list'>
-                                    <li><a target='_blank' rel='nofollow noopener noreferrer' href='https://windows.microsoft.com/es-es/windows-vista/block-or-allow-Cookies' className='color-primary no-link'><b>Bloquear o permitir Cookies</b></a></li>
-                                    <li><a target='_blank' rel='nofollow noopener noreferrer' href='https://windows.microsoft.com/es-es/windows7/how-to-manage-Cookies-in-internet-explorer-9' className='color-primary no-link'><b>Gestión de Cookies en I.Explorer 9</b></a></li>
+                                    <li><a target='_blank' rel='nofollow noopener noreferrer' href='https://windows.microsoft.com/es/windows-vista/block-or-allow-Cookies' className='color-primary no-link'><b>Bloquear o permitir Cookies</b></a></li>
+                                    <li><a target='_blank' rel='nofollow noopener noreferrer' href='https://windows.microsoft.com/es/windows7/how-to-manage-Cookies-in-internet-explorer-9' className='color-primary no-link'><b>Gestión de Cookies en I.Explorer 9</b></a></li>
                                 </ul>
                                 <li>Si utiliza Firefox, encontrará la opción en el menú Herramientas / Opciones / Privacidad / Cookies. Para saber más visite:</li>
                                 <ul className='icon-list'>
@@ -140,7 +140,7 @@ export default function PoliticaCookies() {
                                 </ul>
                                 <li>Si utiliza Opera, en la opción de Seguridad y Privacidad, podrá configurar el navegador. Para saber más visite:</li>
                                 <ul className='icon-list'>
-                                    <li><a target='_blank' rel='nofollow noopener noreferrer' href='https://help.opera.com/Windows/11.50/es-ES/cookies.html' className='color-primary no-link'><b>Gestión de Cookies</b></a></li>
+                                    <li><a target='_blank' rel='nofollow noopener noreferrer' href='https://help.opera.com/Windows/11.50/es/cookies.html' className='color-primary no-link'><b>Gestión de Cookies</b></a></li>
                                 </ul>
                                 <li>Si utiliza Safari encontrará la opción en el menú Preferencias/Privacidad. Más información en:</li>
                                 <ul className='icon-list'>
@@ -150,7 +150,7 @@ export default function PoliticaCookies() {
                             <p>Asimismo, recuerda que, al igual que sucede en los navegadores de ordenadores, los navegadores de los dispositivos móviles permiten realizar cambios en las opciones o ajustes de privacidad para desactivar o eliminar las cookies. Para ello, si deseas modificar las opciones de privacidad, debes seguir las instrucciones específicas por el desarrollador de tu navegador para dispositivo móvil.</p>
                             <p>A continuación, podrás encontrar algunos ejemplos que te guiarán para modificar las opciones de privacidad en tu dispositivo móvil:</p>
                             <ol type='a'>
-                                <li>Safari para IOS: <a target='_blank' rel='nofollow noopener noreferrer' href='https://support.apple.com/es-es/HT201265' className='color-primary no-link'><b>Safari «Support»</b></a></li>
+                                <li>Safari para IOS: <a target='_blank' rel='nofollow noopener noreferrer' href='https://support.apple.com/es/HT201265' className='color-primary no-link'><b>Safari «Support»</b></a></li>
                                 <li>Firefox <a target='_blank' rel='nofollow noopener noreferrer' href='https://support.mozilla.org/es/kb/bloquear-cookies-en-firefox-focus-para-android' className='color-primary no-link'><b>Firefox «Support»</b></a></li>
                                 <li>Chrome para Android: <a target='_blank' rel='nofollow noopener noreferrer' href='https://support.google.com/accounts/answer/32050?co=GENIE.Platform%3DAndroid&hl=es&oco=0' className='color-primary no-link'><b>Chrome para Android «Support»</b></a></li>
                                 <li>Chrome para IOS: <a target='_blank' rel='nofollow noopener noreferrer' href='https://support.google.com/accounts/answer/32050?co=GENIE.Platform%3DiOS&hl=es&oco=0' className='color-primary no-link'><b>Chrome para IOS «Support»</b></a></li>
@@ -158,7 +158,7 @@ export default function PoliticaCookies() {
                             <Title title={'Actualización en la'} titleAlt={'Política de Cookies'} />
                             <p>Nuestra Política de Cookies podrá sufrir actualizaciones, como consecuencia de cambios y necesidades legales, así como debidas a mejoras y cambios incluidos en la forma de ofrecer y prestar nuestros servicios e información de interés. Por ello, te recomendamos que visites y accedas a nuestra Política de Cookies periódicamente, para poder tener acceso y conocer los últimos cambios que hayan podido ser incorporados. En caso de que dichos cambios guarden relación con el consentimiento prestado, te será enviada una notificación independiente y por separado para recabarlo nuevamente.</p>
                             <Title title={'¿Tienes alguna duda?'} titleAlt={'Contacta con nosotros'} />
-                            <p>Puedes obtener más información sobre el tratamiento de sus datos realizado así como sobre el modo de ejercitar sus derechos en nuestra <a className='color-primary no-link' href='/es-es/politica-privacidad'><b>Política de Privacidad</b></a>.</p>
+                            <p>Puedes obtener más información sobre el tratamiento de sus datos realizado así como sobre el modo de ejercitar sus derechos en nuestra <a className='color-primary no-link' href='/es/politica-privacidad'><b>Política de Privacidad</b></a>.</p>
                             <p>También puede contactar con Arkeero en el email: <b className='color-primary'>dpd@kolondoo.com</b> o en la dirección arriba indicada.</p>
                             <br />
                             <br />

@@ -10,17 +10,31 @@ import FormSuscripcion from '../Components/Forms/FormSuscripcion';
 import { getGestion } from '../services/ApiServices';
 import ContenedorDestacados from '../Components/Blog/ContenedorDestacados';
 
-export default function HerramientasSuministros() {
-    
+export default function HerramientasCobertura() {
+
     const [fetchBlog, setFetchBlog] = useState([])
     const [isLoading, setIsLoading] = useState(false)
 
     useEffect(() => {
-        
         const fetchBlogList = async () => {
             setIsLoading(true);
             try {
-                const response = await getGestion('suministros');
+                const response = await getGestion('coberturaFibra');
+                setFetchBlog(response);
+                setIsLoading(false);
+            } catch (error) {
+                console.error('Error al obtener blog:', error);
+
+            }
+        };
+        fetchBlogList();
+    }, []);
+
+    useEffect(() => {
+        const fetchBlogList = async () => {
+            setIsLoading(true);
+            try {
+                const response = await getGestion('coberturaMovil');
                 setFetchBlog(response);
                 setIsLoading(false);
             } catch (error) {
@@ -66,7 +80,7 @@ export default function HerramientasSuministros() {
                                         <ul className='icon-list'>
 
                                             {fetchBlog?.map((item, index) => {
-                                                return < a target='_blank' key={index} href={`/es/herramientas/suministros/${item.url_amigable}`}><li className='m-3 font-semibold'>{`${item.titulo}`}</li></a>
+                                                return < a target='_blank' key={index} href={`/es/herramientas/cobertura/${item.url_amigable}`}><li className='m-3 font-semibold'>{`${item.titulo}`}</li></a>
                                             })
                                             }
                                         </ul>
@@ -76,8 +90,8 @@ export default function HerramientasSuministros() {
                         </Row>
                     </Col>
                     <Col xs={12} md={4}>
-                    <ContenedorDestacados/>
-                </Col>
+                        <ContenedorDestacados />
+                    </Col>
                 </Row >
             </Container >
             <FormSuscripcion />

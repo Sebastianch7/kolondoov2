@@ -20,10 +20,10 @@ function ItemMenuDesktop({ data }) {
             <div className="collapse navbar-collapse" id="navbarNav">
                 <ul className="no-link navbar-nav">
                     <li className="nav-item">
-                        <a className="nav-link no-link" href={!data.titleUrl.includes('herramientas') ? `/es-es${data.titleUrl}` : null}>{data.title}</a>
+                        <a className="nav-link no-link" href={!data.titleUrl.includes('herramientas') ? `/es${data.titleUrl}` : null}>{data.title}</a>
                         <div className="submenu">
                             {data.children.map((item, key) => (
-                                <a className='dropdown-item' href={`/es-es${item.url}`}>{t(item.name)}</a>
+                                <a className='dropdown-item' href={`/es${item.url}`}>{t(item.name)}</a>
                             ))}
                         </div>
                     </li>

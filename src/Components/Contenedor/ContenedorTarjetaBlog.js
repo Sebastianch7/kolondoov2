@@ -73,7 +73,7 @@ function ContenedorTarjetaBlog({ children }) {
                                                 />
                                                 <Carousel.Caption>
                                                     <div className="carrusel-caption">
-                                                        <h3><Link rel="alternate" hreflang="es-es" to={`/es-es/blog/${data.categoria_url}/${data.url_amigable}`}>{data.titulo}</Link></h3>
+                                                        <h3><Link rel="alternate" hreflang="es-es" to={`/es/blog/${data.categoria_url}/${data.url_amigable}`}>{data.titulo}</Link></h3>
                                                         <h6>{cambiarFecha(data.fecha_publicacion)}</h6>
                                                     </div>
                                                 </Carousel.Caption>
@@ -83,7 +83,7 @@ function ContenedorTarjetaBlog({ children }) {
                                 </Carousel>
                             )}
                             <Col md={12} className='mx-auto text-center py-5'>
-                                <Link to={'/es-es/blog'} className='btn btn-primary'>Descubre más artículos</Link>
+                                <Link to={'/es/blog'} className='btn btn-primary'>Descubre más artículos</Link>
                             </Col>
                         </Col>
                     </Row>

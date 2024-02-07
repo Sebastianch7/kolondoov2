@@ -4,7 +4,7 @@ import { Container, Row, Col, Card } from 'react-bootstrap';
 import TitleSection from '../Text/TitleSection';
 import ContenedorDestacados from '../Blog/ContenedorDestacados';
 import FormSuscripcion from '../Forms/FormSuscripcion';
-import { getBlogById, getSuministrosById } from '../../services/ApiServices';
+import { getBlogById, getGestionById } from '../../services/ApiServices';
 import { useLocation } from 'react-router-dom';
 import Load from '../Utils/Load'
 import { Link } from 'react-router-dom';
@@ -14,6 +14,7 @@ import MetaData from '../../Components/Header/SeoMetadata';
 export default function ContenedorBlogItem({ }) {
 
     const [fetchBlog, setFetchBlog] = useState([])
+    const [rutaImagen, setRutaImagen] = useState(null)
     const [idBlog, setIdBlog] = useState(null)
     const [carpeta, setCarpeta] = useState(null)
     const [landing, setLanding] = useState(null)
@@ -44,13 +45,11 @@ export default function ContenedorBlogItem({ }) {
         const fetchBlogId = async () => {
             try {
                 if (idBlog !== null) {
-                    let response;
-
                     switch (landing) {
                         case 'blog':
-                            response = await getBlogById(idBlog);
-                            if (response === undefined || !response.url_amigable.toLowerCase().includes(validarCategoria) && validarCategoria !== 'destacados') {                                
-                                navigate(`/es-es/404`);
+                            response = await getBlogById(validarCategoria,idBlog);
+                            if (response === undefined || !response.categoria_slug.includes(validarCategoria) && validarCategoria !== 'destacados') {
+                               navigate(`/es/404`);
                             }
                             setFetchBlog(response);
                             setLoad(false);
@@ -60,14 +59,38 @@ export default function ContenedorBlogItem({ }) {
                         case 'herramientas':
                             switch (validarCategoria) {
                                 case 'suministros':
-                                    response = await getSuministrosById(idBlog);
+                                    response = await getGestionById('suministros', idBlog);
                                     if (response === undefined || !validarCategoria.includes('suministros')) {
-                                        navigate(`/es-es/404`);
+                                        navigate(`/es/404`);
                                     }
                                     setFetchBlog(response);
+                                    console.log(response)
                                     setLoad(false);
                                     setBtnBack('herramientas/suministros')
                                     setCarpeta('gestiones')
+                                    setRutaImagen(`/img/gestiones/desktop/`)
+                                    break;
+                                case 'cobertura':
+                                    response = await getGestionById('cobertura', idBlog);
+                                    if (response === undefined || !validarCategoria.includes('cobertura')) {
+                                        navigate(`/es/404`);
+                                    }
+                                    setFetchBlog(response);
+                                    setLoad(false);
+                                    setBtnBack('herramientas/cobertura')
+                                    setCarpeta('gestiones')
+                                    setRutaImagen('/img/gestiones/desktop/')
+                                    break;
+                                case 'seguros':
+                                    response = await getGestionById('seguros', idBlog);
+                                    if (response === undefined || !validarCategoria.includes('seguros')) {
+                                        navigate(`/es/404`);
+                                    }
+                                    setFetchBlog(response);
+                                    setLoad(false);
+                                    setBtnBack('herramientas/seguros')
+                                    setCarpeta('gestiones')
+                                    setRutaImagen('/img/gestiones/desktop/')
                                     break;
                             }
                             break;
@@ -84,22 +107,22 @@ export default function ContenedorBlogItem({ }) {
 
     return (
         <>
-            <MetaData titulo={fetchBlog.seo_titulo} descripcion={fetchBlog.seo_descripcion} imagen_destacada={`/img/${carpeta}/desktop/${fetchBlog?.imagen_principal_escritorio}`} />
+            <MetaData titulo={fetchBlog.seo_titulo} descripcion={fetchBlog.seo_descripcion} imagen_destacada={`${fetchBlog?.imagen}`} />
             {!load ? <Container>
                 <Row>
                     <Col xs={12} md={8}>
-                        <Image className='w-100' src={`/img/${carpeta}/desktop/${fetchBlog?.imagen_principal_escritorio}`} alt={`/img/${carpeta}/desktop/${fetchBlog?.imagen_principal_escritorio}`} />
+                        <Image className='img-fluid w-100' src={`${rutaImagen ? rutaImagen: ''}${fetchBlog?.imagen}`} alt={`${rutaImagen}${fetchBlog?.alt_img}`} />
                         <TitleSection
                             left
                             title={fetchBlog?.titulo}
-                            text1={fetchBlog?.entrada}
+                            text1={fetchBlog?.contenido}
                             clave={fetchBlog?.hashtags?.replaceAll('[', '').replaceAll('"', '').replaceAll(']', '').replaceAll(',', ' ')}
                             fecha={fetchBlog?.fecha_publicacion}
-                            autor={fetchBlog?.propietario?.split('-')}
+                            autor={fetchBlog?.autor}
                             textBlog={fetchBlog?.cuerpo}
                         />
                         <Col xs={12} className='text-center my-5'>
-                            <Link className='font-09 btn btn-primary' to={`/es-es/${btnBack}`}>Volver</Link>
+                            <Link className='font-09 btn btn-primary' to={`/es/${btnBack}`}>Volver</Link>
                         </Col>
                     </Col>
                     <Col xs={12} md={4}>

@@ -34,7 +34,7 @@ export default function Blog() {
             <Container>
                 <Row>
                     <Col>
-                        {categoria && <h5>Categoría: <u>{t(categoria?.replaceAll('-', ' '))}</u></h5>}
+                        {categoria && <h5>Categoría: <u className='text-capitalize'>{t(categoria?.replaceAll('-', ' '))}</u></h5>}
                     </Col>
                 </Row>
             </Container>

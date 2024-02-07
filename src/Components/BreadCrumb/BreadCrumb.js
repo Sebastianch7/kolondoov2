@@ -38,7 +38,7 @@ function BreadCrumb({ lead = false }) {
                                         if (!item.includes('herramientas') && !item.includes('destacados')) {
                                             return <Breadcrumb.Item
                                                 key={index}
-                                                href={((index + 1) !== locations.length) && `/es-es${ruta}`}
+                                                href={((index + 1) !== locations.length) && `/es${ruta}`}
                                                 className={`capitalize ${(index + 1) === locations.length ? (isLead ? 'd-none' : 'no-cursor-link') : 'text-decoration-underline'}`}
                                             >
                                                 {t(item).replaceAll('-', ' ')}
@@ -57,7 +57,7 @@ function BreadCrumb({ lead = false }) {
                                         if (!item.includes('herramientas') && !item.includes('destacados')) {
                                             return (index+1 === locations.length) &&  <Breadcrumb.Item
                                                 key={index}
-                                                href={`/es-es${ruta}`}
+                                                href={`/es${ruta}`}
                                                 className={`capitalize text-decoration-underline`}
                                             >
                                                 {t(item).replaceAll('-', ' ')}

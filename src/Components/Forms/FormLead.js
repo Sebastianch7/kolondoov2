@@ -54,7 +54,7 @@ export default function FormLead({ idPlan, landing, offerLooking, urlOffers, com
                 setTextButton('Tu solicitud ha sido registrada.');
                 setCheckInAsesoria(false);
                 setTimeout(() => {
-                    navigate(`/es-es/${urlSplit[2]}/${urlSplit[3]}/thank/${urlSplit[4]}`);
+                    navigate(`/es/${urlSplit[2]}/${urlSplit[3]}/thank/${urlSplit[4]}`);
                 }, 3000);
             } else if (response?.data.status === 308) {
                 setTextButton('Tu solicitud ha sido registrada.');
@@ -108,7 +108,7 @@ export default function FormLead({ idPlan, landing, offerLooking, urlOffers, com
                                             <span
                                                 dangerouslySetInnerHTML={{
                                                     __html:
-                                                        'Acepto que Vuskoo me asesore telefónicamente sobre el producto y servicio elegido de acuerdo con su <a href="/es-es/politica-privacidad" target="_blank">Política de Privacidad</a>',
+                                                        'Acepto que Vuskoo me asesore telefónicamente sobre el producto y servicio elegido de acuerdo con su <a href="/es/politica-privacidad" target="_blank">Política de Privacidad</a>',
                                                 }}
                                             />
                                         }

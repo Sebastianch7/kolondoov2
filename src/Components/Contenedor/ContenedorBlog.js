@@ -7,7 +7,7 @@ import Load from '../Utils/Load';
 import ReactPaginate from 'react-paginate';
 import { useNavigate } from 'react-router-dom';
 
-export default function ContenedorBlog({ categoria = null }) {
+export default function ContenedorBlog({categoria}) {
     const [fetchBlog, setFetchBlog] = useState([]);
     const [isLoading, setIsLoading] = useState(true)
     let navigate = useNavigate();
@@ -16,11 +16,11 @@ export default function ContenedorBlog({ categoria = null }) {
         setIsLoading(true);
         const fetchBlogList = async () => {
             try {
-                const response = await getBlog(categoria);
+                const response = await getBlog(categoria !== undefined ? categoria : '');
                 setFetchBlog(response);
                 setIsLoading(false);
             } catch (error) {
-                navigate(`/es-es/404`);
+                navigate(`/es/404`);
                 console.error('Error al obtener blog:', error);
 
             }
@@ -99,7 +99,7 @@ export default function ContenedorBlog({ categoria = null }) {
                     {!isLoading ? <PaginatedItems itemsPerPage={10} /> : <Load></Load>}
                 </Col>
                 <Col xs={12} md={4}>
-                    <ContenedorDestacados />
+                    <ContenedorDestacados/>
                 </Col>
             </Row>
         </Container>

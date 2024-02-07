@@ -5,12 +5,11 @@ import { Container, Row, Col, Card } from 'react-bootstrap'
 import TitleSection from '../Components/Text/TitleSection'
 import MetaData from '../Components/Header/SeoMetadata';
 import Title from '../Components/Text/Title';
-import Load from '../Components/Utils/Load';
 import FormSuscripcion from '../Components/Forms/FormSuscripcion';
 import { getGestion } from '../services/ApiServices';
 import ContenedorDestacados from '../Components/Blog/ContenedorDestacados';
 
-export default function HerramientasSuministros() {
+export default function HerramientasSeguros() {
     
     const [fetchBlog, setFetchBlog] = useState([])
     const [isLoading, setIsLoading] = useState(false)
@@ -20,7 +19,7 @@ export default function HerramientasSuministros() {
         const fetchBlogList = async () => {
             setIsLoading(true);
             try {
-                const response = await getGestion('suministros');
+                const response = await getGestion('seguros');
                 setFetchBlog(response);
                 setIsLoading(false);
             } catch (error) {
@@ -66,7 +65,7 @@ export default function HerramientasSuministros() {
                                         <ul className='icon-list'>
 
                                             {fetchBlog?.map((item, index) => {
-                                                return < a target='_blank' key={index} href={`/es/herramientas/suministros/${item.url_amigable}`}><li className='m-3 font-semibold'>{`${item.titulo}`}</li></a>
+                                                return < a target='_blank' key={index} href={`/es/herramientas/seguros/${item.url_amigable}`}><li className='m-3 font-semibold'>{`${item.titulo}`}</li></a>
                                             })
                                             }
                                         </ul>

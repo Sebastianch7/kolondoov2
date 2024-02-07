@@ -9,13 +9,16 @@ import { useLocation, Link } from 'react-router-dom';
 import ItemMenuDesktop from '../Items/ItemMenuDesktop';
 import { isMobile } from 'react-device-detect';
 import Accordion from 'react-bootstrap/Accordion';
+import { getMenuBlog } from '../../services/ApiServices';
 
 
 function Header({ breadCrumb }) {
     const { t } = useTranslation();
 
-    const [lang, setLang] = useState(null)
+    const [lang, setLang] = useState('es-es')
     const location = useLocation();
+    const [menu, setMenu] = useState([])
+    const [isLoadInformation, setIsLoadInformation] = useState(false)
 
     useEffect(() => {
         setLang(location.pathname.split('/')[1])
@@ -25,12 +28,25 @@ function Header({ breadCrumb }) {
         window.scrollTo(0, 0);
     }, []);
 
+    useEffect(() => {
+        setIsLoadInformation(true);
+        const fetchMenu = async () => {
+            try {
+                const response = await getMenuBlog()
+                setMenu(response);
+            } catch (error) {
+                console.error("Error al obtener el menu", error);
+            }
+        };
+        fetchMenu();
+    }, []);
+
     return (
         <>
             <Navbar sticky='top' expand={"lg"} className="navbar-light bg-white clean-navbar my-4 my-xxl-0">
                 <Container className='container-header'>
                     <Navbar.Brand>
-                        <a href={`/es-es`}><img src="/img/logos/logo.svg" alt="Logo" /></a>
+                        <a href={`/es`}><img src="/img/logos/logo.svg" alt="Logo" /></a>
                     </Navbar.Brand>
                     {isMobile && (
                         <>
@@ -45,7 +61,7 @@ function Header({ breadCrumb }) {
                                                     <ul>
                                                         {
                                                             item.children.map((sub, index) => {
-                                                                return <a className='no-link text-left' href={`/es-es${sub.url}`}><li className='text-left'>{sub.name}</li></a>
+                                                                return <a className='no-link text-left' href={`/es${sub.url}`}><li className='text-left'>{sub.name}</li></a>
                                                             })
                                                         }
                                                     </ul>
@@ -58,14 +74,14 @@ function Header({ breadCrumb }) {
                                             <Accordion.Header>{'Blog'}</Accordion.Header>
                                             <Accordion.Body>
                                                 <ul>
-                                                    <a className="no-link text-left" href="/es-es/blog"><li className='text-left'>{'Todas'}</li></a>
-                                                    <a className="no-link text-left" href="/es-es/blog/internet"><li className='text-left'>{'Internet'}</li></a>
-                                                    <a className="no-link text-left" href="/es-es/blog/movil"><li className='text-left'>Móvil</li></a>
-                                                    <a className="no-link text-left" href="/es-es/blog/television"><li className='text-left'>Televisión</li></a>
-                                                    <a className="no-link text-left" href="/es-es/blog/energia"><li className='text-left'>Energía</li></a>
-                                                    <a className="no-link text-left" href="/es-es/blog/hogar"><li className='text-left'>Hogar</li></a>
-                                                    <a className="no-link text-left" href="/es-es/blog/mejores-ofertas"><li className='text-left'>Mejores ofertas</li></a>
-                                                    <a className="no-link text-left" href="/es-es/blog/seguros"><li className='text-left'>Seguros</li></a>
+                                                <a className="no-link text-left" href={`/es/blog`}><li className='text-left'>{'Todas'}</li></a>
+                                                    {menu?.length > 0 &&
+                                                        menu.map((item, index) => {
+                                                            if (item.slug !== 'sin-categoria' && item.slug !== 'destacado') {
+                                                                return <a key={index} className="no-link text-left" href={`/es/blog/${item.slug}`}><li className='text-left'>{item.name}</li></a>
+                                                            }
+                                                        })
+                                                    }
                                                 </ul>
                                             </Accordion.Body>
                                         </Accordion.Item>
@@ -86,16 +102,16 @@ function Header({ breadCrumb }) {
                                         <div className="collapse navbar-collapse" id="navbarNav">
                                             <ul className="no-link navbar-nav">
                                                 <li className="nav-item">
-                                                    <a className="nav-link no-link" href={`/es-es/blog`}>{'Blog'}</a>
+                                                    <a className="nav-link no-link" href={`/es/blog`}>{'Blog'}</a>
                                                     <div className="submenu">
-                                                        <a className="dropdown-item" href="/es-es/blog">Todas</a>
-                                                        <a className="dropdown-item" href="/es-es/blog/internet">Internet</a>
-                                                        <a className="dropdown-item" href="/es-es/blog/movil">Móvil</a>
-                                                        <a className="dropdown-item" href="/es-es/blog/television">Televisión</a>
-                                                        <a className="dropdown-item" href="/es-es/blog/energia">Energía</a>
-                                                        <a className="dropdown-item" href="/es-es/blog/hogar">Hogar</a>
-                                                        <a className="dropdown-item" href="/es-es/blog/mejores-ofertas">Mejores ofertas</a>
-                                                        <a className="dropdown-item" href="/es-es/blog/seguros">Seguros</a>
+                                                        <a className="dropdown-item" href={`/es/blog`}>{'Todas'}</a>
+                                                        {menu?.length > 0 &&
+                                                            menu.map((item, index) => {
+                                                                if (item.slug !== 'sin-categoria' && item.slug !== 'destacado') {
+                                                                    return <a key={index} className="dropdown-item" href={`/es/blog/${item.slug}`}>{item.name}</a>
+                                                                }
+                                                            })
+                                                        }
                                                     </div>
                                                 </li>
                                             </ul>
