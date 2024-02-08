@@ -26,15 +26,11 @@ export default function ContenedorBlogItemPreview({ }) {
     let navigate = useNavigate();
 
     useEffect(() => {
-        setLang(location.pathname.split('/')[1])
-    }, [])
-
-    useEffect(() => {
         const pathname = location.pathname;
         let locations = pathname.split('/');
-        setLanding(locations[2].toLowerCase())
-        setValidarCategoria(locations[3].toLowerCase())
-        setIdBlog(locations[4]);
+        setLanding(locations[1].toLowerCase())
+        setValidarCategoria(locations[2].toLowerCase())
+        setIdBlog(locations[3]);
     }, [idBlog])
 
     useEffect(() => {
@@ -60,7 +56,7 @@ export default function ContenedorBlogItemPreview({ }) {
             {!load ? <Container>
                 <Row>
                     <Col xs={12} md={8}>
-                    {rutaImagen && <Image className='img-fluid w-100' src={`${rutaImagen ? rutaImagen: ''}${fetchBlog?.imagen}`} alt={`${fetchBlog?.alt_img ? fetchBlog?.alt_img : 'Imagen no encontrada'}`} />}
+                    {fetchBlog?.imagen && <Image className='img-fluid w-100' src={`${rutaImagen ? rutaImagen: ''}${fetchBlog?.imagen}`} alt={`${fetchBlog?.alt_img ? fetchBlog?.alt_img : 'Imagen no encontrada'}`} />}
                         <TitleSection
                             left
                             title={fetchBlog?.titulo}

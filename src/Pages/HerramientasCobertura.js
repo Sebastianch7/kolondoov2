@@ -9,10 +9,12 @@ import Load from '../Components/Utils/Load';
 import FormSuscripcion from '../Components/Forms/FormSuscripcion';
 import { getGestion } from '../services/ApiServices';
 import ContenedorDestacados from '../Components/Blog/ContenedorDestacados';
+import Accordion from 'react-bootstrap/Accordion';
 
 export default function HerramientasCobertura() {
 
-    const [fetchBlog, setFetchBlog] = useState([])
+    const [fetchFibra, setFetchFibra] = useState([])
+    const [fetchMovil, setFetchMovil] = useState([])
     const [isLoading, setIsLoading] = useState(false)
 
     useEffect(() => {
@@ -20,7 +22,7 @@ export default function HerramientasCobertura() {
             setIsLoading(true);
             try {
                 const response = await getGestion('coberturaFibra');
-                setFetchBlog(response);
+                setFetchFibra(response);
                 setIsLoading(false);
             } catch (error) {
                 console.error('Error al obtener blog:', error);
@@ -35,7 +37,7 @@ export default function HerramientasCobertura() {
             setIsLoading(true);
             try {
                 const response = await getGestion('coberturaMovil');
-                setFetchBlog(response);
+                setFetchMovil(response);
                 setIsLoading(false);
             } catch (error) {
                 console.error('Error al obtener blog:', error);
@@ -51,45 +53,61 @@ export default function HerramientasCobertura() {
             <Header breadCrumb></Header>
             <Container>
                 <Row>
-                    <Col xs={12} md={8}>
+                    <Col xs={12} md={12} xl={8}>
                         <Row>
                             <Col xs={12}>
                                 <TitleSection
                                     center
                                     title={'Gestiones'}
-                                    titleAlt={'Suministros'}
+                                    titleAlt={'Cobertura'}
                                 />
-                                <p className='my-md-3 px-2 p-md-0'>
-                                    <b>Los suministros básicos de cada hogar son la <a href='/es/blog/energia/tarifa-indexada-y-pvpc-diferencias' target='_blank'>luz</a>, el <a href='/es/blog/energia/ahorrar-en-tarifa-de-gas-natural' target='_blank'>gas</a> y el agua potable.</b> En otras palabras, son los servicios más esenciales en una vivienda que cubren las necesidades más importantes de nuestro día a día.
-                                </p>
-                                <p className='my-md-3 px-2 p-md-0'><b>Además, a estos servicios podríamos sumarle en los últimos años Internet, ya que cada vez se vuelve más necesario contratar una <a href='/es/internet-telefonia/comparador-fibra' target='_blank'>tarifa de fibra óptica</a></b> (o ADSL si aún no tienes cobertura de fibra en tu edificio), y es que está normalizándose teletrabajar a tiempo parcial o completo.</p>
-                                <p className='my-md-3 px-2 p-md-0'>Pero no nos engañemos, también nos sirve para comunicarnos, jugar online, ver nuestras series preferidas, estudiar…</p>
-                                <p className='my-md-3 px-2 p-md-0'>Pero, volviendo a la luz, el agua y el gas, <b>¿cuánto consumimos al mes de cada uno de estos suministros?</b> Hay varios factores en juego, como las personas que viven en casa.</p>
-                            </Col>
-                            <Col xs={12}>
-                                <Title title={'Consumo medio mensual de los suministros básicos del hogar'} />
-                                <p className='my-md-3 px-2 p-md-0'>Empecemos por la luz. Según datos de la <a target='_blank' rel='nofollow noopener noreferrer' href='https://www.ree.es/es'>Red Eléctrica de España (REE)</a>, a fecha de septiembre de 2022, <b>el consumo medio al mes en las viviendas es de 270 kWh, lo que se traduce en un gasto medio mensual por consumo de electricidad de 86 euros.</b> A esto tenemos que añadir el importe por la potencia contratada y otros costes fijos.</p>
-                                <p className='my-md-3 px-2 p-md-0'>Desde Kolondoo te recomendamos que <b>compruebes el <a href="/es/herramientas/precio-de-la-luz-hoy" target='_blank'>precio de la luz por horas</a></b>, para ser consciente de cuándo está más barata y más cara la electricidad y puedas ahorrar en tu factura.</p>
-                                <p className='my-md-3 px-2 p-md-0'>Continuando por el gas, de acuerdo con el <a href='https://aprendecomoahorrarenergia.es/campus/index.php/' target='_blank' rel='nofollow noopener noreferrer'>Instituto para la Diversificación y Ahorro de la Energía (IDEA)</a>, en las viviendas de nuestro país que no disponen de <a href='/es/blog/hogar/ahorrar-calefaccion-gas-natural-trucos'><b>servicio de calefacción,</b></a> <b>el consumo medio mensual de gas natural es de 425,75 kWh, mientras que en los hogares que sí cuentan con calefacción de gas llega a 660 kWh.</b></p>
-                                <p className='my-md-3 px-2 p-md-0'>Por último, <b>el consumo medio de agua en los hogares por persona y día es de 133 litros, según datos arrojados por <a href='https://www.ine.es/' target='_blank' rel='nofollow noopener noreferrer'>El Instituto Nacional de Estadística</a>.</b></p>
-                                <p className='my-md-3 px-2 p-md-0'><b>Estos son datos de consumo medio, que varían en función de los hábitos que tenga cada persona o familia en su vivienda</b>, tales como tener todo el día la calefacción puesta o solo ponerla unas horas, dejar el grifo abierto en muchas ocasiones, bañarse o ducharse, los programas que utilizas en la lavadora o lavavajillas, etc.</p>
+                                <p className='my-md-3 px-2 p-md-0'>Aunque España es uno de los países que posee mayor <b>cobertura de <a href='/es/blog/internet/fibra-optica-simetrica-que-es'>fibra óptica</a></b> (<b>más del 80% del territorio</b> goza de este servicio), todavía existen zonas donde su alcance no es efectivo.</p>
+                                <p className='my-md-3 px-2 p-md-0'>De hecho, es posible que <b>en una misma ciudad o barrio haya zonas o edificios que sí tengan cobertura y otros que no</b> porque no se haya instalado aún.</p>
+                                <p className='my-md-3 px-2 p-md-0'>Por tanto, <b>si estás pensando en contratar un servicio de Internet, necesitarás saber si tu domicilio tiene <a className='' href='/es/blog/internet/descubre-como-saber-si-tienes-cobertura-de-fibra-en-tu-hogar'>cobertura de fibra.</a></b> Este paso será esencial para poder disfrutar de la mejor conexión a Internet.</p>
+                                <p className='my-md-3 px-2 p-md-0'>A continuación te <b>desvelamos qué cobertura de fibra tiene cada una de las compañías que operan en nuestro país,</b> así como sus ventajas y desventajas y el alcance de dicha cobertura a las distintas zonas de España. Y tú, ¿con qué cobertura de fibra te quedas? ;)</p>
                             </Col>
                             <Col xs={12} className='mb-md-5'>
-                                <Card>
-                                    <Card.Body>
-                                        <ul className='icon-list'>
+                                <Accordion>
+                                    <Accordion.Item eventKey="0" >
+                                        <Accordion.Header>Cobertura Fibra por compañía</Accordion.Header>
+                                        <Accordion.Body>
+                                            <ul className='icon-list'>
 
-                                            {fetchBlog?.map((item, index) => {
-                                                return < a target='_blank' key={index} href={`/es/herramientas/cobertura/${item.url_amigable}`}><li className='m-3 font-semibold'>{`${item.titulo}`}</li></a>
-                                            })
-                                            }
-                                        </ul>
-                                    </Card.Body>
-                                </Card>
+                                                {fetchFibra?.map((item, index) => {
+                                                    return <a key={index} href={`/es/herramientas/coberturaFibra/${item.url_amigable}`}><li className='m-3 font-semibold'>{`${item.titulo}`}</li></a>
+                                                })
+                                                }
+                                            </ul>
+                                        </Accordion.Body>
+                                    </Accordion.Item>
+                                </Accordion>
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col xs={12}>
+                                <p className='my-md-3 px-2 p-md-0'>En España hoy en día podemos encontrar una gran cantidad de compañías, lo que <b>hace que cada vez sea más complicado elegir una tarifa de telefonía móvil</b> que mejor se adapte a nuestras necesidades.</p>
+                                <p className='my-md-3 px-2 p-md-0'>Por un lado, <b>podemos encontrar a las grandes compañías (Movistar, Vodafone, Orange o Yoigo) y, por otro, a los <a href='/es/blog/movil/que-es-un-operador-movil-virtual'>OMV (Operadores de Móvil Virtuales)</a>, que se han convertido a día de hoy en la opción más económica y cómoda</b> para disfrutar de una tarifa de contrato o prepago.;</p>
+                                <p className='my-md-3 px-2 p-md-0'><b>Comprueba cuál es el alcance de cobertura móvil que tiene cada una de las operadoras actuales en nuestro país.</b> ¿Llega la cobertura de MásMóvil a la zona en la que vives? ¿Y la de Finetwork? ¡Te lo contamos!</p>
+                            </Col>
+                            <Col xs={12} className='mb-md-5'>
+                                <Accordion>
+                                    <Accordion.Item eventKey="0" >
+                                        <Accordion.Header>Cobertura Móvil por compañía</Accordion.Header>
+                                        <Accordion.Body>
+                                            <ul className='icon-list'>
+
+                                                {fetchMovil?.map((item, index) => {
+                                                    return < a key={index} href={`/es/herramientas/coberturaMovil/${item.url_amigable}`}><li className='m-3 font-semibold'>{`${item.titulo}`}</li></a>
+                                                })
+                                                }
+                                            </ul>
+                                        </Accordion.Body>
+                                    </Accordion.Item>
+                                </Accordion>
                             </Col>
                         </Row>
                     </Col>
-                    <Col xs={12} md={4}>
+                    <Col xs={12} xl={4} className='d-none d-md-none d-xl-block'>
                         <ContenedorDestacados />
                     </Col>
                 </Row >

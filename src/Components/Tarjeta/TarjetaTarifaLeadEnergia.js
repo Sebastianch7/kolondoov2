@@ -90,7 +90,7 @@ export default function TarjetaTarifaLeadEnergia({ data, TarifaCard }) {
                                 <ItemTarifaServicio cant={precio} service={''} design={"small"} money={'€'} />
                                 {!isMobile && TarifaCard && (
                                     <Col md={2} style={isMobile ? { order: 3 } : { order: 3 }}>
-                                        <Link className='btn btn-primary' target={landing_link !== null && '_blank'} to={landing_link === null ? `/es${landingLead}${slug_tarifa.toLowerCase()}-${id}` : landing_link}>{`Comprar`}</Link>
+                                        <Link className='btn btn-primary' target={landing_link !== null && '_self'} to={landing_link === null ? `/es${landingLead}${slug_tarifa.toLowerCase()}-${id}` : landing_link}>{`Comprar`}</Link>
                                     </Col>
                                 )}
                             </Row>

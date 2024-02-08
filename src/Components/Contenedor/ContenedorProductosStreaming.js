@@ -14,13 +14,11 @@ const responsive = {
   },
   tablet: {
     breakpoint: { max: 1024, min: 464 },
-    items: 1,
-
+    items: 2
   },
   mobile: {
     breakpoint: { max: 464, min: 0 },
-    items: 1,
-
+    items: 1
   }
 };
 
@@ -79,63 +77,38 @@ function ContenedorProductosStreaming(logo = null, landingLead = null, id = null
   return (
     <>
       <Container>
-            <div
-              style={{
-                paddingBottom: '10px',
-                position: 'relative'
-              }}
+        <div
+          style={{
+            paddingBottom: '10px',
+            position: 'relative'
+          }}
+        >
+          {data?.length > 0 &&
+            <Carousel
+              arrows={true}
+              centerMode={false}
+              dotListClass=""
+              draggable
+              focusOnSelect={false}
+              infinite
+              keyBoardControl
+              pauseOnHover
+              renderDotsOutside={true}
+              responsive={responsive}
+              rewind={true}
+              showDots={false}
+              slidesToSlide={1}
             >
-              {data?.length > 0 &&
-                <Carousel
-                  arrows={true}
-                  centerMode={false}
-                  dotListClass=""
-                  draggable
-                  focusOnSelect={false}
-                  infinite
-                  keyBoardControl
-                  pauseOnHover
-                  renderDotsOutside={true}
-                  responsive={responsive}
-                  rewind={true}
-                  showDots={false}
-                  slidesToSlide={1}
-                >
-                  {data?.map((item) => {
-                    return (
-                      <TarjetaTarifaStreaming data={item} />
-                    );
-                  })}
-                </Carousel>
-              }
-            </div>
-      <small>*Se pueden añadir pases de suscriptor/a extra** por 5,99 € al mes</small>
+              {data?.map((item) => {
+                return (
+                  <TarjetaTarifaStreaming data={item} />
+                );
+              })}
+            </Carousel>
+          }
+        </div>
+        <small>*Se pueden añadir pases de suscriptor/a extra** por 5,99 € al mes</small>
       </Container>
-      {/*  <Container>
-        <Row>
-          <Carousel>
-            {!isMobile ?
-              <Carousel.Item>
-                <Row className='d-flex justify-content-evenly'>
-                  {
-                    (data.length > 0 && data.length <= 3) &&
-                    data.map((item, index) => {
-                      return <Col md={4}><TarjetaTarifaStreaming key={index} data={item} /></Col>
-                    })
-                  }
-                </Row>
-              </Carousel.Item>
-              :
-
-              data.length > 0 &&
-              data.map((item, index) => {
-                return <Carousel.Item><TarjetaTarifaStreaming key={index} data={item} /></Carousel.Item>
-              })
-
-            }
-          </Carousel>
-        </Row>
-      </Container> */}
       <InterSection></InterSection>
     </>
   );

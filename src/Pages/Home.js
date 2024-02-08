@@ -19,16 +19,15 @@ function Home(props) {
                     title={t('bannerHomeTitle')}
                     subtitle={t('bannerHomeSubtitle')}
                     image={'/img/banner-home.png'}
-                    logo={'/img/icons/phone.svg'}
                     buttons={[
                         {
                             title: t('Internet y Telefonía'),
-                            icon: '/img/icons/lighting.svg',
+                            icon: '/img/icons/phone-light.svg',
                             url: 'internet-telefonia/comparador-tarifas-fibra-y-movil'
                         },
                         {
                             title: t('Energía'),
-                            icon: '/img/icons/phone-light.svg',
+                            icon: '/img/icons/lighting.svg',
                             url: 'energia/comparador-tarifas-luz'
                         },
                         {

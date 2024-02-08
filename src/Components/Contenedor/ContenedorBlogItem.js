@@ -64,16 +64,28 @@ export default function ContenedorBlogItem({ }) {
                                         navigate(`/es/404`);
                                     }
                                     setFetchBlog(response);
-                                    console.log(response)
                                     setLoad(false);
                                     setBtnBack('herramientas/suministros')
                                     setCarpeta('gestiones')
                                     setRutaImagen(`/img/gestiones/desktop/`)
                                     break;
-                                case 'cobertura':
-                                    response = await getGestionById('cobertura', idBlog);
-                                    if (response === undefined || !validarCategoria.includes('cobertura')) {
+                                case 'coberturafibra':
+                                    response = await getGestionById('coberturaFibra', idBlog);
+                                    if (response === undefined || !validarCategoria.includes('coberturafibra')) {
                                         navigate(`/es/404`);
+                                        console.log(validarCategoria)
+                                    }
+                                    setFetchBlog(response);
+                                    setLoad(false);
+                                    setBtnBack('herramientas/cobertura')
+                                    setCarpeta('gestiones')
+                                    setRutaImagen('/img/gestiones/desktop/')
+                                    break;
+                                case 'coberturamovil':
+                                    response = await getGestionById('coberturaMovil', idBlog);
+                                    if (response === undefined || !validarCategoria.includes('coberturamovil')) {
+                                        navigate(`/es/404`);
+                                        console.log(validarCategoria)
                                     }
                                     setFetchBlog(response);
                                     setLoad(false);
@@ -111,7 +123,7 @@ export default function ContenedorBlogItem({ }) {
             {!load ? <Container>
                 <Row>
                     <Col xs={12} md={8}>
-                    {rutaImagen && <Image className='img-fluid w-100' src={`${rutaImagen ? rutaImagen: ''}${fetchBlog?.imagen}`} alt={`${fetchBlog?.alt_img ? fetchBlog?.alt_img : 'Imagen no encontrada'}`} />}
+                    {fetchBlog?.imagen && <Image className='img-fluid w-100' src={`${rutaImagen ? rutaImagen: ''}${fetchBlog?.imagen}`} alt={`${fetchBlog?.alt_img ? fetchBlog?.alt_img : 'Imagen no encontrada'}`} />}
                         <TitleSection
                             left
                             title={fetchBlog?.titulo}

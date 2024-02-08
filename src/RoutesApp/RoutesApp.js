@@ -93,7 +93,8 @@ function RoutesApp() {
                 <Route path="/es/herramientas/seguros/:id" element={<BlogItem />} />
 
                 <Route path="/es/herramientas/cobertura" element={<HerramientasCobertura />} />
-                <Route path="/es/herramientas/cobertura/:id" element={<BlogItem />} />
+                <Route path="/es/herramientas/coberturaFibra/:id" element={<BlogItem />} />
+                <Route path="/es/herramientas/coberturaMovil/:id" element={<BlogItem />} />
 
                 <Route path="/es/contactanos" element={<Contactenos />} />
                 <Route path="/es/politica-privacidad" element={<PoliticaPrivacidad />} />
@@ -104,7 +105,7 @@ function RoutesApp() {
                 <Route path="/es/blog/:categoria" element={<Blog />} />
                 <Route path="/es/blog/:categoria/:id" element={<BlogItem />} />
                 
-                <Route path="/es/blog/preview/:id" element={<BlogItemPreview />} />
+                <Route path="/blog/preview/:id" element={<BlogItemPreview />} />
                 {/* Ruta 404 */}
                 <Route path="/*" element={<PageNotFound />} />
                 <Route path="/es/blog/destacado" element={<PageNotFound />} />

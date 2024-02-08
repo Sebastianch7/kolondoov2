@@ -14,6 +14,7 @@ function ComparadorFibra() {
                 title={'Comparador de Fibras'}
                 subtitle='¡Te ayudamos a encontrar la tarifa de fibra!'
                 image={'/img/internet-telefonia/banner_fibra.png'}
+                logo={'/img/icons/router.svg'}
             >
                 {/* <FormSuscripcion
                     text={'Introduce tu código postal'}

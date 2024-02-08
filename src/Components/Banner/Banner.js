@@ -4,16 +4,17 @@ import Container from 'react-bootstrap/Container';
 import TitleSection from '../Text/TitleSection';
 import InterSection from '../Utils/InterSection';
 
-function Banner({ title = '', subtitle = '', buttons = false, children, image, logo = '', logo2 = '' }) {
+function Banner({ title = '', subtitle = '', buttons = false, children, image, logo = '', logo2 = '', logo3 = '' }) {
     return (
         <section className="clean-block p-0 mb-0">
             <Container>
                 <div className="row justify-content-center banner align-items-center mt-0">
-                    <Col sm={12} md={12} xl={7}>
+                    <Col sm={12} md={8} xl={7}>
                         <Row>
-                            {logo !== '' && <Col md={4} className='d-flex mx-auto'>
+                            {logo !== '' && <Col xs={6} md={4} className='d-flex mx-auto'>
                                 {logo && <div className='banner-icon'><img src={logo} alt={logo} /></div>}
-                                {logo2 && <div className='banner-icon'><img src={logo2} alt={logo2} /></div>}
+                                {logo2 && <div className='banner-icon'><img src={logo2} alt={logo3} /></div>}
+                                {logo3 && <div className='banner-icon'><img src={logo3} alt={logo3} /></div>}
                             </Col>}
                             <Col sm={12} className='text-center'>
                                 <TitleSection
@@ -27,7 +28,7 @@ function Banner({ title = '', subtitle = '', buttons = false, children, image, l
                             </Col>
                         </Row>
                     </Col>
-                    <Col sm={12} md={5} className='d-none d-md-none d-xl-block'>
+                    <Col sm={12} md={4} xl={5} className='d-none d-md-block d-xl-block'>
                         <div>
                             <img className='img-fluid img-banner' src={image} />
                         </div>

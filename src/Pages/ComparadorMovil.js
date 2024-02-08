@@ -16,6 +16,7 @@ function ComparadorMovil() {
                 title={t('title-baner-comparador-de-internet-y-comparador-movil')}
                 subtitle={t('subtitle-baner-comparador-de-internet-y-comparador-movil')}
                 image={'/img/internet-telefonia/banner_movil.png'}
+                logo={'/img/icons/mobile.svg'}
             >
                 {/* <FormSuscripcion
                     text={'Introduce tu código postal'}

@@ -10,7 +10,7 @@ function BannerReverse({ title = '', subtitle = '', buttons = false, children, i
                 <div className="row justify-content-center align-items-center mt-0">
                     <Col sm={12} md={6} className='d-none d-md-block'>
                         <div>
-                            <img className='img-fluid' src={image} />
+                            <img className='img-fluid mt-md-5 mt-xl-0' src={image} />
                         </div>
                     </Col>
                     <Col sm={12} md={6}>

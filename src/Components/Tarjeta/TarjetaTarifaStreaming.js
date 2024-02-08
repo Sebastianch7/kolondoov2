@@ -12,10 +12,9 @@ function TarjetaTarifaStreaming({ data }) {
     const { logo, productos, series, precio_min, precio_max, precio_estandar, url } = data;
     return (
         <>
-
             <Card key={''} className='m-1 mx-md-3 tarjeta-tarifa-streaming tarjeta'>
                 <Row className='p-2'>
-                    <Col md={12}>
+                    <Col xs={12} md={12}>
                         <Row>
                             <Col xs={12}>
                                 <div className='tarjeta-tarifa-streaming-item-title text-center'>
@@ -55,7 +54,7 @@ function TarjetaTarifaStreaming({ data }) {
                         </Row>
                     </Col>
                     <Col xs={12} md={12}>
-                        <Link className='btn btn-primary w-100' rel='nofollow noopener noreferrer' to={`${url}`} target="_blank">{`Contratar`}</Link>
+                        <Link className='btn btn-primary w-100' rel='nofollow noopener noreferrer' to={`${url}`} target="_self">{`Contratar`}</Link>
                     </Col>
                 </Row>
             </Card>

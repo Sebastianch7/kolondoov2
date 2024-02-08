@@ -14,6 +14,7 @@ function ComparadorLuz() {
                 title={'Comparador de Tarifas Luz'}
                 subtitle='¡Te ayudamos a encontrar la tarifa que mejor se adapte a ti!'
                 image={'/img/energia/banner_luz.png'}
+                logo={'/img/icons/luz.svg'}
             >
                 {/* <FormSuscripcion
                     text={'Introduce tu código postal'}

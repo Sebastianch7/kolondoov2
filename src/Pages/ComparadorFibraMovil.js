@@ -14,6 +14,8 @@ function ComparadorFibraMovil() {
                 title={'Comparador tarifas Fibra y Móvil'}
                 subtitle='¡Te ayudamos a encontrar la tarifa de fibra con movil!'
                 image={'/img/internet-telefonia/banner_movil_fibra.png'}
+                logo={'/img/icons/router.svg'}
+                logo2={'/img/icons/mobile.svg'}
             >
                 {/* <FormSuscripcion
                     text={'Introduce tu código postal'}

@@ -208,7 +208,7 @@ function ContenedorProductosMovilFibraTv() {
       <section>
         <Container>
           <Row className='justify-content-around'>
-            <Col md={3}>
+            <Col  xs={12} md={12} xl={3}>
               <Row>
                 {!isMobile ? <Col className='my-3 font-semibold' xs={6} md={5}>Filtrar por: </Col> : <Col className='my-2' xs={6} md={5}><Button variant="light" onClick={() => setShow(true)}>Filtrar por</Button></Col>}
                 <Col className='my-2 text-center' xs={6} md={7}>
@@ -373,7 +373,7 @@ function ContenedorProductosMovilFibraTv() {
                 </>
               )}
             </Col>
-            <Col md={8}>
+            <Col md={12} xl={8}>
               <Row>
                 <Col key={filterBrand} className='my-2' md={6}>Mostrando: <span className="font-bold">{filtros?.length}</span> resultados de <span className="font-bold">{Tarifas.length}</span></Col>
               </Row>

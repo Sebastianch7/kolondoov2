@@ -6,6 +6,7 @@ import { getBlog } from '../../services/ApiServices';
 import Load from '../Utils/Load';
 import ReactPaginate from 'react-paginate';
 import { useNavigate } from 'react-router-dom';
+import { isMobile } from 'react-device-detect';
 
 export default function ContenedorBlog({categoria}) {
     const [fetchBlog, setFetchBlog] = useState([]);
@@ -96,7 +97,7 @@ export default function ContenedorBlog({categoria}) {
         <Container className="my-4">
             <Row>
                 <Col xs={12} md={9} xl={8}>
-                    {!isLoading ? <PaginatedItems itemsPerPage={10} /> : <Load></Load>}
+                    {!isLoading ? <PaginatedItems itemsPerPage={isMobile ? 4 : 10} /> : <Load></Load>}
                 </Col>
                 <Col xs={12} md={3} xl={4}>
                     <ContenedorDestacados/>

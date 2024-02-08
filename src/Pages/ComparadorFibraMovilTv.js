@@ -14,6 +14,9 @@ function ComparadorFibraMovilTv() {
                 title={'Comparador de Fibra, Móvil y TV'}
                 subtitle='¡Te ayudamos a encontrar la tarifa movil con fibra y tv!'
                 image={'/img/internet-telefonia/banner_telefonia_fibra_tv.png'}
+                logo={'/img/icons/router.svg'}
+                logo2={'/img/icons/mobile.svg'}
+                logo3={'/img/icons/tv.svg'}
             >
                 {/* <FormSuscripcion
                     text={'Introduce tu código postal'}

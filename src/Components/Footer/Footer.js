@@ -21,51 +21,41 @@ function Footer(props) {
     return (
         <footer className="page-footer bg-dark pt-5">
             <Container>
-                {isMobile &&
-                    <Row className="justify-content-center text-center mb-4">
-                        <Col>
-                            <img className='footer-img-mobile' src='/img/logoReverse.svg' alt="Logo" />
-                        </Col>
-                    </Row>
-                }
-                <Row className='text-center'>
+                <Row className="justify-content-center text-center mb-4 d-block d-md-none d-xl-none">
+                    <Col>
+                        <img className='footer-img-mobile' src='/img/logoReverse.svg' alt="Logo" />
+                    </Col>
+                </Row>
+                <Row className='justify-content-center text-center'>
                     <Col xs={6} md={3}>
-                        {!isMobile && <img src='/img/logoReverse.svg' />}
+                        <img className='d-none d-md-block d-lg-block mx-auto' src='/img/logoReverse.svg' />
                         <ul>
                             <li className='my-md-3'>Calle Barquillo, 8</li>
                             <li className='my-md-3'>28004 Madrid - España</li>
-                            {/* <li>
-                                <Form.Select onChange={(e) => (window.location.href = e.target.value)}>
-                                    <option value="/es">España</option>
-                                </Form.Select>
-                            </li> */}
                         </ul>
 
                     </Col>
-                    {!isMobile &&
-                        <>
-                            <Col md={3}>
-                                <h5 className='text-center'>Redes sociales</h5>
-                                <ul>
-                                    <li className='my-md-3'><a target='_blank' rel='nofollow noopener noreferrer' href={"https://www.linkedin.com/company/kolondoo"}>Linkedin</a></li>
-                                    <li className='my-md-3'><a target='_blank' rel='nofollow noopener noreferrer' href={"https://www.facebook.com/Kolondoo"}>Facebook</a></li>
-                                    <li className='my-md-3'><a target='_blank' rel='nofollow noopener noreferrer' href={"https://twitter.com/kolondoo"}>Twitter</a></li>
-                                    <li className='my-md-3'><a target='_blank' rel='nofollow noopener noreferrer' href={"https://www.instagram.com/kolondoo"}>Instagram</a></li>
-                                </ul>
-                            </Col>
-                            <Col md={3}>
-                                <h5>Tarifas</h5>
-                                <ul>
-                                    {/* <li className='my-md-3'><Link to={''}>Tarifas</Link></li> */}
-                                    <li className='my-md-3'><Link to={`/es/internet-telefonia/comparador-fibra`}>Sólo fibra</Link></li>
-                                    <li className='my-md-3'><Link to={`/es/internet-telefonia/comparador-movil`}>Tarifa móvil</Link></li>
-                                    <li className='my-md-3'><Link to={`/es/internet-telefonia/comparador-fibra-movil-tv`}>Fibra+móvil+TV</Link></li>
-                                    <li className='my-md-3'><Link to={`/es/internet-telefonia/comparador-tarifas-fibra-y-movil`}>Fibra+móvil</Link></li>
-                                    <li className='my-md-3'><Link to={`/es/energia/comparador-tarifas-luz`}>Luz</Link></li>
-                                </ul>
-                            </Col>
-                        </>
-                    }
+
+                    <Col xs={12} md={3} xl={3}>
+                        <h5 className='text-center'>Redes sociales</h5>
+                        <ul>
+                            <li className='my-md-3'><a target='_blank' rel='nofollow noopener noreferrer' href={"https://www.linkedin.com/company/kolondoo"}>Linkedin</a></li>
+                            <li className='my-md-3'><a target='_blank' rel='nofollow noopener noreferrer' href={"https://www.facebook.com/Kolondoo"}>Facebook</a></li>
+                            <li className='my-md-3'><a target='_blank' rel='nofollow noopener noreferrer' href={"https://twitter.com/kolondoo"}>Twitter</a></li>
+                            <li className='my-md-3'><a target='_blank' rel='nofollow noopener noreferrer' href={"https://www.instagram.com/kolondoo"}>Instagram</a></li>
+                        </ul>
+                    </Col>
+                    <Col xs={12} md={3} xl={3}>
+                        <h5>Tarifas</h5>
+                        <ul>
+                            {/* <li className='my-md-3'><Link to={''}>Tarifas</Link></li> */}
+                            <li className='my-md-3'><Link to={`/es/internet-telefonia/comparador-fibra`}>Sólo fibra</Link></li>
+                            <li className='my-md-3'><Link to={`/es/internet-telefonia/comparador-movil`}>Tarifa móvil</Link></li>
+                            <li className='my-md-3'><Link to={`/es/internet-telefonia/comparador-fibra-movil-tv`}>Fibra+móvil+TV</Link></li>
+                            <li className='my-md-3'><Link to={`/es/internet-telefonia/comparador-tarifas-fibra-y-movil`}>Fibra+móvil</Link></li>
+                            <li className='my-md-3'><Link to={`/es/energia/comparador-tarifas-luz`}>Luz</Link></li>
+                        </ul>
+                    </Col>
                     <Col xs={6} md={3}>
                         <h5>vuskoo.com</h5>
                         <ul>

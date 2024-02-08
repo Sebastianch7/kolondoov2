@@ -91,6 +91,7 @@ function FormSuscripcion({ }) {
                                     <Button
                                         type='submit'
                                         disabled={(!checkIn && isValidEmail) ? false : true}
+                                        className='col-12'
                                     >
                                         Suscríbete gratis
                                     </Button>
@@ -102,7 +103,7 @@ function FormSuscripcion({ }) {
                         }
                         <InputCheck
                             onChangeValue={changeValue}
-                            text={`He leído y acepto <a href='/es/politica-privacidad' target='_blank'>la Política de Privacidad</a> y quiero recibir comunicaciones comerciales.`}
+                            text={`He leído y acepto <a href='/es/politica-privacidad' target='_self'>la Política de Privacidad</a> y quiero recibir comunicaciones comerciales.`}
                         />
                     </div>
                 </Form>

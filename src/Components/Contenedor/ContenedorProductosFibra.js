@@ -176,9 +176,9 @@ function ContenedorProductosFibra() {
       <section>
         <Container>
           <Row className='justify-content-around'>
-            <Col md={3}>
+            <Col xs={12} md={12} xl={3}>
               <Row>
-                {!isMobile ? <Col className='my-3 font-semibold' xs={6} md={5}>Filtrar por: </Col> : <Col className='my-2' xs={6} md={5}><Button variant="light" onClick={() => setShow(true)}>Filtrar por</Button></Col>}
+                {!isMobile ? <Col className='my-3 font-semibold' xs={6} md={12} xl={5}>Filtrar por: </Col> : <Col className='my-2' xs={6} md={5}><Button variant="light" onClick={() => setShow(true)}>Filtrar por</Button></Col>}
                 <Col className='my-2 text-center' xs={6} md={7}>
                   <button className='btn btn-light' onClick={cleanFilter}>Limpiar filtro</button>
                 </Col>
@@ -286,7 +286,7 @@ function ContenedorProductosFibra() {
                     <div>
                       <Row>
                         {isMobile && (
-                          <Col xs={12} key={filterBrand} className="my-2" md={6}>
+                          <Col xs={12} key={filterBrand} className="my-2" xl={6}>
                             Se encontraron <span className="font-bold">{filtros?.length}</span> resultados de <span className="font-bold">{Tarifas.length}</span>
                           </Col>
                         )}
@@ -295,7 +295,7 @@ function ContenedorProductosFibra() {
                         </Col>
                         {brand?.length > 0 &&
                           brand.map((item, index) => (
-                            <Col xs={4} md={6} key={item.id}>
+                            <Col xs={4} xl={6} key={item.id}>
                               <button
                                 className={`filtro-producto-logo my-2 ${filterBrand.includes(item.id) ? 'logoFocus' : ''}`}
                                 value={item.nombre}
@@ -350,9 +350,9 @@ function ContenedorProductosFibra() {
                 </>
               )}
             </Col>
-            <Col md={8}>
+            <Col md={12} xl={8}>
               <Row>
-                <Col key={filterBrand} className='my-2' md={6}>Mostrando: <span className="font-bold">{filtros?.length}</span> resultados de <span className="font-bold">{Tarifas.length}</span></Col>
+                <Col key={filterBrand} className='my-2' xl={6}>Mostrando: <span className="font-bold">{filtros?.length}</span> resultados de <span className="font-bold">{Tarifas.length}</span></Col>
               </Row>
               <Row>
                 <div className='pruebaPos'>

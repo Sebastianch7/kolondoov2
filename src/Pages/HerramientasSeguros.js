@@ -56,7 +56,7 @@ export default function HerramientasSeguros() {
                                         <ul className='icon-list'>
 
                                             {fetchBlog?.map((item, index) => {
-                                                return < a target='_blank' key={index} href={`/es/herramientas/seguros/${item.url_amigable}`}><li className='m-3 font-semibold'>{`${item.titulo}`}</li></a>
+                                                return < a target='_self' key={index} href={`/es/herramientas/seguros/${item.url_amigable}`}><li className='m-3 font-semibold'>{`${item.titulo}`}</li></a>
                                             })
                                             }
                                         </ul>

@@ -14,6 +14,7 @@ function ComparadorGas() {
                 title={'Comparador de Tarifas de Gas'}
                 subtitle='¡Te ayudamos a encontrar el mejor gas!'
                 image={'/img/energia/banner_gas.png'}
+                logo={'/img/icons/gas.svg'}
             >
                 {/* <FormSuscripcion
                     text={'Introduce tu código postal'}
