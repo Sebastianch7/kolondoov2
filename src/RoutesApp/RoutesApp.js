@@ -100,9 +100,9 @@ function RoutesApp() {
                 <Route path="/es/politica-cookies" element={<PoliticaCookies />} />
                 <Route path="/es/politica-legal" element={<PoliticaLegal />} />
 
-                {/* <Route path="/es/blog" element={<Blog />} />
+                <Route path="/es/blog" element={<Blog />} />
                 <Route path="/es/blog/:categoria" element={<Blog />} />
-                <Route path="/es/blog/:categoria/:id" element={<BlogItem />} /> */}
+                <Route path="/es/blog/:categoria/:id" element={<BlogItem />} />
                 
                 <Route path="/es/blog/preview/:id" element={<BlogItemPreview />} />
                 {/* Ruta 404 */}
