@@ -4,7 +4,7 @@ import { Container, Row, Col, Card } from 'react-bootstrap';
 import TitleSection from '../Text/TitleSection';
 import ContenedorDestacados from '../Blog/ContenedorDestacados';
 import FormSuscripcion from '../Forms/FormSuscripcion';
-import { getBlogById, getGestionById } from '../../services/ApiServices';
+import { getBlogById, getGestionById, getBlogPreviewId } from '../../services/ApiServices';
 import { useLocation } from 'react-router-dom';
 import Load from '../Utils/Load'
 import { Link } from 'react-router-dom';
@@ -107,11 +107,11 @@ export default function ContenedorBlogItem({ }) {
 
     return (
         <>
-            <MetaData titulo={fetchBlog.seo_titulo} descripcion={fetchBlog.seo_descripcion} imagen_destacada={`${fetchBlog?.imagen}`} />
+            <MetaData titulo={fetchBlog?.seo_titulo} descripcion={fetchBlog?.seo_descripcion} imagen_destacada={`${fetchBlog?.imagen}`} />
             {!load ? <Container>
                 <Row>
                     <Col xs={12} md={8}>
-                        <Image className='img-fluid w-100' src={`${rutaImagen ? rutaImagen: ''}${fetchBlog?.imagen}`} alt={`${rutaImagen}${fetchBlog?.alt_img}`} />
+                    {rutaImagen && <Image className='img-fluid w-100' src={`${rutaImagen ? rutaImagen: ''}${fetchBlog?.imagen}`} alt={`${fetchBlog?.alt_img ? fetchBlog?.alt_img : 'Imagen no encontrada'}`} />}
                         <TitleSection
                             left
                             title={fetchBlog?.titulo}

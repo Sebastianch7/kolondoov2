@@ -43,16 +43,17 @@ function Header({ breadCrumb }) {
 
     return (
         <>
-            <Navbar sticky='top' expand={"lg"} className="navbar-light bg-white clean-navbar my-4 my-xxl-0">
+            <Navbar sticky='top' expand={"xl"} className="navbar-light bg-white clean-navbar my-4 my-xxl-0">
                 <Container className='container-header'>
                     <Navbar.Brand>
                         <a href={`/es`}><img src="/img/logos/logo.svg" alt="Logo" /></a>
                     </Navbar.Brand>
+
                     {isMobile && (
                         <>
-                            <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                            <Navbar.Collapse>
-                                <Nav className="mx-auto container-menu">
+                            <Navbar.Toggle aria-controls="basic-navbar-nav " />
+                            <Navbar.Collapse className=''>
+                                <Nav className="mx-auto container-menu ">
                                     {items.map((item, key) => (
                                         <Accordion className='no-radius no-border-bottom'>
                                             <Accordion.Item eventKey={key} className='no-radius'>
@@ -74,7 +75,7 @@ function Header({ breadCrumb }) {
                                             <Accordion.Header>{'Blog'}</Accordion.Header>
                                             <Accordion.Body>
                                                 <ul>
-                                                <a className="no-link text-left" href={`/es/blog`}><li className='text-left'>{'Todas'}</li></a>
+                                                    <a className="no-link text-left" href={`/es/blog`}><li className='text-left'>{'Todas'}</li></a>
                                                     {menu?.length > 0 &&
                                                         menu.map((item, index) => {
                                                             if (item.slug !== 'sin-categoria' && item.slug !== 'destacado') {

@@ -20,7 +20,7 @@ export default function ContenedorBlog({categoria}) {
                 setFetchBlog(response);
                 setIsLoading(false);
             } catch (error) {
-                navigate(`/es/404`);
+                //navigate(`/es/404`);
                 console.error('Error al obtener blog:', error);
 
             }
@@ -95,10 +95,10 @@ export default function ContenedorBlog({categoria}) {
     return (
         <Container className="my-4">
             <Row>
-                <Col xs={12} md={8}>
+                <Col xs={12} md={9} xl={8}>
                     {!isLoading ? <PaginatedItems itemsPerPage={10} /> : <Load></Load>}
                 </Col>
-                <Col xs={12} md={4}>
+                <Col xs={12} md={3} xl={4}>
                     <ContenedorDestacados/>
                 </Col>
             </Row>

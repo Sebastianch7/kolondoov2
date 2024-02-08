@@ -27,6 +27,7 @@ import PageNotFound from '../Pages/PageNotFound';
 import HerramientasSuministros from '../Pages/HerramientasSuministros';
 import HerramientasSeguros from '../Pages/HerramientasSeguros';
 import HerramientasCobertura from '../Pages/HerramientasCobertura';
+import BlogItemPreview from '../Pages/BlogItemPreview';
 
 
 function RoutesApp() {
@@ -99,12 +100,14 @@ function RoutesApp() {
                 <Route path="/es/politica-cookies" element={<PoliticaCookies />} />
                 <Route path="/es/politica-legal" element={<PoliticaLegal />} />
 
-                <Route path="/es/blog" element={<Blog />} />
+                {/* <Route path="/es/blog" element={<Blog />} />
                 <Route path="/es/blog/:categoria" element={<Blog />} />
-                <Route path="/es/blog/:categoria/:id" element={<BlogItem />} />
+                <Route path="/es/blog/:categoria/:id" element={<BlogItem />} /> */}
                 
+                <Route path="/es/blog/preview/:id" element={<BlogItemPreview />} />
                 {/* Ruta 404 */}
                 <Route path="/*" element={<PageNotFound />} />
+                <Route path="/es/blog/destacado" element={<PageNotFound />} />
                 <Route path="/es/404" element={<PageNotFound />} />
             </Routes>
         </BrowserRouter>

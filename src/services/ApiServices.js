@@ -202,7 +202,8 @@ export const getDetailOffer = async (offerLooking, idPlan) => {
 
 export const getBlog = async (categoria) => {
     try {
-        const response = await axios.get(`${apiUrl}/getBlog/${categoria}`)
+        let url = categoria ? `/${categoria}` : ``;
+        const response = await axios.get(`${apiUrl}/getBlog${url}`)
         return response.data;
     } catch (error) {
         console.error("Error al procesar la solicitud", error);
@@ -233,6 +234,16 @@ export const getBlogDestacados = async () => {
 export const getBlogById = async (categoria, id) => {
     try {
         const response = await axios.get(`${apiUrl}/getBlog/${categoria}/${id}`)
+        return response.data[0];
+    } catch (error) {
+        console.error("Error al procesar la solicitud", error);
+        throw error;
+    }
+};
+
+export const getBlogPreviewId = async (id) => {
+    try {
+        const response = await axios.get(`${apiUrl}/getBlogPreview/${id}`)
         return response.data[0];
     } catch (error) {
         console.error("Error al procesar la solicitud", error);

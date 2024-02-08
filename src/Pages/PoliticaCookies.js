@@ -54,13 +54,13 @@ export default function PoliticaCookies() {
                                         <td>XSRF-TOKEN</td>
                                         <td>Esta cookie está escrita para ayudar a la seguridad del sitio en la prevención de los ataques de falsificación de solicitud de sitio cruzado</td>
                                         <td>1 minuto</td>
-                                        <td><a href="https://kolondoo.com/es/politica-privacidad" target="_blank">Pol.Priv.</a></td>
+                                        <td><a href="/es/politica-privacidad">Pol.Priv.</a></td>
                                     </tr>
                                     <tr>
                                         <td>kolondoo_comparador_session</td>
                                         <td>Cookie propia del sitio kolondoo.com. Las cookies de sesión permiten a los usuarios ser reconocidos en un sitio web de forma anónima y que cualquier cambio que realices, artículo que selecciones o dato que introduzcas se recuerda de una a otra página.</td>
                                         <td>Caduca al finalizar la sesión</td>
-                                        <td><a href="https://kolondoo.com/es/politica-privacidad" target="_blank">Pol.Priv.</a></td>
+                                        <td><a href="/es/politica-privacidad">Pol.Priv.</a></td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -96,18 +96,6 @@ export default function PoliticaCookies() {
                                         <td>Se usa para distinguir a los usuarios</td>
                                         <td>2 años</td>
                                         <td><a href="https://policies.google.com/privacy?hl=es" target="_blank">Pol.Priv.</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>atid</td>
-                                        <td>«Ring-Pool» dinámico, identificación de usuarios</td>
-                                        <td>4 meses</td>
-                                        <td><a href="https://audiencetalking.com/privacy/" target="_blank">Pol.Priv.</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>atleadid</td>
-                                        <td>«Ring-Pool» dinámico, identificación de usuarios</td>
-                                        <td>1 minuto</td>
-                                        <td><a href="https://audiencetalking.com/privacy/" target="_blank">Pol.Priv.</a></td>
                                     </tr>
                                 </tbody>
                             </table>

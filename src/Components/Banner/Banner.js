@@ -9,7 +9,7 @@ function Banner({ title = '', subtitle = '', buttons = false, children, image, l
         <section className="clean-block p-0 mb-0">
             <Container>
                 <div className="row justify-content-center banner align-items-center mt-0">
-                    <Col sm={12} md={7}>
+                    <Col sm={12} md={12} xl={7}>
                         <Row>
                             {logo !== '' && <Col md={4} className='d-flex mx-auto'>
                                 {logo && <div className='banner-icon'><img src={logo} alt={logo} /></div>}
@@ -27,7 +27,7 @@ function Banner({ title = '', subtitle = '', buttons = false, children, image, l
                             </Col>
                         </Row>
                     </Col>
-                    <Col sm={12} md={5} className='d-none d-md-block'>
+                    <Col sm={12} md={5} className='d-none d-md-none d-xl-block'>
                         <div>
                             <img className='img-fluid img-banner' src={image} />
                         </div>

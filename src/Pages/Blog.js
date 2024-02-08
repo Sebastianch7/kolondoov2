@@ -25,7 +25,7 @@ export default function Blog() {
     return (
         <>
             <MetaData titulo={'Explora nuestros Blog: Consejos, tendencia y actualidad | Vuskoo'} descripcion={'Sumérgete en el universo informativo de Vuskoo. Descubre tendencias, consejos y análisis en nuestro blog de comparadores de servicios.'} />
-            <Header breadCrumb />
+            <Header />
             <TitleSection
                 title={'Últimas entradas'}
                 subtitle={'¡Échale un vistazo a nuestro blog y mantente siempre actualizado!'}

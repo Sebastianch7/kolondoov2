@@ -54,37 +54,36 @@ function ContenedorTarjetaBlog({ children }) {
             {!isLoading ? <Container fluid>
                 <Container>
                     <Row>
-                        <Col md={12}>
-                            {!isMobile ? (
-                                <CardGroup>
-                                    {fetchBlog?.map((data, index) => {
-                                        return <TarjetaBlogFull key={index} data={data} />;
-                                    })}
-                                </CardGroup>
-                            ) : (
-                                <Carousel>
-                                    {fetchBlog?.map((data, index) => {
-                                        return (
-                                            <Carousel.Item key={index} className='carrusel-blog'>
-                                                <img
-                                                    src={`/img/blog/mobile/${data.imagen_principal_movil}`}
-                                                    alt={`/img/blog/mobile/${data.imagen_principal_movil}`}
-                                                    className="img-fluid carrusel-blog"
-                                                />
-                                                <Carousel.Caption>
-                                                    <div className="carrusel-caption">
-                                                        <h3><Link rel="alternate" hreflang="es-es" to={`/es/blog/${data.categoria_url}/${data.url_amigable}`}>{data.titulo}</Link></h3>
-                                                        <h6>{cambiarFecha(data.fecha_publicacion)}</h6>
-                                                    </div>
-                                                </Carousel.Caption>
-                                            </Carousel.Item>
-                                        );
-                                    })}
-                                </Carousel>
-                            )}
-                            <Col md={12} className='mx-auto text-center py-5'>
-                                <Link to={'/es/blog'} className='btn btn-primary'>Descubre más artículos</Link>
-                            </Col>
+                        <Col md={12} xl={12} className='d-none d-md-block d-xl-block'>
+                            <CardGroup>
+                                {fetchBlog?.map((data, index) => {
+                                    return <TarjetaBlogFull key={index} data={data} />;
+                                })}
+                            </CardGroup>
+                        </Col>
+                        <Col md={12} xl={12} className='d-block d-md-none d-xl-none'>
+                            <Carousel className='d-block d-md-none d-xl-none'>
+                                {fetchBlog?.map((data, index) => {
+                                    return (
+                                        <Carousel.Item key={index} className='carrusel-blog'>
+                                            <img
+                                                src={`/img/blog/mobile/${data.imagen_principal_movil}`}
+                                                alt={`/img/blog/mobile/${data.imagen_principal_movil}`}
+                                                className="img-fluid carrusel-blog"
+                                            />
+                                            <Carousel.Caption>
+                                                <div className="carrusel-caption">
+                                                    <h3><Link rel="alternate" hreflang="es-es" to={`/es/blog/${data.categoria_url}/${data.url_amigable}`}>{data.titulo}</Link></h3>
+                                                    <h6>{cambiarFecha(data.fecha_publicacion)}</h6>
+                                                </div>
+                                            </Carousel.Caption>
+                                        </Carousel.Item>
+                                    );
+                                })}
+                            </Carousel>
+                        </Col>
+                        <Col md={12} className='mx-auto text-center py-5'>
+                            <Link to={'/es/blog'} className='btn btn-primary'>Descubre más artículos</Link>
                         </Col>
                     </Row>
                 </Container>

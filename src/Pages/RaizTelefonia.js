@@ -86,11 +86,11 @@ export default function RaizTelefonia() {
       /* buttons={[
         {
           title: '¡Empieza a ahorrar!',
-          url: '/internet-telefonia/comparador-movil'
+          url: '/es/internet-telefonia/comparador-movil'
         }
       ]} */
       />
-      <Container>
+      <Container className='mt-md-5 mt-xl-1'>
         <TitleSection
           center
           title={'Comparadores de Telefonía Móvil y Fibra'}

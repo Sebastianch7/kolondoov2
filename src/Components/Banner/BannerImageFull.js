@@ -5,7 +5,7 @@ import TitleSection from '../Text/TitleSection';
 import InterSection from '../Utils/InterSection';
 import { isMobile } from 'react-device-detect';
 
-function BannerImageFull({ title = '', text1 = '', text2 = '', buttons = false, children, image, logo = '', logo2 = '', imgFluid = false }) {
+function BannerImageFull({ titleAlt = '', title = '', text1 = '', text2 = '', buttons = false, children, image, logo = '', logo2 = '', imgFluid = false }) {
     return (
         <section className="clean-block">
             <Container fluid>
@@ -19,6 +19,7 @@ function BannerImageFull({ title = '', text1 = '', text2 = '', buttons = false, 
                                         text1={text1}
                                         text2={text2}
                                         buttons={buttons}
+                                        titleAlt={titleAlt}
                                         btnLeft
                                     />
                                     :
@@ -28,7 +29,7 @@ function BannerImageFull({ title = '', text1 = '', text2 = '', buttons = false, 
                     </Col>
                     <Col sm={12} md={6} className='d-none d-md-block'>
                         <div>
-                            <img className={imgFluid && 'img-fluid'} src={image} alt={image} />
+                            <img className={isMobile && 'img-fluid'} src={image} alt={image} />
                         </div>
                     </Col>
                 </div>
