@@ -8,7 +8,7 @@ import ReactPaginate from 'react-paginate';
 import { useNavigate } from 'react-router-dom';
 import { isMobile } from 'react-device-detect';
 
-export default function ContenedorBlog({categoria}) {
+export default function ContenedorBlog({ categoria }) {
     const [fetchBlog, setFetchBlog] = useState([]);
     const [isLoading, setIsLoading] = useState(true)
     let navigate = useNavigate();
@@ -20,8 +20,11 @@ export default function ContenedorBlog({categoria}) {
                 const response = await getBlog(categoria !== undefined ? categoria : '');
                 setFetchBlog(response);
                 setIsLoading(false);
+                if (response.length === 0) {
+                    navigate(`/es/404`);
+                }
             } catch (error) {
-                //navigate(`/es/404`);
+                navigate(`/es/404`);
                 console.error('Error al obtener blog:', error);
 
             }
@@ -100,7 +103,7 @@ export default function ContenedorBlog({categoria}) {
                     {!isLoading ? <PaginatedItems itemsPerPage={isMobile ? 4 : 10} /> : <Load></Load>}
                 </Col>
                 <Col xs={12} md={3} xl={4}>
-                    <ContenedorDestacados/>
+                    <ContenedorDestacados />
                 </Col>
             </Row>
         </Container>
