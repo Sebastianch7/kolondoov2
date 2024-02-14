@@ -8,7 +8,7 @@ import { BsArrowRight } from "react-icons/bs";
 import { Link } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 
-export default function TarjetaTarifaLeadEnergia({ data, TarifaCard }) {
+export default function TarjetaTarifaLeadGas({ data, TarifaCard }) {
     const [tarifa] = useState(null)
 
     const [lang, setLang] = useState(null)
@@ -53,26 +53,23 @@ export default function TarjetaTarifaLeadEnergia({ data, TarifaCard }) {
                         </Col>}
                         <Col md={9}>
                             <Row>
-                                <Col md={6} xs={6}>
-                                    <h6>Potencia</h6>
+                                <Col md={6} xs={12}>
+                                    <h6>Términos</h6>
                                     <Row className='d-flex'>
-                                        <ItemTarifaLuz title={'Valle'} value={data?.luz_precio_potencia_valle} extension={'€/kW'} />
-                                        <ItemTarifaLuz title={'Punta'} value={data?.luz_precio_potencia_punta} extension={'€/kW'} />
+                                        <ItemTarifaLuz title={'Fija'} value={data?.gas_precio_termino_fijo} extension={'€/kW'} />
                                     </Row>
                                 </Col>
-                                <Col md={6} xs={6}>
-                                    <h6>Energía</h6>
-                                    {parseInt(luz_precio_energia_24h) !== 0 ?
-                                        <Row className='d-flex'>
-                                            <ItemTarifaLuz title={'Valle'} value={data?.luz_precio_energia_punta} extension={'€/kWh'} />
-                                            <ItemTarifaLuz title={'LLano'} value={data?.luz_precio_energia_llano} extension={'€/kWh'} />
-                                            <ItemTarifaLuz title={'Punta'} value={data?.luz_precio_energia_punta} extension={'€/kWh'} />
-                                        </Row>
-                                        :
-                                        <Row className='d-flex'>
-                                            <ItemTarifaLuz title={'24h'} value={data?.luz_precio_energia_24h} extension={'€/kWh'} />
-                                        </Row>
-                                    }
+                                <Col md={6} xs={12}>
+                                    <h6>&nbsp;</h6>
+                                    <Row className='d-flex'>
+                                        <ItemTarifaLuz title={'Variable'} value={data?.gas_precio_termino_variable} extension={'€/kW'} />
+                                    </Row>
+                                </Col>
+                                <Col md={12} className='d-flex vertical-items my-3'>
+                                    <ItemTarifaDescripcion text={parrilla_bloque_1} />
+                                    <ItemTarifaDescripcion text={parrilla_bloque_2} />
+                                    <ItemTarifaDescripcion text={parrilla_bloque_3} />
+                                    <ItemTarifaDescripcion text={parrilla_bloque_4} />
                                 </Col>
                             </Row>
                         </Col>
@@ -87,15 +84,6 @@ export default function TarjetaTarifaLeadEnergia({ data, TarifaCard }) {
                             </Row>
                         </Col>
                     </Row>
-                    <Row>
-                        <Col md={12} className='d-flex vertical-items mt-4'>
-                            <ItemTarifaDescripcion text={parrilla_bloque_1} />
-                            <ItemTarifaDescripcion text={parrilla_bloque_2} />
-                            <ItemTarifaDescripcion text={parrilla_bloque_3} />
-                            <ItemTarifaDescripcion text={parrilla_bloque_4} />
-                        </Col>
-                    </Row>
-                    
                 </Card.Text>
             </Card.Body>
 

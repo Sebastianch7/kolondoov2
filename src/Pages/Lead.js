@@ -11,6 +11,9 @@ import FormLead from '../Components/Forms/FormLead';
 import { getDetailOffer } from '../services/ApiServices'
 import TarjetaTarifaLead from '../Components/Tarjeta/TarjetaTarifaLead';
 import MetaData from '../Components/Header/SeoMetadata';
+import TarjetaTarifaLeadEnergia from '../Components/Tarjeta/TarjetaTarifaLeadEnergia';
+import TarjetaTarifaLeadGas from '../Components/Tarjeta/TarjetaTarifaLeadGas';
+import TarjetaTarifaLeadEnergiaGas from '../Components/Tarjeta/TarjetaTarifaLeadEnergiaGas';
 
 export default function Lead() {
   const [isLoading, setIsLoading] = useState(true);
@@ -60,7 +63,6 @@ export default function Lead() {
         return titleSeo = `¡Experimenta la velocidad sin límites de ${infoOffer.nombre} con el servicio de móvil y fibra con sus ${title?.replaceAll(',', ' ')}! Conéctate a la potencia de la rapidez y mantén la libertad de la comunicación en tus manos con el servicio móvil de ${infoOffer.nombre} ¡Haz que tu conexión sea tan rápida como tus sueños!`;
       case 'comparador-tarifas-fibra-y-movil':
         return titleSeo  = `Conéctate al futuro con nuestra oferta imparable: ${title?.replaceAll(',', ' ')}. Navega a la velocidad de ${infoOffer.nombre} y mantén tu movilidad con una conexión confiable en tus manos. Descubre la libertad de estar siempre conectado. ¡Haz de cada experiencia digital algo extraordinario con nuestra combinación perfecta de Fibra y Móvil!`;
-        //return titleSeo = `¡Experimenta la velocidad sin límites de ${infoOffer.nombre} con el servicio de móvil y fibra con sus ${title?.replaceAll(',', ' ')}! Conéctate a la potencia de la rapidez y mantén la libertad de la comunicación en tus manos con el servicio móvil de ${infoOffer.nombre} ¡Haz que tu conexión sea tan rápida como tus sueños!`;
       case 'comparador-fibra-movil-tv':
         return titleSeo = `¡Experimenta la velocidad sin límites de ${infoOffer.nombre} con el servicio móvil, fibra y TV con sus ${title?.replaceAll(',', ' ')}! Conéctate a la potencia de la rapidez y disfruta de un mundo digital sin interrupciones. Conéctate a la velocidad y disfruta de un mundo de entretenimiento en tu hogar, donde la rapidez y la diversión se encuentran en cada pantalla.`;
       case 'comparador-tarifas-luz':
@@ -108,7 +110,20 @@ export default function Lead() {
               {!isMobile && <p className='font-09'>{textoLanding()}</p>}
             </Col>
             <Col xs={12} md={7} className='my-2' style={isMobile ? { order: 2 } : { order: 1 }}>
-              <TarjetaTarifaLead key={0} data={infoOffer} service={offerLooking} />
+              {(offerLooking?.toLowerCase() === 'comparador-movil' 
+              || offerLooking?.toLowerCase() === 'comparador-fibra' 
+              || offerLooking?.toLowerCase() === 'comparador-tarifas-fibra-y-movil' 
+              || offerLooking?.toLowerCase() === 'comparador-fibra-movil-tv') 
+              && <TarjetaTarifaLead key={0} data={infoOffer} service={offerLooking} />}
+              {offerLooking?.toLowerCase() === 'comparador-tarifas-luz' 
+              && <TarjetaTarifaLeadEnergia key={0} data={infoOffer} service={offerLooking} />}
+              {offerLooking?.toLowerCase() === 'comparador-tarifas-gas' 
+              && <TarjetaTarifaLeadGas key={0} data={infoOffer} service={offerLooking} />}
+              {offerLooking?.toLowerCase() === 'comparador-tarifas-luz-y-gas' 
+              && <TarjetaTarifaLeadEnergiaGas key={0} data={infoOffer} service={offerLooking} />}
+              
+              {offerLooking?.toLowerCase().includes('luz') 
+              && <div class="tarjeta-footer-small mt-2 col">Períodos: <b>Valle</b> 00:00h-08:00h // <b>Llano</b> 8-10h. 14-18h y 22-00h // <b>Punta</b> 10-14h y 18-22h*</div>}
             </Col>
             <Col xs={12} md={5} className='my-2' style={isMobile ? { order: 1 } : { order: 2 }}>
               <FormLead data={infoOffer} idPlan={idPlan} landing={offerLooking} urlOffers={location.pathname} company={infoOffer.operadora}></FormLead>

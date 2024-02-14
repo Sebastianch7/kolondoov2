@@ -73,7 +73,6 @@ export default function ContenedorBlogItem({ }) {
                                     response = await getGestionById('coberturaFibra', idBlog);
                                     if (response === undefined || !validarCategoria.includes('coberturafibra')) {
                                         navigate(`/es/404`);
-                                        console.log(validarCategoria)
                                     }
                                     setFetchBlog(response);
                                     setLoad(false);
@@ -85,7 +84,6 @@ export default function ContenedorBlogItem({ }) {
                                     response = await getGestionById('coberturaMovil', idBlog);
                                     if (response === undefined || !validarCategoria.includes('coberturamovil')) {
                                         navigate(`/es/404`);
-                                        console.log(validarCategoria)
                                     }
                                     setFetchBlog(response);
                                     setLoad(false);

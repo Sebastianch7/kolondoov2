@@ -9,6 +9,8 @@ import TarjetaTarifa from '../Components/Tarjeta/TarjetaTarifa'
 import { getDetailOffer, getExtraOffer } from '../services/ApiServices';
 import TarjetaTarifaLead from '../Components/Tarjeta/TarjetaTarifaLead';
 import Header from '../Components/Header/Header';
+import TarjetaTarifaLeadEnergiaGas from '../Components/Tarjeta/TarjetaTarifaLeadEnergiaGas';
+import TarjetaTarifaLeadGas from '../Components/Tarjeta/TarjetaTarifaLeadGas';
 
 export default function ThankPage() {
 
@@ -21,6 +23,17 @@ export default function ThankPage() {
   const [breadUrl, setBreadUrl] = useState(null);
 
   const [offerLooking, setOfferLooking] = useState(null)
+
+  const offerPath = {
+    'comparador-movil': 'movil',
+    'comparador-fibra': 'fibra',
+    'comparador-tarifas-fibra-y-movil': 'fibra-y-movil',
+    'comparador-fibra-movil-tv': 'fibra-movil-tv',
+    'comparador-tarifas-luz': 'luz',
+    'comparador-tarifas-gas': 'gas',
+    'comparador-tarifas-luz-y-gas': 'luz-y-gas',
+  };
+
 
   useEffect(() => {
     let locations = location.pathname.split('/');
@@ -50,7 +63,7 @@ export default function ThankPage() {
     const fetchTariffs = async () => {
       try {
         if (idPlan !== null) {
-          const response = await getExtraOffer(offerLooking)
+          const response = await getExtraOffer(offerPath['comparador-tarifas-luz'])
           setExtraOffer(response);
           setIsLoading(false);
         }
@@ -73,7 +86,17 @@ export default function ThankPage() {
             <p>En breve un agente contactará contigo.</p>
           </Col>
           <Col xs={12} xxl={6} md={8} className='my-2' style={isMobile ? { order: 2 } : { order: 1 }}>
-            <TarjetaTarifaLead key={0} data={infoOffer} service={offerLooking} thanks />;
+            {(offerLooking?.toLowerCase() === 'comparador-movil'
+              || offerLooking?.toLowerCase() === 'comparador-fibra'
+              || offerLooking?.toLowerCase() === 'comparador-tarifas-fibra-y-movil'
+              || offerLooking?.toLowerCase() === 'comparador-fibra-movil-tv')
+              && <TarjetaTarifaLead key={0} data={infoOffer} service={offerLooking} thanks />}
+            {offerLooking?.toLowerCase() === 'comparador-tarifas-luz'
+              && <TarjetaTarifaLeadEnergia key={0} data={infoOffer} service={offerLooking} thanks />}
+            {offerLooking?.toLowerCase() === 'comparador-tarifas-gas'
+              && <TarjetaTarifaLeadGas key={0} data={infoOffer} service={offerLooking} thanks />}
+            {offerLooking?.toLowerCase() === 'comparador-tarifas-luz-y-gas'
+              && <TarjetaTarifaLeadEnergiaGas key={0} data={infoOffer} service={offerLooking} thanks />}
           </Col>
         </Row>
       </Container>
@@ -86,14 +109,18 @@ export default function ThankPage() {
             {extraOffer.length > 0 &&
               extraOffer.map((item, index) => {
                 switch (offerLooking?.toLowerCase()) {
-                  case 'luz':
-                    return <TarjetaTarifaLeadEnergia key={index} data={item} TarifaCard />;
-                  case 'gas':
-                    return <TarjetaTarifa key={index} data={item} type={'gas'} />
-                  case 'luzygas':
-                    return <TarjetaTarifa key={index} data={item} type={'gas'} />
-                  default:
+                  case 'comparador-movil':
+                  case 'comparador-fibra':
+                  case 'comparador-tarifas-fibra-y-movil':
+                  case 'comparador-fibra-movil-tv':
                     return <TarjetaTarifa key={index} data={item} />
+                  case 'comparador-tarifas-luz':
+                    return <TarjetaTarifaLeadEnergia key={index} data={item} type={'luz'} TarifaCard/>
+                    case 'comparador-tarifas-gas':
+                    return <TarjetaTarifaLeadGas key={index} data={item} type={'gas'} TarifaCard/>
+                  default:
+                  case 'comparador-tarifas-luz-y-gas':
+                    return <TarjetaTarifaLeadEnergiaGas key={index} data={item} TarifaCard/>;
                 }
               })
             }

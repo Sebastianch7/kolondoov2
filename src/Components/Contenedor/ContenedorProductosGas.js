@@ -5,7 +5,7 @@ import 'rc-slider/assets/index.css';
 import { isMobile } from 'react-device-detect';
 import Modal from 'react-bootstrap/Modal';
 import InterSection from '../Utils/InterSection';
-import TarjetaTarifa from '../Tarjeta/TarjetaTarifa';
+import TarjetaTarifaLeadGas from '../Tarjeta/TarjetaTarifaLeadGas'
 import NotInfoItem from '../Utils/NotInfoItem';
 import Load from '../Utils/Load';
 import { fetchComercializadorasGas, fetchTarifasGas } from '../../services/ApiServices'
@@ -274,7 +274,7 @@ function ContenedorProductosGas() {
                   {!isLoadInformation ? (
                     filtros?.length > 0 ? (
                       filtros?.map((item, index) => (
-                        <TarjetaTarifa key={index} data={item} type={'gas'} />
+                        <TarjetaTarifaLeadGas key={index} data={item} type={'gas'} TarifaCard/>
                       ))
                     ) : (
                       <NotInfoItem key={0} title={'No se encontraron ofertas'} text={'Lo sentimos, no hemos encontrado ofertas con los filtros seleccionados.'} />

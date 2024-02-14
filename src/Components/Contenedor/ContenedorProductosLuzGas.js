@@ -10,6 +10,7 @@ import NotInfoItem from '../Utils/NotInfoItem';
 import Load from '../Utils/Load';
 import TarjetaTarifaLeadEnergia from '../Tarjeta/TarjetaTarifaLeadEnergia'
 import { fetchComercializadorasLuzGas, fetchTarifasLuzGas } from '../../services/ApiServices'
+import TarjetaTarifaLeadEnergiaGas from '../Tarjeta/TarjetaTarifaLeadEnergiaGas';
 
 
 function ContenedorProductosLuzGas() {
@@ -325,7 +326,7 @@ function ContenedorProductosLuzGas() {
                   {!isLoadInformation ? (
                     filtros?.length > 0 ? (
                       filtros?.map((item, index) => (
-                        <TarjetaTarifaLeadEnergia key={index} data={item} TarifaCard></TarjetaTarifaLeadEnergia>
+                        <TarjetaTarifaLeadEnergiaGas key={index} data={item} TarifaCard></TarjetaTarifaLeadEnergiaGas>
                       ))
                     ) : (
                       <NotInfoItem key={0} title={'No se encontraron ofertas'} text={'Lo sentimos, no hemos encontrado ofertas con los filtros seleccionados.'} />

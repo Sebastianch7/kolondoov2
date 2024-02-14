@@ -8,7 +8,7 @@ import { BsArrowRight } from "react-icons/bs";
 import { Link } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 
-export default function TarjetaTarifaLeadEnergia({ data, TarifaCard }) {
+export default function TarjetaTarifaLeadEnergiaGas({ data, TarifaCard }) {
     const [tarifa] = useState(null)
 
     const [lang, setLang] = useState(null)
@@ -74,6 +74,18 @@ export default function TarjetaTarifaLeadEnergia({ data, TarifaCard }) {
                                         </Row>
                                     }
                                 </Col>
+                                <Col md={6} xs={12} className='my-3'>
+                                    <h6>Términos</h6>
+                                    <Row className='d-flex'>
+                                        <ItemTarifaLuz title={'Fija'} value={data?.gas_precio_termino_fijo} extension={'€/kW'} />
+                                    </Row>
+                                </Col>
+                                <Col md={6} xs={12} className='my-3'>
+                                    <h6>&nbsp;</h6>
+                                    <Row className='d-flex'>
+                                        <ItemTarifaLuz title={'Variable'} value={data?.gas_precio_termino_variable} extension={'€/kW'} />
+                                    </Row>
+                                </Col>
                             </Row>
                         </Col>
                         <Col md={3}>
@@ -88,14 +100,13 @@ export default function TarjetaTarifaLeadEnergia({ data, TarifaCard }) {
                         </Col>
                     </Row>
                     <Row>
-                        <Col md={12} className='d-flex vertical-items mt-4'>
+                        <Col md={12} className='d-flex vertical-items'>
                             <ItemTarifaDescripcion text={parrilla_bloque_1} />
                             <ItemTarifaDescripcion text={parrilla_bloque_2} />
                             <ItemTarifaDescripcion text={parrilla_bloque_3} />
                             <ItemTarifaDescripcion text={parrilla_bloque_4} />
                         </Col>
                     </Row>
-                    
                 </Card.Text>
             </Card.Body>
 

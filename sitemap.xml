@@ -3,13 +3,13 @@
 
   <!-- Enlace al primer sitemap -->
   <sitemap>
-    <loc>https://dev.vuskoo.com/sitemap/espana.xml</loc>
+    <loc>https://vuskoo.com/sitemap/espana.xml</loc>
     <lastmod>2024-01-26T00:00:00+00:00</lastmod>
   </sitemap>
 
   <!-- Enlace al segundo sitemap -->
   <sitemap>
-    <loc>https://dev.vuskoo.com/sitemap/blog.xml</loc>
+    <loc>https://vuskoo.com/sitemap/blog.xml</loc>
     <lastmod>2024-01-26T00:00:00+00:00</lastmod>
   </sitemap>
 

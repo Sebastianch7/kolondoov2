@@ -21,6 +21,8 @@ import ContenedorPorQueComparar from '../Components/Contenedor/ContenedorPorQueC
 import preguntasFrecuentes from '../Content/PreguntasFrecuentesEnergia.json'
 import ItemStack from '../Components/ItemStack';
 import MetaData from '../Components/Header/SeoMetadata';
+import TarjetaTarifaLeadEnergia from '../Components/Tarjeta/TarjetaTarifaLeadEnergia';
+import TarjetaTarifaLeadEnergiaGas from '../Components/Tarjeta/TarjetaTarifaLeadEnergiaGas';
 
 const dataPorQueComparar = [
   {
@@ -63,7 +65,7 @@ export default function RaizEnergia() {
   useEffect(() => {
     const fetchTariffs = async () => {
       try {
-        const response = await getExtraOffer('luzygas')
+        const response = await getExtraOffer('luz-y-gas')
         setExtraOffer(response);
       } catch (error) {
         console.error("Error al obtener oferta extra:", error);
@@ -91,7 +93,7 @@ export default function RaizEnergia() {
       <Container>
         <TitleSection
           center
-          title={t('title-baner-comparador-de-energia')}
+          title={'Comparador de'}
           titleAlt={'Energía'}
           text1={t('es-raiz-energia-content-description')}
           text2={t('es-raiz-energia-content-description-2')}
@@ -126,7 +128,7 @@ export default function RaizEnergia() {
           <Col md={9}>
             {extraOffer.length > 0 &&
               extraOffer.map((item, index) => {
-                return <TarjetaTarifa key={index} data={item} />
+                return <TarjetaTarifaLeadEnergiaGas key={index} data={item} TarifaCard/>
               })
             }
           </Col>
