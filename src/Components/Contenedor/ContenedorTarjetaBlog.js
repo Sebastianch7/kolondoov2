@@ -67,9 +67,9 @@ function ContenedorTarjetaBlog({ children }) {
                                     return (
                                         <Carousel.Item key={index} className='carrusel-blog'>
                                             <img
-                                                src={`/img/blog/mobile/${data.imagen_principal_movil}`}
-                                                alt={`/img/blog/mobile/${data.imagen_principal_movil}`}
-                                                className="img-fluid carrusel-blog"
+                                                src={`${data.imagen}`}
+                                                alt={`${data.imagen}`}
+                                                className="carrusel-blog"
                                             />
                                             <Carousel.Caption>
                                                 <div className="carrusel-caption">
