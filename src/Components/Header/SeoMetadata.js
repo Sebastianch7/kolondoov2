@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { useLocation } from 'react-router-dom';
 const apiUrl = process.env.REACT_APP_API_URL;
-const App = ({ titulo, descripcion, url, imagen_destacada=`${apiUrl}/img/logos/logo.svg`}) => {
+const App = ({ titulo, descripcion, url, imagen_destacada = `${apiUrl}/img/logos/logo.svg` }) => {
     const location = useLocation();
     const [lang, setLang] = useState('/es')
     const apiUrl = process.env.REACT_APP_API_URL;
@@ -19,9 +19,9 @@ const App = ({ titulo, descripcion, url, imagen_destacada=`${apiUrl}/img/logos/l
             <meta name="language" content="spanish" />
             <meta name="description" content={descripcion} />
             <title>{titulo}</title>
-            <meta name="robots" content="index, follow" />
+            <meta name="robots" content="noindex, nofollow" />
             <link rel="canonical" href={`${apiUrl}${location.pathname}`} />
-            {/* Open */}
+
             <meta property="og:type" content="website" />
             <meta property="og:title" content={titulo} />
             <meta property="og:description" content={descripcion} />
