@@ -6,12 +6,14 @@ import Footer from '../Components/Footer/Footer';
 import FormSuscripcion from '../Components/Forms/FormSuscripcion';
 import { useTranslation } from 'react-i18next';
 import MetaData from '../Components/Header/SeoMetadata';
+import ConsentimientoCookies from '../Components/Utils/ConsentimientoCookies';
 
 
 function Home(props) {
     const { t } = useTranslation();
     return (
         <div>
+            <ConsentimientoCookies></ConsentimientoCookies>
             <MetaData imagen_destacada='/img/banner-home.png' descripcion={'Descubre una nueva era en la toma de decisiones con Vuskoo. Comparadores de servicios que te ofrecen información detallada, ofertas, promociones para que elijas'} titulo={'Optimiza tus elecciones con Vuskoo: Expertos en Comparadores de Servicios'} />
             <Header></Header>
             <main>
