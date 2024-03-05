@@ -4,7 +4,6 @@ import { isMobile } from 'react-device-detect';
 import { Link } from 'react-router-dom';
 function TarjetaBlogFull({ data }) {
     const { fecha_publicacion, categoria_url, imagen, titulo, categoria_slug, url_amigable } = data
-
     const meses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre']
     const cambiarFecha = (data) => {
         let fecha = new Date(data);
@@ -24,7 +23,7 @@ function TarjetaBlogFull({ data }) {
                     <div className='info-card p-3'>
                         <span>{cambiarFecha(fecha_publicacion)}</span>
                         <p><Link rel="alternate" hreflang="es-es" to={`/es/blog/${categoria_slug}/${url_amigable}`}>{titulo}</Link></p>
-                        <Link rel="alternate" hreflang="es-es" to={`/es/blog/${categoria_url}/${url_amigable}`}>ver más</Link>
+                        <Link rel="alternate" hreflang="es-es" to={`/es/blog/${categoria_slug}/${url_amigable}`}>ver más</Link>
                     </div>
                 </Card.ImgOverlay>
             </Card>
