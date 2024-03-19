@@ -34,6 +34,10 @@ function RoutesApp() {
     return (
         <BrowserRouter>
             <Routes>
+                {/* Ruta 404 */}
+                <Route path="/*" element={<PageNotFound  replace/>} />
+                <Route path="/es/blog/destacado" element={<PageNotFound replace/>} />
+                <Route path="/es/404" element={<PageNotFound replace />} />
                 {<Route
                     path="/"
                     element={<Navigate to="/es" exact />}
@@ -106,10 +110,7 @@ function RoutesApp() {
                 <Route path="/es/blog/:categoria/:id" element={<BlogItem />} />
                 
                 <Route path="/blog/preview/:id" element={<BlogItemPreview />} />
-                {/* Ruta 404 */}
-                <Route path="/*" element={<PageNotFound />} />
-                <Route path="/es/blog/destacado" element={<PageNotFound />} />
-                <Route path="/es/404" element={<PageNotFound />} />
+                
             </Routes>
         </BrowserRouter>
     );

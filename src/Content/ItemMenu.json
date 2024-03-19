@@ -61,18 +61,6 @@
             {
                 "name": "Test de velocidad",
                 "url": "/herramientas/test-de-velocidad"
-            },
-            {
-                "name": "Suministros",
-                "url": "/herramientas/suministros"
-            },
-            {
-                "name": "Seguros",
-                "url": "/herramientas/seguros"
-            },
-            {
-                "name": "Cobertura",
-                "url": "/herramientas/cobertura"
             }
         ]
     }

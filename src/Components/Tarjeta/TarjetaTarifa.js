@@ -12,6 +12,7 @@ import { SiAmazonprime } from "react-icons/si";
 import { SiDazn } from "react-icons/si";
 import { PiTelevisionFill } from "react-icons/pi";
 import { FaAmazon } from "react-icons/fa";
+import classNames from 'classnames';
 
 
 function TarjetaTarifa({ data, type }) {
@@ -26,7 +27,7 @@ function TarjetaTarifa({ data, type }) {
     }, [])
 
     const { id,
-        orden_parrilla_general,
+        destacada,
         nombre_tarifa,
         slug_tarifa,
         parrilla_bloque_1,
@@ -47,8 +48,8 @@ function TarjetaTarifa({ data, type }) {
     } = data;
     return (
         <>
-            {orden_parrilla_general === 1 && <div className='prioridad-oferta'>Oferta destacada</div>}
-            <Card key={nombre_tarifa} className={`tarjeta tarjeta-tarifa my-2 ${orden_parrilla_general === 1 && 'prioridad'}`}>
+            {destacada === 1 && <div className='prioridad-oferta'>Oferta destacada</div>}
+            <Card key={nombre_tarifa} className={`tarjeta tarjeta-tarifa my-2 ${destacada === 1 && 'prioridad'}`}>
                 <Row className='d-flex flex-column flex-md-row'>
                     <Col md={12}>
                         <Row>
@@ -61,18 +62,17 @@ function TarjetaTarifa({ data, type }) {
                             </Col>
                             {(promocion !== null && isMobile === true) &&
                                 <Col xs={12} className='mb-2'>
-                                    <span className='align-middle text-promotion'><b>Promoción: </b>{promocion}</span>
+                                    <span className={`align-middle text-promotion ${destacada === 1 && 'color-primary'}`}><b>Promoción: </b>{promocion}</span>
                                 </Col>
                             }
                         </Row>
                     </Col>
-                    <Col md={5} className='text-left' style={isMobile ? { order: 2 } : { order: 1 }}>
+                    <Col md={5} className={classNames('text-left', { 'order-2': isMobile, 'color-primary': destacada === 1 })}>
                         Duración contrato: <b>{meses_permanencia === 0 ? 'Sin contrato' : `${meses_permanencia} meses`}</b>
                         <hr />
-                        {type !== 'gas' && <ItemTarifaDescripcion text={parrilla_bloque_1} />}
-                        <ItemTarifaDescripcion text={parrilla_bloque_2} />
-                        <ItemTarifaDescripcion text={parrilla_bloque_3} />
-                        <ItemTarifaDescripcion text={parrilla_bloque_4} />
+                        <ItemTarifaDescripcion destacada={destacada} text={parrilla_bloque_2} />
+                        <ItemTarifaDescripcion destacada={destacada} text={parrilla_bloque_3} />
+                        <ItemTarifaDescripcion destacada={destacada} text={parrilla_bloque_4} />
                         {TV === 1 && <PiTelevisionFill className='m-2' />}
                         {Netflix === 1 && <RiNetflixFill className='m-2' />}
                         {HBO === 1 && <SiHbo className='m-2' />}
@@ -81,8 +81,8 @@ function TarjetaTarifa({ data, type }) {
                     </Col>
                     <Col xs={12} md={5} style={isMobile ? { order: 1 } : { order: 2 }}>
                         <Row>
-                            <ItemTarifaServicio cant={parrilla_bloque_1} service={''} />
-                            <ItemTarifaServicio cant={precio} service={'al mes'} money={moneda} />
+                            <ItemTarifaServicio destacada={destacada} cant={parrilla_bloque_1} service={''} />
+                            <ItemTarifaServicio destacada={destacada} cant={precio} service={'al mes'} money={moneda} />
                         </Row>
                     </Col>
                     {!isMobile && <Col md={2} style={isMobile ? { order: 3 } : { order: 3 }}>

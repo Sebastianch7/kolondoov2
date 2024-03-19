@@ -2,14 +2,13 @@
 import ItemMenu from '../Items/ItemMenu';
 import { Navbar, Container, Nav } from 'react-bootstrap';
 import BreadCrumb from '../BreadCrumb/BreadCrumb';
-import items from '../../Content/ItemMenu.json'
 import { useTranslation } from 'react-i18next';
 import { useState, useEffect } from 'react';
 import { useLocation, Link } from 'react-router-dom';
 import ItemMenuDesktop from '../Items/ItemMenuDesktop';
 import { isMobile } from 'react-device-detect';
 import Accordion from 'react-bootstrap/Accordion';
-import { getMenuBlog } from '../../services/ApiServices';
+import { getMenu, getMenuBlog } from '../../services/ApiServices';
 
 
 function Header({ breadCrumb }) {
@@ -18,6 +17,7 @@ function Header({ breadCrumb }) {
     const [lang, setLang] = useState('es-es')
     const location = useLocation();
     const [menu, setMenu] = useState([])
+    const [items, setItems] = useState([])
     const [isLoadInformation, setIsLoadInformation] = useState(false)
 
     useEffect(() => {
@@ -36,6 +36,18 @@ function Header({ breadCrumb }) {
                 setMenu(response);
             } catch (error) {
                 console.error("Error al obtener el menu", error);
+            }
+        };
+        fetchMenu();
+    }, []);
+    
+    useEffect(() => {
+        const fetchMenu = async () => {
+            try {
+                const response = await getMenu()
+                setItems(response);
+            } catch (error) {
+                console.error("Error al obtener el menu principal", error);
             }
         };
         fetchMenu();

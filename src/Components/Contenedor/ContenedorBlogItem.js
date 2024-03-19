@@ -49,7 +49,8 @@ export default function ContenedorBlogItem({ }) {
                         case 'blog':
                             response = await getBlogById(validarCategoria,idBlog);
                             if (response === undefined || !response.categoria_slug.includes(validarCategoria) && validarCategoria !== 'destacados') {
-                               navigate(`/es/404`);
+                                 navigate('/es/404', { replace: true, state: { statusCode: 404 } });
+
                             }
                             setFetchBlog(response);
                             setLoad(false);
@@ -61,7 +62,8 @@ export default function ContenedorBlogItem({ }) {
                                 case 'suministros':
                                     response = await getGestionById('suministros', idBlog);
                                     if (response === undefined || !validarCategoria.includes('suministros')) {
-                                        navigate(`/es/404`);
+                                          navigate('/es/404', { replace: true, state: { statusCode: 404 } });
+
                                     }
                                     setFetchBlog(response);
                                     setLoad(false);
@@ -72,7 +74,8 @@ export default function ContenedorBlogItem({ }) {
                                 case 'coberturafibra':
                                     response = await getGestionById('coberturaFibra', idBlog);
                                     if (response === undefined || !validarCategoria.includes('coberturafibra')) {
-                                        navigate(`/es/404`);
+                                          navigate('/es/404', { replace: true, state: { statusCode: 404 } });
+
                                     }
                                     setFetchBlog(response);
                                     setLoad(false);
@@ -83,7 +86,8 @@ export default function ContenedorBlogItem({ }) {
                                 case 'coberturamovil':
                                     response = await getGestionById('coberturaMovil', idBlog);
                                     if (response === undefined || !validarCategoria.includes('coberturamovil')) {
-                                        navigate(`/es/404`);
+                                          navigate('/es/404', { replace: true, state: { statusCode: 404 } });
+
                                     }
                                     setFetchBlog(response);
                                     setLoad(false);
@@ -94,7 +98,8 @@ export default function ContenedorBlogItem({ }) {
                                 case 'seguros':
                                     response = await getGestionById('seguros', idBlog);
                                     if (response === undefined || !validarCategoria.includes('seguros')) {
-                                        navigate(`/es/404`);
+                                          navigate('/es/404', { replace: true, state: { statusCode: 404 } });
+
                                     }
                                     setFetchBlog(response);
                                     setLoad(false);

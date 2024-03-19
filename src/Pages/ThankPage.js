@@ -63,7 +63,7 @@ export default function ThankPage() {
     const fetchTariffs = async () => {
       try {
         if (idPlan !== null) {
-          const response = await getExtraOffer(offerPath['comparador-tarifas-luz'])
+          const response = await getExtraOffer(offerLooking)
           setExtraOffer(response);
           setIsLoading(false);
         }
@@ -83,7 +83,6 @@ export default function ThankPage() {
         <Row className="justify-content-md-center d-flex flex-column flex-md-row">
           <Col xs={12} className='text-center text-white'>
             <h3>Muchas gracias por dejarnos tus datos.</h3>
-            <p>En breve un agente contactará contigo.</p>
           </Col>
           <Col xs={12} xxl={6} md={8} className='my-2' style={isMobile ? { order: 2 } : { order: 1 }}>
             {(offerLooking?.toLowerCase() === 'comparador-movil'

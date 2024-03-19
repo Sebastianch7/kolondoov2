@@ -1,10 +1,10 @@
 import React from 'react';
 import { Col } from 'react-bootstrap';
-function ItemTarifaServicio({ cant, service, money, design }) {
+function ItemTarifaServicio({ cant, service, money, design, destacada }) {
     return (
         (design !== 'small') ?
             <Col xs={6}>
-                <div className='tarjeta-tarifa-item-service text-center my-2'>
+                <div className={`tarjeta-tarifa-item-service text-center my-2 ${destacada && 'bg-primary text-white'}`}>
                     <h5>{money} {cant}</h5>
                     <span>{service}</span>
                 </div>

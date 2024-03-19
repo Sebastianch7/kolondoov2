@@ -21,10 +21,10 @@ export default function ContenedorBlog({ categoria }) {
                 setFetchBlog(response);
                 setIsLoading(false);
                 if (response.length === 0) {
-                    navigate(`/es/404`);
+                    navigate('/es/404', { replace: true, state: { statusCode: 404 } });
                 }
             } catch (error) {
-                navigate(`/es/404`);
+                navigate('/es/404', { replace: true, state: { statusCode: 404 } });
                 console.error('Error al obtener blog:', error);
 
             }

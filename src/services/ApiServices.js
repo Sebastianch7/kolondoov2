@@ -221,6 +221,17 @@ export const getBlogHome = async () => {
     }
 };
 
+
+export const getMenu = async () => {
+    try {
+        const response = await axios.get(`${apiUrl}/getMenu`)
+        return response.data;
+    } catch (error) {
+        console.error("Error al procesar la solicitud", error);
+        throw error;
+    }
+};
+
 export const getBlogDestacados = async () => {
     try {
         const response = await axios.get(`${apiUrl}/getBlogDestacados`)

@@ -19,13 +19,13 @@ const App = ({ titulo, descripcion, url, imagen_destacada = `${apiUrl}/img/logos
             <meta name="language" content="spanish" />
             <meta name="description" content={descripcion} />
             <title>{titulo}</title>
-            <meta name="robots" content="noindex, nofollow" />
-            <link rel="canonical" href={`${apiUrl}${location.pathname}`} />
+            <meta name="robots" content="index, follow" />
+            <link rel="canonical" href={`www.${apiUrl}${location.pathname}`} />
 
             <meta property="og:type" content="website" />
             <meta property="og:title" content={titulo} />
             <meta property="og:description" content={descripcion} />
-            <meta property="og:url" content={`${apiUrl}${location.pathname}`} />
+            <meta property="og:url" content={`www.${apiUrl}${location.pathname}`} />
             <meta property="og:image" content={`${imagen_destacada}`} />
             <meta property="og:site_name" content="Vuskoo" />
             <meta property="fb:admins" content="222214799752613" />

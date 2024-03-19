@@ -7,7 +7,7 @@ export default function ContenedorPorQueComparar({ title, titleAlt, titleThird, 
     return (
         <div className='p-0 m-0 mx-auto bg-gray'>
             <Container>
-                <Row className='mx-auto bg-gray pt-md-5'>
+                <Row className='mx-auto bg-gray'>
                     <TitleSection
                         center
                         title={title}

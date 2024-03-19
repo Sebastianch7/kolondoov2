@@ -39,10 +39,10 @@ function Footer(props) {
                     <Col xs={12} md={3} xl={3}>
                         <h5 className='text-center'>Redes sociales</h5>
                         <ul>
-                            <li className='my-md-3'><a target='_blank' rel='nofollow noopener noreferrer' href={"https://www.linkedin.com/company/kolondoo"}>Linkedin</a></li>
-                            <li className='my-md-3'><a target='_blank' rel='nofollow noopener noreferrer' href={"https://www.facebook.com/Kolondoo"}>Facebook</a></li>
-                            <li className='my-md-3'><a target='_blank' rel='nofollow noopener noreferrer' href={"https://twitter.com/kolondoo"}>Twitter</a></li>
-                            <li className='my-md-3'><a target='_blank' rel='nofollow noopener noreferrer' href={"https://www.instagram.com/kolondoo"}>Instagram</a></li>
+                            {/* <li className='my-md-3'><a target='_blank' rel='nofollow noopener noreferrer' href={"https://www.linkedin.com/company/kolondoo"}>Linkedin</a></li> */}
+                            <li className='my-md-3'><a target='_blank' rel='nofollow noopener noreferrer' href={"https://www.facebook.com/VuskooComparador"}>Facebook</a></li>
+                            <li className='my-md-3'><a target='_blank' rel='nofollow noopener noreferrer' href={"https://twitter.com/vuskoo_"}>Twitter</a></li>
+                            {/* <li className='my-md-3'><a target='_blank' rel='nofollow noopener noreferrer' href={"https://www.instagram.com/kolondoo"}>Instagram</a></li> */}
                         </ul>
                     </Col>
                     <Col xs={12} md={3} xl={3}>
