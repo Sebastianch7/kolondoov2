@@ -24,10 +24,8 @@ import BlogItem from '../Pages/BlogItem';
 import PoliticaCookies from '../Pages/PoliticaCookies';
 import PoliticaLegal from '../Pages/PoliticaLegal';
 import PageNotFound from '../Pages/PageNotFound';
-import HerramientasSuministros from '../Pages/HerramientasSuministros';
-import HerramientasSeguros from '../Pages/HerramientasSeguros';
-import HerramientasCobertura from '../Pages/HerramientasCobertura';
 import BlogItemPreview from '../Pages/BlogItemPreview';
+import ComparadoresMarca from '../Pages/ComparadoresMarca';
 
 
 function RoutesApp() {
@@ -35,8 +33,8 @@ function RoutesApp() {
         <BrowserRouter>
             <Routes>
                 {/* Ruta 404 */}
-                <Route path="/*" element={<PageNotFound  replace/>} />
-                <Route path="/es/blog/destacado" element={<PageNotFound replace/>} />
+                <Route path="/*" element={<PageNotFound replace />} />
+                <Route path="/es/blog/destacado" element={<PageNotFound replace />} />
                 <Route path="/es/404" element={<PageNotFound replace />} />
                 {<Route
                     path="/"
@@ -48,6 +46,10 @@ function RoutesApp() {
                 <Route path="/es/internet-telefonia" element={<RaizTelefonia />} />
                 <Route path="/es/energia" element={<RaizEnergia />} />
                 <Route path="/es/television-streaming" element={<RaizStreaming />} />
+
+
+                <Route path="/es/comparadores/:marca" element={<ComparadoresMarca />} />
+
 
                 <Route path="/es/internet-telefonia/comparador-movil" element={<ComparadorMovil />} />
                 <Route path="/es/internet-telefonia/comparador-movil/:id" element={<Lead />} />
@@ -90,7 +92,7 @@ function RoutesApp() {
                 <Route path="/es/herramientas/precio-de-la-luz-hoy" element={<HerramientaLuz />} />
                 <Route path="/es/herramientas/test-de-velocidad" element={<HerramientaTest />} />
 
-                <Route path="/es/herramientas/suministros" element={<HerramientasSuministros />} />
+                {/* <Route path="/es/herramientas/suministros" element={<HerramientasSuministros />} />
                 <Route path="/es/herramientas/suministros/:id" element={<BlogItem />} />
 
                 <Route path="/es/herramientas/seguros" element={<HerramientasSeguros />} />
@@ -98,7 +100,7 @@ function RoutesApp() {
 
                 <Route path="/es/herramientas/cobertura" element={<HerramientasCobertura />} />
                 <Route path="/es/herramientas/coberturaFibra/:id" element={<BlogItem />} />
-                <Route path="/es/herramientas/coberturaMovil/:id" element={<BlogItem />} />
+                <Route path="/es/herramientas/coberturaMovil/:id" element={<BlogItem />} /> */}
 
                 <Route path="/es/contactanos" element={<Contactenos />} />
                 <Route path="/es/politica-privacidad" element={<PoliticaPrivacidad />} />
@@ -108,9 +110,9 @@ function RoutesApp() {
                 <Route path="/es/blog" element={<Blog />} />
                 <Route path="/es/blog/:categoria" element={<Blog />} />
                 <Route path="/es/blog/:categoria/:id" element={<BlogItem />} />
-                
+
                 <Route path="/blog/preview/:id" element={<BlogItemPreview />} />
-                
+
             </Routes>
         </BrowserRouter>
     );

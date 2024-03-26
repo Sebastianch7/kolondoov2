@@ -1072,6 +1072,7 @@ th {
   img {
     max-height: 70px !important;
     min-height: 70px !important;
+
     @include media(xs) {
       max-height: 40px !important;
       min-height: 40px !important;
@@ -1276,4 +1277,10 @@ p {
 
 #cm__title {
   font-size: 0.9rem !important;
+}
+
+.w-100px {
+  max-height: 150px !important;
+  height: 150px;
+  overflow: hidden;
 }
