@@ -52,7 +52,7 @@ function FormSuscripcion({ }) {
     }
 
     return (
-        <>
+        <div id="newsform">
             <BannerReverse
                 title={'Suscríbete gratis y recibe nuestras mejores ofertas'}
                 subtitle='Únete a nuestra comunidad. Recibirás nuestros mejores contenidos semanalmente: guías prácticas para ahorrar y gestionar tu consumo, últimas entradas…¡ Y mucho más!'
@@ -108,7 +108,7 @@ function FormSuscripcion({ }) {
                     </div>
                 </Form>
             </BannerReverse>
-        </>
+        </div>
     );
 }
 
