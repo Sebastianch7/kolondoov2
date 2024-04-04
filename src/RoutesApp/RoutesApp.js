@@ -26,6 +26,7 @@ import PoliticaLegal from '../Pages/PoliticaLegal';
 import PageNotFound from '../Pages/PageNotFound';
 import BlogItemPreview from '../Pages/BlogItemPreview';
 import ComparadoresMarca from '../Pages/ComparadoresMarca';
+import ThanksPage from '../Pages/thanksPage';
 
 
 function RoutesApp() {
@@ -77,11 +78,11 @@ function RoutesApp() {
 
                 <Route path="/es/internet-telefonia/comparador-fibra-movil-tv" element={<ComparadorFibraMovilTv />} />
                 <Route path="/es/internet-telefonia/comparador-fibra-movil-tv/:id" element={<Lead />} />
-                <Route path="/es/thank/internet-telefonia/comparador-fibra-movil-tv/:id" element={<ThankPage />} />
+                <Route path="/es/internet-telefonia/comparador-fibra-movil-tv//thank/:id" element={<ThankPage />} />
 
                 <Route path="/es/internet-telefonia/telefono_con_contrato" element={<ComparadorFibraMovilTv />} />
                 <Route path="/es/internet-telefonia/telefono_con_contrato/:id" element={<Lead />} />
-                <Route path="/es/thank/internet-telefonia/telefono_con_contrato/:id" element={<ThankPage />} />
+                <Route path="/es/internet-telefonia/telefono_con_contrato//thank/:id" element={<ThankPage />} />
 
                 {/* <Route path="/es/television-streaming/comparador-de-television" element={<ComparadorStreaming />} /> */}
                 <Route path="/es/television-streaming/comparador-plataformas-streaming" element={<ComparadorStreaming />} />
@@ -112,6 +113,8 @@ function RoutesApp() {
                 <Route path="/es/blog/:categoria/:id" element={<BlogItem />} />
 
                 <Route path="/blog/preview/:id" element={<BlogItemPreview />} />
+                
+                <Route path="/thanks" element={<ThanksPage />} />
 
             </Routes>
         </BrowserRouter>
