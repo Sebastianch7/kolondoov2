@@ -114,7 +114,7 @@ function RoutesApp() {
 
                 <Route path="/blog/preview/:id" element={<BlogItemPreview />} />
                 
-                <Route path="/thanks" element={<ThanksPage />} />
+                <Route path="/es/gracias" element={<ThanksPage />} />
 
             </Routes>
         </BrowserRouter>

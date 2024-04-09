@@ -6,6 +6,8 @@ import InterSection from '../Utils/InterSection';
 import TarjetaTarifaStreaming from '../Tarjeta/TarjetaTarifaStreaming';
 import TitleSection from '../Text/TitleSection';
 import Carousel from "react-multi-carousel";
+import { fetchStreamingOffers } from '../../services/ApiServices';
+import Load from '../Utils/Load';
 
 const responsive = {
   desktop: {
@@ -22,60 +24,30 @@ const responsive = {
   }
 };
 
-const data = [
-  {
-    logo: '/img/logos/netflix.svg',
-    series: 'Nowhere, Boksoon debe morir, El rey mono, Soy Georgina.',
-    precio_min: '5,49€/mes',
-    precio_max: '17,99€/mes*',
-    url: 'https://www.netflix.com/',
-    productos: [
-      {
-        titulo: 'Estándar con anuncios',
-        precio: '5’49€ /mes'
-      },
-      {
-        titulo: 'Básico',
-        precio: '7’99€ /mes'
-      },
-      {
-        titulo: 'Estándar',
-        precio: '12’99€ /mes*'
-      },
-      {
-        titulo: 'Premium',
-        precio: '17’99€ /mes*'
-      }
-    ]
-  },
-  {
-    logo: '/img/logos/hbomax.svg',
-    series: 'Elvis, Cinco lobitos,Expediente Warren: Obligado por el demonio.',
-    precio_estandar: '9,99€/mes',
-    url: 'https://www.hbomax.com/',
-    productos: [
-      {
-        titulo: 'Estándar',
-        precio: '9’49€ /mes'
-      }
-    ]
-  },
-  {
-    logo: '/img/logos/prime.svg',
-    series: 'Guy Ritchie: El pacto, Guns Akimbo, Jackass Forever, Halloween.',
-    precio_estandar: '4,99€/mes',
-    url: 'https://www.primevideo.com/',
-    productos: [
-      {
-        titulo: 'Estándar',
-        precio: '4’49€ /mes'
-      }
-    ]
-  },
-]
+
 function ContenedorProductosStreaming(logo = null, landingLead = null, id = null) {
+  const [isLoadInformation, setIsLoadInformation] = useState(false);
+  const [Tarifas, setTarifas] = useState([]);
+
+  useEffect(() => {
+    setIsLoadInformation(true);
+    const fetchTariffs = async () => {
+      try {
+        let response = await fetchStreamingOffers()
+        setTarifas(response);
+        console.log(response);
+        setIsLoadInformation(false);
+      } catch (error) {
+        console.error("Error al obtener las tarifas de móvil:", error);
+      }
+    };
+
+    fetchTariffs();
+  }, []);
+
   return (
     <>
+      {!isLoadInformation ? 
       <Container>
         <div
           style={{
@@ -83,7 +55,7 @@ function ContenedorProductosStreaming(logo = null, landingLead = null, id = null
             position: 'relative'
           }}
         >
-          {data?.length > 0 &&
+          {Tarifas?.length > 0 &&
             <Carousel
               arrows={true}
               centerMode={false}
@@ -99,7 +71,7 @@ function ContenedorProductosStreaming(logo = null, landingLead = null, id = null
               showDots={false}
               slidesToSlide={1}
             >
-              {data?.map((item) => {
+              {Tarifas?.map((item) => {
                 return (
                   <TarjetaTarifaStreaming data={item} />
                 );
@@ -109,6 +81,9 @@ function ContenedorProductosStreaming(logo = null, landingLead = null, id = null
         </div>
         <small>*Se pueden añadir pases de suscriptor/a extra** por 5,99 € al mes</small>
       </Container>
+        :
+        <Load></Load>
+      }
       <InterSection></InterSection>
     </>
   );

@@ -190,6 +190,16 @@ export const fetchTarifasLuzGas = async () => {
     }
 };
 
+export const fetchStreamingOffers = async () => {
+    try {
+        const response = await axios.get(`${apiUrl}/getTarifasStreaming`);
+        return response.data;
+    } catch (error) {
+        console.error("Error al procesar la solicitud", error);
+        throw error;
+    }
+};
+
 export const getDetailOffer = async (offerLooking, idPlan) => {
     try {
         const response = await axios.get(`${apiUrl}/getDetailOffer${offerLooking.replaceAll('-', '')}/${idPlan}`)
