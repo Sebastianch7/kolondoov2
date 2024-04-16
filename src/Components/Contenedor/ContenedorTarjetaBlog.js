@@ -73,7 +73,7 @@ function ContenedorTarjetaBlog({ children }) {
                                             />
                                             <Carousel.Caption>
                                                 <div className="carrusel-caption">
-                                                    <h3><Link rel="alternate" hreflang="es-es" to={`/es/blog/${data.categoria_url}/${data.url_amigable}`}>{data.titulo}</Link></h3>
+                                                    <h3><Link rel="alternate" to={`/es/blog/${data.categoria_url}/${data.url_amigable}`}>{data.titulo}</Link></h3>
                                                     <h6>{cambiarFecha(data.fecha_publicacion)}</h6>
                                                 </div>
                                             </Carousel.Caption>

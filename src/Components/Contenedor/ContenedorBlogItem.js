@@ -130,11 +130,11 @@ export default function ContenedorBlogItem({ }) {
                         <TitleSection
                             left
                             title={fetchBlog?.titulo}
-                            text1={fetchBlog?.contenido}
+                            textBlog={fetchBlog?.contenido}
                             clave={fetchBlog?.hashtags?.replaceAll('[', '').replaceAll('"', '').replaceAll(']', '').replaceAll(',', ' ')}
                             fecha={fetchBlog?.fecha_publicacion}
                             autor={fetchBlog?.autor}
-                            textBlog={fetchBlog?.cuerpo}
+                            
                         />
                         <Col xs={12} className='text-center my-5'>
                             <Link className='font-09 btn btn-primary' to={`/es/${btnBack}`}>Volver</Link>

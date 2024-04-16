@@ -16,20 +16,23 @@ function TarjetaBlogFull({ data }) {
         return fechaFormateada;
     };
     return (
-        <Col className='mx-3'>
-            <Card className='tarjeta tarjeta-blog'>
-                <div style={{'height':'170px', 'overflow':'hidden'}}>
-                    <Card.Img className='img-fluid' src={`${imagen}`} alt={`${imagen}`} />
-                </div>
-                <Card.ImgOverlay>
-                    <div className='info-card px-3'>
-                        <span>{cambiarFecha(fecha_publicacion)}</span>
-                        <p className='m-0' style={{'min-height':'60px'}}><Link rel="alternate" hreflang="es-es" to={`/es/blog/${categoria_slug}/${url_amigable}`}>{titulo}</Link></p>
-                        <Link rel="alternate" hreflang="es-es" to={`/es/blog/${categoria_slug}/${url_amigable}`}>ver más</Link>
-                    </div>
-                </Card.ImgOverlay>
-            </Card>
-        </Col>
+        <Card className='mx-2 info-card'>
+            <div className='info-card-imagen'>
+                <Card.Img src={`${imagen}`} alt={`${imagen}`} />
+            </div>
+            <Card.Body>
+                <Card.Text className='text-muted'>
+                    <Link rel="alternate" to={`/es/blog/${categoria_slug}/${url_amigable}`}>{titulo}</Link>
+                </Card.Text>
+            </Card.Body>
+            <Card.Footer>
+            <Card.Text className='vermas'>
+                    <Link rel="alternate" to={`/es/blog/${categoria_slug}/${url_amigable}`}>ver más</Link>
+                </Card.Text>
+                <small className="text-muted">{cambiarFecha(fecha_publicacion)}</small>
+            </Card.Footer>
+        </Card>
+
     );
 }
 

@@ -520,24 +520,6 @@ $breakpoint-lg: 1360px;
     }
   }
 
-
-  .info-card {
-    // color: $white;
-    position: absolute;
-    bottom: 10px;
-
-
-    span {
-      //min-height: 30px;
-      display: block;
-    }
-
-    a {
-      text-decoration: none;
-      color: $black;
-    }
-  }
-
   .card-img,
   .card-img-top {
     border-radius: 0px;
@@ -1283,4 +1265,44 @@ p {
   max-height: 150px !important;
   height: 150px;
   overflow: hidden;
+}
+
+
+.info-card {
+  &-imagen {
+    display: flex;
+    justify-content: center;
+    height: 200px;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      border-radius: 0px !important;
+    }
+  }
+
+  .card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    a {
+      text-decoration: none;
+      color: $black;
+      justify-self: center;
+    }
+  }
+  .vermas{
+    display: block;
+    align-items: start !important;
+    justify-content: left !important;
+  }
+  .card-footer{
+    background-color: white;
+    border-top: 0px solid white;
+    a {
+      text-decoration: none;
+      color: $black;
+    }
+  }
+
 }

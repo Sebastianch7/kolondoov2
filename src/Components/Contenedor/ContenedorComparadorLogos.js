@@ -5,7 +5,7 @@ import TitleSection from '../Text/TitleSection';
 import { fetchOperadoras, fetchComercializadoras } from '../../services/ApiServices';
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import { Image } from "semantic-ui-react";
+import { Image } from "semantic-ui-react"
 
 
 const responsive = {
@@ -42,6 +42,7 @@ function ContenedorComparadorLogos({ subtitle }) {
     const [infoLogo, setInfoLogo] = useState();
     let response;
     useEffect(() => {
+
         const fechtData = async () => {
             try {
                 switch (location.pathname.replace('/', '')) {

@@ -45,7 +45,7 @@ function TarjetaTarifaStreaming({ data }) {
         slug_tarifa, } = data;
     return (
         <>
-            <Card key={''} className='m-1 mx-md-3 tarjeta-tarifa-streaming tarjeta'>
+            <Card key={''} className='m-1 mx-md-3 tarjeta-tarifa-streaming tarjeta text-center'>
                 <Row className='p-2'>
                     <Col xs={12} md={12}>
                         <Row>

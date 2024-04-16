@@ -43,6 +43,7 @@ function RoutesApp() {
                 />}
 
                 <Route path="/es" element={<Home />} />
+                <Route path="/mx" element={<Home />} />
 
                 <Route path="/es/internet-telefonia" element={<RaizTelefonia />} />
                 <Route path="/es/energia" element={<RaizEnergia />} />

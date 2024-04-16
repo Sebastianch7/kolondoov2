@@ -1,5 +1,4 @@
 import axios from 'axios';
-
 const apiUrl = process.env.REACT_APP_API_SERVICES_URL;
 
 export const fetchFilterFibra = async () => {
@@ -282,7 +281,7 @@ export const getGestion = async (gestion) => {
     }
 };
 
-export const getGestionById = async (gestion,id) => {
+export const getGestionById = async (gestion, id) => {
     try {
         const response = await axios.get(`${apiUrl}/getGestion/${gestion}/${id}`)
         return response.data[0];
