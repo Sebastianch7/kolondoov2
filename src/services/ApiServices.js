@@ -1,4 +1,5 @@
 import axios from 'axios';
+
 const apiUrl = process.env.REACT_APP_API_SERVICES_URL;
 
 export const fetchFilterFibra = async () => {
@@ -231,9 +232,9 @@ export const getBlogHome = async () => {
 };
 
 
-export const getMenu = async () => {
+export const getMenu = async (lang) => {
     try {
-        const response = await axios.get(`${apiUrl}/getMenu`)
+        const response = await axios.get(`${apiUrl}/getMenu/${lang}`)
         return response.data;
     } catch (error) {
         console.error("Error al procesar la solicitud", error);
@@ -394,3 +395,39 @@ export const postFormNews = async (email) => {
     }
 };
 
+/* MX */
+export const fetchFilterPlanCelular = async () => {
+    try {
+        const response = await axios.get(`${apiUrl}/filterPlanCelular`);
+        const { min_gb, min_precio, max_precio } = response.data[0];
+        return {
+            minCapacity: parseInt(min_gb) > 0 ? parseInt(min_gb) : 0,
+            maxPrice: parseInt(max_precio),
+            minPrice: parseInt(min_precio) > 0 ? parseInt(min_precio) : 0,
+            rangePrice: [parseInt(min_precio) > 0 ? parseInt(min_precio) : 0, parseInt(max_precio)],
+        };
+    } catch (error) {
+        console.error("Error al procesar la solicitud", error);
+        throw error;
+    }
+};
+
+export const fetchOperadorasPlanCelular = async () => {
+    try {
+        const response = await axios.get(`${apiUrl}/getOperadorasPlanCelular`);
+        return response.data;
+    } catch (error) {
+        console.error("Error al procesar la solicitud", error);
+        throw error;
+    }
+};
+
+export const fetchTarifasPlanCelular = async () => {
+    try {
+        const response = await axios.get(`${apiUrl}/getTarifasPlanCelular`);
+        return response.data;
+    } catch (error) {
+        console.error("Error al procesar la solicitud", error);
+        throw error;
+    }
+};

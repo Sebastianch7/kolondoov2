@@ -4,9 +4,7 @@ import { useLocation } from 'react-router-dom';
 const apiUrl = process.env.REACT_APP_API_URL;
 const App = ({ titulo, descripcion, url, imagen_destacada = `${apiUrl}/img/logos/logo.svg` }) => {
     const location = useLocation();
-    const [lang, setLang] = useState('/es')
     const apiUrl = process.env.REACT_APP_API_URL;
-    const apiLang = process.env.REACT_APP_API_LANG;
     return (
         <Helmet>
             <meta charSet="utf-8" />

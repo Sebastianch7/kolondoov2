@@ -1,32 +1,34 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import Home from '../Pages/Home';
-import ComparadorMovil from '../Pages/ComparadorMovil';
-import Lead from '../Pages/Lead';
-import ComparadorLuz from '../Pages/ComparadorLuz';
-import ComparadorFibra from '../Pages/ComparadorFibra';
-import ThankPage from '../Pages/ThankPage';
-import ComparadorGas from '../Pages/ComparadorGas';
-import ComparadorLuzGas from '../Pages/ComparadorLuzGas';
-import ComparadorFibraMovil from '../Pages/ComparadorFibraMovil';
-import ComparadorFibraMovilTv from '../Pages/ComparadorFibraMovilTv';
-import ComparadorStreaming from '../Pages/ComparadorStreaming';
-import QuienesSomos from '../Pages/QuienesSomos';
-import Contactenos from '../Pages/Contactenos';
-import HerramientaLuz from '../Pages/HerramientaLuz';
-import HerramientaTest from '../Pages/HerramientaTest';
-import RaizTelefonia from '../Pages/RaizTelefonia';
-import RaizEnergia from '../Pages/RaizEnergia';
-import RaizStreaming from '../Pages/RaizStreaming';
-import PoliticaPrivacidad from '../Pages/PoliticaPrivacidad';
-import Blog from '../Pages/Blog';
-import BlogItem from '../Pages/BlogItem';
-import PoliticaCookies from '../Pages/PoliticaCookies';
-import PoliticaLegal from '../Pages/PoliticaLegal';
-import PageNotFound from '../Pages/PageNotFound';
-import BlogItemPreview from '../Pages/BlogItemPreview';
-import ComparadoresMarca from '../Pages/ComparadoresMarca';
-import ThanksPage from '../Pages/thanksPage';
+import Home from '../Pages/Es/Home';
+import ComparadorMovil from '../Pages/Es/ComparadorMovil';
+import Lead from '../Pages/Es/Lead';
+import ComparadorLuz from '../Pages/Es/ComparadorLuz';
+import ComparadorFibra from '../Pages/Es/ComparadorFibra';
+import ThankPage from '../Pages/Es/ThankPage';
+import ComparadorGas from '../Pages/Es/ComparadorGas';
+import ComparadorLuzGas from '../Pages/Es/ComparadorLuzGas';
+import ComparadorFibraMovil from '../Pages/Es/ComparadorFibraMovil';
+import ComparadorFibraMovilTv from '../Pages/Es/ComparadorFibraMovilTv';
+import ComparadorStreaming from '../Pages/Es/ComparadorStreaming';
+import QuienesSomos from '../Pages/Es/QuienesSomos';
+import Contactenos from '../Pages/Es/Contactenos';
+import HerramientaLuz from '../Pages/Es/HerramientaLuz';
+import HerramientaTest from '../Pages/Es/HerramientaTest';
+import RaizTelefonia from '../Pages/Es/RaizTelefonia';
+import RaizEnergia from '../Pages/Es/RaizEnergia';
+import RaizStreaming from '../Pages/Es/RaizStreaming';
+import PoliticaPrivacidad from '../Pages/Es/PoliticaPrivacidad';
+import Blog from '../Pages/Es/Blog';
+import BlogItem from '../Pages/Es/BlogItem';
+import PoliticaCookies from '../Pages/Es/PoliticaCookies';
+import PoliticaLegal from '../Pages/Es/PoliticaLegal';
+import PageNotFound from '../Pages/Es/PageNotFound';
+import BlogItemPreview from '../Pages/Es/BlogItemPreview';
+import ComparadoresMarca from '../Pages/Es/ComparadoresMarca';
+import ThanksPage from '../Pages/Es/thanksPage';
+import HomeMx from '../Pages/Mx/Home';
+import ComparadorPlanesCelular from '../Pages/Mx/ComparadorPlanesCelular';
 
 
 function RoutesApp() {
@@ -43,7 +45,7 @@ function RoutesApp() {
                 />}
 
                 <Route path="/es" element={<Home />} />
-                <Route path="/mx" element={<Home />} />
+                <Route path="/mx" element={<HomeMx />} />
 
                 <Route path="/es/internet-telefonia" element={<RaizTelefonia />} />
                 <Route path="/es/energia" element={<RaizEnergia />} />
@@ -116,6 +118,13 @@ function RoutesApp() {
                 <Route path="/blog/preview/:id" element={<BlogItemPreview />} />
                 
                 <Route path="/es/gracias" element={<ThanksPage />} />
+
+                {/* MX */}
+
+                <Route path="/mx/planes-celulares-telefonia-internet-y-tv/comparador-planes-celular" element={<ComparadorPlanesCelular />} />
+                <Route path="/mx/planes-celulares-telefonia-internet-y-tv/comparador-planes-telefonia-internet" element={<ComparadorFibraMovil />} />
+                <Route path="/mx/planes-celulares-telefonia-internet-y-tv/comparador-planes-telefonia-internet-tv" element={<ComparadorFibraMovil />} />
+                <Route path="/mx/planes-celulares-telefonia-internet-y-tv/comparador-planes-internet-tv" element={<ComparadorFibraMovil />} />
 
             </Routes>
         </BrowserRouter>

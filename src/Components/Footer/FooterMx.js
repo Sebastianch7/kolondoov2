@@ -7,7 +7,7 @@ import { Form } from 'react-bootstrap';
 import { Bs1CircleFill } from "react-icons/bs";
 
 
-function Footer(props) {
+function FooterMx(props) {
     return (
         <footer className="page-footer bg-dark pt-5">
             <Container>
@@ -38,26 +38,21 @@ function Footer(props) {
                     <Col xs={12} md={3} xl={3}>
                         <h5>Tarifas</h5>
                         <ul>
-                            {/* <li className='my-md-3'><Link to={''}>Tarifas</Link></li> */}
-                            <li className='my-md-3'><Link to={`/es/internet-telefonia/comparador-fibra`}>Sólo fibra</Link></li>
-                            <li className='my-md-3'><Link to={`/es/internet-telefonia/comparador-movil`}>Tarifa móvil</Link></li>
-                            <li className='my-md-3'><Link to={`/es/internet-telefonia/comparador-fibra-movil-tv`}>Fibra+móvil+TV</Link></li>
-                            <li className='my-md-3'><Link to={`/es/internet-telefonia/comparador-tarifas-fibra-y-movil`}>Fibra+móvil</Link></li>
-                            <li className='my-md-3'><Link to={`/es/energia/comparador-tarifas-luz`}>Luz</Link></li>
+                            <li className='my-md-3'><Link to={`/mx/energia/comparador-tarifas-luz`}>Luz</Link></li>
                         </ul>
                     </Col>
                     <Col xs={6} md={3}>
                         <h5>vuskoo.com</h5>
                         <ul>
-                            <li className='my-md-3'><Link to={`/es`}>vuskoo.com</Link></li>
-                            <li className='my-md-3'><Link to={`/es/quienes-somos`}>Quiénes Somos</Link></li>
-                            <li className='my-md-3'><Link to={`/es/contactanos`}>Contáctanos</Link></li>
+                            <li className='my-md-3'><Link to={`/mx`}>vuskoo.com</Link></li>
+                            <li className='my-md-3'><Link to={`/mx/quienes-somos`}>Quiénes Somos</Link></li>
+                            <li className='my-md-3'><Link to={`/mx/contactanos`}>Contáctanos</Link></li>
                             <li className='my-3'><img className='img-fluid' src='/img/parner-google.svg' /></li>
                         </ul>
                     </Col>
 
                     <Col xs={12} className="footer-copyright text-white pt-md-0 mt-md-0">
-                        <p>COPYRIGHT © 2021 VUSKOO. TODOS LOS DERECHOS RESERVADOS | <Link to={`/es/politica-privacidad`}>POLÍTICA DE PRIVACIDAD</Link> | <Link to={`/es/politica-legal`}>AVISO LEGAL</Link> | <Link to={`/es/politica-cookies`}>POLÍTICA DE COOKIES</Link> </p>
+                        <p>COPYRIGHT © 2021 VUSKOO. TODOS LOS DERECHOS RESERVADOS | <Link to={`/mx/politica-privacidad`}>POLÍTICA DE PRIVACIDAD</Link> | <Link to={`/mx/politica-legal`}>AVISO LEGAL</Link> | <Link to={`/mx/politica-cookies`}>POLÍTICA DE COOKIES</Link> </p>
                     </Col>
                 </Row>
             </Container>
@@ -66,4 +61,4 @@ function Footer(props) {
     );
 }
 
-export default Footer;
+export default FooterMx;

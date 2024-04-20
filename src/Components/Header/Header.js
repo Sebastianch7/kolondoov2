@@ -12,17 +12,18 @@ import { getMenu, getMenuBlog } from '../../services/ApiServices';
 
 
 function Header({ breadCrumb }) {
-    const { t } = useTranslation();
+    const { t, i18n } = useTranslation();
 
-    const [lang, setLang] = useState('es-es')
-    const location = useLocation();
     const [menu, setMenu] = useState([])
     const [items, setItems] = useState([])
     const [isLoadInformation, setIsLoadInformation] = useState(false)
-
+    const [lang, setLang] = useState('')
+    const location = useLocation();
+    
     useEffect(() => {
         setLang(location.pathname.split('/')[1])
-    }, [])
+        i18n.changeLanguage(location.pathname.split('/')[1]);
+    }, [location.pathname])
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -32,33 +33,36 @@ function Header({ breadCrumb }) {
         setIsLoadInformation(true);
         const fetchMenu = async () => {
             try {
-                const response = await getMenuBlog()
+                const response = await getMenuBlog(lang.trim())
                 setMenu(response);
             } catch (error) {
                 console.error("Error al obtener el menu", error);
             }
         };
         fetchMenu();
-    }, []);
-    
+    }, [lang]);
+
     useEffect(() => {
-        const fetchMenu = async () => {
-            try {
-                const response = await getMenu()
-                setItems(response);
-            } catch (error) {
-                console.error("Error al obtener el menu principal", error);
-            }
-        };
-        fetchMenu();
-    }, []);
+        if (lang !== '') {
+            const fetchMenu = async () => {
+                try {
+                    const response = await getMenu(lang.trim());
+                    setItems(response);
+                } catch (error) {
+                    console.error("Error al obtener el menú principal", error);
+                }
+            };
+            fetchMenu();
+        }
+    }, [lang]);
+
 
     return (
         <>
             <Navbar sticky='top' expand={"xl"} className="navbar-light bg-white clean-navbar my-4 my-xxl-0">
                 <Container className='container-header'>
                     <Navbar.Brand>
-                        <a href={`/es`}><img src="/img/logos/logo.svg" alt="Logo" /></a>
+                        <a href={`/${lang}`}><img src="/img/logos/logo.svg" alt="Logo" /></a>
                     </Navbar.Brand>
 
                     {isMobile && (
@@ -121,7 +125,7 @@ function Header({ breadCrumb }) {
                                                         {menu?.length > 0 &&
                                                             menu.map((item, index) => {
                                                                 if (item.slug !== 'sin-categoria' && item.slug !== 'destacado') {
-                                                                    return <a key={index} className="dropdown-item" href={`/es/blog/${item.slug}`}>{item.name}</a>
+                                                                    return <a key={index} className="dropdown-item" href={`/${lang}/blog/${item.slug}`}>{item.name}</a>
                                                                 }
                                                             })
                                                         }

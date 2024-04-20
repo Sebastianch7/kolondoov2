@@ -16,6 +16,7 @@ import classNames from 'classnames';
 
 
 function TarjetaTarifa({ data, type }) {
+    console.log(data)
     const [lang, setLang] = useState(null)
     const location = useLocation();
     const pathname = location.pathname;
