@@ -29,6 +29,7 @@ import ComparadoresMarca from '../Pages/Es/ComparadoresMarca';
 import ThanksPage from '../Pages/Es/thanksPage';
 import HomeMx from '../Pages/Mx/Home';
 import ComparadorPlanesCelular from '../Pages/Mx/ComparadorPlanesCelular';
+import ComparadorVehiculos from '../Pages/Mx/ComparadorVehiculos';
 
 
 function RoutesApp() {
@@ -125,6 +126,9 @@ function RoutesApp() {
                 <Route path="/mx/planes-celulares-telefonia-internet-y-tv/comparador-planes-telefonia-internet" element={<ComparadorFibraMovil />} />
                 <Route path="/mx/planes-celulares-telefonia-internet-y-tv/comparador-planes-telefonia-internet-tv" element={<ComparadorFibraMovil />} />
                 <Route path="/mx/planes-celulares-telefonia-internet-y-tv/comparador-planes-internet-tv" element={<ComparadorFibraMovil />} />
+                
+                <Route path="/mx/servicios/vehiculos" element={<ComparadorVehiculos />} />
+                <Route path="/mx/servicios/vehiculos/:id" element={<Lead />} />
 
             </Routes>
         </BrowserRouter>

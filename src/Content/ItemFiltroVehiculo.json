@@ -1,0 +1,42 @@
+[
+    {
+        "titulo": "Sedán",
+        "imagen": "/img/icons/sedan.svg",
+        "id": "Sedán"
+    },
+    {
+        "titulo": "SUV",
+        "imagen": "/img/icons/suv.svg",
+        "id": "SUV"
+    },
+    {
+        "titulo": "Coupé",
+        "imagen": "/img/icons/coupe.svg",
+        "id": "Coupé"
+    },
+    {
+        "titulo": "Hatchback",
+        "imagen": "/img/icons/hatchback.svg",
+        "id": "Hatchback"
+    },
+    {
+        "titulo": "Convertible",
+        "imagen": "/img/icons/convertible.svg",
+        "id": "Convertible"
+    },
+    {
+        "titulo": "Minivan",
+        "imagen": "/img/icons/minivan.svg",
+        "id": "Minivan"
+    },
+    {
+        "titulo": "Pick-up",
+        "imagen": "/img/icons/pickup.svg",
+        "id": "Pick-up"
+    },
+    {
+        "titulo": "Utilitario",
+        "imagen": "/img/icons/utilitario.svg",
+        "id": "Utilitario"
+    }
+    ]

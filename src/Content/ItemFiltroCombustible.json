@@ -1,0 +1,22 @@
+[
+    {
+        "titulo": "Gasolina",
+        "imagen": "/img/icons/sedan.svg",
+        "id": "Gasolina"
+    },
+    {
+        "titulo": "Híbrido",
+        "imagen": "/img/icons/suv.svg",
+        "id": "Híbrido"
+    },
+    {
+        "titulo": "Diesel",
+        "imagen": "/img/icons/coupe.svg",
+        "id": "Diesel"
+    },
+    {
+        "titulo": "Eléctrico",
+        "imagen": "/img/icons/hatchback.svg",
+        "id": "Eléctrico"
+    }
+    ]

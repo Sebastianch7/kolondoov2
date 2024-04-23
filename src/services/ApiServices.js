@@ -431,3 +431,47 @@ export const fetchTarifasPlanCelular = async () => {
         throw error;
     }
 };
+
+export const fetchFilterVehiculos = async () => {
+    try {
+        const response = await axios.get(`${apiUrl}/filterVehiculos`);
+        const { min_precio, max_precio } = response.data[0];
+        return {
+            maxPrice: parseInt(max_precio),
+            minPrice: parseInt(min_precio) > 0 ? parseInt(min_precio) : 0,
+        };
+    } catch (error) {
+        console.error("Error al procesar la solicitud", error);
+        throw error;
+    }
+};
+
+export const fetchFilterVehiculosChassis = async () => {
+    try {
+        const response = await axios.get(`${apiUrl}/getValuesFilterVehiculosChassis`);
+        return response.data;
+    } catch (error) {
+        console.error("Error al procesar la solicitud", error);
+        throw error;
+    }
+};
+
+export const fetchMarcasVehiculos = async () => {
+    try {
+        const response = await axios.get(`${apiUrl}/getMarcasVehiculos`);
+        return response.data;
+    } catch (error) {
+        console.error("Error al procesar la solicitud", error);
+        throw error;
+    }
+};
+
+export const fetchTarifasVehiculos = async () => {
+    try {
+        const response = await axios.get(`${apiUrl}/getTarifasVehiculos`);
+        return response.data;
+    } catch (error) {
+        console.error("Error al procesar la solicitud", error);
+        throw error;
+    }
+};
