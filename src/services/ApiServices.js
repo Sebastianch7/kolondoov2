@@ -203,7 +203,7 @@ export const fetchStreamingOffers = async () => {
 export const getDetailOffer = async (offerLooking, idPlan) => {
     try {
         const response = await axios.get(`${apiUrl}/getDetailOffer${offerLooking.replaceAll('-', '')}/${idPlan}`)
-        return response.data[0];
+        return response.data;
     } catch (error) {
         console.error("Error al procesar la solicitud", error);
         throw error;

@@ -62,7 +62,7 @@ function ContenedorTarjetaBlog({ children }) {
                             </CardGroup>
                         </Col>
                         <Col md={12} xl={12} className='d-block d-md-none d-xl-none'>
-                            <Carousel className='d-block d-md-none d-xl-none'>
+                            <Carousel className='d-block d-md-none d-xl-none carousel-blog'>
                                 {fetchBlog?.map((data, index) => {
                                     return (
                                         <Carousel.Item key={index} className='carrusel-blog'>

@@ -17,9 +17,9 @@ import ItemFiltroCombustible from '../../Content/ItemFiltroCombustible.json'
 function ContenedorVehiculos() {
   // Estado para filtros de precio y capacidad
   const [minPrice, setMinPrice] = useState(0);
-  const [maxPrice, setMaxPrice] = useState(1000);
+  const [maxPrice, setMaxPrice] = useState(0);
   const [minCapacity, setMinCapacity] = useState(0);
-  const [maxCapacity, setMaxCapacity] = useState(1000);
+  const [maxCapacity, setMaxCapacity] = useState(0);
 
   // Estados para el estado de carga de filtros e información
   const [isLoadFilter, setIsLoadFilter] = useState(false);
@@ -127,6 +127,7 @@ function ContenedorVehiculos() {
         setFiltros(response);
         setTarifas(response);
         setIsLoadInformation(false);
+        cleanFilter();
       } catch (error) {
         console.error("Error al obtener las tarifas de móvil:", error);
       }
@@ -350,7 +351,7 @@ function ContenedorVehiculos() {
               ) : (
                 <>
                   {
-                    ((isLoadFilter && !isLoadInformation)) ?
+                    ((!isLoadInformation)) ?
                       (
                         <>
                           <Row>

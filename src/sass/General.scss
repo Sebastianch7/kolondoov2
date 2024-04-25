@@ -3,7 +3,6 @@ body {
   font-size: 16px;
 }
 
-
 @font-face {
   font-family: 'MontRegular'; // El nombre de la fuente que deseas usar
   src: url('../../public/fonts/MontExtraLight.otf') format('opentype'); // Ruta de la fuente OTF
@@ -40,8 +39,6 @@ $MontHeavy: 'MontHeavy', sans-serif;
   font-family: $MontSemiBold;
   font-weight: 800 !important;
 }
-
-
 
 h1,
 h2,
@@ -782,6 +779,7 @@ footer {
   }
 }
 
+
 .carrusel {
   &-img {
     width: 100vw;
@@ -795,20 +793,6 @@ footer {
       color: $white;
     }
   }
-}
-
-.carousel {
-  &-indicators {
-    bottom: -60px;
-
-    [data-bs-target] {
-      background-color: #19467C;
-      height: 20px;
-      width: 20px;
-      border-radius: 50%;
-    }
-  }
-
 }
 
 .text {
@@ -1199,6 +1183,21 @@ ul {
 
 .carrusel-blog {
   height: 350px !important;
+}
+
+.carrusel-blog-vehiculo{
+  width: 100%;
+  height: 180px !important;
+  background-color: black;
+  background-size: both;
+  overflow: hidden;
+  margin-bottom: 10px;
+  img{
+    width: 100%;
+    @include media(xs){
+      width: 100vw;
+    }
+  }
 }
 
 .title {

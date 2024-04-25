@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Card, Row, Col } from 'react-bootstrap';
+import { Card, Row, Col, Carousel } from 'react-bootstrap';
 import { Link, useLocation } from 'react-router-dom';
 import { isMobile } from 'react-device-detect';
 import classNames from 'classnames';
@@ -30,8 +30,11 @@ function TarjetaVehiculo({ data, type }) {
         model,
         landingLead,
         slug_tarifa,
-        fuelType
+        fuelType,
+        images
     } = data;
+
+    const rutasImagenes = JSON.parse(images);
 
     function formatCurrency(price) {
         return '$' + price.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
@@ -43,15 +46,26 @@ function TarjetaVehiculo({ data, type }) {
                     <Col md={12}>
                         <Row>
                             <Col xs={12}>
-                                <div className='tarjeta-tarifa-item-title d-flex justify-content-between'>
-                                    <div><img src={logo} alt={make} /> <b>{make} {model}</b></div> <b>{formatCurrency(price)}</b>
-                                    {(isMobile === true) && <Link className='btn btn-primary btn-primary-small' to={`/mx${landingLead}${slug_tarifa.toLowerCase()}-${id}`}><BsArrowRight /></Link>}
+                                <div className='tarjeta-tarifa-item-title d-flex justify-content-between align-items-center'>
+                                    <div><img src={logo} alt={make} /> <b>{model}</b></div> <b>{formatCurrency(price)}</b>
+                                    {(isMobile === true) && <Link className='btn btn-primary btn-primary-small' to={`/mx${landingLead}${slug_tarifa.toLowerCase()}`}><BsArrowRight /></Link>}
                                 </div>
                             </Col>
                         </Row>
                     </Col>
                     <Col xs={12} md={5} className='overflow-hidden d-flex justify-content-center align-items-center'>
-                        <img src='/img/vehiculos/default.png' alt=''></img>
+                        <Carousel className='d-flex justify-content-center carousel'>
+                            {rutasImagenes?.map((item, index) => {
+                                return (
+                                    <Carousel.Item key={index} className='carrusel-blog-vehiculo'>
+                                        <img
+                                            src={`/img/${item}`}
+                                            alt={`/img/${item}`}
+                                        />
+                                    </Carousel.Item>
+                                );
+                            })}
+                        </Carousel>
                     </Col>
                     <Col md={5} className={classNames('text-left', { 'order-2': isMobile })}>
                         <ItemTarifaDescripcion title={'Transmisón'} text={transmission} />
@@ -62,7 +76,7 @@ function TarjetaVehiculo({ data, type }) {
                         <ItemTarifaDescripcion title={'Combustible'} text={fuelType} />
                     </Col>
                     {!isMobile && <Col md={2} >
-                        <Link className='btn btn-primary' to={`/mx${landingLead}${slug_tarifa.toLowerCase()}-${id}`}>{`Comprar`}</Link>
+                        <Link className='btn btn-primary' to={`/mx${landingLead}${slug_tarifa.toLowerCase()}`}>{`Comprar`}</Link>
                     </Col>}
                 </Row>
             </Card>
