@@ -16,6 +16,7 @@ function TarjetaVehiculo({ data, type }) {
     useEffect(() => {
         setLang(locations[0])
     }, [])
+
     const {
         id,
         logo,
@@ -47,14 +48,14 @@ function TarjetaVehiculo({ data, type }) {
                         <Row>
                             <Col xs={12}>
                                 <div className='tarjeta-tarifa-item-title d-flex justify-content-between align-items-center'>
-                                    <div><img src={logo} alt={make} /> <b>{model}</b></div> <b>{formatCurrency(price)}</b>
+                                    <div><img className='img-vehiculos-logo' src={logo} alt={make} /> <b>{model}</b></div> <b>{formatCurrency(price)}</b>
                                     {(isMobile === true) && <Link className='btn btn-primary btn-primary-small' to={`/mx${landingLead}${slug_tarifa.toLowerCase()}`}><BsArrowRight /></Link>}
                                 </div>
                             </Col>
                         </Row>
                     </Col>
                     <Col xs={12} md={5} className='overflow-hidden d-flex justify-content-center align-items-center'>
-                        <Carousel className='d-flex justify-content-center carousel'>
+                        {/* <Carousel className='d-flex justify-content-center carousel'>
                             {rutasImagenes?.map((item, index) => {
                                 return (
                                     <Carousel.Item key={index} className='carrusel-blog-vehiculo'>
@@ -65,7 +66,12 @@ function TarjetaVehiculo({ data, type }) {
                                     </Carousel.Item>
                                 );
                             })}
-                        </Carousel>
+                        </Carousel> */}
+                        <img
+                            className='img-vehiculos'
+                            src={`/img/${rutasImagenes[0]}`}
+                            alt={`/img/${rutasImagenes[0]}`}
+                        />
                     </Col>
                     <Col md={5} className={classNames('text-left', { 'order-2': isMobile })}>
                         <ItemTarifaDescripcion title={'Transmisón'} text={transmission} />

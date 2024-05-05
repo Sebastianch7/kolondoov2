@@ -375,6 +375,17 @@ export const postLead = async (idOferta, phone, landing, urlOffer, company) => {
     }
 };
 
+export const postLeadVehiculo = async () => {
+    try {
+        //const response = await axios.post(`${apiUrl}/LeadRegisterVehiculo`, { idOferta, phone, landing, urlOffer, company });
+        //return response;
+        return 201;
+    } catch (error) {
+        //console.error("Error al procesar la solicitud", error);
+        throw new Error('Error en la solicitud POST:', error);
+    }
+};
+
 export const postFormContactanos = async (nombre, consulta, email) => {
     try {
         const response = await axios.post(`${apiUrl}/contactanosRegister`, { nombre, consulta, email });

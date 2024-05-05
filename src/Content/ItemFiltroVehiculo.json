@@ -1,42 +1,42 @@
 [
     {
         "titulo": "Sedán",
-        "imagen": "/img/icons/sedan.svg",
+        "imagen": "/img/icons/sedan.png",
         "id": "Sedán"
     },
     {
         "titulo": "SUV",
-        "imagen": "/img/icons/suv.svg",
+        "imagen": "/img/icons/suv.png",
         "id": "SUV"
     },
     {
         "titulo": "Coupé",
-        "imagen": "/img/icons/coupe.svg",
+        "imagen": "/img/icons/coupe.png",
         "id": "Coupé"
     },
     {
         "titulo": "Hatchback",
-        "imagen": "/img/icons/hatchback.svg",
+        "imagen": "/img/icons/hatchback.png",
         "id": "Hatchback"
     },
     {
         "titulo": "Convertible",
-        "imagen": "/img/icons/convertible.svg",
+        "imagen": "/img/icons/convertible.png",
         "id": "Convertible"
     },
     {
         "titulo": "Minivan",
-        "imagen": "/img/icons/minivan.svg",
+        "imagen": "/img/icons/minivan.png",
         "id": "Minivan"
     },
     {
         "titulo": "Pick-up",
-        "imagen": "/img/icons/pickup.svg",
+        "imagen": "/img/icons/pickup.png",
         "id": "Pick-up"
     },
     {
         "titulo": "Utilitario",
-        "imagen": "/img/icons/utilitario.svg",
+        "imagen": "/img/icons/utilitario.png",
         "id": "Utilitario"
     }
     ]

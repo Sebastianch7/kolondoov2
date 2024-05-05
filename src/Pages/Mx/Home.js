@@ -24,25 +24,15 @@ function HomeMx(props) {
                     image={'/img/banner-home.png'}
                     buttons={[
                         {
-                            title: t('title_button_1'),
+                            title: ('Planes Celular'),
                             icon: '/img/icons/phone-light.svg',
-                            url: 'internet-telefonia/comparador-tarifas-fibra-y-movil'
+                            url: 'planes-celulares-telefonia-internet-y-tv/comparador-planes-celular'
                         },
                         {
-                            title: t('title_button_2'),
-                            icon: '/img/icons/lighting.svg',
-                            url: 'energia/comparador-tarifas-luz'
+                            title: ('Vehículos'),
+                            icon: '/img/icons/coche.png',
+                            url: ''
                         },
-                        {
-                            title: t('title_button_3'),
-                            icon: '/img/icons/btn_streaming.svg',
-                            url: 'television-streaming/comparador-plataformas-streaming'
-                        },
-                        {
-                            title: t('title_button_4'),
-                            icon: '/img/icons/btn_streaming.svg',
-                            url: 'television-streaming/comparador-plataformas-streaming'
-                        }
                     ]}
                 />
                 <ContenedorTarjetaBlog />

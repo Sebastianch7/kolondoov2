@@ -58,7 +58,7 @@ function TarjetaTarifa({ data, type }) {
                                 <div className='tarjeta-tarifa-item-title'>
                                     <img src={logo} alt={logo} />
                                     {((promocion !== null && promocion !== '') && isMobile === false) && <span className={`mx-4 align-middle`}><b>Promoción: </b>{promocion}</span>}
-                                    {(isMobile === true) && <Link className='btn btn-primary btn-primary-small' to={`/es${landingLead}${slug_tarifa.toLowerCase()}-${id}`}><BsArrowRight /></Link>}
+                                    {(isMobile === true) && <Link className='btn btn-primary btn-primary-small' to={`/${lang}${landingLead}${slug_tarifa.toLowerCase()}-${id}`}><BsArrowRight /></Link>}
                                 </div>
                             </Col>
                             {(promocion !== null && isMobile === true) &&
@@ -87,7 +87,7 @@ function TarjetaTarifa({ data, type }) {
                         </Row>
                     </Col>
                     {!isMobile && <Col md={2} style={isMobile ? { order: 3 } : { order: 3 }}>
-                        <Link className='btn btn-primary' to={`/es${landingLead}${slug_tarifa.toLowerCase()}-${id}`}>{`Comprar`}</Link>
+                        <Link className='btn btn-primary' to={`/${lang}${landingLead}${slug_tarifa.toLowerCase()}-${id}`}>{`Comprar`}</Link>
                     </Col>}
                 </Row>
             </Card>

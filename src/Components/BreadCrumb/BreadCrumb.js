@@ -15,6 +15,7 @@ function BreadCrumb({ lead = false }) {
         setLang(location.pathname.split('/')[1])
     }, [])
 
+
     const pathname = location.pathname;
     let locations = pathname.split('/');
     locations.shift();
@@ -31,14 +32,14 @@ function BreadCrumb({ lead = false }) {
                     {!isMobile ? <Breadcrumb>
                         {locations.length > 0 &&
                             <>
-                                <Breadcrumb.Item className='text-decoration-underline' href="/">Home</Breadcrumb.Item>
+                                <Breadcrumb.Item className='text-decoration-underline' href={`/${lang}`}>Home</Breadcrumb.Item>
                                 {locations.map((item, index) => {
                                     ruta = (ruta !== undefined && ruta !== null) ? `${ruta}/${item}` : `/${item}`;                                    
                                     {
                                         if (!item.includes('herramientas') && !item.includes('destacados')) {
                                             return <Breadcrumb.Item
                                                 key={index}
-                                                href={((index + 1) !== locations.length) && `/es${ruta}`}
+                                                href={((index + 1) !== locations.length) && `/${lang}${ruta}`}
                                                 className={`capitalize ${(index + 1) === locations.length ? (isLead ? 'd-none' : 'no-cursor-link') : 'text-decoration-underline'}`}
                                             >
                                                 {t(item).replaceAll('-', ' ')}

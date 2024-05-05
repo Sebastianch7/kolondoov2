@@ -749,6 +749,26 @@ footer {
       }
 
     }
+    &-logo-vehiculo {
+      cursor: pointer;
+      border: 0.8px solid #8E8E8E;
+      background: #FFF;
+      padding: 5px 10px;
+      text-align: center;
+      filter: grayscale(1);
+      height: 60px;
+      width: auto;
+      overflow: hidden;
+
+      &:hover {
+        filter: grayscale(0);
+      }
+
+      img {
+        width: 70px;
+      }
+
+    }
   }
 }
 
@@ -1185,16 +1205,38 @@ ul {
   height: 350px !important;
 }
 
-.carrusel-blog-vehiculo{
+.carrusel-blog-vehiculo {
   width: 100%;
   height: 180px !important;
   background-color: black;
   background-size: both;
   overflow: hidden;
   margin-bottom: 10px;
-  img{
+
+  img {
     width: 100%;
-    @include media(xs){
+
+    @include media(xs) {
+      width: 100vw;
+    }
+  }
+}
+
+.carrusel-blog-vehiculo-landing {
+  width: 100%;
+  height: 500px !important;
+
+  @include media(md) {
+    height: 400px !important;
+  }
+  background-size: both;
+  overflow: hidden;
+  margin-bottom: 10px;
+
+  img {
+    width: 100%;
+
+    @include media(xs) {
       width: 100vw;
     }
   }
@@ -1284,24 +1326,62 @@ p {
     display: flex;
     flex-direction: column;
     justify-content: center;
+
     a {
       text-decoration: none;
       color: $black;
       justify-self: center;
     }
   }
-  .vermas{
+
+  .vermas {
     display: block;
     align-items: start !important;
     justify-content: left !important;
   }
-  .card-footer{
+
+  .card-footer {
     background-color: white;
     border-top: 0px solid white;
+
     a {
       text-decoration: none;
       color: $black;
     }
   }
 
+}
+
+.banner-precio {
+  background-color: $gray;
+  text-align: center;
+  font-size: 2rem;
+  font-family: $MontHeavy;
+  padding: 5px 0px;
+}
+
+.text-left-list{
+  ul,li{
+    text-align: left !important;
+  }
+}
+
+.v-100{
+  width: 100% !important;
+}
+
+.img-vehiculos{
+  /* width: 100%; */
+  height: 180px;
+  &-logo{
+    width: 50px;
+    max-width: 50px;
+    background-color: white;
+    margin-right: 10px;
+  }
+}
+
+.icon-acordion-vehiculo{
+  height: 30px;
+  margin-right: 10px;
 }

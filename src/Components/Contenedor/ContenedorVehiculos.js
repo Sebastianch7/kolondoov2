@@ -135,13 +135,13 @@ function ContenedorVehiculos() {
     fetchTariffs();
   }, [brand]);
 
-  function setFilterBrandMulti(value) {
+  /* function setFilterBrandMulti(value) {
     if (!filterBrand?.includes(value)) {
       setFilterBrand([...filterBrand, value])
     } else {
       setFilterBrand(filterBrand.filter((item) => item !== value))
     }
-  }
+  } */
 
   function setFilterChassisMulti(value) {
     if (!filterChasis?.includes(value)) {
@@ -150,7 +150,7 @@ function ContenedorVehiculos() {
       setFilterChasis(filterChasis.filter((item) => item !== value))
     }
   }
-  
+
   function setFilterFuelMulti(value) {
     if (!filterFuel?.includes(value)) {
       setFilterFuel([...filterFuel, value])
@@ -182,11 +182,17 @@ function ContenedorVehiculos() {
 
   // Función para filtrar por marca
   function filterByBrand(item) {
+    const filterBrandArray = filterBrand.toString().split(',').map(Number);
     if (filterBrand.length > 0) {
-      return filterBrand.includes(item.vehiculo) ? true : false;
-    } else {
+      if (filterBrandArray.length > 0) {
+        return filterBrandArray.includes(item.vehiculo);
+      } else {
+        return false;
+      }
+    }else{
       return true;
     }
+
   }
 
   function filterByChasis(item) {
@@ -196,7 +202,7 @@ function ContenedorVehiculos() {
       return true;
     }
   }
-  
+
   function filterByFuel(item) {
     if (filterFuel.length > 0) {
       return filterFuel.includes(item.fuelType) ? true : false;
@@ -208,22 +214,20 @@ function ContenedorVehiculos() {
   // Función para filtrar por precio
   const filterByPrice = (item) => filterPrice !== null ? item.price >= filterPrice[0] && item.price <= filterPrice[1] : true;
 
-  // Función para filtrar por capacidad
-  /* function filterByCapacity(item) {
-    if (filterCapacity !== null) {
-      if (item.parrilla_bloque_1?.toLowerCase().includes("ilimitados") || item.parrilla_bloque_2?.toLowerCase().includes("ilimitados") || item.parrilla_bloque_3?.toLowerCase().includes("ilimitados") || item.parrilla_bloque_4?.toLowerCase().includes("ilimitados")) {
-        return true;
-      } else {
-        return parseInt(item.parrilla_bloque_1.replace("GB", "")) >= filterCapacity[0] && parseInt(item.parrilla_bloque_1.replace("GB", "")) < filterCapacity[1];
-      }
-    } else {
-      return true;
-    }
-  } */
+  function formatCurrency(valor) {
+    return new Intl.NumberFormat('es-MX', {
+      style: 'currency',
+      currency: 'MXN'
+    }).format(valor);
+  }
 
-  function formatCurrency(price) {
-    return '$' + price.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
-}
+  function setFilterBrandMulti(value) {
+    if (!filterBrand?.includes(value)) {
+      setFilterBrand([...filterBrand, value])
+    } else {
+      setFilterBrand(filterBrand.filter((item) => item !== value))
+    }
+  }
 
   return (
     <>
@@ -242,105 +246,7 @@ function ContenedorVehiculos() {
                 <Modal show={show} onHide={() => setShow(false)}>
                   <Modal.Header closeButton></Modal.Header>
                   <Modal.Body>
-                    <Row>
-                      {isMobile && <Col xs={12} key={filterBrand} className='my-2' md={6}>Se encontraron <span className="font-bold">{filtros?.length}</span> resultados de <span className="font-bold">{Tarifas.length}</span></Col>}
-                      <Col md={12}>
-                        <span className="font-bold">Compañía:</span>
-                      </Col>
-                      {brand?.length > 0 &&
-                        brand.map((item, index) => (
-                          <Col xs={4} md={6} key={item.id}>
-                            <button
-                              className={`filtro-producto-logo my-2 ${filterBrand.includes(item.id) ? 'logoFocus' : ''}`}
-                              value={item.nombre}
-                              onClick={() => setFilterBrandMulti(item.id)}>
-                              <img src={item.logo} alt={item.nombre} />
-                            </button>
-                          </Col>
-                        ))}
-                    </Row>
-                    <Row>
-                      <div className='mt-4'>
-                        <b>{'Coste mensual'}:</b>
-                        <div className='my-4'>
-                          {rangePrice[0]} {'€'} - {rangePrice[1]} {'€'}
-                        </div>
-                        <Slider
-                          range
-                          min={minPrice}
-                          max={maxPrice}
-                          value={rangePrice}
-                          onChange={handleRangeChangePrice}
-                          className='form-input-range'
-                        />
-                      </div>
-                      <div className='my-4'>
-                        <b>{'Datos'}:</b>
-                        <div className='my-4'>
-                          {rangeCapacity[0]} {'GB'} - {rangeCapacity[1]} {'GB'}
-                        </div>
-                        <Slider
-                          range
-                          min={minCapacity}
-                          max={maxCapacity}
-                          value={rangeCapacity}
-                          onChange={handleRangeChangeCapacity}
-                          className='form-input-range'
-                        />
-                      </div>
-                      <div className='my-2'>
-                        <b>{'5G'}:</b>
-                        <div className='my-2'>
-                          <Form.Switch
-                            className='input-check-dark mt-2 text-left'
-                            type='switch'
-                            checked={filterTechnology}
-                            onChange={() => setFilterTechnology(!filterTechnology)}
-                            label={'Mostrar solo ofertas 5G'}
-                            reverse
-                          />
-                        </div>
-                      </div>
-                      <div className='my-2'>
-                        <b>{'Mensajes'}:</b>
-                        <div className='my-2'>
-                          <Form.Switch
-                            className='input-check-dark mt-2 text-left'
-                            type='switch'
-                            checked={filterMessage}
-                            onChange={() => setFilterMessage(!filterMessage)}
-                            label={'Mensajes ilimitados'}
-                            reverse
-                          />
-                        </div>
-                      </div>
-                      <div className='my-2'>
-                        <b>{'Roaming'}:</b>
-                        <div className='my-2'>
-                          <Form.Switch
-                            className='input-check-dark mt-2 text-left'
-                            type='switch'
-                            checked={filterRoaming}
-                            onChange={() => setFilterRoaming(!filterRoaming)}
-                            label={'Roaming en la UE'}
-                            reverse
-                          />
-                        </div>
-                      </div>
-                      <div className='my-2'>
-                        <b>{'Promoción'}:</b>
-                        <div className='my-2'>
-                          <Form.Switch
-                            className='input-check-dark mt-2 text-left'
-                            type='switch'
-                            checked={filterPromo}
-                            onChange={() => setFilterPromo(!filterPromo)}
-                            label={'Tiene promoción'}
-                            reverse
-                          />
-                        </div>
-                      </div>
-                    </Row>
+                    {/* filtros */}
                   </Modal.Body>
                   <Modal.Footer>
                     <Button variant="primary" onClick={() => setShow(false)}>
@@ -354,7 +260,7 @@ function ContenedorVehiculos() {
                     ((!isLoadInformation)) ?
                       (
                         <>
-                          <Row>
+                          {/* <Row>
                             {isMobile &&
                               <Col xs={12} key={filterBrand} className='my-2' md={6}>Se encontraron <span className="font-bold">{filtros?.length}</span> resultados de <span className="font-bold">{Tarifas.length}</span></Col>}
                             <Col md={12}>
@@ -368,10 +274,29 @@ function ContenedorVehiculos() {
                                     value={item.id}
                                     onClick={() => setFilterBrandMulti(item.id)}>
                                     {item.nombre}
-                                    {/* <img src={item.logo} alt={item.nombre} /> */}
                                   </button>
                                 </Col>
                               ))}
+                          </Row> */}
+                          <Row>
+                            <Col md={12}>
+                              <label htmlFor="options">Marca:{filterBrand}</label>
+                              <select
+                                id="options"
+                                multiple
+                                className='v-100'
+                                value={filterBrand}
+                                /* onChange={(e) => setFilterBrand(e.target.value)} */
+                                onChange={(e) => setFilterBrandMulti(e.target.value)}
+                              >
+                                {brand?.length > 0 &&
+                                  brand.map((item, index) => (
+                                    <option key={index} value={item.id}>
+                                      <img src={item.logo} /> {item.nombre} 
+                                    </option>
+                                  ))}
+                              </select>
+                            </Col>
                           </Row>
                           <Row>
                             <Col md={12}>
@@ -379,13 +304,12 @@ function ContenedorVehiculos() {
                             </Col>
                             {ItemFiltroVehiculo?.length > 0 &&
                               ItemFiltroVehiculo.map((item, index) => (
-                                <Col xs={4} md={6} key={index}>
+                                <Col xs={4} md={4} key={index}>
                                   <button
-                                    className={`filtro-producto-logo my-2 ${filterChasis.includes(item.id) ? 'logoFocus' : ''}`}
+                                    className={`filtro-producto-logo-vehiculo my-2 border-0 ${filterChasis.includes(item.id) ? 'logoFocus' : ''}`}
                                     value={item.id}
                                     onClick={() => setFilterChassisMulti(item.id)}>
-                                    {item.titulo}
-                                    {/* <img src={item.imagen} alt={item.titulo} /> */}
+                                    <img src={item.imagen} alt={item.titulo} />
                                   </button>
                                 </Col>
                               ))}
@@ -398,11 +322,10 @@ function ContenedorVehiculos() {
                               ItemFiltroCombustible.map((item, index) => (
                                 <Col xs={4} md={6} key={index}>
                                   <button
-                                    className={`filtro-producto-logo my-2 ${filterFuel.includes(item.id) ? 'logoFocus' : ''}`}
+                                    className={`filtro-producto-logo my-2 w-100 ${filterFuel.includes(item.id) ? 'logoFocus' : ''}`}
                                     value={item.id}
                                     onClick={() => setFilterFuelMulti(item.id)}>
                                     {item.titulo}
-                                    {/* <img src={item.imagen} alt={item.titulo} /> */}
                                   </button>
                                 </Col>
                               ))}

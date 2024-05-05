@@ -59,10 +59,12 @@ export default function Lead() {
     switch (offerLooking?.toLowerCase()) {
       case 'comparador-movil':
         return titleSeo = `¡Experimenta la velocidad sin límites de ${infoOffer.nombre} con el servicio de móvil con sus ${title?.replaceAll(',', ' ')}! Conéctate a la potencia de la rapidez y mantén la libertad de la comunicación en tus manos con el servicio móvil de ${infoOffer.nombre} ¡Haz que tu conexión sea tan rápida como tus sueños!`;
+      case 'comparador-planes-celular':
+        return titleSeo = `¡Experimenta la velocidad sin límites de ${infoOffer.nombre} con el servicio de móvil con sus ${title?.replaceAll(',', ' ')}! Conéctate a la potencia de la rapidez y mantén la libertad de la comunicación en tus manos con el servicio móvil de ${infoOffer.nombre} ¡Haz que tu conexión sea tan rápida como tus sueños!`;
       case 'comparador-fibra':
         return titleSeo = `¡Experimenta la velocidad sin límites de ${infoOffer.nombre} con el servicio de móvil y fibra con sus ${title?.replaceAll(',', ' ')}! Conéctate a la potencia de la rapidez y mantén la libertad de la comunicación en tus manos con el servicio móvil de ${infoOffer.nombre} ¡Haz que tu conexión sea tan rápida como tus sueños!`;
       case 'comparador-tarifas-fibra-y-movil':
-        return titleSeo  = `Conéctate al futuro con nuestra oferta imparable: ${title?.replaceAll(',', ' ')}. Navega a la velocidad de ${infoOffer.nombre} y mantén tu movilidad con una conexión confiable en tus manos. Descubre la libertad de estar siempre conectado. ¡Haz de cada experiencia digital algo extraordinario con nuestra combinación perfecta de Fibra y Móvil!`;
+        return titleSeo = `Conéctate al futuro con nuestra oferta imparable: ${title?.replaceAll(',', ' ')}. Navega a la velocidad de ${infoOffer.nombre} y mantén tu movilidad con una conexión confiable en tus manos. Descubre la libertad de estar siempre conectado. ¡Haz de cada experiencia digital algo extraordinario con nuestra combinación perfecta de Fibra y Móvil!`;
       case 'comparador-fibra-movil-tv':
         return titleSeo = `¡Experimenta la velocidad sin límites de ${infoOffer.nombre} con el servicio móvil, fibra y TV con sus ${title?.replaceAll(',', ' ')}! Conéctate a la potencia de la rapidez y disfruta de un mundo digital sin interrupciones. Conéctate a la velocidad y disfruta de un mundo de entretenimiento en tu hogar, donde la rapidez y la diversión se encuentran en cada pantalla.`;
       case 'comparador-tarifas-luz':
@@ -79,21 +81,23 @@ export default function Lead() {
   function descripcionLanding() {
     switch (offerLooking?.toLowerCase()) {
       case 'comparador-movil':
-        return descriptionSeo  = `Explora las ofertas móvil con el servicio de ${infoOffer.nombre} de ${title?.replaceAll(',', ' ')}. Navega a la máxima velocidad y mantén la conexión vayas donde vayas.`;
+        return descriptionSeo = `Explora las ofertas móvil con el servicio de ${infoOffer.nombre} de ${title?.replaceAll(',', ' ')}. Navega a la máxima velocidad y mantén la conexión vayas donde vayas.`;
+      case 'comparador-planes-celular':
+        return descriptionSeo = `Explora las ofertas móvil con el servicio de ${infoOffer.nombre} de ${title?.replaceAll(',', ' ')}. Navega a la máxima velocidad y mantén la conexión vayas donde vayas.`;
       case 'comparador-fibra':
-        return descriptionSeo  = `Explora las ofertas fibra con el servicio de ${infoOffer.nombre} de ${title?.replaceAll(',', ' ')}. Navega a la máxima velocidad y mantén la conexión vaya donde vayas.`;
+        return descriptionSeo = `Explora las ofertas fibra con el servicio de ${infoOffer.nombre} de ${title?.replaceAll(',', ' ')}. Navega a la máxima velocidad y mantén la conexión vaya donde vayas.`;
       case 'comparador-tarifas-fibra-y-movil':
-        return descriptionSeo  = `Explora las ofertas fibra y móvil con el servicio de ${infoOffer.nombre} ${title?.replaceAll(',', ' ')}. Navega a la máxima velocidad y mantén la conexión vaya donde vayas.`;
+        return descriptionSeo = `Explora las ofertas fibra y móvil con el servicio de ${infoOffer.nombre} ${title?.replaceAll(',', ' ')}. Navega a la máxima velocidad y mantén la conexión vaya donde vayas.`;
       case 'comparador-fibra-movil-tv':
-        return descriptionSeo  = `Explora las ofertas de fibra, móvil y TV con el servicio de ${infoOffer.nombre} ${title?.replaceAll(',', ' ')}. Navega a la máxima velocidad y mantén la conexión vayas donde vayas.`;
+        return descriptionSeo = `Explora las ofertas de fibra, móvil y TV con el servicio de ${infoOffer.nombre} ${title?.replaceAll(',', ' ')}. Navega a la máxima velocidad y mantén la conexión vayas donde vayas.`;
       case 'comparador-tarifas-luz':
-        return descriptionSeo  = `Enciende tu vida con el servicio de luz de ${infoOffer.nombre}. Descubre la iluminación perfecta para tu hogar con la oferta energética confiable y eficiente de ${title?.replaceAll(',', ' ')}.`;
+        return descriptionSeo = `Enciende tu vida con el servicio de luz de ${infoOffer.nombre}. Descubre la iluminación perfecta para tu hogar con la oferta energética confiable y eficiente de ${title?.replaceAll(',', ' ')}.`;
       case 'comparador-tarifas-gas':
-        return descriptionSeo  = `Transforma tu hogar con el servicio de gas de ${infoOffer.nombre}. Descubre la comodidad de cocinar y calentar tu espacio con la potencia de ${title?.replaceAll(',', ' ')}.`;
+        return descriptionSeo = `Transforma tu hogar con el servicio de gas de ${infoOffer.nombre}. Descubre la comodidad de cocinar y calentar tu espacio con la potencia de ${title?.replaceAll(',', ' ')}.`;
       case 'comparador-tarifas-luz-y-gas':
-        return descriptionSeo  = `Optimiza tu hogar con la oferta integral de luz y gas de ${infoOffer.nombre}. Descubre la eficiencia energética de ${title?.replaceAll(',', ' ')} que ilumina tus espacios y mantiene el calor necesario.`;
+        return descriptionSeo = `Optimiza tu hogar con la oferta integral de luz y gas de ${infoOffer.nombre}. Descubre la eficiencia energética de ${title?.replaceAll(',', ' ')} que ilumina tus espacios y mantiene el calor necesario.`;
       default:
-        return descriptionSeo  = '';
+        return descriptionSeo = '';
     }
   }
 
@@ -102,34 +106,37 @@ export default function Lead() {
       <>
         <MetaData titulo={`Ofertas ${infoOffer.funcion}: ${title?.replaceAll(',', ' ')} - ${infoOffer.nombre} | Vuskoo`} descripcion={descripcionLanding()} />
         <HeaderLead logo={infoOffer?.logo} />
-        <BreadCrumb lead={true}/>
+        <BreadCrumb lead={true} />
         <Container className='mb-5'>
           <Row className="justify-content-md-center d-flex flex-column flex-md-row">
             <Title title={`${infoOffer?.nombre} ofertas - ${infoOffer.nombre_tarifa}`} />
             <Col xs={12}>
               {!isMobile && <p className='font-09'>{textoLanding()}</p>}
+              {!isMobile && <p className='font-09'>{infoOffer.textoAdicional}</p>}
             </Col>
             <Col xs={12} md={7} className='my-2' style={isMobile ? { order: 2 } : { order: 1 }}>
-              {(offerLooking?.toLowerCase() === 'comparador-movil' 
-              || offerLooking?.toLowerCase() === 'comparador-fibra' 
-              || offerLooking?.toLowerCase() === 'comparador-tarifas-fibra-y-movil' 
-              || offerLooking?.toLowerCase() === 'comparador-fibra-movil-tv') 
-              && <TarjetaTarifaLead key={0} data={infoOffer} service={offerLooking} />}
-              {offerLooking?.toLowerCase() === 'comparador-tarifas-luz' 
-              && <TarjetaTarifaLeadEnergia key={0} data={infoOffer} service={offerLooking} />}
-              {offerLooking?.toLowerCase() === 'comparador-tarifas-gas' 
-              && <TarjetaTarifaLeadGas key={0} data={infoOffer} service={offerLooking} />}
-              {offerLooking?.toLowerCase() === 'comparador-tarifas-luz-y-gas' 
-              && <TarjetaTarifaLeadEnergiaGas key={0} data={infoOffer} service={offerLooking} />}
-              
-              {offerLooking?.toLowerCase().includes('luz') 
-              && <div class="tarjeta-footer-small mt-2 col">Períodos: <b>Valle</b> 00:00h-08:00h // <b>Llano</b> 8-10h. 14-18h y 22-00h // <b>Punta</b> 10-14h y 18-22h*</div>}
+              {(offerLooking?.toLowerCase() === 'comparador-movil'
+                || offerLooking?.toLowerCase() === 'comparador-fibra'
+                || offerLooking?.toLowerCase() === 'comparador-tarifas-fibra-y-movil'
+                || offerLooking?.toLowerCase() === 'comparador-planes-celular'
+                || offerLooking?.toLowerCase() === 'comparador-fibra-movil-tv')
+                && <TarjetaTarifaLead key={0} data={infoOffer} service={offerLooking} />}
+              {offerLooking?.toLowerCase() === 'comparador-tarifas-luz'
+                && <TarjetaTarifaLeadEnergia key={0} data={infoOffer} service={offerLooking} />}
+              {offerLooking?.toLowerCase() === 'comparador-tarifas-gas'
+                && <TarjetaTarifaLeadGas key={0} data={infoOffer} service={offerLooking} />}
+              {offerLooking?.toLowerCase() === 'comparador-tarifas-luz-y-gas'
+                && <TarjetaTarifaLeadEnergiaGas key={0} data={infoOffer} service={offerLooking} />}
+
+              {offerLooking?.toLowerCase().includes('luz')
+                && <div class="tarjeta-footer-small mt-2 col">Períodos: <b>Valle</b> 00:00h-08:00h // <b>Llano</b> 8-10h. 14-18h y 22-00h // <b>Punta</b> 10-14h y 18-22h*</div>}
             </Col>
             <Col xs={12} md={5} className='my-2' style={isMobile ? { order: 1 } : { order: 2 }}>
               <FormLead data={infoOffer} idPlan={idPlan} landing={offerLooking} urlOffers={location.pathname} company={infoOffer.operadora}></FormLead>
             </Col>
-            <Col xs={12} md={12} className='my-2' style={{ order: 3 }}>
+            <Col xs={12} md={12} className='mt-2' style={{ order: 3 }}>
               {isMobile && <p className='font-09'>{textoLanding()}</p>}
+              {isMobile && <p className='font-09'>{infoOffer.textoAdicional}</p>}
             </Col>
           </Row>
         </Container>
