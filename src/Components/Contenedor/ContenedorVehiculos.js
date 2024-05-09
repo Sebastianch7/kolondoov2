@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Container, Row, Col, Button, Form } from 'react-bootstrap';
+import { Container, Row, Col, Button, Form, CardGroup } from 'react-bootstrap';
 import axios from 'axios';
 import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
@@ -13,6 +13,7 @@ import { fetchFilterVehiculos, fetchMarcasVehiculos, fetchTarifasVehiculos, fetc
 import TarjetaVehiculo from '../Tarjeta/TarjetaVehiculo';
 import ItemFiltroVehiculo from '../../Content/ItemFiltroVehiculo.json'
 import ItemFiltroCombustible from '../../Content/ItemFiltroCombustible.json'
+import ReactPaginate from 'react-paginate';
 
 function ContenedorVehiculos() {
   // Estado para filtros de precio y capacidad
@@ -20,6 +21,7 @@ function ContenedorVehiculos() {
   const [maxPrice, setMaxPrice] = useState(0);
   const [minCapacity, setMinCapacity] = useState(0);
   const [maxCapacity, setMaxCapacity] = useState(0);
+
 
   // Estados para el estado de carga de filtros e información
   const [isLoadFilter, setIsLoadFilter] = useState(false);
@@ -104,7 +106,7 @@ function ContenedorVehiculos() {
     fetchData();
   }, []);
 
-  // Función para obtener las marcas de operadoras
+  // Función para obtener las marcas
   useEffect(() => {
     const fetchBrands = async () => {
       try {
@@ -118,7 +120,7 @@ function ContenedorVehiculos() {
     fetchBrands();
   }, []);
 
-  // Función para obtener las tarifas de móvil
+  // Función para obtener las tarifas
   useEffect(() => {
     setIsLoadInformation(true);
     const fetchTariffs = async () => {
@@ -134,14 +136,6 @@ function ContenedorVehiculos() {
     };
     fetchTariffs();
   }, [brand]);
-
-  /* function setFilterBrandMulti(value) {
-    if (!filterBrand?.includes(value)) {
-      setFilterBrand([...filterBrand, value])
-    } else {
-      setFilterBrand(filterBrand.filter((item) => item !== value))
-    }
-  } */
 
   function setFilterChassisMulti(value) {
     if (!filterChasis?.includes(value)) {
@@ -189,7 +183,7 @@ function ContenedorVehiculos() {
       } else {
         return false;
       }
-    }else{
+    } else {
       return true;
     }
 
@@ -229,6 +223,70 @@ function ContenedorVehiculos() {
     }
   }
 
+  function Items({ currentItems }) {
+    return (
+      <>
+        <Row>
+          {currentItems && currentItems?.map((item, index) => (
+            <TarjetaVehiculo data={item} key={index} />
+          ))}
+        </Row>
+      </>
+    );
+  }
+
+  function PaginatedItems({ itemsPerPage }) {
+    const [currentItems, setCurrentItems] = useState(null);
+    const [pageCount, setPageCount] = useState(0);
+    const [itemOffset, setItemOffset] = useState(0);
+
+    useEffect(() => {
+      const endOffset = itemOffset + itemsPerPage;
+      setCurrentItems(filtros?.slice(itemOffset, endOffset));
+      setPageCount(Math.ceil(filtros?.length / itemsPerPage));
+    }, [itemOffset, itemsPerPage, filtros]);
+
+    const handlePageClick = (event) => {
+      const newOffset = event.selected * itemsPerPage % filtros?.length;
+      console.log(`User requested page number ${event.selected}, which is offset ${newOffset}`);
+      setItemOffset(newOffset);
+    };
+
+    return (
+
+      <Row>
+        <Col xs={12}>
+          <CardGroup>
+            <Items currentItems={currentItems} />
+          </CardGroup>
+        </Col>
+        <Col xs={12} className='d-flex justify-content-center my-5'>
+          <ReactPaginate
+            nextLabel=">"
+            onPageChange={handlePageClick}
+            pageRangeDisplayed={3}
+            marginPagesDisplayed={2}
+            pageCount={pageCount}
+            previousLabel="<"
+            pageClassName="page-item"
+            pageLinkClassName="page-link"
+            previousClassName="page-item"
+            previousLinkClassName="page-link"
+            nextClassName="page-item"
+            nextLinkClassName="page-link"
+            breakLabel="..."
+            breakClassName="page-item"
+            breakLinkClassName="page-link"
+            containerClassName="pagination"
+            activeClassName="active"
+            renderOnZeroPageCount={null}
+          />
+        </Col>
+      </Row>
+    );
+
+  }
+
   return (
     <>
       <section>
@@ -260,45 +318,7 @@ function ContenedorVehiculos() {
                     ((!isLoadInformation)) ?
                       (
                         <>
-                          {/* <Row>
-                            {isMobile &&
-                              <Col xs={12} key={filterBrand} className='my-2' md={6}>Se encontraron <span className="font-bold">{filtros?.length}</span> resultados de <span className="font-bold">{Tarifas.length}</span></Col>}
-                            <Col md={12}>
-                              <span className="font-semibold">Compañía:</span>
-                            </Col>
-                            {brand?.length > 0 &&
-                              brand.map((item, index) => (
-                                <Col xs={4} md={4} key={index}>
-                                  <button
-                                    className={`filtro-producto-logo my-2 ${filterBrand.includes(item.id) ? 'logoFocus' : ''}`}
-                                    value={item.id}
-                                    onClick={() => setFilterBrandMulti(item.id)}>
-                                    {item.nombre}
-                                  </button>
-                                </Col>
-                              ))}
-                          </Row> */}
-                          <Row>
-                            <Col md={12}>
-                              <label htmlFor="options">Marca:{filterBrand}</label>
-                              <select
-                                id="options"
-                                multiple
-                                className='v-100'
-                                value={filterBrand}
-                                /* onChange={(e) => setFilterBrand(e.target.value)} */
-                                onChange={(e) => setFilterBrandMulti(e.target.value)}
-                              >
-                                {brand?.length > 0 &&
-                                  brand.map((item, index) => (
-                                    <option key={index} value={item.id}>
-                                      <img src={item.logo} /> {item.nombre} 
-                                    </option>
-                                  ))}
-                              </select>
-                            </Col>
-                          </Row>
-                          <Row>
+                          <Row className='mb-4'>
                             <Col md={12}>
                               <span className="font-semibold">Carrocería:</span>
                             </Col>
@@ -306,15 +326,15 @@ function ContenedorVehiculos() {
                               ItemFiltroVehiculo.map((item, index) => (
                                 <Col xs={4} md={4} key={index}>
                                   <button
-                                    className={`filtro-producto-logo-vehiculo my-2 border-0 ${filterChasis.includes(item.id) ? 'logoFocus' : ''}`}
+                                    className={`filtro-producto-logo-vehiculo border-0 ${filterChasis.includes(item.id) ? 'logoFocus' : ''}`}
                                     value={item.id}
                                     onClick={() => setFilterChassisMulti(item.id)}>
-                                    <img src={item.imagen} alt={item.titulo} />
+                                    <img src={item.imagen} alt={item.titulo} title={item.titulo} />
                                   </button>
                                 </Col>
                               ))}
                           </Row>
-                          <Row>
+                          <Row className='mb-4'>
                             <Col md={12}>
                               <span className="font-semibold">Combustible:</span>
                             </Col>
@@ -330,10 +350,30 @@ function ContenedorVehiculos() {
                                 </Col>
                               ))}
                           </Row>
-                          <Row>
-                            <div className='mt-4'>
+                          <Row className='mb-4'>
+                            <Col md={12}>
+                              <span className="font-semibold">Carrocería:</span>
+                              <select
+                                id="options"
+                                multiple
+                                className='v-100 ItemSelect my-2'
+                                value={filterBrand}
+                                /* onChange={(e) => setFilterBrand(e.target.value)} */
+                                onChange={(e) => setFilterBrandMulti(e.target.value)}
+                              >
+                                {brand?.length > 0 &&
+                                  brand.map((item, index) => (
+                                    <option className='my-1 mx-3' key={index} value={item.id}>
+                                      <img src={item.logo} /> {item.nombre}
+                                    </option>
+                                  ))}
+                              </select>
+                            </Col>
+                          </Row>
+                          <Row className='mb-4'>
+                            <div>
                               <b>{'Precio'}:</b>
-                              <div className='my-4'>
+                              <div>
                                 {formatCurrency(rangePrice[0])} - {formatCurrency(rangePrice[1])}
                               </div>
                               <Slider
@@ -342,7 +382,7 @@ function ContenedorVehiculos() {
                                 max={maxPrice}
                                 value={rangePrice}
                                 onChange={handleRangeChangePrice}
-                                className='form-input-range'
+                                className='form-input-range my-2'
                               />
                             </div>
                           </Row>
@@ -357,7 +397,8 @@ function ContenedorVehiculos() {
               <Row>
                 <Col key={filterBrand} className='my-2' md={6}>Mostrando: <span className="font-bold">{filtros?.length}</span> resultados de <span className="font-bold">{Tarifas.length}</span></Col>
               </Row>
-              <Row>
+              {!isLoadInformation ? <PaginatedItems itemsPerPage={isMobile ? 4 : 10} /> : <Load></Load>}
+              {/* <Row>
                 <div className='pruebaPos'>
                   {(isLoadFilter && !isLoadInformation) ? (
                     filtros?.length > 0 ? (
@@ -371,12 +412,13 @@ function ContenedorVehiculos() {
                     <Load></Load>
                   )}
                 </div>
-              </Row>
+              </Row> */}
             </Col>
           </Row>
         </Container>
       </section>
       <InterSection></InterSection>
+
     </>
   );
 }

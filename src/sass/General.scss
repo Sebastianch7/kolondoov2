@@ -756,7 +756,6 @@ footer {
       padding: 5px 10px;
       text-align: center;
       filter: grayscale(1);
-      height: 60px;
       width: auto;
       overflow: hidden;
 
@@ -935,7 +934,7 @@ footer {
 
 .logoFocus {
   filter: grayscale(0) !important;
-  border-bottom: 3px solid black;
+  border-bottom: 5px solid black;
 }
 
 .carousel-control {
@@ -1384,4 +1383,13 @@ p {
 .icon-acordion-vehiculo{
   height: 30px;
   margin-right: 10px;
+}
+
+.ItemSelect{
+  text-transform: capitalize;
+  padding: 2px 3px;
+}
+
+.rc-slider-handle{
+  opacity: 0 !important;
 }

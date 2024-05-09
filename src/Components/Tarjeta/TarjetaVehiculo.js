@@ -20,9 +20,7 @@ function TarjetaVehiculo({ data, type }) {
     const {
         id,
         logo,
-        version,
         transmission,
-        trunk,
         hp,
         price,
         year,
