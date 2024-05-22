@@ -126,6 +126,7 @@ function ContenedorVehiculos() {
     const fetchTariffs = async () => {
       try {
         const response = await fetchTarifasVehiculos()
+        console.log(response)
         setFiltros(response);
         setTarifas(response);
         setIsLoadInformation(false);
@@ -176,7 +177,9 @@ function ContenedorVehiculos() {
 
   // Función para filtrar por marca
   function filterByBrand(item) {
+    console.log(item)
     const filterBrandArray = filterBrand.toString().split(',').map(Number);
+    console.log(filterBrandArray)
     if (filterBrand.length > 0) {
       if (filterBrandArray.length > 0) {
         return filterBrandArray.includes(item.vehiculo);
@@ -352,7 +355,7 @@ function ContenedorVehiculos() {
                           </Row>
                           <Row className='mb-4'>
                             <Col md={12}>
-                              <span className="font-semibold">Carrocería:</span>
+                              <span className="font-semibold">Marcas:</span>
                               <select
                                 id="options"
                                 multiple

@@ -14,8 +14,10 @@ import MetaData from '../../Components/Header/SeoMetadata';
 import TarjetaTarifaLeadEnergia from '../../Components/Tarjeta/TarjetaTarifaLeadEnergia';
 import TarjetaTarifaLeadGas from '../../Components/Tarjeta/TarjetaTarifaLeadGas';
 import TarjetaTarifaLeadEnergiaGas from '../../Components/Tarjeta/TarjetaTarifaLeadEnergiaGas';
+import { useParams } from 'react-router-dom';
 
 export default function Lead() {
+  const information = useParams();
   const [isLoading, setIsLoading] = useState(true);
   const [isLoadingMetadata, setIsLoadingMetadata] = useState(true);
   const [infoOffer, setInfoOffer] = useState([]);
@@ -26,12 +28,12 @@ export default function Lead() {
 
   const [offerLooking, setOfferLooking] = useState(null)
 
-  let descriptionSeo, titleSeo;
+  const splitInformation = information['id'].split('-');
 
+  let descriptionSeo, titleSeo;
   useEffect(() => {
     let locations = location.pathname.split('/');
-    let idSplit = locations[4].split('-');
-    setIdPlan(idSplit[idSplit.length - 1]);
+    setIdPlan(splitInformation[splitInformation.length -1])
     locations.pop();
     setOfferLooking(locations[3])
     setBreadUrl(locations.join('/'));

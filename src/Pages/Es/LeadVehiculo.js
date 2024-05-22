@@ -11,9 +11,10 @@ import FormLead from '../../Components/Forms/FormLeadVehiculo';
 import FormLeadVehiculo from '../../Components/Forms/FormLeadVehiculo';
 import Accordion from 'react-bootstrap/Accordion';
 import Header from '../../Components/Header/Header';
-
+import { useParams } from 'react-router-dom';
 
 export default function LeadVehiculo() {
+  const information = useParams();
   const [isLoading, setIsLoading] = useState(true);
   const [infoOffer, setInfoOffer] = useState([]);
   const [imagenes, setImagenes] = useState([]);
@@ -25,10 +26,11 @@ export default function LeadVehiculo() {
 
   let descriptionSeo, titleSeo;
 
+  const splitInformation = information['id'].split('-');
+
   useEffect(() => {
     let locations = location.pathname.split('/');
-    let idSplit = locations[4].split('-');
-    setIdPlan(idSplit[idSplit.length - 1]);
+    setIdPlan(splitInformation[splitInformation.length -1])
     locations.pop();
     setOfferLooking(locations[3])
     setBreadUrl(locations.join('/'));

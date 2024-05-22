@@ -31,6 +31,7 @@ import HomeMx from '../Pages/Mx/Home';
 import ComparadorPlanesCelular from '../Pages/Mx/ComparadorPlanesCelular';
 import ComparadorVehiculos from '../Pages/Mx/ComparadorVehiculos';
 import LeadVehiculo from '../Pages/Es/LeadVehiculo';
+import ComparadorCupones from '../Pages/Es/ComparadorCupones';
 
 
 function RoutesApp() {
@@ -47,6 +48,7 @@ function RoutesApp() {
                 />}
 
                 <Route path="/es" element={<Home />} />
+                <Route path="/en" element={<Home />} />
                 <Route path="/mx" element={<HomeMx />} />
 
                 <Route path="/es/internet-telefonia" element={<RaizTelefonia />} />
@@ -120,6 +122,9 @@ function RoutesApp() {
                 <Route path="/blog/preview/:id" element={<BlogItemPreview />} />
                 
                 <Route path="/es/gracias" element={<ThanksPage />} />
+                
+                <Route path="/es/cupones" element={<ComparadorCupones />} />
+                <Route path="/es/cupones/categoria/:idCategoria" element={<ComparadorCupones />} />
 
                 {/* MX */}
 

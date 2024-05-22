@@ -486,3 +486,34 @@ export const fetchTarifasVehiculos = async () => {
         throw error;
     }
 };
+
+/* CUPONES */
+export const fetchComerciosCupones = async () => {
+    try {
+        const response = await axios.get(`${apiUrl}/getComerciosCupones`);
+        return response.data;
+    } catch (error) {
+        console.error("Error al procesar la solicitud", error);
+        throw error;
+    }
+};
+
+export const fetchTipoCupones = async () => {
+    try {
+        const response = await axios.get(`${apiUrl}/getTipoCupones`);
+        return response.data;
+    } catch (error) {
+        console.error("Error al procesar la solicitud", error);
+        throw error;
+    }
+};
+
+export const fetchTarifasCupones = async () => {
+    try {
+        const response = await axios.get(`${apiUrl}/getTarifasCupones`);
+        return response.data;
+    } catch (error) {
+        console.error("Error al procesar la solicitud", error);
+        throw error;
+    }
+};
