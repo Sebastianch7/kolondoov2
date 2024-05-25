@@ -5,10 +5,10 @@ import Footer from '../../Components/Footer/Footer';
 import { useTranslation } from 'react-i18next';
 import MetaData from '../../Components/Header/SeoMetadata';
 import ContenedorCupones from '../../Components/Contenedor/ContenedorCupones';
-import { useParams } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
+import ModalCupon from '../../Components/modal/ModalCupon';
 
 function ComparadorCupones() {
-    console.log()
     const { t } = useTranslation();
     const { idCategoria } = useParams();
     return (

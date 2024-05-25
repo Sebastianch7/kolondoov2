@@ -517,3 +517,15 @@ export const fetchTarifasCupones = async () => {
         throw error;
     }
 };
+
+export const fetchTarifaCupon = async (id) => {
+    try {
+
+        const response = await axios.get(`${apiUrl}/getTarifaCupon/${id}`);
+        console.log(response)
+        return response.data;
+    } catch (error) {
+        console.error("Error al procesar la solicitud", error);
+        throw error;
+    }
+};

@@ -9,29 +9,63 @@ import InterSection from '../Utils/InterSection';
 import TarjetaTarifa from '../Tarjeta/TarjetaTarifa';
 import NotInfoItem from '../Utils/NotInfoItem';
 import Load from '../Utils/Load';
-import { fetchTipoCupones, fetchComerciosCupones, fetchTarifasCupones } from '../../services/ApiServices'
+import { fetchTipoCupones, fetchComerciosCupones, fetchTarifasCupones, fetchTarifaCupon } from '../../services/ApiServices'
 import TarjetaTarifaCupon from '../Tarjeta/TarjetaTarifaCupon';
-import { useParams } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
+import ModalCupon from '../modal/ModalCupon';
 
 function ContenedorCupones(categoria = null) {
-  // Estado para filtros de precio y capacidad
-  /* const [minPrice, setMinPrice] = useState(0);
-  const [maxPrice, setMaxPrice] = useState(1000);
-  const [minCapacity, setMinCapacity] = useState(0);
-  const [maxCapacity, setMaxCapacity] = useState(1000); */
 
-  // Estados para el estado de carga de filtros e información
+  const [marcasArray, setMarcasArray] = useState([])
+  const [tipoArray, setTipoArray] = useState([])
+  const locations = useLocation().search;
+  useEffect(() => {
+    if (locations != null) {
+      const params = new URLSearchParams(locations);
+      const marcasString = params.get('marcas');
+      const tipo = params.get('tipo');
+
+      const marcasArray = marcasString ? marcasString.split(',').map(Number) : [];
+      setMarcasArray(marcasArray)
+      const tipoArray = tipo ? tipo.split(',').map(Number) : [];
+
+      setTimeout(() => {
+        setFilterBrand(marcasArray);
+      }, [5000])
+      setTimeout(() => {
+        setFilterTypeCupon(tipoArray);
+      }, [8000])
+
+    }
+  }, [locations])
+
   const [isLoadFilter, setIsLoadFilter] = useState(false);
   const [isLoadInformation, setIsLoadInformation] = useState(false);
 
+  const { id } = useParams();
+
+  const [showModal, setShowModal] = useState(false);
+  const [modalData, setModalData] = useState({});
+  const handleClose = () => setShowModal(false);
+
+  useEffect(() => {
+    if (id !== undefined) {
+      const fetchCuponInformation = async () => {
+        try {
+          const response = await fetchTarifaCupon(id);
+          setModalData(response);
+          setShowModal(true);
+        } catch (error) {
+          console.error("Error al obtener los comercios  para cupones:", error);
+        }
+      };
+      fetchCuponInformation();
+    }
+  }, [id])
+
   // Estados para filtros seleccionados
-  const [filterBrand, setFilterBrand] = useState([]);
-  /* const [filterPrice, setFilterPrice] = useState([minPrice, maxPrice]);
-  const [filterCapacity, setFilterCapacity] = useState([minCapacity, maxCapacity]);
-  const [filterMessage, setFilterMessage] = useState(false);
-  const [filterRoaming, setFilterRoaming] = useState(false);
-  const [filterPromo, setFilterPromo] = useState(false); */
-  const [filterTypeCupon, setFilterTypeCupon] = useState(false);
+  const [filterBrand, setFilterBrand] = useState(marcasArray);
+  const [filterTypeCupon, setFilterTypeCupon] = useState(tipoArray);
 
   // Estados para tarifas y marcas
   const [Tarifas, setTarifas] = useState([]);
@@ -39,65 +73,14 @@ function ContenedorCupones(categoria = null) {
   const [brand, setBrand] = useState([]);
   const [tipoCupon, setTipoCupon] = useState([]);
 
-  // Estados para rangos de precio y capacidad
-  /* const [rangePrice, setRangePrice] = useState([minPrice, maxPrice]);
-  const [rangeCapacity, setRangeCapacity] = useState([minCapacity, maxCapacity]); */
-
-  // Estado para el modal de filtros
   const [show, setShow] = useState(false);
 
-  // Función para limpiar los filtros
   const cleanFilter = () => {
     setFilterTypeCupon([]);
-    /* setFilterMessage(false); */
-    /* setFilterRoaming(false); */
-    /* setFilterPromo(false); */
     setFilterBrand([]);
-    //setFilterCapacity([minCapacity, maxCapacity]);
-    //setFilterPrice([minPrice, maxPrice]);
-    //setRangePrice([minPrice, maxPrice]);
-    //setRangeCapacity([minCapacity, maxCapacity]);
     setFiltros(Tarifas);
   };
 
-  // Función para manejar el cambio en el rango de precio
-  /* const handleRangeChangePrice = (newRange) => {
-    setRangePrice(newRange);
-    handleFilterPrice(newRange);
-  }; */
-
-  // Función para manejar el cambio en el rango de capacidad
-  /* const handleRangeChangeCapacity = (newRange) => {
-    setRangeCapacity(newRange);
-    handleFilterCapacity(newRange);
-  }; */
-
-  // Función para obtener los datos iniciales de filtros
-  /* useEffect(() => {
-    setIsLoadFilter(false);
-    const fetchData = async () => {
-      try {
-        const response = await fetchFilterMovil();
-        const { min_gb, max_gb, min_precio, max_precio } = response;
-
-        setMinCapacity(parseInt(min_gb) > 0 ? parseInt(min_gb) : 0);
-        setMaxCapacity(parseInt(max_gb));
-        setRangeCapacity([parseInt(min_gb) > 0 ? parseInt(min_gb) : 0, parseInt(max_gb)]);
-
-        setMaxPrice(parseInt(max_precio));
-        setMinPrice(parseInt(min_precio) > 0 ? parseInt(min_precio) : 0);
-        setRangePrice([parseInt(min_precio) > 0 ? parseInt(min_precio) : 0, parseInt(max_precio)]);
-
-        setIsLoadFilter(true);
-      } catch (error) {
-        console.error("Error al obtener los datos iniciales de filtros:", error);
-      }
-    };
-
-    fetchData();
-  }, []); */
-
-  // Función para obtener las marcas de operadoras
   useEffect(() => {
     const fetchBrands = async () => {
       try {
@@ -109,9 +92,9 @@ function ContenedorCupones(categoria = null) {
     };
     fetchBrands();
   }, []);
-  
+
   useEffect(() => {
-    const fetchBrands = async () => {
+    const fetchCupones = async () => {
       try {
         const response = await fetchTipoCupones();
         setTipoCupon(response);
@@ -119,13 +102,12 @@ function ContenedorCupones(categoria = null) {
         console.error("Error al obtener los comercios  para cupones:", error);
       }
     };
-    fetchBrands();
+    fetchCupones();
   }, []);
 
-  // Función para obtener las tarifas de móvil
   useEffect(() => {
     setIsLoadInformation(true);
-    const fetchTariffs = async () => {
+    const fechTarifasCupones = async () => {
       try {
         const response = await fetchTarifasCupones()
         setFiltros(response);
@@ -137,7 +119,7 @@ function ContenedorCupones(categoria = null) {
       }
     };
 
-    fetchTariffs();
+    fechTarifasCupones();
   }, [brand]);
 
   function setFilterBrandMulti(value) {
@@ -147,7 +129,7 @@ function ContenedorCupones(categoria = null) {
       setFilterBrand(filterBrand.filter((item) => item !== value))
     }
   }
-  
+
   function setFilterTypeCuponMulti(value) {
     if (!filterTypeCupon?.includes(value)) {
       setFilterTypeCupon([...filterTypeCupon, value])
@@ -156,32 +138,14 @@ function ContenedorCupones(categoria = null) {
     }
   }
 
-  // Función para manejar el filtro de precio
-  /* const handleFilterPrice = (value) => {
-    setFilterPrice(value);
-  }; */
 
-  // Función para manejar el filtro de capacidad
-  /* const handleFilterCapacity = (value) => {
-    setFilterCapacity(value);
-  }; */
-
-  // Función para aplicar los filtros
   useEffect(() => {
-
     const resultado = Tarifas
       .filter((item) => filterByBrand(item))
-      /* .filter((item) => filterByTypeCupon(item)) */
-    /* .filter((item) => filterByCapacity(item))
-    .filter((item) => filterByPrice(item))
-    .filter((item) => filterByMessage(item))
-    .filter((item) => filterByRoaming(item))
-    .filter((item) => filterByPromo(item)) */
+      .filter((item) => filterByTypeCupon(item))
+    setFiltros(resultado);   
+  }, [filterBrand, filterTypeCupon]);
 
-    setFiltros(resultado);
-  }, [filterBrand]);
-
-  // Función para filtrar por marca
   function filterByBrand(item) {
     if (filterBrand.length > 0) {
       return filterBrand.includes(item.comercio) ? true : false;
@@ -191,49 +155,8 @@ function ContenedorCupones(categoria = null) {
   }
 
   function filterByTypeCupon(item) {
-    /* if (filterTypeCupon.length > 0) {
+    if (filterTypeCupon.length > 0) {
       return filterTypeCupon.includes(item.tipoCupon) ? true : false;
-    } else {
-      return true;
-    } */
-  }
-
-  // Función para filtrar por precio
-  /* const filterByPrice = (item) => filterPrice !== null ? item.precio >= filterPrice[0] && item.precio <= filterPrice[1] : true; */
-
-  // Función para filtrar por tecnología
-  /* const filterByTypeCupon = (item) => filterTypeCupon !== false ? filterByFilter(filterTypeCupon, item, '') : true; */
-
-  // Función para filtrar por mensajes
-  /* const filterByMessage = (item) => filterMessage !== false ? filterByFilter(filterMessage, item, 'SMS incluidos') : true; */
-
-  // Función para filtrar por roaming
-  /* const filterByRoaming = (item) => filterRoaming !== false ? filterByFilter(filterRoaming, item, 'Roaming en la UE sin coste') : true; */
-
-  // Función para filtrar por promocion
-  /* const filterByPromo = (item) => filterPromo !== false ? (item.promocion !== "" && item.promocion !== null) : true; */
-
-  // Función para filtrar por capacidad
-  /* function filterByCapacity(item) {
-    if (filterCapacity !== null) {
-      if (item.parrilla_bloque_1?.toLowerCase().includes("ilimitados") || item.parrilla_bloque_2?.toLowerCase().includes("ilimitados") || item.parrilla_bloque_3?.toLowerCase().includes("ilimitados") || item.parrilla_bloque_4?.toLowerCase().includes("ilimitados")) {
-        return true;
-      } else {
-        return parseInt(item.parrilla_bloque_1.replace("GB", "")) >= filterCapacity[0] && parseInt(item.parrilla_bloque_1.replace("GB", "")) < filterCapacity[1];
-      }
-    } else {
-      return true;
-    }
-  } */
-
-  // Función para filtrar por palabra clave en los bloques
-  function filterByFilter(filter, item, word) {
-    if (filter !== false) {
-      if (item.descripcion?.toLowerCase().includes(word?.toLowerCase())) {
-        return true;
-      } else {
-        return false;
-      }
     } else {
       return true;
     }
@@ -241,6 +164,7 @@ function ContenedorCupones(categoria = null) {
 
   return (
     <>
+      <ModalCupon show={showModal} handleClose={handleClose} data={modalData} />
       <section>
         <Container>
           <Row className='justify-content-around'>
@@ -275,58 +199,6 @@ function ContenedorCupones(categoria = null) {
                         ))}
                     </Row>
                     <Row>
-                      {/* <div className='my-2'>
-                        <b>{'Tipo de descuento:'}:</b>
-                        <div className='my-2'>
-                          <Form.Switch
-                            className='input-check-dark mt-2 text-left'
-                            type='switch'
-                            checked={filterTypeCupon}
-                            onChange={() => setFilterTypeCupon(!filterTypeCupon)}
-                            label={'Mostrar solo ofertas 5G'}
-                            reverse
-                          />
-                        </div>
-                      </div> */}
-                      {/* <div className='my-2'>
-                        <b>{'Mensajes'}:</b>
-                        <div className='my-2'>
-                          <Form.Switch
-                            className='input-check-dark mt-2 text-left'
-                            type='switch'
-                            checked={filterMessage}
-                            onChange={() => setFilterMessage(!filterMessage)}
-                            label={'Mensajes ilimitados'}
-                            reverse
-                          />
-                        </div>
-                      </div> */}
-                      {/* <div className='my-2'>
-                        <b>{'Roaming'}:</b>
-                        <div className='my-2'>
-                          <Form.Switch
-                            className='input-check-dark mt-2 text-left'
-                            type='switch'
-                            checked={filterRoaming}
-                            onChange={() => setFilterRoaming(!filterRoaming)}
-                            label={'Roaming en la UE'}
-                            reverse
-                          />
-                        </div>
-                      </div> */}
-                      {/* <div className='my-2'>
-                        <b>{'Promoción'}:</b>
-                        <div className='my-2'>
-                          <Form.Switch
-                            className='input-check-dark mt-2 text-left'
-                            type='switch'
-                            checked={filterPromo}
-                            onChange={() => setFilterPromo(!filterPromo)}
-                            label={'Tiene promoción'}
-                            reverse
-                          />
-                        </div>
-                      </div> */}
                     </Row>
                   </Modal.Body>
                   <Modal.Footer>
@@ -367,11 +239,11 @@ function ContenedorCupones(categoria = null) {
                               tipoCupon.map((item, index) => (
                                 <Col xs={4} md={6} key={item.id}>
                                   <button
-                                    /* className={`filtro-producto-logo my-2 ${filterTypeCupon.includes(item.id) ? 'logoFocus' : ''}`} */
+                                    className={`filtro-producto-logo my-2 ${filterTypeCupon.includes(item.id) ? 'logoFocus' : ''}`}
                                     value={item.nombre}
-                                    onClick={() => setFilterTypeCuponMulti(item.tipoCupon)}>
+                                    onClick={() => setFilterTypeCuponMulti(item.id)}>
                                     {/* {item.nombre} */}
-                                    {item.tipoCupon}
+                                    {item.nombre}
                                   </button>
                                 </Col>
                               ))}
@@ -386,45 +258,6 @@ function ContenedorCupones(categoria = null) {
                                   checked={filterTypeCupon}
                                   onChange={() => setFilterTypeCupon(!filterTypeCupon)}
                                   label={'Tipo de descuento:'}
-                                  reverse
-                                />
-                              </div>
-                            </div> */}
-                            {/* <div className='my-2'>
-                              <b>{'Mensajes'}:</b>
-                              <div className='my-2'>
-                                <Form.Switch
-                                  className='input-check-dark mt-2 text-left'
-                                  type='switch'
-                                  checked={filterMessage}
-                                  onChange={() => setFilterMessage(!filterMessage)}
-                                  label={'Mensajes ilimitados'}
-                                  reverse
-                                />
-                              </div>
-                            </div> */}
-                            {/* <div className='my-2'>
-                              <b>{'Roaming'}:</b>
-                              <div className='my-2'>
-                                <Form.Switch
-                                  className='input-check-dark mt-2 text-left'
-                                  type='switch'
-                                  checked={filterRoaming}
-                                  onChange={() => setFilterRoaming(!filterRoaming)}
-                                  label={'Roaming en la UE'}
-                                  reverse
-                                />
-                              </div>
-                            </div> */}
-                            {/* <div className='my-2'>
-                              <b>{'Promoción'}:</b>
-                              <div className='my-2'>
-                                <Form.Switch
-                                  className='input-check-dark mt-2 text-left'
-                                  type='switch'
-                                  checked={filterPromo}
-                                  onChange={() => setFilterPromo(!filterPromo)}
-                                  label={'Tiene promoción'}
                                   reverse
                                 />
                               </div>
@@ -446,7 +279,7 @@ function ContenedorCupones(categoria = null) {
                   {(!isLoadFilter && !isLoadInformation) ? (
                     filtros?.length > 0 ? (
                       filtros?.map((item, index) => (
-                        <TarjetaTarifaCupon key={index} data={item} />
+                        <TarjetaTarifaCupon key={index} data={item} brands={filterBrand}  tipos={filterTypeCupon} />
                       ))
                     ) : (
                       <NotInfoItem key={0} title={'No se encontraron ofertas'} text={'Lo sentimos, no hemos encontrado ofertas con los filtros seleccionados.'} />

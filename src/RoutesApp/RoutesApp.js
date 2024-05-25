@@ -124,6 +124,7 @@ function RoutesApp() {
                 <Route path="/es/gracias" element={<ThanksPage />} />
                 
                 <Route path="/es/cupones" element={<ComparadorCupones />} />
+                <Route path="/es/cupones/:id" element={<ComparadorCupones />} />
                 <Route path="/es/cupones/categoria/:idCategoria" element={<ComparadorCupones />} />
 
                 {/* MX */}

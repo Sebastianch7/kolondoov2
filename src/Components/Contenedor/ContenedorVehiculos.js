@@ -177,7 +177,6 @@ function ContenedorVehiculos() {
 
   // Función para filtrar por marca
   function filterByBrand(item) {
-    console.log(item)
     const filterBrandArray = filterBrand.toString().split(',').map(Number);
     console.log(filterBrandArray)
     if (filterBrand.length > 0) {

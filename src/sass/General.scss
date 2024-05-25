@@ -749,6 +749,7 @@ footer {
       }
 
     }
+
     &-logo-vehiculo {
       cursor: pointer;
       border: 0.8px solid #8E8E8E;
@@ -1228,6 +1229,7 @@ ul {
   @include media(md) {
     height: 400px !important;
   }
+
   background-size: both;
   overflow: hidden;
   margin-bottom: 10px;
@@ -1359,20 +1361,23 @@ p {
   padding: 5px 0px;
 }
 
-.text-left-list{
-  ul,li{
+.text-left-list {
+
+  ul,
+  li {
     text-align: left !important;
   }
 }
 
-.v-100{
+.v-100 {
   width: 100% !important;
 }
 
-.img-vehiculos{
+.img-vehiculos {
   /* width: 100%; */
   height: 180px;
-  &-logo{
+
+  &-logo {
     width: 50px;
     max-width: 50px;
     background-color: white;
@@ -1380,24 +1385,79 @@ p {
   }
 }
 
-.icon-acordion-vehiculo{
+.icon-acordion-vehiculo {
   height: 30px;
   margin-right: 10px;
 }
 
-.ItemSelect{
+.ItemSelect {
   text-transform: capitalize;
   padding: 2px 3px;
 }
 
-.rc-slider-handle{
+.rc-slider-handle {
   opacity: 0 !important;
 }
 
-.descuento{
+.descuento {
   margin-top: 7px;
   text-align: right;
   font-size: 1.2rem;
   font-family: $MontHeavy;
   color: $colorSecundary;
+}
+
+.modal {
+  &-cupon {
+    &-banner {
+      text-align: center;
+      background-color: $colorPrimary;
+      color: $white;
+      height: 200px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      &-item {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: $colorSecundary;
+        width: 70px;
+        height: 70px;
+
+        img {
+          width: 40px;
+        }
+      }
+
+      &-title {
+        font-size: 1.5rem;
+        margin-top: 20px;
+        color: $colorSecundary;
+        font-family: $MontSemiBold;
+        width: 70%;
+        line-height: 1.3;
+      }
+    }
+
+    &-header {
+      background-color: $colorPrimary;
+      border: 0px transparent;
+      border-radius: 0px;
+    }
+
+    &-information {}
+  }
+}
+
+.btn-close {
+  color: $white;
+}
+
+.btn-close{
+  background-color: url('../../public/img/icons/close.png') !important;
+  --bs-btn-close-bg: url('../../public/img/icons/close.png') !important;
+  opacity: 1;
 }
