@@ -508,9 +508,9 @@ export const fetchTipoCupones = async () => {
     }
 };
 
-export const fetchTarifasCupones = async () => {
+export const fetchTarifasCupones = async (lang) => {
     try {
-        const response = await axios.get(`${apiUrl}/getTarifasCupones`);
+        const response = await axios.get(`${apiUrl}/getTarifasCupones/${lang}`);
         return response.data;
     } catch (error) {
         console.error("Error al procesar la solicitud", error);

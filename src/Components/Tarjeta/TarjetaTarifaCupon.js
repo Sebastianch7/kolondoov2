@@ -17,6 +17,11 @@ import ModalCupon from '../modal/ModalCupon';
 
 
 function TarjetaTarifaCupon({ data, brands, tipos }) {
+
+    console.log(data)
+    const [filterBrands, setFilterBrands] = useState([])
+    const [filterTipos, setFilterTipos] = useState([])
+
     const [lang, setLang] = useState(null)
     const location = useLocation();
     const pathname = location.pathname;
@@ -34,33 +39,40 @@ function TarjetaTarifaCupon({ data, brands, tipos }) {
     const handleClose = () => setShowModal(false);
     /* fin modal */
 
-    const { 
-        id,
-        comercio,
-        landing_link,
-        titulo,
-        funcion,
-        categoria,
+    const {
         descripcion,
         nombre_tarifa,
         destacada,
         fecha_expiracion,
-        landingLead,
-        moneda,
-        texto_adicional,
         logo,
-        promocion,
-        slug_tarifa,
         pais,
         nombre,
         dias_restantes,
-        tipoCupon,
+        descuento,
+        codigo,
         cupon,
-        nombre_comercio
+        categoria_nombre
     } = data;
 
-    const handleShow = (id) => {
-        setModalData({
+    const handleShow = (e) => {
+        e.preventDefault();
+        let url = `/${lang}/cupones/`;
+        const dataId = e.target.getAttribute('id');
+        if (brands.length > 0) {
+            let marcasFiltro = brands.join(',');
+        } else {
+            console.log("No hay marcas disponibles.");
+        }
+
+        if (tipos.length > 0) {
+            let marcasTipo = tipos.join(',');
+        } else {
+            console.log("No hay tipos disponibles.");
+        }
+        console.log(brands, tipos)
+        window.open(`/${lang}/cupones/${dataId}?marcas=${brands}&tipo=1`, '_blank');
+        //window.location.href = `${data.landing_link}?esVuskoo=1&prueba=true`; 
+        /* setModalData({
             id,
             titulo,
             descripcion,
@@ -72,51 +84,56 @@ function TarjetaTarifaCupon({ data, brands, tipos }) {
             tipos,
             landing_link
         });
-        setShowModal(true);
+        setShowModal(true); */
     };
 
     return (
         <>
             {destacada === 1 && <div className='prioridad-oferta'>Oferta destacada</div>}
             <Card key={nombre_tarifa} className={`tarjeta tarjeta-tarifa my-2 ${destacada === 1 ? 'prioridad' : ''}`}>
-                <Row className='d-flex flex-column flex-md-row'>
+                <Row className='d-flex flex-column flex-md-row mx-0'>
                     <Col xs={12}>
                         <Row>
-                            <Col xs={12}>
+                            <Col xs={12} >
                                 <div className='tarjeta-tarifa-item-title border-0 justify-content-between'>
                                     <Row className='col-12'>
-                                        <Col xs={12} md={8}><img src={logo} alt={logo} /></Col>
-                                        <Col xs={12} md={4} className='descuento'>{promocion}</Col>
+                                        <Col xs={12} md={12}><img src={logo} alt={logo} /></Col>
                                     </Row>
-                                    {/* {(isMobile === true) &&
-                                        <Link className='btn btn-primary btn-primary-small'
-                                            to={`/${lang}${landingLead}${slug_tarifa.toLowerCase()}-${id}`}>
-                                            <BsArrowRight />
-                                        </Link>} */}
                                 </div>
                             </Col>
                         </Row>
                     </Col>
+                    <Row className='mx-0 p-0'>
+                        <Col xs={12} className='mx-0 p-0'>
+                            <div className='tarjeta-tarifa-item-title border-0 justify-content-between mx-0 px-0'>
+                                <Row className='col-12 mx-0 p-0'>
+                                    <Col xs={12} md={7} className='font-bold mx-0'>{nombre_tarifa}</Col>
+                                    <Col xs={12} md={5} className='descuento m-0'>{descuento}</Col>
+                                </Row>
+                            </div>
+                        </Col>
+                    </Row>
                     <Row>
                         <Col md={10} className={classNames('text-left', { 'order-2': isMobile, 'color-primary': destacada === 1 })}>
-                            <p className='font-bold'>{titulo}</p>
+                            <p className='font-bold'>{descripcion}</p>
                             <ItemTarifaDescripcion destacada={destacada} text={`Oferta válida para: ${pais}`} />
                             <ItemTarifaDescripcion destacada={destacada} text={`Expira en ${dias_restantes} días`} />
+                            <ItemTarifaDescripcion destacada={destacada} text={`${categoria_nombre}`} />
                         </Col>
                         {!isMobile &&
                             <Col md={2}>
-                                <Button className='btn btn-primary p-3' onClick={() => handleShow(id)}>
-                                    Obtener descuento
+                                <Button className='btn btn-primary p-3' onClick={handleShow} id={data.id}>
+                                    Obtener {cupon}
                                 </Button>
                             </Col>}
                     </Row>
 
                 </Row>
                 <Accordion defaultActiveKey="0">
-                    <Accordion.Item eventKey="1" className='mt-4 rounded-0   border-0 border-top text-left-list'>
+                    <Accordion.Item eventKey="1" className='mt-4 rounded-0 border-0 border-top text-left-list'>
                         <Accordion.Header></Accordion.Header>
-                        <Accordion.Body className='py-0'>
-                            <ul>
+                        <Accordion.Body className='py-0 mb-0'>
+                            <ul className='mb-0'>
                                 <li><b>Tienda:</b></li>
                                 <li className='mx-3'>{nombre}</li>
                                 <li><b>Descripción:</b></li>
@@ -126,6 +143,9 @@ function TarjetaTarifaCupon({ data, brands, tipos }) {
                                 <li><b>Fecha de expiración de la oferta:</b></li>
                                 <li className='mx-3'>{fecha_expiracion}</li>
                             </ul>
+                            <div className='float-end py-0'>
+                                {codigo != null && <ItemTarifaDescripcion destacada={destacada} text={`ID: ${codigo}`} />}
+                            </div>
                         </Accordion.Body>
                     </Accordion.Item>
                 </Accordion>

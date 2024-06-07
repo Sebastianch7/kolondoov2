@@ -32,6 +32,7 @@ import ComparadorPlanesCelular from '../Pages/Mx/ComparadorPlanesCelular';
 import ComparadorVehiculos from '../Pages/Mx/ComparadorVehiculos';
 import LeadVehiculo from '../Pages/Es/LeadVehiculo';
 import ComparadorCupones from '../Pages/Es/ComparadorCupones';
+import ZonaTransaccional from '../Pages/Co/zonaTransaccional';
 
 
 function RoutesApp() {
@@ -137,6 +138,8 @@ function RoutesApp() {
                 
                 <Route path="/mx/servicios/vehiculos" element={<ComparadorVehiculos />} />
                 <Route path="/mx/servicios/vehiculos/:id" element={<LeadVehiculo />} />
+                
+                <Route path="/co/rediccion-banco" element={<ZonaTransaccional />} />
 
             </Routes>
         </BrowserRouter>

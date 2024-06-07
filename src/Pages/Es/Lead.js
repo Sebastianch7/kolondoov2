@@ -33,7 +33,7 @@ export default function Lead() {
   let descriptionSeo, titleSeo;
   useEffect(() => {
     let locations = location.pathname.split('/');
-    setIdPlan(splitInformation[splitInformation.length -1])
+    setIdPlan(splitInformation[splitInformation.length - 1])
     locations.pop();
     setOfferLooking(locations[3])
     setBreadUrl(locations.join('/'));
@@ -114,7 +114,10 @@ export default function Lead() {
             <Title title={`${infoOffer?.nombre} ofertas - ${infoOffer.nombre_tarifa}`} />
             <Col xs={12}>
               {!isMobile && <p className='font-09'>{textoLanding()}</p>}
-              {!isMobile && <p className='font-09'>{infoOffer.textoAdicional}</p>}
+              {!isMobile && <p
+                className='font-09 textoOpcional'
+                dangerouslySetInnerHTML={{ __html: infoOffer.textoAdicional }}
+              />}
             </Col>
             <Col xs={12} md={7} className='my-2' style={isMobile ? { order: 2 } : { order: 1 }}>
               {(offerLooking?.toLowerCase() === 'comparador-movil'
@@ -138,7 +141,10 @@ export default function Lead() {
             </Col>
             <Col xs={12} md={12} className='mt-2' style={{ order: 3 }}>
               {isMobile && <p className='font-09'>{textoLanding()}</p>}
-              {isMobile && <p className='font-09'>{infoOffer.textoAdicional}</p>}
+              {isMobile && <p
+                className='font-09'
+                dangerouslySetInnerHTML={{ __html: infoOffer.textoAdicional }}
+              />}
             </Col>
           </Row>
         </Container>

@@ -19,6 +19,14 @@ function ContenedorCupones(categoria = null) {
   const [marcasArray, setMarcasArray] = useState([])
   const [tipoArray, setTipoArray] = useState([])
   const locations = useLocation().search;
+
+  const [lang, setLang] = useState(null)
+  const location = useLocation();
+
+  useEffect(() => {
+    setLang(location.pathname.split('/')[1])
+  }, [])
+
   useEffect(() => {
     if (locations != null) {
       const params = new URLSearchParams(locations);
@@ -48,6 +56,7 @@ function ContenedorCupones(categoria = null) {
   const [modalData, setModalData] = useState({});
   const handleClose = () => setShowModal(false);
 
+  //consulta por id de cupon, para uso en la modal
   useEffect(() => {
     if (id !== undefined) {
       const fetchCuponInformation = async () => {
@@ -109,7 +118,7 @@ function ContenedorCupones(categoria = null) {
     setIsLoadInformation(true);
     const fechTarifasCupones = async () => {
       try {
-        const response = await fetchTarifasCupones()
+        const response = await fetchTarifasCupones(lang)
         setFiltros(response);
         setTarifas(response);
         setIsLoadInformation(false);
@@ -143,7 +152,7 @@ function ContenedorCupones(categoria = null) {
     const resultado = Tarifas
       .filter((item) => filterByBrand(item))
       .filter((item) => filterByTypeCupon(item))
-    setFiltros(resultado);   
+    setFiltros(resultado);
   }, [filterBrand, filterTypeCupon]);
 
   function filterByBrand(item) {
@@ -279,7 +288,7 @@ function ContenedorCupones(categoria = null) {
                   {(!isLoadFilter && !isLoadInformation) ? (
                     filtros?.length > 0 ? (
                       filtros?.map((item, index) => (
-                        <TarjetaTarifaCupon key={index} data={item} brands={filterBrand}  tipos={filterTypeCupon} />
+                        <TarjetaTarifaCupon key={index} data={item} brands={filterBrand} tipos={filterTypeCupon} />
                       ))
                     ) : (
                       <NotInfoItem key={0} title={'No se encontraron ofertas'} text={'Lo sentimos, no hemos encontrado ofertas con los filtros seleccionados.'} />

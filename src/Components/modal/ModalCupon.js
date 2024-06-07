@@ -6,6 +6,8 @@ import { useLocation } from 'react-router-dom';
 
 
 function ModalCupon({ show, handleClose, data }) {
+
+    console.log(data)
     const [lang, setLang] = useState(null)
     const location = useLocation();
     const pathname = location.pathname;
@@ -41,7 +43,7 @@ function ModalCupon({ show, handleClose, data }) {
                     <div className='modal-cupon-banner-item'>
                         <img src='/img/icons/cupon-white.svg' />
                     </div>
-                    <div className='modal-cupon-banner-title'>{data.titulo}</div>
+                    <div className='modal-cupon-banner-title'>{data.nombre_tarifa}</div>
                 </Modal.Body>
                 <Modal.Body className='modal-cupon-information'>
                     <div className='text-center'>
