@@ -19,7 +19,7 @@ function Header({ breadCrumb }) {
     const [isLoadInformation, setIsLoadInformation] = useState(false)
     const [lang, setLang] = useState('')
     const location = useLocation();
-    
+
     useEffect(() => {
         setLang(location.pathname.split('/')[1])
         i18n.changeLanguage(location.pathname.split('/')[1]);
@@ -32,11 +32,13 @@ function Header({ breadCrumb }) {
     useEffect(() => {
         setIsLoadInformation(true);
         const fetchMenu = async () => {
-            try {
-                const response = await getMenuBlog(lang.trim())
-                setMenu(response);
-            } catch (error) {
-                console.error("Error al obtener el menu", error);
+            if (lang == 'es') {
+                try {
+                    const response = await getMenuBlog(lang.trim())
+                    setMenu(response);
+                } catch (error) {
+                    console.error("Error al obtener el menu", error);
+                }
             }
         };
         fetchMenu();
@@ -86,7 +88,7 @@ function Header({ breadCrumb }) {
                                             </Accordion.Item>
                                         </Accordion>
                                     ))}
-                                    <Accordion className='no-radius no-border-bottom'>
+                                    {lang == 'es' && <Accordion className='no-radius no-border-bottom'>
                                         <Accordion.Item eventKey={100} className='no-radius'>
                                             <Accordion.Header>{'Blog'}</Accordion.Header>
                                             <Accordion.Body>
@@ -102,7 +104,7 @@ function Header({ breadCrumb }) {
                                                 </ul>
                                             </Accordion.Body>
                                         </Accordion.Item>
-                                    </Accordion>
+                                    </Accordion>}
                                 </Nav>
                             </Navbar.Collapse>
                         </>
@@ -115,7 +117,7 @@ function Header({ breadCrumb }) {
                                     {items.map((item, key) => (
                                         <ItemMenuDesktop key={key} data={item} />
                                     ))}
-                                    <nav className="navbar navbar-expand-lg navbar-light no-link">
+                                    {lang == 'es' && <nav className="navbar navbar-expand-lg navbar-light no-link">
                                         <div className="collapse navbar-collapse" id="navbarNav">
                                             <ul className="no-link navbar-nav">
                                                 <li className="nav-item">
@@ -133,7 +135,7 @@ function Header({ breadCrumb }) {
                                                 </li>
                                             </ul>
                                         </div>
-                                    </nav>
+                                    </nav>}
                                 </Nav>
                             </Navbar.Collapse>
                         </>

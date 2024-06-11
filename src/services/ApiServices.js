@@ -488,9 +488,9 @@ export const fetchTarifasVehiculos = async () => {
 };
 
 /* CUPONES */
-export const fetchComerciosCupones = async () => {
+export const fetchComerciosCupones = async (lang, idCategoria) => {
     try {
-        const response = await axios.get(`${apiUrl}/getComerciosCupones`);
+        const response = await axios.get(`${apiUrl}/getComerciosCupones/${lang}/${idCategoria}`);
         return response.data;
     } catch (error) {
         console.error("Error al procesar la solicitud", error);
@@ -508,9 +508,9 @@ export const fetchTipoCupones = async () => {
     }
 };
 
-export const fetchTarifasCupones = async (lang) => {
+export const fetchTarifasCupones = async (lang, idCateogria = null) => {
     try {
-        const response = await axios.get(`${apiUrl}/getTarifasCupones/${lang}`);
+        const response = await axios.get(`${apiUrl}/getTarifasCupones/${lang}/${idCateogria}`);
         return response.data;
     } catch (error) {
         console.error("Error al procesar la solicitud", error);
@@ -529,3 +529,23 @@ export const fetchTarifaCupon = async (id) => {
         throw error;
     }
 };
+
+export const fetchPrestamosOffers = async () => {
+    try {
+        const response = await axios.get(`${apiUrl}/getTarifasPrestamos`);
+        return response.data;
+    } catch (error) {
+        console.error("Error al procesar la solicitud", error);
+        throw error;
+    }
+};
+
+/* export const getCategoriaCuponesOffer = async (categoria) => {
+    try {
+        const response = await axios.get(`${apiUrl}/getDetailOffer${offerLooking.replaceAll('-', '')}/${idPlan}`)
+        return response.data;
+    } catch (error) {
+        console.error("Error al procesar la solicitud", error);
+        throw error;
+    }
+}; */

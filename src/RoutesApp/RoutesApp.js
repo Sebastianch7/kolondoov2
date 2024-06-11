@@ -33,6 +33,7 @@ import ComparadorVehiculos from '../Pages/Mx/ComparadorVehiculos';
 import LeadVehiculo from '../Pages/Es/LeadVehiculo';
 import ComparadorCupones from '../Pages/Es/ComparadorCupones';
 import ZonaTransaccional from '../Pages/Co/zonaTransaccional';
+import ComparadorPrestamos from '../Pages/Es/ComparadorPrestamos';
 
 
 function RoutesApp() {
@@ -121,12 +122,13 @@ function RoutesApp() {
                 <Route path="/es/blog/:categoria/:id" element={<BlogItem />} />
 
                 <Route path="/blog/preview/:id" element={<BlogItemPreview />} />
-                
+
                 <Route path="/es/gracias" element={<ThanksPage />} />
-                
+
                 <Route path="/es/cupones" element={<ComparadorCupones />} />
                 <Route path="/es/cupones/:id" element={<ComparadorCupones />} />
                 <Route path="/es/cupones/categoria/:idCategoria" element={<ComparadorCupones />} />
+                <Route path="/es/cupones/categoria" element={<Navigate to="/es/cupones" />} />
 
                 {/* MX */}
 
@@ -135,11 +137,13 @@ function RoutesApp() {
                 <Route path="/mx/planes-celulares-telefonia-internet-y-tv/comparador-planes-telefonia-internet" element={<ComparadorFibraMovil />} />
                 <Route path="/mx/planes-celulares-telefonia-internet-y-tv/comparador-planes-telefonia-internet-tv" element={<ComparadorFibraMovil />} />
                 <Route path="/mx/planes-celulares-telefonia-internet-y-tv/comparador-planes-internet-tv" element={<ComparadorFibraMovil />} />
-                
+
                 <Route path="/mx/servicios/vehiculos" element={<ComparadorVehiculos />} />
                 <Route path="/mx/servicios/vehiculos/:id" element={<LeadVehiculo />} />
-                
+
                 <Route path="/co/rediccion-banco" element={<ZonaTransaccional />} />
+
+                <Route path="/co/comparador-prestamos" element={<ComparadorPrestamos />} />
 
             </Routes>
         </BrowserRouter>

@@ -11,14 +11,16 @@ import NotInfoItem from '../Utils/NotInfoItem';
 import Load from '../Utils/Load';
 import { fetchTipoCupones, fetchComerciosCupones, fetchTarifasCupones, fetchTarifaCupon } from '../../services/ApiServices'
 import TarjetaTarifaCupon from '../Tarjeta/TarjetaTarifaCupon';
-import { useLocation, useParams } from 'react-router-dom';
+import { Navigate, useLocation, useNavigate, useParams } from 'react-router-dom';
 import ModalCupon from '../modal/ModalCupon';
 
-function ContenedorCupones(categoria = null) {
+function ContenedorCupones(idCategoria = null) {
 
   const [marcasArray, setMarcasArray] = useState([])
   const [tipoArray, setTipoArray] = useState([])
   const locations = useLocation().search;
+
+  let navigate = useNavigate();
 
   const [lang, setLang] = useState(null)
   const location = useLocation();
@@ -93,7 +95,7 @@ function ContenedorCupones(categoria = null) {
   useEffect(() => {
     const fetchBrands = async () => {
       try {
-        const response = await fetchComerciosCupones();
+        const response = await fetchComerciosCupones(lang, idCategoria['categoria']);
         setBrand(response);
       } catch (error) {
         console.error("Error al obtener los comercios  para cupones:", error);
@@ -118,18 +120,29 @@ function ContenedorCupones(categoria = null) {
     setIsLoadInformation(true);
     const fechTarifasCupones = async () => {
       try {
-        const response = await fetchTarifasCupones(lang)
-        setFiltros(response);
-        setTarifas(response);
-        setIsLoadInformation(false);
-        setIsLoadFilter(false)
+        if (idCategoria != null) {
+          const response = await fetchTarifasCupones(lang, idCategoria['categoria']);
+          if (response.length === 0) {
+            navigate('/es/404', { replace: true, state: { statusCode: 404 } });
+          }
+          setFiltros(response);
+          setTarifas(response);
+          setIsLoadInformation(false);
+          setIsLoadFilter(false)
+        } else {
+          const response = await fetchTarifasCupones(lang, null)
+          setFiltros(response);
+          setTarifas(response);
+          setIsLoadInformation(false);
+          setIsLoadFilter(false)
+        }
       } catch (error) {
-        console.error("Error al obtener las tarifas de móvil:", error);
+        console.error("Error al obtener la información:", error);
       }
     };
 
     fechTarifasCupones();
-  }, [brand]);
+  }, [lang, brand]);
 
   function setFilterBrandMulti(value) {
     if (!filterBrand?.includes(value)) {
@@ -241,7 +254,7 @@ function ContenedorCupones(categoria = null) {
                               ))}
                           </Row>
                           <Row>
-                            <Col md={12}>
+                            <Col md={12} className='mt-4'>
                               <span className="font-semibold">Tipo de descuento:</span>
                             </Col>
                             {tipoCupon?.length > 0 &&
