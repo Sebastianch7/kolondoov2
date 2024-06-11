@@ -498,9 +498,9 @@ export const fetchComerciosCupones = async (lang, idCategoria) => {
     }
 };
 
-export const fetchTipoCupones = async () => {
+export const fetchTipoCupones = async (lang, idCateogria = null) => {
     try {
-        const response = await axios.get(`${apiUrl}/getTipoCupones`);
+        const response = await axios.get(`${apiUrl}/getTipoCupones/${lang}/${idCateogria}`);
         return response.data;
     } catch (error) {
         console.error("Error al procesar la solicitud", error);

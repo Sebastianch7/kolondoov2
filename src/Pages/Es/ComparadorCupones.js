@@ -24,8 +24,8 @@ function ComparadorCupones() {
                 logo={'/img/icons/cupon.svg'}
             >
             </Banner>
-            <ContenedorCupones categoria={idCategoria}>
-            </ContenedorCupones>
+            {<ContenedorCupones categoria={idCategoria}>
+            </ContenedorCupones>}
             <Footer></Footer>
         </div>
     );

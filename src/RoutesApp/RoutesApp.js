@@ -130,6 +130,8 @@ function RoutesApp() {
                 <Route path="/es/cupones/categoria/:idCategoria" element={<ComparadorCupones />} />
                 <Route path="/es/cupones/categoria" element={<Navigate to="/es/cupones" />} />
 
+                <Route path="/co/cupones" element={<ComparadorCupones />} />
+
                 {/* MX */}
 
                 <Route path="/mx/planes-celulares-telefonia-internet-y-tv/comparador-planes-celular" element={<ComparadorPlanesCelular />} />

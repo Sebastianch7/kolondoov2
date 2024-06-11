@@ -27,7 +27,7 @@ function ContenedorCupones(idCategoria = null) {
 
   useEffect(() => {
     setLang(location.pathname.split('/')[1])
-  }, [])
+  }, [location])
 
   useEffect(() => {
     if (locations != null) {
@@ -93,28 +93,32 @@ function ContenedorCupones(idCategoria = null) {
   };
 
   useEffect(() => {
-    const fetchBrands = async () => {
-      try {
-        const response = await fetchComerciosCupones(lang, idCategoria['categoria']);
-        setBrand(response);
-      } catch (error) {
-        console.error("Error al obtener los comercios  para cupones:", error);
-      }
-    };
-    fetchBrands();
-  }, []);
+    if (lang != null) {
+      const fetchBrands = async () => {
+        try {
+          const response = await fetchComerciosCupones(lang, idCategoria['categoria']);
+          setBrand(response);
+        } catch (error) {
+          console.error("Error al obtener los comercios  para cupones:", error);
+        }
+      };
+      fetchBrands();
+    }
+  }, [lang]);
 
   useEffect(() => {
-    const fetchCupones = async () => {
-      try {
-        const response = await fetchTipoCupones();
-        setTipoCupon(response);
-      } catch (error) {
-        console.error("Error al obtener los comercios  para cupones:", error);
-      }
-    };
-    fetchCupones();
-  }, []);
+    if (lang != null) {
+      const fetchCupones = async () => {
+        try {
+          const response = await fetchTipoCupones(lang, idCategoria['categoria']);
+          setTipoCupon(response);
+        } catch (error) {
+          console.error("Error al obtener los comercios  para cupones:", error);
+        }
+      };
+      fetchCupones();
+    }
+  }, [lang]);
 
   useEffect(() => {
     setIsLoadInformation(true);
@@ -123,7 +127,7 @@ function ContenedorCupones(idCategoria = null) {
         if (idCategoria != null) {
           const response = await fetchTarifasCupones(lang, idCategoria['categoria']);
           if (response.length === 0) {
-            navigate('/es/404', { replace: true, state: { statusCode: 404 } });
+            //navigate('/es/404', { replace: true, state: { statusCode: 404 } });
           }
           setFiltros(response);
           setTarifas(response);
