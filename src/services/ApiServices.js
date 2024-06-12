@@ -540,12 +540,12 @@ export const fetchPrestamosOffers = async () => {
     }
 };
 
-/* export const getCategoriaCuponesOffer = async (categoria) => {
+export const fetchTarifaPrestamo = async (id) => {
     try {
-        const response = await axios.get(`${apiUrl}/getDetailOffer${offerLooking.replaceAll('-', '')}/${idPlan}`)
+        const response = await axios.get(`${apiUrl}/getTarifaPrestamo/${id}`);
         return response.data;
     } catch (error) {
         console.error("Error al procesar la solicitud", error);
         throw error;
     }
-}; */
+};

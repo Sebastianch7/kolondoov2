@@ -34,6 +34,7 @@ import LeadVehiculo from '../Pages/Es/LeadVehiculo';
 import ComparadorCupones from '../Pages/Es/ComparadorCupones';
 import ZonaTransaccional from '../Pages/Co/zonaTransaccional';
 import ComparadorPrestamos from '../Pages/Es/ComparadorPrestamos';
+import HomeCo from '../Pages/Co/HomeCo';
 
 
 function RoutesApp() {
@@ -52,6 +53,7 @@ function RoutesApp() {
                 <Route path="/es" element={<Home />} />
                 <Route path="/en" element={<Home />} />
                 <Route path="/mx" element={<HomeMx />} />
+                <Route path="/co" element={<HomeCo />} />
 
                 <Route path="/es/internet-telefonia" element={<RaizTelefonia />} />
                 <Route path="/es/energia" element={<RaizEnergia />} />
@@ -130,8 +132,6 @@ function RoutesApp() {
                 <Route path="/es/cupones/categoria/:idCategoria" element={<ComparadorCupones />} />
                 <Route path="/es/cupones/categoria" element={<Navigate to="/es/cupones" />} />
 
-                <Route path="/co/cupones" element={<ComparadorCupones />} />
-
                 {/* MX */}
 
                 <Route path="/mx/planes-celulares-telefonia-internet-y-tv/comparador-planes-celular" element={<ComparadorPlanesCelular />} />
@@ -143,9 +143,13 @@ function RoutesApp() {
                 <Route path="/mx/servicios/vehiculos" element={<ComparadorVehiculos />} />
                 <Route path="/mx/servicios/vehiculos/:id" element={<LeadVehiculo />} />
 
-                <Route path="/co/rediccion-banco" element={<ZonaTransaccional />} />
 
-                <Route path="/co/comparador-prestamos" element={<ComparadorPrestamos />} />
+                {/* CO */}
+                <Route path="/co/cupones" element={<ComparadorCupones />} />
+
+
+                <Route path="/co/rediccion-banco/:id" element={<ZonaTransaccional />} />
+                <Route path="/co/finanzas/banca" element={<ComparadorPrestamos />} />
 
             </Routes>
         </BrowserRouter>

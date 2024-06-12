@@ -1,9 +1,11 @@
 import React from 'react';
 import { Card, Row, Col } from 'react-bootstrap';
 import ItemTarifaDescripcion from '../Items/ItemTarifaDescripcion';
+import { Link } from 'react-router-dom';
 
 function TarjetaPrestamo({ data }) {
-    const { selector1, destacada, titulo, logo, valorMaximo, parrilla_1, parrilla_2, parrilla_3, parrilla_4 } = data;
+    console.log(data)
+    const { id, selector1, destacada, titulo, logo, valorMaximo, parrilla_1, parrilla_2, parrilla_3, parrilla_4 } = data;
     return (
         <Col xs={12} md={4} className='mb-3'>
             <Card key={''} className={`m-1 mx-md-3 tarjeta-prestamo tarjeta text-center ${destacada === 1 && 'prioridad'}`}>
@@ -46,7 +48,7 @@ function TarjetaPrestamo({ data }) {
                             <path d="M10.97 4.97a.75.75 0 0 1 1.071 1.05l-3.992 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425z" />
                         </svg><span className='mx-2'>{parrilla_4}</span></div>
                     </div>}
-                    <a href="http://" className='btn-large btn btn-primary mt-4' target="_blank" rel="noopener noreferrer">¡Solicítalo ahora!</a>
+                    <Link to={`/co/rediccion-banco/${id}`} className='btn-large btn btn-primary mt-4' target="_blank" rel="noopener noreferrer">¡Solicítalo ahora!</Link>
                 </Card.Body>
             </Card>
         </Col>
