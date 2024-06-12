@@ -19,6 +19,7 @@ function ContenedorCupones(idCategoria = null) {
   const [marcasArray, setMarcasArray] = useState([])
   const [tipoArray, setTipoArray] = useState([])
   const locations = useLocation().search;
+  const [filterDestacada, setFilterDestacada] = useState(false);
 
   let navigate = useNavigate();
 
@@ -89,6 +90,7 @@ function ContenedorCupones(idCategoria = null) {
   const cleanFilter = () => {
     setFilterTypeCupon([]);
     setFilterBrand([]);
+    setFilterDestacada(false)
     setFiltros(Tarifas);
   };
 
@@ -169,8 +171,14 @@ function ContenedorCupones(idCategoria = null) {
     const resultado = Tarifas
       .filter((item) => filterByBrand(item))
       .filter((item) => filterByTypeCupon(item))
+      .filter((item) => filterByDestacada(item))
     setFiltros(resultado);
-  }, [filterBrand, filterTypeCupon]);
+  }, [filterBrand, filterTypeCupon, filterDestacada]);
+
+  // Función para filtrar por destacada
+  const filterByDestacada = (item) => {
+    return filterDestacada !== false ? item.destacada === 1 : true;
+  };
 
   function filterByBrand(item) {
     if (filterBrand.length > 0) {
@@ -249,10 +257,10 @@ function ContenedorCupones(idCategoria = null) {
                               brand.map((item, index) => (
                                 <Col xs={4} md={6} key={item.id}>
                                   <button
-                                    className={`filtro-producto-logo my-2 ${filterBrand.includes(item.id) ? 'logoFocus' : ''}`}
+                                    className={`d-flex align-items-center filtro-producto-logo my-2 ${filterBrand.includes(item.id) ? 'logoFocus' : ''}`}
                                     value={item.nombre}
                                     onClick={() => setFilterBrandMulti(item.id)}>
-                                    {item.nombre}
+                                    <img src={item.logo} alt={item.nombre} />
                                   </button>
                                 </Col>
                               ))}
@@ -275,19 +283,19 @@ function ContenedorCupones(idCategoria = null) {
                               ))}
                           </Row>
                           <Row>
-                            {/* <div className='my-2'>
-                              <b>{'5G'}:</b>
+                            <div className='mt-4'>
+                              <b>{'Destacada'}:</b>
                               <div className='my-2'>
                                 <Form.Switch
                                   className='input-check-dark mt-2 text-left'
                                   type='switch'
-                                  checked={filterTypeCupon}
-                                  onChange={() => setFilterTypeCupon(!filterTypeCupon)}
-                                  label={'Tipo de descuento:'}
+                                  checked={filterDestacada}
+                                  onChange={() => setFilterDestacada(!filterDestacada)}
+                                  label={'Oferta destacada:'}
                                   reverse
                                 />
                               </div>
-                            </div> */}
+                            </div>
                           </Row>
                         </>
                       )

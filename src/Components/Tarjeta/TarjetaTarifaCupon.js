@@ -55,8 +55,6 @@ function TarjetaTarifaCupon({ data, brands, tipos }) {
         TiempoCupon
     } = data;
 
-    console.log(data)
-
     const handleShow = (e) => {
         e.preventDefault();
         let url = `/${lang}/cupones/`;
@@ -74,20 +72,6 @@ function TarjetaTarifaCupon({ data, brands, tipos }) {
         }
         console.log(brands, tipos)
         window.open(`/${lang}/cupones/${dataId}?marcas=${brands}&tipo=1`, '_blank');
-        //window.location.href = `${data.landing_link}?esVuskoo=1&prueba=true`; 
-        /* setModalData({
-            id,
-            titulo,
-            descripcion,
-            nombre_comercio,
-            pais,
-            fecha_expiracion,
-            cupon,
-            brands,
-            tipos,
-            landing_link
-        });
-        setShowModal(true); */
     };
 
     return (
@@ -118,7 +102,7 @@ function TarjetaTarifaCupon({ data, brands, tipos }) {
                     <Row>
                         <Col md={9} className={classNames('text-left', { 'order-2': isMobile, 'color-primary': destacada === 1 })}>
                             <p className='font-bold'>{descripcion}</p>
-                            <ItemTarifaDescripcion destacada={destacada} text={`Expira en ${dias_restantes} días`} />
+                            {TiempoCupon != 1 && <ItemTarifaDescripcion destacada={destacada} text={`Expira en ${dias_restantes} días`} />}
                             <ItemTarifaDescripcion destacada={destacada} text={`${categoria_nombre}`} />
                         </Col>
                         {!isMobile &&
@@ -139,10 +123,10 @@ function TarjetaTarifaCupon({ data, brands, tipos }) {
                                 <li className='mx-3'>{nombre_comercio}</li>
                                 <li><b>Descripción:</b></li>
                                 <li className='mx-3'>{descripcion}</li>
-                                <li><b>Oferta válida para:</b></li>
-                                <li className='mx-3'>{pais}</li>
-                                <li><b>Fecha de expiración de la oferta:</b></li>
-                                <li className='mx-3'>{fecha_expiracion}</li>
+                                {/* <li><b>Oferta válida para:</b></li>
+                                <li className='mx-3'>{pais}</li> */}
+                                {TiempoCupon != 1 && <li><b>Fecha de expiración de la oferta:</b></li>}
+                                {TiempoCupon != 1 && <li className='mx-3'>{fecha_expiracion}</li>}
                             </ul>
                             <div className='float-end py-0'>
                                 <ItemTarifaDescripcion destacada={destacada} text={nombre_tarifa} />
