@@ -18,7 +18,6 @@ import ModalCupon from '../modal/ModalCupon';
 
 function TarjetaTarifaCupon({ data, brands, tipos }) {
 
-    console.log(data)
     const [filterBrands, setFilterBrands] = useState([])
     const [filterTipos, setFilterTipos] = useState([])
 
@@ -51,8 +50,12 @@ function TarjetaTarifaCupon({ data, brands, tipos }) {
         descuento,
         codigo,
         cupon,
-        categoria_nombre
+        categoria_nombre,
+        nombre_comercio,
+        TiempoCupon
     } = data;
+
+    console.log(data)
 
     const handleShow = (e) => {
         e.preventDefault();
@@ -97,7 +100,8 @@ function TarjetaTarifaCupon({ data, brands, tipos }) {
                             <Col xs={12} >
                                 <div className='tarjeta-tarifa-item-title border-0 justify-content-between'>
                                     <Row className='col-12'>
-                                        <Col xs={12} md={12}><img src={logo} alt={logo} /></Col>
+                                        <Col xs={12} md={7}><img src={logo} alt={logo} /></Col>
+                                        <Col xs={12} md={5} className='descuento'>{descuento}</Col>
                                     </Row>
                                 </div>
                             </Col>
@@ -107,22 +111,19 @@ function TarjetaTarifaCupon({ data, brands, tipos }) {
                         <Col xs={12} className='mx-0 p-0'>
                             <div className='tarjeta-tarifa-item-title border-0 justify-content-between mx-0 px-0'>
                                 <Row className='col-12 mx-0 p-0'>
-                                    <Col xs={12} md={7} className='font-bold mx-0'>{nombre_tarifa}</Col>
-                                    <Col xs={12} md={5} className='descuento m-0'>{descuento}</Col>
                                 </Row>
                             </div>
                         </Col>
                     </Row>
                     <Row>
-                        <Col md={10} className={classNames('text-left', { 'order-2': isMobile, 'color-primary': destacada === 1 })}>
+                        <Col md={9} className={classNames('text-left', { 'order-2': isMobile, 'color-primary': destacada === 1 })}>
                             <p className='font-bold'>{descripcion}</p>
-                            <ItemTarifaDescripcion destacada={destacada} text={`Oferta válida para: ${pais}`} />
                             <ItemTarifaDescripcion destacada={destacada} text={`Expira en ${dias_restantes} días`} />
                             <ItemTarifaDescripcion destacada={destacada} text={`${categoria_nombre}`} />
                         </Col>
                         {!isMobile &&
-                            <Col md={2}>
-                                <Button className='btn btn-primary p-3' onClick={handleShow} id={data.id}>
+                            <Col md={3}>
+                                <Button className='btn w-100 btn-primary p-3' onClick={handleShow} id={data.id}>
                                     Obtener {cupon}
                                 </Button>
                             </Col>}
@@ -135,7 +136,7 @@ function TarjetaTarifaCupon({ data, brands, tipos }) {
                         <Accordion.Body className='py-0 mb-0'>
                             <ul className='mb-0'>
                                 <li><b>Tienda:</b></li>
-                                <li className='mx-3'>{nombre}</li>
+                                <li className='mx-3'>{nombre_comercio}</li>
                                 <li><b>Descripción:</b></li>
                                 <li className='mx-3'>{descripcion}</li>
                                 <li><b>Oferta válida para:</b></li>
@@ -144,7 +145,7 @@ function TarjetaTarifaCupon({ data, brands, tipos }) {
                                 <li className='mx-3'>{fecha_expiracion}</li>
                             </ul>
                             <div className='float-end py-0'>
-                                {codigo != null && <ItemTarifaDescripcion destacada={destacada} text={`ID: ${codigo}`} />}
+                                <ItemTarifaDescripcion destacada={destacada} text={nombre_tarifa} />
                             </div>
                         </Accordion.Body>
                     </Accordion.Item>
