@@ -2,15 +2,16 @@ import axios from 'axios';
 
 const apiUrl = process.env.REACT_APP_API_SERVICES_URL;
 
-export const fetchFilterFibra = async () => {
+export const fetchFilterFibra = async (lang) => {
     try {
-        const response = await axios.get(`${apiUrl}/filterFibra`);
-        const { min_gb, min_precio, max_precio } = response.data[0];
+        const response = await axios.get(`${apiUrl}/filterFibra/${lang}`);
+        const { min_gb, min_precio, max_precio, moneda } = response.data[0];
         return {
             minCapacity: parseInt(min_gb) > 0 ? parseInt(min_gb) : 0,
             maxPrice: parseInt(max_precio),
             minPrice: parseInt(min_precio) > 0 ? parseInt(min_precio) : 0,
             rangePrice: [parseInt(min_precio) > 0 ? parseInt(min_precio) : 0, parseInt(max_precio)],
+            moneda
         };
     } catch (error) {
         console.error("Error al procesar la solicitud", error);
@@ -18,9 +19,9 @@ export const fetchFilterFibra = async () => {
     }
 };
 
-export const fetchFilterMovil = async () => {
+export const fetchFilterMovil = async (lang) => {
     try {
-        const response = await axios.get(`${apiUrl}/filterMovil`);
+        const response = await axios.get(`${apiUrl}/filterMovil/${lang}`);
         return response.data[0];
     } catch (error) {
         console.error("Error al procesar la solicitud", error);
@@ -28,9 +29,9 @@ export const fetchFilterMovil = async () => {
     }
 };
 
-export const fetchFilterMovilFibra = async () => {
+export const fetchFilterMovilFibra = async (lang) => {
     try {
-        const response = await axios.get(`${apiUrl}/filterMovilFibra`);
+        const response = await axios.get(`${apiUrl}/filterMovilFibra/${lang}`);
         return response.data[0];
     } catch (error) {
         console.error("Error al procesar la solicitud", error);
@@ -38,9 +39,9 @@ export const fetchFilterMovilFibra = async () => {
     }
 };
 
-export const fetchFilterMovilFibraTv = async () => {
+export const fetchFilterMovilFibraTv = async (lang) => {
     try {
-        const response = await axios.get(`${apiUrl}/filterMovilFibraTv`);
+        const response = await axios.get(`${apiUrl}/filterMovilFibraTv/${lang}`);
         return response.data[0];
     } catch (error) {
         console.error("Error al procesar la solicitud", error);
@@ -48,9 +49,9 @@ export const fetchFilterMovilFibraTv = async () => {
     }
 };
 
-export const fetchOperadorasFibra = async () => {
+export const fetchOperadorasFibra = async (lang) => {
     try {
-        const response = await axios.get(`${apiUrl}/getOperadorasFibra`);
+        const response = await axios.get(`${apiUrl}/getOperadorasFibra/${lang}`);
         return response.data;
     } catch (error) {
         console.error("Error al procesar la solicitud", error);
@@ -59,9 +60,9 @@ export const fetchOperadorasFibra = async () => {
 };
 
 
-export const fetchOperadoras = async () => {
+export const fetchOperadoras = async (lang) => {
     try {
-        const response = await axios.get(`${apiUrl}/getOperadoras`);
+        const response = await axios.get(`${apiUrl}/getOperadoras/${lang}`);
         return response.data;
     } catch (error) {
         console.error("Error al procesar la solicitud", error);
@@ -69,9 +70,9 @@ export const fetchOperadoras = async () => {
     }
 };
 
-export const fetchOperadorasFibraMovil = async () => {
+export const fetchOperadorasFibraMovil = async (lang) => {
     try {
-        const response = await axios.get(`${apiUrl}/getOperadorasFibraMovil`);
+        const response = await axios.get(`${apiUrl}/getOperadorasFibraMovil/${lang}`);
         return response.data;
     } catch (error) {
         console.error("Error al procesar la solicitud", error);
@@ -79,9 +80,9 @@ export const fetchOperadorasFibraMovil = async () => {
     }
 };
 
-export const fetchOperadorasFibraMovilTv = async () => {
+export const fetchOperadorasFibraMovilTv = async (lang) => {
     try {
-        const response = await axios.get(`${apiUrl}/getOperadorasFibraMovilTv`);
+        const response = await axios.get(`${apiUrl}/getOperadorasFibraMovilTv/${lang}`);
         return response.data;
     } catch (error) {
         console.error("Error al procesar la solicitud", error);
@@ -89,9 +90,9 @@ export const fetchOperadorasFibraMovilTv = async () => {
     }
 };
 
-export const fetchTarifasMovil = async () => {
+export const fetchTarifasMovil = async (lang) => {
     try {
-        const response = await axios.get(`${apiUrl}/getTarifasMovil`);
+        const response = await axios.get(`${apiUrl}/getTarifasMovil/${lang}`);
         return response.data;
     } catch (error) {
         console.error("Error al procesar la solicitud", error);
@@ -99,9 +100,9 @@ export const fetchTarifasMovil = async () => {
     }
 };
 
-export const fetchComercializadorasGas = async () => {
+export const fetchComercializadorasGas = async (lang) => {
     try {
-        const response = await axios.get(`${apiUrl}/getComercializadorasGas`);
+        const response = await axios.get(`${apiUrl}/getComercializadorasGas/${lang}`);
         return response.data;
     } catch (error) {
         console.error("Error al procesar la solicitud", error);
@@ -109,9 +110,9 @@ export const fetchComercializadorasGas = async () => {
     }
 };
 
-export const fetchComercializadoras = async () => {
+export const fetchComercializadoras = async (lang) => {
     try {
-        const response = await axios.get(`${apiUrl}/getComercializadorasLuz`);
+        const response = await axios.get(`${apiUrl}/getComercializadorasLuz/${lang}`);
         return response.data;
     } catch (error) {
         console.error("Error al procesar la solicitud", error);
@@ -119,9 +120,9 @@ export const fetchComercializadoras = async () => {
     }
 };
 
-export const fetchComercializadorasLuzGas = async () => {
+export const fetchComercializadorasLuzGas = async (lang) => {
     try {
-        const response = await axios.get(`${apiUrl}/getComercializadorasLuzGas`);
+        const response = await axios.get(`${apiUrl}/getComercializadorasLuzGas/${lang}`);
         return response.data;
     } catch (error) {
         console.error("Error al procesar la solicitud", error);
@@ -129,9 +130,9 @@ export const fetchComercializadorasLuzGas = async () => {
     }
 };
 
-export const fetchTarifasGas = async () => {
+export const fetchTarifasGas = async (lang) => {
     try {
-        const response = await axios.get(`${apiUrl}/getTarifasGas`);
+        const response = await axios.get(`${apiUrl}/getTarifasGas/${lang}`);
         return response.data;
     } catch (error) {
         console.error("Error al procesar la solicitud", error);
@@ -139,9 +140,9 @@ export const fetchTarifasGas = async () => {
     }
 };
 
-export const fetchTarifasFibra = async () => {
+export const fetchTarifasFibra = async (lang) => {
     try {
-        const response = await axios.get(`${apiUrl}/getTarifasFibra`);
+        const response = await axios.get(`${apiUrl}/getTarifasFibra/${lang}`);
         return response.data;
     } catch (error) {
         console.error("Error al procesar la solicitud", error);
@@ -149,9 +150,9 @@ export const fetchTarifasFibra = async () => {
     }
 };
 
-export const fetchTarifasMovilFibra = async () => {
+export const fetchTarifasMovilFibra = async (lang) => {
     try {
-        const response = await axios.get(`${apiUrl}/getTarifasFibraMovil`);
+        const response = await axios.get(`${apiUrl}/getTarifasFibraMovil/${lang}`);
         return response.data;
     } catch (error) {
         console.error("Error al procesar la solicitud", error);
@@ -159,9 +160,9 @@ export const fetchTarifasMovilFibra = async () => {
     }
 };
 
-export const fetchTarifasMovilFibraTv = async () => {
+export const fetchTarifasMovilFibraTv = async (lang) => {
     try {
-        const response = await axios.get(`${apiUrl}/getTarifasFibraMovilTv`);
+        const response = await axios.get(`${apiUrl}/getTarifasFibraMovilTv/${lang}`);
         return response.data;
     } catch (error) {
         console.error("Error al procesar la solicitud", error);
@@ -170,9 +171,9 @@ export const fetchTarifasMovilFibraTv = async () => {
 };
 
 
-export const fetchTarifasLuz = async () => {
+export const fetchTarifasLuz = async (lang) => {
     try {
-        const response = await axios.get(`${apiUrl}/getTarifasLuz`);
+        const response = await axios.get(`${apiUrl}/getTarifasLuz/${lang}`);
         return response.data;
     } catch (error) {
         console.error("Error al procesar la solicitud", error);
@@ -180,9 +181,9 @@ export const fetchTarifasLuz = async () => {
     }
 };
 
-export const fetchTarifasLuzGas = async () => {
+export const fetchTarifasLuzGas = async (lang) => {
     try {
-        const response = await axios.get(`${apiUrl}/getTarifasGasLuz`);
+        const response = await axios.get(`${apiUrl}/getTarifasGasLuz/${lang}`);
         return response.data;
     } catch (error) {
         console.error("Error al procesar la solicitud", error);
@@ -190,9 +191,9 @@ export const fetchTarifasLuzGas = async () => {
     }
 };
 
-export const fetchStreamingOffers = async () => {
+export const fetchStreamingOffers = async (lang) => {
     try {
-        const response = await axios.get(`${apiUrl}/getTarifasStreaming`);
+        const response = await axios.get(`${apiUrl}/getTarifasStreaming/${lang}`);
         return response.data;
     } catch (error) {
         console.error("Error al procesar la solicitud", error);
@@ -221,9 +222,9 @@ export const getBlog = async (categoria) => {
     }
 };
 
-export const getBlogHome = async () => {
+export const getBlogHome = async (lang) => {
     try {
-        const response = await axios.get(`${apiUrl}/getBlogHome`)
+        const response = await axios.get(`${apiUrl}/getBlogHome/${lang}`)
         return response.data;
     } catch (error) {
         console.error("Error al procesar la solicitud", error);
@@ -242,15 +243,15 @@ export const getMenu = async (lang) => {
     }
 };
 
-export const getBlogDestacados = async () => {
+/* export const getBlogDestacados = async (lang) => {
     try {
-        const response = await axios.get(`${apiUrl}/getBlogDestacados`)
+        const response = await axios.get(`${apiUrl}/getBlogDestacados/${lang}`)
         return response.data;
     } catch (error) {
         console.error("Error al procesar la solicitud", error);
         throw error;
     }
-};
+}; */
 
 export const getBlogById = async (categoria, id) => {
     try {
@@ -343,9 +344,9 @@ export const getDataLocation = async () => {
     }
 };
 
-export const getMenuBlog = async () => {
+export const getMenuBlog = async (lang) => {
     try {
-        const response = await axios.get(`${apiUrl}/getMenuBlog`);
+        const response = await axios.get(`${apiUrl}/getMenuBlog/${lang}`);
         const data = response.data
         return data;
     } catch (error) {
@@ -375,7 +376,7 @@ export const postLead = async (idOferta, phone, landing, urlOffer, company) => {
     }
 };
 
-export const postLeadVehiculo = async () => {
+export const postLeadVehiculo = async (lang) => {
     try {
         //const response = await axios.post(`${apiUrl}/LeadRegisterVehiculo`, { idOferta, phone, landing, urlOffer, company });
         //return response;
@@ -407,15 +408,16 @@ export const postFormNews = async (email) => {
 };
 
 /* MX */
-export const fetchFilterPlanCelular = async () => {
+export const fetchFilterPlanCelular = async (lang) => {
     try {
-        const response = await axios.get(`${apiUrl}/filterPlanCelular`);
-        const { min_gb, min_precio, max_precio } = response.data[0];
+        const response = await axios.get(`${apiUrl}/filterPlanCelular/${lang}`);
+        const { min_gb, min_precio, max_precio, moneda } = response.data[0];
         return {
             minCapacity: parseInt(min_gb) > 0 ? parseInt(min_gb) : 0,
             maxPrice: parseInt(max_precio),
             minPrice: parseInt(min_precio) > 0 ? parseInt(min_precio) : 0,
             rangePrice: [parseInt(min_precio) > 0 ? parseInt(min_precio) : 0, parseInt(max_precio)],
+            moneda
         };
     } catch (error) {
         console.error("Error al procesar la solicitud", error);
@@ -423,9 +425,9 @@ export const fetchFilterPlanCelular = async () => {
     }
 };
 
-export const fetchOperadorasPlanCelular = async () => {
+export const fetchOperadorasPlanCelular = async (lang) => {
     try {
-        const response = await axios.get(`${apiUrl}/getOperadorasPlanCelular`);
+        const response = await axios.get(`${apiUrl}/getOperadorasPlanCelular/${lang}`);
         return response.data;
     } catch (error) {
         console.error("Error al procesar la solicitud", error);
@@ -433,9 +435,9 @@ export const fetchOperadorasPlanCelular = async () => {
     }
 };
 
-export const fetchTarifasPlanCelular = async () => {
+export const fetchTarifasPlanCelular = async (lang) => {
     try {
-        const response = await axios.get(`${apiUrl}/getTarifasPlanCelular`);
+        const response = await axios.get(`${apiUrl}/getTarifasPlanCelular/${lang}`);
         return response.data;
     } catch (error) {
         console.error("Error al procesar la solicitud", error);
@@ -443,9 +445,9 @@ export const fetchTarifasPlanCelular = async () => {
     }
 };
 
-export const fetchFilterVehiculos = async () => {
+export const fetchFilterVehiculos = async (lang) => {
     try {
-        const response = await axios.get(`${apiUrl}/filterVehiculos`);
+        const response = await axios.get(`${apiUrl}/filterVehiculos/${lang}`);
         const { min_precio, max_precio } = response.data[0];
         return {
             maxPrice: parseInt(max_precio),
@@ -457,9 +459,9 @@ export const fetchFilterVehiculos = async () => {
     }
 };
 
-export const fetchFilterVehiculosChassis = async () => {
+export const fetchFilterVehiculosChassis = async (lang) => {
     try {
-        const response = await axios.get(`${apiUrl}/getValuesFilterVehiculosChassis`);
+        const response = await axios.get(`${apiUrl}/getValuesFilterVehiculosChassis/${lang}`);
         return response.data;
     } catch (error) {
         console.error("Error al procesar la solicitud", error);
@@ -467,9 +469,9 @@ export const fetchFilterVehiculosChassis = async () => {
     }
 };
 
-export const fetchMarcasVehiculos = async () => {
+export const fetchMarcasVehiculos = async (lang) => {
     try {
-        const response = await axios.get(`${apiUrl}/getMarcasVehiculos`);
+        const response = await axios.get(`${apiUrl}/getMarcasVehiculos/${lang}`);
         return response.data;
     } catch (error) {
         console.error("Error al procesar la solicitud", error);
@@ -477,9 +479,9 @@ export const fetchMarcasVehiculos = async () => {
     }
 };
 
-export const fetchTarifasVehiculos = async () => {
+export const fetchTarifasVehiculos = async (lang) => {
     try {
-        const response = await axios.get(`${apiUrl}/getTarifasVehiculos`);
+        const response = await axios.get(`${apiUrl}/getTarifasVehiculos/${lang}`);
         return response.data;
     } catch (error) {
         console.error("Error al procesar la solicitud", error);
@@ -530,9 +532,9 @@ export const fetchTarifaCupon = async (id) => {
     }
 };
 
-export const fetchPrestamosOffers = async () => {
+export const fetchPrestamosOffers = async (lang) => {
     try {
-        const response = await axios.get(`${apiUrl}/getTarifasPrestamos`);
+        const response = await axios.get(`${apiUrl}/getTarifasPrestamos/${lang}`);
         return response.data;
     } catch (error) {
         console.error("Error al procesar la solicitud", error);

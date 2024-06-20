@@ -63,13 +63,6 @@ function RoutesApp() {
                 <Route path="/es/comparadores/:marca" element={<ComparadoresMarca />} />
 
 
-                <Route path="/es/internet-telefonia/comparador-movil" element={<ComparadorMovil />} />
-                <Route path="/es/internet-telefonia/comparador-movil/:id" element={<Lead />} />
-                <Route path="/es/internet-telefonia/comparador-movil/thank/:id" element={<ThankPage />} />
-
-                <Route path="/es/internet-telefonia/comparador-fibra" element={<ComparadorFibra />} />
-                <Route path="/es/internet-telefonia/comparador-fibra/:id" element={<Lead />} />
-                <Route path="/es/internet-telefonia/comparador-fibra/thank/:id" element={<ThankPage />} />
 
                 <Route path="/es/energia/comparador-tarifas-luz" element={<ComparadorLuz />} />
                 <Route path="/es/energia/comparador-tarifas-luz/:id" element={<Lead />} />
@@ -82,6 +75,14 @@ function RoutesApp() {
                 <Route path="/es/energia/comparador-tarifas-luz-y-gas" element={<ComparadorLuzGas />} />
                 <Route path="/es/energia/comparador-tarifas-luz-y-gas/:id" element={<Lead />} />
                 <Route path="/es/energia/comparador-tarifas-luz-y-gas/thank/:id" element={<ThankPage />} />
+
+                <Route path="/es/internet-telefonia/comparador-movil" element={<ComparadorMovil />} />
+                <Route path="/es/internet-telefonia/comparador-movil/:id" element={<Lead />} />
+                <Route path="/es/internet-telefonia/comparador-movil/thank/:id" element={<ThankPage />} />
+
+                <Route path="/es/internet-telefonia/comparador-fibra" element={<ComparadorFibra />} />
+                <Route path="/es/internet-telefonia/comparador-fibra/:id" element={<Lead />} />
+                <Route path="/es/internet-telefonia/comparador-fibra/thank/:id" element={<ThankPage />} />
 
                 <Route path="/es/internet-telefonia/comparador-tarifas-fibra-y-movil" element={<ComparadorFibraMovil />} />
                 <Route path="/es/internet-telefonia/comparador-tarifas-fibra-y-movil/:id" element={<Lead />} />
@@ -97,6 +98,7 @@ function RoutesApp() {
 
                 {/* <Route path="/es/television-streaming/comparador-de-television" element={<ComparadorStreaming />} /> */}
                 <Route path="/es/television-streaming/comparador-plataformas-streaming" element={<ComparadorStreaming />} />
+                
 
                 <Route path="/es/quienes-somos" element={<QuienesSomos />} />
 
@@ -131,25 +133,41 @@ function RoutesApp() {
                 <Route path="/es/cupones/:id" element={<ComparadorCupones />} />
                 <Route path="/es/cupones/categoria/:idCategoria" element={<ComparadorCupones />} />
                 <Route path="/es/cupones/categoria" element={<Navigate to="/es/cupones" />} />
+                
+                {/* cupones */}
+                <Route path="/:lang/cupones" element={<ComparadorCupones />} />
 
                 {/* MX */}
-
                 <Route path="/mx/planes-celulares-telefonia-internet-y-tv/comparador-planes-celular" element={<ComparadorPlanesCelular />} />
                 <Route path="/mx/planes-celulares-telefonia-internet-y-tv/comparador-planes-celular/:id" element={<Lead />} />
                 <Route path="/mx/planes-celulares-telefonia-internet-y-tv/comparador-planes-telefonia-internet" element={<ComparadorFibraMovil />} />
                 <Route path="/mx/planes-celulares-telefonia-internet-y-tv/comparador-planes-telefonia-internet-tv" element={<ComparadorFibraMovil />} />
                 <Route path="/mx/planes-celulares-telefonia-internet-y-tv/comparador-planes-internet-tv" element={<ComparadorFibraMovil />} />
-
                 <Route path="/mx/servicios/vehiculos" element={<ComparadorVehiculos />} />
                 <Route path="/mx/servicios/vehiculos/:id" element={<LeadVehiculo />} />
 
 
                 {/* CO */}
-                <Route path="/co/cupones" element={<ComparadorCupones />} />
-
-
                 <Route path="/co/rediccion-banco/:id" element={<ZonaTransaccional />} />
                 <Route path="/co/finanzas/banca" element={<ComparadorPrestamos />} />
+                
+                <Route path="/co/streaming/comparador-plataformas-streaming" element={<ComparadorStreaming />} />
+
+                <Route path="/co/internet-movil/comparador-movil" element={<ComparadorMovil />} />
+                <Route path="/co/internet-movil/comparador-movil/:id" element={<Lead />} />
+                <Route path="/co/internet-movil/comparador-movil/thank/:id" element={<ThankPage />} />
+                
+                <Route path="/co/internet-movil/comparador-fibra" element={<ComparadorFibra />} />
+                <Route path="/co/internet-movil/comparador-fibra/:id" element={<Lead />} />
+                <Route path="/co/internet-movil/comparador-fibra/thank/:id" element={<ThankPage />} />
+
+                <Route path="/co/internet-movil/comparador-tarifas-fibra-y-movil" element={<ComparadorFibraMovil />} />
+                <Route path="/co/internet-movil/comparador-tarifas-fibra-y-movil/:id" element={<Lead />} />
+                <Route path="/co/internet-movil/comparador-tarifas-fibra-y-movil/thank/:id" element={<ThankPage />} />
+
+                <Route path="/co/internet-movil/comparador-fibra-movil-tv" element={<ComparadorFibraMovilTv />} />
+                <Route path="/co/internet-movil/comparador-fibra-movil-tv/:id" element={<Lead />} />
+                <Route path="/co/internet-movil/comparador-fibra-movil-tv//thank/:id" element={<ThankPage />} />
 
             </Routes>
         </BrowserRouter>

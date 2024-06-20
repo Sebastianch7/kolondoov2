@@ -9,6 +9,7 @@ import TarjetaTarifa from '../Tarjeta/TarjetaTarifa';
 import NotInfoItem from '../Utils/NotInfoItem';
 import Load from '../Utils/Load';
 import { fetchFilterMovilFibra, fetchOperadorasFibraMovil, fetchTarifasMovilFibra } from '../../services/ApiServices'
+import { useLocation } from 'react-router-dom';
 
 function ContenedorProductosMovilFibra() {
   // Estado para filtros de precio y capacidad
@@ -16,6 +17,7 @@ function ContenedorProductosMovilFibra() {
   const [maxPrice, setMaxPrice] = useState(1000);
   const [minCapacity, setMinCapacity] = useState(0);
   const [maxCapacity, setMaxCapacity] = useState(1000);
+  const [typeMoneda, setTypeMoneda] = useState(null);
 
   // Estados para el estado de carga de filtros e información
   const [isLoadFilter, setIsLoadFilter] = useState(false);
@@ -42,7 +44,12 @@ function ContenedorProductosMovilFibra() {
 
   // Estado para el modal de filtros
   const [show, setShow] = useState(false);
+  const [lang, setLang] = useState(null)
+  const location = useLocation();
 
+  useEffect(() => {
+    setLang(location.pathname.split('/')[1])
+  }, [location])
   // Función para limpiar los filtros
   const cleanFilter = () => {
     setFilterLlamadas(false);
@@ -72,8 +79,8 @@ function ContenedorProductosMovilFibra() {
     setIsLoadFilter(false);
     const fetchData = async () => {
       try {
-        const response = await fetchFilterMovilFibra();
-        const { min_gb, max_gb, min_precio, max_precio } = response;
+        const response = await fetchFilterMovilFibra(lang);
+        const { min_gb, max_gb, min_precio, max_precio, moneda } = response;
 
         setMinCapacity(parseInt(min_gb) > 0 ? parseInt(min_gb) : 0);
         setMaxCapacity(parseInt(max_gb));
@@ -82,7 +89,7 @@ function ContenedorProductosMovilFibra() {
         setMaxPrice(parseInt(max_precio));
         setMinPrice(parseInt(min_precio) > 0 ? parseInt(min_precio) : 0);
         setRangePrice([parseInt(min_precio) > 0 ? parseInt(min_precio) : 0, parseInt(max_precio)]);
-
+        setTypeMoneda(moneda)
         setIsLoadFilter(true);
       } catch (error) {
         console.error("Error al obtener los datos iniciales de filtros:", error);
@@ -90,13 +97,13 @@ function ContenedorProductosMovilFibra() {
     };
 
     fetchData();
-  }, []);
+  }, [lang]);
 
   // Función para obtener las marcas de operadoras
   useEffect(() => {
     const fetchBrands = async () => {
       try {
-        const response = await fetchOperadorasFibraMovil();
+        const response = await fetchOperadorasFibraMovil(lang);
         setBrand(response);
       } catch (error) {
         console.error("Error al obtener las marcas de operadoras:", error);
@@ -104,14 +111,14 @@ function ContenedorProductosMovilFibra() {
     };
 
     fetchBrands();
-  }, []);
+  }, [lang]);
 
   // Función para obtener las tarifas de móvil
   useEffect(() => {
     setIsLoadInformation(true);
     const fetchTariffs = async () => {
       try {
-        const response = await fetchTarifasMovilFibra()
+        const response = await fetchTarifasMovilFibra(lang)
         setFiltros(response);
         setTarifas(response);
         setIsLoadInformation(false);
@@ -121,7 +128,7 @@ function ContenedorProductosMovilFibra() {
     };
 
     fetchTariffs();
-  }, [brand]);
+  }, [brand, lang]);
 
   function setFilterBrandMulti(value) {
     if (!filterBrand?.includes(value)) {
@@ -208,7 +215,7 @@ function ContenedorProductosMovilFibra() {
       <section>
         <Container>
           <Row className='justify-content-around'>
-            <Col  xs={12} md={12} xl={3}>
+            <Col xs={12} md={12} xl={3}>
               <Row>
                 {!isMobile ? <Col className='my-3 font-semibold' xs={6} md={5}>Filtrar por: </Col> : <Col className='my-2' xs={6} md={5}><Button variant="light" onClick={() => setShow(true)}>Filtrar por</Button></Col>}
                 <Col className='my-2 text-center' xs={6} md={7}>
@@ -241,7 +248,7 @@ function ContenedorProductosMovilFibra() {
                       <div className='mt-4'>
                         <b>{'Coste mensual'}:</b>
                         <div className='my-4'>
-                          {rangePrice[0]} {'€'} - {rangePrice[1]} {'€'}
+                        {typeMoneda}{rangePrice[0].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")} - {typeMoneda}{rangePrice[1].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}
                         </div>
                         <Slider
                           range
@@ -328,7 +335,7 @@ function ContenedorProductosMovilFibra() {
                             <div className='mt-4'>
                               <b>{'Coste mensual'}:</b>
                               <div className='my-4'>
-                                {rangePrice[0]} {'€'} - {rangePrice[1]} {'€'}
+                              {typeMoneda}{rangePrice[0].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")} - {typeMoneda}{rangePrice[1].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}
                               </div>
                               <Slider
                                 range

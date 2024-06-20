@@ -9,6 +9,11 @@ import { BsArrowRight } from "react-icons/bs";
 import ItemTarifaStreaming from '../Items/ItemTarifaStreaming';
 
 function TarjetaTarifaStreaming({ data }) {
+    const formatNumber = (amount) => {
+        const number = parseFloat(amount);
+        // Convertir a cadena, luego usar regex para agregar puntos como separadores de miles
+        return number.toFixed(2).replace(/\.00$/, '').replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+    };
     const { id,
         landing_link,
         permanencia,
@@ -62,17 +67,17 @@ function TarjetaTarifaStreaming({ data }) {
                             {recomendaciones}
                             {titulo_relativo_1 != '' &&
                                 <div className='my-2'>
-                                    <b>{titulo_relativo_1}</b> {precio_relativo_1}{moneda}
+                                    <b>{titulo_relativo_1}</b> {moneda}{formatNumber(precio_relativo_1)}
                                 </div>
                             }
                             {titulo_relativo_2 != '' &&
                                 <div className='my-2'>
-                                    <b>{titulo_relativo_2}</b> {precio_relativo_2}{moneda}
+                                    <b>{titulo_relativo_2}</b> {moneda}{formatNumber(precio_relativo_2)}
                                 </div>
                             }
                             {titulo_relativo_3 != '' &&
                                 <div className='my-2'>
-                                    <b>{titulo_relativo_3}</b> {precio_relativo_3}{moneda}
+                                    <b>{titulo_relativo_3}</b> {moneda}{formatNumber(precio_relativo_3)}
                                 </div>
                             }
                         </p>

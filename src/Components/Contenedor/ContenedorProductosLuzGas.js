@@ -11,6 +11,7 @@ import Load from '../Utils/Load';
 import TarjetaTarifaLeadEnergia from '../Tarjeta/TarjetaTarifaLeadEnergia'
 import { fetchComercializadorasLuzGas, fetchTarifasLuzGas } from '../../services/ApiServices'
 import TarjetaTarifaLeadEnergiaGas from '../Tarjeta/TarjetaTarifaLeadEnergiaGas';
+import { useLocation } from 'react-router-dom';
 
 
 function ContenedorProductosLuzGas() {
@@ -32,7 +33,12 @@ function ContenedorProductosLuzGas() {
 
   // Estado para el modal de filtros
   const [show, setShow] = useState(false);
+  const [lang, setLang] = useState(null)
+  const location = useLocation();
 
+  useEffect(() => {
+      setLang(location.pathname.split('/')[1])
+  }, [])
   // Función para limpiar los filtros
   const cleanFilter = () => {
     setFilterBrand([]);
@@ -47,7 +53,7 @@ function ContenedorProductosLuzGas() {
   useEffect(() => {
     const fetchBrands = async () => {
       try {
-        const response = await fetchComercializadorasLuzGas()
+        const response = await fetchComercializadorasLuzGas(lang)
         setBrand(response);
       } catch (error) {
         console.error("Error al obtener las marcas de operadoras:", error);
@@ -55,13 +61,13 @@ function ContenedorProductosLuzGas() {
     };
 
     fetchBrands();
-  }, []);
+  }, [lang]);
 
   useEffect(() => {
     const fetchTariffs = async () => {
       try {
         setIsLoadInformation(true);
-        const response = await fetchTarifasLuzGas()
+        const response = await fetchTarifasLuzGas(lang)
         setFiltros(response);
         setTarifas(response);
         setIsLoadInformation(false);
@@ -71,7 +77,7 @@ function ContenedorProductosLuzGas() {
     };
 
     fetchTariffs();
-  }, [brand]);
+  }, [brand, lang]);
 
   function setFilterBrandMulti(value) {
     if (!filterBrand?.includes(value)) {

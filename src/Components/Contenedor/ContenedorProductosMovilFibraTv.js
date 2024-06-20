@@ -9,6 +9,7 @@ import TarjetaTarifa from '../Tarjeta/TarjetaTarifa';
 import NotInfoItem from '../Utils/NotInfoItem';
 import Load from '../Utils/Load';
 import { fetchFilterMovilFibraTv, fetchOperadorasFibraMovilTv, fetchTarifasMovilFibraTv } from '../../services/ApiServices'
+import { useLocation } from 'react-router-dom';
 
 function ContenedorProductosMovilFibraTv() {
   // Estado para filtros de precio y capacidad
@@ -16,6 +17,7 @@ function ContenedorProductosMovilFibraTv() {
   const [maxPrice, setMaxPrice] = useState(1000);
   const [minCapacity, setMinCapacity] = useState(0);
   const [maxCapacity, setMaxCapacity] = useState(1000);
+  const [typeMoneda, setTypeMoneda] = useState(null);
 
   // Estados para el estado de carga de filtros e información
   const [isLoadFilter, setIsLoadFilter] = useState(false);
@@ -42,7 +44,12 @@ function ContenedorProductosMovilFibraTv() {
 
   // Estado para el modal de filtros
   const [show, setShow] = useState(false);
+  const [lang, setLang] = useState(null)
+  const location = useLocation();
 
+  useEffect(() => {
+      setLang(location.pathname.split('/')[1])
+  }, [])
   // Función para limpiar los filtros
   const cleanFilter = () => {
     setFilterLlamadas(false);
@@ -72,8 +79,8 @@ function ContenedorProductosMovilFibraTv() {
     setIsLoadFilter(false);
     const fetchData = async () => {
       try {
-        const response = await fetchFilterMovilFibraTv();
-        const { min_gb, max_gb, min_precio, max_precio } = response;
+        const response = await fetchFilterMovilFibraTv(lang);
+        const { min_gb, max_gb, min_precio, max_precio, moneda } = response;
 
         setMinCapacity(parseInt(min_gb) > 0 ? parseInt(min_gb) : 0);
         setMaxCapacity(parseInt(max_gb));
@@ -82,7 +89,7 @@ function ContenedorProductosMovilFibraTv() {
         setMaxPrice(parseInt(max_precio));
         setMinPrice(parseInt(min_precio) > 0 ? parseInt(min_precio) : 0);
         setRangePrice([parseInt(min_precio) > 0 ? parseInt(min_precio) : 0, parseInt(max_precio)]);
-
+        setTypeMoneda(moneda)
         setIsLoadFilter(true);
       } catch (error) {
         console.error("Error al obtener los datos iniciales de filtros:", error);
@@ -90,13 +97,13 @@ function ContenedorProductosMovilFibraTv() {
     };
 
     fetchData();
-  }, []);
+  }, [lang]);
 
   // Función para obtener las marcas de operadoras
   useEffect(() => {
     const fetchBrands = async () => {
       try {
-        const response = await fetchOperadorasFibraMovilTv();
+        const response = await fetchOperadorasFibraMovilTv(lang);
         setBrand(response);
       } catch (error) {
         console.error("Error al obtener las marcas de operadoras:", error);
@@ -104,14 +111,14 @@ function ContenedorProductosMovilFibraTv() {
     };
 
     fetchBrands();
-  }, []);
+  }, [lang]);
 
   // Función para obtener las tarifas de móvil
   useEffect(() => {
     setIsLoadInformation(true);
     const fetchTariffs = async () => {
       try {
-        const response = await fetchTarifasMovilFibraTv()
+        const response = await fetchTarifasMovilFibraTv(lang)
         setFiltros(response);
         setTarifas(response);
         setIsLoadInformation(false);
@@ -121,7 +128,7 @@ function ContenedorProductosMovilFibraTv() {
     };
 
     fetchTariffs();
-  }, [brand]);
+  }, [brand, lang]);
 
   function setFilterBrandMulti(value) {
     if (!filterBrand?.includes(value)) {
@@ -241,7 +248,7 @@ function ContenedorProductosMovilFibraTv() {
                       <div className='mt-4'>
                         <b>{'Coste mensual'}:</b>
                         <div className='my-4'>
-                          {rangePrice[0]} {'€'} - {rangePrice[1]} {'€'}
+                        {typeMoneda}{rangePrice[0].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")} - {typeMoneda}{rangePrice[1].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}
                         </div>
                         <Slider
                           range
@@ -328,7 +335,7 @@ function ContenedorProductosMovilFibraTv() {
                             <div className='mt-4'>
                               <b>{'Coste mensual'}:</b>
                               <div className='my-4'>
-                                {rangePrice[0]} {'€'} - {rangePrice[1]} {'€'}
+                              {typeMoneda}{rangePrice[0].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")} - {typeMoneda}{rangePrice[1].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}
                               </div>
                               <Slider
                                 range

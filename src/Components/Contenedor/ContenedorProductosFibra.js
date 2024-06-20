@@ -11,6 +11,7 @@ import TarjetaTarifa from '../Tarjeta/TarjetaTarifa';
 import NotInfoItem from '../Utils/NotInfoItem';
 import Load from '../Utils/Load';
 import { fetchFilterFibra, fetchOperadorasFibra, fetchTarifasFibra } from '../../services/ApiServices'
+import { useLocation } from 'react-router-dom';
 
 function ContenedorProductosFibra() {
   // Estado para filtros de precio y capacidad
@@ -18,6 +19,7 @@ function ContenedorProductosFibra() {
   const [maxPrice, setMaxPrice] = useState(1000);
   const [minCapacity, setMinCapacity] = useState(0);
   const [maxCapacity, setMaxCapacity] = useState(1000);
+  const [typeMoneda, setTypeMoneda] = useState(null);
 
   // Estados para el estado de carga de filtros e información
   const [isLoadFilter, setIsLoadFilter] = useState(false);
@@ -40,8 +42,13 @@ function ContenedorProductosFibra() {
 
   // Estados para rangos de precio y capacidad
   const [rangePrice, setRangePrice] = useState([minPrice, maxPrice]);
-  
 
+  const [lang, setLang] = useState(null)
+  const location = useLocation();
+
+  useEffect(() => {
+    setLang(location.pathname.split('/')[1])
+  }, [location])
   // Estado para el modal de filtros
   const [show, setShow] = useState(false);
 
@@ -65,7 +72,8 @@ function ContenedorProductosFibra() {
     const fetchData = async () => {
       try {
         setIsLoadFilter(false);
-        const filterData = await fetchFilterFibra();
+        const filterData = await fetchFilterFibra(lang);
+        setTypeMoneda(filterData.moneda)
         setMinCapacity(filterData.minCapacity);
         setMaxPrice(filterData.maxPrice);
         setMinPrice(filterData.minPrice);
@@ -77,12 +85,12 @@ function ContenedorProductosFibra() {
     };
 
     fetchData();
-  }, []);
+  }, [lang]);
 
   useEffect(() => {
     const fetchBrands = async () => {
       try {
-        const brands = await fetchOperadorasFibra();
+        const brands = await fetchOperadorasFibra(lang);
         setBrand(brands);
       } catch (error) {
         console.error("Error al obtener las marcas de operadoras:", error);
@@ -90,14 +98,14 @@ function ContenedorProductosFibra() {
     };
 
     fetchBrands();
-  }, []);
+  }, [lang]);
 
   // Función para obtener las tarifas de móvil
   useEffect(() => {
     const fetchTariffs = async () => {
       try {
         setIsLoadInformation(true);
-        const response = await fetchTarifasFibra()
+        const response = await fetchTarifasFibra(lang)
         setFiltros(response);
         setTarifas(response);
         setIsLoadInformation(false);
@@ -107,7 +115,7 @@ function ContenedorProductosFibra() {
     };
 
     fetchTariffs();
-  }, [brand]);
+  }, [brand, lang]);
 
   function setFilterBrandMulti(value) {
     if (!filterBrand?.includes(value)) {
@@ -209,7 +217,7 @@ function ContenedorProductosFibra() {
                       <div className='mt-4'>
                         <b>{'Coste mensual'}:</b>
                         <div className='my-4'>
-                          {rangePrice[0]} {'€'} - {rangePrice[1]} {'€'}
+                          {typeMoneda}{rangePrice[0].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")} - {typeMoneda}{rangePrice[1].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}
                         </div>
                         <Slider
                           range
@@ -309,7 +317,7 @@ function ContenedorProductosFibra() {
                         <div className="mt-4">
                           <b>{'Coste mensual'}:</b>
                           <div className="my-4">
-                            {rangePrice[0]} {'€'} - {rangePrice[1]} {'€'}
+                            {typeMoneda}{rangePrice[0].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")} - {typeMoneda}{rangePrice[1].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}
                           </div>
                           <Slider
                             range

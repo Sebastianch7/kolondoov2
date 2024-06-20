@@ -8,6 +8,7 @@ import TitleSection from '../Text/TitleSection';
 import Carousel from "react-multi-carousel";
 import { fetchStreamingOffers } from '../../services/ApiServices';
 import Load from '../Utils/Load';
+import { useLocation } from 'react-router-dom';
 
 const responsive = {
   desktop: {
@@ -26,16 +27,22 @@ const responsive = {
 
 
 function ContenedorProductosStreaming(logo = null, landingLead = null, id = null) {
-  const [isLoadInformation, setIsLoadInformation] = useState(false);
+  const [isLoadInformation, setIsLoadInformation] = useState(true);
   const [Tarifas, setTarifas] = useState([]);
+
+  const [lang, setLang] = useState(null)
+  const location = useLocation();
+
+  useEffect(() => {
+    setLang(location.pathname.split('/')[1])
+  }, [location])
 
   useEffect(() => {
     setIsLoadInformation(true);
     const fetchTariffs = async () => {
       try {
-        let response = await fetchStreamingOffers()
+        let response = await fetchStreamingOffers(lang)
         setTarifas(response);
-        console.log(response);
         setIsLoadInformation(false);
       } catch (error) {
         console.error("Error al obtener las tarifas de móvil:", error);
@@ -43,44 +50,44 @@ function ContenedorProductosStreaming(logo = null, landingLead = null, id = null
     };
 
     fetchTariffs();
-  }, []);
+  }, [lang]);
 
   return (
     <>
-      {!isLoadInformation ? 
-      <Container>
-        <div
-          style={{
-            paddingBottom: '10px',
-            position: 'relative'
-          }}
-        >
-          {Tarifas?.length > 0 &&
-            <Carousel
-              arrows={true}
-              centerMode={false}
-              dotListClass=""
-              draggable
-              focusOnSelect={false}
-              infinite
-              keyBoardControl
-              pauseOnHover
-              renderDotsOutside={true}
-              responsive={responsive}
-              rewind={true}
-              showDots={false}
-              slidesToSlide={1}
-            >
-              {Tarifas?.map((item) => {
-                return (
-                  <TarjetaTarifaStreaming data={item} />
-                );
-              })}
-            </Carousel>
-          }
-        </div>
-        <small>*Se pueden añadir pases de suscriptor/a extra** por 5,99 € al mes</small>
-      </Container>
+      {!isLoadInformation ?
+        <Container>
+          <div
+            style={{
+              paddingBottom: '10px',
+              position: 'relative'
+            }}
+          >
+            {Tarifas?.length > 0 &&
+              <Carousel
+                arrows={true}
+                centerMode={false}
+                dotListClass=""
+                draggable
+                focusOnSelect={false}
+                infinite
+                keyBoardControl
+                pauseOnHover
+                renderDotsOutside={true}
+                responsive={responsive}
+                rewind={true}
+                showDots={false}
+                slidesToSlide={1}
+              >
+                {Tarifas?.map((item) => {
+                  return (
+                    <TarjetaTarifaStreaming data={item} />
+                  );
+                })}
+              </Carousel>
+            }
+          </div>
+          {lang == 'es' && <small>*Se pueden añadir pases de suscriptor/a extra** por 5,99 € al mes</small>}
+        </Container>
         :
         <Load></Load>
       }

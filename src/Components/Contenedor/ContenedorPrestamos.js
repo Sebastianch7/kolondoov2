@@ -5,17 +5,25 @@ import InterSection from '../Utils/InterSection';
 import TarjetaPrestamo from '../Tarjeta/TarjetaPrestamo';
 import { fetchPrestamosOffers } from '../../services/ApiServices';
 import Load from '../Utils/Load';
+import { useLocation } from 'react-router-dom';
 
 
 function ContenedorPrestamos({ logo = null, landingLead = null, id = null }) {  // Ajuste para aceptar parámetros como un objeto
   const [isLoadInformation, setIsLoadInformation] = useState(false);
   const [Tarifas, setTarifas] = useState([]);
 
+  const [lang, setLang] = useState(null)
+  const location = useLocation();
+
+  useEffect(() => {
+      setLang(location.pathname.split('/')[1])
+  }, [])
+
   useEffect(() => {
     setIsLoadInformation(true);
     const fetchTariffs = async () => {
       try {
-        let response = await fetchPrestamosOffers();
+        let response = await fetchPrestamosOffers(lang);
         setTarifas(response);
         console.log(response);
         setIsLoadInformation(false);
@@ -26,7 +34,7 @@ function ContenedorPrestamos({ logo = null, landingLead = null, id = null }) {  
     };
 
     fetchTariffs();
-  }, []);
+  }, [lang]);
 
   return (
     <>

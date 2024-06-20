@@ -4,19 +4,25 @@ import { isMobile } from 'react-device-detect'
 import TarjetaBlogFull from '../Tarjeta/TarjetaBlogFull';
 import { CardGroup } from 'react-bootstrap';
 import TitleSection from '../Text/TitleSection';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { getBlogHome } from '../../services/ApiServices';
 import Load from '../Utils/Load'
 
 function ContenedorTarjetaBlog({ children }) {
     const [fetchBlog, setFetchBlog] = useState(null)
     const [isLoading, setIsLoading] = useState(false)
+    const [lang, setLang] = useState(null)
+    const location = useLocation();
+  
+    useEffect(() => {
+        setLang(location.pathname.split('/')[1])
+    }, [])
 
     useEffect(() => {
         setIsLoading(true);
         const fetchBlogList = async () => {
             try {
-                const response = await getBlogHome();
+                const response = await getBlogHome(lang);
                 setFetchBlog(response);
                 setIsLoading(false);
             } catch (error) {

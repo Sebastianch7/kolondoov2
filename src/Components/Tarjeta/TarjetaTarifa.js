@@ -16,7 +16,6 @@ import classNames from 'classnames';
 
 
 function TarjetaTarifa({ data, type }) {
-    console.log(data)
     const [lang, setLang] = useState(null)
     const location = useLocation();
     const pathname = location.pathname;
@@ -83,7 +82,7 @@ function TarjetaTarifa({ data, type }) {
                     <Col xs={12} md={5} style={isMobile ? { order: 1 } : { order: 2 }}>
                         <Row>
                             <ItemTarifaServicio destacada={destacada} cant={parrilla_bloque_1} service={''} />
-                            <ItemTarifaServicio destacada={destacada} cant={precio} service={'al mes'} money={moneda} />
+                            <ItemTarifaServicio destacada={destacada} cant={precio} precio service={'al mes'} money={moneda} />
                         </Row>
                     </Col>
                     {!isMobile && <Col md={2} style={isMobile ? { order: 3 } : { order: 3 }}>

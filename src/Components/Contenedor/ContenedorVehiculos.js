@@ -14,6 +14,7 @@ import TarjetaVehiculo from '../Tarjeta/TarjetaVehiculo';
 import ItemFiltroVehiculo from '../../Content/ItemFiltroVehiculo.json'
 import ItemFiltroCombustible from '../../Content/ItemFiltroCombustible.json'
 import ReactPaginate from 'react-paginate';
+import { useLocation } from 'react-router-dom';
 
 function ContenedorVehiculos() {
   // Estado para filtros de precio y capacidad
@@ -49,7 +50,12 @@ function ContenedorVehiculos() {
 
   // Estado para el modal de filtros
   const [show, setShow] = useState(false);
+  const [lang, setLang] = useState(null)
+  const location = useLocation();
 
+  useEffect(() => {
+      setLang(location.pathname.split('/')[1])
+  }, [])
   // Función para limpiar los filtros
   const cleanFilter = () => {
     setFilterBrand([]);
@@ -77,7 +83,7 @@ function ContenedorVehiculos() {
     setIsLoadFilter(false);
     const fetchData = async () => {
       try {
-        const response = await fetchFilterVehiculos();
+        const response = await fetchFilterVehiculos(lang);
         const { minPrice, maxPrice } = response;
         setMaxPrice(parseInt(maxPrice));
         setMinPrice(parseInt(minPrice) > 0 ? parseInt(minPrice) : 0);
@@ -89,13 +95,13 @@ function ContenedorVehiculos() {
     };
 
     fetchData();
-  }, []);
+  }, [lang]);
 
   useEffect(() => {
     setIsLoadFilter(false);
     const fetchData = async () => {
       try {
-        const response = await fetchFilterVehiculosChassis();
+        const response = await fetchFilterVehiculosChassis(lang);
         setFilterChasis(response)
         setIsLoadFilter(true);
       } catch (error) {
@@ -104,13 +110,13 @@ function ContenedorVehiculos() {
     };
 
     fetchData();
-  }, []);
+  }, [lang]);
 
   // Función para obtener las marcas
   useEffect(() => {
     const fetchBrands = async () => {
       try {
-        const response = await fetchMarcasVehiculos();
+        const response = await fetchMarcasVehiculos(lang);
         setBrand(response);
       } catch (error) {
         console.error("Error al obtener las marcas de vehiculos:", error);
@@ -118,14 +124,14 @@ function ContenedorVehiculos() {
     };
 
     fetchBrands();
-  }, []);
+  }, [lang]);
 
   // Función para obtener las tarifas
   useEffect(() => {
     setIsLoadInformation(true);
     const fetchTariffs = async () => {
       try {
-        const response = await fetchTarifasVehiculos()
+        const response = await fetchTarifasVehiculos(lang)
         console.log(response)
         setFiltros(response);
         setTarifas(response);
@@ -136,7 +142,7 @@ function ContenedorVehiculos() {
       }
     };
     fetchTariffs();
-  }, [brand]);
+  }, [brand, lang]);
 
   function setFilterChassisMulti(value) {
     if (!filterChasis?.includes(value)) {

@@ -9,6 +9,7 @@ import TarjetaTarifaLeadGas from '../Tarjeta/TarjetaTarifaLeadGas'
 import NotInfoItem from '../Utils/NotInfoItem';
 import Load from '../Utils/Load';
 import { fetchComercializadorasGas, fetchTarifasGas } from '../../services/ApiServices'
+import { useLocation } from 'react-router-dom';
 
 
 function ContenedorProductosGas() {
@@ -31,7 +32,12 @@ function ContenedorProductosGas() {
 
   // Estado para el modal de filtros
   const [show, setShow] = useState(false);
+  const [lang, setLang] = useState(null)
+  const location = useLocation();
 
+  useEffect(() => {
+      setLang(location.pathname.split('/')[1])
+  }, [])
   // Función para limpiar los filtros
   const cleanFilter = () => {
     setFilterBrand([]);
@@ -44,7 +50,7 @@ function ContenedorProductosGas() {
   useEffect(() => {
     const fetchBrands = async () => {
       try {
-        const response = await fetchComercializadorasGas()
+        const response = await fetchComercializadorasGas(lang)
         setBrand(response);
       } catch (error) {
         console.error("Error al obtener las marcas de operadoras:", error);
@@ -52,13 +58,13 @@ function ContenedorProductosGas() {
     };
 
     fetchBrands();
-  }, []);
+  }, [lang]);
 
   useEffect(() => {
     setIsLoadInformation(true);
     const fetchTariffs = async () => {
       try {
-        const response = await fetchTarifasGas()
+        const response = await fetchTarifasGas(lang)
         setFiltros(response);
         setTarifas(response);
         setIsLoadInformation(false);
@@ -68,7 +74,7 @@ function ContenedorProductosGas() {
     };
 
     fetchTariffs();
-  }, [brand]);
+  }, [brand, lang]);
 
   function setFilterBrandMulti(value) {
     if (!filterBrand?.includes(value)) {

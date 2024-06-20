@@ -38,8 +38,15 @@ const DataStreaming = [
 ]
 
 function ContenedorComparadorLogos({ subtitle }) {
-    const location = useLocation();
     const [infoLogo, setInfoLogo] = useState();
+    const [lang, setLang] = useState(null)
+    const location = useLocation();
+
+    useEffect(() => {
+        setLang(location.pathname.split('/')[1])
+    }, []);
+
+    
     let response;
     useEffect(() => {
 

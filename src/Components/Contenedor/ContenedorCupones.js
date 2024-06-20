@@ -21,8 +21,6 @@ function ContenedorCupones(idCategoria = null) {
   const locations = useLocation().search;
   const [filterDestacada, setFilterDestacada] = useState(false);
 
-  let navigate = useNavigate();
-
   const [lang, setLang] = useState(null)
   const location = useLocation();
 

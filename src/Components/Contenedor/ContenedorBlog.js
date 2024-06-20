@@ -5,7 +5,7 @@ import ContenedorDestacados from '../Blog/ContenedorDestacados';
 import { getBlog } from '../../services/ApiServices';
 import Load from '../Utils/Load';
 import ReactPaginate from 'react-paginate';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { isMobile } from 'react-device-detect';
 
 export default function ContenedorBlog({ categoria }) {
@@ -13,9 +13,16 @@ export default function ContenedorBlog({ categoria }) {
     const [isLoading, setIsLoading] = useState(true)
     let navigate = useNavigate();
 
+    const [lang, setLang] = useState(null)
+    const location = useLocation();
+
+    useEffect(() => {
+        setLang(location.pathname.split('/')[1])
+    }, [])
+
     useEffect(() => {
         setIsLoading(true);
-        const fetchBlogList = async () => {
+        const fetchBlogList = async (lang) => {
             try {
                 const response = await getBlog(categoria !== undefined ? categoria : '');
                 setFetchBlog(response);
