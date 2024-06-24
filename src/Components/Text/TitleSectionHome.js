@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Container, Row, Col, Stack } from 'react-bootstrap';
 import Title from './Title';
@@ -9,7 +10,7 @@ import { BsFillCalendar2Fill } from "react-icons/bs";
 import { BsFillFilePersonFill } from "react-icons/bs";
 
 
-function TitleSection({ fecha, autor, title, titleAlt, titleThird, titleBottom, subtitle, center = false, buttons, text1, text2, left, btnLeft = false, blog, clave, textBlog }) {
+function TitleSectionHome({ fecha, autor, title, titleAlt, titleThird, subtitle, center = false, buttons, text1, text2, left, btnLeft = false, blog, clave, textBlog, flecha = true, titleBottom }) {
     const meses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre']
     const cambiarFecha = (data) => {
         let fecha = new Date(data);
@@ -30,8 +31,8 @@ function TitleSection({ fecha, autor, title, titleAlt, titleThird, titleBottom, 
     return (
         <Container>
             <Row>
-                <Col md={12} className={center && 'text-center b-600'}>
-                    <Title title={title} titleAlt={titleAlt} titleThird={titleThird} titleBottom={titleBottom} />
+                <Col md={12} className={'text-left b-600'}>
+                    <Title title={title} titleAlt={titleAlt} titleThird={titleThird} />
                     {subtitle && <Subtitle subtitle={subtitle} />}
                     {fecha && <div className='color-primary d-flex mb-4'><b><BsFillCalendar2Fill />&nbsp;{cambiarFecha(fecha)} </b><b className='mx-4'><BsFillFilePersonFill />&nbsp;{autor}</b></div>}
                     {clave && <p className='color-primary'><b>{clave}</b></p>}
@@ -41,11 +42,18 @@ function TitleSection({ fecha, autor, title, titleAlt, titleThird, titleBottom, 
                     {left && <p className='text-left' dangerouslySetInnerHTML={{ __html: text2 }}></p>}
                     {textBlog && <p className='blog' dangerouslySetInnerHTML={{ __html: textBlog }}></p>}
                     {buttons && <Row key={buttons} className={`${!btnLeft && 'text-center mx-auto'}`}>
-                        <Stack gap={3} className="mx-auto d-block" direction={!isMobile ? "horizontal" : "vertical"}>
-                            {buttons?.map((item, index) => {
-                                return <Link to={item.url} className={'m-0 m-md-2 btn btn-primary'}> {item.icon && <img src={item.icon} />}&nbsp;{item.title}</Link>
-                            })}
-                        </Stack>
+                        
+                            {buttons?.map((item, index) => (
+                                <Col xs={12} md={6} key={index} className='ps-1'>
+                                    <Link to={item.url} className="my-3 w-100 btn btn-primary text-left">
+                                        {item.icon && <img src={item.icon} alt="" className='me-3' />}
+                                        {item.title}
+                                        {flecha && <img src={'/img/icons/flecha.svg'} alt="" className='float-end' />}
+                                    </Link>
+                                </Col>
+                            ))}
+                        
+
                     </Row>}
                 </Col>
             </Row>
@@ -53,4 +61,4 @@ function TitleSection({ fecha, autor, title, titleAlt, titleThird, titleBottom, 
     );
 }
 
-export default TitleSection;
+export default TitleSectionHome;

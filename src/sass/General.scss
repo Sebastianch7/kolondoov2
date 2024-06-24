@@ -69,6 +69,7 @@ $black: #000000;
 $gray: #F1F1F1;
 $green: #3BB68A;
 $red: #E84225;
+$blueContrast: #F2FAFC;
 
 
 .color {
@@ -113,6 +114,7 @@ $red: #E84225;
   &-primary:hover {
     background-color: $colorPrimary;
     box-shadow: 0px 0px 5px $colorPrimary;
+    cursor: pointer;
   }
 }
 
@@ -910,6 +912,17 @@ footer {
     background-color: #79CFE230;
     color: $colorPrimary;
   }
+
+  &-gray {
+    background-color: $gray;
+    color: $colorPrimary;
+  }
+  
+  &-blueContrast {
+    background-color: $blueContrast;
+  }
+
+
 }
 
 .vertical {
@@ -1497,4 +1510,49 @@ p {
 
 .btn-large {
   width: 100%;
+}
+
+.slider-icons-marcas {
+  background-color: $gray;
+  padding: 30px;
+  border-radius: 36px;
+  .slider-icons-marcas_img{
+    height: 50px; 
+  }
+  
+}
+
+.br{
+  &-36{
+    border-radius: 36px;
+  }
+}
+
+.vuskoo-eleccion{
+  &-number{
+    font-size: 2.5rem;
+    color: $colorSecundary;
+    font-family: $MontSemiBold;
+
+  }
+  &-title{
+    color: $colorPrimary;
+    font-size: 1.2rem;
+    font-family: $MontSemiBold;
+  }
+  &-content{
+    font-size: 0.95rem;
+    text-align: right;
+    @include media(xs){
+      text-align: left;
+    }
+    margin-top: 10px;
+  }
+}
+.seccion-explorar{
+  background-image: url('../../public/img/lineaDerechaBannerInferior.svg');
+  background-position-x: right;
+  background-position-y: bottom;
+  background-repeat: no-repeat;
+
 }

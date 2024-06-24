@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import Header from '../../Components/Header/Header';
 import Banner from '../../Components/Banner/Banner';
 import ContenedorTarjetaBlog from '../../Components/Contenedor/ContenedorTarjetaBlog';
@@ -8,6 +8,11 @@ import { useTranslation } from 'react-i18next';
 import MetaData from '../../Components/Header/SeoMetadata';
 import ConsentimientoCookies from '../../Components/Utils/ConsentimientoCookies';
 import { Link } from 'react-router-dom';
+import BannerHome from '../../Components/Banner/BannerHome';
+import ContenedorContratacion from '../../Components/Contenedor/ContenedorContratacion';
+import ContenedorServiciosCalidad from '../../Components/Contenedor/ContenedorServiciosCalidad';
+import ContenedorElegirVuskoo from '../../Components/Contenedor/ContenedorElegirVuskoo';
+import ContenedorExplorar from '../../Components/Contenedor/ContenedorExplorar';
 
 
 function Home(props) {
@@ -18,41 +23,38 @@ function Home(props) {
             <MetaData imagen_destacada='/img/banner-home.png' descripcion={'Descubre una nueva era en la toma de decisiones con Vuskoo. Comparadores de servicios que te ofrecen información detallada, ofertas, promociones para que elijas'} titulo={'Optimiza tus elecciones con Vuskoo: Expertos en Comparadores de Servicios'} />
             <Header></Header>
             <main>
-                <Banner
-                    title={t('bannerHomeTitle')}
-                    subtitle={t('bannerHomeSubtitle')}
+                <BannerHome
+                    title={'La mejor manera de ahorrar'}
+                    subtitle={'Encuentra y elige las mejores ofertas para ahorrar a lo grande.'}
                     image={'/img/banner-home.png'}
                     buttons={[
                         {
-                            title: t('Internet y Telefonía'),
+                            title: 'Internet y Telefonía',
                             icon: '/img/icons/phone-light.svg',
                             url: 'internet-telefonia/comparador-tarifas-fibra-y-movil'
                         },
                         {
-                            title: t('Energía'),
+                            title: 'Energía',
                             icon: '/img/icons/lighting.svg',
                             url: 'energia/comparador-tarifas-luz'
                         },
+                        /*{
+                            title: 'Cupones descuento',
+                            icon: '/img/icons/cupon_home.svg',
+                            url: 'cupones'
+                        } ,
                         {
-                            title: t('Streaming'),
-                            icon: '/img/icons/btn_streaming.svg',
+                            title: 'Seguros',
+                            icon: '/img/icons/casa.svg',
                             url: 'television-streaming/comparador-plataformas-streaming'
-                        }
+                        } */
                     ]}
                 />
-                {/* <ContenedorTarjeta cols={12}>
-                    {!isMobile ?
-                        TarjetasProductos?.map((item, index) => {
-                            return <TarjetaProducto key={index} data={item} />
-                        })
-                        :
-                        TarjetasProductos?.map((item, index) => {
-                            return <AcordionItem key={index} data={item} />
-                        })
-                    }
-                </ContenedorTarjeta> */}
-                <ContenedorTarjetaBlog />
-                <FormSuscripcion  />
+                <ContenedorContratacion />
+                <ContenedorServiciosCalidad />
+                <ContenedorElegirVuskoo />
+                <ContenedorExplorar />
+                <FormSuscripcion />
             </main>
 
             <Footer />
