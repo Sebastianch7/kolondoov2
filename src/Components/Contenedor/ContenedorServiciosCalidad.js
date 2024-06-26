@@ -12,16 +12,39 @@ import Carousel from "react-multi-carousel";
 
 function ContenedorServiciosCalidad({ children }) {
     const [lang, setLang] = useState(null)
+    const [logos, setLogos] = useState([])
     const location = useLocation();
 
     useEffect(() => {
         setLang(location.pathname.split('/')[1])
-    }, [])
+    }, [location])
+
+    useEffect(() => {
+        switch (lang) {
+            case 'es':
+                setLogos([
+                    '/img/logos/masmovil_slider.svg',
+                    '/img/logos/movistar_slider.svg',
+                    '/img/logos/pepe_slider.svg',
+                    '/img/logos/virgin_slider.svg',
+                    '/img/logos/vodafone_slider.svg',
+                ]);
+                break;
+            case 'co':
+                setLogos([
+                    '/img/logos/tigo_slider.svg',
+                    '/img/logos/movistar_slider.svg',
+                    '/img/logos/claro_slider.svg',
+                    '/img/logos/virgin_slider.svg',
+                ]);
+                break;
+        }
+    }, [lang])
 
     const responsive = {
         desktop: {
             breakpoint: { max: 3000, min: 1024 },
-            items: 5
+            items: logos.length
         },
         tablet: {
             breakpoint: { max: 1024, min: 464 },
@@ -34,7 +57,7 @@ function ContenedorServiciosCalidad({ children }) {
     };
 
     return (
-        <Container className={`pb-5 ${isMobile && 'bg-gray'}`}>
+        <Container className={`py-5 ${isMobile && 'bg-gray'}`}>
             <Row>
                 <Col xs={12} md={7} className="text-center mx-auto">
                     <TitleSection
@@ -54,8 +77,8 @@ function ContenedorServiciosCalidad({ children }) {
                         focusOnSelect={false}
                         infinite
                         keyBoardControl
-                        interval={1000} 
-                        controls={true} 
+                        interval={1000}
+                        controls={true}
                         indicators={true}
                         renderDotsOutside={false}
                         responsive={responsive}
@@ -64,11 +87,12 @@ function ContenedorServiciosCalidad({ children }) {
                         slidesToSlide={1}
                         autoPlay
                     >
-                        <img className='slider-icons-marcas_img mx-2' src="/img/logos/masmovil_slider.svg" alt="Masmovil" />
-                        <img className='slider-icons-marcas_img mx-2' src="/img/logos/movistar_slider.svg" alt="Movistar" />
-                        <img className='slider-icons-marcas_img mx-2' src="/img/logos/pepe_slider.svg" alt="Pepe" />
-                        <img className='slider-icons-marcas_img mx-2' src="/img/logos/virgin_slider.svg" alt="Virgin" />
-                        <img className='slider-icons-marcas_img mx-2' src="/img/logos/vodafone_slider.svg" alt="Vodafone" />
+                        {logos &&
+                            logos.map((item, index) => {
+                                return <img key={index} className='slider-icons-marcas_img mx-2' src={item} alt={item} />
+                            })
+
+                        }
                     </Carousel>
                 </Col>
             </Row >

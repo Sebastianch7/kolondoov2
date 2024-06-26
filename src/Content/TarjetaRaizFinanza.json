@@ -1,0 +1,14 @@
+[
+    {
+        "icon": "/img/icons/router.svg",
+        "title": "Tarjetas de crédito",
+        "button": "Comparar",
+        "url": ""
+    },
+    {
+        "icon": "/img/icons/mobile.svg",
+        "title": "Préstamos",
+        "button": "Comparar",
+        "url": ""
+    }
+]

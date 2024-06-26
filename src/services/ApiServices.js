@@ -533,6 +533,7 @@ export const fetchTarifaCupon = async (id) => {
 };
 
 export const fetchPrestamosOffers = async (lang) => {
+
     try {
         const response = await axios.get(`${apiUrl}/getTarifasPrestamos/${lang}`);
         return response.data;
@@ -540,6 +541,7 @@ export const fetchPrestamosOffers = async (lang) => {
         console.error("Error al procesar la solicitud", error);
         throw error;
     }
+
 };
 
 export const fetchTarifaPrestamo = async (id) => {

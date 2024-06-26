@@ -4,6 +4,7 @@ import Load from '../../Components/Utils/Load';
 import Footer from '../../Components/Footer/Footer';
 import { useParams } from 'react-router-dom';
 import { fetchTarifaPrestamo } from '../../services/ApiServices';
+import FooterCo from '../../Components/Footer/FooterCo';
 
 export default function ZonaTransaccional() {
     const { id } = useParams();
@@ -117,7 +118,7 @@ export default function ZonaTransaccional() {
                     </Row>
                 </Container>
 
-                {seccion2 && <Footer />}
+                <FooterCo />
             </div>
         </>
     );

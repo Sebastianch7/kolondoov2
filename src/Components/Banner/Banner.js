@@ -30,7 +30,7 @@ function Banner({ title = '', subtitle = '', buttons = false, children, image, l
                     </Col>
                     <Col sm={12} md={4} xl={5} className='d-none d-md-block d-xl-block'>
                         <div>
-                            <img className='img-fluid img-banner' src={image} />
+                            <img className='img-fluid img-banner' alt={image} src={image} />
                         </div>
                     </Col>
                 </div>

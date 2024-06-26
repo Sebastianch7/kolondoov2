@@ -16,8 +16,9 @@ import Contactenos from '../Pages/Es/Contactenos';
 import HerramientaLuz from '../Pages/Es/HerramientaLuz';
 import HerramientaTest from '../Pages/Es/HerramientaTest';
 import RaizTelefonia from '../Pages/Es/RaizTelefonia';
+import RaizTelefoniaCo from '../Pages/Co/RaizTelefoniaCo';
 import RaizEnergia from '../Pages/Es/RaizEnergia';
-import RaizStreaming from '../Pages/Es/RaizStreaming';
+import RaizStreaming from '../Pages/Co/RaizStreamingCo';
 import PoliticaPrivacidad from '../Pages/Es/PoliticaPrivacidad';
 import Blog from '../Pages/Es/Blog';
 import BlogItem from '../Pages/Es/BlogItem';
@@ -33,9 +34,20 @@ import ComparadorVehiculos from '../Pages/Mx/ComparadorVehiculos';
 import LeadVehiculo from '../Pages/Es/LeadVehiculo';
 import ComparadorCupones from '../Pages/Es/ComparadorCupones';
 import ZonaTransaccional from '../Pages/Co/zonaTransaccional';
-import ComparadorPrestamos from '../Pages/Es/ComparadorPrestamos';
+import ComparadorPrestamos from '../Pages/Co/ComparadorPrestamosCo';
 import HomeCo from '../Pages/Co/HomeCo';
-
+import ComparadorStreamingCo from '../Pages/Co/ComparadorStreamingCo';
+import ComparadorMovilCo from '../Pages/Co/ComparadorMovilCo';
+import ComparadorFibraCo from '../Pages/Co/ComparadorFibraCo';
+import ComparadorFibraMovilCo from '../Pages/Co/ComparadorFibraMovilCo';
+import ComparadorFibraMovilTvCo from '../Pages/Co/ComparadorFibraMovilTvCo';
+import ContactenosCo from '../Pages/Co/Contactenos';
+import PoliticaPrivacidadCo from '../Pages/Co/PoliticaPrivacidadCo';
+import PoliticaCookiesCo from '../Pages/Co/PoliticaCookiesCo';
+import PoliticaLegalCo from '../Pages/Co/PoliticaLegalCo';
+import QuienesSomosCo from '../Pages/Co/QuienesSomosCo';
+import RaizStreamingCo from '../Pages/Co/RaizStreamingCo';
+import RaizFinanzasCo from '../Pages/Co/RaizFinanzasCo'
 
 function RoutesApp() {
     return (
@@ -148,24 +160,36 @@ function RoutesApp() {
 
 
                 {/* CO */}
+                <Route path="/co/finanzas" element={<RaizFinanzasCo />} />
                 <Route path="/co/rediccion-banco/:id" element={<ZonaTransaccional />} />
                 <Route path="/co/finanzas/banca" element={<ComparadorPrestamos />} />
                 
-                <Route path="/co/streaming/comparador-plataformas-streaming" element={<ComparadorStreaming />} />
 
-                <Route path="/co/internet-movil/comparador-movil" element={<ComparadorMovil />} />
+
+                <Route path="/co/contactanos" element={<ContactenosCo />} />
+                <Route path="/co/politica-privacidad" element={<PoliticaPrivacidadCo />} />
+                <Route path="/co/politica-cookies" element={<PoliticaCookiesCo />} />
+                <Route path="/co/politica-legal" element={<PoliticaLegalCo />} />
+                <Route path="/co/quienes-somos" element={<QuienesSomosCo />} />
+                
+                
+                <Route path="/co/streaming" element={<RaizStreamingCo />} />
+                <Route path="/co/streaming/comparador-plataformas-streaming" element={<ComparadorStreamingCo />} />
+
+                <Route path="/co/internet-movil" element={<RaizTelefoniaCo />} />
+                <Route path="/co/internet-movil/comparador-movil" element={<ComparadorMovilCo />} />
                 <Route path="/co/internet-movil/comparador-movil/:id" element={<Lead />} />
                 <Route path="/co/internet-movil/comparador-movil/thank/:id" element={<ThankPage />} />
                 
-                <Route path="/co/internet-movil/comparador-fibra" element={<ComparadorFibra />} />
+                <Route path="/co/internet-movil/comparador-fibra" element={<ComparadorFibraCo />} />
                 <Route path="/co/internet-movil/comparador-fibra/:id" element={<Lead />} />
                 <Route path="/co/internet-movil/comparador-fibra/thank/:id" element={<ThankPage />} />
 
-                <Route path="/co/internet-movil/comparador-tarifas-fibra-y-movil" element={<ComparadorFibraMovil />} />
+                <Route path="/co/internet-movil/comparador-tarifas-fibra-y-movil" element={<ComparadorFibraMovilCo />} />
                 <Route path="/co/internet-movil/comparador-tarifas-fibra-y-movil/:id" element={<Lead />} />
                 <Route path="/co/internet-movil/comparador-tarifas-fibra-y-movil/thank/:id" element={<ThankPage />} />
 
-                <Route path="/co/internet-movil/comparador-fibra-movil-tv" element={<ComparadorFibraMovilTv />} />
+                <Route path="/co/internet-movil/comparador-fibra-movil-tv" element={<ComparadorFibraMovilTvCo />} />
                 <Route path="/co/internet-movil/comparador-fibra-movil-tv/:id" element={<Lead />} />
                 <Route path="/co/internet-movil/comparador-fibra-movil-tv//thank/:id" element={<ThankPage />} />
 

@@ -37,7 +37,7 @@ function TarjetaProducto({ data, large }) {
                 }
             </Card.Body>
             {button && <Card.Body>
-                <Link className='btn btn-primary' to={`/es${url}`}>{`Comparar`}</Link>
+                <Link className='btn btn-primary' to={`/${lang}${url}`}>{`Comparar`}</Link>
             </Card.Body>}
         </Card>
     );

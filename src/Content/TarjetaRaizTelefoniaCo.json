@@ -1,0 +1,26 @@
+[
+    {
+        "icon": "/img/icons/router.svg",
+        "title": "Sólo Fibra",
+        "button": "Comparar",
+        "url": "/internet-movil/comparador-fibra"
+    },
+    {
+        "icon": "/img/icons/mobile.svg",
+        "title": "Tarifa Móvil",
+        "button": "Comparar",
+        "url": "/internet-movil/comparador-movil"
+    },
+    {
+        "icon": "/img/icons/fibramasmovilmastv.png",
+        "title": "Fibra + Móvil + TV",
+        "button": "Comparar",
+        "url": "/internet-movil/comparador-fibra-movil-tv"
+    },
+    {
+        "icon": "/img/icons/fibramasmovil.png",
+        "title": "Fibra + Móvil",
+        "button": "Comparar",
+        "url": "/internet-movil/comparador-tarifas-fibra-y-movil"
+    }
+]

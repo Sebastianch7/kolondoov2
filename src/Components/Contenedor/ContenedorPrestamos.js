@@ -16,24 +16,24 @@ function ContenedorPrestamos({ logo = null, landingLead = null, id = null }) {  
   const location = useLocation();
 
   useEffect(() => {
-      setLang(location.pathname.split('/')[1])
-  }, [])
+    setLang(location.pathname.split('/')[1])
+  }, [location])
 
   useEffect(() => {
-    setIsLoadInformation(true);
-    const fetchTariffs = async () => {
-      try {
-        let response = await fetchPrestamosOffers(lang);
-        setTarifas(response);
-        console.log(response);
-        setIsLoadInformation(false);
-      } catch (error) {
-        console.error("Error al obtener las tarifas de móvil:", error);
-        setIsLoadInformation(false);  // Asegúrate de manejar el estado de carga en caso de error
-      }
-    };
-
-    fetchTariffs();
+    if (lang != null) {
+      setIsLoadInformation(true);
+      const fetchTariffs = async () => {
+        try {
+          let response = await fetchPrestamosOffers(lang);
+          setTarifas(response);
+          setIsLoadInformation(false);
+        } catch (error) {
+          console.error("Error al obtener las tarifas:", error);
+          setIsLoadInformation(false);  // Asegúrate de manejar el estado de carga en caso de error
+        }
+      };
+      fetchTariffs();
+    }
   }, [lang]);
 
   return (

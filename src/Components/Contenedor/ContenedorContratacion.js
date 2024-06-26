@@ -21,12 +21,12 @@ function ContenedorContratacion({ children }) {
 
 
     return (
-        <Container className='mb-5'>
+        <Container className='my-5'>
             <Row>
-                <Col xs={12} md={6} className='text-center'>
-                    <img className='img-fluid' src='/img/banner-home-es.png' />
+                <Col xs={12} md={7} className='text-center'>
+                    <img className='img-fluid h-500' src='/img/banner-home-es.png' />
                 </Col>
-                <Col xs={12} md={6} className="d-flex justify-content-center align-items-center">
+                <Col xs={12} md={5} className="d-flex justify-content-center align-items-center">
                     <TitleSection
                         btnLeft
                         title={'Compara y contrata de forma'}

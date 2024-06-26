@@ -38,18 +38,20 @@ function ContenedorProductosStreaming(logo = null, landingLead = null, id = null
   }, [location])
 
   useEffect(() => {
-    setIsLoadInformation(true);
-    const fetchTariffs = async () => {
-      try {
-        let response = await fetchStreamingOffers(lang)
-        setTarifas(response);
-        setIsLoadInformation(false);
-      } catch (error) {
-        console.error("Error al obtener las tarifas de móvil:", error);
-      }
-    };
+    if (lang != null) {
+      setIsLoadInformation(true);
+      const fetchTariffs = async () => {
+        try {
+          let response = await fetchStreamingOffers(lang)
+          setTarifas(response);
+          setIsLoadInformation(false);
+        } catch (error) {
+          console.error("Error al obtener las tarifas de móvil:", error);
+        }
+      };
 
-    fetchTariffs();
+      fetchTariffs();
+    }
   }, [lang]);
 
   return (

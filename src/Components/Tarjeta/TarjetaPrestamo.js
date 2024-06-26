@@ -4,7 +4,6 @@ import ItemTarifaDescripcion from '../Items/ItemTarifaDescripcion';
 import { Link } from 'react-router-dom';
 
 function TarjetaPrestamo({ data }) {
-    console.log(data)
     const { id, selector1, destacada, titulo, logo, valorMaximo, parrilla_1, parrilla_2, parrilla_3, parrilla_4 } = data;
     return (
         <Col xs={12} md={4} className='mb-3'>

@@ -52,8 +52,11 @@ function Home(props) {
                 />
                 <ContenedorContratacion />
                 <ContenedorServiciosCalidad />
+                <div class="interSeccion"></div>
                 <ContenedorElegirVuskoo />
+                <div class="interSeccion"></div>
                 <ContenedorExplorar />
+                <div class="interSeccion"></div>
                 <FormSuscripcion />
             </main>
 

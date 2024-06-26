@@ -42,22 +42,22 @@ function ContenedorElegirVuskoo({ children }) {
 
     return (
         <Container>
-            <Row className='my-md-5'>
+            <Row className='mb-5'>
                 <Col xs={12} md={8} className={!isMobile ? 'text-end text-right' : 'px-0 text-start'}>
                     <Row>
-                        <Col xs={12}>
+                        <Col xs={12} className='px-5'>
                             <TitleSection
                                 title={'¿Por qué elegir '}
                                 titleAlt={'Vuskoo'}
                                 titleThird={'?'}
                             />
                         </Col>
-                        <Col className='mx-3 '>
+                        <Col className='mx-3 px-5'>
                             <Row>
                                 {
                                     data?.length > 0 &&
                                     data.map((item, index) => {
-                                        return <><Col md={4} className='mb-4 mb-md-0'>
+                                        return <><Col md={4} className='mb-4  mb-md-0'>
                                             <Col xs={12} className='vuskoo-eleccion-number'>{item.number}</Col>
                                             <Col xs={12} className='vuskoo-eleccion-title'>{item.title}</Col>
                                             <Col xs={12} className='vuskoo-eleccion-content'>{item.content}</Col>
@@ -69,7 +69,7 @@ function ContenedorElegirVuskoo({ children }) {
                         </Col>
                     </Row>
                 </Col>
-                <Col xs={12} md={4} className='bg-blueContrast br-36 py-4 mt-5 mt-md-0 d-none d-sm-block'>
+                <Col xs={12} md={4} className='bg-blueContrast br-36 p-4 mt-5 mt-md-0 d-none d-sm-block'>
                     <TitleSection
                         title={'Únete a los millones usuarios que ya han '}
                         titleAlt={'ahorrado'}

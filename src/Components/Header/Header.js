@@ -16,7 +16,7 @@ function Header({ breadCrumb }) {
 
     const [menu, setMenu] = useState([])
     const [items, setItems] = useState([])
-    const [isLoadInformation, setIsLoadInformation] = useState(false)
+    const [isLoadInformation, setIsLoadInformation] = useState(true)
     const [lang, setLang] = useState('')
     const location = useLocation();
 
@@ -42,14 +42,16 @@ function Header({ breadCrumb }) {
             }
         };
         fetchMenu();
-    }, [lang]);
+    }, [lang,location]);
 
     useEffect(() => {
+        setIsLoadInformation(true)
         if (lang !== '') {
             const fetchMenu = async () => {
                 try {
                     const response = await getMenu(lang.trim());
                     setItems(response);
+                    setIsLoadInformation(false)
                 } catch (error) {
                     console.error("Error al obtener el menú principal", error);
                 }
@@ -117,7 +119,7 @@ function Header({ breadCrumb }) {
                                     {items.map((item, key) => (
                                         <ItemMenuDesktop key={key} data={item} />
                                     ))}
-                                    {lang == 'es' && <nav className="navbar navbar-expand-lg navbar-light no-link">
+                                    {(lang == 'es' && !isLoadInformation) && <nav className="navbar navbar-expand-lg navbar-light no-link">
                                         <div className="collapse navbar-collapse" id="navbarNav">
                                             <ul className="no-link navbar-nav">
                                                 <li className="nav-item">

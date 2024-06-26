@@ -44,7 +44,7 @@ function TitleSectionHome({ fecha, autor, title, titleAlt, titleThird, subtitle,
                     {buttons && <Row key={buttons} className={`${!btnLeft && 'text-center mx-auto'}`}>
                         
                             {buttons?.map((item, index) => (
-                                <Col xs={12} md={6} key={index} className='ps-1'>
+                                <Col xs={12} md={5} key={index} className='ps-1'>
                                     <Link to={item.url} className="my-3 w-100 btn btn-primary text-left">
                                         {item.icon && <img src={item.icon} alt="" className='me-3' />}
                                         {item.title}

@@ -44,7 +44,13 @@ function TarjetaTarifa({ data, type }) {
         Netflix,
         HBO,
         AmazonPrime,
-        DAZN
+        DAZN,
+        appsIlimitadas,
+        facebook,
+        messenger,
+        waze,
+        whatsapp,
+        twitter
     } = data;
     return (
         <>
@@ -78,6 +84,19 @@ function TarjetaTarifa({ data, type }) {
                         {HBO === 1 && <SiHbo className='m-2' />}
                         {AmazonPrime === 1 && <FaAmazon className='m-2' />}
                         {DAZN === 1 && <SiDazn className='m-2' />}
+                        {appsIlimitadas === 1 && (
+
+                            <div className={`tarjeta-tarifa-item-descripcion m-1 ${destacada && 'border-primary'}`}>
+                                <b>Apps ilimitadas:&nbsp;</b>
+                                {facebook === 1 && <img className='icon-logo-tarifa' src='/img/logos/facebook.webp' alt='Facebook' />}
+                                {messenger === 1 && <img className='icon-logo-tarifa' src='/img/logos/messenger.webp' alt='Messenger' />}
+                                {waze === 1 && <img className='icon-logo-tarifa' src='/img/logos/waze.webp' alt='Waze' />}
+                                {whatsapp === 1 && <img className='icon-logo-tarifa' src='/img/logos/whatsapp.webp' alt='WhatsApp' />}
+                                {twitter === 1 && <img className='icon-logo-tarifa' src='/img/logos/x.webp' alt='Twitter' />}
+                            </div>
+
+                        )}
+
                     </Col>
                     <Col xs={12} md={5} style={isMobile ? { order: 1 } : { order: 2 }}>
                         <Row>

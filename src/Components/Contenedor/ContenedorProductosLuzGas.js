@@ -38,7 +38,7 @@ function ContenedorProductosLuzGas() {
 
   useEffect(() => {
       setLang(location.pathname.split('/')[1])
-  }, [])
+  }, [location])
   // Función para limpiar los filtros
   const cleanFilter = () => {
     setFilterBrand([]);

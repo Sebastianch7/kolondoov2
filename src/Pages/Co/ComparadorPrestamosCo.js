@@ -5,17 +5,18 @@ import Footer from '../../Components/Footer/Footer';
 import ContenedorProductosGas from '../../Components/Contenedor/ContenedorProductosGas';
 import MetaData from '../../Components/Header/SeoMetadata';
 import ContenedorPrestamos from '../../Components/Contenedor/ContenedorPrestamos';
+import FooterCo from '../../Components/Footer/FooterCo';
 
-function ComparadorPrestamos() {
+function ComparadorPrestamosCo() {
     return (
         <div>
             <MetaData titulo={'Comparador de prestamos | Vuskoo'} descripcion={'Compara las diferentes compañias para prestamos'}/>
             <Header></Header>
             <ContenedorPrestamos>
             </ContenedorPrestamos>
-            <Footer></Footer>
+            <FooterCo />
         </div>
     );
 }
 
-export default ComparadorPrestamos;
+export default ComparadorPrestamosCo;

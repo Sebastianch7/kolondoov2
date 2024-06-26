@@ -190,7 +190,7 @@ $breakpoint-lg: 1360px;
 /* container */
 .container-fluid {
   overflow: hidden !important;
-  max-width: 1440px !important;
+  //max-width: 1440px !important;
 }
 
 .container {
@@ -917,7 +917,7 @@ footer {
     background-color: $gray;
     color: $colorPrimary;
   }
-  
+
   &-blueContrast {
     background-color: $blueContrast;
   }
@@ -943,7 +943,7 @@ footer {
 }
 
 .img-banner {
-  max-height: 400px !important;
+  //max-height: 400px !important;
   width: auto !important;
 }
 
@@ -1516,43 +1516,60 @@ p {
   background-color: $gray;
   padding: 30px;
   border-radius: 36px;
-  .slider-icons-marcas_img{
-    height: 50px; 
+
+  .slider-icons-marcas_img {
+    height: 50px;
   }
-  
+
 }
 
-.br{
-  &-36{
+.br {
+  &-36 {
     border-radius: 36px;
   }
 }
 
-.vuskoo-eleccion{
-  &-number{
+.vuskoo-eleccion {
+  &-number {
     font-size: 2.5rem;
     color: $colorSecundary;
     font-family: $MontSemiBold;
 
   }
-  &-title{
+
+  &-title {
     color: $colorPrimary;
     font-size: 1.2rem;
     font-family: $MontSemiBold;
   }
-  &-content{
+
+  &-content {
     font-size: 0.95rem;
     text-align: right;
-    @include media(xs){
+
+    @include media(xs) {
       text-align: left;
     }
+
     margin-top: 10px;
   }
 }
-.seccion-explorar{
+
+.seccion-explorar {
   background-image: url('../../public/img/lineaDerechaBannerInferior.svg');
   background-position-x: right;
   background-position-y: bottom;
   background-repeat: no-repeat;
 
+}
+
+.h {
+  &-500 {
+    height: 550px !important;
+  }
+}
+
+.icon-logo-tarifa {
+  height: 15px !important;
+  margin-left: 5px;
 }
