@@ -8,6 +8,7 @@ import i18n from 'i18next';
 import langEs from './lang/es.json'
 import langEn from './lang/en.json'
 import langMx from './lang/mx.json'
+import langCo from './lang/co.json'
 
 
 i18n
@@ -22,6 +23,9 @@ i18n
       },
       mx: {
         translation: langMx,
+      },
+      co: {
+        translation: langCo,
       },
     },
     lng: 'es', 

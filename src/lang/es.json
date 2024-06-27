@@ -61,5 +61,29 @@
     "movil": "Móvil",
 
     "title-baner-comparador-cupones" : "Comienza a ahorrar con nuestros cupones de descuento exclusivos",
-    "subtitle-baner-comparador-cupones": "Conoce nuestras últimas ofertas"
+    "subtitle-baner-comparador-cupones": "Conoce nuestras últimas ofertas",
+
+    "contenedroContratacionTitle": "Compara y contrata de forma",
+    "contenedroContratacionTitleAlt": "inteligente",
+    "contenedroContratacionTitleBottom":"Hemos ayudado y asesorado a más de 80.000 clientes a cambiar y mejorar sus ahorros.",
+
+    "ContenedorServiciosCalidadTitle":"Nos apoyamos en servicios de calidad para",
+    "ContenedorServiciosCalidadAlt":"adaptarnos a tus necesidades",
+    "ContenedorServiciosCalidadBottom":"Nuestra misión es comprender tus requerimientos específicos y proporcionarte un servicio que supere tus expectativas",
+
+    "ElegirVuskooTitle01": "Ahorro inteligente",
+    "ElegirVuskooTitle02": "Orientación experta",
+    "ElegirVuskooTitle03":"Ofertas exclusivas",
+
+    "ElegirVuskoocontent01": "Quieres ahorrar y cambiar de cualquier suministro sin complicaciones. Nuestro proceso simple te ayuda a tomar la decisión correcta.",
+    "ElegirVuskoocontent02":"Quieres tomar la decisión correcta. Nuestro equipo de atención al cliente está aquí para ayudarte.",
+    "ElegirVuskoocontent03":"Quieres el trato perfecto. Ofrecemos ofertas que no puedes encontrar en ningún otro lugar.",
+
+    "ContenedorElegirVuskooUneteTitle":"Únete a los millones usuarios que ya han ",
+    "ContenedorElegirVuskooUneteAlt":"ahorrado",
+    "ContenedorElegirVuskooUneteBottom":"Cada día más personas nos eligen para comparar y encontrar los servicios que mas se adecuan a las necesidades de cada uno",
+
+    "ComparadorLogosTitle" : "Comparamos las",
+    "ComparadorLogosAlt" : "mejores compañías"
+    
 }

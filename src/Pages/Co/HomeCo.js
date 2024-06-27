@@ -25,8 +25,8 @@ function HomeCo(props) {
             <Header></Header>
             <main>
                 <BannerHome
-                    title={'La mejor manera de ahorrar'}
-                    subtitle={'Encuentra y elige las mejores ofertas para ahorrar a lo grande.'}
+                    title={'El ahorro está a un clic'}
+                    subtitle={'Compare y escoja las mejores ofertas para ahorrar en grande.'}
                     image={'/img/banner-home-co.png'}
                     buttons={[
                         {

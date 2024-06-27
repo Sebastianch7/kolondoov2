@@ -23,7 +23,7 @@ export default function ContenedorHerramientasLuz({ promedio }) {
 
     useEffect(() => {
         setLang(location.pathname.split('/')[1])
-    }, [])
+    }, [location])
 
     useEffect(() => {
         setIsLoading(true)

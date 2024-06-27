@@ -13,7 +13,7 @@ import ContenedorDescipcionTarifa from '../../Components/Contenedor/ContenedorDe
 import ContenedorPreguntasFrecuentes from '../../Components/Contenedor/ContenedorPreguntasFrecuentes';
 import FormSuscripcion from '../../Components/Forms/FormSuscripcion';
 import ContenedorPorQueComparar from '../../Components/Contenedor/ContenedorPorQueComparar';
-import preguntasFrecuentes from '../../Content/PreguntasFrecuentesStreaming.json';
+import preguntasFrecuentes from '../../Content/PreguntasFrecuentesStreamingCo.json';
 import ItemStack from '../../Components/ItemStack';
 import MetaData from '../../Components/Header/SeoMetadata';
 import FooterCo from '../../Components/Footer/FooterCo';
@@ -36,32 +36,32 @@ const dataPorQueComparar = [
 
 const data = [
   {
-    title: 'Variedad Personalizada',
-    text: 'Elige una tarifa de televisión y streaming que se adapte a tu estilo de vida y preferencias de entretenimiento. Con opciones personalizadas, puedes seleccionar canales, servicios y funciones que realmente te interesen, asegurándote de pagar solo por lo que realmente disfrutas.'
+    title: 'Personaliza tu experiencia',
+    text: 'Elige una tarifa de televisión y streaming que se adapte a tu estilo de vida y preferencias. Selecciona los canales, servicios y funciones que más te interesen y paga solo por lo que realmente disfrutas.'
   },
   {
-    title: 'Ahorro Inteligente',
-    text: 'Al decidirte por una tarifa, no solo estás accediendo a contenido emocionante, sino también a oportunidades exclusivas de ahorro. Muchas tarifas ofrecen descuentos por paquetes combinados, suscripciones a largo plazo y promociones temporales, permitiéndote disfrutar al máximo a un precio asequible.'
+    title: '¡Ahorra con inteligencia!',
+    text: 'Al elegir una tarifa, no solo accedes a contenido emocionante, sino también a oportunidades exclusivas de ahorro. Aprovecha descuentos por paquetes, suscripciones a largo plazo y promociones temporales para disfrutar al máximo sin gastar de más.'
   },
   {
-    title: 'Acceso a Contenido Exclusivo',
-    text: 'Las tarifas de televisión y streaming a menudo incluyen acceso a contenido exclusivo y original que no encontrarás en otras plataformas. Desde series originales hasta eventos en vivo, al decidirte por una tarifa, te sumerges en un mundo de entretenimiento único y emocionante.'
+    title: 'Contenido exclusivo para ti',
+    text: 'Disfruta de series originales, eventos en vivo y contenido exclusivo que no encontrarás en otras plataformas. ¡Sumérgete en un mundo de entretenimiento único y emocionante!'
   },
   {
-    title: 'Flexibilidad y Movilidad',
-    text: 'Las tarifas de televisión y streaming ofrecen flexibilidad y movilidad. Accede a tu contenido favorito desde múltiples dispositivos, ya sea en casa o mientras estás en movimiento. Decide cuándo y dónde disfrutar de tus programas y películas favoritos para adaptarlos a tu agenda.'
+    title: 'Flexibilidad y movilidad',
+    text: 'Accede a tu contenido favorito desde cualquier dispositivo, ya sea en casa o fuera de ella. Decide cuándo y dónde disfrutar de tus programas y películas para adaptarlos a tu ritmo de vida.'
   },
 ];
 
 export default function RaizStreamingCo() {
   return (
     <>
-      <MetaData titulo={'Comparador de televisión y de plataformas streaming | Vuskoo'} descripcion={'Explora las mejores opciones de televisión y plataformas de streaming. Encuentra ofertas, compara canales, programas y beneficios. Entretenimiento a tu medida'}/>
+      <MetaData titulo={'Comparador TV y streaming | Vuskoo'} descripcion={''}/>
       <Header breadCrumb></Header>
       <BannerImageFull
         image={'/img/bannerRaizStreamingCo.png'}
         title='Comparador TV y streaming'
-        text1='<ul class="listaAlternativa"><li><p>¡Descubre la manera más inteligente de disfrutar de la mejor televisión con nuestros paquetes exclusivos! Con la posibilidad de combinar diversos servicios bajo una única tarifa</p></li><li><p>Encuentra ofertas exclusivas en nuestro comparador de televisión y streaming y obtén acceso privilegiado a promociones que transformarán tu experiencia de entretenimiento.</p></li><li><p>¡Optimiza tu tiempo y simplifica tu elección! Decidir entre las numerosas opciones del mercado nunca fue tan fácil y eficiente.</p></li></ul>'
+        text1='<ul class="listaAlternativa"><li><p>¡Disfruta de la mejor televisión con nuestros paquetes exclusivos! Combina varios servicios en una sola tarifa y ahorra.</p></li><li><p>Encuentra ofertas únicas en nuestro comparador de televisión y streaming, con promociones que revolucionarán tu entretenimiento.</p></li><li><p>¡Elige fácil y rápido! Simplifica tu decisión entre las múltiples opciones del mercado con nuestra herramienta.</p></li></ul>'
         btnLeft
       /* buttons={[
         {
@@ -76,8 +76,8 @@ export default function RaizStreamingCo() {
           title={'Comparadores de '}
           titleAlt={'televisión y streaming'}
           titleThird={' que tenemos para ti'}
-          text1={'Encontrar el servicio perfecto puede ser abrumador, ¡pero no con nosotros! Ofrecemos una selección incomparable de opciones de televisión y streaming, abarcando desde los gigantes del streaming hasta los servicios de televisión más exclusivos. Sabemos que no todos buscamos lo mismo en el entretenimiento, y eso lo entendemos a la perfección. Nuestro comparador no solo te presenta las opciones, sino que te ayuda a encontrar la combinación perfecta para satisfacer tus gustos y necesidades.'}
-          text2={'Descubre el entretenimiento a tu medida con nuestra selección de comparadores de televisión y streaming.'}
+          text1={'¡Encontrar el servicio de televisión ideal no tiene por qué ser un lío! Tenemos la selección más amplia de opciones de televisión y streaming, desde los grandes nombres hasta los servicios más exclusivos. Sabemos que cada persona tiene gustos diferentes, y por eso nuestro comparador te ayuda a encontrar la combinación perfecta para ti.'}
+          text2={'¡Descubre el entretenimiento perfecto para ti con nuestra selección de comparadores de televisión y streaming!'}
           left
         />
         <ContenedorTarjeta cols={3}>

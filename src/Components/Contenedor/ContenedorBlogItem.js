@@ -27,7 +27,7 @@ export default function ContenedorBlogItem({ }) {
 
     useEffect(() => {
         setLang(location.pathname.split('/')[1])
-    }, [])
+    }, [location])
 
     useEffect(() => {
         const pathname = location.pathname;

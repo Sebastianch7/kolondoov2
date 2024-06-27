@@ -65,17 +65,18 @@ function TarjetaTarifaStreaming({ data }) {
                         <h6>{categoria}</h6>
                         <p className='font-09'>
                             {recomendaciones}
-                            {titulo_relativo_1 != '' &&
+                            
+                            {(titulo_relativo_1 != '' && titulo_relativo_1 != null) &&
                                 <div className='my-2'>
                                     <b>{titulo_relativo_1}</b> {moneda}{formatNumber(precio_relativo_1)}
                                 </div>
                             }
-                            {titulo_relativo_2 != '' &&
+                            {(titulo_relativo_2 != '' && titulo_relativo_2 != null) &&
                                 <div className='my-2'>
                                     <b>{titulo_relativo_2}</b> {moneda}{formatNumber(precio_relativo_2)}
                                 </div>
                             }
-                            {titulo_relativo_3 != '' &&
+                            {(titulo_relativo_3 != '' && titulo_relativo_3 != null) && 
                                 <div className='my-2'>
                                     <b>{titulo_relativo_3}</b> {moneda}{formatNumber(precio_relativo_3)}
                                 </div>

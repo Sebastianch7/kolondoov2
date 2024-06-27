@@ -11,7 +11,7 @@ function ItemMenu({ data }) {
 
     useEffect(() => {
         setLang(location.pathname.split('/')[1])
-    }, [])
+    }, [location])
 
     const { t } = useTranslation();
     return (

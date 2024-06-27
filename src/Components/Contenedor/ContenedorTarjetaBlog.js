@@ -16,7 +16,7 @@ function ContenedorTarjetaBlog({ children }) {
   
     useEffect(() => {
         setLang(location.pathname.split('/')[1])
-    }, [])
+    }, [location])
 
     useEffect(() => {
         setIsLoading(true);

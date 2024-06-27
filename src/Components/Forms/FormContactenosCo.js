@@ -12,7 +12,7 @@ export default function FormContactenosCo({ }) {
 
     useEffect(() => {
         setLang(location.pathname.split('/')[1])
-    }, [])
+    }, [location])
 
     const [checkIn, setCheckIn] = useState(false);
     const { t } = useTranslation();

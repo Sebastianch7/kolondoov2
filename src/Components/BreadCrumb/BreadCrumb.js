@@ -13,7 +13,7 @@ function BreadCrumb({ lead = false }) {
 
     useEffect(() => {
         setLang(location.pathname.split('/')[1])
-    }, [])
+    }, [location])
 
 
     const pathname = location.pathname;

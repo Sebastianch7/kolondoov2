@@ -9,24 +9,25 @@ import { getBlogHome } from '../../services/ApiServices';
 import Load from '../Utils/Load'
 import TitleSectionHome from '../Text/TitleSectionHome';
 import { number } from 'react-i18next/icu.macro';
+import { useTranslation } from 'react-i18next';
 
 const data = [
     {
         number: '01.',
-        title: 'Ahorro inteligente',
-        content: 'Quieres ahorrar y cambiar de cualquier suministro sin complicaciones. Nuestro proceso simple te ayuda a tomar la decisión correcta.'
+        title: 'ElegirVuskooTitle01',
+        content: 'ElegirVuskoocontent01'
 
     },
     {
         number: '02.',
-        title: 'Orientación experta',
-        content: 'Quieres tomar la decisión correcta. Nuestro equipo de atención al cliente está aquí para ayudarte.'
+        title: 'ElegirVuskooTitle02',
+        content: 'ElegirVuskoocontent02'
 
     },
     {
         number: '03.',
-        title: 'Ofertas exclusivas',
-        content: 'Quieres el trato perfecto. Ofrecemos ofertas que no puedes encontrar en ningún otro lugar.'
+        title: 'ElegirVuskooTitle03',
+        content: 'ElegirVuskoocontent03'
 
     }
 ]
@@ -37,8 +38,9 @@ function ContenedorElegirVuskoo({ children }) {
 
     useEffect(() => {
         setLang(location.pathname.split('/')[1])
-    }, [])
+    }, [location])
 
+    const { t } = useTranslation();
 
     return (
         <Container>
@@ -59,8 +61,8 @@ function ContenedorElegirVuskoo({ children }) {
                                     data.map((item, index) => {
                                         return <><Col md={4} className='mb-4  mb-md-0'>
                                             <Col xs={12} className='vuskoo-eleccion-number'>{item.number}</Col>
-                                            <Col xs={12} className='vuskoo-eleccion-title'>{item.title}</Col>
-                                            <Col xs={12} className='vuskoo-eleccion-content'>{item.content}</Col>
+                                            <Col xs={12} className='vuskoo-eleccion-title'>{t(item.title)}</Col>
+                                            <Col xs={12} className='vuskoo-eleccion-content'>{t(item.content)}</Col>
                                         </Col>
                                         </>
                                     })
@@ -71,9 +73,9 @@ function ContenedorElegirVuskoo({ children }) {
                 </Col>
                 <Col xs={12} md={4} className='bg-blueContrast br-36 p-4 mt-5 mt-md-0 d-none d-sm-block'>
                     <TitleSection
-                        title={'Únete a los millones usuarios que ya han '}
-                        titleAlt={'ahorrado'}
-                        titleBottom={'Cada día más personas nos eligen para comparar y encontrar los servicios que mas se adecuan a las necesidades de cada uno'}
+                        title={t('ContenedorElegirVuskooUneteTitle')}
+                        titleAlt={t('ContenedorElegirVuskooUneteAlt')}
+                        titleBottom={t('ContenedorElegirVuskooUneteBottom')}
                     />
                 </Col>
             </Row>

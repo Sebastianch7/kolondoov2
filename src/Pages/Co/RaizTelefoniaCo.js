@@ -19,7 +19,7 @@ import ContenedorComparadorLogos from '../../Components/Contenedor/ContenedorCom
 import ContenedorPreguntasFrecuentes from '../../Components/Contenedor/ContenedorPreguntasFrecuentes';
 import { useTranslation } from 'react-i18next';
 import FormSuscripcion from '../../Components/Forms/FormSuscripcion';
-import preguntasFrecuentes from '../../Content/PreguntasFrecuentesTelefonia.json'
+import preguntasFrecuentes from '../../Content/PreguntasFrecuentesTelefoniaCo.json'
 import ContenedorPorQueComparar from '../../Components/Contenedor/ContenedorPorQueComparar';
 import ItemStack from '../../Components/ItemStack';
 import MetaData from '../../Components/Header/SeoMetadata';
@@ -44,19 +44,19 @@ const dataPorQueComparar = [
 const data = [
   {
     title: 'Servicios',
-    text: 'Tener claro si lo que te interesa es <b>contratar los servicios por separado o de forma conjunta.</b> Ten en cuenta que los paquetes de <b>‘Internet + Móvil’ suelen unificar todos los servicios,</b> -la mayoría incluyen teléfono fijo-, lo que <b>se traduce en un ahorro</b> frente a contratarlos de forma independiente.'
+    text: 'Decida si prefiere contratar los servicios por separado o juntos. Los paquetes de "Internet + Móvil" suelen incluir teléfono fijo y ofrecen ahorros en comparación con contratarlos individualmente.'
   },
   {
     title: 'Prestaciones',
-    text: 'Nunca pasar por alto aspectos como el precio, las prestaciones de cada una de las compañías, y la cobertura. Recuerda que aún no todas las redes de fibra óptica llegan a cualquier rincón ni todos los operadores de telefonía brindan una óptima cobertura en la totalidad del territorio español.'
+    text: 'Evalúe aspectos como el precio, las prestaciones de cada compañía y la cobertura. Recuerde que la cobertura de fibra óptica y móvil puede variar según la zona.'
   },
   {
     title: 'Tarifas',
-    text: 'Fijarte en si la tarifa que te encaja tiene o no permanencia. Aunque te encuentres cada vez más operadores que no exigen este compromiso, sí sigue existiendo en muchas ocasiones. Por ejemplo, si contratas una oferta de fibra, está incluida la instalación de la fibra y del Router. Estos servicios tienen un coste que, en ocasiones, se compensa con 12 meses de permanencia.'
+    text: 'Verifique si la tarifa que le interesa tiene permanencia. Aunque cada vez hay más operadores sin permanencia, muchos aún la exigen. Por ejemplo, las ofertas de fibra con instalación incluida pueden tener 12 meses de permanencia.'
   },
   {
     title: 'Trámites',
-    text: 'Tener en cuenta que siempre es el titular del contrato el único que puede realizar todos los trámites que conlleva la portabilidad o el alta en cualquier contrato. Para realizar un cambio de titularidad, basta con que acudas a cualquier tienda de la compañía o llames a su departamento de Atención al Cliente. Esta gestión es gratuita.'
+    text: 'Recuerde que solo el titular del contrato puede realizar los trámites de portabilidad o alta. Para cambiar de titular, visite una tienda de la compañía o llame a Atención al Cliente. Este trámite es gratuito.'
   },
 ];
 
@@ -83,7 +83,7 @@ export default function RaizTelefoniaCo() {
       <BannerImageFull
         image={'/img/banner-raiz-telefonia-co.png'}
         title={t('title-baner-comparador-de-internet-y-comparador-movil')}
-        text1='<ul class="listaAlternativa"><li><p>Encuentra una tarifa para hablar y navegar a tu medida a golpe de clic.</p></li><li><p>Compara las mejores ofertas y compañías de telefonía actuales en un solo lugar y gratis.</p></li><li><p>Te asesoramos de forma personalizada para que, elijas lo que elijas, quedes satisfecho.</p></li></ul>'
+        text1='<ul class="listaAlternativa"><li><p>Encuentra el plan perfecto para hablar y navegar con un solo clic.</p></li><li><p>Compara gratis las mejores ofertas y compañías de telefonía en un solo lugar.</p></li><li><p>Te asesoramos personalmente para que siempre quedes satisfecho con tu elección.</p></li></ul>'
         btnLeft
       /* buttons={[
         {
@@ -116,7 +116,7 @@ export default function RaizTelefoniaCo() {
           center
           title={'Las mejores ofertas de'}
           titleAlt={'Internet y Telefonía Móvil'}
-          text1={'¿En busca de las mejores <b>ofertas de Internet y Móvil?</b> Te contamos lo más importante a la hora de decidirte por una tarifa:'}
+          text1={'¿Buscando las mejores ofertas de Internet y Móvil? Aquí le contamos lo más importante para elegir la tarifa ideal:'}
         />
         <ContenedorDescipcionTarifa data={data} />
         {/* <Row className='justify-content-md-center'>
@@ -133,7 +133,7 @@ export default function RaizTelefoniaCo() {
         </Row> */}
       </Container>
       <ContenedorComparadorLogos
-        subtitle={'Cada compañía telefónica es única y brilla con luz propia, de hecho por eso es tan difícil decantarnos por una u otra. Lo importante es <b>tener claro qué aspectos son los que más valoras dentro de un operador y comparar entre ellos</b> para saber con certeza en qué es mejor cada uno. Aquí te mostramos los principales y sus peculiaridades. ¿Cuál consideras el más afín a ti?'}
+        subtitle={'Cada compañía telefónica tiene sus propias fortalezas y debilidades, lo que hace difícil elegir la ideal. La clave está en identificar qué aspectos son más importantes para usted y comparar las opciones para descubrir en qué destaca cada una. Aquí le presentamos las principales compañías y sus características distintivas. ¿Cuál se adapta mejor a sus necesidades?'}
       />
       <ContenedorPreguntasFrecuentes
         data={preguntasFrecuentes}

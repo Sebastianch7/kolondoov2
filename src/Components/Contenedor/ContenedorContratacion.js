@@ -8,6 +8,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { getBlogHome } from '../../services/ApiServices';
 import Load from '../Utils/Load'
 import TitleSectionHome from '../Text/TitleSectionHome';
+import { useTranslation } from 'react-i18next';
 
 function ContenedorContratacion({ children }) {
     const [fetchBlog, setFetchBlog] = useState(null)
@@ -17,8 +18,9 @@ function ContenedorContratacion({ children }) {
 
     useEffect(() => {
         setLang(location.pathname.split('/')[1])
-    }, [])
+    }, [location])
 
+    const { t } = useTranslation();
 
     return (
         <Container className='my-5'>
@@ -29,9 +31,9 @@ function ContenedorContratacion({ children }) {
                 <Col xs={12} md={5} className="d-flex justify-content-center align-items-center">
                     <TitleSection
                         btnLeft
-                        title={'Compara y contrata de forma'}
-                        titleAlt={'inteligente'}
-                        titleBottom={'Hemos ayudado y asesorado a más de 80.000 clientes a cambiar y mejorar sus ahorrar.'}
+                        title={t('contenedroContratacionTitle')}
+                        titleAlt={t('contenedroContratacionTitleAlt')}
+                        titleBottom={t('contenedroContratacionTitleBottom')}
                         buttons={[
                             {
                                 title: 'Contacta con nosotros',

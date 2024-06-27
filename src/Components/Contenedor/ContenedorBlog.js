@@ -18,7 +18,7 @@ export default function ContenedorBlog({ categoria }) {
 
     useEffect(() => {
         setLang(location.pathname.split('/')[1])
-    }, [])
+    }, [location])
 
     useEffect(() => {
         setIsLoading(true);

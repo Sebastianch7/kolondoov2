@@ -15,7 +15,7 @@ function ContenedorExplorar({ children }) {
 
     useEffect(() => {
         setLang(location.pathname.split('/')[1])
-    }, [])
+    }, [location])
 
 
     return (

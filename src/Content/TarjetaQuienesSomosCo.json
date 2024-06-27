@@ -1,0 +1,27 @@
+[
+    {
+        "icon": "/img/icons/pulgar_arriba.svg",
+        "title": "Comparador de tarifas y ofertas online",
+        "text": "En Vuskoo reunimos en una sola página, con navegación muy intuitiva, todas las ofertas actuales de Internet, Telefonía, Luz y Gas para que encuentres la ideal para ti."
+    },
+    {
+        "icon": "/img/icons/apreton_manos.svg",
+        "title": "Lo hacemos todo por ti",
+        "text": "Es un servicio completo y cómodo para ti: nos encargamos de asesorarte y contratar los principales servicios para tu hogar después de firmar la compra de tu vivienda en la notaría."
+    },
+    {
+        "icon": "/img/icons/libro_abierto.svg",
+        "title": "Herramientas de gran utilidad",
+        "text": "Te ofrecemos diversas herramientas que te facilitarán la decisión sobre qué servicios son los mejores para ti."
+    },
+    {
+        "icon": "/img/icons/medalla.svg",
+        "title": "Manuales y guías prácticas",
+        "text": "Te brindamos el conocimiento necesario para que puedas tomar decisiones informadas sobre el consumo en tu hogar."
+    },
+    {
+        "icon": "/img/icons/idea.svg",
+        "title": "Últimas novedades",
+        "text": "Nuestro equipo de redactores elabora artículos basados en investigación rigurosa e información de calidad contrastada e independiente, para mantenerte al tanto de las noticias más relevantes."
+    }
+]

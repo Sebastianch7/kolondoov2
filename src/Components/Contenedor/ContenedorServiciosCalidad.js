@@ -9,6 +9,7 @@ import { getBlogHome } from '../../services/ApiServices';
 import Load from '../Utils/Load'
 import TitleSectionHome from '../Text/TitleSectionHome';
 import Carousel from "react-multi-carousel";
+import { useTranslation } from 'react-i18next';
 
 function ContenedorServiciosCalidad({ children }) {
     const [lang, setLang] = useState(null)
@@ -18,6 +19,8 @@ function ContenedorServiciosCalidad({ children }) {
     useEffect(() => {
         setLang(location.pathname.split('/')[1])
     }, [location])
+
+    const { t } = useTranslation();
 
     useEffect(() => {
         switch (lang) {
@@ -61,9 +64,9 @@ function ContenedorServiciosCalidad({ children }) {
             <Row>
                 <Col xs={12} md={7} className="text-center mx-auto">
                     <TitleSection
-                        title={'Nos apoyamos en servicios de calidad para'}
-                        titleAlt={'adaptarnos a tus necesidades'}
-                        titleBottom={'Nuestra misión es comprender tus requerimientos específicos y proporcionarte un servicio que supere tus expectativas'}
+                        title={t('ContenedorServiciosCalidadTitle')}
+                        titleAlt={t('ContenedorServiciosCalidadAlt')}
+                        titleBottom={t('ContenedorServiciosCalidadBottom')}
                     />
                 </Col>
             </Row>

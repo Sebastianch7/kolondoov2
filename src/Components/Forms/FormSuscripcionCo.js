@@ -16,7 +16,7 @@ function FormSuscripcionCo({ }) {
 
     useEffect(() => {
         setLang(location.pathname.split('/')[1])
-    }, [])
+    }, [location])
 
     const [checkIn, setCheckIn] = useState(false);
     const [isError, setIsError] = useState(null)
@@ -57,7 +57,7 @@ function FormSuscripcionCo({ }) {
             <InterSection></InterSection>
             <BannerReverse
                 title={'Suscríbete gratis y recibe nuestras mejores ofertas'}
-                subtitle='Únete a nuestra comunidad. Recibirás nuestros mejores contenidos semanalmente: guías prácticas para ahorrar y gestionar tu consumo, últimas entradas…¡ Y mucho más!'
+                subtitle='¡Únete a nuestra comunidad! Recibe semanalmente nuestros mejores contenidos: guías prácticas para ahorrar y gestionar tus gastos, las últimas novedades... ¡Y mucho más!'
                 image={'/img/banner-footer-co.png'}
             >
                 <Form onSubmit={subscripcion}>

@@ -15,7 +15,7 @@ function FormSuscripcion({ }) {
 
     useEffect(() => {
         setLang(location.pathname.split('/')[1])
-    }, [])
+    }, [location])
 
     const [checkIn, setCheckIn] = useState(false);
     const [isError, setIsError] = useState(null)

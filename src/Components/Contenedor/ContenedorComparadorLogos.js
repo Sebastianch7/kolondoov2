@@ -6,6 +6,7 @@ import { fetchOperadoras, fetchComercializadoras } from '../../services/ApiServi
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { Image } from "semantic-ui-react"
+import { useTranslation } from 'react-i18next';
 
 
 const responsive = {
@@ -44,8 +45,9 @@ function ContenedorComparadorLogos({ subtitle }) {
 
     useEffect(() => {
         setLang(location.pathname.split('/')[1])
-    }, []);
+    }, [location]);
 
+    const { t } = useTranslation();
     
     let response;
     useEffect(() => {
@@ -75,8 +77,8 @@ function ContenedorComparadorLogos({ subtitle }) {
     return (
         <div className=''>
             <TitleSection
-                title={'Comparamos las'}
-                titleAlt={'mejores compañías'}
+                title={t('ComparadorLogosTitle')}
+                titleAlt={t('ComparadorLogosAlt')}
                 subtitle={subtitle}
                 center
             />

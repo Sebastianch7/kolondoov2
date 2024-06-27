@@ -9,7 +9,7 @@ import ContenedorTarjetaBlog from '../../Components/Contenedor/ContenedorTarjeta
 import BannerReverse from '../../Components/Banner/BannerReverse';
 import FormSuscripcion from '../../Components/Forms/FormSuscripcion';
 import InterSection from '../../Components/Utils/InterSection';
-import TarjetaQuienesSomos from '../../Content/TarjetaQuienesSomos.json'
+import TarjetaQuienesSomos from '../../Content/TarjetaQuienesSomosCo.json'
 import { useTranslation } from 'react-i18next';
 import { isMobile } from 'react-device-detect';
 import AcordionItem from '../../Components/Acordion/AcordionItem';
@@ -26,14 +26,14 @@ function QuienesSomosCo(props) {
             <main>
                 <BannerImageFull
                     title={t('bannerQuienesSomosTitle')}
-                    text1={'Vuskoo es una comunidad online especializada en Internet, Telefonía y Energía. Nuestro propósito es el de ayudar a los usuarios a tomar las mejores decisiones sobre los servicios más importantes del hogar, y hacer más sencillas gestiones que a menudo resultan complejas. ¿Las bases de nuestro ADN? la imparcialidad y la confianza.'}
-                    text2={'Gracias a nuestro amplio knowledge de estos sectores, te ofrecemos un recorrido experiencial en el que no solo comparas las tarifas actuales disponibles en el mercado y eliges la que más encaja con tu visión del consumo. También, recibirás el asesoramiento que necesitas de forma clara y transparente, podrás contratar tu fibra o tu suministro de luz con nosotros … ¡y mucho más! ;)'}
+                    text1={'Vuskoo es una comunidad online especializada en Internet, Telefonía y Energía. Nuestra misión es ayudarte a tomar las mejores decisiones sobre los servicios más importantes para tu hogar, y simplificar gestiones que suelen ser complicadas. ¿Nuestros pilares? La imparcialidad y la confianza.'}
+                    text2={'Gracias a nuestro amplio conocimiento en estos sectores, te ofrecemos una experiencia completa: no solo comparas las tarifas disponibles en el mercado y eliges la que más te conviene, sino que también recibes asesoría clara y transparente, puedes contratar tu fibra o luz con nosotros... ¡y mucho más!'}
                     image={'/img/banner-quienes-somos-co.png'}
                 />
                 <ContenedorTarjeta 
                 fluid
                 title={'Cómo te ayudamos'}
-                subtitle={'Gracias a pilares fundamentales para nosotros como la transparencia, la seguridad y la lealtad, logramos ayudarte a través de estas vías:'}
+                subtitle={'Con transparencia, seguridad y lealtad como base, te ofrecemos apoyo a través de:'}
                 >
                     {!isMobile ?
                         TarjetaQuienesSomos?.map((item, index) => {
