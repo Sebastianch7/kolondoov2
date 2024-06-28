@@ -72,52 +72,58 @@ function ContenedorProductosPlanCelular() {
 
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        setIsLoadFilter(false);
-        const filterData = await fetchFilterPlanCelular(lang);
-        setTypeMoneda(filterData.moneda)
-        setMinCapacity(filterData.minCapacity);
-        setMaxPrice(filterData.maxPrice);
-        setMinPrice(filterData.minPrice);
-        setRangePrice(filterData.rangePrice);
-        setIsLoadFilter(true);
-      } catch (error) {
-        console.error("Error al obtener los datos iniciales de filtros:", error);
-      }
-    };
+    if (lang != null) {
+      const fetchData = async () => {
+        try {
+          setIsLoadFilter(false);
+          const filterData = await fetchFilterPlanCelular(lang);
+          setTypeMoneda(filterData.moneda)
+          setMinCapacity(filterData.minCapacity);
+          setMaxPrice(filterData.maxPrice);
+          setMinPrice(filterData.minPrice);
+          setRangePrice(filterData.rangePrice);
+          setIsLoadFilter(true);
+        } catch (error) {
+          console.error("Error al obtener los datos iniciales de filtros:", error);
+        }
+      };
 
-    fetchData();
+      fetchData();
+    }
   }, [lang]);
 
   useEffect(() => {
-    const fetchBrands = async () => {
-      try {
-        const brands = await fetchOperadorasPlanCelular(lang);
-        setBrand(brands);
-      } catch (error) {
-        console.error("Error al obtener las marcas de operadoras:", error);
-      }
-    };
+    if (lang != null) {
+      const fetchBrands = async () => {
+        try {
+          const brands = await fetchOperadorasPlanCelular(lang);
+          setBrand(brands);
+        } catch (error) {
+          console.error("Error al obtener las marcas de operadoras:", error);
+        }
+      };
 
-    fetchBrands();
+      fetchBrands();
+    }
   }, [lang]);
 
   // Función para obtener las tarifas de móvil
   useEffect(() => {
-    const fetchTariffs = async () => {
-      try {
-        setIsLoadInformation(true);
-        const response = await fetchTarifasPlanCelular(lang)
-        setFiltros(response);
-        setTarifas(response);
-        setIsLoadInformation(false);
-      } catch (error) {
-        console.error("Error al obtener las tarifas de fibra:", error);
-      }
-    };
+    if (lang != null) {
+      const fetchTariffs = async () => {
+        try {
+          setIsLoadInformation(true);
+          const response = await fetchTarifasPlanCelular(lang)
+          setFiltros(response);
+          setTarifas(response);
+          setIsLoadInformation(false);
+        } catch (error) {
+          console.error("Error al obtener las tarifas de fibra:", error);
+        }
+      };
 
-    fetchTariffs();
+      fetchTariffs();
+    }
   }, [brand, lang]);
 
   function setFilterBrandMulti(value) {
@@ -220,7 +226,7 @@ function ContenedorProductosPlanCelular() {
                       <div className='mt-4'>
                         <b>{'Coste mensual'}:</b>
                         <div className='my-4'>
-                        {typeMoneda}{rangePrice[0].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")} - {typeMoneda}{rangePrice[1].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}
+                          {typeMoneda}{rangePrice[0].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")} - {typeMoneda}{rangePrice[1].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}
                         </div>
                         <Slider
                           range
@@ -320,7 +326,7 @@ function ContenedorProductosPlanCelular() {
                         <div className="mt-4">
                           <b>{'Coste mensual'}:</b>
                           <div className="my-4">
-                          {typeMoneda}{rangePrice[0].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")} - {typeMoneda}{rangePrice[1].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}
+                            {typeMoneda}{rangePrice[0].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")} - {typeMoneda}{rangePrice[1].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}
                           </div>
                           <Slider
                             range

@@ -472,7 +472,8 @@ $breakpoint-lg: 1360px;
         margin-bottom: 5px;
 
         img {
-          height: 45px !important;
+          height: 45px;
+          padding: 5px;
         }
 
         @include media(xs) {
@@ -757,6 +758,7 @@ footer {
       }
 
       img {
+        height: 20px;
         width: 70px;
       }
 

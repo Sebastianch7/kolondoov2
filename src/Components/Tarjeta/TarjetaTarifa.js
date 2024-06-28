@@ -63,7 +63,7 @@ function TarjetaTarifa({ data, type }) {
                         <Row>
                             <Col xs={12}>
                                 <div className='tarjeta-tarifa-item-title'>
-                                    <img src={logo} alt={logo} />
+                                    <img src={logo} alt={logo}/>
                                     {((promocion !== null && promocion !== '') && isMobile === false) && <span className={`mx-4 align-middle`}><b>Promoción: </b>{promocion}</span>}
                                     {(isMobile === true) && <Link className='btn btn-primary btn-primary-small' to={`/${lang}${landingLead}${slug_tarifa.toLowerCase()}-${id}`}><BsArrowRight /></Link>}
                                 </div>

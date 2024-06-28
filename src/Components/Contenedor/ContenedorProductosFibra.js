@@ -69,52 +69,59 @@ function ContenedorProductosFibra() {
   };
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        setIsLoadFilter(false);
-        const filterData = await fetchFilterFibra(lang);
-        setTypeMoneda(filterData.moneda)
-        setMinCapacity(filterData.minCapacity);
-        setMaxPrice(filterData.maxPrice);
-        setMinPrice(filterData.minPrice);
-        setRangePrice(filterData.rangePrice);
-        setIsLoadFilter(true);
-      } catch (error) {
-        console.error("Error al obtener los datos iniciales de filtros:", error);
-      }
-    };
+    if (lang != null) {
+      const fetchData = async () => {
+        try {
+          setIsLoadFilter(false);
+          const filterData = await fetchFilterFibra(lang);
+          setTypeMoneda(filterData.moneda)
+          setMinCapacity(filterData.minCapacity);
+          setMaxPrice(filterData.maxPrice);
+          setMinPrice(filterData.minPrice);
+          setRangePrice(filterData.rangePrice);
+          setIsLoadFilter(true);
+        } catch (error) {
+          console.error("Error al obtener los datos iniciales de filtros:", error);
+        }
+      };
 
-    fetchData();
+      fetchData();
+    }
   }, [lang]);
 
   useEffect(() => {
-    const fetchBrands = async () => {
-      try {
-        const brands = await fetchOperadorasFibra(lang);
-        setBrand(brands);
-      } catch (error) {
-        console.error("Error al obtener las marcas de operadoras:", error);
-      }
-    };
-
-    fetchBrands();
+    if (lang != null) {
+      const fetchBrands = async () => {
+        try {
+          const brands = await fetchOperadorasFibra(lang);
+          setBrand(brands);
+          setIsLoadFilter(true)
+          setIsLoadInformation(false)
+        } catch (error) {
+          console.error("Error al obtener las marcas de operadoras:", error);
+        }
+      };
+      fetchBrands();
+    }
   }, [lang]);
 
   // Función para obtener las tarifas de móvil
   useEffect(() => {
-    const fetchTariffs = async () => {
-      try {
-        setIsLoadInformation(true);
-        const response = await fetchTarifasFibra(lang)
-        setFiltros(response);
-        setTarifas(response);
-        setIsLoadInformation(false);
-      } catch (error) {
-        console.error("Error al obtener las tarifas de fibra:", error);
-      }
-    };
+    if (lang != null) {
+      const fetchTariffs = async () => {
+        try {
+          setIsLoadInformation(true);
+          const response = await fetchTarifasFibra(lang)
+          setFiltros(response);
+          setTarifas(response);
+          setIsLoadInformation(false);
+        } catch (error) {
+          console.error("Error al obtener las tarifas de fibra:", error);
+        }
+      };
 
-    fetchTariffs();
+      fetchTariffs();
+    }
   }, [brand, lang]);
 
   function setFilterBrandMulti(value) {
@@ -201,7 +208,7 @@ function ContenedorProductosFibra() {
                       <Col md={12}>
                         <span className="font-bold">Compañía:</span>
                       </Col>
-                      {brand?.length > 0 &&
+                      {
                         brand.map((item, index) => (
                           <Col xs={4} md={6} key={item.id}>
                             <button
@@ -301,17 +308,17 @@ function ContenedorProductosFibra() {
                         <Col md={12}>
                           <span className="font-semibold">Compañía:</span>
                         </Col>
-                        {brand?.length > 0 &&
-                          brand.map((item, index) => (
-                            <Col xs={4} xl={6} key={item.id}>
-                              <button
-                                className={`filtro-producto-logo my-2 ${filterBrand.includes(item.id) ? 'logoFocus' : ''}`}
-                                value={item.nombre}
-                                onClick={() => setFilterBrandMulti(item.id)}>
-                                <img src={item.logo} alt={item.nombre} />
-                              </button>
-                            </Col>
-                          ))}
+                        {brand?.map((item, index) => (
+                          <Col xs={4} xl={6} key={item.id}>
+                            <button
+                              key={index}
+                              className={`filtro-producto-logo my-2 ${filterBrand.includes(item.id) ? 'logoFocus' : ''}`}
+                              value={item.nombre}
+                              onClick={() => setFilterBrandMulti(item.id)}>
+                              <img src={item.logo} alt={item.nombre} />
+                            </button>
+                          </Col>
+                        ))}
                       </Row>
                       <Row>
                         <div className="mt-4">

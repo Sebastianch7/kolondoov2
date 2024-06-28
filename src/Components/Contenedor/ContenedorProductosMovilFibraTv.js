@@ -48,7 +48,7 @@ function ContenedorProductosMovilFibraTv() {
   const location = useLocation();
 
   useEffect(() => {
-      setLang(location.pathname.split('/')[1])
+    setLang(location.pathname.split('/')[1])
   }, [location])
   // Función para limpiar los filtros
   const cleanFilter = () => {
@@ -76,58 +76,64 @@ function ContenedorProductosMovilFibraTv() {
 
   // Función para obtener los datos iniciales de filtros
   useEffect(() => {
-    setIsLoadFilter(false);
-    const fetchData = async () => {
-      try {
-        const response = await fetchFilterMovilFibraTv(lang);
-        const { min_gb, max_gb, min_precio, max_precio, moneda } = response;
+    if (lang != null) {
+      setIsLoadFilter(false);
+      const fetchData = async () => {
+        try {
+          const response = await fetchFilterMovilFibraTv(lang);
+          const { min_gb, max_gb, min_precio, max_precio, moneda } = response;
 
-        setMinCapacity(parseInt(min_gb) > 0 ? parseInt(min_gb) : 0);
-        setMaxCapacity(parseInt(max_gb));
-        setRangeCapacity([parseInt(min_gb) > 0 ? parseInt(min_gb) : 0, parseInt(max_gb)]);
+          setMinCapacity(parseInt(min_gb) > 0 ? parseInt(min_gb) : 0);
+          setMaxCapacity(parseInt(max_gb));
+          setRangeCapacity([parseInt(min_gb) > 0 ? parseInt(min_gb) : 0, parseInt(max_gb)]);
 
-        setMaxPrice(parseInt(max_precio));
-        setMinPrice(parseInt(min_precio) > 0 ? parseInt(min_precio) : 0);
-        setRangePrice([parseInt(min_precio) > 0 ? parseInt(min_precio) : 0, parseInt(max_precio)]);
-        setTypeMoneda(moneda)
-        setIsLoadFilter(true);
-      } catch (error) {
-        console.error("Error al obtener los datos iniciales de filtros:", error);
-      }
-    };
+          setMaxPrice(parseInt(max_precio));
+          setMinPrice(parseInt(min_precio) > 0 ? parseInt(min_precio) : 0);
+          setRangePrice([parseInt(min_precio) > 0 ? parseInt(min_precio) : 0, parseInt(max_precio)]);
+          setTypeMoneda(moneda)
+          setIsLoadFilter(true);
+        } catch (error) {
+          console.error("Error al obtener los datos iniciales de filtros:", error);
+        }
+      };
 
-    fetchData();
+      fetchData();
+    }
   }, [lang]);
 
   // Función para obtener las marcas de operadoras
   useEffect(() => {
-    const fetchBrands = async () => {
-      try {
-        const response = await fetchOperadorasFibraMovilTv(lang);
-        setBrand(response);
-      } catch (error) {
-        console.error("Error al obtener las marcas de operadoras:", error);
-      }
-    };
+    if (lang != null) {
+      const fetchBrands = async () => {
+        try {
+          const response = await fetchOperadorasFibraMovilTv(lang);
+          setBrand(response);
+        } catch (error) {
+          console.error("Error al obtener las marcas de operadoras:", error);
+        }
+      };
 
-    fetchBrands();
+      fetchBrands();
+    }
   }, [lang]);
 
   // Función para obtener las tarifas de móvil
   useEffect(() => {
-    setIsLoadInformation(true);
-    const fetchTariffs = async () => {
-      try {
-        const response = await fetchTarifasMovilFibraTv(lang)
-        setFiltros(response);
-        setTarifas(response);
-        setIsLoadInformation(false);
-      } catch (error) {
-        console.error("Error al obtener las tarifas de móvil:", error);
-      }
-    };
+    if (lang != null) {
+      setIsLoadInformation(true);
+      const fetchTariffs = async () => {
+        try {
+          const response = await fetchTarifasMovilFibraTv(lang)
+          setFiltros(response);
+          setTarifas(response);
+          setIsLoadInformation(false);
+        } catch (error) {
+          console.error("Error al obtener las tarifas de móvil:", error);
+        }
+      };
 
-    fetchTariffs();
+      fetchTariffs();
+    }
   }, [brand, lang]);
 
   function setFilterBrandMulti(value) {
@@ -215,7 +221,7 @@ function ContenedorProductosMovilFibraTv() {
       <section>
         <Container>
           <Row className='justify-content-around'>
-            <Col  xs={12} md={12} xl={3}>
+            <Col xs={12} md={12} xl={3}>
               <Row>
                 {!isMobile ? <Col className='my-3 font-semibold' xs={6} md={5}>Filtrar por: </Col> : <Col className='my-2' xs={6} md={5}><Button variant="light" onClick={() => setShow(true)}>Filtrar por</Button></Col>}
                 <Col className='my-2 text-center' xs={6} md={7}>
@@ -248,7 +254,7 @@ function ContenedorProductosMovilFibraTv() {
                       <div className='mt-4'>
                         <b>{'Coste mensual'}:</b>
                         <div className='my-4'>
-                        {typeMoneda}{rangePrice[0].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")} - {typeMoneda}{rangePrice[1].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}
+                          {typeMoneda}{rangePrice[0].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")} - {typeMoneda}{rangePrice[1].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}
                         </div>
                         <Slider
                           range
@@ -335,7 +341,7 @@ function ContenedorProductosMovilFibraTv() {
                             <div className='mt-4'>
                               <b>{'Coste mensual'}:</b>
                               <div className='my-4'>
-                              {typeMoneda}{rangePrice[0].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")} - {typeMoneda}{rangePrice[1].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}
+                                {typeMoneda}{rangePrice[0].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")} - {typeMoneda}{rangePrice[1].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}
                               </div>
                               <Slider
                                 range

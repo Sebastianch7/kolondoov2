@@ -36,7 +36,7 @@ function ContenedorProductosGas() {
   const location = useLocation();
 
   useEffect(() => {
-      setLang(location.pathname.split('/')[1])
+    setLang(location.pathname.split('/')[1])
   }, [location])
   // Función para limpiar los filtros
   const cleanFilter = () => {
@@ -48,32 +48,36 @@ function ContenedorProductosGas() {
   };
 
   useEffect(() => {
-    const fetchBrands = async () => {
-      try {
-        const response = await fetchComercializadorasGas(lang)
-        setBrand(response);
-      } catch (error) {
-        console.error("Error al obtener las marcas de operadoras:", error);
-      }
-    };
+    if (lang != null) {
+      const fetchBrands = async () => {
+        try {
+          const response = await fetchComercializadorasGas(lang)
+          setBrand(response);
+        } catch (error) {
+          console.error("Error al obtener las marcas de operadoras:", error);
+        }
+      };
 
-    fetchBrands();
+      fetchBrands();
+    }
   }, [lang]);
 
   useEffect(() => {
-    setIsLoadInformation(true);
-    const fetchTariffs = async () => {
-      try {
-        const response = await fetchTarifasGas(lang)
-        setFiltros(response);
-        setTarifas(response);
-        setIsLoadInformation(false);
-      } catch (error) {
-        console.error("Error al obtener las tarifas de luz:", error);
-      }
-    };
+    if (lang != null) {
+      setIsLoadInformation(true);
+      const fetchTariffs = async () => {
+        try {
+          const response = await fetchTarifasGas(lang)
+          setFiltros(response);
+          setTarifas(response);
+          setIsLoadInformation(false);
+        } catch (error) {
+          console.error("Error al obtener las tarifas de luz:", error);
+        }
+      };
 
-    fetchTariffs();
+      fetchTariffs();
+    }
   }, [brand, lang]);
 
   function setFilterBrandMulti(value) {
@@ -130,7 +134,7 @@ function ContenedorProductosGas() {
       <section>
         <Container>
           <Row className='justify-content-around'>
-            <Col  xs={12} md={12} xl={3}>
+            <Col xs={12} md={12} xl={3}>
               <Row>
                 {!isMobile ? <Col className='my-3 font-semibold' xs={6} md={5}>Filtrar por: </Col> : <Col className='my-2' xs={6} md={5}><Button variant="light" onClick={() => setShow(true)}>Filtrar por</Button></Col>}
                 <Col className='my-2 text-center' xs={6} md={7}>
@@ -280,7 +284,7 @@ function ContenedorProductosGas() {
                   {!isLoadInformation ? (
                     filtros?.length > 0 ? (
                       filtros?.map((item, index) => (
-                        <TarjetaTarifaLeadGas key={index} data={item} type={'gas'} TarifaCard/>
+                        <TarjetaTarifaLeadGas key={index} data={item} type={'gas'} TarifaCard />
                       ))
                     ) : (
                       <NotInfoItem key={0} title={'No se encontraron ofertas'} text={'Lo sentimos, no hemos encontrado ofertas con los filtros seleccionados.'} />
