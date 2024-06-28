@@ -50,7 +50,9 @@ function TarjetaTarifa({ data, type }) {
         messenger,
         waze,
         whatsapp,
-        twitter
+        twitter,
+        duracionContrato,
+        instagram
     } = data;
     return (
         <>
@@ -74,7 +76,7 @@ function TarjetaTarifa({ data, type }) {
                         </Row>
                     </Col>
                     <Col md={5} className={classNames('text-left', { 'order-2': isMobile, 'color-primary': destacada === 1 })}>
-                        Duración contrato: <b>{meses_permanencia === 0 ? 'Sin contrato' : `${meses_permanencia} meses`}</b>
+                        Contrato: <b>{duracionContrato}</b>
                         <hr />
                         <ItemTarifaDescripcion destacada={destacada} text={parrilla_bloque_2} />
                         <ItemTarifaDescripcion destacada={destacada} text={parrilla_bloque_3} />
@@ -93,6 +95,7 @@ function TarjetaTarifa({ data, type }) {
                                 {waze === 1 && <img className='icon-logo-tarifa' src='/img/logos/waze.webp' alt='Waze' />}
                                 {whatsapp === 1 && <img className='icon-logo-tarifa' src='/img/logos/whatsapp.webp' alt='WhatsApp' />}
                                 {twitter === 1 && <img className='icon-logo-tarifa' src='/img/logos/x.webp' alt='Twitter' />}
+                                {instagram === 1 && <img className='icon-logo-tarifa' src='/img/logos/instagram.jpg' alt='Instagram' />}
                             </div>
 
                         )}

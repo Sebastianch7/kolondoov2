@@ -71,10 +71,7 @@ function RoutesApp() {
                 <Route path="/es/energia" element={<RaizEnergia />} />
                 <Route path="/es/television-streaming" element={<RaizStreaming />} />
 
-
                 <Route path="/es/comparadores/:marca" element={<ComparadoresMarca />} />
-
-
 
                 <Route path="/es/energia/comparador-tarifas-luz" element={<ComparadorLuz />} />
                 <Route path="/es/energia/comparador-tarifas-luz/:id" element={<Lead />} />
