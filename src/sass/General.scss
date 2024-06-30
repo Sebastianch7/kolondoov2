@@ -473,7 +473,7 @@ $breakpoint-lg: 1360px;
 
         img {
           height: 45px;
-          padding: 5px;
+          padding: 7px;
         }
 
         @include media(xs) {
@@ -1574,4 +1574,8 @@ p {
 .icon-logo-tarifa {
   height: 15px !important;
   margin-left: 5px;
+}
+
+.mt-7px {
+  margin-top: 7px;
 }

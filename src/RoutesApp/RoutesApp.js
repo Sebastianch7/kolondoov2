@@ -48,6 +48,7 @@ import PoliticaLegalCo from '../Pages/Co/PoliticaLegalCo';
 import QuienesSomosCo from '../Pages/Co/QuienesSomosCo';
 import RaizStreamingCo from '../Pages/Co/RaizStreamingCo';
 import RaizFinanzasCo from '../Pages/Co/RaizFinanzasCo'
+import ComparadorPrestamosCo from '../Pages/Co/ComparadorPrestamosCo';
 
 function RoutesApp() {
     return (
@@ -159,7 +160,9 @@ function RoutesApp() {
                 {/* CO */}
                 <Route path="/co/finanzas" element={<RaizFinanzasCo />} />
                 <Route path="/co/rediccion-banco/:id" element={<ZonaTransaccional />} />
-                <Route path="/co/finanzas/banca" element={<ComparadorPrestamos />} />
+                <Route path="/co/finanzas/comparador-ofertas-zona-bancaria/cuenta-ahorro" element={<ComparadorPrestamosCo />} />
+                <Route path="/co/finanzas/comparador-ofertas-zona-bancaria/tarjeta-credito" element={<ComparadorPrestamos />} />
+                <Route path="/co/finanzas/comparador-ofertas-zona-bancaria/creditos" element={<ComparadorPrestamos />} />
                 
 
 

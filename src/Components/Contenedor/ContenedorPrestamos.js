@@ -8,7 +8,8 @@ import Load from '../Utils/Load';
 import { useLocation } from 'react-router-dom';
 
 
-function ContenedorPrestamos({ logo = null, landingLead = null, id = null }) {  // Ajuste para aceptar parámetros como un objeto
+function ContenedorPrestamos({ logo = null, landingLead = null, id = null, filtroCategoria }) {  
+  
   const [isLoadInformation, setIsLoadInformation] = useState(false);
   const [Tarifas, setTarifas] = useState([]);
 
@@ -20,11 +21,11 @@ function ContenedorPrestamos({ logo = null, landingLead = null, id = null }) {  
   }, [location])
 
   useEffect(() => {
-    if (lang != null) {
+    if (lang != null && filtroCategoria != null) {
       setIsLoadInformation(true);
       const fetchTariffs = async () => {
         try {
-          let response = await fetchPrestamosOffers(lang);
+          let response = await fetchPrestamosOffers(lang, filtroCategoria);
           setTarifas(response);
           setIsLoadInformation(false);
         } catch (error) {
@@ -34,7 +35,7 @@ function ContenedorPrestamos({ logo = null, landingLead = null, id = null }) {  
       };
       fetchTariffs();
     }
-  }, [lang]);
+  }, [lang, filtroCategoria]);
 
   return (
     <>

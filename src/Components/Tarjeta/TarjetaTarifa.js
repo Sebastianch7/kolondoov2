@@ -52,7 +52,10 @@ function TarjetaTarifa({ data, type }) {
         whatsapp,
         twitter,
         duracionContrato,
-        instagram
+        instagram,
+        red5g,
+        tinder,
+        lolamusic
     } = data;
     return (
         <>
@@ -62,12 +65,13 @@ function TarjetaTarifa({ data, type }) {
                     <Col md={12}>
                         <Row>
                             <Col xs={12}>
-                                <div className='tarjeta-tarifa-item-title'>
-                                    <img src={logo} alt={logo}/>
-                                    {((promocion !== null && promocion !== '') && isMobile === false) && <span className={`mx-4 align-middle`}><b>Promoción: </b>{promocion}</span>}
-                                    {(isMobile === true) && <Link className='btn btn-primary btn-primary-small' to={`/${lang}${landingLead}${slug_tarifa.toLowerCase()}-${id}`}><BsArrowRight /></Link>}
+                                <div className='tarjeta-tarifa-item-title d-flex justify-content-between align-items-center'>
+                                    <img src={logo} alt={logo} />
+                                    {((promocion !== null && promocion !== '') && !isMobile) && <span className='mt-7px'><b>Promoción: </b>{promocion}</span>}
+                                    {isMobile && <Link className='btn btn-primary btn-primary-small' to={`/${lang}${landingLead}${slug_tarifa.toLowerCase()}-${id}`}><BsArrowRight /></Link>}
                                 </div>
                             </Col>
+
                             {(promocion !== null && isMobile === true) &&
                                 <Col xs={12} className='mb-2'>
                                     <span className={`align-middle text-promotion ${destacada === 1 && 'color-primary'}`}><b>Promoción: </b>{promocion}</span>
@@ -87,7 +91,6 @@ function TarjetaTarifa({ data, type }) {
                         {AmazonPrime === 1 && <FaAmazon className='m-2' />}
                         {DAZN === 1 && <SiDazn className='m-2' />}
                         {appsIlimitadas === 1 && (
-
                             <div className={`tarjeta-tarifa-item-descripcion m-1 ${destacada && 'border-primary'}`}>
                                 <b>Apps ilimitadas:&nbsp;</b>
                                 {facebook === 1 && <img className='icon-logo-tarifa' src='/img/logos/facebook.webp' alt='Facebook' />}
@@ -96,8 +99,12 @@ function TarjetaTarifa({ data, type }) {
                                 {whatsapp === 1 && <img className='icon-logo-tarifa' src='/img/logos/whatsapp.webp' alt='WhatsApp' />}
                                 {twitter === 1 && <img className='icon-logo-tarifa' src='/img/logos/x.webp' alt='Twitter' />}
                                 {instagram === 1 && <img className='icon-logo-tarifa' src='/img/logos/instagram.jpg' alt='Instagram' />}
+                                {tinder === 1 && <img className='icon-logo-tarifa' src='/img/logos/tinder.png' alt='Tinder' />}
+                                {lolamusic === 1 && <img className='icon-logo-tarifa' src='/img/logos/lolamusic.png' alt='lolaMusci' />}
                             </div>
-
+                        )}
+                        {red5g === 2 && (
+                            <ItemTarifaDescripcion destacada={destacada} text={'5G'} />
                         )}
 
                     </Col>
@@ -108,7 +115,7 @@ function TarjetaTarifa({ data, type }) {
                         </Row>
                     </Col>
                     {!isMobile && <Col md={2} style={isMobile ? { order: 3 } : { order: 3 }}>
-                        <Link className='btn btn-primary' to={`/${lang}${landingLead}${slug_tarifa.toLowerCase()}-${id}`}>{`Comprar`}</Link>
+                        <Link className='btn btn-primary mt-2' to={`/${lang}${landingLead}${slug_tarifa.toLowerCase()}-${id}`}>{`Comprar`}</Link>
                     </Col>}
                 </Row>
             </Card>
