@@ -79,9 +79,24 @@ function TarjetaTarifa({ data, type }) {
                             }
                         </Row>
                     </Col>
-                    <Col md={5} className={classNames('text-left', { 'order-2': isMobile, 'color-primary': destacada === 1 })}>
-                        Contrato: <b>{duracionContrato}</b>
-                        <hr />
+                    <Col md={5} className={classNames('text-left mt-2', { 'order-2': isMobile, 'color-primary': destacada === 1 })}>
+                        {duracionContrato !== null ? (
+                            <div className='d-block'>
+                                <span>Contrato: <b>{duracionContrato}</b></span>
+                            </div>
+                        )
+                            :
+                            <>
+                                <span>Contrato: <b>Sin contrato</b></span>
+                            </>
+                        }
+                        {meses_permanencia !== 0 && (
+                            <div className='d-block mt-2'>
+                                <span>Meses de permanencia: <b>{meses_permanencia} meses</b></span>
+                            </div>
+                        )
+                        }
+                        <hr className="my-2 mb-3" />
                         <ItemTarifaDescripcion destacada={destacada} text={parrilla_bloque_2} />
                         <ItemTarifaDescripcion destacada={destacada} text={parrilla_bloque_3} />
                         <ItemTarifaDescripcion destacada={destacada} text={parrilla_bloque_4} />
@@ -103,7 +118,7 @@ function TarjetaTarifa({ data, type }) {
                                 {lolamusic === 1 && <img className='icon-logo-tarifa' src='/img/logos/lolamusic.png' alt='lolaMusci' />}
                             </div>
                         )}
-                        {red5g === 2 && (
+                        {red5g === 1 && (
                             <ItemTarifaDescripcion destacada={destacada} text={'5G'} />
                         )}
 

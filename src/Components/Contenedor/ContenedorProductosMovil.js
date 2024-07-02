@@ -32,6 +32,8 @@ function ContenedorProductosMovil() {
   const [filterMessage, setFilterMessage] = useState(false);
   const [filterRoaming, setFilterRoaming] = useState(false);
   const [filterPromo, setFilterPromo] = useState(false);
+  const [filterRed5g, setFilterRed5g] = useState(true);
+  const [filterOfertaDestacada, setFilterOfertaDestacada] = useState(true);
 
   // Estados para tarifas y marcas
   const [Tarifas, setTarifas] = useState([]);
@@ -50,6 +52,7 @@ function ContenedorProductosMovil() {
   useEffect(() => {
     setLang(location.pathname.split('/')[1])
   }, [location])
+
   // Función para limpiar los filtros
   const cleanFilter = () => {
     setFilterTechnology(false);
@@ -61,6 +64,8 @@ function ContenedorProductosMovil() {
     setFilterPrice([minPrice, maxPrice]);
     setRangePrice([minPrice, maxPrice]);
     setRangeCapacity([minCapacity, maxCapacity]);
+    setFilterRed5g(false);
+    setFilterOfertaDestacada(false);
     setFiltros(Tarifas);
   };
 
@@ -78,6 +83,7 @@ function ContenedorProductosMovil() {
 
   // Función para obtener los datos iniciales de filtros
   useEffect(() => {
+    cleanFilter();
     if (lang != null) {
       setIsLoadFilter(false);
       const fetchData = async () => {
@@ -163,13 +169,15 @@ function ContenedorProductosMovil() {
       .filter((item) => filterByBrand(item))
       .filter((item) => filterByCapacity(item))
       .filter((item) => filterByPrice(item))
-      .filter((item) => filterByTechnology(item))
+      //.filter((item) => filterByTechnology(item))
       .filter((item) => filterByMessage(item))
       .filter((item) => filterByRoaming(item))
       .filter((item) => filterByPromo(item))
+      .filter((item) => filterByRed5g(item))
+      .filter((item) => filterByOfertaDestacada(item))
 
     setFiltros(resultado);
-  }, [filterBrand, filterPrice, filterCapacity, filterTechnology, filterMessage, filterRoaming, filterPromo]);
+  }, [filterBrand, filterPrice, filterCapacity, filterMessage, filterRoaming, filterPromo, filterRed5g, filterOfertaDestacada]);
 
   // Función para filtrar por marca
   function filterByBrand(item) {
@@ -194,6 +202,31 @@ function ContenedorProductosMovil() {
 
   // Función para filtrar por promocion
   const filterByPromo = (item) => filterPromo !== false ? (item.promocion !== "" && item.promocion !== null) : true;
+
+
+  function filterByRed5g(item) {
+    if (filterRed5g !== false) {
+      if (item.red5g == 1) {
+        return true;
+      } else {
+        return false;
+      }
+    } else {
+      return true;
+    }
+  }
+  
+  function filterByOfertaDestacada(item) {
+    if (filterOfertaDestacada !== false) {
+      if (item.destacada == 1) {
+        return true;
+      } else {
+        return false;
+      }
+    } else {
+      return true;
+    }
+  }
 
   // Función para filtrar por capacidad
   function filterByCapacity(item) {
@@ -296,8 +329,8 @@ function ContenedorProductosMovil() {
                           <Form.Switch
                             className='input-check-dark mt-2 text-left'
                             type='switch'
-                            checked={filterTechnology}
-                            onChange={() => setFilterTechnology(!filterTechnology)}
+                            checked={filterRed5g}
+                            onChange={() => setFilterRed5g(!filterRed5g)}
                             label={'Mostrar solo ofertas 5G'}
                             reverse
                           />
@@ -404,13 +437,26 @@ function ContenedorProductosMovil() {
                               />
                             </div>
                             <div className='my-2'>
+                              <b>{'Oferta destacada'}:</b>
+                              <div className='my-2'>
+                                <Form.Switch
+                                  className='input-check-dark mt-2 text-left'
+                                  type='switch'
+                                  checked={filterOfertaDestacada}
+                                  onChange={() => setFilterOfertaDestacada(!filterOfertaDestacada)}
+                                  label={'Mostrar solo ofertas destacadas'}
+                                  reverse
+                                />
+                              </div>
+                            </div>
+                            <div className='my-2'>
                               <b>{'5G'}:</b>
                               <div className='my-2'>
                                 <Form.Switch
                                   className='input-check-dark mt-2 text-left'
                                   type='switch'
-                                  checked={filterTechnology}
-                                  onChange={() => setFilterTechnology(!filterTechnology)}
+                                  checked={filterRed5g}
+                                  onChange={() => setFilterRed5g(!filterRed5g)}
                                   label={'Mostrar solo ofertas 5G'}
                                   reverse
                                 />
