@@ -1,10 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
-import { isMobile } from 'react-device-detect';
 import { Link, Navigate } from 'react-router-dom';
-import { useLocation } from 'react-router-dom';
-import { Form } from 'react-bootstrap';
-import { Bs1CircleFill } from "react-icons/bs";
 
 const handleSelectChange = (event) => {
     const country = event.target.value;
@@ -24,12 +20,12 @@ const handleSelectChange = (event) => {
             newPath = '/es';
             break;
     }
-    window.location.href = newPath; 
+    window.location.href = newPath;
 };
 
 
 function Footer(props) {
-    
+
     return (
         <footer className="page-footer bg-dark pt-5">
             <Container>
@@ -45,7 +41,7 @@ function Footer(props) {
                             <li className='my-md-3'>Calle Barquillo, 8</li>
                             <li className='my-md-3'>28004 Madrid - España</li>
                         </ul>
-                        <select onChange={handleSelectChange}>
+                        <select className='p-2 my-3' onChange={handleSelectChange}>
                             <option value="Es">Es</option>
                             <option value="Co">Co</option>
                             <option value="Mx">Mx</option>

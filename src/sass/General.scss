@@ -3,23 +3,23 @@ body {
   font-size: 16px;
 }
 
+
 @font-face {
   font-family: 'MontRegular'; // El nombre de la fuente que deseas usar
-  src: url('../../public/fonts/MontExtraLight.otf') format('opentype'); // Ruta de la fuente OTF
+  src: url('../../public/fonts/montSemi.otf') format('opentype'); // Ruta de la fuente OTF
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'MontHeavy'; // El nombre de la fuente que deseas usar
-  src: url('../../public/fonts/MontHeavy.otf') format('opentype'); // Ruta de la fuente OTF
-  font-weight: bold;
+  src: url('../../public/fonts/montBold.otf') format('opentype'); // Ruta de la fuente OTF
   font-style: normal;
 }
 
 @font-face {
   font-family: 'MontSemiBold'; // El nombre de la fuente que deseas usar
-  src: url('../../public/fonts/MontBook.otf') format('opentype'); // Ruta de la fuente OTF
+  src: url('../../public/fonts/montLight.otf') format('opentype'); // Ruta de la fuente OTF
   font-style: normal;
 }
 
@@ -28,16 +28,16 @@ $MontRegular: 'MontRegular', sans-serif;
 $MontSemiBold: 'MontSemiBold', sans-serif;
 $MontHeavy: 'MontHeavy', sans-serif;
 
-
-// Aplica la fuente a elementos específicos o a todo el documento
 * {
-  font-family: $MontRegular;
-  font-weight: 600 !important;
+  font-family: $MontSemiBold;
 }
 
 .font-semibold {
   font-family: $MontSemiBold;
-  font-weight: 800 !important;
+}
+
+.font-bold {
+  font-family: $MontHeavy !important;
 }
 
 h1,
@@ -48,7 +48,6 @@ h5,
 h6,
 b,
 .card-title,
-.font-bold,
 .tarjeta-tarifa-item-service {
   font-family: $MontSemiBold !important;
   font-weight: bolder !important;
@@ -62,7 +61,8 @@ b,
 
 /* Colors */
 $colorPrimary : #19467c;
-$colorSecundary: #79cfe2;
+$colorSecundaryText: #79CFE2;
+$colorSecundary: rgba(223, 240, 255, 1);
 $contrast: #252625;
 $white: #ffffff;
 $black: #000000;
@@ -80,6 +80,10 @@ $blueContrast: #F2FAFC;
   &-secundary {
     color: $colorSecundary;
   }
+  
+  &-secundaryText {
+    color: $colorSecundaryText;
+  }
 
   &-green {
     color: $green;
@@ -87,6 +91,10 @@ $blueContrast: #F2FAFC;
 
   &-red {
     color: $red;
+  }
+  
+  &-dark {
+    color: black;
   }
 }
 
@@ -110,6 +118,7 @@ $blueContrast: #F2FAFC;
 
 .btn {
   font-weight: 800 !important;
+  font-family: $MontHeavy !important;
 
   &-primary:hover {
     background-color: $colorPrimary;
@@ -251,6 +260,7 @@ $breakpoint-lg: 1360px;
     line-height: normal;
     font-size: 1.8rem;
     margin-top: 40px;
+    font-family: $MontHeavy !important;
   }
 }
 
@@ -285,7 +295,7 @@ $breakpoint-lg: 1360px;
     }
 
     &-small {
-      max-width: 40px !important;
+      max-width: 60px !important;
       float: right;
       text-align: center;
 
@@ -750,7 +760,7 @@ footer {
       text-align: center;
       filter: grayscale(1);
       height: 50px;
-      width: auto;
+      width: 100%;
       overflow: hidden;
 
       &:hover {
@@ -759,7 +769,6 @@ footer {
 
       img {
         height: 35px;
-        width: 130px;
       }
 
     }
@@ -771,7 +780,7 @@ footer {
       padding: 5px 10px;
       text-align: center;
       filter: grayscale(1);
-      width: auto;
+      width: 100%;
       overflow: hidden;
 
       &:hover {
@@ -831,6 +840,7 @@ footer {
 
 .text {
   &-promotion {
+    font-family: $MontHeavy;
     @include media(xs) {
       margin-top: 0px;
     }
@@ -922,6 +932,14 @@ footer {
 
   &-blueContrast {
     background-color: $blueContrast;
+  }
+
+  &-secundary {
+    background-color: $colorSecundary;
+  }
+
+  &-secundary-10 {
+    background-color: rgba(242,250,252,10);
   }
 
 
@@ -1276,11 +1294,11 @@ ul {
 }
 
 .prioridad {
-  border: 3px solid $colorPrimary;
+  border: 3px solid $colorSecundary;
 
   &-oferta {
-    background-color: $colorPrimary;
-    color: $white;
+    background-color: $colorSecundary;
+    color: black;
     width: 200px;
     height: 36px;
     position: relative;
@@ -1290,7 +1308,7 @@ ul {
     align-items: center;
     vertical-align: middle;
     font-size: 1rem;
-    font-family: $MontSemiBold;
+    font-family: $MontHeavy !important;
   }
 
   &-oferta-prestamo {
@@ -1319,7 +1337,7 @@ ul {
 
 p {
   a {
-    font-family: $MontSemiBold !important;
+    font-family: $MontHeavy !important;
   }
 }
 
@@ -1534,7 +1552,7 @@ p {
 .vuskoo-eleccion {
   &-number {
     font-size: 2.5rem;
-    color: $colorSecundary;
+    color: $colorSecundaryText;
     font-family: $MontSemiBold;
 
   }
@@ -1542,7 +1560,10 @@ p {
   &-title {
     color: $colorPrimary;
     font-size: 1.2rem;
-    font-family: $MontSemiBold;
+    font-family: $MontHeavy !important;
+    @include media(xs){
+      text-align: left;
+    }
   }
 
   &-content {
@@ -1578,4 +1599,8 @@ p {
 
 .mt-7px {
   margin-top: 7px;
+}
+
+b{
+  font-family: $MontHeavy !important;
 }

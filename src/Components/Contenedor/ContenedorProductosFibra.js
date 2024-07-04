@@ -34,6 +34,7 @@ function ContenedorProductosFibra() {
   const [filterRoaming, setFilterRoaming] = useState(false);
   const [filterPermanencia, setFilterPermanencia] = useState(false);
   const [filterPromo, setFilterPromo] = useState(false);
+  const [filterOfertaDestacada, setFilterOfertaDestacada] = useState(false);
 
   // Estados para tarifas y marcas
   const [Tarifas, setTarifas] = useState([]);
@@ -58,8 +59,9 @@ function ContenedorProductosFibra() {
     setFilterPrice([minPrice, maxPrice]);
     setRangePrice([minPrice, maxPrice]);
     setFilterPromo(false);
-    setFiltros(Tarifas);
+    setFilterOfertaDestacada(false);
     setFilterPermanencia(false)
+    setFiltros(Tarifas);
   };
 
   // Función para manejar el cambio en el rango de precio
@@ -148,9 +150,9 @@ function ContenedorProductosFibra() {
       .filter((item) => filterByBrand(item))
       .filter((item) => filterByPrice(item))
       .filter((item) => filterByPromo(item))
-
+      .filter((item) => filterByOfertaDestacada(item))
     setFiltros(resultado);
-  }, [filterBrand, filterPrice, filterPromo]);
+  }, [filterBrand, filterPrice, filterPromo, filterOfertaDestacada]);
 
   // Función para filtrar por marca
   function filterByBrand(item) {
@@ -166,6 +168,18 @@ function ContenedorProductosFibra() {
 
   // Función para filtrar por promocion
   const filterByPromo = (item) => filterPromo !== false ? (item.promocion !== "" && item.promocion !== null) : true;
+
+  function filterByOfertaDestacada(item) {
+    if (filterOfertaDestacada !== false) {
+      if (item.destacada == 1) {
+        return true;
+      } else {
+        return false;
+      }
+    } else {
+      return true;
+    }
+  }
 
   // Función para filtrar por palabra clave en los bloques
   function filterByFilter(filter, item, word) {
@@ -193,7 +207,7 @@ function ContenedorProductosFibra() {
           <Row className='justify-content-around'>
             <Col xs={12} md={12} xl={3}>
               <Row>
-                {!isMobile ? <Col className='my-3 font-semibold' xs={6} md={12} xl={5}>Filtrar por: </Col> : <Col className='my-2' xs={6} md={5}><Button variant="light" onClick={() => setShow(true)}>Filtrar por</Button></Col>}
+                {!isMobile ? <Col className='my-3 font-bold' xs={6} md={12} xl={5}>Filtrar por: </Col> : <Col className='my-2' xs={6} md={5}><Button variant="light" onClick={() => setShow(true)}>Filtrar por</Button></Col>}
                 <Col className='my-2 text-center' xs={6} md={7}>
                   <button className='btn btn-light' onClick={cleanFilter}>Limpiar filtro</button>
                 </Col>
@@ -221,10 +235,11 @@ function ContenedorProductosFibra() {
                         ))}
                     </Row>
                     <Row>
-                      <div className='mt-4'>
+                      <div className="mt-4">
                         <b>{'Coste mensual'}:</b>
-                        <div className='my-4'>
-                          {typeMoneda}{rangePrice[0].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")} - {typeMoneda}{rangePrice[1].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}
+                        <div className='my-4 d-flex justify-content-between'>
+                          <div>{typeMoneda}{rangePrice[0].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}</div>
+                          <div>{typeMoneda}{rangePrice[1].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}</div>
                         </div>
                         <Slider
                           range
@@ -232,47 +247,32 @@ function ContenedorProductosFibra() {
                           max={maxPrice}
                           value={rangePrice}
                           onChange={handleRangeChangePrice}
-                          className='form-input-range'
+                          className="form-input-range"
                         />
                       </div>
-                      <div className='my-2'>
-                        <b>{'5G'}:</b>
+                      <div className='mt-4'>
+                        <b>{'Oferta destacada'}:</b>
                         <div className='my-2'>
                           <Form.Switch
                             className='input-check-dark mt-2 text-left'
                             type='switch'
-                            checked={filterTechnology}
-                            onChange={() => setFilterTechnology(!filterTechnology)}
-                            label={'Mostrar solo ofertas 5G'}
+                            checked={filterOfertaDestacada}
+                            onChange={() => setFilterOfertaDestacada(!filterOfertaDestacada)}
+                            label={'Mostrar solo ofertas destacadas'}
                             reverse
                           />
                         </div>
                       </div>
-                      <div className='my-2'>
-                        <b>{'Mensajes'}:</b>
-                        <div className='my-2'>
-                          <Form.Switch
-                            className='input-check-dark mt-2 text-left'
-                            type='switch'
-                            checked={filterMessage}
-                            onChange={() => setFilterMessage(!filterMessage)}
-                            label={'Mensajes ilimitados'}
-                            reverse
-                          />
-                        </div>
-                      </div>
-                      <div className='my-2'>
-                        <b>{'Roaming'}:</b>
-                        <div className='my-2'>
-                          <Form.Switch
-                            className='input-check-dark mt-2 text-left'
-                            type='switch'
-                            checked={filterRoaming}
-                            onChange={() => setFilterRoaming(!filterRoaming)}
-                            label={'Roaming en la UE'}
-                            reverse
-                          />
-                        </div>
+                      <div className="my-2">
+                        <b>{'Permanencia'}:</b>
+                        <Form.Switch
+                          className="input-check-dark mt-2 text-left"
+                          type="switch"
+                          checked={filterPermanencia}
+                          onChange={() => setFilterPermanencia(!filterPermanencia)}
+                          label={'Tarifa sin permanencia'}
+                          reverse
+                        />
                       </div>
                       <div className='my-2'>
                         <b>{'Promoción'}:</b>
@@ -306,7 +306,7 @@ function ContenedorProductosFibra() {
                           </Col>
                         )}
                         <Col md={12}>
-                          <span className="font-semibold">Compañía:</span>
+                          <span className="font-bold">Compañía:</span>
                         </Col>
                         {brand?.map((item, index) => (
                           <Col xs={4} xl={6} key={item.id}>
@@ -323,8 +323,9 @@ function ContenedorProductosFibra() {
                       <Row>
                         <div className="mt-4">
                           <b>{'Coste mensual'}:</b>
-                          <div className="my-4">
-                            {typeMoneda}{rangePrice[0].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")} - {typeMoneda}{rangePrice[1].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}
+                          <div className='my-4 d-flex justify-content-between'>
+                            <div>{typeMoneda}{rangePrice[0].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}</div>
+                            <div>{typeMoneda}{rangePrice[1].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}</div>
                           </div>
                           <Slider
                             range
@@ -335,7 +336,20 @@ function ContenedorProductosFibra() {
                             className="form-input-range"
                           />
                         </div>
-                        <div className="mt-4">
+                        <div className='mt-4'>
+                          <b>{'Oferta destacada'}:</b>
+                          <div className='my-2'>
+                            <Form.Switch
+                              className='input-check-dark mt-2 text-left'
+                              type='switch'
+                              checked={filterOfertaDestacada}
+                              onChange={() => setFilterOfertaDestacada(!filterOfertaDestacada)}
+                              label={'Mostrar solo ofertas destacadas'}
+                              reverse
+                            />
+                          </div>
+                        </div>
+                        <div className="my-2">
                           <b>{'Permanencia'}:</b>
                           <Form.Switch
                             className="input-check-dark mt-2 text-left"

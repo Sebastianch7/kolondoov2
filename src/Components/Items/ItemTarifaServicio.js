@@ -11,16 +11,16 @@ function ItemTarifaServicio({ cant, service, money, design, destacada, precio })
     return (
         (design !== 'small') ?
             <Col xs={6}>
-                <div className={`tarjeta-tarifa-item-service text-center my-2 ${destacada && 'bg-primary text-white'}`}>
-                    {precio ? <h5>{money}{formatNumber(cant)}</h5> : <h5>{money}{(cant)}</h5>}
-                    <span>{service}</span>
+                <div className={`tarjeta-tarifa-item-service text-center my-2 font-bold ${destacada && 'bg-secundary text-white'}`}>
+                    {precio ? <h5 className='font-bold color-dark'>{money}{formatNumber(cant)}</h5> : <h5 className='font-bold color-dark'>{money}{cant}</h5>}
+                    <span className='font-bold text-dark'>{service}</span>
                 </div>
             </Col>
             :
             <Col xs={12}>
-                <div className='tarjeta-tarifa-item-service tarjeta-tarifa-item-service-small text-center my-2'>
-                    {precio ? <h5>{money}{formatNumber(cant)}</h5> : <h5>{money}{(cant)}</h5>}
-                    <span>{service}</span>
+                <div className='tarjeta-tarifa-item-service tarjeta-tarifa-item-service-small text-center my-2 font-bold'>
+                    {precio ? <h5 className='font-bold color-dark'>{money}{formatNumber(cant)}</h5> : <h5 className='font-bold color-dark'>{money}{cant}</h5>}
+                    <span className='font-bold text-dark'>{service}</span>
                 </div>
             </Col>
     );

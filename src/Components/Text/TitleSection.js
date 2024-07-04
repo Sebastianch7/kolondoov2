@@ -9,7 +9,7 @@ import { BsFillCalendar2Fill } from "react-icons/bs";
 import { BsFillFilePersonFill } from "react-icons/bs";
 
 
-function TitleSection({ fecha, autor, title, titleAlt, titleThird, titleBottom, subtitle, center = false, buttons, text1, text2, left, btnLeft = false, blog, clave, textBlog }) {
+function TitleSection({ fecha, autor, title, titleAlt, titleThird, titleBottom, subtitle, center = false, buttons, text1, text2, left, btnLeft = false, blog, clave, textBlog, imagen }) {
     const meses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre']
     const cambiarFecha = (data) => {
         let fecha = new Date(data);
@@ -40,6 +40,7 @@ function TitleSection({ fecha, autor, title, titleAlt, titleThird, titleBottom, 
                     {left && <p className='text-left' dangerouslySetInnerHTML={{ __html: text1 }}></p>}
                     {left && <p className='text-left' dangerouslySetInnerHTML={{ __html: text2 }}></p>}
                     {textBlog && <p className='blog' dangerouslySetInnerHTML={{ __html: textBlog }}></p>}
+                    {imagen && <img className='imf-fluid mt-2 mb-4' style={{'height':'112px'}} src={imagen} alt={imagen}></img>}
                     {buttons && <Row key={buttons} className={`${!btnLeft && 'text-center mx-auto'}`}>
                         <Stack gap={3} className="mx-auto d-block" direction={!isMobile ? "horizontal" : "vertical"}>
                             {buttons?.map((item, index) => {

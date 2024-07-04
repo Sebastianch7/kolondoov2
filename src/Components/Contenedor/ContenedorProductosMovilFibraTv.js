@@ -32,6 +32,7 @@ function ContenedorProductosMovilFibraTv() {
   const [filterCapacity, setFilterCapacity] = useState([minCapacity, maxCapacity]);
   const [filterLlamadas, setFilterLlamadas] = useState(false);
   const [filterPromo, setFilterPromo] = useState(false);
+  const [filterOfertaDestacada, setFilterOfertaDestacada] = useState(false);
 
   // Estados para tarifas y marcas
   const [Tarifas, setTarifas] = useState([]);
@@ -59,6 +60,7 @@ function ContenedorProductosMovilFibraTv() {
     setFilterPrice([minPrice, maxPrice]);
     setRangePrice([minPrice, maxPrice]);
     setRangeCapacity([minCapacity, maxCapacity]);
+    setFilterOfertaDestacada(false);
     setFiltros(Tarifas);
   };
 
@@ -162,9 +164,10 @@ function ContenedorProductosMovilFibraTv() {
       .filter((item) => filterByPrice(item))
       .filter((item) => filterByTechnology(item))
       .filter((item) => filterByPromo(item))
+      .filter((item) => filterByOfertaDestacada(item))
 
     setFiltros(resultado);
-  }, [filterBrand, filterPrice, filterCapacity, filterLlamadas, filterPromo]);
+  }, [filterBrand, filterPrice, filterCapacity, filterLlamadas, filterPromo, filterOfertaDestacada]);
 
   // Función para filtrar por marca
   function filterByBrand(item) {
@@ -197,6 +200,18 @@ function ContenedorProductosMovilFibraTv() {
     }
   }
 
+  function filterByOfertaDestacada(item) {
+    if (filterOfertaDestacada !== false) {
+      if (item.destacada == 1) {
+        return true;
+      } else {
+        return false;
+      }
+    } else {
+      return true;
+    }
+  }
+
   // Función para filtrar por palabra clave en los bloques
   function filterByFilter(filter, item, word) {
     if (filter !== false) {
@@ -223,7 +238,7 @@ function ContenedorProductosMovilFibraTv() {
           <Row className='justify-content-around'>
             <Col xs={12} md={12} xl={3}>
               <Row>
-                {!isMobile ? <Col className='my-3 font-semibold' xs={6} md={5}>Filtrar por: </Col> : <Col className='my-2' xs={6} md={5}><Button variant="light" onClick={() => setShow(true)}>Filtrar por</Button></Col>}
+                {!isMobile ? <Col className='my-3 font-bold' xs={6} md={5}>Filtrar por: </Col> : <Col className='my-2' xs={6} md={5}><Button variant="light" onClick={() => setShow(true)}>Filtrar por</Button></Col>}
                 <Col className='my-2 text-center' xs={6} md={7}>
                   <button className='btn btn-light' onClick={cleanFilter}>Limpiar filtro</button>
                 </Col>
@@ -253,8 +268,9 @@ function ContenedorProductosMovilFibraTv() {
                     <Row>
                       <div className='mt-4'>
                         <b>{'Coste mensual'}:</b>
-                        <div className='my-4'>
-                          {typeMoneda}{rangePrice[0].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")} - {typeMoneda}{rangePrice[1].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}
+                        <div className='my-4 d-flex justify-content-between'>
+                          <div>{typeMoneda}{rangePrice[0].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}</div>
+                          <div>{typeMoneda}{rangePrice[1].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}</div>
                         </div>
                         <Slider
                           range
@@ -265,20 +281,19 @@ function ContenedorProductosMovilFibraTv() {
                           className='form-input-range'
                         />
                       </div>
-                      {/* <div className='my-4'>
-                        <b>{'Fibra Mb'}:</b>
-                        <div className='my-4'>
-                          {rangeCapacity[0]} {'GB'} - {rangeCapacity[1]} {'GB'}
+                      <div className='mt-4'>
+                        <b>{'Oferta destacada'}:</b>
+                        <div className='my-2'>
+                          <Form.Switch
+                            className='input-check-dark mt-2 text-left'
+                            type='switch'
+                            checked={filterOfertaDestacada}
+                            onChange={() => setFilterOfertaDestacada(!filterOfertaDestacada)}
+                            label={'Mostrar solo ofertas destacadas'}
+                            reverse
+                          />
                         </div>
-                        <Slider
-                          range
-                          min={minCapacity}
-                          max={maxCapacity}
-                          value={rangeCapacity}
-                          onChange={handleRangeChangeCapacity}
-                          className='form-input-range'
-                        />
-                      </div> */}
+                      </div>
                       <div className='my-2'>
                         <b>{'Llamadas ilimitadas'}:</b>
                         <div className='my-2'>
@@ -323,7 +338,7 @@ function ContenedorProductosMovilFibraTv() {
                             {isMobile &&
                               <Col xs={12} key={filterBrand} className='my-2' md={6}>Se encontraron <span className="font-bold">{filtros?.length}</span> resultados de <span className="font-bold">{Tarifas.length}</span></Col>}
                             <Col md={12}>
-                              <span className="font-semibold">Compañía:</span>
+                              <span className="font-bold">Compañía:</span>
                             </Col>
                             {brand?.length > 0 &&
                               brand.map((item, index) => (
@@ -340,8 +355,9 @@ function ContenedorProductosMovilFibraTv() {
                           <Row>
                             <div className='mt-4'>
                               <b>{'Coste mensual'}:</b>
-                              <div className='my-4'>
-                                {typeMoneda}{rangePrice[0].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")} - {typeMoneda}{rangePrice[1].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}
+                              <div className='my-4 d-flex justify-content-between'>
+                                <div>{typeMoneda}{rangePrice[0].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}</div>
+                                <div>{typeMoneda}{rangePrice[1].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}</div>
                               </div>
                               <Slider
                                 range
@@ -351,6 +367,19 @@ function ContenedorProductosMovilFibraTv() {
                                 onChange={handleRangeChangePrice}
                                 className='form-input-range'
                               />
+                            </div>
+                            <div className='mt-4'>
+                              <b>{'Oferta destacada'}:</b>
+                              <div className='my-2'>
+                                <Form.Switch
+                                  className='input-check-dark mt-2 text-left'
+                                  type='switch'
+                                  checked={filterOfertaDestacada}
+                                  onChange={() => setFilterOfertaDestacada(!filterOfertaDestacada)}
+                                  label={'Mostrar solo ofertas destacadas'}
+                                  reverse
+                                />
+                              </div>
                             </div>
                             <div className='my-2'>
                               <b>{'Llamadas ilimitadas'}:</b>

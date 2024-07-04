@@ -50,7 +50,7 @@ function Home(props) {
                         } */
                     ]}
                 />
-                <ContenedorContratacion />
+                <ContenedorContratacion imagen={'/img/banner-contratacion-es.png'} />
                 <ContenedorServiciosCalidad />
                 <div class="interSeccion"></div>
                 <ContenedorElegirVuskoo />

@@ -33,7 +33,7 @@ function ContenedorProductosMovil() {
   const [filterRoaming, setFilterRoaming] = useState(false);
   const [filterPromo, setFilterPromo] = useState(false);
   const [filterRed5g, setFilterRed5g] = useState(true);
-  const [filterOfertaDestacada, setFilterOfertaDestacada] = useState(true);
+  const [filterOfertaDestacada, setFilterOfertaDestacada] = useState(false);
 
   // Estados para tarifas y marcas
   const [Tarifas, setTarifas] = useState([]);
@@ -215,7 +215,7 @@ function ContenedorProductosMovil() {
       return true;
     }
   }
-  
+
   function filterByOfertaDestacada(item) {
     if (filterOfertaDestacada !== false) {
       if (item.destacada == 1) {
@@ -267,7 +267,7 @@ function ContenedorProductosMovil() {
           <Row className='justify-content-around'>
             <Col xs={12} md={12} xl={3}>
               <Row>
-                {!isMobile ? <Col className='my-3 font-semibold' xs={6} md={5}>Filtrar por: </Col> : <Col className='my-2' xs={6} md={5}><Button variant="light" onClick={() => setShow(true)}>Filtrar por</Button></Col>}
+                {!isMobile ? <Col className='my-3 font-bold' xs={6} md={5}>Filtrar por: </Col> : <Col className='my-2' xs={6} md={5}><Button variant="light" onClick={() => setShow(true)}>Filtrar por</Button></Col>}
                 <Col className='my-2 text-center' xs={6} md={7}>
                   <button className='btn btn-light' onClick={cleanFilter}>Limpiar filtro</button>
                 </Col>
@@ -297,8 +297,9 @@ function ContenedorProductosMovil() {
                     <Row>
                       <div className='mt-4'>
                         <b>{'Coste mensual'}:</b>
-                        <div className='my-4'>
-                          {typeMoneda}{rangePrice[0].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")} - {typeMoneda}{rangePrice[1].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}
+                        <div className='my-4 d-flex justify-content-between'>
+                          <div>{typeMoneda}{rangePrice[0].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}</div>
+                          <div>{typeMoneda}{rangePrice[1].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}</div>
                         </div>
                         <Slider
                           range
@@ -311,8 +312,9 @@ function ContenedorProductosMovil() {
                       </div>
                       <div className='my-4'>
                         <b>{'Datos'}:</b>
-                        <div className='my-4'>
-                          {rangeCapacity[0]} {'GB'} - {rangeCapacity[1]} {'GB'}
+                        <div className='my-4 d-flex justify-content-between'>
+                          <div>{rangeCapacity[0]} {'GB'}</div>
+                          <div>{rangeCapacity[1]} {'GB'}</div>
                         </div>
                         <Slider
                           range
@@ -322,6 +324,19 @@ function ContenedorProductosMovil() {
                           onChange={handleRangeChangeCapacity}
                           className='form-input-range'
                         />
+                      </div>
+                      <div className='my-2'>
+                        <b>{'Oferta destacada'}:</b>
+                        <div className='my-2'>
+                          <Form.Switch
+                            className='input-check-dark mt-2 text-left'
+                            type='switch'
+                            checked={filterOfertaDestacada}
+                            onChange={() => setFilterOfertaDestacada(!filterOfertaDestacada)}
+                            label={'Mostrar solo ofertas destacadas'}
+                            reverse
+                          />
+                        </div>
                       </div>
                       <div className='my-2'>
                         <b>{'5G'}:</b>
@@ -393,7 +408,7 @@ function ContenedorProductosMovil() {
                             {isMobile &&
                               <Col xs={12} key={filterBrand} className='my-2' md={6}>Se encontraron <span className="font-bold">{filtros?.length}</span> resultados de <span className="font-bold">{Tarifas.length}</span></Col>}
                             <Col md={12}>
-                              <span className="font-semibold">Compañía:</span>
+                              <span className="font-bold">Compañía:</span>
                             </Col>
                             {brand?.length > 0 &&
                               brand.map((item, index) => (
@@ -410,8 +425,9 @@ function ContenedorProductosMovil() {
                           <Row>
                             <div className='mt-4'>
                               <b>{'Coste mensual'}:</b>
-                              <div className='my-4'>
-                                {typeMoneda}{rangePrice[0].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")} - {typeMoneda}{rangePrice[1].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}
+                              <div className='my-4 d-flex justify-content-between'>
+                                <div>{typeMoneda}{rangePrice[0].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}</div>
+                                <div>{typeMoneda}{rangePrice[1].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}</div>
                               </div>
                               <Slider
                                 range
@@ -424,8 +440,9 @@ function ContenedorProductosMovil() {
                             </div>
                             <div className='my-4'>
                               <b>{'Datos'}:</b>
-                              <div className='my-4'>
-                                {rangeCapacity[0]} {'GB'} - {rangeCapacity[1]} {'GB'}
+                              <div className='my-4 d-flex justify-content-between'>
+                                <div>{rangeCapacity[0]} {'GB'}</div>
+                                <div>{rangeCapacity[1]} {'GB'}</div>
                               </div>
                               <Slider
                                 range

@@ -10,7 +10,7 @@ import Load from '../Utils/Load'
 import TitleSectionHome from '../Text/TitleSectionHome';
 import { useTranslation } from 'react-i18next';
 
-function ContenedorContratacion({ children }) {
+function ContenedorContratacion({ children, imagen }) {
     const [fetchBlog, setFetchBlog] = useState(null)
     const [isLoading, setIsLoading] = useState(false)
     const [lang, setLang] = useState(null)
@@ -23,17 +23,15 @@ function ContenedorContratacion({ children }) {
     const { t } = useTranslation();
 
     return (
-        <Container className='my-5'>
-            <Row>
-                <Col xs={12} md={7} className='text-center'>
-                    <img className='img-fluid h-500' src='/img/banner-home-es.png' />
-                </Col>
+        <Container className='my-5' className="bg-secundary-10" fluid>
+            <Row className='p-5 pb-0 justify-content-center'>
                 <Col xs={12} md={5} className="d-flex justify-content-center align-items-center">
                     <TitleSection
                         btnLeft
                         title={t('contenedroContratacionTitle')}
                         titleAlt={t('contenedroContratacionTitleAlt')}
                         titleBottom={t('contenedroContratacionTitleBottom')}
+                        imagen={'/img/compromiso-calidad.svg'}
                         buttons={[
                             {
                                 title: 'Contacta con nosotros',
@@ -41,6 +39,9 @@ function ContenedorContratacion({ children }) {
                             }
                         ]}
                     />
+                </Col>
+                <Col xs={12} md={5} className='text-center'>
+                    <img className='img-fluid  mt-5 mt-md-0' src={imagen} />
                 </Col>
             </Row>
         </Container>

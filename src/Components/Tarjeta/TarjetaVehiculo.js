@@ -47,7 +47,7 @@ function TarjetaVehiculo({ data, type }) {
                             <Col xs={12}>
                                 <div className='tarjeta-tarifa-item-title d-flex justify-content-between align-items-center'>
                                     <div><img className='img-vehiculos-logo' src={logo} alt={make} /> <b>{model}</b></div> <b>{formatCurrency(price)}</b>
-                                    {(isMobile === true) && <Link className='btn btn-primary btn-primary-small' to={`/mx${landingLead}${slug_tarifa.toLowerCase()}`}><BsArrowRight /></Link>}
+                                    {(isMobile === true) && <Link className='btn btn-dark btn-primary-small' to={`/mx${landingLead}${slug_tarifa.toLowerCase()}`}><BsArrowRight /></Link>}
                                 </div>
                             </Col>
                         </Row>

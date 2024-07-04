@@ -48,7 +48,7 @@ export default function TarjetaTarifaLeadEnergia({ data, TarifaCard }) {
                             <div className='tarjeta-tarifa-item-title'>
                                 <img src={logo} alt={logo} />
                                 {((promocion !== null && promocion !== '') && isMobile === false) && <span className='mx-4 align-middle'><b>Promoción: </b>{promocion}</span>}
-                                {(isMobile === true) && <Link className='btn btn-primary btn-primary-small' to={landing_link === null ? `/es${landingLead}${slug_tarifa.toLowerCase()}-${id}` : landing_link}>{landing_link}<BsArrowRight /></Link>}
+                                {(isMobile === true) && <Link className='btn btn-dark btn-primary-small' to={landing_link === null ? `/es${landingLead}${slug_tarifa.toLowerCase()}-${id}` : landing_link}>{landing_link}<BsArrowRight /></Link>}
                             </div>
                         </Col>}
                         <Col md={9}>

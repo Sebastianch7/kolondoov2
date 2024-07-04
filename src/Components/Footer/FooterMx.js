@@ -1,11 +1,27 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
-import { isMobile } from 'react-device-detect';
 import { Link } from 'react-router-dom';
-import { useLocation } from 'react-router-dom';
-import { Form } from 'react-bootstrap';
-import { Bs1CircleFill } from "react-icons/bs";
 
+const handleSelectChange = (event) => {
+    const country = event.target.value;
+    alert(country)
+    let newPath;
+    switch (country) {
+        case 'Es':
+            newPath = '/es';
+            break;
+        case 'Co':
+            newPath = '/co';
+            break;
+        case 'Mx':
+            newPath = '/mx';
+            break;
+        default:
+            newPath = '/es';
+            break;
+    }
+    window.location.href = newPath; 
+};
 
 function FooterMx(props) {
     return (
@@ -23,7 +39,11 @@ function FooterMx(props) {
                             <li className='my-md-3'>Calle Barquillo, 8</li>
                             <li className='my-md-3'>28004 Madrid - España</li>
                         </ul>
-
+                        <select className='p-2 my-3' onChange={handleSelectChange}>
+                            <option value="Es">Es</option>
+                            <option value="Co">Co</option>
+                            <option value="Mx">Mx</option>
+                        </select>
                     </Col>
 
                     <Col xs={12} md={3} xl={3}>

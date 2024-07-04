@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Card, Row, Col } from 'react-bootstrap';
 import ItemTarifaDescripcion from '../Items/ItemTarifaDescripcion';
 import ItemTarifaServicio from '../Items/ItemTarifaServicio';
-import { Link, useSearchParams } from 'react-router-dom';
+import { Link, Navigate, useSearchParams } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 import { isMobile } from 'react-device-detect';
 import { BsArrowRight } from "react-icons/bs";
@@ -25,6 +25,10 @@ function TarjetaTarifa({ data, type }) {
     useEffect(() => {
         setLang(locations[0])
     }, [])
+
+    function enlaceOfertaMobile(url) {
+        window.location.href = url;
+    }
 
     const { id,
         destacada,
@@ -58,21 +62,25 @@ function TarjetaTarifa({ data, type }) {
         lolamusic
     } = data;
     return (
-        <>
-            {destacada === 1 && <div className='prioridad-oferta'>Oferta destacada</div>}
-            <Card key={nombre_tarifa} className={`tarjeta tarjeta-tarifa my-2 ${destacada === 1 && 'prioridad'}`}>
+        <div>
+            {destacada === 1 && <div className='prioridad-oferta font-bold'>Oferta destacada</div>}
+            <Card
+                onClick={isMobile ? () => enlaceOfertaMobile(`/${lang}${landingLead}${slug_tarifa.toLowerCase()}-${id}`) : undefined}
+                key={nombre_tarifa}
+                className={`tarjeta tarjeta-tarifa my-2 montBold ${destacada === 1 ? 'prioridad' : ''}`}
+            >
                 <Row className='d-flex flex-column flex-md-row'>
                     <Col md={12}>
                         <Row>
                             <Col xs={12}>
                                 <div className='tarjeta-tarifa-item-title d-flex justify-content-between align-items-center'>
                                     <img src={logo} alt={logo} />
-                                    {((promocion !== null && promocion !== '') && !isMobile) && <span className='mt-7px'><b>Promoción: </b>{promocion}</span>}
-                                    {isMobile && <Link className='btn btn-primary btn-primary-small' to={`/${lang}${landingLead}${slug_tarifa.toLowerCase()}-${id}`}><BsArrowRight /></Link>}
+                                    {((promocion !== null && promocion !== '') && !isMobile) && <span className='mt-7px font-bold'><b className='font-bold'>Promoción: </b>{promocion}</span>}
+                                    {isMobile && <Link className='btn btn-dark btn-primary-small' to={`/${lang}${landingLead}${slug_tarifa.toLowerCase()}-${id}`}><BsArrowRight /></Link>}
                                 </div>
                             </Col>
 
-                            {(promocion !== null && isMobile === true) &&
+                            {(promocion !== null && isMobile) &&
                                 <Col xs={12} className='mb-2'>
                                     <span className={`align-middle text-promotion ${destacada === 1 && 'color-primary'}`}><b>Promoción: </b>{promocion}</span>
                                 </Col>
@@ -82,20 +90,16 @@ function TarjetaTarifa({ data, type }) {
                     <Col md={5} className={classNames('text-left mt-2', { 'order-2': isMobile, 'color-primary': destacada === 1 })}>
                         {duracionContrato !== null ? (
                             <div className='d-block'>
-                                <span>Contrato: <b>{duracionContrato}</b></span>
+                                <span className='font-bold color-dark'>Contrato: <b className='font-bold color-dark'>{duracionContrato}</b></span>
                             </div>
-                        )
-                            :
-                            <>
-                                <span>Contrato: <b>Sin contrato</b></span>
-                            </>
-                        }
+                        ) : (
+                            <span className='font-bold color-dark'>Contrato: <b className='font-bold color-dark'>Sin contrato</b></span>
+                        )}
                         {meses_permanencia !== 0 && (
                             <div className='d-block mt-2'>
-                                <span>Meses de permanencia: <b>{meses_permanencia} meses</b></span>
+                                <span className='font-bold color-dark'>Meses de permanencia: <b className='font-bold color-dark'>{meses_permanencia} meses</b></span>
                             </div>
-                        )
-                        }
+                        )}
                         <hr className="my-2 mb-3" />
                         <ItemTarifaDescripcion destacada={destacada} text={parrilla_bloque_2} />
                         <ItemTarifaDescripcion destacada={destacada} text={parrilla_bloque_3} />
@@ -107,7 +111,7 @@ function TarjetaTarifa({ data, type }) {
                         {DAZN === 1 && <SiDazn className='m-2' />}
                         {appsIlimitadas === 1 && (
                             <div className={`tarjeta-tarifa-item-descripcion m-1 ${destacada && 'border-primary'}`}>
-                                <b>Apps ilimitadas:&nbsp;</b>
+                                <b className='font-bold color-dark'>Apps ilimitadas:&nbsp;</b>
                                 {facebook === 1 && <img className='icon-logo-tarifa' src='/img/logos/facebook.webp' alt='Facebook' />}
                                 {messenger === 1 && <img className='icon-logo-tarifa' src='/img/logos/messenger.webp' alt='Messenger' />}
                                 {waze === 1 && <img className='icon-logo-tarifa' src='/img/logos/waze.webp' alt='Waze' />}
@@ -115,13 +119,12 @@ function TarjetaTarifa({ data, type }) {
                                 {twitter === 1 && <img className='icon-logo-tarifa' src='/img/logos/x.webp' alt='Twitter' />}
                                 {instagram === 1 && <img className='icon-logo-tarifa' src='/img/logos/instagram.jpg' alt='Instagram' />}
                                 {tinder === 1 && <img className='icon-logo-tarifa' src='/img/logos/tinder.png' alt='Tinder' />}
-                                {lolamusic === 1 && <img className='icon-logo-tarifa' src='/img/logos/lolamusic.png' alt='lolaMusci' />}
+                                {lolamusic === 1 && <img className='icon-logo-tarifa' src='/img/logos/lolamusic.png' alt='lolaMusic' />}
                             </div>
                         )}
                         {red5g === 1 && (
                             <ItemTarifaDescripcion destacada={destacada} text={'5G'} />
                         )}
-
                     </Col>
                     <Col xs={12} md={5} style={isMobile ? { order: 1 } : { order: 2 }}>
                         <Row>
@@ -129,12 +132,13 @@ function TarjetaTarifa({ data, type }) {
                             <ItemTarifaServicio destacada={destacada} cant={precio} precio service={'al mes'} money={moneda} />
                         </Row>
                     </Col>
-                    {!isMobile && <Col md={2} style={isMobile ? { order: 3 } : { order: 3 }}>
-                        <Link className='btn btn-primary mt-2' to={`/${lang}${landingLead}${slug_tarifa.toLowerCase()}-${id}`}>{`Comprar`}</Link>
+                    {!isMobile && <Col md={2} style={{ order: 3 }}>
+                        <Link className='btn btn-dark font-bold mt-2' to={`/${lang}${landingLead}${slug_tarifa.toLowerCase()}-${id}`}>Comprar</Link>
                     </Col>}
                 </Row>
             </Card>
-        </>
+        </div>
+
     );
 }
 
