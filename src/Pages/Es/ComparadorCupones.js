@@ -5,9 +5,7 @@ import Footer from '../../Components/Footer/Footer';
 import { useTranslation } from 'react-i18next';
 import MetaData from '../../Components/Header/SeoMetadata';
 import ContenedorCupones from '../../Components/Contenedor/ContenedorCupones';
-import { useLocation, useParams } from 'react-router-dom';
-import ModalCupon from '../../Components/modal/ModalCupon';
-import { getCategoriaCuponesOffer } from '../../services/ApiServices';
+import { useParams } from 'react-router-dom';
 
 function ComparadorCupones() {
     const { t } = useTranslation();

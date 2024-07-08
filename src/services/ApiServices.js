@@ -543,6 +543,17 @@ export const fetchPrestamosOffers = async (lang, filtroCategoria) => {
 
 };
 
+export const fetchBancosPrestamos = async (lang, filtroCategoria) => {
+    try {
+        const response = await axios.get(`${apiUrl}/getBancasPrestamos/${lang}/${filtroCategoria}`);
+        return response.data;
+    } catch (error) {
+        console.error("Error al procesar la solicitud", error);
+        throw error;
+    }
+
+};
+
 export const fetchTarifaPrestamo = async (id) => {
     try {
         const response = await axios.get(`${apiUrl}/getTarifaPrestamo/${id}`);

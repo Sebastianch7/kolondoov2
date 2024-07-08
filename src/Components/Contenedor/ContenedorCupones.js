@@ -1,17 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { Container, Row, Col, Button, Form } from 'react-bootstrap';
-import axios from 'axios';
-import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
 import { isMobile } from 'react-device-detect';
 import Modal from 'react-bootstrap/Modal';
 import InterSection from '../Utils/InterSection';
-import TarjetaTarifa from '../Tarjeta/TarjetaTarifa';
 import NotInfoItem from '../Utils/NotInfoItem';
 import Load from '../Utils/Load';
 import { fetchTipoCupones, fetchComerciosCupones, fetchTarifasCupones, fetchTarifaCupon } from '../../services/ApiServices'
 import TarjetaTarifaCupon from '../Tarjeta/TarjetaTarifaCupon';
-import { Navigate, useLocation, useNavigate, useParams } from 'react-router-dom';
+import { Navigate, useLocation,  useParams } from 'react-router-dom';
 import ModalCupon from '../modal/ModalCupon';
 
 function ContenedorCupones(idCategoria = null) {
@@ -274,7 +271,6 @@ function ContenedorCupones(idCategoria = null) {
                                     className={`filtro-producto-logo my-2 ${filterTypeCupon.includes(item.id) ? 'logoFocus' : ''}`}
                                     value={item.nombre}
                                     onClick={() => setFilterTypeCuponMulti(item.id)}>
-                                    {/* {item.nombre} */}
                                     {item.nombre}
                                   </button>
                                 </Col>

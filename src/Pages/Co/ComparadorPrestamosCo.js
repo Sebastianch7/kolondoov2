@@ -12,6 +12,9 @@ import TitleSection from '../../Components/Text/TitleSection';
 function ComparadorPrestamosCo() {
 
     const [title, setTitle] = useState(null)
+    const [titleLanding, setTitleLanding] = useState(null)
+    const [subtitleLanding, setSubtitleLanding] = useState(null)
+    const [imagenLanding, setImagenLanding] = useState(null)
     const [filtro, setFiltro] = useState(null)
     const location = useLocation();
     const tipo = location.pathname.split('/').pop();
@@ -20,14 +23,23 @@ function ComparadorPrestamosCo() {
         switch (tipo) {
             case 'cuenta-ahorro':
                 setTitle('Cuenta de ahorro');
+                setTitleLanding('Comparador de Cuentas de Ahorro')
+                setSubtitleLanding('¡Te ayudamos a encontrar la cuenta de ahorro que mejor se adapte a ti!')
+                setImagenLanding('/img/banner-ahorro-co.png')
                 setFiltro(1)
                 break;
             case 'tarjeta-credito':
                 setTitle('Tarjeta de crédito');
+                setTitleLanding('Comparador de Tarjetas crédito')
+                setSubtitleLanding('¡Te ayudamos a encontrar la tarjeta de crédito que mejor se adapte a ti!')
+                setImagenLanding('/img/banner-tarjeta-credito-co.png')
                 setFiltro(2)
                 break;
             case 'creditos':
                 setTitle('Créditos');
+                setTitleLanding('')
+                setSubtitleLanding('')
+                setImagenLanding('/img/banner-credito-co.png')
                 setFiltro(3)
                 break;
             default:
@@ -42,8 +54,9 @@ function ComparadorPrestamosCo() {
             <MetaData titulo={'Comparador de préstamos | Vuskoo'} descripcion={'Compara las diferentes compañías para préstamos'} />
             <Header breadCrumb></Header>
             <Banner
-                title={title}
-                image={'/img/banner-movil-co.png'}
+                title={titleLanding}
+                subtitle={subtitleLanding}
+                image={imagenLanding}
                 logo={'/img/icons/mobile.svg'}
             >
                 {/* <FormSuscripcion

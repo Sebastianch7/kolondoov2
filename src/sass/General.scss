@@ -80,9 +80,13 @@ $blueContrast: #F2FAFC;
   &-secundary {
     color: $colorSecundary;
   }
-  
+
   &-secundaryText {
     color: $colorSecundaryText;
+  }
+
+  &-secundaryAlt {
+    color: rgb(223, 240, 255)
   }
 
   &-green {
@@ -92,7 +96,7 @@ $blueContrast: #F2FAFC;
   &-red {
     color: $red;
   }
-  
+
   &-dark {
     color: black;
   }
@@ -424,6 +428,11 @@ $breakpoint-lg: 1360px;
     stroke-width: 0.8px;
     stroke: #8E8E8E;
 
+    &:hover {
+      box-shadow: 5px 5px 10px rgb(178, 177, 177);
+      
+    }
+
     &-item {
       &-descripcion {
         border-radius: 13px;
@@ -484,6 +493,19 @@ $breakpoint-lg: 1360px;
         img {
           height: 45px;
           padding: 7px;
+        }
+
+        @include media(xs) {
+          padding-bottom: 13px !important;
+        }
+      }
+
+      &-title-cupon {
+        border-bottom: 1px solid #E9E9E9;
+        margin-bottom: 5px;
+
+        img {
+          height: 70px;
         }
 
         @include media(xs) {
@@ -762,6 +784,7 @@ footer {
       height: 50px;
       width: 100%;
       overflow: hidden;
+      justify-content: center;
 
       &:hover {
         filter: grayscale(0);
@@ -841,6 +864,7 @@ footer {
 .text {
   &-promotion {
     font-family: $MontHeavy;
+
     @include media(xs) {
       margin-top: 0px;
     }
@@ -938,8 +962,12 @@ footer {
     background-color: $colorSecundary;
   }
 
+  &-secundaryAlt {
+    background-color: rgb(223, 240, 255);
+  }
+
   &-secundary-10 {
-    background-color: rgba(242,250,252,10);
+    background-color: rgba(242, 250, 252, 10);
   }
 
 
@@ -1460,10 +1488,14 @@ p {
 .descuento {
   text-align: right;
   font-size: 1rem;
-  font-family: $MontSemiBold;
-  color: $colorSecundary;
-  margin-top: 17px;
+  font-family: $MontHeavy;
+  color: $colorSecundaryText;
+
+  &-cupon {
+    font-size: 1.5rem;
+  }
 }
+
 
 .modal {
   &-cupon {
@@ -1561,7 +1593,8 @@ p {
     color: $colorPrimary;
     font-size: 1.2rem;
     font-family: $MontHeavy !important;
-    @include media(xs){
+
+    @include media(xs) {
       text-align: left;
     }
   }
@@ -1601,6 +1634,13 @@ p {
   margin-top: 7px;
 }
 
-b{
+b {
   font-family: $MontHeavy !important;
+}
+
+.prestamo-informacion {
+  background-color: rgb(223, 240, 255);
+  background-size: contain;
+  padding: 5px 10px;
+  height: 100%;
 }
