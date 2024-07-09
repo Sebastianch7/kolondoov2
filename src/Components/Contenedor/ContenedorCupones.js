@@ -34,14 +34,8 @@ function ContenedorCupones(idCategoria = null) {
       const marcasArray = marcasString ? marcasString.split(',').map(Number) : [];
       setMarcasArray(marcasArray)
       const tipoArray = tipo ? tipo.split(',').map(Number) : [];
-
-      setTimeout(() => {
-        setFilterBrand(marcasArray);
-      }, [5000])
-      setTimeout(() => {
-        setFilterTypeCupon(tipoArray);
-      }, [8000])
-
+      setFilterBrand(marcasArray);
+      setFilterTypeCupon(tipoArray);
     }
   }, [locations])
 

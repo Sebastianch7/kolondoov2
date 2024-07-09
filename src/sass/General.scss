@@ -429,7 +429,7 @@ $breakpoint-lg: 1360px;
     stroke: #8E8E8E;
 
     &:hover {
-      box-shadow: 5px 5px 10px rgb(178, 177, 177);
+      box-shadow: 1px 1px 2px rgb(221, 221, 221);
       
     }
 
@@ -968,6 +968,10 @@ footer {
 
   &-secundary-10 {
     background-color: rgba(242, 250, 252, 10);
+  }
+
+  &-secundary-contratacion {
+    background-color: #79CFE226;
   }
 
 
@@ -1513,7 +1517,7 @@ p {
         display: flex;
         justify-content: center;
         align-items: center;
-        background-color: $colorSecundary;
+        background-color: $colorSecundaryText;
         width: 70px;
         height: 70px;
 

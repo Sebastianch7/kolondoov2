@@ -57,7 +57,7 @@ function ComparadorPrestamosCo() {
                 title={titleLanding}
                 subtitle={subtitleLanding}
                 image={imagenLanding}
-                logo={'/img/icons/mobile.svg'}
+                logo={'/img/logos/logo_finanzas_comprador.svg'}
             >
                 {/* <FormSuscripcion
                     text={'Introduce tu código postal'}

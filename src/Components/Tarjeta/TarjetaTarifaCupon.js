@@ -31,15 +31,15 @@ function TarjetaTarifaCupon({ data, brands, tipos }) {
         
         const marcasFiltro = brands.length > 0 ? brands.join(',') : null;
         const marcasTipo = tipos.length > 0 ? tipos.join(',') : null;
-
-        console.log(brands, tipos);
         window.open(`/${lang}/cupones/${dataId}?marcas=${marcasFiltro}&tipo=${marcasTipo}`, '_blank');
+        window.location.assign(landing_link)
     };
 
     const handleClose = () => setShowModal(false);
 
     const {
         descripcion,
+        landing_link,
         nombre_tarifa,
         destacada,
         fecha_expiracion,
@@ -77,7 +77,6 @@ function TarjetaTarifaCupon({ data, brands, tipos }) {
                         <Col md={9} className={classNames('text-left', { 'order-2': isMobile, 'color-primary': destacada === 1 })}>
                             <h5 className='font-bold'>{descripcion}</h5>
                             {TiempoCupon !== 1 && <ItemTarifaDescripcion destacada={destacada} text={`Expira en ${dias_restantes} días`} />}
-                            <ItemTarifaDescripcion destacada={destacada} text={categoria_nombre} />
                         </Col>
                         {!isMobile &&
                             <Col md={3} className='px-0'>
@@ -97,7 +96,7 @@ function TarjetaTarifaCupon({ data, brands, tipos }) {
                                 {TiempoCupon !== 1 && <li><b>Fecha de expiración de la oferta:</b> {fecha_expiracion}</li>}
                             </ul>
                             <div className='float-end py-0'>
-                                <ItemTarifaDescripcion destacada={destacada} text={nombre_tarifa} />
+                                <ItemTarifaDescripcion destacada={destacada} text={categoria_nombre} />
                             </div>
                         </Accordion.Body>
                     </Accordion.Item>

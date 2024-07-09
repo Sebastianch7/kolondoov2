@@ -50,7 +50,7 @@ function Home(props) {
                         } */
                     ]}
                 />
-                <ContenedorContratacion imagen={'/img/banner-contratacion-es.png'} />
+                <ContenedorContratacion imagen={'/img/compromiso-calidad.svg'} />
                 <ContenedorServiciosCalidad />
                 <div class="interSeccion"></div>
                 <ContenedorElegirVuskoo />

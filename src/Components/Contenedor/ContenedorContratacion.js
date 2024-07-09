@@ -23,25 +23,27 @@ function ContenedorContratacion({ children, imagen }) {
     const { t } = useTranslation();
 
     return (
-        <Container className='my-5' className="bg-secundary-10" fluid>
-            <Row className='p-5 pb-0 justify-content-center'>
-                <Col xs={12} md={5} className="d-flex justify-content-center align-items-center">
-                    <TitleSection
-                        btnLeft
-                        title={t('contenedroContratacionTitle')}
-                        titleAlt={t('contenedroContratacionTitleAlt')}
-                        titleBottom={t('contenedroContratacionTitleBottom')}
-                        imagen={'/img/compromiso-calidad.svg'}
-                        buttons={[
-                            {
-                                title: 'Contacta con nosotros',
-                                url: 'contactanos',
-                            }
-                        ]}
-                    />
+        <Container className="bg-secundary-10" fluid>
+            <Row className='d-flex justify-content-center align-items-end'>
+                <Col xs={12} md={5} className='text-center p-5 bg-secundary-contratacion'>
+                    <img className='img-fluid mt-5 mt-md-0 p-5' src={imagen} />
                 </Col>
-                <Col xs={12} md={5} className='text-center'>
-                    <img className='img-fluid  mt-5 mt-md-0' src={imagen} />
+                <Col xs={12} md={7} className="d-flex align-items-center p-5">
+                    <Col xs={12} md={8}>
+                        <TitleSection
+                            btnLeft
+                            title={t('contenedroContratacionTitle')}
+                            titleAlt={t('contenedroContratacionTitleAlt')}
+                            titleBottom={t('contenedroContratacionTitleBottom')}
+                            /* imagen={'/img/compromiso-calidad.svg'} */
+                            buttons={[
+                                {
+                                    title: 'Contacta con nosotros',
+                                    url: 'contactanos',
+                                }
+                            ]}
+                        />
+                    </Col>
                 </Col>
             </Row>
         </Container>

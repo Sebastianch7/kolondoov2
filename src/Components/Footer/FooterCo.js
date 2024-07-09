@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 const handleSelectChange = (event) => {
     const country = event.target.value;
-    alert(country)
     let newPath;
     switch (country) {
         case 'Es':
@@ -24,6 +23,15 @@ const handleSelectChange = (event) => {
 };
 
 function FooterCo(props) {
+    const [lang, setLang] = useState(null)
+    const location = useLocation();
+  
+    useEffect(() => {
+      setLang(location.pathname.split('/')[1])
+
+    }, [location])
+
+
     return (
         <footer className="page-footer bg-dark pt-5">
             <Container>
@@ -39,11 +47,11 @@ function FooterCo(props) {
                             <li className='my-md-3'>Calle Barquillo, 8</li>
                             <li className='my-md-3'>28004 Madrid - España</li>
                         </ul>
-                        <select className='p-2 my-3' onChange={handleSelectChange}>
-                            <option value="Es">Es</option>
+                        {lang != null && <select className='p-2 my-3' value={lang} onChange={handleSelectChange}>
                             <option value="Co">Co</option>
+                            <option value="Es">Es</option>
                             <option value="Mx">Mx</option>
-                        </select>
+                        </select>}
                     </Col>
 
                     <Col xs={12} md={3} xl={3}>

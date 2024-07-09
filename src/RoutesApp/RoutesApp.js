@@ -139,10 +139,10 @@ function RoutesApp() {
 
                 <Route path="/es/gracias" element={<ThanksPage />} />
 
-                <Route path="/es/cupones" element={<ComparadorCupones />} />
-                <Route path="/es/cupones/:id" element={<ComparadorCupones />} />
-                <Route path="/es/cupones/categoria/:idCategoria" element={<ComparadorCupones />} />
-                <Route path="/es/cupones/categoria" element={<Navigate to="/es/cupones" />} />
+                <Route path="/:lang/cupones" element={<ComparadorCupones />} />
+                <Route path="/:lang/cupones/:id" element={<ComparadorCupones />} />
+                <Route path="/:lang/cupones/categoria/:idCategoria" element={<ComparadorCupones />} />
+                <Route path="/:lang/cupones/categoria" element={<Navigate to="/es/cupones" />} />
                 
                 {/* cupones */}
                 <Route path="/:lang/cupones" element={<ComparadorCupones />} />
@@ -159,10 +159,11 @@ function RoutesApp() {
 
                 {/* CO */}
                 <Route path="/co/finanzas" element={<RaizFinanzasCo />} />
+                <Route path="/co/finanzas/comparador-finanzas" element={<RaizFinanzasCo />} />
                 <Route path="/co/rediccion-banco/:id" element={<ZonaTransaccional />} />
-                <Route path="/co/finanzas/comparador-ofertas-zona-bancaria/cuenta-ahorro" element={<ComparadorPrestamosCo />} />
-                <Route path="/co/finanzas/comparador-ofertas-zona-bancaria/tarjeta-credito" element={<ComparadorPrestamosCo />} />
-                <Route path="/co/finanzas/comparador-ofertas-zona-bancaria/creditos" element={<ComparadorPrestamosCo />} />
+                <Route path="/co/finanzas/comparador-finanzas/cuenta-ahorro" element={<ComparadorPrestamosCo />} />
+                <Route path="/co/finanzas/comparador-finanzas/tarjeta-credito" element={<ComparadorPrestamosCo />} />
+                <Route path="/co/finanzas/comparador-finanzas/creditos" element={<ComparadorPrestamosCo />} />
                 
 
 

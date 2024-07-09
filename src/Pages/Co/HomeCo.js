@@ -51,7 +51,7 @@ function HomeCo(props) {
                         } */
                     ]}
                 />
-                <ContenedorContratacion imagen={'/img/banner-contratacion-co.png'} />
+                <ContenedorContratacion imagen={'/img/compromiso-calidad.svg'} />
                 <div class="interSeccion"></div>
                 <ContenedorElegirVuskoo />
                 {/* <div class="interSeccion"></div>
