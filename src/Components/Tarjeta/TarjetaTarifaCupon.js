@@ -76,7 +76,7 @@ function TarjetaTarifaCupon({ data, brands, tipos }) {
                     <Row>
                         <Col md={9} className={classNames('text-left', { 'order-2': isMobile, 'color-primary': destacada === 1 })}>
                             <h5 className='font-bold'>{descripcion}</h5>
-                            {TiempoCupon !== 1 && <ItemTarifaDescripcion destacada={destacada} text={`Expira en ${dias_restantes} días`} />}
+                            {TiempoCupon == 1 && <ItemTarifaDescripcion destacada={destacada} text={`Expira en ${dias_restantes} días`} />}
                         </Col>
                         {!isMobile &&
                             <Col md={3} className='px-0'>
@@ -93,7 +93,7 @@ function TarjetaTarifaCupon({ data, brands, tipos }) {
                             <ul className='mb-0'>
                                 <li><b>Tienda:</b> {nombre_comercio}</li>
                                 <li><b>Descripción:</b> {descripcion}</li>
-                                {TiempoCupon !== 1 && <li><b>Fecha de expiración de la oferta:</b> {fecha_expiracion}</li>}
+                                {TiempoCupon == 1 && <li><b>Fecha de expiración de la oferta:</b> {fecha_expiracion}</li>}
                             </ul>
                             <div className='float-end py-0'>
                                 <ItemTarifaDescripcion destacada={destacada} text={categoria_nombre} />
