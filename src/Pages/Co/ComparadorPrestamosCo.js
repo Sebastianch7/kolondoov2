@@ -15,6 +15,7 @@ function ComparadorPrestamosCo() {
     const [titleLanding, setTitleLanding] = useState(null)
     const [subtitleLanding, setSubtitleLanding] = useState(null)
     const [imagenLanding, setImagenLanding] = useState(null)
+    const [logoLanding, setLogoLanding] = useState(null)
     const [filtro, setFiltro] = useState(null)
     const location = useLocation();
     const tipo = location.pathname.split('/').pop();
@@ -26,6 +27,7 @@ function ComparadorPrestamosCo() {
                 setTitleLanding('Comparador de Cuentas de Ahorro')
                 setSubtitleLanding('¡Te ayudamos a encontrar la cuenta de ahorro que mejor se adapte a ti!')
                 setImagenLanding('/img/banner-ahorro-co.png')
+                setLogoLanding('/img/logos/logo_finanzas_comprador.svg')
                 setFiltro(1)
                 break;
             case 'tarjeta-credito':
@@ -33,13 +35,15 @@ function ComparadorPrestamosCo() {
                 setTitleLanding('Comparador de Tarjetas crédito')
                 setSubtitleLanding('¡Te ayudamos a encontrar la tarjeta de crédito que mejor se adapte a ti!')
                 setImagenLanding('/img/banner-tarjeta-credito-co.png')
+                setLogoLanding('/img/logos/icono_tarjetas_credito.png')
                 setFiltro(2)
                 break;
             case 'creditos':
                 setTitle('Créditos');
-                setTitleLanding('')
-                setSubtitleLanding('')
+                setTitleLanding('Comparador de Créditos')
+                setSubtitleLanding('¡Te ayudamos a encontrar el crédito que mejor se adapte a ti!')
                 setImagenLanding('/img/banner-credito-co.png')
+                setLogoLanding('/img/logos/icono_creditos.png')
                 setFiltro(3)
                 break;
             default:
@@ -57,7 +61,7 @@ function ComparadorPrestamosCo() {
                 title={titleLanding}
                 subtitle={subtitleLanding}
                 image={imagenLanding}
-                logo={'/img/logos/logo_finanzas_comprador.svg'}
+                logo={logoLanding}
             >
                 {/* <FormSuscripcion
                     text={'Introduce tu código postal'}
