@@ -563,3 +563,15 @@ export const fetchTarifaPrestamo = async (id) => {
         throw error;
     }
 };
+
+
+export const fetchSeoMeta = async (lang, filtroCategoria) => {
+    try {
+        const response = await axios.get(`${apiUrl}/getMetaDataSEO/${lang}`);
+        return response.data;
+    } catch (error) {
+        console.error("Error al procesar la solicitud", error);
+        throw error;
+    }
+
+};

@@ -68,7 +68,6 @@ function Header({ breadCrumb }) {
                     <Navbar.Brand>
                         <a href={`/${lang}`}><img src="/img/logos/logo.svg" alt="Logo" /></a>
                     </Navbar.Brand>
-
                     {isMobile && (
                         <>
                             <Navbar.Toggle aria-controls="basic-navbar-nav " />
