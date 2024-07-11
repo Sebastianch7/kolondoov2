@@ -46,7 +46,7 @@ function ModalCupon({ show, handleClose, data }) {
                 </Modal.Body>
                 <Modal.Body className='modal-cupon-information'>
                     <div className='text-center'>
-                        <a href={data.pagina_final} target='_blank' id={data.id} className='btn btn-primary my-3 mx-auto p-3 px-5'>Obtener {data.cupon}</a>
+                        <a href={data.landing_link} target='_blank' id={data.id} className='btn btn-primary my-3 mx-auto p-3 px-5'>Obtener {data.cupon}</a>
                     </div>
                     <div className='px-5 m-4'>
                         <div className='d-flex flex-column my-3'>
