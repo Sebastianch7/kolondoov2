@@ -104,6 +104,9 @@ function TarjetaTarifa({ data, type }) {
                         <ItemTarifaDescripcion destacada={destacada} text={parrilla_bloque_2} />
                         <ItemTarifaDescripcion destacada={destacada} text={parrilla_bloque_3} />
                         <ItemTarifaDescripcion destacada={destacada} text={parrilla_bloque_4} />
+                        {red5g === 1 && (
+                            <ItemTarifaDescripcion destacada={destacada} text={'5G'} />
+                        )}
                         {TV === 1 && <PiTelevisionFill className='m-2' />}
                         {Netflix === 1 && <RiNetflixFill className='m-2' />}
                         {HBO === 1 && <SiHbo className='m-2' />}
@@ -122,9 +125,7 @@ function TarjetaTarifa({ data, type }) {
                                 {lolamusic === 1 && <img className='icon-logo-tarifa' src='/img/logos/lolamusic.png' alt='lolaMusic' />}
                             </div>
                         )}
-                        {red5g === 1 && (
-                            <ItemTarifaDescripcion destacada={destacada} text={'5G'} />
-                        )}
+                        
                     </Col>
                     <Col xs={12} md={5} style={isMobile ? { order: 1 } : { order: 2 }}>
                         <Row>
