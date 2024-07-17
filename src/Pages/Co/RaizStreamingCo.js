@@ -104,7 +104,7 @@ export default function RaizStreamingCo() {
       />
       <ContenedorPorQueComparar title={'¿Por qué comparar'} titleAlt={'tarifas de Tv y Streaming'} titleThird={'es tan importante?'} dataPorQueComparar={dataPorQueComparar} />
       <FormSuscripcionCo />
-      <FooterCo />
+      <Footer />
     </>
 
   )

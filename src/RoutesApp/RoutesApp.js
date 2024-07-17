@@ -18,7 +18,7 @@ import HerramientaTest from '../Pages/Es/HerramientaTest';
 import RaizTelefonia from '../Pages/Es/RaizTelefonia';
 import RaizTelefoniaCo from '../Pages/Co/RaizTelefoniaCo';
 import RaizEnergia from '../Pages/Es/RaizEnergia';
-import RaizStreaming from '../Pages/Co/RaizStreamingCo';
+import RaizStreaming from '../Pages/Es/RaizStreaming';
 import PoliticaPrivacidad from '../Pages/Es/PoliticaPrivacidad';
 import Blog from '../Pages/Es/Blog';
 import BlogItem from '../Pages/Es/BlogItem';
@@ -100,11 +100,11 @@ function RoutesApp() {
 
                 <Route path="/es/internet-telefonia/comparador-fibra-movil-tv" element={<ComparadorFibraMovilTv />} />
                 <Route path="/es/internet-telefonia/comparador-fibra-movil-tv/:id" element={<Lead />} />
-                <Route path="/es/internet-telefonia/comparador-fibra-movil-tv//thank/:id" element={<ThankPage />} />
+                <Route path="/es/internet-telefonia/comparador-fibra-movil-tv/thank/:id" element={<ThankPage />} />
 
                 <Route path="/es/internet-telefonia/telefono_con_contrato" element={<ComparadorFibraMovilTv />} />
                 <Route path="/es/internet-telefonia/telefono_con_contrato/:id" element={<Lead />} />
-                <Route path="/es/internet-telefonia/telefono_con_contrato//thank/:id" element={<ThankPage />} />
+                <Route path="/es/internet-telefonia/telefono_con_contrato/thank/:id" element={<ThankPage />} />
 
                 {/* <Route path="/es/television-streaming/comparador-de-television" element={<ComparadorStreaming />} /> */}
                 <Route path="/es/television-streaming/comparador-plataformas-streaming" element={<ComparadorStreaming />} />
@@ -192,7 +192,7 @@ function RoutesApp() {
 
                 <Route path="/co/internet-movil/comparador-fibra-movil-tv" element={<ComparadorFibraMovilTvCo />} />
                 <Route path="/co/internet-movil/comparador-fibra-movil-tv/:id" element={<Lead />} />
-                <Route path="/co/internet-movil/comparador-fibra-movil-tv//thank/:id" element={<ThankPage />} />
+                <Route path="/co/internet-movil/comparador-fibra-movil-tv/thank/:id" element={<ThankPage />} />
 
             </Routes>
         </BrowserRouter>

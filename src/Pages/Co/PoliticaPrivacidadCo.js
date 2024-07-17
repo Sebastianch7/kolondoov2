@@ -102,7 +102,7 @@ export default function PoliticaPrivacidadCo() {
                     </Row>
                 </Container>
             </div>
-            <FooterCo />
+            <Footer />
         </>
     )
 }

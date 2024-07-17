@@ -84,7 +84,7 @@ export default function PoliticaLegalCo() {
                     </Row>
                 </Container>
             </div>
-            <FooterCo />
+            <Footer />
         </>
     )
 }

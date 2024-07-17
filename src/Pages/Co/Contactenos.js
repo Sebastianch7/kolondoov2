@@ -29,7 +29,7 @@ export default function ContactenosCo() {
                     </Col>
                 </Row>
             </Container>
-            <FooterCo />
+            <Footer />
         </>
     )
 }

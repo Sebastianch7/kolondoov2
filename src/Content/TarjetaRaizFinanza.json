@@ -1,14 +1,14 @@
 [
     {
-        "icon": "/img/icons/router.svg",
+        "icon": "/img/icons/finanzas-tarjeta-logo-credito.svg",
         "title": "Tarjetas de crédito",
         "button": "Comparar",
-        "url": ""
+        "url": "/finanzas/comparador-finanzas/tarjeta-credito"
     },
     {
-        "icon": "/img/icons/mobile.svg",
-        "title": "Préstamos",
+        "icon": "/img/icons/finanzas-tarjeta-logo-prestamo.svg",
+        "title": "Créditos",
         "button": "Comparar",
-        "url": ""
+        "url": "/finanzas/comparador-finanzas/creditos"
     }
 ]

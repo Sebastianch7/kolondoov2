@@ -141,7 +141,7 @@ export default function RaizTelefoniaCo() {
       />
       <ContenedorPorQueComparar title={"¿Por qué comparar"} titleAlt={"tarifas de Internet y Telefonía"} titleThird={"es tan importante?"} dataPorQueComparar={dataPorQueComparar} />
       <FormSuscripcionCo />
-      <FooterCo />
+      <Footer />
     </>
 
   )

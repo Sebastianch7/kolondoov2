@@ -41,7 +41,7 @@ function ComparadorStreamingCo() {
       </Banner>
       <ContenedorProductosStreaming />
       <ContenedorPorQueComparar title={'¿Por qué comparar'} titleAlt={'tarifas de Streaming'} titleThird={'es tan importante?'} dataPorQueComparar={dataPorQueComparar} />
-      <FooterCo />
+      <Footer />
     </div>
   );
 }

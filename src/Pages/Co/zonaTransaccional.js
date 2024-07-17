@@ -118,7 +118,7 @@ export default function ZonaTransaccional() {
                     </Row>
                 </Container>
 
-                <FooterCo />
+                <Footer />
             </div>
         </>
     );

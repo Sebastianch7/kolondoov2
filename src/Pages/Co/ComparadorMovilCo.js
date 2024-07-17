@@ -27,7 +27,7 @@ function ComparadorMovilCo() {
             </Banner>
             <ContenedorProductosMovil>
             </ContenedorProductosMovil>
-            <FooterCo />
+            <Footer />
         </div>
     );
 }

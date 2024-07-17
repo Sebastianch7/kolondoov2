@@ -137,7 +137,7 @@ export default function RaizFinanza() {
       />
       <ContenedorPorQueComparar title={'¿Por qué comparar'} titleAlt={'servicios financieros'} titleThird={'es tan importante?'} dataPorQueComparar={dataPorQueComparar} />
       <FormSuscripcionCo />
-      <FooterCo />
+      <Footer />
     </>
 
   )

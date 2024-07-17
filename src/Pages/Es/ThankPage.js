@@ -102,7 +102,7 @@ export default function ThankPage() {
       <Container>
         <Row className='justify-content-md-center mb-5'>
           <Col xs={12}>
-            <h6 className='mt-5 mb-3'>Aquí tienes otras ofertas que te podrían interesar:</h6>
+            <h6 className='mt-5 mb-3 text-center'>Aquí tienes otras ofertas que te podrían interesar:</h6>
           </Col>
           <Col md={9}>
             {extraOffer.length > 0 &&

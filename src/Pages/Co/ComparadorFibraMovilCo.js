@@ -26,7 +26,7 @@ function ComparadorFibraMovilCo() {
             </Banner>
             <ContenedorProductosMovilFibra>
             </ContenedorProductosMovilFibra>
-            <FooterCo />
+            <Footer />
         </div>
     );
 }

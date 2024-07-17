@@ -24,7 +24,7 @@ function ComparadorFibraCo() {
                 /> */}
             </Banner>
             <ContenedorProductosFibra />
-            <FooterCo />
+            <Footer />
         </div>
     );
 }

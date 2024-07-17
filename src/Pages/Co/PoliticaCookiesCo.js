@@ -156,7 +156,7 @@ export default function PoliticaCookiesCo() {
                     </Row>
                 </Container>
             </div>
-            <FooterCo />
+            <Footer />
         </>
     )
 }

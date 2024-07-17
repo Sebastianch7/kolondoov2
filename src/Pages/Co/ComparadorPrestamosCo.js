@@ -71,7 +71,7 @@ function ComparadorPrestamosCo() {
             </Banner>
 
             <ContenedorPrestamos filtroCategoria={filtro} />
-            <FooterCo />
+            <Footer />
         </div>
     );
 }

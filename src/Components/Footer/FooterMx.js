@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import { Link, useLocation } from 'react-router-dom';
+import { fetchFooterWeb } from '../../services/ApiServices';
 
 const handleSelectChange = (event) => {
     const country = event.target.value;
@@ -23,13 +24,27 @@ const handleSelectChange = (event) => {
 };
 
 function FooterMx(props) {
-    const [lang, setLang] = useState(null)
+    const [lang, setLang] = useState('');
+    const [dataFooter, setDataFooter] = useState(null);
     const location = useLocation();
-  
-    useEffect(() => {
-      setLang(location.pathname.split('/')[1])
 
-    }, [location])
+    useEffect(() => {
+        setLang(location.pathname.split('/')[1])
+    }, [location.pathname])
+
+    useEffect(() => {
+        const fetchData = async () => {
+            if (lang != '') {
+                try {
+                    const response = await fetchFooterWeb(lang.trim())
+                    setDataFooter(response);
+                } catch (error) {
+                    console.error("Error al obtener el menu", error);
+                }
+            }
+        };
+        fetchData();
+    }, [lang, location]);
 
 
     return (

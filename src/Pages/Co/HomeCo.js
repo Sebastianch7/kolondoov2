@@ -60,7 +60,7 @@ function HomeCo(props) {
                 <FormSuscripcionCo />
             </main>
 
-            <FooterCo />
+            <Footer />
         </div>
     );
 }

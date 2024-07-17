@@ -52,7 +52,7 @@ function QuienesSomosCo(props) {
             {
                 isMobile && <InterSection></InterSection>
             }
-            <FooterCo />
+            <Footer />
         </div>
     );
 }

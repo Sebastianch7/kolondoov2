@@ -18,7 +18,6 @@ function ContenedorProductosFibra() {
   const [minPrice, setMinPrice] = useState(0);
   const [maxPrice, setMaxPrice] = useState(1000);
   const [minCapacity, setMinCapacity] = useState(0);
-  const [maxCapacity, setMaxCapacity] = useState(1000);
   const [typeMoneda, setTypeMoneda] = useState(null);
 
   // Estados para el estado de carga de filtros e información
@@ -28,10 +27,6 @@ function ContenedorProductosFibra() {
   // Estados para filtros seleccionados
   const [filterBrand, setFilterBrand] = useState([]);
   const [filterPrice, setFilterPrice] = useState([minPrice, maxPrice]);
-  const [filterCapacity, setFilterCapacity] = useState([minCapacity, maxCapacity]);
-  const [filterTechnology, setFilterTechnology] = useState(false);
-  const [filterMessage, setFilterMessage] = useState(false);
-  const [filterRoaming, setFilterRoaming] = useState(false);
   const [filterPermanencia, setFilterPermanencia] = useState(false);
   const [filterPromo, setFilterPromo] = useState(false);
   const [filterOfertaDestacada, setFilterOfertaDestacada] = useState(false);
@@ -139,10 +134,6 @@ function ContenedorProductosFibra() {
     setFilterPrice(value);
   };
 
-  // Función para manejar el filtro de capacidad
-  const handleFilterCapacity = (value) => {
-    setFilterCapacity(value);
-  };
 
   // Función para aplicar los filtros
   useEffect(() => {
@@ -182,7 +173,7 @@ function ContenedorProductosFibra() {
   }
 
   // Función para filtrar por palabra clave en los bloques
-  function filterByFilter(filter, item, word) {
+  /* function filterByFilter(filter, item, word) {
     if (filter !== false) {
       if (item.parrilla_bloque_1?.toLowerCase().includes(word?.toLowerCase())) {
         return true;
@@ -198,7 +189,7 @@ function ContenedorProductosFibra() {
     } else {
       return true;
     }
-  }
+  } */
 
   return (
     <>
