@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import { Button } from 'react-bootstrap';
@@ -8,8 +8,12 @@ import { isMobile } from 'react-device-detect';
 import BannerReverse from '../Banner/BannerReverse';
 import { postFormNews } from '../../services/ApiServices';
 import { useLocation } from 'react-router-dom';
+import ReCAPTCHA from 'react-google-recaptcha'
+
 
 function FormSuscripcion({ }) {
+    const recaptcha = useRef()
+
     const [lang, setLang] = useState(null)
     const location = useLocation();
 
@@ -36,18 +40,23 @@ function FormSuscripcion({ }) {
 
     async function subscripcion(e) {
         e.preventDefault();
+        const captchaValue = recaptcha.current.getValue();
         setIsSend(false)
         setIsError(null)
-        try {
-            const response = await postFormNews(inpEmail);
-            if (response.status === 201) {
-                setInpEmail('')
-                setCheckIn(false);
-                setIsSend(true)
+        if (!captchaValue) {
+            alert('Verifica que eres un humano')
+        } else {
+            try {
+                const response = await postFormNews(inpEmail);
+                if (response.status === 201) {
+                    setInpEmail('')
+                    setCheckIn(false);
+                    setIsSend(true)
+                }
+            } catch (error) {
+                console.error('Error al enviar datos:', error);
+                setIsError('Error al procesar tu solicitud')
             }
-        } catch (error) {
-            console.error('Error al enviar datos:', error);
-            setIsError('Error al procesar tu solicitud')
         }
     }
 
@@ -97,8 +106,9 @@ function FormSuscripcion({ }) {
                                     </Button>
                                 </>
                         }
+                        <ReCAPTCHA ref={recaptcha} sitekey={process.env.REACT_APP_SITE_KEY} />
                         {
-                            isSend && 
+                            isSend &&
                             <p className='color-green'>Tu suscripción se realizó con éxito</p>
                         }
                         <InputCheck

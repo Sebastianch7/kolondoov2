@@ -113,7 +113,7 @@ export default function Lead() {
           <Row className="justify-content-md-center d-flex flex-column flex-md-row">
             <Title title={`${infoOffer?.nombre} ofertas - ${infoOffer.nombre_tarifa}`} />
             <Col xs={12}>
-              {!isMobile && <p className='font-09'>{textoLanding()}</p>}
+              {/* {!isMobile && <p className='font-09'>{textoLanding()}</p>} */}
               {!isMobile && <p
                 className='font-09 textoOpcional'
                 dangerouslySetInnerHTML={{ __html: infoOffer.textoAdicional }}
@@ -140,7 +140,7 @@ export default function Lead() {
               <FormLead data={infoOffer} idPlan={idPlan} landing={offerLooking} urlOffers={location.pathname} company={infoOffer.operadora}></FormLead>
             </Col>
             <Col xs={12} md={12} className='mt-2' style={{ order: 3 }}>
-              {isMobile && <p className='font-09'>{textoLanding()}</p>}
+              {/* {isMobile && <p className='font-09'>{textoLanding()}</p>} */}
               {isMobile && <p
                 className='font-09'
                 dangerouslySetInnerHTML={{ __html: infoOffer.textoAdicional }}
