@@ -49,6 +49,8 @@ import QuienesSomosCo from '../Pages/Co/QuienesSomosCo';
 import RaizStreamingCo from '../Pages/Co/RaizStreamingCo';
 import RaizFinanzasCo from '../Pages/Co/RaizFinanzasCo'
 import ComparadorPrestamosCo from '../Pages/Co/ComparadorPrestamosCo';
+import ContenedorProductosAlarmas from '../Components/Contenedor/ContenedorProductosAlarmas';
+import ComparadorAlarmas from '../Pages/Es/ComparadorAlarmas';
 
 function RoutesApp() {
     return (
@@ -115,6 +117,8 @@ function RoutesApp() {
                 <Route path="/es/herramientas" element={<PageNotFound />} />
                 <Route path="/es/herramientas/precio-de-la-luz-hoy" element={<HerramientaLuz />} />
                 <Route path="/es/herramientas/test-de-velocidad" element={<HerramientaTest />} />
+
+                <Route path="/es/seguros/alarmas" element={<ComparadorAlarmas />} />
 
                 {/* <Route path="/es/herramientas/suministros" element={<HerramientasSuministros />} />
                 <Route path="/es/herramientas/suministros/:id" element={<BlogItem />} />

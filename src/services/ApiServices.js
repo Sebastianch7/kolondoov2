@@ -445,6 +445,36 @@ export const fetchTarifasPlanCelular = async (lang) => {
     }
 };
 
+export const fetchTarifasAlarmas = async (lang) => {
+    try {
+        const response = await axios.get(`${apiUrl}/getTarifasAlarmas/${lang}`);
+        return response.data;
+    } catch (error) {
+        console.error("Error al procesar la solicitud", error);
+        throw error;
+    }
+};
+
+export const fetchTarifasAlarmasCuotaMensual = async (lang) => {
+    try {
+        const response = await axios.get(`${apiUrl}/getTarifasComparadorCuotaMensual/${lang}`);
+        return response.data;
+    } catch (error) {
+        console.error("Error al procesar la solicitud", error);
+        throw error;
+    }
+};
+
+export const fetchTarifasAlarmasEquipos = async (lang) => {
+    try {
+        const response = await axios.get(`${apiUrl}/getTarifasComparadorAlarmasEquipos/${lang}`);
+        return response.data;
+    } catch (error) {
+        console.error("Error al procesar la solicitud", error);
+        throw error;
+    }
+};
+
 export const fetchFilterVehiculos = async (lang) => {
     try {
         const response = await axios.get(`${apiUrl}/filterVehiculos/${lang}`);
