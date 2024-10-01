@@ -100,7 +100,7 @@ export default function ComparadorAlarmas() {
               subtitle={'Compara precio y componentes de las compañías de alarmas.'}
             />
           </Col>
-          <TarjetaBannerSeguro></TarjetaBannerSeguro>
+          <TarjetaBannerSeguro />
           <Col xs={12} className='my-5'>
             <Row className='align-content-center'>
               <ItemSegurosInfo icon={'/img/icons/hucha.svg'} content={'Te damos un presupuesto personalizado para que no pagues de más.'} />

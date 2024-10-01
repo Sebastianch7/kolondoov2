@@ -31,6 +31,7 @@ export default function Lead() {
   const splitInformation = information['id'].split('-');
 
   let descriptionSeo, titleSeo;
+  
   useEffect(() => {
     let locations = location.pathname.split('/');
     setIdPlan(splitInformation[splitInformation.length - 1])

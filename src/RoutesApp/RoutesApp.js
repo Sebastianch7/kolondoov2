@@ -51,6 +51,7 @@ import RaizFinanzasCo from '../Pages/Co/RaizFinanzasCo'
 import ComparadorPrestamosCo from '../Pages/Co/ComparadorPrestamosCo';
 import ContenedorProductosAlarmas from '../Components/Contenedor/ContenedorProductosAlarmas';
 import ComparadorAlarmas from '../Pages/Es/ComparadorAlarmas';
+import ComparadorSegurosSalud from '../Pages/Es/ComparadorSegurosSalud';
 
 function RoutesApp() {
     return (
@@ -119,6 +120,7 @@ function RoutesApp() {
                 <Route path="/es/herramientas/test-de-velocidad" element={<HerramientaTest />} />
 
                 <Route path="/es/seguros/alarmas" element={<ComparadorAlarmas />} />
+                <Route path="/es/seguros/salud" element={<ComparadorSegurosSalud />} />
 
                 {/* <Route path="/es/herramientas/suministros" element={<HerramientasSuministros />} />
                 <Route path="/es/herramientas/suministros/:id" element={<BlogItem />} />

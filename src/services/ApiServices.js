@@ -455,6 +455,16 @@ export const fetchTarifasAlarmas = async (lang) => {
     }
 };
 
+export const fetchTarifasSegurosSalud = async (lang, categoria) => {
+    try {
+        const response = await axios.get(`${apiUrl}/getTarifasSegurosSalud/${lang}/${categoria}`);
+        return response.data;
+    } catch (error) {
+        console.error("Error al procesar la solicitud", error);
+        throw error;
+    }
+};
+
 export const fetchTarifasAlarmasCuotaMensual = async (lang) => {
     try {
         const response = await axios.get(`${apiUrl}/getTarifasComparadorCuotaMensual/${lang}`);

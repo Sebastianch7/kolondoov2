@@ -4,7 +4,7 @@ import ItemImagenRedonda from '../Items/ItemImagenRedonda'
 
 export default function TarjetaBannerSeguro() {
     return (
-        <div className='card card-banner-seguros overflow-hidden overflow-scroll'>
+        <div className='col-auto card card-banner-seguros overflow-hidden overflow-scroll'>
             <div className='card-body'>
                 <Row className='d-flex'>
                     <Col md={12} className='d-flex'>
