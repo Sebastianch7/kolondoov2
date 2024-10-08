@@ -4,10 +4,10 @@ import ItemImagenRedonda from '../Items/ItemImagenRedonda'
 
 export default function TarjetaBannerSeguro() {
     return (
-        <div className='col-auto card card-banner-seguros overflow-hidden overflow-scroll'>
-            <div className='card-body'>
-                <Row className='d-flex'>
-                    <Col md={12} className='d-flex'>
+        <div className='col-auto card card-banner-seguros'>
+            <div className='card-body p-0'>
+                <Row>
+                    <Col md={12} className='d-flex flex-column flex-md-row'>
                     <ItemImagenRedonda titulo={'Precios y tarifas'} imagen={'/img/seguros/banner_1.png'} />
                     <ItemImagenRedonda titulo={'Cuota mensual'} imagen={'/img/seguros/banner_2.png'} />
                     <ItemImagenRedonda titulo={'Coste instalación'} imagen={'/img/seguros/banner_3.png'} />

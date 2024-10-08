@@ -1697,6 +1697,8 @@ b {
   padding: 15px;
   border: 0px solid transparent;
   box-shadow: 0px 2px 10px #19467C1A;
+  display: flex;
+  flex-direction: row;
 
   &-img {
     margin: 15px auto 5px;
@@ -1733,6 +1735,7 @@ b {
   background-color: $blueContrast;
   border-radius: 41px;
   border: 0px solid transparent;
+
   table {
     td {
       border-left: 5px solid $colorSecundaryText;
@@ -1745,6 +1748,47 @@ b {
   }
 }
 
-.table > :not(caption) > * > *{
+.table> :not(caption)>*>* {
   background-color: transparent !important;
+}
+
+.icon-call {
+  width: 17px !important;
+  margin-top: 5px;
+  
+  @include media(xs) {
+    padding: 0 !important;
+    margin-top: 0px !important;
+  }
+
+  &-number {
+    background-color: $colorPrimary;
+    color: $white;
+    padding: 10px 13px;
+    border-radius: 15px;
+    font-family: $MontHeavy;
+  }
+
+  &-title {
+    font-family: $MontSemiBold;
+    margin-top: 10px;
+
+    @include media(xs) {
+      margin-top: 0px !important;
+    }
+  }
+}
+
+.footer-call-me{
+  background-color: $colorSecundaryText;
+  color: $white;
+  height: 65px;
+  width: 100%;
+  border-radius: 20px 20px 0px 0px;
+  display: flex;
+  text-align: center !important;
+  justify-content: center;
+  align-items: center;
+  font-family: $MontHeavy;
+  font-size: 1.2rem;
 }

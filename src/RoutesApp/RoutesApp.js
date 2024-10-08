@@ -34,7 +34,7 @@ import ComparadorVehiculos from '../Pages/Mx/ComparadorVehiculos';
 import LeadVehiculo from '../Pages/Es/LeadVehiculo';
 import ComparadorCupones from '../Pages/Es/ComparadorCupones';
 import ZonaTransaccional from '../Pages/Co/zonaTransaccional';
-import ComparadorPrestamos from '../Pages/Co/ComparadorPrestamosCo';
+import ComparadorPrestamos from '../Pages/Es/ComparadorPrestamos';
 import HomeCo from '../Pages/Co/HomeCo';
 import ComparadorStreamingCo from '../Pages/Co/ComparadorStreamingCo';
 import ComparadorMovilCo from '../Pages/Co/ComparadorMovilCo';
@@ -47,7 +47,8 @@ import PoliticaCookiesCo from '../Pages/Co/PoliticaCookiesCo';
 import PoliticaLegalCo from '../Pages/Co/PoliticaLegalCo';
 import QuienesSomosCo from '../Pages/Co/QuienesSomosCo';
 import RaizStreamingCo from '../Pages/Co/RaizStreamingCo';
-import RaizFinanzasCo from '../Pages/Co/RaizFinanzasCo'
+import RaizFinanzasCo from '../Pages/Co/RaizFinanzasCo';
+import RaizFinanzas from '../Pages/Es/RaizFinanzas';
 import ComparadorPrestamosCo from '../Pages/Co/ComparadorPrestamosCo';
 import ContenedorProductosAlarmas from '../Components/Contenedor/ContenedorProductosAlarmas';
 import ComparadorAlarmas from '../Pages/Es/ComparadorAlarmas';
@@ -149,6 +150,13 @@ function RoutesApp() {
                 <Route path="/:lang/cupones/:id" element={<ComparadorCupones />} />
                 <Route path="/:lang/cupones/categoria/:idCategoria" element={<ComparadorCupones />} />
                 <Route path="/:lang/cupones/categoria" element={<Navigate to="/es/cupones" />} />
+
+
+                <Route path="/es/finanzas" element={<RaizFinanzas />} />
+                <Route path="/es/finanzas/comparador-finanzas" element={<RaizFinanzas />} />
+                <Route path="/es/rediccion-banco/:id" element={<ZonaTransaccional />} />
+                <Route path="/es/finanzas/comparador-finanzas/microcreditos" element={<ComparadorPrestamos />} />
+                <Route path="/es/finanzas/comparador-finanzas/unificadores" element={<ComparadorPrestamos />} />
                 
                 {/* cupones */}
                 <Route path="/:lang/cupones" element={<ComparadorCupones />} />

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Card, Row, Col } from 'react-bootstrap';
+import { Card, Row, Col, Button } from 'react-bootstrap';
 import ItemTarifaDescripcion from '../Items/ItemTarifaDescripcion';
 import ItemTarifaServicio from '../Items/ItemTarifaServicio';
 import { Link, Navigate, useSearchParams } from 'react-router-dom';
@@ -59,7 +59,8 @@ function TarjetaTarifa({ data, type }) {
         instagram,
         red5g,
         tinder,
-        lolamusic
+        lolamusic,
+        telefono
     } = data;
     return (
         <div>
@@ -76,6 +77,10 @@ function TarjetaTarifa({ data, type }) {
                                 <div className='tarjeta-tarifa-item-title d-flex justify-content-between align-items-center'>
                                     <img src={logo} alt={logo} />
                                     {((promocion !== null && promocion !== '') && !isMobile) && <span className='mt-7px font-bold'><b className='font-bold'>Promoción: </b>{promocion}</span>}
+                                    {(telefono !== '' && telefono !== null) && <><div className='d-flex d-block d-md-none flex-column text-center' style={{ 'margin-top': '-10px' }}>
+                                        <span className='icon-call-title mb-1'>Llama al:</span>
+                                        <div><span className='icon-call-number'>{telefono}</span></div>
+                                    </div></>}
                                     {isMobile && <Link className='btn btn-dark btn-primary-small' to={`/${lang}${landingLead}${slug_tarifa.toLowerCase()}-${id}`}><BsArrowRight /></Link>}
                                 </div>
                             </Col>
@@ -125,7 +130,7 @@ function TarjetaTarifa({ data, type }) {
                                 {lolamusic === 1 && <img className='icon-logo-tarifa' src='/img/logos/lolamusic.png' alt='lolaMusic' />}
                             </div>
                         )}
-                        
+
                     </Col>
                     <Col xs={12} md={5} style={isMobile ? { order: 1 } : { order: 2 }}>
                         <Row>
@@ -134,7 +139,9 @@ function TarjetaTarifa({ data, type }) {
                         </Row>
                     </Col>
                     {!isMobile && <Col md={2} style={{ order: 3 }}>
-                        <Link className='btn btn-dark font-bold mt-2' to={`/${lang}${landingLead}${slug_tarifa.toLowerCase()}-${id}`}>Comprar</Link>
+                        <Link className='btn btn-dark mt-2' to={`/${lang}${landingLead}${slug_tarifa.toLowerCase()}-${id}`}>Comprar</Link>
+                        {(telefono !== '' && telefono !== null) && <><div className='d-flex justify-content-around align-items-center' style={{ 'height': '50px' }}><img className='icon-call' src='/img/icons/telefono.svg' /><span className='icon-call-title'>O llama al:</span></div>
+                            <div><span className='icon-call-number'>{telefono}</span></div></>}
                     </Col>}
                 </Row>
             </Card>

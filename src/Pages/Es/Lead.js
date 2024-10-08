@@ -48,6 +48,7 @@ export default function Lead() {
           let titleOriginal = response.slug_tarifa.split('-')
           titleOriginal.pop();
           setTitle(titleOriginal.toString())
+          console.log(response)
           setInfoOffer(response);
           setIsLoading(false);
         }

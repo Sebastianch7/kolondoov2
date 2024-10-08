@@ -18,32 +18,19 @@ function ContenedorPrestamos({ logo = null, landingLead = null, id = null, filtr
   // Estado para filtros de precio y capacidad
   const [minPrice, setMinPrice] = useState(0);
   const [maxPrice, setMaxPrice] = useState(1000);
-  const [minCapacity, setMinCapacity] = useState(0);
-  const [maxCapacity, setMaxCapacity] = useState(1000);
-  const [typeMoneda, setTypeMoneda] = useState(null);
-
+  
   // Estados para el estado de carga de filtros e información
   const [isLoadFilter, setIsLoadFilter] = useState(false);
   const [isLoadInformation, setIsLoadInformation] = useState(false);
 
   // Estados para filtros seleccionados
   const [filterBrand, setFilterBrand] = useState([]);
-  const [filterPrice, setFilterPrice] = useState([minPrice, maxPrice]);
-  const [filterCapacity, setFilterCapacity] = useState([minCapacity, maxCapacity]);
-  const [filterTechnology, setFilterTechnology] = useState(false);
-  const [filterMessage, setFilterMessage] = useState(false);
-  const [filterRoaming, setFilterRoaming] = useState(false);
-  const [filterPermanencia, setFilterPermanencia] = useState(false);
-  const [filterPromo, setFilterPromo] = useState(false);
   const [filterOfertaDestacada, setFilterOfertaDestacada] = useState(false);
 
   // Estados para tarifas y marcas
   const [Tarifas, setTarifas] = useState([]);
   const [filtros, setFiltros] = useState([]);
   const [brand, setBrand] = useState([]);
-
-  // Estados para rangos de precio y capacidad
-  const [rangePrice, setRangePrice] = useState([minPrice, maxPrice]);
 
   const [lang, setLang] = useState(null)
   const location = useLocation();
@@ -79,12 +66,6 @@ function ContenedorPrestamos({ logo = null, landingLead = null, id = null, filtr
     setFiltros(Tarifas);
   };
 
-/*   // Función para manejar el cambio en el rango de precio
-  const handleRangeChangePrice = (newRange) => {
-    setRangePrice(newRange);
-    handleFilterPrice(newRange);
-  };
- */
   useEffect(() => {
     if (lang != null) {
       const fetchLogos = async () => {

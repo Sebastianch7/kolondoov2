@@ -7,6 +7,7 @@ import { useTranslation } from 'react-i18next';
 import { useLocation } from 'react-router-dom';
 
 export default function FormLead({ idPlan, landing, offerLooking, urlOffers, company, data }) {
+    console.log(data)
     const { t } = useTranslation();
 
     const [lang, setLang] = useState(null)
@@ -16,9 +17,6 @@ export default function FormLead({ idPlan, landing, offerLooking, urlOffers, com
     const [checkInComercial, setCheckInComercial] = useState(false);
 
     const [phoneNumber, setPhoneNumber] = useState('');
-    const [name, setName] = useState(null);
-    const [lastName, setLastName] = useState(null);
-    const [email, setEmail] = useState(null);
     const [urlOffer, setUrlOffer] = useState(urlOffers);
     const [urlSplit, setUrlSplit] = useState([])
 
@@ -127,7 +125,7 @@ export default function FormLead({ idPlan, landing, offerLooking, urlOffers, com
                                             <span
                                                 dangerouslySetInnerHTML={{
                                                     __html:
-                                                    `Acepto recibir comunicaciones comerciales de Vuskoo. Más información en <a href="${data.politica_privacidad}">Política de Privacidad</a>`,
+                                                        `Acepto recibir comunicaciones comerciales de Vuskoo. Más información en <a href="${data.politica_privacidad}">Política de Privacidad</a>`,
                                                 }}
                                             />
                                         }
@@ -149,14 +147,14 @@ export default function FormLead({ idPlan, landing, offerLooking, urlOffers, com
                                     {textButton}
                                 </Button>
                             </div>
+
                         </div>
                     </Form>
                 </Card.Text>
             </Card.Body>
+            {(data?.telefono != null && data?.telefono != '') && <div className='footer-call-me'>
+                <div><span className='color-primary mx-3'>O llámanos tú:</span><span className='icon-call-number'>{data?.telefono}</span></div>
+            </div>}
         </Card >
     )
 }
-
-
-
-

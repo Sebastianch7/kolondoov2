@@ -1,0 +1,14 @@
+[
+    {
+        "icon": "/img/icons/microcreditos.png",
+        "title": "Microcreditos",
+        "button": "Comparar",
+        "url": "/finanzas/comparador-finanzas/microcreditos"
+    },
+    {
+        "icon": "/img/icons/unificadores.png",
+        "title": "Unificadores",
+        "button": "Comparar",
+        "url": "/finanzas/comparador-finanzas/unificadores"
+    }
+]
