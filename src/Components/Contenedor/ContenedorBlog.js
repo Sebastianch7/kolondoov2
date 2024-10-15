@@ -22,13 +22,15 @@ export default function ContenedorBlog({ categoria }) {
 
     useEffect(() => {
         setIsLoading(true);
-        const fetchBlogList = async (lang) => {
+        const fetchBlogList = async () => {
             try {
-                const response = await getBlog(categoria !== undefined ? categoria : '');
-                setFetchBlog(response);
-                setIsLoading(false);
-                if (response.length === 0) {
-                    navigate('/es/404', { replace: true, state: { statusCode: 404 } });
+                if (lang != undefined) {
+                    const response = await getBlog(lang, categoria !== undefined ? categoria : '');
+                    setFetchBlog(response);
+                    setIsLoading(false);
+                    if (response.length === 0) {
+                        navigate('/es/404', { replace: true, state: { statusCode: 404 } });
+                    }
                 }
             } catch (error) {
                 navigate('/es/404', { replace: true, state: { statusCode: 404 } });
@@ -37,7 +39,7 @@ export default function ContenedorBlog({ categoria }) {
             }
         };
         fetchBlogList();
-    }, []);
+    }, [lang]);
 
     function Items({ currentItems }) {
         return (
@@ -110,7 +112,7 @@ export default function ContenedorBlog({ categoria }) {
                     {!isLoading ? <PaginatedItems itemsPerPage={isMobile ? 4 : 10} /> : <Load></Load>}
                 </Col>
                 <Col xs={12} md={3} xl={4}>
-                    <ContenedorDestacados />
+                    {/* <ContenedorDestacados /> */}
                 </Col>
             </Row>
         </Container>

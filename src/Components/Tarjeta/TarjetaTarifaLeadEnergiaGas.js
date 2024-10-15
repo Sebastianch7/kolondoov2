@@ -100,7 +100,7 @@ export default function TarjetaTarifaLeadEnergiaGas({ data, TarifaCard }) {
                         </Col>
                     </Row>
                     <Row>
-                        <Col md={12} className='d-flex vertical-items'>
+                        <Col md={12} className='d-flex justify-content-around vertical-items'>
                             <ItemTarifaDescripcion text={parrilla_bloque_1} />
                             <ItemTarifaDescripcion text={parrilla_bloque_2} />
                             <ItemTarifaDescripcion text={parrilla_bloque_3} />

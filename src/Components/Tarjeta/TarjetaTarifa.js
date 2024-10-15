@@ -32,6 +32,7 @@ function TarjetaTarifa({ data, type }) {
 
     const { id,
         destacada,
+        landing_link,
         nombre_tarifa,
         slug_tarifa,
         parrilla_bloque_1,
@@ -79,9 +80,9 @@ function TarjetaTarifa({ data, type }) {
                                     {((promocion !== null && promocion !== '') && !isMobile) && <span className='mt-7px font-bold'><b className='font-bold'>Promoción: </b>{promocion}</span>}
                                     {(telefono !== '' && telefono !== null) && <><div className='d-flex d-block d-md-none flex-column text-center' style={{ 'margin-top': '-10px' }}>
                                         <span className='icon-call-title mb-1'>Llama al:</span>
-                                        <div><span className='icon-call-number'>{telefono}</span></div>
+                                        <div className='text-center'><a href={'tel:'+data?.telefono}  className='icon-call-number text-decoration-none'>{telefono}</a></div>
                                     </div></>}
-                                    {isMobile && <Link className='btn btn-dark btn-primary-small' to={`/${lang}${landingLead}${slug_tarifa.toLowerCase()}-${id}`}><BsArrowRight /></Link>}
+                                    {isMobile && <Link className='btn btn-dark btn-primary-small' to={landing_link === null ? `/es${landingLead}${slug_tarifa.toLowerCase()}-${id}` : landing_link}><BsArrowRight /></Link>}
                                 </div>
                             </Col>
 
@@ -139,9 +140,9 @@ function TarjetaTarifa({ data, type }) {
                         </Row>
                     </Col>
                     {!isMobile && <Col md={2} style={{ order: 3 }}>
-                        <Link className='btn btn-dark mt-2' to={`/${lang}${landingLead}${slug_tarifa.toLowerCase()}-${id}`}>Comprar</Link>
-                        {(telefono !== '' && telefono !== null) && <><div className='d-flex justify-content-around align-items-center' style={{ 'height': '50px' }}><img className='icon-call' src='/img/icons/telefono.svg' /><span className='icon-call-title'>O llama al:</span></div>
-                            <div><span className='icon-call-number'>{telefono}</span></div></>}
+                    <Link className='btn btn-primary text-center w-100 my-2' target={landing_link !== null && '_self'} to={landing_link === null ? `/${lang}${landingLead}${slug_tarifa.toLowerCase()}-${id}` : landing_link}>{`Ir a la oferta`}</Link>
+                        {(telefono !== '' && telefono !== null) && <><div className='d-flex justify-content-evenly align-items-center' style={{ 'height': '50px' }}><img className='icon-call' src='/img/icons/telefono.svg' /><span className='icon-call-title'>O llama al:</span></div>
+                            <div className='text-center'><a href={'tel:'+data?.telefono} className='icon-call-number text-decoration-none'>{telefono}</a></div></>}
                     </Col>}
                 </Row>
             </Card>

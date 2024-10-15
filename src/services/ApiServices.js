@@ -220,10 +220,10 @@ export const getDetailOffer = async (offerLooking, idPlan) => {
     }
 };
 
-export const getBlog = async (categoria) => {
+export const getBlog = async (lang, categoria) => {
     try {
         let url = categoria ? `/${categoria}` : ``;
-        const response = await axiosInstance.get(`${apiUrl}/getBlog${url}`)
+        const response = await axiosInstance.get(`${apiUrl}/getBlog/${lang}${url}`)
         return response.data;
     } catch (error) {
         console.error("Error al procesar la solicitud", error);
@@ -262,9 +262,9 @@ export const getMenu = async (lang) => {
     }
 }; */
 
-export const getBlogById = async (categoria, id) => {
+export const getBlogById = async (lang, categoria, id) => {
     try {
-        const response = await axiosInstance.get(`${apiUrl}/getBlog/${categoria}/${id}`)
+        const response = await axiosInstance.get(`${apiUrl}/getBlog/${lang}/${categoria}/${id}`)
         return response.data[0];
     } catch (error) {
         console.error("Error al procesar la solicitud", error);

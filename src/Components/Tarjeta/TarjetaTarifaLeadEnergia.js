@@ -80,15 +80,15 @@ export default function TarjetaTarifaLeadEnergia({ data, TarifaCard }) {
                             <Row>
                                 <ItemTarifaServicio cant={precio} service={''} design={"small"} money={'€'} />
                                 {!isMobile && TarifaCard && (
-                                    <Col md={2} style={isMobile ? { order: 3 } : { order: 3 }}>
-                                        <Link className='btn btn-primary' target={landing_link !== null && '_self'} to={landing_link === null ? `/es${landingLead}${slug_tarifa.toLowerCase()}-${id}` : landing_link}>{`Comprar`}</Link>
+                                    <Col xs={12} style={isMobile ? { order: 3 } : { order: 3 }}>
+                                        <Link className='btn btn-primary text-center w-100 my-2' target={landing_link !== null && '_self'} to={landing_link === null ? `/es${landingLead}${slug_tarifa.toLowerCase()}-${id}` : landing_link}>{`Ir a la oferta`}</Link>
                                     </Col>
                                 )}
                             </Row>
                         </Col>
                     </Row>
                     <Row>
-                        <Col md={12} className='d-flex vertical-items mt-4'>
+                        <Col md={12} className='d-flex justify-content-around vertical-items mt-4'>
                             <ItemTarifaDescripcion text={parrilla_bloque_1} />
                             <ItemTarifaDescripcion text={parrilla_bloque_2} />
                             <ItemTarifaDescripcion text={parrilla_bloque_3} />

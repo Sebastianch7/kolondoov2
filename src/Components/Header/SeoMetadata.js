@@ -4,7 +4,7 @@ import { useLocation } from 'react-router-dom';
 import { fetchSeoMeta } from '../../services/ApiServices';
 
 const apiUrl = process.env.REACT_APP_API_URL;
-const App = ({ titulo, descripcion, url, imagen_destacada = `${apiUrl}/img/logos/logo.svg` }) => {
+const App = ({ titulo, descripcion, url, robots ='index, follow', imagen_destacada = `${apiUrl}/img/logos/logo.svg` }) => {
     const [lang, setLang] = useState(null)
     const [dataSeo, setDataSeo] = useState([])
     const location = useLocation();
@@ -41,7 +41,7 @@ const App = ({ titulo, descripcion, url, imagen_destacada = `${apiUrl}/img/logos
             <meta name="language" content={dataSeo?.language} />
             <meta name="description" content={descripcion} />
             <title>{titulo}</title>
-            <meta name="robots" content="index, follow" />
+            <meta name="robots" content={robots} />
             <link rel="canonical" href={`${apiUrl}${location.pathname}`} />
 
             <meta property="og:type" content="website" />

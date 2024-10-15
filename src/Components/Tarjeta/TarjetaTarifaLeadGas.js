@@ -65,7 +65,7 @@ export default function TarjetaTarifaLeadGas({ data, TarifaCard }) {
                                         <ItemTarifaLuz title={'Variable'} value={data?.gas_precio_termino_variable} extension={'€/kW'} />
                                     </Row>
                                 </Col>
-                                <Col md={12} className='d-flex vertical-items my-3'>
+                                <Col md={12} className='d-flex justify-content-around vertical-items my-3'>
                                     <ItemTarifaDescripcion text={parrilla_bloque_1} />
                                     <ItemTarifaDescripcion text={parrilla_bloque_2} />
                                     <ItemTarifaDescripcion text={parrilla_bloque_3} />

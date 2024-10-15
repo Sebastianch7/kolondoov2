@@ -115,7 +115,6 @@ export default function Lead() {
           <Row className="justify-content-md-center d-flex flex-column flex-md-row">
             <Title title={`${infoOffer?.nombre} ofertas - ${infoOffer.nombre_tarifa}`} />
             <Col xs={12}>
-              {/* {!isMobile && <p className='font-09'>{textoLanding()}</p>} */}
               {!isMobile && <p
                 className='font-09 textoOpcional'
                 dangerouslySetInnerHTML={{ __html: infoOffer.textoAdicional }}

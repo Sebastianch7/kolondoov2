@@ -64,7 +64,7 @@ export default function FormLead({ idPlan, landing, offerLooking, urlOffers, com
                 setIsError(response?.data?.message);
             }
         } catch (error) {
-            setTextButton('Error al procesa la solicitud')
+            setTextButton('Error al procesar la solicitud')
             setIsError(error.statusText)
         }
     }
@@ -125,7 +125,7 @@ export default function FormLead({ idPlan, landing, offerLooking, urlOffers, com
                                             <span
                                                 dangerouslySetInnerHTML={{
                                                     __html:
-                                                        `Acepto recibir comunicaciones comerciales de Vuskoo. Más información en <a href="${data.politica_privacidad}">Política de Privacidad</a>`,
+                                                        `Acepto recibir comunicaciones comerciales de ${data.nombre}. Más información en <a href="${data.politica_privacidad}">Política de Privacidad</a>`,
                                                 }}
                                             />
                                         }
@@ -153,7 +153,7 @@ export default function FormLead({ idPlan, landing, offerLooking, urlOffers, com
                 </Card.Text>
             </Card.Body>
             {(data?.telefono != null && data?.telefono != '') && <div className='footer-call-me'>
-                <div><span className='color-primary mx-3'>O llámanos tú:</span><span className='icon-call-number'>{data?.telefono}</span></div>
+                <div className='text-center'><span className='color-primary mx-3'>O llámanos tú:</span><a href={'tel:'+data?.telefono} className='icon-call-number text-decoration-none'>{data?.telefono}</a></div>
             </div>}
         </Card >
     )

@@ -32,9 +32,7 @@ export default function ContenedorBlogItem({ }) {
     useEffect(() => {
         const pathname = location.pathname;
         let locations = pathname.split('/');
-        //blog, herramientas
         setLanding(locations[2].toLowerCase())
-        //hogar, internet, movil, suministros, seguros
         setValidarCategoria(locations[3].toLowerCase())
         setIdBlog(locations[4]);
     }, [idBlog])
@@ -47,9 +45,9 @@ export default function ContenedorBlogItem({ }) {
                 if (idBlog !== null) {
                     switch (landing) {
                         case 'blog':
-                            response = await getBlogById(validarCategoria,idBlog);
+                            response = await getBlogById(lang, validarCategoria, idBlog);
                             if (response === undefined || !response.categoria_slug.includes(validarCategoria) && validarCategoria !== 'destacados') {
-                                 navigate('/es/404', { replace: true, state: { statusCode: 404 } });
+                                navigate('/es/404', { replace: true, state: { statusCode: 404 } });
 
                             }
                             setFetchBlog(response);
@@ -62,7 +60,7 @@ export default function ContenedorBlogItem({ }) {
                                 case 'suministros':
                                     response = await getGestionById('suministros', idBlog);
                                     if (response === undefined || !validarCategoria.includes('suministros')) {
-                                          navigate('/es/404', { replace: true, state: { statusCode: 404 } });
+                                        navigate('/es/404', { replace: true, state: { statusCode: 404 } });
 
                                     }
                                     setFetchBlog(response);
@@ -74,7 +72,7 @@ export default function ContenedorBlogItem({ }) {
                                 case 'coberturafibra':
                                     response = await getGestionById('coberturaFibra', idBlog);
                                     if (response === undefined || !validarCategoria.includes('coberturafibra')) {
-                                          navigate('/es/404', { replace: true, state: { statusCode: 404 } });
+                                        navigate('/es/404', { replace: true, state: { statusCode: 404 } });
 
                                     }
                                     setFetchBlog(response);
@@ -86,7 +84,7 @@ export default function ContenedorBlogItem({ }) {
                                 case 'coberturamovil':
                                     response = await getGestionById('coberturaMovil', idBlog);
                                     if (response === undefined || !validarCategoria.includes('coberturamovil')) {
-                                          navigate('/es/404', { replace: true, state: { statusCode: 404 } });
+                                        navigate('/es/404', { replace: true, state: { statusCode: 404 } });
 
                                     }
                                     setFetchBlog(response);
@@ -98,7 +96,7 @@ export default function ContenedorBlogItem({ }) {
                                 case 'seguros':
                                     response = await getGestionById('seguros', idBlog);
                                     if (response === undefined || !validarCategoria.includes('seguros')) {
-                                          navigate('/es/404', { replace: true, state: { statusCode: 404 } });
+                                        navigate('/es/404', { replace: true, state: { statusCode: 404 } });
 
                                     }
                                     setFetchBlog(response);
@@ -126,7 +124,7 @@ export default function ContenedorBlogItem({ }) {
             {!load ? <Container>
                 <Row>
                     <Col xs={12} md={8}>
-                    {fetchBlog?.imagen && <Image className='img-fluid w-100' src={`${rutaImagen ? rutaImagen: ''}${fetchBlog?.imagen}`} alt={`${fetchBlog?.alt_img ? fetchBlog?.alt_img : 'Imagen no encontrada'}`} />}
+                        {fetchBlog?.imagen && <Image className='img-fluid w-100' src={`${rutaImagen ? rutaImagen : ''}${fetchBlog?.imagen}`} alt={`${fetchBlog?.alt_img ? fetchBlog?.alt_img : 'Imagen no encontrada'}`} />}
                         <TitleSection
                             left
                             title={fetchBlog?.titulo}
@@ -134,14 +132,14 @@ export default function ContenedorBlogItem({ }) {
                             clave={fetchBlog?.hashtags?.replaceAll('[', '').replaceAll('"', '').replaceAll(']', '').replaceAll(',', ' ')}
                             fecha={fetchBlog?.fecha_publicacion}
                             autor={fetchBlog?.autor}
-                            
+
                         />
                         <Col xs={12} className='text-center my-5'>
                             <Link className='font-09 btn btn-primary' to={`/es/${btnBack}`}>Volver</Link>
                         </Col>
                     </Col>
                     <Col xs={12} md={4}>
-                        <ContenedorDestacados />
+                        {/* <ContenedorDestacados /> */}
                     </Col>
                 </Row>
                 <Row>

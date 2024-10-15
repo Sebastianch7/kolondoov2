@@ -9,7 +9,7 @@ export default function HeaderLead({logo}) {
         <>
             <Navbar bg="ligth" data-bs-theme="ligth">
                 <Container>
-                <img className='img-fluid' src={logo} alt={logo} style={{ width: '200px' }} />
+                <img className='img-fluid' src={logo} alt={logo} style={{ height: '100px' }} />
                 </Container>
             </Navbar>
         </>

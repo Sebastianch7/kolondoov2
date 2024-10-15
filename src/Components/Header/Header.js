@@ -128,7 +128,7 @@ function Header({ breadCrumb }) {
                                                         {menu?.length > 0 &&
                                                             menu.map((item, index) => {
                                                                 if (item.slug !== 'sin-categoria' && item.slug !== 'destacado' && item.slug !== 'mejores-ofertas') {
-                                                                    return <a key={index} className="dropdown-item" href={`/${lang}/blog/${item.slug}`}>{item.name}</a>
+                                                                    return <a key={index} className="dropdown-item" href={`/${lang}/blog/${item.slug}`}>{item.nombre}</a>
                                                                 }
                                                             })
                                                         }

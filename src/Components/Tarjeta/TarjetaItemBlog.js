@@ -1,9 +1,18 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Col, Card, Row } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { isMobile } from 'react-device-detect'
 
 export default function TarjetaItemBlog({ data }) {
+    const [lang, setLang] = useState(null)
+    const location = useLocation();
+
+    useEffect(() => {
+        setLang(location.pathname.split('/')[1])
+    }, [location])
+
+    console.log(data);
+
     const { post_title,
         id, fecha_publicacion, categoria_slug, categoria, imagen, visitas, categoria_id, hashtags, imagen_principal_escritorio, imagen_principal_movil, titulo, entradilla, url_amigable } = data
     const meses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre']
@@ -28,11 +37,11 @@ export default function TarjetaItemBlog({ data }) {
         <>
             <Col xs={12} md={6}>
                 <Card className='m-2 tarjeta tarjeta-blog tarjeta-blog-blog border-0'>
-                    <a className='w-100px' href={`/es/blog/${categoria_slug}/${url_amigable}`}><Card.Img variant="top" className='img-fluid' src={`${imagen}`} alt={`${imagen}`} /></a>
+                    <a className='w-100px' href={`/${lang}/blog/${categoria_slug}/${url_amigable}`}><Card.Img variant="top" className='img-fluid' src={`${imagen}`} alt={`${imagen}`} /></a>
                     <Card.Body className='bg-gray'>
                         <span>{cambiarFecha(fecha_publicacion)}</span> - <span>{categoria}</span>
                         <Card.Title>
-                            <Link to={`/es/blog/${categoria_slug}/${url_amigable}`} className='title-card-a'><b>{titulo}</b></Link>
+                            <Link to={`/${lang}/blog/${categoria_slug}/${url_amigable}`} className='title-card-a'><b>{titulo}</b></Link>
                             {/* <p className='font-09 color-primary mt-2'>{hashtags?.replaceAll('[', '').replaceAll(']', '').replaceAll('"', '').replaceAll(',', ' ')}</p> */}
                         </Card.Title>
                         <Card.Text className='font-09'>

@@ -53,26 +53,30 @@ export default function ContenedorBlogItemPreview({ }) {
 
     return (
         <>
+            <MetaData robots='noindex, nofollow' titulo={fetchBlog?.seo_titulo} descripcion={fetchBlog?.seo_descripcion} imagen_destacada={`${fetchBlog?.imagen}`} />
             {!load ? <Container>
                 <Row>
                     <Col xs={12} md={8}>
-                    {fetchBlog?.imagen && <Image className='img-fluid w-100' src={`${rutaImagen ? rutaImagen: ''}${fetchBlog?.imagen}`} alt={`${fetchBlog?.alt_img ? fetchBlog?.alt_img : 'Imagen no encontrada'}`} />}
+                        {fetchBlog?.imagen && <Image className='img-fluid w-100' src={`${rutaImagen ? rutaImagen : ''}${fetchBlog?.imagen}`} alt={`${fetchBlog?.alt_img ? fetchBlog?.alt_img : 'Imagen no encontrada'}`} />}
                         <TitleSection
                             left
                             title={fetchBlog?.titulo}
-                            text1={fetchBlog?.contenido}
+                            textBlog={fetchBlog?.contenido}
                             clave={fetchBlog?.hashtags?.replaceAll('[', '').replaceAll('"', '').replaceAll(']', '').replaceAll(',', ' ')}
                             fecha={fetchBlog?.fecha_publicacion}
                             autor={fetchBlog?.autor}
-                            textBlog={fetchBlog?.cuerpo}
+
                         />
                         <Col xs={12} className='text-center my-5'>
                             <Link className='font-09 btn btn-primary' to={`/es/${btnBack}`}>Volver</Link>
                         </Col>
                     </Col>
                     <Col xs={12} md={4}>
-                        <ContenedorDestacados />
+                        {/* <ContenedorDestacados /> */}
                     </Col>
+                </Row>
+                <Row>
+                    <FormSuscripcion />
                 </Row>
             </Container> :
                 <Load></Load>
