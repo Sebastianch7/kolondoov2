@@ -13,7 +13,7 @@ function TarjetaPrestamo({ data }) {
                 {/* <Card key={''} className={`m-1 mx-md-3 tarjeta-prestamo tarjeta text-center ${destacada === 1 && 'prioridad'}`}> */}
                 <Card.Body>
                     <div className="prestamo-header">
-                        <img className='' src={logo} />
+                        <img className='img-logo-tarjeta' src={logo} />
                         {/* {titulo != null && <h4>{titulo}</h4>} */}
                         <hr />
                     </div>

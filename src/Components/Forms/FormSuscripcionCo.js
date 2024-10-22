@@ -109,7 +109,7 @@ function FormSuscripcionCo({ }) {
                         <ReCAPTCHA sitekey={process.env.REACT_APP_SITE_KEY} />
                         {
                             isSend &&
-                            <p className='color-green'>Tu suscripción se realizó con éxito</p>
+                            <p className='color-green'>Gracias por registrarte. Te hemos enviado un correo de confirmación, por favor revisa tu bandeja de entrada para verificar tu cuenta.</p>
                         }
                         <InputCheck
                             onChangeValue={changeValue}

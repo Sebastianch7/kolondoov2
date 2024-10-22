@@ -71,7 +71,6 @@ export default function RaizEnergia() {
         console.error("Error al obtener oferta extra:", error);
       }
     };
-
     fetchTariffs();
   }, []);
   return (

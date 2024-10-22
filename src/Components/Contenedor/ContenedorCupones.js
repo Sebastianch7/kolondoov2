@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { Container, Row, Col, Button, Form } from 'react-bootstrap';
 import 'rc-slider/assets/index.css';
 import { isMobile } from 'react-device-detect';
@@ -8,47 +8,32 @@ import NotInfoItem from '../Utils/NotInfoItem';
 import Load from '../Utils/Load';
 import { fetchTipoCupones, fetchComerciosCupones, fetchTarifasCupones, fetchTarifaCupon } from '../../services/ApiServices'
 import TarjetaTarifaCupon from '../Tarjeta/TarjetaTarifaCupon';
-import { Navigate, useLocation,  useParams } from 'react-router-dom';
+import { Navigate, useLocation, useParams } from 'react-router-dom';
 import ModalCupon from '../modal/ModalCupon';
 
 function ContenedorCupones(idCategoria = null) {
-
-  const [marcasArray, setMarcasArray] = useState([])
-  const [tipoArray, setTipoArray] = useState([])
+  const [marcasArray, setMarcasArray] = useState([]);
+  const [tipoArray, setTipoArray] = useState([]);
   const locations = useLocation().search;
   const [filterDestacada, setFilterDestacada] = useState(false);
 
-  const [lang, setLang] = useState(null)
+  const [lang, setLang] = useState(null);
   const location = useLocation();
 
   useEffect(() => {
-    setLang(location.pathname.split('/')[1])
-  }, [location])
+    setLang(location.pathname.split('/')[1]);
+  }, [location]);
 
-  useEffect(() => {
-    if (locations != null) {
-      const params = new URLSearchParams(locations);
-      const marcasString = params.get('marcas');
-      const tipo = params.get('tipo');
-
-      const marcasArray = marcasString ? marcasString.split(',').map(Number) : [];
-      setMarcasArray(marcasArray)
-      const tipoArray = tipo ? tipo.split(',').map(Number) : [];
-      setFilterBrand(marcasArray);
-      setFilterTypeCupon(tipoArray);
-    }
-  }, [locations])
 
   const [isLoadFilter, setIsLoadFilter] = useState(false);
   const [isLoadInformation, setIsLoadInformation] = useState(false);
 
   const { id } = useParams();
-
   const [showModal, setShowModal] = useState(false);
   const [modalData, setModalData] = useState({});
   const handleClose = () => setShowModal(false);
 
-  //consulta por id de cupon, para uso en la modal
+  // Consulta por id de cupon, para uso en la modal
   useEffect(() => {
     if (id !== undefined) {
       const fetchCuponInformation = async () => {
@@ -57,18 +42,16 @@ function ContenedorCupones(idCategoria = null) {
           setModalData(response);
           setShowModal(true);
         } catch (error) {
-          console.error("Error al obtener los comercios  para cupones:", error);
+          console.error("Error al obtener los comercios para cupones:", error);
         }
       };
       fetchCuponInformation();
     }
-  }, [id])
+  }, [id]);
 
-  // Estados para filtros seleccionados
+
   const [filterBrand, setFilterBrand] = useState(marcasArray);
-  const [filterTypeCupon, setFilterTypeCupon] = useState(tipoArray);
-
-  // Estados para tarifas y marcas
+  const [filterTypeCupon, setFilterTypeCupon] = useState([]);
   const [Tarifas, setTarifas] = useState([]);
   const [filtros, setFiltros] = useState([]);
   const [brand, setBrand] = useState([]);
@@ -79,111 +62,116 @@ function ContenedorCupones(idCategoria = null) {
   const cleanFilter = () => {
     setFilterTypeCupon([]);
     setFilterBrand([]);
-    setFilterDestacada(false)
+    setFilterDestacada(false);
     setFiltros(Tarifas);
   };
 
+
+
+  // Combinar fetch de marcas y cupones
   useEffect(() => {
     if (lang != null) {
-      const fetchBrands = async () => {
+      const fetchData = async () => {
         try {
-          const response = await fetchComerciosCupones(lang, idCategoria['categoria']);
-          setBrand(response);
+          const [brandsResponse, cuponesResponse] = await Promise.all([
+            fetchComerciosCupones(lang, idCategoria['categoria']),
+            fetchTipoCupones(lang, idCategoria['categoria'])
+          ]);
+          setBrand(brandsResponse);
+          setTipoCupon(cuponesResponse);
         } catch (error) {
-          console.error("Error al obtener los comercios  para cupones:", error);
+          console.error("Error al obtener los datos para cupones:", error);
         }
       };
-      fetchBrands();
+      fetchData();
     }
-  }, [lang]);
+  }, [lang, idCategoria]);
 
-  useEffect(() => {
-    if (lang != null) {
-      const fetchCupones = async () => {
-        try {
-          const response = await fetchTipoCupones(lang, idCategoria['categoria']);
-          setTipoCupon(response);
-        } catch (error) {
-          console.error("Error al obtener los comercios  para cupones:", error);
-        }
-      };
-      fetchCupones();
-    }
-  }, [lang]);
-
+  // Obtener tarifas de cupones
   useEffect(() => {
     setIsLoadInformation(true);
     const fechTarifasCupones = async () => {
-      try {
-        if (idCategoria != null) {
-          const response = await fetchTarifasCupones(lang, idCategoria['categoria']);
+      if (lang != null) {
+        try {
+          const response = await fetchTarifasCupones(lang, idCategoria?.categoria || null);
           if (response.length === 0) {
             //navigate('/es/404', { replace: true, state: { statusCode: 404 } });
           }
           setFiltros(response);
           setTarifas(response);
           setIsLoadInformation(false);
-          setIsLoadFilter(false)
-        } else {
-          const response = await fetchTarifasCupones(lang, null)
-          setFiltros(response);
-          setTarifas(response);
-          setIsLoadInformation(false);
-          setIsLoadFilter(false)
+          setIsLoadFilter(false);
+        } catch (error) {
+          console.error("Error al obtener la información:", error);
         }
-      } catch (error) {
-        console.error("Error al obtener la información:", error);
       }
     };
-
     fechTarifasCupones();
   }, [lang, brand]);
 
-  function setFilterBrandMulti(value) {
-    if (!filterBrand?.includes(value)) {
-      setFilterBrand([...filterBrand, value])
-    } else {
-      setFilterBrand(filterBrand.filter((item) => item !== value))
-    }
-  }
-
-  function setFilterTypeCuponMulti(value) {
-    if (!filterTypeCupon?.includes(value)) {
-      setFilterTypeCupon([...filterTypeCupon, value])
-    } else {
-      setFilterTypeCupon(filterTypeCupon.filter((item) => item !== value))
-    }
-  }
-
-
   useEffect(() => {
-    const resultado = Tarifas
-      .filter((item) => filterByBrand(item))
-      .filter((item) => filterByTypeCupon(item))
-      .filter((item) => filterByDestacada(item))
-    setFiltros(resultado);
-  }, [filterBrand, filterTypeCupon, filterDestacada]);
+    if (locations != null) {
+      const params = new URLSearchParams(locations);
+      const marcasString = params.get('marcas');
+      const tipo = params.get('tipo')
 
-  // Función para filtrar por destacada
+      if (marcasString != 'null' || tipo != 'null') {
+        const marcasArray = marcasString ? marcasString.split(',').map(Number) : [];
+        setMarcasArray(marcasArray);
+        const tipoArray = tipo ? tipo.split(',').map(Number) : [];
+        if (marcasString != 'null') {
+          setFilterBrand(marcasArray);
+        }
+        if (tipo != 'null') {
+          setFilterTypeCupon(tipoArray);
+        }
+
+
+      }
+    }
+  }, [showModal]);
+
+
+  const setFilterBrandMulti = (value) => {
+    if (!filterBrand.includes(value)) {
+      setFilterBrand([...filterBrand, value]);
+    } else {
+      setFilterBrand(filterBrand.filter((item) => item !== value));
+    }
+  };
+
+  const setFilterTypeCuponMulti = (value) => {
+    if (!filterTypeCupon.includes(value)) {
+      setFilterTypeCupon([...filterTypeCupon, value]);
+    } else {
+      setFilterTypeCupon(filterTypeCupon.filter((item) => item !== value));
+    }
+  };
+
+  // Usar useCallback para evitar la recreación de funciones
+  const filterByBrand = useCallback((item) => {
+    return filterBrand.length > 0 ? filterBrand.includes(item.comercio) : true;
+  }, [filterBrand]);
+
+  const filterByTypeCupon = useCallback((item) => {
+    return filterTypeCupon.length > 0 ? filterTypeCupon.includes(item.tipoCupon) : true;
+  }, [filterTypeCupon]);
+
   const filterByDestacada = (item) => {
     return filterDestacada !== false ? item.destacada === 1 : true;
   };
 
-  function filterByBrand(item) {
-    if (filterBrand.length > 0) {
-      return filterBrand.includes(item.comercio) ? true : false;
-    } else {
-      return true;
-    }
-  }
 
-  function filterByTypeCupon(item) {
-    if (filterTypeCupon.length > 0) {
-      return filterTypeCupon.includes(item.tipoCupon) ? true : false;
-    } else {
-      return true;
-    }
-  }
+  // Actualizar los filtros según los valores seleccionados
+  useEffect(() => {
+    const resultado = Tarifas
+      .filter(filterByBrand)
+      .filter(filterByTypeCupon)
+      .filter(filterByDestacada)
+    setFiltros(resultado);
+  }, [Tarifas, filterBrand, filterTypeCupon, filterDestacada, filterByBrand, filterByTypeCupon]);
+
+
 
   return (
     <>

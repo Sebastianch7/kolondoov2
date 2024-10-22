@@ -146,7 +146,7 @@ function Header({ breadCrumb }) {
             </Navbar>
 
             {breadCrumb &&
-                <BreadCrumb></BreadCrumb>
+                <BreadCrumb />
             }
         </>
     );

@@ -231,6 +231,26 @@ export const getBlog = async (lang, categoria) => {
     }
 };
 
+export const getBlogDestacados = async (lang) => {
+    try {
+        const response = await axiosInstance.get(`${apiUrl}/getBlogDestacados/${lang}`)
+        return response.data;
+    } catch (error) {
+        console.error("Error al procesar la solicitud", error);
+        throw error;
+    }
+};
+
+export const getEmailConfirmacion = async (token) => {
+    try {
+        const response = await axiosInstance.get(`${apiUrl}/emailConfirmacion/${token}`)
+        return response.data;
+    } catch (error) {
+        console.error("Error al procesar la solicitud", error);
+        throw error;
+    }
+};
+
 export const getBlogHome = async (lang) => {
     try {
         const response = await axiosInstance.get(`${apiUrl}/getBlogHome/${lang}`)
@@ -540,14 +560,17 @@ export const fetchTarifasVehiculos = async (lang) => {
 
 /* CUPONES */
 export const fetchComerciosCupones = async (lang, idCategoria) => {
+    let categoria = idCategoria ? `/${idCategoria}` : '';
     try {
-        const response = await axiosInstance.get(`${apiUrl}/getComerciosCupones/${lang}/${idCategoria}`);
+        const response = await axiosInstance.get(`${apiUrl}/getComerciosCupones/${lang}${categoria}`);
         return response.data;
     } catch (error) {
         console.error("Error al procesar la solicitud", error);
-        throw error;
+        // Opcional: retornar un valor por defecto en caso de error
+        return [];
     }
 };
+
 
 export const fetchTipoCupones = async (lang, idCateogria = null) => {
     try {
@@ -573,7 +596,6 @@ export const fetchTarifaCupon = async (id) => {
     try {
 
         const response = await axiosInstance.get(`${apiUrl}/getTarifaCupon/${id}`);
-        console.log(response)
         return response.data;
     } catch (error) {
         console.error("Error al procesar la solicitud", error);

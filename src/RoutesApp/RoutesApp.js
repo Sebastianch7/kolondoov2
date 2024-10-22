@@ -53,6 +53,7 @@ import ComparadorPrestamosCo from '../Pages/Co/ComparadorPrestamosCo';
 import ContenedorProductosAlarmas from '../Components/Contenedor/ContenedorProductosAlarmas';
 import ComparadorAlarmas from '../Pages/Es/ComparadorAlarmas';
 import ComparadorSegurosSalud from '../Pages/Es/ComparadorSegurosSalud';
+import ConfirmacionEmail from '../Pages/ConfirmacionEmail';
 
 function RoutesApp() {
     return (
@@ -71,6 +72,8 @@ function RoutesApp() {
                 <Route path="/en" element={<Home />} />
                 <Route path="/mx" element={<HomeMx />} />
                 <Route path="/co" element={<HomeCo />} />
+                
+                <Route path="/verificacion-de-cuenta/:mail" element={<ConfirmacionEmail />} />
 
                 <Route path="/es/internet-telefonia" element={<RaizTelefonia />} />
                 <Route path="/es/energia" element={<RaizEnergia />} />
@@ -157,9 +160,6 @@ function RoutesApp() {
                 <Route path="/es/rediccion-banco/:id" element={<ZonaTransaccional />} />
                 <Route path="/es/finanzas/comparador-finanzas/microcreditos" element={<ComparadorPrestamos />} />
                 <Route path="/es/finanzas/comparador-finanzas/unificadores" element={<ComparadorPrestamos />} />
-                
-                {/* cupones */}
-                <Route path="/:lang/cupones" element={<ComparadorCupones />} />
 
                 {/* MX */}
                 <Route path="/mx/planes-celulares-telefonia-internet-y-tv/comparador-planes-celular" element={<ComparadorPlanesCelular />} />

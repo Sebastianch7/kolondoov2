@@ -19,7 +19,6 @@ function Footer(props) {
                 try {
                     const response = await fetchFooterWeb(lang.trim());
                     setDataFooter(response);
-                    console.log(dataFooter)
                 } catch (error) {
                     console.error("Error al obtener el menú", error);
                 }

@@ -107,6 +107,7 @@ $blueContrast: #F2FAFC;
 
 .border {
   &-primary {
+    /* border-color: $colorPrimary !important; */
     border-color: $colorPrimary !important;
   }
 
@@ -513,7 +514,7 @@ $breakpoint-lg: 1360px;
 
         img {
           height: 45px;
-          padding: 7px;
+          //padding: 7px;
         }
 
         @include media(xs) {
@@ -821,14 +822,18 @@ footer {
       height: 50px;
       width: 100%;
       overflow: hidden;
+      display: flex;
       justify-content: center;
+      align-items: center;
 
       &:hover {
         filter: grayscale(0);
       }
 
       img {
-        height: 35px;
+        //height: 100%;
+        width: 100%;
+        padding: 10px;
       }
 
     }
@@ -901,7 +906,7 @@ footer {
 .text {
   &-promotion {
     font-family: $MontHeavy;
-
+    margin-left: 10px;
     @include media(xs) {
       margin-top: 0px;
     }
@@ -1764,14 +1769,16 @@ b {
   &-number {
     background-color: $colorPrimary;
     color: $white;
-    padding: 10px 13px;
+    padding: 10px;
     border-radius: 15px;
     font-family: $MontHeavy;
+    font-size: 14px;
   }
 
   &-title {
     font-family: $MontSemiBold;
     margin-top: 10px;
+    font-size: 14px;
 
     @include media(xs) {
       margin-top: 0px !important;
@@ -1791,4 +1798,8 @@ b {
   align-items: center;
   font-family: $MontHeavy;
   font-size: 1.2rem;
+}
+
+.img-logo-tarjeta{
+  height: 45px !important;
 }

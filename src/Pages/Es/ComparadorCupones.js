@@ -14,7 +14,7 @@ function ComparadorCupones() {
     return (
         <div>
             <MetaData titulo={'Cupones: ¿Quieres ahorrar con tu compra? ¡Elige tu cupón y aprovecha el descuento! | Vuskoo'} descripcion={'Descubre y contrata las mejores ofertas en telefonía móvil con nuestro comparador de móviles. Compara planes, tarifas y contratos de distintos proveedores'} />
-            <Header breadCrumb></Header>
+            <Header></Header>
             <Banner
                 title={t('title-baner-comparador-cupones')}
                 subtitle={t('subtitle-baner-comparador-cupones')}
@@ -22,8 +22,7 @@ function ComparadorCupones() {
                 logo={'/img/icons/cupon.svg'}
             >
             </Banner>
-            {<ContenedorCupones categoria={idCategoria}>
-            </ContenedorCupones>}
+            <ContenedorCupones categoria={idCategoria} />
             <Footer></Footer>
         </div>
     );

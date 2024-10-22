@@ -15,7 +15,7 @@ function TarjetaTarifaCupon({ data, brands, tipos }) {
     const [lang, setLang] = useState(null);
     const [showModal, setShowModal] = useState(false);
     const [modalData, setModalData] = useState({});
-    
+
     const location = useLocation();
     const pathname = location.pathname;
     const locations = pathname.split('/');
@@ -28,31 +28,31 @@ function TarjetaTarifaCupon({ data, brands, tipos }) {
     const handleShow = (e) => {
         e.preventDefault();
         const dataId = e.target.getAttribute('id');
-        
+
         const marcasFiltro = brands.length > 0 ? brands.join(',') : null;
         const marcasTipo = tipos.length > 0 ? tipos.join(',') : null;
         window.open(`/${lang}/cupones/${dataId}?marcas=${marcasFiltro}&tipo=${marcasTipo}`, '_blank');
-        window.location.assign(landing_link)
+        window.location.assign(url)
     };
 
     const handleClose = () => setShowModal(false);
 
     const {
+        url,
         descripcion,
-        landing_link,
         nombre_tarifa,
         destacada,
-        fecha_expiracion,
         logo,
-        pais,
-        nombre,
+        titulo,
+        label,
         dias_restantes,
-        descuento,
         codigo,
         cupon,
-        categoria_nombre,
+        categoriaItem,
         nombre_comercio,
-        TiempoCupon
+        TiempoCupon,
+        fecha_final,
+        traduccion
     } = data;
 
     return (
@@ -66,7 +66,7 @@ function TarjetaTarifaCupon({ data, brands, tipos }) {
                                 <div className='tarjeta-tarifa-item-title-cupon border-0'>
                                     <Row className='justify-content-center align-items-center'>
                                         <Col xs={12} md={7} className='p-0'><img src={logo} alt={logo} /></Col>
-                                        <Col xs={12} md={5} className='descuento descuento-cupon'>{descuento}</Col>
+                                        <Col xs={12} md={5} className='descuento descuento-cupon'>{label}</Col>
                                     </Row>
                                 </div>
                             </Col>
@@ -75,7 +75,7 @@ function TarjetaTarifaCupon({ data, brands, tipos }) {
 
                     <Row>
                         <Col md={9} className={classNames('text-left', { 'order-2': isMobile, 'color-primary': destacada === 1 })}>
-                            <h5 className='font-bold'>{descripcion}</h5>
+                            <h5 className='font-bold'>{titulo}</h5>
                             {TiempoCupon == 1 && <ItemTarifaDescripcion destacada={destacada} text={`Expira en ${dias_restantes} días`} />}
                         </Col>
                         {!isMobile &&
@@ -87,16 +87,36 @@ function TarjetaTarifaCupon({ data, brands, tipos }) {
                     </Row>
                 </Row>
                 <Accordion defaultActiveKey="0">
-                    <Accordion.Item eventKey="1" className='mt-4 rounded-0 border-0 border-top text-left-list'>
-                        <Accordion.Header></Accordion.Header>
+                    <Accordion.Item eventKey="0" className='mt-4 rounded-0 border-0 border-top text-left-list'>
+                        <Accordion.Header>Ver descripción</Accordion.Header>
                         <Accordion.Body className='py-0 mb-0'>
                             <ul className='mb-0'>
-                                <li><b>Tienda:</b> {nombre_comercio}</li>
-                                <li><b>Descripción:</b> {descripcion}</li>
-                                {TiempoCupon == 1 && <li><b>Fecha de expiración de la oferta:</b> {fecha_expiracion}</li>}
+                                <li className='my-3'><b>Tienda:</b> {nombre_comercio}</li>
+                                <li className='my-3'><b>Descripción:</b> {descripcion}</li>
+                                {TiempoCupon == 1 && (
+                                    <li>
+                                        <b>Fecha de expiración de la oferta:</b>{" "}
+                                        {(() => {
+                                            // Descomponemos la fecha en día, mes y año
+                                            let [day, month, year] = fecha_final.split('-');
+                                            day = parseInt(day);
+                                            // Convertimos el formato a YYYY-MM-DD, que es el formato que entiende correctamente new Date()
+                                            const formattedDate = new Date(`${year}-${month}-${day}`);
+
+                                            // Devolvemos la fecha en el formato deseado
+                                            return formattedDate.toLocaleDateString('es-ES', {
+                                                day: 'numeric',
+                                                month: 'long',
+                                                year: 'numeric'
+                                            });
+                                        })()}
+                                    </li>
+                                )}
+
+
                             </ul>
                             <div className='float-end py-0'>
-                                <ItemTarifaDescripcion destacada={destacada} text={categoria_nombre} />
+                                <ItemTarifaDescripcion destacada={destacada} text={traduccion} />
                             </div>
                         </Accordion.Body>
                     </Accordion.Item>

@@ -22,8 +22,7 @@ function ComparadorGas() {
                     politicy
                 /> */}
             </Banner>
-            <ContenedorProductosGas>
-            </ContenedorProductosGas>
+            <ContenedorProductosGas />
             <Footer></Footer>
         </div>
     );
