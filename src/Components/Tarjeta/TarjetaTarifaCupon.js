@@ -5,11 +5,6 @@ import { useLocation } from 'react-router-dom';
 import { isMobile } from 'react-device-detect';
 import classNames from 'classnames';
 import ModalCupon from '../modal/ModalCupon';
-import { BsArrowRight } from "react-icons/bs";
-import { RiNetflixFill } from "react-icons/ri";
-import { SiHbo, SiAmazonprime, SiDazn } from "react-icons/si";
-import { PiTelevisionFill } from "react-icons/pi";
-import { FaAmazon } from "react-icons/fa";
 
 function TarjetaTarifaCupon({ data, brands, tipos }) {
     const [lang, setLang] = useState(null);
@@ -26,11 +21,14 @@ function TarjetaTarifaCupon({ data, brands, tipos }) {
     }, [locations]);
 
     const handleShow = (e) => {
+        console.log(data)
         e.preventDefault();
         const dataId = e.target.getAttribute('id');
-
         const marcasFiltro = brands.length > 0 ? brands.join(',') : null;
         const marcasTipo = tipos.length > 0 ? tipos.join(',') : null;
+        let encodedUrl = encodeURIComponent(data.url);
+        let url = `https://tracking.kolondoo.com/aff_c?offer_id=${data.idPerseo}&aff_id=2238&sub_id2=${encodedUrl}`;
+        //window.open(`https://tracking.kolondoo.com/aff_c?offer_id=${data.idPerseo}&aff_id=2238&sub_id2=${encodedUrl}`, '_blank');
         window.open(`/${lang}/cupones/${dataId}?marcas=${marcasFiltro}&tipo=${marcasTipo}`, '_blank');
         window.location.assign(url)
     };
@@ -86,7 +84,7 @@ function TarjetaTarifaCupon({ data, brands, tipos }) {
                             </Col>}
                     </Row>
                 </Row>
-                <Accordion defaultActiveKey="0">
+                <Accordion defaultActiveKey="1">
                     <Accordion.Item eventKey="0" className='mt-4 rounded-0 border-0 border-top text-left-list'>
                         <Accordion.Header>Ver descripción</Accordion.Header>
                         <Accordion.Body className='py-0 mb-0'>

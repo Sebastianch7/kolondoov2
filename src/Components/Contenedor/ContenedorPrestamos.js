@@ -1,27 +1,20 @@
 import React, { useEffect, useState } from 'react';
-import { Container, Row, Col, Button, Form } from 'react-bootstrap';
-import axios from 'axios';
-import Slider from 'rc-slider';
-import 'rc-slider/assets/index.css';
+import { Container, Row, Col, Button, Modal } from 'react-bootstrap';
 import { isMobile } from 'react-device-detect';
-import Modal from 'react-bootstrap/Modal';
-import api from '../../services/ApiServices'
-import InterSection from '../Utils/InterSection';
-import TarjetaTarifa from '../Tarjeta/TarjetaTarifa';
+import { useLocation } from 'react-router-dom';
+import { fetchBancosPrestamos, fetchPrestamosOffers } from '../../services/ApiServices';
+import TarjetaPrestamo from '../Tarjeta/TarjetaPrestamo';
 import NotInfoItem from '../Utils/NotInfoItem';
 import Load from '../Utils/Load';
-import { fetchBancosPrestamos, fetchPrestamosOffers } from '../../services/ApiServices'
-import { useLocation } from 'react-router-dom';
-import TarjetaPrestamo from '../Tarjeta/TarjetaPrestamo';
+import InterSection from '../Utils/InterSection';
 
 function ContenedorPrestamos({ logo = null, landingLead = null, id = null, filtroCategoria }) {
   // Estado para filtros de precio y capacidad
   const [minPrice, setMinPrice] = useState(0);
   const [maxPrice, setMaxPrice] = useState(1000);
-  
+
   // Estados para el estado de carga de filtros e información
-  const [isLoadFilter, setIsLoadFilter] = useState(false);
-  const [isLoadInformation, setIsLoadInformation] = useState(false);
+  const [isLoading, setIsLoading] = useState({ filter: false, information: false });
 
   // Estados para filtros seleccionados
   const [filterBrand, setFilterBrand] = useState([]);
@@ -31,35 +24,35 @@ function ContenedorPrestamos({ logo = null, landingLead = null, id = null, filtr
   const [Tarifas, setTarifas] = useState([]);
   const [filtros, setFiltros] = useState([]);
   const [brand, setBrand] = useState([]);
-
-  const [lang, setLang] = useState(null)
+  const [lang, setLang] = useState(null);
   const location = useLocation();
 
-  useEffect(() => {
-    setLang(location.pathname.split('/')[1])
-  }, [location])
   // Estado para el modal de filtros
   const [show, setShow] = useState(false);
 
   useEffect(() => {
-    if (lang != null && filtroCategoria != null) {
-      setIsLoadInformation(true);
-      const fetchTariffs = async () => {
-        try {
-          let response = await fetchPrestamosOffers(lang, filtroCategoria);
-          setFiltros(response);
-          setTarifas(response);
-          setIsLoadInformation(false);
-        } catch (error) {
-          console.error("Error al obtener las tarifas:", error);
-          setIsLoadInformation(false);  // Asegúrate de manejar el estado de carga en caso de error
-        }
-      };
-      fetchTariffs();
+    setLang(location.pathname.split('/')[1]);
+  }, [location]);
+
+  useEffect(() => {
+    if (lang && filtroCategoria) {
+      setIsLoading(prev => ({ ...prev, information: true }));
+      fetchTariffs(lang, filtroCategoria);
     }
   }, [lang, filtroCategoria]);
 
-  // Función para limpiar los filtros
+  const fetchTariffs = async (lang, filtroCategoria) => {
+    try {
+      const response = await fetchPrestamosOffers(lang, filtroCategoria);
+      setFiltros(response);
+      setTarifas(response);
+    } catch (error) {
+      console.error("Error al obtener las tarifas:", error);
+    } finally {
+      setIsLoading(prev => ({ ...prev, information: false }));
+    }
+  };
+
   const cleanFilter = () => {
     setFilterBrand([]);
     setFilterOfertaDestacada(false);
@@ -67,58 +60,39 @@ function ContenedorPrestamos({ logo = null, landingLead = null, id = null, filtr
   };
 
   useEffect(() => {
-    if (lang != null) {
-      const fetchLogos = async () => {
-        try {
-          const brands = await fetchBancosPrestamos(lang, filtroCategoria);
-          setBrand(brands);
-          setIsLoadFilter(true)
-          setIsLoadInformation(false)
-        } catch (error) {
-          console.error("Error al obtener las marcas de bancas:", error);
-        }
-      };
-      fetchLogos();
+    if (lang) {
+      setIsLoading(prev => ({ ...prev, filter: true }));
+      fetchLogos(lang, filtroCategoria);
     }
   }, [lang]);
 
-
-  function setFilterBrandMulti(value) {
-    if (!filterBrand?.includes(value)) {
-      setFilterBrand([...filterBrand, value])
-    } else {
-      setFilterBrand(filterBrand.filter((item) => item !== value))
+  const fetchLogos = async (lang, filtroCategoria) => {
+    try {
+      const brands = await fetchBancosPrestamos(lang, filtroCategoria);
+      setBrand(brands);
+    } catch (error) {
+      console.error("Error al obtener las marcas de bancas:", error);
+    } finally {
+      setIsLoading(prev => ({ ...prev, filter: false }));
     }
-  }
+  };
 
-  // Función para aplicar los filtros
+  const setFilterBrandMulti = (value) => {
+    setFilterBrand(prev => 
+      prev.includes(value) ? prev.filter(item => item !== value) : [...prev, value]
+    );
+  };
+
   useEffect(() => {
     const resultado = Tarifas
-      .filter((item) => filterByBrand(item))
-      .filter((item) => filterByOfertaDestacada(item))
+      .filter(filterByBrand)
+      .filter(filterByOfertaDestacada);
     setFiltros(resultado);
   }, [filterBrand, filterOfertaDestacada]);
 
-  // Función para filtrar por marca
-  function filterByBrand(item) {
-    if (filterBrand.length > 0) {
-      return filterBrand.includes(item.banca) ? true : false;
-    } else {
-      return true;
-    }
-  }
-
-  function filterByOfertaDestacada(item) {
-    if (filterOfertaDestacada !== false) {
-      if (item.destacada == 1) {
-        return true;
-      } else {
-        return false;
-      }
-    } else {
-      return true;
-    }
-  }
+  const filterByBrand = (item) => filterBrand.length === 0 || filterBrand.includes(item.banca);
+  
+  const filterByOfertaDestacada = (item) => filterOfertaDestacada ? item.destacada === 1 : true;
 
   return (
     <>
@@ -127,194 +101,73 @@ function ContenedorPrestamos({ logo = null, landingLead = null, id = null, filtr
           <Row className='justify-content-around'>
             <Col xs={12} md={12} xl={3}>
               <Row>
-                {!isMobile ? <Col className='my-3 font-bold' xs={6} md={12} xl={5}>Filtrar por: </Col> : <Col className='my-2' xs={6} md={5}><Button variant="light" onClick={() => setShow(true)}>Filtrar por</Button></Col>}
+                {!isMobile ? (
+                  <Col className='my-3 font-bold' xs={6} md={12} xl={5}>Filtrar por:</Col>
+                ) : (
+                  <Col className='my-2' xs={6} md={5}>
+                    <Button variant="light" onClick={() => setShow(true)}>Filtrar por</Button>
+                  </Col>
+                )}
                 <Col className='my-2 text-center' xs={6} md={7}>
                   <button className='btn btn-light' onClick={cleanFilter}>Limpiar filtro</button>
                 </Col>
                 <hr />
               </Row>
+
               {isMobile ? (
                 <Modal show={show} onHide={() => setShow(false)}>
                   <Modal.Header closeButton></Modal.Header>
                   <Modal.Body>
                     <Row>
-                      {isMobile && <Col xs={12} key={filterBrand} className='my-2' md={6}>Se encontraron <span className="font-bold">{filtros?.length}</span> resultados de <span className="font-bold">{Tarifas.length}</span></Col>}
-                      <Col md={12}>
-                        <span className="font-bold">Compañía:</span>
-                      </Col>
-                      {
-                        brand.map((item, index) => (
-                          <Col xs={4} md={6} key={item.id}>
-                            <button
-                              className={`filtro-producto-logo my-2 ${filterBrand.includes(item.id) ? 'logoFocus' : ''}`}
-                              value={item.nombre}
-                              onClick={() => setFilterBrandMulti(item.id)}>
-                              <img src={item.logo} alt={item.nombre} />
-                            </button>
-                          </Col>
-                        ))}
-                    </Row>
-                    <Row>
-                      {/* <div className="mt-4">
-                        <b>{'Coste mensual'}:</b>
-                        <div className='my-4 d-flex justify-content-between'>
-                          <div>{typeMoneda}{rangePrice[0].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}</div>
-                          <div>{typeMoneda}{rangePrice[1].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}</div>
-                        </div>
-                        <Slider
-                          range
-                          min={minPrice}
-                          max={maxPrice}
-                          value={rangePrice}
-                          onChange={handleRangeChangePrice}
-                          className="form-input-range"
-                        />
-                      </div> */}
-                      {/* <div className='mt-4'>
-                        <b>{'Oferta destacada'}:</b>
-                        <div className='my-2'>
-                          <Form.Switch
-                            className='input-check-dark mt-2 text-left'
-                            type='switch'
-                            checked={filterOfertaDestacada}
-                            onChange={() => setFilterOfertaDestacada(!filterOfertaDestacada)}
-                            label={'Mostrar solo ofertas destacadas'}
-                            reverse
-                          />
-                        </div>
-                      </div> */}
-                      {/* <div className="my-2">
-                        <b>{'Permanencia'}:</b>
-                        <Form.Switch
-                          className="input-check-dark mt-2 text-left"
-                          type="switch"
-                          checked={filterPermanencia}
-                          onChange={() => setFilterPermanencia(!filterPermanencia)}
-                          label={'Tarifa sin permanencia'}
-                          reverse
-                        />
-                      </div> */}
-                      {/* <div className='my-2'>
-                        <b>{'Promoción'}:</b>
-                        <div className='my-2'>
-                          <Form.Switch
-                            className='input-check-dark mt-2 text-left'
-                            type='switch'
-                            checked={filterPromo}
-                            onChange={() => setFilterPromo(!filterPromo)}
-                            label={'Tiene promoción'}
-                            reverse
-                          />
-                        </div>
-                      </div> */}
+                      {brand.map((item) => (
+                        <Col xs={4} md={6} key={item.id}>
+                          <button
+                            className={`filtro-producto-logo my-2 ${filterBrand.includes(item.id) ? 'logoFocus' : ''}`}
+                            onClick={() => setFilterBrandMulti(item.id)}>
+                            <img src={item.logo} alt={item.nombre} />
+                          </button>
+                        </Col>
+                      ))}
                     </Row>
                   </Modal.Body>
                   <Modal.Footer>
-                    <Button variant="primary" onClick={() => setShow(false)}>
-                      Filtrar
-                    </Button>
+                    <Button variant="primary" onClick={() => setShow(false)}>Filtrar</Button>
                   </Modal.Footer>
                 </Modal>
               ) : (
-                <>
-                  {(isLoadFilter && !isLoadInformation) ? (
-                    <div>
-                      <Row>
-                        {isMobile && (
-                          <Col xs={12} key={filterBrand} className="my-2" xl={6}>
-                            Se encontraron <span className="font-bold">{filtros?.length}</span> resultados de <span className="font-bold">{Tarifas.length}</span>
-                          </Col>
-                        )}
-                        <Col md={12}>
-                          <span className="font-bold">Compañía:</span>
-                        </Col>
-                        {brand?.map((item, index) => (
-                          <Col xs={4} xl={6} key={item.id}>
-                            <button
-                              key={index}
-                              className={`filtro-producto-logo my-2 ${filterBrand.includes(item.id) ? 'logoFocus' : ''}`}
-                              value={item.nombre}
-                              onClick={() => setFilterBrandMulti(item.id)}>
-                              <img src={item.logo} alt={item.nombre} />
-                            </button>
-                          </Col>
-                        ))}
-                      </Row>
-                      <Row>
-                        {/* <div className="mt-4">
-                          <b>{'Coste mensual'}:</b>
-                          <div className='my-4 d-flex justify-content-between'>
-                            <div>{typeMoneda}{rangePrice[0].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}</div>
-                            <div>{typeMoneda}{rangePrice[1].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}</div>
-                          </div>
-                          <Slider
-                            range
-                            min={minPrice}
-                            max={maxPrice}
-                            value={rangePrice}
-                            onChange={handleRangeChangePrice}
-                            className="form-input-range"
-                          />
-                        </div> */}
-                        {/* <div className='mt-4'>
-                          <b>{'Oferta destacada'}:</b>
-                          <div className='my-2'>
-                            <Form.Switch
-                              className='input-check-dark mt-2 text-left'
-                              type='switch'
-                              checked={filterOfertaDestacada}
-                              onChange={() => setFilterOfertaDestacada(!filterOfertaDestacada)}
-                              label={'Mostrar solo ofertas destacadas'}
-                              reverse
-                            />
-                          </div>
-                        </div> */}
-                        {/* <div className="my-2">
-                          <b>{'Permanencia'}:</b>
-                          <Form.Switch
-                            className="input-check-dark mt-2 text-left"
-                            type="switch"
-                            checked={filterPermanencia}
-                            onChange={() => setFilterPermanencia(!filterPermanencia)}
-                            label={'Tarifa sin permanencia'}
-                            reverse
-                          />
-                        </div> */}
-                        {/* <div className='my-2'>
-                          <b>{'Promoción'}:</b>
-                          <div className='my-2'>
-                            <Form.Switch
-                              className='input-check-dark mt-2 text-left'
-                              type='switch'
-                              checked={filterPromo}
-                              onChange={() => setFilterPromo(!filterPromo)}
-                              label={'Tiene promoción'}
-                              reverse
-                            />
-                          </div>
-                        </div> */}
-                      </Row>
-                    </div>
-                  ) : <Load />}
-                </>
+                isLoading.filter ? <Load /> : (
+                  <Row>
+                    <Col md={12}><span className="font-bold">Compañía:</span></Col>
+                    {brand.map((item) => (
+                      <Col xs={4} xl={6} key={item.id}>
+                        <button
+                          className={`filtro-producto-logo my-2 ${filterBrand.includes(item.id) ? 'logoFocus' : ''}`}
+                          onClick={() => setFilterBrandMulti(item.id)}>
+                          <img src={item.logo} alt={item.nombre} />
+                        </button>
+                      </Col>
+                    ))}
+                  </Row>
+                )
               )}
             </Col>
+
             <Col md={12} xl={8}>
               <Row>
-                <Col key={filterBrand} className='my-2' xl={6}>Mostrando: <span className="font-bold">{filtros?.length}</span> resultados de <span className="font-bold">{Tarifas.length}</span></Col>
+                <Col className='my-2' xl={6}>
+                  Mostrando: <span className="font-bold">{filtros.length}</span> resultados de <span className="font-bold">{Tarifas.length}</span>
+                </Col>
               </Row>
               <Row>
                 <div className='pruebaPos'>
-                  {!isLoadInformation ? (
-                    filtros?.length > 0 ? (
-                      filtros?.map((item, index) => (
-                        <TarjetaPrestamo data={item} key={item.id} />
-                      ))
+                  {!isLoading.information ? (
+                    filtros.length > 0 ? (
+                      filtros.map(item => <TarjetaPrestamo data={item} key={item.id} />)
                     ) : (
-                      <NotInfoItem key={0} title={'No se encontraron ofertas'} text={'Lo sentimos, no hemos encontrado ofertas con los filtros seleccionados.'} />
+                      <NotInfoItem title={'No se encontraron ofertas'} text={'Lo sentimos, no hemos encontrado ofertas con los filtros seleccionados.'} />
                     )
                   ) : (
-                    <Load></Load>
+                    <Load />
                   )}
                 </div>
               </Row>
@@ -322,7 +175,7 @@ function ContenedorPrestamos({ logo = null, landingLead = null, id = null, filtr
           </Row>
         </Container>
       </section>
-      <InterSection></InterSection>
+      <InterSection />
     </>
   );
 }

@@ -19,9 +19,9 @@ function ComparadorPrestamos() {
 
     useEffect(() => {
         switch (tipo) {
-            case 'unificadores':
-                setTitle('Unificadores');
-                setTitleLanding('Comparador de unificadores')
+            case 'reunificadores':
+                setTitle('reunificadores');
+                setTitleLanding('Comparador de reunificadores de deuda')
                 setSubtitleLanding('¡Te ayudamos a encontrar la cuenta de ahorro que mejor se adapte a ti!')
                 setImagenLanding('/img/banner-microcreditos-es.png')
                 setLogoLanding('/img/icons/microcreditos.png')
@@ -29,8 +29,8 @@ function ComparadorPrestamos() {
                 break;
             case 'microcreditos':
                 setTitle('Microcreditos');
-                setTitleLanding('Comparador de microcreditos')
-                setSubtitleLanding('¡Te ayudamos a encontrar la tarjeta de crédito que mejor se adapte a ti!')
+                setTitleLanding('Comparador de microcréditos')
+                setSubtitleLanding('¡Te ayudamos a encontrar el mejor crédito que mejor se adapte a ti!')
                 setImagenLanding('/img/banner-unificadores-es.png')
                 setLogoLanding('/img/icons/unificadores.png')
                 setFiltro(5)

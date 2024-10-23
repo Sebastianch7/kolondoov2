@@ -7,8 +7,9 @@ import { fetchTarifaPrestamo } from '../../services/ApiServices';
 import FooterCo from '../../Components/Footer/FooterCo';
 
 export default function ZonaTransaccional() {
+    
     const { id } = useParams();
-
+    console.log(id)
     const [progress, setProgress] = useState(0);
     const [progress2, setProgress2] = useState(0);
     const [seccion1, setSeccion1] = useState(true);
@@ -26,7 +27,7 @@ export default function ZonaTransaccional() {
                 setIsLoadInformation(false);
             } catch (error) {
                 console.error("Error al obtener las tarifas de móvil:", error);
-                setIsLoadInformation(false); // Asegúrate de manejar el estado de carga en caso de error
+                setIsLoadInformation(false);
             }
         };
 

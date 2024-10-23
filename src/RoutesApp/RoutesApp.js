@@ -157,9 +157,9 @@ function RoutesApp() {
 
                 <Route path="/es/finanzas" element={<RaizFinanzas />} />
                 <Route path="/es/finanzas/comparador-finanzas" element={<RaizFinanzas />} />
-                <Route path="/es/rediccion-banco/:id" element={<ZonaTransaccional />} />
+                <Route path="/:lang/rediccion-banco/:id" element={<ZonaTransaccional />} />
                 <Route path="/es/finanzas/comparador-finanzas/microcreditos" element={<ComparadorPrestamos />} />
-                <Route path="/es/finanzas/comparador-finanzas/unificadores" element={<ComparadorPrestamos />} />
+                <Route path="/es/finanzas/comparador-finanzas/reunificadores" element={<ComparadorPrestamos />} />
 
                 {/* MX */}
                 <Route path="/mx/planes-celulares-telefonia-internet-y-tv/comparador-planes-celular" element={<ComparadorPlanesCelular />} />
@@ -174,7 +174,7 @@ function RoutesApp() {
                 {/* CO */}
                 <Route path="/co/finanzas" element={<RaizFinanzasCo />} />
                 <Route path="/co/finanzas/comparador-finanzas" element={<RaizFinanzasCo />} />
-                <Route path="/co/rediccion-banco/:id" element={<ZonaTransaccional />} />
+                {/* <Route path="/co/rediccion-banco/:id" element={<ZonaTransaccional />} /> */}
                 <Route path="/co/finanzas/comparador-finanzas/cuenta-ahorro" element={<ComparadorPrestamosCo />} />
                 <Route path="/co/finanzas/comparador-finanzas/tarjeta-credito" element={<ComparadorPrestamosCo />} />
                 <Route path="/co/finanzas/comparador-finanzas/creditos" element={<ComparadorPrestamosCo />} />

@@ -1,11 +1,18 @@
-import React from 'react';
-import { Card, Row, Col, Button } from 'react-bootstrap';
+import React, { useEffect, useState } from 'react';
+import { Card, Row, Col } from 'react-bootstrap';
 import ItemTarifaDescripcion from '../Items/ItemTarifaDescripcion';
-import { Link } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { isMobile } from 'react-device-detect';
 
 function TarjetaPrestamo({ data }) {
-    const { id, selector1, destacada, titulo, logo, valorMaximo, parrilla_1, parrilla_2, parrilla_3, parrilla_4,url_redirct } = data;
+    const [lang, setLang] = useState(null)
+    const location = useLocation();
+
+    useEffect(() => {
+        setLang(location.pathname.split('/')[1])
+    }, [location])
+
+    const { id, selector1, destacada, titulo, logo, valorMaximo, parrilla_1, parrilla_2, parrilla_3, parrilla_4, url_redirct } = data;
     return (
         <Col xs={12} className='mb-3'>
             {destacada === 1 && <div className='prioridad-oferta'>Oferta destacada</div>}
@@ -22,7 +29,7 @@ function TarjetaPrestamo({ data }) {
                         {valorMaximo > 0 && <ItemTarifaDescripcion destacada={destacada} title={`Monto máximo ${valorMaximo.toLocaleString()}`} />}
                         {!isMobile &&
                             <Col md={3} className='px-0'>
-                                <a href={`/co/rediccion-banco/${id}`} target='blank' variant='dark' className='btn w-100 btn-dark p-3'/*  onClick={handleShow} id={data.id} */>
+                                <a href={`/${lang}/rediccion-banco/${id}`} target='blank' variant='dark' className='btn w-100 btn-dark p-3'>
                                     Solicítalo ahora
                                 </a>
                             </Col>}
