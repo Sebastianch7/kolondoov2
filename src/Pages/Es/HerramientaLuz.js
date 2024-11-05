@@ -40,7 +40,6 @@ export default function HerramientaLuz() {
         setIsLoading(true)
         setInfoPriceSort(infoPrice)
         const sumaDeValores = infoPrice.reduce((acumulador, elemento) => acumulador + elemento.value, 0);
-        const cantidadDeElementos = infoPrice.length;
         setInfoPriceMedia(Math.round(sumaDeValores / 24))
     }, [infoPrice])
 

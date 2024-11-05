@@ -19,9 +19,9 @@ function ComparadorPrestamos() {
 
     useEffect(() => {
         switch (tipo) {
-            case 'reunificadores':
-                setTitle('reunificadores');
-                setTitleLanding('Comparador de reunificadores de deuda')
+            case 'soluciones-de-deuda':
+                setTitle('Soluciones de deudas');
+                setTitleLanding('Comparador de Soluciones de deuda')
                 setSubtitleLanding('¡Te ayudamos a encontrar la cuenta de ahorro que mejor se adapte a ti!')
                 setImagenLanding('/img/banner-microcreditos-es.png')
                 setLogoLanding('/img/icons/microcreditos.png')

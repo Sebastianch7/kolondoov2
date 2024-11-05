@@ -1,30 +1,25 @@
-import React, { useState, useEffect } from 'react'
-import { Card, Row, Col } from 'react-bootstrap'
-import ItemTarifaServicio from '../Items/ItemTarifaServicio'
-import ItemTarifaLuz from '../Items/ItemTarifaLuz'
-import ItemTarifaDescripcion from '../Items/ItemTarifaDescripcion'
+import React, { useState, useEffect } from 'react';
+import { Card, Row, Col } from 'react-bootstrap';
+import ItemTarifaServicio from '../Items/ItemTarifaServicio';
+import ItemTarifaLuz from '../Items/ItemTarifaLuz';
+import ItemTarifaDescripcion from '../Items/ItemTarifaDescripcion';
 import { isMobile } from 'react-device-detect';
 import { BsArrowRight } from "react-icons/bs";
-import { Link } from 'react-router-dom';
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 export default function TarjetaTarifaLeadGas({ data, TarifaCard }) {
-    const [tarifa] = useState(null)
-
-    const [lang, setLang] = useState(null)
+    const [lang, setLang] = useState(null);
     const location = useLocation();
     const pathname = location.pathname;
-    let locations = pathname.split('/');
-    locations.shift();
+    const locations = pathname.split('/').filter(Boolean);
 
     useEffect(() => {
-        setLang(locations[0])
-    }, [])
+        setLang(locations[0]);
+    }, [locations]);
 
     const {
         destacada,
         landing_link,
-        luz_precio_energia_24h,
         logo,
         id,
         parrilla_bloque_1,
@@ -32,12 +27,13 @@ export default function TarjetaTarifaLeadGas({ data, TarifaCard }) {
         parrilla_bloque_3,
         parrilla_bloque_4,
         precio,
-        nombre_tarifa,
         slug_tarifa,
         landingLead,
-        promocion
-    } = data
-
+        promocion,
+        telefono,
+        gas_precio_termino_fijo,
+        gas_precio_termino_variable
+    } = data;
 
     return (
         <>
@@ -45,27 +41,37 @@ export default function TarjetaTarifaLeadGas({ data, TarifaCard }) {
             <Card className='tarjeta my-2'>
                 <Card.Body>
                     <Card.Title></Card.Title>
-                    <Card.Text className=''>
+                    <Card.Text>
                         <Row>
-                            {TarifaCard && <Col xs={12}>
-                                <div className='tarjeta-tarifa-item-title'>
-                                    <img src={logo} alt={logo} />
-                                    {((promocion !== null && promocion !== '') && isMobile === false) && <span className={`align-middle text-promotion ${destacada === 1 && 'color-primary'}`}><b>Promoción: </b>{promocion}</span>}
-                                    {(isMobile === true) && <Link className='btn btn-dark btn-primary-small' to={landing_link === null ? `/es${landingLead}${slug_tarifa.toLowerCase()}-${id}` : landing_link}><BsArrowRight /></Link>}
-                                </div>
-                            </Col>}
+                            {TarifaCard && (
+                                <Col xs={12}>
+                                    <div className='tarjeta-tarifa-item-title'>
+                                        <img src={logo} alt="Logo" />
+                                        {(promocion && !isMobile) && (
+                                            <span className={`align-middle text-promotion ${destacada === 1 && 'color-primary'}`}>
+                                                <b>Promoción: </b>{promocion}
+                                            </span>
+                                        )}
+                                        {isMobile && (
+                                            <Link className='btn btn-dark btn-primary-small' to={landing_link || `/es${landingLead}${slug_tarifa.toLowerCase()}-${id}`}>
+                                                <BsArrowRight />
+                                            </Link>
+                                        )}
+                                    </div>
+                                </Col>
+                            )}
                             <Col md={9}>
                                 <Row>
                                     <Col md={6} xs={12}>
                                         <h6>Términos</h6>
                                         <Row className='d-flex'>
-                                            <ItemTarifaLuz title={'Fija'} value={data?.gas_precio_termino_fijo} extension={'€/kW'} />
+                                            <ItemTarifaLuz title="Fija" value={gas_precio_termino_fijo} extension="€/kW" />
                                         </Row>
                                     </Col>
                                     <Col md={6} xs={12}>
                                         <h6>&nbsp;</h6>
                                         <Row className='d-flex'>
-                                            <ItemTarifaLuz title={'Variable'} value={data?.gas_precio_termino_variable} extension={'€/kW'} />
+                                            <ItemTarifaLuz title="Variable" value={gas_precio_termino_variable} extension="€/kW" />
                                         </Row>
                                     </Col>
                                     <Col md={12} className='d-flex justify-content-around vertical-items my-3'>
@@ -78,10 +84,22 @@ export default function TarjetaTarifaLeadGas({ data, TarifaCard }) {
                             </Col>
                             <Col md={3}>
                                 <Row>
-                                    <ItemTarifaServicio cant={precio} service={''} design={"small"} money={'€'} />
+                                    <ItemTarifaServicio cant={precio} service="" design="small" money="€" />
                                     {!isMobile && TarifaCard && (
-                                        <Col md={2} style={isMobile ? { order: 3 } : { order: 3 }}>
-                                            <Link className='btn btn-primary' target={landing_link !== null && '_self'} to={landing_link === null ? `/es${landingLead}${slug_tarifa.toLowerCase()}-${id}` : landing_link}>{`Comprar`}</Link>
+                                        <Col md={12} className="order-3">
+                                            {telefono ? (
+                                                <>
+                                                    <div className='text-center' style={{ height: '20px' }}>
+                                                        <img className='icon-call me-2 mt-0' src='/img/icons/telefono.svg' alt="Teléfono" />
+                                                        <span className='icon-call-title'>Llama al:</span>
+                                                    </div>
+                                                    <Link className='btn btn-primary text-center w-100 my-2' to={`tel:${telefono}`}>{telefono}</Link>
+                                                </>
+                                            ) : (
+                                                <Link className='btn btn-primary text-center w-100 my-2' target={landing_link ? '_self' : undefined} to={landing_link || `/es${landingLead}${slug_tarifa.toLowerCase()}-${id}`}>
+                                                    Ir a la oferta
+                                                </Link>
+                                            )}
                                         </Col>
                                     )}
                                 </Row>
@@ -89,8 +107,7 @@ export default function TarjetaTarifaLeadGas({ data, TarifaCard }) {
                         </Row>
                     </Card.Text>
                 </Card.Body>
-
             </Card>
         </>
-    )
+    );
 }

@@ -159,7 +159,7 @@ function RoutesApp() {
                 <Route path="/es/finanzas/comparador-finanzas" element={<RaizFinanzas />} />
                 <Route path="/:lang/rediccion-banco/:id" element={<ZonaTransaccional />} />
                 <Route path="/es/finanzas/comparador-finanzas/microcreditos" element={<ComparadorPrestamos />} />
-                <Route path="/es/finanzas/comparador-finanzas/reunificadores" element={<ComparadorPrestamos />} />
+                <Route path="/es/finanzas/comparador-finanzas/soluciones-de-deuda" element={<ComparadorPrestamos />} />
 
                 {/* MX */}
                 <Route path="/mx/planes-celulares-telefonia-internet-y-tv/comparador-planes-celular" element={<ComparadorPlanesCelular />} />

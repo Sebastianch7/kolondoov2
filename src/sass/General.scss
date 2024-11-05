@@ -1803,3 +1803,34 @@ b {
 .img-logo-tarjeta{
   height: 45px !important;
 }
+
+.button-with-hidden-text {
+  width: 100%;
+  position: relative;
+  display: inline-block;
+  padding: 10px 20px;
+  font-weight: bold;
+  color: #fff;
+  background-color: $black;
+  border: none;
+  border-radius: 5px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.button-with-hidden-text .text {
+  position: relative;
+  z-index: 1; /* Asegura que el texto esté encima */
+  white-space: nowrap; /* Evita que el texto se divida en dos líneas */
+}
+
+.button-with-hidden-text .overlay {
+  position: absolute;
+  transform: rotate(145deg);
+  top: 0;
+  left: -64px;
+  width: 100%; /* Cubre la mitad del botón */
+  height: 200px;
+  background-color: #19467C; /* Color de la superposición */
+  z-index: 2; /* Asegura que la superposición esté encima del texto */
+}

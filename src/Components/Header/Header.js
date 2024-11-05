@@ -8,7 +8,7 @@ import { useLocation, Link } from 'react-router-dom';
 import ItemMenuDesktop from '../Items/ItemMenuDesktop';
 import { isMobile } from 'react-device-detect';
 import Accordion from 'react-bootstrap/Accordion';
-import { getMenu, getMenuBlog } from '../../services/ApiServices';
+import { getMenu, getMenuBlog, getMenuApi } from '../../services/ApiServices';
 
 
 function Header({ breadCrumb }) {
@@ -30,35 +30,33 @@ function Header({ breadCrumb }) {
     }, []);
 
     useEffect(() => {
-        setIsLoadInformation(true);
-        const fetchMenu = async () => {
-            if (lang == 'es') {
-                try {
-                    const response = await getMenuBlog(lang.trim())
-                    setMenu(response);
-                } catch (error) {
-                    console.error("Error al obtener el menu", error);
+        const fetchMenus = async () => {
+            setIsLoadInformation(true);
+    
+            try {
+                const promises = [getMenuApi(lang.trim())];
+                
+                if (lang === 'es') {
+                    promises.push(getMenuBlog(lang.trim()));
                 }
+    
+                const [mainMenu, blogMenu] = await Promise.all(promises);
+    
+                setItems(mainMenu);
+                if (blogMenu) setMenu(blogMenu);
+    
+            } catch (error) {
+                console.error("Error al obtener los menús", error);
+            } finally {
+                setIsLoadInformation(false);
             }
         };
-        fetchMenu();
-    }, [lang,location]);
-
-    useEffect(() => {
-        setIsLoadInformation(true)
-        if (lang !== '') {
-            const fetchMenu = async () => {
-                try {
-                    const response = await getMenu(lang.trim());
-                    setItems(response);
-                    setIsLoadInformation(false)
-                } catch (error) {
-                    console.error("Error al obtener el menú principal", error);
-                }
-            };
-            fetchMenu();
+    
+        if (lang) {
+            fetchMenus();
         }
-    }, [lang]);
+    }, [lang, location]);
+    
 
 
     return (

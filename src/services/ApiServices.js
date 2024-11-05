@@ -271,6 +271,15 @@ export const getMenu = async (lang) => {
         throw error;
     }
 };
+export const getMenuApi = async (lang) => {
+    try {
+        const response = await axiosInstance.get(`${apiUrl}/getMenuApi/${lang}`)
+        return response.data;
+    } catch (error) {
+        console.error("Error al procesar la solicitud", error);
+        throw error;
+    }
+};
 
 /* export const getBlogDestacados = async (lang) => {
     try {
@@ -335,13 +344,9 @@ export const getExtraOffer = async (offerLooking) => {
 
 export const getPriceLightService = async () => {
     try {
-        let fecha = new Date();
-        let año = fecha.getFullYear();
-        let mes = fecha.getMonth() + 1;
-        let dia = fecha.getDate();
-
-        const actual = `${año}-${mes}-${dia}`;
-        const response = await axiosInstance.get(`https://apidatos.ree.es/es/datos/mercados/precios-mercados-tiempo-real?start_date=${actual}T00:00&end_date=${actual}T23:00&time_trunc=hour`, {});
+        //const response = await axiosInstance.get(`${apiUrl}/filterFibra/${lang}`);
+        const response = await axiosInstance.get(`${apiUrl}/pricesByNow`);
+        //const response = await axiosInstance.get(`https://apidatos.ree.es/es/datos/mercados/precios-mercados-tiempo-real?start_date=${actual}T00:00&end_date=${actual}T23:00&time_trunc=hour`, {});
         const data = response.data.included[0].attributes.values;
         return data;
     } catch (error) {
@@ -352,7 +357,8 @@ export const getPriceLightService = async () => {
 
 export const getPriceLightServiceMonth = async () => {
     try {
-        const response = await axiosInstance.get(`https://www.apaga-luz.com/data/group_prices_by_month.json`, {});
+        const response = await axiosInstance.get(`${apiUrl}/groupPricesByMonth`);
+        //const response = await axiosInstance.get(`https://www.apaga-luz.com/data/group_prices_by_month.json`, {});
         const data = response.data
         return data;
     } catch (error) {
@@ -575,6 +581,16 @@ export const fetchComerciosCupones = async (lang, idCategoria) => {
 export const fetchTipoCupones = async (lang, idCateogria = null) => {
     try {
         const response = await axiosInstance.get(`${apiUrl}/getTipoCupones/${lang}/${idCateogria}`);
+        return response.data;
+    } catch (error) {
+        console.error("Error al procesar la solicitud", error);
+        throw error;
+    }
+};
+
+export const fetchCategoriasCupones = async (lang) => {
+    try {
+        const response = await axiosInstance.get(`${apiUrl}/getCategoriasCupones/${lang}`);
         return response.data;
     } catch (error) {
         console.error("Error al procesar la solicitud", error);

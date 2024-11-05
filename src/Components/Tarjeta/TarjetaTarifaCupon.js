@@ -9,7 +9,7 @@ import ModalCupon from '../modal/ModalCupon';
 function TarjetaTarifaCupon({ data, brands, tipos }) {
     const [lang, setLang] = useState(null);
     const [showModal, setShowModal] = useState(false);
-    const [modalData, setModalData] = useState({});
+    const [modalData, setModalData] = useState(data);
 
     const location = useLocation();
     const pathname = location.pathname;
@@ -21,7 +21,6 @@ function TarjetaTarifaCupon({ data, brands, tipos }) {
     }, [locations]);
 
     const handleShow = (e) => {
-        console.log(data)
         e.preventDefault();
         const dataId = e.target.getAttribute('id');
         const marcasFiltro = brands.length > 0 ? brands.join(',') : null;
@@ -34,9 +33,7 @@ function TarjetaTarifaCupon({ data, brands, tipos }) {
     };
 
     const handleClose = () => setShowModal(false);
-
     const {
-        url,
         descripcion,
         nombre_tarifa,
         destacada,
@@ -44,13 +41,12 @@ function TarjetaTarifaCupon({ data, brands, tipos }) {
         titulo,
         label,
         dias_restantes,
-        codigo,
-        cupon,
-        categoriaItem,
         nombre_comercio,
         TiempoCupon,
         fecha_final,
-        traduccion
+        traduccion,
+        CodigoCupon,
+        tipoCupon
     } = data;
 
     return (
@@ -78,9 +74,13 @@ function TarjetaTarifaCupon({ data, brands, tipos }) {
                         </Col>
                         {!isMobile &&
                             <Col md={3} className='px-0'>
-                                <Button variant='dark' className='btn w-100 btn-dark p-3' onClick={handleShow} id={data.id}>
-                                    Obtener {cupon}
-                                </Button>
+                                {/* <Button variant='dark' className='btn w-100 btn-dark p-3' onClick={handleShow} id={data.id}>
+                                    
+                                </Button> */}
+                                <button className="button-with-hidden-text" onClick={handleShow} id={data.id}>
+                                    <span className="text" onClick={handleShow} id={data.id}>{tipoCupon == 1 ? CodigoCupon : 'Obtener Oferta'}</span>
+                                    {tipoCupon == 1 && <span className="overlay" onClick={handleShow} id={data.id}></span>}
+                                </button>
                             </Col>}
                     </Row>
                 </Row>

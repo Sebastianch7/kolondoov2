@@ -25,6 +25,7 @@ function ContenedorProductosMovil() {
   const [filterTramo, setFilterTramo] = useState(false);
   const [filterPermanencia, setFilterPermanencia] = useState(false);
   const [filterPromo, setFilterPromo] = useState(false);
+  const [filterLuzIndexada, setFilterLuzIndexada] = useState(false);
 
   // Estados para tarifas y marcas
   const [Tarifas, setTarifas] = useState([]);
@@ -47,6 +48,7 @@ function ContenedorProductosMovil() {
     setFilterTramo(false)
     setFilterPermanencia(false)
     setFilterPromo(false)
+    setFilterLuzIndexada(false)
   };
 
   useEffect(() => {
@@ -90,7 +92,6 @@ function ContenedorProductosMovil() {
     }
   }
 
-  // Función para aplicar los filtros
   useEffect(() => {
     const resultado = Tarifas
       .filter((item) => filterByBrand(item))
@@ -98,9 +99,10 @@ function ContenedorProductosMovil() {
       .filter((item) => filterByTramo(item))
       .filter((item) => filterByPermanencia(item))
       .filter((item) => filterByPromo(item))
+      .filter((item) => filterByluzIndexada(item))
 
     setFiltros(resultado);
-  }, [filterBrand, filterPrice, filterTramo, filterPermanencia, filterPromo]);
+  }, [filterBrand, filterPrice, filterTramo, filterPermanencia, filterPromo, filterLuzIndexada]);
 
   function filterByBrand(item) {
     if (filterBrand.length > 0) {
@@ -113,7 +115,17 @@ function ContenedorProductosMovil() {
   const filterByTramo = (item) => filterTramo !== false ? filterByFilter(filterTramo, item, 'sin tramos') : true;
   const filterByPermanencia = (item) => filterPermanencia !== false ? filterByFilter(filterPermanencia, item, 'sin permanencia') : true;
   const filterByPromo = (item) => filterPromo !== false ? (item.promocion !== "" && item.promocion !== null) : true;
-
+  function filterByluzIndexada(item) {
+    if (filterLuzIndexada !== false) {
+      if (item.luz_indexada == 1) {
+        return true;
+      } else {
+        return false;
+      }
+    } else {
+      return true;
+    }
+  }
 
   // Función para filtrar por palabra clave en los bloques
   function filterByFilter(filter, item, word) {
@@ -216,6 +228,19 @@ function ContenedorProductosMovil() {
                           />
                         </div>
                       </div>
+                      <div className='my-2'>
+                        <b>{'Luz indexada'}:</b>
+                        <div className='my-2'>
+                          <Form.Switch
+                            className='input-check-dark mt-2 text-left'
+                            type='switch'
+                            checked={filterLuzIndexada}
+                            onChange={() => setFilterLuzIndexada(!filterLuzIndexada)}
+                            label={'Luz indexada'}
+                            reverse
+                          />
+                        </div>
+                      </div>
                     </Row>
                   </Modal.Body>
                   <Modal.Footer>
@@ -290,6 +315,19 @@ function ContenedorProductosMovil() {
                                 checked={filterPromo}
                                 onChange={() => setFilterPromo(!filterPromo)}
                                 label={'Tiene promoción'}
+                                reverse
+                              />
+                            </div>
+                          </div>
+                          <div className='my-2'>
+                            <b>{'Luz indexada'}:</b>
+                            <div className='my-2'>
+                              <Form.Switch
+                                className='input-check-dark mt-2 text-left'
+                                type='switch'
+                                checked={filterLuzIndexada}
+                                onChange={() => setFilterLuzIndexada(!filterLuzIndexada)}
+                                label={'Luz indexada'}
                                 reverse
                               />
                             </div>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Col } from 'react-bootstrap';
-function ItemTarifaServicio({ cant, service, money, design, destacada, precio }) {
+function ItemTarifaServicio({ cant, service, money, design, destacada, precio, indexada }) {
 
     const formatNumber = (amount) => {
         const number = parseFloat(amount);
@@ -12,15 +12,17 @@ function ItemTarifaServicio({ cant, service, money, design, destacada, precio })
         (design !== 'small') ?
             <Col xs={6}>
                 <div className={`tarjeta-tarifa-item-service text-center my-2 font-bold ${destacada && 'bg-secundary text-white'}`}>
-                    {precio ? <h5 className='font-bold color-dark'>{money}{formatNumber(cant)}</h5> : <h5 className='font-bold color-dark'>{money}{cant}</h5>}
-                    <span className='font-bold text-dark'>{service}</span>
+                    {precio ? <h5 className='font-bold color-dark'>{money}{formatNumber(cant)}</h5> :<h5 className='font-bold color-dark'>{money}{cant}</h5>}
+                    {service != null && <span className='font-bold text-dark'>{service}</span>}
+                    {indexada == 1 && <small className='font-bold text-dark'>{'Precio indexado'}</small>}
                 </div>
             </Col>
             :
             <Col xs={12}>
                 <div className='tarjeta-tarifa-item-service tarjeta-tarifa-item-service-small text-center my-2 font-bold'>
                     {precio ? <h5 className='font-bold color-dark'>{money}{formatNumber(cant)}</h5> : <h5 className='font-bold color-dark'>{money}{cant}</h5>}
-                    <span className='font-bold text-dark'>{service}</span>
+                    {service != null && <span className='font-bold text-dark'>{service}</span>}
+                    {indexada == 1 && <small className='font-bold text-dark'>{'Precio indexado'}</small>}
                 </div>
             </Col>
     );

@@ -95,7 +95,7 @@ export default function RaizFinanza() {
         <TitleSection
           center
           title={'Comparadores de '}
-          titleAlt={'Microcréditos y reunificadores de deuda'}
+          titleAlt={'Microcréditos y Soluciones de deudas'}
           text1={'En el panorama financiero español actual, la multitud de entidades compitiendo por tu atención puede resultar abrumadora. En Vuskoo, comprendemos el desafío que supone elegir la opción bancaria idónea. Por ello, te ofrecemos una plataforma para analizar meticulosamente cada alternativa y descubrir la que mejor se adapte a tus necesidades financieras. A continuación, ponemos a tu disposición nuestros comparadores, donde encontrarás una selección cuidadosa de ofertas y servicios (incluyendo combinaciones ventajosas) disponibles en el mercado español.'}
           text2={'¿Cuál será la elección que optimice tu salud financiera? Te invitamos a explorar nuestras herramientas comparativas y dar el primer paso hacia una decisión financiera informada.'}
           left

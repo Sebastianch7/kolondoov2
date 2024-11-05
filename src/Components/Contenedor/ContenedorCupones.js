@@ -6,14 +6,15 @@ import Modal from 'react-bootstrap/Modal';
 import InterSection from '../Utils/InterSection';
 import NotInfoItem from '../Utils/NotInfoItem';
 import Load from '../Utils/Load';
-import { fetchTipoCupones, fetchComerciosCupones, fetchTarifasCupones, fetchTarifaCupon } from '../../services/ApiServices'
+import { fetchCategoriasCupones, fetchTipoCupones, fetchComerciosCupones, fetchTarifasCupones, fetchTarifaCupon } from '../../services/ApiServices'
 import TarjetaTarifaCupon from '../Tarjeta/TarjetaTarifaCupon';
 import { Navigate, useLocation, useParams } from 'react-router-dom';
 import ModalCupon from '../modal/ModalCupon';
 
 function ContenedorCupones(idCategoria = null) {
   const [marcasArray, setMarcasArray] = useState([]);
-  const [tipoArray, setTipoArray] = useState([]);
+  const [categoriasFiltro, setCategoriasFiltro] = useState([]);
+
   const locations = useLocation().search;
   const [filterDestacada, setFilterDestacada] = useState(false);
 
@@ -33,9 +34,8 @@ function ContenedorCupones(idCategoria = null) {
   const [modalData, setModalData] = useState({});
   const handleClose = () => setShowModal(false);
 
-  // Consulta por id de cupon, para uso en la modal
   useEffect(() => {
-    if (id !== undefined) {
+    if (id !== 'null' && id !== '' && id !== undefined && id !== 'undefined') {
       const fetchCuponInformation = async () => {
         try {
           const response = await fetchTarifaCupon(id);
@@ -49,8 +49,23 @@ function ContenedorCupones(idCategoria = null) {
     }
   }, [id]);
 
+  useEffect(() => {
+    if (lang != null) {
+      const fetchCategoriasFiltro = async () => {
+        try {
+          const response = await fetchCategoriasCupones(lang);
+          setCategoriasFiltro(response)
+        } catch (error) {
+          console.error("Error al obtener los comercios para cupones:", error);
+        }
+      };
+      fetchCategoriasFiltro();
+    }
+  }, [lang]);
+
 
   const [filterBrand, setFilterBrand] = useState(marcasArray);
+  const [filterCategoria, setFilterCategoria] = useState([]);
   const [filterTypeCupon, setFilterTypeCupon] = useState([]);
   const [Tarifas, setTarifas] = useState([]);
   const [filtros, setFiltros] = useState([]);
@@ -61,6 +76,7 @@ function ContenedorCupones(idCategoria = null) {
 
   const cleanFilter = () => {
     setFilterTypeCupon([]);
+    setFilterCategoria([]);
     setFilterBrand([]);
     setFilterDestacada(false);
     setFiltros(Tarifas);
@@ -70,7 +86,7 @@ function ContenedorCupones(idCategoria = null) {
 
   // Combinar fetch de marcas y cupones
   useEffect(() => {
-    if (lang != null) {
+    if (lang !== null) {
       const fetchData = async () => {
         try {
           const [brandsResponse, cuponesResponse] = await Promise.all([
@@ -140,6 +156,14 @@ function ContenedorCupones(idCategoria = null) {
     }
   };
 
+  const setFilterCategoriaMulti = (value) => {
+    if (!filterCategoria.includes(value)) {
+      setFilterCategoria([...filterCategoria, value]);
+    } else {
+      setFilterCategoria(filterCategoria.filter((item) => item !== value));
+    }
+  };
+
   const setFilterTypeCuponMulti = (value) => {
     if (!filterTypeCupon.includes(value)) {
       setFilterTypeCupon([...filterTypeCupon, value]);
@@ -157,6 +181,10 @@ function ContenedorCupones(idCategoria = null) {
     return filterTypeCupon.length > 0 ? filterTypeCupon.includes(item.tipoCupon) : true;
   }, [filterTypeCupon]);
 
+  const filterByCategoria = useCallback((item) => {
+    return filterCategoria.length > 0 ? filterCategoria.includes(item.categoria) : true;
+  }, [filterCategoria]);
+
   const filterByDestacada = (item) => {
     return filterDestacada !== false ? item.destacada === 1 : true;
   };
@@ -167,9 +195,10 @@ function ContenedorCupones(idCategoria = null) {
     const resultado = Tarifas
       .filter(filterByBrand)
       .filter(filterByTypeCupon)
+      .filter(filterByCategoria)
       .filter(filterByDestacada)
     setFiltros(resultado);
-  }, [Tarifas, filterBrand, filterTypeCupon, filterDestacada, filterByBrand, filterByTypeCupon]);
+  }, [Tarifas, filterBrand, filterTypeCupon, filterDestacada, filterByBrand, filterByTypeCupon, filterByCategoria]);
 
 
 
@@ -193,23 +222,69 @@ function ContenedorCupones(idCategoria = null) {
                   <Modal.Body>
                     <Row>
                       {isMobile && <Col xs={12} key={filterBrand} className='my-2' md={6}>Se encontraron <span className="font-bold">{filtros?.length}</span> resultados de <span className="font-bold">{Tarifas.length}</span></Col>}
-                      <Col md={12}>
-                        <span className="font-bold">Tienda:</span>
+                      <Col xs={12} className='mt-4'>
+                        <span className="font-semibold">Tipo de descuento:</span>
                       </Col>
-                      {brand?.length > 0 &&
-                        brand.map((item, index) => (
-                          <Col xs={4} md={6} key={item.id}>
+                      {tipoCupon?.length > 0 &&
+                        tipoCupon.map((item, index) => (
+                          <Col xs={6} key={item.id}>
                             <button
-                              className={`filtro-producto-logo my-2 ${filterBrand.includes(item.id) ? 'logoFocus' : ''}`}
+                              className={`filtro-producto-logo my-2 ${filterTypeCupon.includes(item.id) ? 'logoFocus' : ''}`}
                               value={item.nombre}
-                              onClick={() => setFilterBrandMulti(item.id)}>
-                              {/* <img src={item.logo} alt={item.nombre} /> */}
+                              onClick={() => setFilterTypeCuponMulti(item.id)}>
                               {item.nombre}
                             </button>
                           </Col>
                         ))}
                     </Row>
                     <Row>
+                      <Col md={12}>
+                        <span className="font-semibold">Categorias:</span>
+                      </Col>
+                      {categoriasFiltro?.length > 0 &&
+                        categoriasFiltro.map((item, index) => (
+                          <Col xs={4} key={item.idCategoria}>
+                            <button
+                              className={`d-flex align-items-center filtro-producto-logo my-2 ${filterCategoria.includes(item.idCategoria) ? 'logoFocus' : ''}`}
+                              value={item.idCategoria}
+                              onClick={() => setFilterCategoriaMulti(item.idCategoria)}>
+                              {item.nombreCategoria}
+                            </button>
+                          </Col>
+                        ))}
+                    </Row>
+                    <Row>
+                      {isMobile &&
+                        <Col xs={12} key={filterBrand} className='my-2' md={6}>Se encontraron <span className="font-bold">{filtros?.length}</span> resultados de <span className="font-bold">{Tarifas.length}</span></Col>}
+                      <Col md={12}>
+                        <span className="font-semibold">Tienda:</span>
+                      </Col>
+                      {brand?.length > 0 &&
+                        brand.map((item, index) => (
+                          <Col xs={4} key={item.id}>
+                            <button
+                              className={`d-flex align-items-center filtro-producto-logo my-2 ${filterBrand.includes(item.id) ? 'logoFocus' : ''}`}
+                              value={item.nombre}
+                              onClick={() => setFilterBrandMulti(item.id)}>
+                              <img src={item.logo} alt={item.nombre} />
+                            </button>
+                          </Col>
+                        ))}
+                    </Row>
+                    <Row>
+                      <div className='mt-4'>
+                        <b>{'Destacada'}:</b>
+                        <div className='my-2'>
+                          <Form.Switch
+                            className='input-check-dark mt-2 text-left'
+                            type='switch'
+                            checked={filterDestacada}
+                            onChange={() => setFilterDestacada(!filterDestacada)}
+                            label={'Oferta destacada:'}
+                            reverse
+                          />
+                        </div>
+                      </div>
                     </Row>
                   </Modal.Body>
                   <Modal.Footer>
@@ -225,24 +300,6 @@ function ContenedorCupones(idCategoria = null) {
                       (
                         <>
                           <Row>
-                            {isMobile &&
-                              <Col xs={12} key={filterBrand} className='my-2' md={6}>Se encontraron <span className="font-bold">{filtros?.length}</span> resultados de <span className="font-bold">{Tarifas.length}</span></Col>}
-                            <Col md={12}>
-                              <span className="font-semibold">Tienda:</span>
-                            </Col>
-                            {brand?.length > 0 &&
-                              brand.map((item, index) => (
-                                <Col xs={4} md={6} key={item.id}>
-                                  <button
-                                    className={`d-flex align-items-center filtro-producto-logo my-2 ${filterBrand.includes(item.id) ? 'logoFocus' : ''}`}
-                                    value={item.nombre}
-                                    onClick={() => setFilterBrandMulti(item.id)}>
-                                    <img src={item.logo} alt={item.nombre} />
-                                  </button>
-                                </Col>
-                              ))}
-                          </Row>
-                          <Row>
                             <Col md={12} className='mt-4'>
                               <span className="font-semibold">Tipo de descuento:</span>
                             </Col>
@@ -254,6 +311,38 @@ function ContenedorCupones(idCategoria = null) {
                                     value={item.nombre}
                                     onClick={() => setFilterTypeCuponMulti(item.id)}>
                                     {item.nombre}
+                                  </button>
+                                </Col>
+                              ))}
+                          </Row>
+                          <Row>
+                            <Col md={12}>
+                              <span className="font-semibold">Categorias:</span>
+                            </Col>
+                            {categoriasFiltro?.length > 0 &&
+                              categoriasFiltro.map((item, index) => (
+                                <Col xs={4} key={item.idCategoria}>
+                                  <button
+                                    className={`d-flex align-items-center filtro-producto-logo my-2 ${filterCategoria.includes(item.idCategoria) ? 'logoFocus' : ''}`}
+                                    value={item.idCategoria}
+                                    onClick={() => setFilterCategoriaMulti(item.idCategoria)}>
+                                    {item.nombreCategoria}
+                                  </button>
+                                </Col>
+                              ))}
+                          </Row>
+                          <Row>
+                            <Col md={12}>
+                              <span className="font-semibold">Tienda:</span>
+                            </Col>
+                            {brand?.length > 0 &&
+                              brand.map((item, index) => (
+                                <Col xs={4} md={6} key={item.id}>
+                                  <button
+                                    className={`d-flex align-items-center filtro-producto-logo my-2 ${filterBrand.includes(item.id) ? 'logoFocus' : ''}`}
+                                    value={item.nombre}
+                                    onClick={() => setFilterBrandMulti(item.id)}>
+                                    <img src={item.logo} alt={item.nombre} />
                                   </button>
                                 </Col>
                               ))}

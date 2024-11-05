@@ -63,5 +63,19 @@
                 "url": "/herramientas/test-de-velocidad"
             }
         ]
+    },
+    {
+        "title": "Herramientas",
+        "titleUrl": "/herramientas",
+        "children": [
+            {
+                "name": "Precio de la luz hoy",
+                "url": "/herramientas/precio-de-la-luz-hoy"
+            },
+            {
+                "name": "Test de velocidad",
+                "url": "/herramientas/test-de-velocidad"
+            }
+        ]
     }
 ]
