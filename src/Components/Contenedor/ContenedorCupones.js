@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { Container, Row, Col, Button, Form } from 'react-bootstrap';
+import { Container, Row, Col, Button, Form, Accordion } from 'react-bootstrap';
 import 'rc-slider/assets/index.css';
 import { isMobile } from 'react-device-detect';
 import Modal from 'react-bootstrap/Modal';
@@ -210,7 +210,7 @@ function ContenedorCupones(idCategoria = null) {
           <Row className='justify-content-around'>
             <Col xs={12} md={12} xl={3}>
               <Row>
-                {!isMobile ? <Col className='my-3 font-semibold' xs={6} md={5}>Filtrar por: </Col> : <Col className='my-2' xs={6} md={5}><Button variant="light" onClick={() => setShow(true)}>Filtrar por</Button></Col>}
+                {!isMobile ? <Col className='my-3 font-bold' xs={6} md={5}>Filtrar por: </Col> : <Col className='my-2' xs={6} md={5}><Button variant="light" onClick={() => setShow(true)}>Filtrar por</Button></Col>}
                 <Col className='my-2 text-center' xs={6} md={7}>
                   <button className='btn btn-light' onClick={cleanFilter}>Limpiar filtro</button>
                 </Col>
@@ -221,9 +221,9 @@ function ContenedorCupones(idCategoria = null) {
                   <Modal.Header closeButton></Modal.Header>
                   <Modal.Body>
                     <Row>
-                      {isMobile && <Col xs={12} key={filterBrand} className='my-2' md={6}>Se encontraron <span className="font-bold">{filtros?.length}</span> resultados de <span className="font-bold">{Tarifas.length}</span></Col>}
+                      {isMobile && <Col xs={12} key={filterBrand} className='my-2' md={6}>Se encontraron <b>{filtros?.length}</b> resultados de <b>{Tarifas.length}</b></Col>}
                       <Col xs={12} className='mt-4'>
-                        <span className="font-semibold">Tipo de descuento:</span>
+                        <b>Tipo de descuento:</b>
                       </Col>
                       {tipoCupon?.length > 0 &&
                         tipoCupon.map((item, index) => (
@@ -238,26 +238,32 @@ function ContenedorCupones(idCategoria = null) {
                         ))}
                     </Row>
                     <Row>
-                      <Col md={12}>
-                        <span className="font-semibold">Categorias:</span>
+                      <Col md={12} className='mt-4'>
+                        <Accordion defaultActiveKey="">
+                          <Accordion.Item eventKey="0">
+                            <Accordion.Header className="font-bold color-dark">Categorias</Accordion.Header>
+                            <Accordion.Body>
+                              {categoriasFiltro?.length > 0 &&
+                                categoriasFiltro.map((item, index) => (
+                                  <Col key={item.idCategoria}>
+                                    <button
+                                      className={`d-flex text-left justify-content-start border border-0 filtro-producto-logo ${filterCategoria.includes(item.idCategoria) ? 'logoFocus' : ''}`}
+                                      value={item.idCategoria}
+                                      onClick={() => setFilterCategoriaMulti(item.idCategoria)}>
+                                      {item.nombreCategoria}
+                                    </button>
+                                  </Col>
+                                ))}
+                            </Accordion.Body>
+                          </Accordion.Item>
+                        </Accordion>
                       </Col>
-                      {categoriasFiltro?.length > 0 &&
-                        categoriasFiltro.map((item, index) => (
-                          <Col xs={4} key={item.idCategoria}>
-                            <button
-                              className={`d-flex align-items-center filtro-producto-logo my-2 ${filterCategoria.includes(item.idCategoria) ? 'logoFocus' : ''}`}
-                              value={item.idCategoria}
-                              onClick={() => setFilterCategoriaMulti(item.idCategoria)}>
-                              {item.nombreCategoria}
-                            </button>
-                          </Col>
-                        ))}
                     </Row>
                     <Row>
                       {isMobile &&
-                        <Col xs={12} key={filterBrand} className='my-2' md={6}>Se encontraron <span className="font-bold">{filtros?.length}</span> resultados de <span className="font-bold">{Tarifas.length}</span></Col>}
+                        <Col xs={12} key={filterBrand} className='my-2' md={6}>Se encontraron <b>{filtros?.length}</b> resultados de <b>{Tarifas.length}</b></Col>}
                       <Col md={12}>
-                        <span className="font-semibold">Tienda:</span>
+                        <b>Tienda:</b>
                       </Col>
                       {brand?.length > 0 &&
                         brand.map((item, index) => (
@@ -301,7 +307,7 @@ function ContenedorCupones(idCategoria = null) {
                         <>
                           <Row>
                             <Col md={12} className='mt-4'>
-                              <span className="font-semibold">Tipo de descuento:</span>
+                              <b>Tipo de descuento:</b>
                             </Col>
                             {tipoCupon?.length > 0 &&
                               tipoCupon.map((item, index) => (
@@ -316,24 +322,31 @@ function ContenedorCupones(idCategoria = null) {
                               ))}
                           </Row>
                           <Row>
-                            <Col md={12}>
-                              <span className="font-semibold">Categorias:</span>
+                            <Col md={12} className='mt-4'>
+                              <Accordion defaultActiveKey="">
+                                <Accordion.Item eventKey="0">
+                                  <Accordion.Header className="font-bold color-dark">Categorias</Accordion.Header>
+                                  <Accordion.Body>
+                                    {categoriasFiltro?.length > 0 &&
+                                      categoriasFiltro.map((item, index) => (
+                                        <Col key={item.idCategoria}>
+                                          <button
+                                            className={`d-flex text-left justify-content-start border border-0 filtro-producto-logo ${filterCategoria.includes(item.idCategoria) ? 'logoFocus' : ''}`}
+                                            value={item.idCategoria}
+                                            onClick={() => setFilterCategoriaMulti(item.idCategoria)}>
+                                            {item.nombreCategoria}
+                                          </button>
+                                        </Col>
+                                      ))}
+                                  </Accordion.Body>
+                                </Accordion.Item>
+                              </Accordion>
                             </Col>
-                            {categoriasFiltro?.length > 0 &&
-                              categoriasFiltro.map((item, index) => (
-                                <Col xs={4} key={item.idCategoria}>
-                                  <button
-                                    className={`d-flex align-items-center filtro-producto-logo my-2 ${filterCategoria.includes(item.idCategoria) ? 'logoFocus' : ''}`}
-                                    value={item.idCategoria}
-                                    onClick={() => setFilterCategoriaMulti(item.idCategoria)}>
-                                    {item.nombreCategoria}
-                                  </button>
-                                </Col>
-                              ))}
+
                           </Row>
                           <Row>
-                            <Col md={12}>
-                              <span className="font-semibold">Tienda:</span>
+                            <Col md={12} className='mt-4'>
+                              <b>Tienda:</b>
                             </Col>
                             {brand?.length > 0 &&
                               brand.map((item, index) => (
@@ -371,7 +384,7 @@ function ContenedorCupones(idCategoria = null) {
             </Col>
             <Col md={12} xl={8}>
               <Row>
-                <Col key={filterBrand} className='my-2' md={6}>Mostrando: <span className="font-bold">{filtros?.length}</span> resultados de <span className="font-bold">{Tarifas.length}</span></Col>
+                <Col key={filterBrand} className='my-2' md={6}>Mostrando: <b>{filtros?.length}</b> resultados de <b>{Tarifas.length}</b></Col>
               </Row>
               <Row>
                 <div className='pruebaPos'>

@@ -101,7 +101,7 @@ $blueContrast: #F2FAFC;
   }
 
   &-dark {
-    color: black;
+    color: black !important;
   }
 }
 
@@ -837,7 +837,6 @@ footer {
       }
 
     }
-
     &-logo-vehiculo {
       cursor: pointer;
       border: 0.8px solid #8E8E8E;
@@ -1056,7 +1055,7 @@ footer {
 
 .logoFocus {
   filter: grayscale(0) !important;
-  border-bottom: 5px solid black;
+  border-bottom: 5px solid black !important;
 }
 
 .carousel-control {
@@ -1135,6 +1134,7 @@ th {
 .accordion-button:not(.collapsed) {
   background-color: white;
   box-shadow: none;
+  color: black !important;
 }
 
 .accordion-button::after {
@@ -1811,7 +1811,7 @@ b {
   padding: 10px 20px;
   font-weight: bold;
   color: #fff;
-  background-color: $black;
+  background-color: #7093BC;
   border: none;
   border-radius: 5px;
   overflow: hidden;
@@ -1833,4 +1833,8 @@ b {
   height: 200px;
   background-color: #19467C; /* Color de la superposición */
   z-index: 2; /* Asegura que la superposición esté encima del texto */
+}
+
+.accordion-button:not(.collapsed)::after{
+  transform: none !important;
 }

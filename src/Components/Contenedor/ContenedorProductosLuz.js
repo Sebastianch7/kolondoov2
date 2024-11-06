@@ -258,7 +258,7 @@ function ContenedorProductosMovil() {
                           {isMobile &&
                             <Col xs={12} key={filterBrand} className='my-2' md={6}>Se encontraron <span className="font-bold">{filtros?.length}</span> resultados de <span className="font-bold">{Tarifas.length}</span></Col>}
                           <Col md={12}>
-                            <span className="font-semibold">Compañía:</span>
+                            <b>Compañía:</b>
                           </Col>
                           {brand?.length > 0 &&
                             brand.map((item, index) => (
@@ -320,7 +320,7 @@ function ContenedorProductosMovil() {
                             </div>
                           </div>
                           <div className='my-2'>
-                            <b>{'Luz indexada'}:</b>
+                            <span className='font-bold'>{'Luz indexada'}:</span>
                             <div className='my-2'>
                               <Form.Switch
                                 className='input-check-dark mt-2 text-left'

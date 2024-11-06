@@ -38,16 +38,16 @@ function Home(props) {
                             icon: '/img/icons/lighting.svg',
                             url: 'energia/comparador-tarifas-luz'
                         },
-                        /*{
-                            title: 'Cupones descuento',
-                            icon: '/img/icons/cupon_home.svg',
-                            url: 'cupones'
+                        {
+                            title: 'Microcréditos',
+                            icon: '/img/icons/microcreditos-contraste.png',
+                            url: 'finanzas/comparador-finanzas/microcreditos'
                         } ,
                         {
-                            title: 'Seguros',
-                            icon: '/img/icons/casa.svg',
-                            url: 'television-streaming/comparador-plataformas-streaming'
-                        } */
+                            title: 'Cupones',
+                            icon: '/img/icons/cupon_home.svg',
+                            url: 'cupones'
+                        }
                     ]}
                 />
                 <ContenedorContratacion imagen={'/img/compromiso-calidad.svg'} />

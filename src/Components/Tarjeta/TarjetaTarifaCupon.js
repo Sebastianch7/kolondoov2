@@ -77,7 +77,7 @@ function TarjetaTarifaCupon({ data, brands, tipos }) {
                                 {/* <Button variant='dark' className='btn w-100 btn-dark p-3' onClick={handleShow} id={data.id}>
                                     
                                 </Button> */}
-                                <button className="button-with-hidden-text" onClick={handleShow} id={data.id}>
+                                <button className={`button-with-hidden-text ${tipoCupon == 2 && 'bg-primary'}`} onClick={handleShow} id={data.id}>
                                     <span className="text" onClick={handleShow} id={data.id}>{tipoCupon == 1 ? CodigoCupon : 'Obtener Oferta'}</span>
                                     {tipoCupon == 1 && <span className="overlay" onClick={handleShow} id={data.id}></span>}
                                 </button>
