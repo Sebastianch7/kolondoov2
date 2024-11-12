@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { Card, Row, Col } from 'react-bootstrap';
 import ItemTarifaDescripcion from '../Items/ItemTarifaDescripcion';
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { isMobile } from 'react-device-detect';
+import { BsArrowRight } from 'react-icons/bs';
 
 function TarjetaPrestamo({ data }) {
     const [lang, setLang] = useState(null)
@@ -17,22 +18,21 @@ function TarjetaPrestamo({ data }) {
         <Col xs={12} className='mb-3'>
             {destacada === 1 && <div className='prioridad-oferta'>Oferta destacada</div>}
             <Card key={0} className={`tarjeta tarjeta-tarifa my-2 ${destacada === 1 ? 'prioridad' : ''}`}>
-                {/* <Card key={''} className={`m-1 mx-md-3 tarjeta-prestamo tarjeta text-center ${destacada === 1 && 'prioridad'}`}> */}
                 <Card.Body>
-                    <div className="prestamo-header">
+                    <div className="prestamo-header d-flex justify-content-between">
                         <img className='img-logo-tarjeta' src={logo} />
-                        {/* {titulo != null && <h4>{titulo}</h4>} */}
-                        <hr />
-                    </div>
-                    <Row className={`d-flex justify-content-between align-content-center`}>
-                        {selector1 && <ItemTarifaDescripcion destacada={destacada} title={selector1} />}
-                        {valorMaximo > 0 && <ItemTarifaDescripcion destacada={destacada} title={`Monto máximo ${valorMaximo.toLocaleString()}`} />}
                         {!isMobile &&
                             <Col md={3} className='px-0'>
                                 <a href={`/${lang}/rediccion-banco/${id}`} target='blank' variant='dark' className='btn w-100 btn-dark p-3'>
                                     Solicítalo ahora
                                 </a>
                             </Col>}
+                        {isMobile && <a href={`/${lang}/rediccion-banco/${id}`} target='blank' className='btn btn-dark btn-primary-small' ><BsArrowRight /></a>}
+                    </div>
+                    <hr />
+                    <Row className={`d-flex justify-content-start align-content-start`}>
+                        {selector1 && <ItemTarifaDescripcion destacada={destacada} title={selector1} />}
+                        {valorMaximo > 0 && <ItemTarifaDescripcion destacada={destacada} title={`Monto máximo ${valorMaximo.toLocaleString()}`} />}
                     </Row>
                     <Row className='mt-4'>
                         <Col xs={12} md={3}>

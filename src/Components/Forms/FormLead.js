@@ -106,7 +106,7 @@ export default function FormLead({ idPlan, landing, offerLooking, urlOffers, com
                                             <span
                                                 dangerouslySetInnerHTML={{
                                                     __html:
-                                                        'Acepto que Vuskoo me asesore telefónicamente sobre el producto y servicio elegido de acuerdo con su <a href="/es/politica-privacidad">Política de Privacidad</a>',
+                                                        `Acepto recibir comunicaciones comerciales de Vuskoo. Más información en <a href="/${lang}/politica-privacidad">Política de Privacidad</a>`,
                                                 }}
                                             />
                                         }
@@ -125,7 +125,7 @@ export default function FormLead({ idPlan, landing, offerLooking, urlOffers, com
                                             <span
                                                 dangerouslySetInnerHTML={{
                                                     __html:
-                                                        `Acepto recibir comunicaciones comerciales de ${data.nombre}. Más información en <a href="${data.politica_privacidad}">Política de Privacidad</a>`,
+                                                        `Acepto que ${data.nombre} me asesore telefónicamente sobre el producto y servicio elegido de acuerdo con su <a href="${data.politica_privacidad}">Política de Privacidad</a>`,
                                                 }}
                                             />
                                         }

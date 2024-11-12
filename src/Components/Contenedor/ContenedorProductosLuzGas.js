@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Container, Row, Col, Button, Form } from 'react-bootstrap';
+import { Container, Row, Col, Button, Form, Tabs, Tab } from 'react-bootstrap';
 import axios from 'axios';
 import 'rc-slider/assets/index.css';
 import { isMobile } from 'react-device-detect';
@@ -366,25 +366,54 @@ function ContenedorProductosLuzGas() {
                 </>
               )}
             </Col>
+
             <Col md={12} xl={8}>
               <Row>
                 <Col key={filterBrand} className='my-2' md={6}>Mostrando: <span className="font-bold">{filtros?.length}</span> resultados de <span className="font-bold">{Tarifas.length}</span></Col>
               </Row>
               <Row>
-                <div className='pruebaPos'>
+                <Tabs
+                  defaultActiveKey="particulares"
+                  id="tabs_filtros"
+                  className="mb-3"
+                >
+                  <Tab eventKey="particulares" title="Tarifas para particulares">
 
-                  {!isLoadInformation ? (
-                    filtros?.length > 0 ? (
-                      filtros?.map((item, index) => (
-                        <TarjetaTarifaLeadEnergiaGas key={index} data={item} TarifaCard></TarjetaTarifaLeadEnergiaGas>
-                      ))
-                    ) : (
-                      <NotInfoItem key={0} title={'No se encontraron ofertas'} text={'Lo sentimos, no hemos encontrado ofertas con los filtros seleccionados.'} />
-                    )
-                  ) : (
-                    <Load></Load>
-                  )}
-                </div>
+                    {(() => {
+                      return !isLoadInformation ? (
+                        filtros?.length > 0 ? (
+
+                          filtros.map((item, index) => (
+                            <TarjetaTarifaLeadEnergiaGas key={index} data={item} TarifaCard />
+                          ))
+                        ) : (
+
+                          <NotInfoItem title="No se encontraron ofertas" text="Lo sentimos, no hemos encontrado ofertas con los filtros seleccionados." />
+                        )
+                      ) : (
+                        <Load />
+                      );
+                    })()}
+                  </Tab>
+
+                  {/* <Tab eventKey="empresariales" title="Tarifas para empresas">
+                    {(() => {
+                      const filteredTarifas = filtros?.filter((item) => item.tarifa_empresarial === 1);
+
+                      return !isLoadInformation ? (
+                        filteredTarifas?.length > 0 ? (
+                          filteredTarifas.map((item, index) => (
+                            <TarjetaTarifaLeadEnergiaGas key={index} data={item} TarifaCard />
+                          ))
+                        ) : (
+                          <NotInfoItem title="No se encontraron ofertas" text="Lo sentimos, no hemos encontrado ofertas con los filtros seleccionados." />
+                        )
+                      ) : (
+                        <Load />
+                      );
+                    })()}
+                  </Tab> */}
+                </Tabs>
               </Row>
             </Col>
           </Row>

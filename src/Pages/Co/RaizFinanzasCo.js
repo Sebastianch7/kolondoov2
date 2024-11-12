@@ -87,12 +87,6 @@ export default function RaizFinanza() {
         title='Comparador de Finanzas'
         text1='<ul class="listaAlternativa"><li><p>Encuentra la tarjeta o el crédito que se adapte a lo que necesitas.</p></li><li><p>Consigue ahorrar cada mes con las cuentas de ahorro que hay disponibles en Vuskoo.</p></li><li><p>Si te queda alguna duda, nuestros expertos te asesorarán en el proceso.</p></li></ul>'
         btnLeft
-      buttons={[
-        {
-          title: '¡Empieza a ahorrar!',
-          url: '/co/finanzas/banca'
-        }
-      ]}
       />
       <Container>
         <TitleSection

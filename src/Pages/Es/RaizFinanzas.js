@@ -84,12 +84,6 @@ export default function RaizFinanza() {
         title='Comparador de Finanzas'
         text1='<ul class="listaAlternativa"><li><p>Descubre la tarjeta o el préstamo que hará click con tu estilo de vida.</p></li><li><p>Multiplica tus ahorros mes a mes con las cuentas inteligentes de Vuskoo.</p></li><li><p>¿Dudas? Nuestros gurús financieros están a tu disposición para guiarte.</p></li></ul>'
         btnLeft
-      buttons={[
-        {
-          title: '¡Empieza a ahorrar!',
-          url: '/co/finanzas/banca'
-        }
-      ]}
       />
       <Container>
         <TitleSection

@@ -1258,6 +1258,8 @@ ul {
 .nav-item,
 .no-link {
   text-decoration: none !important;
+  margin: 0px;
+
 }
 
 .icon-list {
@@ -1838,3 +1840,19 @@ b {
 .accordion-button:not(.collapsed)::after{
   transform: none !important;
 }
+
+#tabs_filtros-tab-empresariales, #tabs_filtros-tab-particulares{
+  background-color: white;
+  color: $colorPrimary;
+  margin-bottom: 0px;
+}
+
+#tabs_filtros-tab-empresariales.nav-link.active{
+    background-color: $colorPrimary;
+    color: $white;
+  }
+
+  #tabs_filtros-tab-particulares.nav-link.active{
+    background-color: $colorPrimary;
+    color: $white;
+  }
