@@ -47,6 +47,7 @@ h4,
 h5,
 h6,
 b,
+strong,
 .card-title,
 .tarjeta-tarifa-item-service {
   font-family: $MontHeavy !important;
@@ -197,6 +198,10 @@ $breakpoint-lg: 1360px;
   &-09 {
     font-size: 0.9rem;
   }
+}
+
+.informacionLegal {
+  font-size: 12px;
 }
 
 .navbar-brand {
@@ -1190,7 +1195,7 @@ th {
   }
 }
 
-ul {
+/* ul {
   list-style-type: none;
   padding: 0px;
   //height: 90px;
@@ -1204,7 +1209,7 @@ ul {
     line-height: normal;
     margin-bottom: 5px;
   }
-}
+} */
 
 .no-enlace {
   color: $black;

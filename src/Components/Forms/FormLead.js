@@ -1,160 +1,143 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Card, Form } from 'react-bootstrap';
-import { BsFillTelephoneFill, BsXCircle, BsFillTelephoneOutboundFill } from "react-icons/bs";
-import { useNavigate } from "react-router-dom";
-import { postLead } from '../../services/ApiServices'
+import { BsFillTelephoneFill, BsXCircle } from "react-icons/bs";
+import { useNavigate, useLocation } from "react-router-dom";
+import { postLead } from '../../services/ApiServices';
 import { useTranslation } from 'react-i18next';
-import { useLocation } from 'react-router-dom';
 
-export default function FormLead({ idPlan, landing, offerLooking, urlOffers, company, data }) {
-    console.log(data)
+export default function FormLead({ idPlan, landing, offerLooking, urlOffers, company, data, isBank = false }) {
     const { t } = useTranslation();
-
-    const [lang, setLang] = useState(null)
+    const navigate = useNavigate();
     const location = useLocation();
 
+    const [lang, setLang] = useState('');
+    const [urlSplit, setUrlSplit] = useState([]);
+    const [phoneNumber, setPhoneNumber] = useState('');
+    const [isValidPhoneNumber, setIsValidPhoneNumber] = useState(false);
     const [checkInAsesoria, setCheckInAsesoria] = useState(false);
     const [checkInComercial, setCheckInComercial] = useState(false);
-
-    const [phoneNumber, setPhoneNumber] = useState('');
-    const [urlOffer, setUrlOffer] = useState(urlOffers);
-    const [urlSplit, setUrlSplit] = useState([])
-
-    const [isValidPhoneNumber, setIsValidPhoneNumber] = useState(false);
     const [isSend, setIsSend] = useState(false);
-    const [isError, setIsError] = useState(false);
-    let navigate = useNavigate();
+    const [isError, setIsError] = useState('');
+    const [textButton, setTextButton] = useState(t('LLÁMAME AHORA'));
 
     useEffect(() => {
-        setUrlSplit(location.pathname.split('/'))
-        setLang(location.pathname.split('/')[1])
-    }, [])
-
+        const pathArray = location.pathname.split('/');
+        setLang(pathArray[1]);
+        setUrlSplit(pathArray);
+    }, [location]);
 
     const handlePhoneNumberChange = (e) => {
-        const inputValue = e.target.value;
-        const inputPhoneNumber = inputValue.replace(/\D/g, '');
+        const inputPhoneNumber = e.target.value.replace(/\D/g, '');
         setPhoneNumber(inputPhoneNumber);
-        const phoneNumberRegex = /^[6-9]\d{8}$/;
-        const isValid = phoneNumberRegex.test(inputPhoneNumber);
-        setIsValidPhoneNumber(isValid);
+        setIsValidPhoneNumber(/^[6-9]\d{8}$/.test(inputPhoneNumber));
     };
 
-    const [textButton, setTextButton] = useState('LLÁMAME AHORA')
-
-    async function subscripcion(e) {
+    const handleFormSubmit = async (e) => {
         e.preventDefault();
-        setIsError(false)
-        setIsSend(true)
+        setIsSend(true);
+        setIsError('');
+
         try {
-            const response = await postLead(idPlan, phoneNumber, landing, urlOffer, company);
+            const response = await postLead(idPlan, phoneNumber, landing, urlOffers, company);
             if (response?.data.status === 201) {
-                setTextButton('Tu solicitud ha sido registrada.');
-                setCheckInAsesoria(false);
-                setTimeout(() => {
-                    navigate(`/es/${urlSplit[2]}/${urlSplit[3]}/thank/${urlSplit[4]}`);
-                }, 3000);
+                handleSuccess(t('Tu solicitud ha sido registrada.'));
             } else if (response?.data.status === 308) {
-                setTextButton('Tu solicitud ha sido registrada.');
-                setCheckInAsesoria(false);
-                setTimeout(() => {
-                    navigate(``);
-                }, 3000);
+                handleSuccess(t('Tu solicitud ha sido registrada.'));
             } else {
-                setIsError(response?.data?.message);
+                setIsError(response?.data?.message || t('Error al procesar la solicitud'));
             }
         } catch (error) {
-            setTextButton('Error al procesar la solicitud')
-            setIsError(error.statusText)
+            setTextButton(t('Error al procesar la solicitud'));
+            setIsError(error?.statusText || t('Error desconocido'));
+        } finally {
+            setIsSend(false);
         }
-    }
+    };
+
+    const handleSuccess = (message) => {
+        setTextButton(message);
+        setCheckInAsesoria(false);
+        setTimeout(() => {
+            const redirectUrl = landing !== 'comparador-finanzas' ? `/es/${urlSplit[2]}/${urlSplit[3]}/thank/${urlSplit[4]}` : data.url_redirct;
+            navigate(redirectUrl);
+        }, 3000);
+    };
 
     return (
-        <Card className='tarjeta-lead'>
+        <Card className="tarjeta-lead">
             <Card.Header className="text-center">{t('Oferta disponible')}</Card.Header>
-            <Card.Body>
-                <Card.Text className='text-center text-primary'>
-                    Déjanos tu teléfono y <b>te llamamos gratis</b>
-                </Card.Text>
-                <Card.Text>
-                    <Form onSubmit={subscripcion}>
-                        <div className='mx-2'>
+                <Card.Body>
+                    <Card.Text className="text-center text-primary">
+                        {t('Déjanos tu teléfono y te llamamos gratis')}
+                    </Card.Text>
+                    <Form onSubmit={handleFormSubmit}>
+                        <div className="mx-2">
                             <div className="input-group">
                                 <span className="input-group-text"><BsFillTelephoneFill /></span>
                                 <Form.Control
-                                    className={'form-control no-radius'}
+                                    className="form-control no-radius"
                                     placeholder={t('Introduce tu teléfono')}
                                     aria-label={t('Introduce tu teléfono')}
-                                    type={'tel'}
-                                    pattern="[0-9]*"  // Esto permite solo números
+                                    type="tel"
                                     onChange={handlePhoneNumberChange}
                                     value={phoneNumber}
-                                    isSuccess={isValidPhoneNumber}
                                     maxLength={9}
                                 />
                             </div>
-                            {(!isValidPhoneNumber && phoneNumber?.length > 4) &&
-                                <div className="text-danger mt-3"><BsXCircle />&nbsp;El número de teléfono ingresado no es valido</div>
-                            }
-                            <div className='my-3'>
-                                <Form.Group controlId="switchControlId">
-                                    <Form.Switch
-                                        className='input-check mt-2'
-                                        type='switch'
-                                        checked={checkInAsesoria}
-                                        label={
-                                            <span
-                                                dangerouslySetInnerHTML={{
-                                                    __html:
-                                                        `Acepto recibir comunicaciones comerciales de Vuskoo. Más información en <a href="/${lang}/politica-privacidad">Política de Privacidad</a>`,
-                                                }}
-                                            />
-                                        }
-                                        onChange={() => setCheckInAsesoria(!checkInAsesoria)}
-                                    />
-
-                                </Form.Group>
-                            </div>
-                            <div className='my-3'>
-                                <Form.Group controlId="switchControlId1">
-                                    <Form.Switch
-                                        className='input-check mt-2'
-                                        type='switch'
-                                        checked={checkInComercial}
-                                        label={
-                                            <span
-                                                dangerouslySetInnerHTML={{
-                                                    __html:
-                                                        `Acepto que ${data.nombre} me asesore telefónicamente sobre el producto y servicio elegido de acuerdo con su <a href="${data.politica_privacidad}">Política de Privacidad</a>`,
-                                                }}
-                                            />
-                                        }
-                                        onChange={() => setCheckInComercial(!checkInComercial)}
-                                    />
-                                </Form.Group>
-                            </div>
-                            {isError !== false &&
-                                <div className='my-3'>
-                                    <span className='color-red' dangerouslySetInnerHTML={{ __html: isError }}></span>
+                            {!isValidPhoneNumber && phoneNumber.length > 4 && (
+                                <div className="text-danger mt-3">
+                                    <BsXCircle />&nbsp;{t('El número de teléfono ingresado no es válido')}
                                 </div>
-                            }
-
-                            <div className='text-center m-4'>
-                                <Button
-                                    disabled={(checkInAsesoria && isValidPhoneNumber) ? false : true}
-                                    type="submit"
-                                >
+                            )}
+                            <Form.Group className="my-3" controlId="switchControlAsesoria">
+                                <Form.Switch
+                                    className="input-check mt-2"
+                                    checked={checkInAsesoria}
+                                    onChange={() => setCheckInAsesoria(!checkInAsesoria)}
+                                    label={
+                                        <span
+                                            dangerouslySetInnerHTML={{
+                                                __html: t('Acepto recibir comunicaciones comerciales de Vuskoo. Más información en <a href="/{{lang}}/politica-privacidad">Política de Privacidad</a>', { lang })
+                                            }}
+                                        />
+                                    }
+                                />
+                            </Form.Group>
+                            <Form.Group className="my-3" controlId="switchControlComercial">
+                                <Form.Switch
+                                    className="input-check mt-2"
+                                    checked={checkInComercial}
+                                    onChange={() => setCheckInComercial(!checkInComercial)}
+                                    label={
+                                        <span
+                                            dangerouslySetInnerHTML={{
+                                                __html: t('Acepto que {{nombre}} me asesore telefónicamente sobre el producto y servicio elegido de acuerdo con su <a href="{{politica_privacidad}}">Política de Privacidad</a>', { nombre: data.nombre, politica_privacidad: data.politica_privacidad })
+                                            }}
+                                        />
+                                    }
+                                />
+                            </Form.Group>
+                            {isError && (
+                                <div className="my-3 text-danger">
+                                    <span dangerouslySetInnerHTML={{ __html: isError }} />
+                                </div>
+                            )}
+                            <div className="text-center m-4">
+                                <Button disabled={!checkInAsesoria || !isValidPhoneNumber || isSend} type="submit">
                                     {textButton}
                                 </Button>
                             </div>
-
                         </div>
                     </Form>
-                </Card.Text>
-            </Card.Body>
-            {(data?.telefono != null && data?.telefono != '') && <div className='footer-call-me'>
-                <div className='text-center'><span className='color-primary mx-3'>O llámanos tú:</span><a href={'tel:'+data?.telefono} className='icon-call-number text-decoration-none'>{data?.telefono}</a></div>
-            </div>}
-        </Card >
-    )
+                </Card.Body>
+            {data?.telefono && (
+                <div className="footer-call-me text-center">
+                    <span className="color-primary mx-3">{t('O llámanos tú:')}</span>
+                    <a href={`tel:${data.telefono}`} className="icon-call-number text-decoration-none">
+                        {data.telefono}
+                    </a>
+                </div>
+            )}
+        </Card>
+    );
 }

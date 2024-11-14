@@ -43,8 +43,7 @@ export default function TarjetaTarifaLeadEnergia({ data, TarifaCard }) {
         <>
             {destacada === 1 && <div className='prioridad-oferta font-bold'>Oferta destacada</div>}
             <Card className={`tarjeta my-2 ${destacada === 1 ? 'prioridad' : ''}`}>
-                <Card.Body className='pt-0'>
-
+                <Card.Body>
                     <Row>
                         {TarifaCard && <Col xs={12}>
                             <div className='tarjeta-tarifa-item-title'>

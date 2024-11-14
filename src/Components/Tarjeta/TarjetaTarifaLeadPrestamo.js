@@ -5,7 +5,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { isMobile } from 'react-device-detect';
 import { BsArrowRight } from 'react-icons/bs';
 
-function TarjetaPrestamo({ data }) {
+function TarjetaTarifaLeadPrestamo({ data }) {
     const [lang, setLang] = useState(null)
     const location = useLocation();
 
@@ -13,23 +13,12 @@ function TarjetaPrestamo({ data }) {
         setLang(location.pathname.split('/')[1])
     }, [location])
 
-    const { id, selector1, destacada, titulo, slug_tarifa, logo, valorMaximo, parrilla_1, parrilla_2, parrilla_3, parrilla_4, url_redirct } = data;
+    const { selector1, destacada, valorMaximo, parrilla_1, parrilla_2, parrilla_3, parrilla_4, url_redirct } = data;
     return (
-        <Col xs={12} className='mb-3'>
+        <Col xs={12}>
             {destacada === 1 && <div className='prioridad-oferta'>Oferta destacada</div>}
-            <Card key={0} className={`tarjeta tarjeta-tarifa my-2 ${destacada === 1 ? 'prioridad' : ''}`}>
+            <Card key={0} className={`tarjeta tarjeta-tarifa my-0 ${destacada === 1 ? 'prioridad' : ''}`}>
                 <Card.Body>
-                    <div className="prestamo-header d-flex justify-content-between">
-                        <img className='img-logo-tarjeta' src={logo} />
-                        {!isMobile &&
-                            <Col md={3} className='px-0'>
-                                <a href={`/${lang}/finanzas/comparador-finanzas/${slug_tarifa}-${id}`} target='blank' variant='dark' className='btn w-100 btn-dark p-3'>
-                                    Solicítalo ahora
-                                </a>
-                            </Col>}
-                        {isMobile && <a href={`/${lang}/finanzas/comparador-finanzas/${slug_tarifa}-${id}`} target='blank' className='btn btn-dark btn-primary-small' ><BsArrowRight /></a>}
-                    </div>
-                    <hr />
                     <Row className={`d-flex justify-content-start align-content-start`}>
                         {selector1 && <ItemTarifaDescripcion destacada={destacada} title={selector1} />}
                         {valorMaximo > 0 && <ItemTarifaDescripcion destacada={destacada} title={`Monto máximo ${valorMaximo.toLocaleString()}`} />}
@@ -70,4 +59,4 @@ function TarjetaPrestamo({ data }) {
     );
 }
 
-export default TarjetaPrestamo;
+export default TarjetaTarifaLeadPrestamo;

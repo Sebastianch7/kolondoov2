@@ -9,7 +9,7 @@ export default function HeaderLeadVehiculo({logo}) {
         <>
             <Navbar bg="ligth" data-bs-theme="ligth">
                 <Container>
-                <img className='img-fluid' src={logo} alt={logo} style={{ height: '100px' }} />
+                <img className='img-fluid' src={logo} alt={logo} style={{ height: '90px' }} />
                 </Container>
             </Navbar>
         </>

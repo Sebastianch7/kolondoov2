@@ -82,7 +82,7 @@ function TarjetaTarifa({ data, type }) {
                                         <span className='icon-call-title mb-1'>Llama al:</span>
                                         <div className='text-center'><a href={'tel:'+data?.telefono}  className='icon-call-number text-decoration-none'>{telefono}</a></div>
                                     </div></>}
-                                    {isMobile && <Link className='btn btn-dark btn-primary-small' to={landing_link === null ? `/es${landingLead}${slug_tarifa.toLowerCase()}-${id}` : landing_link}><BsArrowRight /></Link>}
+                                    {isMobile && <Link className='btn btn-dark btn-primary-small' to={landing_link === null ? `/${lang}${landingLead}${slug_tarifa.toLowerCase()}-${id}` : landing_link}><BsArrowRight /></Link>}
                                 </div>
                             </Col>
 
