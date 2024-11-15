@@ -49,7 +49,7 @@ export default function TarjetaTarifaLeadEnergia({ data, TarifaCard }) {
                             <div className='tarjeta-tarifa-item-title'>
                                 <img src={logo} alt={logo} />
                                 {((promocion !== null && promocion !== '') && isMobile === false) && <span className={`align-middle text-promotion ${destacada === 1 && 'color-primary'}`}><b>Promoción: </b>{promocion}</span>}
-                                {isMobile && <Link className='btn btn-dark btn-primary-small' to={landing_link === null ? `/es${landingLead}${slug_tarifa.toLowerCase()}-${id}` : landing_link}><BsArrowRight /></Link>}
+                                {isMobile && <Link className='btn btn-dark btn-primary-small' to={landing_link === null ? `/${lang}${landingLead}${slug_tarifa}-${id}` : landing_link}><BsArrowRight /></Link>}
                             </div>
                         </Col>}
                         <Col md={9}>
@@ -83,7 +83,7 @@ export default function TarjetaTarifaLeadEnergia({ data, TarifaCard }) {
                                 {!isMobile && TarifaCard && (
                                     <Col xs={12} style={isMobile ? { order: 3 } : { order: 3 }}>
                                         {telefono === null ?
-                                            <Link className='btn btn-primary text-center w-100 my-2' target={landing_link !== null && '_self'} to={landing_link === null ? `/es${landingLead}${slug_tarifa.toLowerCase()}-${id}` : landing_link}>{`Ir a la oferta`}</Link>
+                                            <Link className='btn btn-primary text-center w-100 my-2' target={landing_link !== null && '_self'} to={landing_link === null ? `/${lang}${landingLead}${slug_tarifa}-${id}` : landing_link}>{`Ir a la oferta`}</Link>
                                             :
                                             <>
                                                 <div className='text-center' style={{ 'height': '20px' }}><img className='icon-call me-2 mt-0' src='/img/icons/telefono.svg' /><span className='icon-call-title'>Llama al:</span></div>

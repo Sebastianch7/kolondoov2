@@ -53,7 +53,7 @@ export default function TarjetaTarifaLeadEnergiaGas({ data, TarifaCard }) {
                                         <span className='mx-4 align-middle'><b>Promoción: </b>{promocion}</span>
                                     )}
                                     {isMobile && (
-                                        <Link className='btn btn-dark btn-primary-small' to={landing_link || `/es${landingLead}${slug_tarifa.toLowerCase()}-${id}`}>
+                                        <Link className='btn btn-dark btn-primary-small' to={landing_link || `/${lang}${landingLead}${slug_tarifa}-${id}`}>
                                             <BsArrowRight />
                                         </Link>
                                     )}
@@ -111,7 +111,7 @@ export default function TarjetaTarifaLeadEnergiaGas({ data, TarifaCard }) {
                                                 <Link className='btn btn-primary text-center w-100 my-2' to={`tel:${telefono}`}>{telefono}</Link>
                                             </>
                                         ) : (
-                                            <Link className='btn btn-primary text-center w-100 my-2' target={landing_link ? '_self' : undefined} to={landing_link || `/es${landingLead}${slug_tarifa.toLowerCase()}-${id}`}>
+                                            <Link className='btn btn-primary text-center w-100 my-2' target={landing_link ? '_self' : undefined} to={landing_link || `/${lang}${landingLead}${slug_tarifa}-${id}`}>
                                                 Ir a la oferta
                                             </Link>
                                         )}

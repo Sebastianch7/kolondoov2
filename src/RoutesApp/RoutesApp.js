@@ -120,8 +120,9 @@ function RoutesApp() {
                 <Route path="/es/herramientas/precio-de-la-luz-hoy" element={<HerramientaLuz />} />
                 <Route path="/es/herramientas/test-de-velocidad" element={<HerramientaTest />} />
 
-                <Route path="/es/seguros/alarmas" element={<ComparadorAlarmas />} />
-                <Route path="/es/seguros/salud" element={<ComparadorSegurosSalud />} />
+                {/* <Route path="/es/seguros/alarmas" element={<ComparadorAlarmas />} />
+                <Route path="/es/seguros/salud" element={<ComparadorSegurosSalud />} /> */}
+                <Route path="/es/seguros/comparador-tarifas-seguros-salud/:id" element={<Lead />} />
 
                 <Route path="/es/contactanos" element={<Contactenos />} />
                 <Route path="/es/politica-privacidad" element={<PoliticaPrivacidad />} />
@@ -145,7 +146,8 @@ function RoutesApp() {
                 <Route path="/es/finanzas/comparador-finanzas" element={<RaizFinanzas />} />
                 <Route path="/es/finanzas/comparador-finanzas/microcreditos" element={<ComparadorPrestamos />} />
                 <Route path="/es/finanzas/comparador-finanzas/soluciones-de-deuda" element={<ComparadorPrestamos />} />
-                <Route path="/:lang/finanzas/comparador-finanzas/:id" element={<Lead />} />
+                <Route path="/:lang/finanzas/comparador-finanzas/microcreditos/:id" element={<Lead />} />
+                <Route path="/:lang/finanzas/comparador-finanzas/soluciones-de-deuda/:id" element={<Lead />} />
                 <Route path="/es/finanzas/comparador-finanzas/simulador" element={<Simulador />} />
 
                 {/* MX */}

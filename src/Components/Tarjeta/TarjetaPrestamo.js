@@ -9,6 +9,9 @@ function TarjetaPrestamo({ data }) {
     const [lang, setLang] = useState(null)
     const location = useLocation();
 
+    console.log(data)
+    console.log(location.pathname)
+
     useEffect(() => {
         setLang(location.pathname.split('/')[1])
     }, [location])
@@ -23,11 +26,11 @@ function TarjetaPrestamo({ data }) {
                         <img className='img-logo-tarjeta' src={logo} />
                         {!isMobile &&
                             <Col md={3} className='px-0'>
-                                <a href={`/${lang}/finanzas/comparador-finanzas/${slug_tarifa}-${id}`} target='blank' variant='dark' className='btn w-100 btn-dark p-3'>
+                                <a href={`${location.pathname}/${slug_tarifa}-${id}`} target='blank' variant='dark' className='btn w-100 btn-dark p-3'>
                                     Solicítalo ahora
                                 </a>
                             </Col>}
-                        {isMobile && <a href={`/${lang}/finanzas/comparador-finanzas/${slug_tarifa}-${id}`} target='blank' className='btn btn-dark btn-primary-small' ><BsArrowRight /></a>}
+                        {isMobile && <a href={`${location.pathname}/${slug_tarifa}-${id}`} target='blank' className='btn btn-dark btn-primary-small' ><BsArrowRight /></a>}
                     </div>
                     <hr />
                     <Row className={`d-flex justify-content-start align-content-start`}>

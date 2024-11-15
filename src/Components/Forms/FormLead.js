@@ -36,32 +36,35 @@ export default function FormLead({ idPlan, landing, offerLooking, urlOffers, com
         e.preventDefault();
         setIsSend(true);
         setIsError('');
-
+    
         try {
             const response = await postLead(idPlan, phoneNumber, landing, urlOffers, company);
-            if (response?.data.status === 201) {
-                handleSuccess(t('Tu solicitud ha sido registrada.'));
-            } else if (response?.data.status === 308) {
+            const status = response?.data?.status;
+    
+            if (status === 201 || status === 308) {
                 handleSuccess(t('Tu solicitud ha sido registrada.'));
             } else {
                 setIsError(response?.data?.message || t('Error al procesar la solicitud'));
             }
         } catch (error) {
             setTextButton(t('Error al procesar la solicitud'));
-            setIsError(error?.statusText || t('Error desconocido'));
+            setIsError(error?.response?.data?.message || t('Error desconocido'));
         } finally {
             setIsSend(false);
         }
     };
-
+    
     const handleSuccess = (message) => {
         setTextButton(message);
         setCheckInAsesoria(false);
+    
         setTimeout(() => {
-            const redirectUrl = landing !== 'comparador-finanzas' ? `/es/${urlSplit[2]}/${urlSplit[3]}/thank/${urlSplit[4]}` : data.url_redirct;
-            navigate(redirectUrl);
+            const isNotComparador = landing !== 'comparador-finanzas' && landing !== 'comparador-tarifas-seguros-salud';
+            const redirectUrl = isNotComparador ? `/es/${urlSplit[2]}/${urlSplit[3]}/thank/${urlSplit[4]}` : data.url_redirct;
+            {isNotComparador ? navigate(redirectUrl) : window.location.href = data.url_redirct}
         }, 3000);
     };
+    
 
     return (
         <Card className="tarjeta-lead">

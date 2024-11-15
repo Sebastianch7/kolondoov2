@@ -43,10 +43,12 @@ export default function Lead() {
       if (idPlan) {
         try {
           const response = await getDetailOffer(offerLooking, idPlan);
-          const titleOriginal = response.slug_tarifa.split('-').slice(0, -1).join(' ');
+          //const titleOriginal = response.slug_tarifa.split('-').slice(0, -1).join(' ');
+          const titleOriginal = response.slug_tarifa;
 
           setTitle(titleOriginal);
           setInfoOffer(response);
+          console.log(response)
           setIsLoading(false);
         } catch (error) {
           console.error("Error al cargar la informacion:", error);
@@ -70,6 +72,7 @@ export default function Lead() {
       'comparador-tarifas-luz': `Ilumina tu hogar con el servicio de energía de {name}.`,
       'comparador-tarifas-gas': `Descubre la potencia del servicio de gas de {name}.`,
       'comparador-tarifas-luz-y-gas': `Obtén confort y ahorro con la oferta integral de luz y gas.`,
+      'comparador-tarifas-seguros-salud': `Obtén seguros y ahorro con la oferta que te ofrecemos.`,
       default: ''
     };
     return generateSeoText(templates[offerLooking?.toLowerCase()] || templates.default, '');
@@ -83,6 +86,7 @@ export default function Lead() {
       'comparador-tarifas-luz': `Enciende tu vida con el servicio de luz de {name}.`,
       'comparador-tarifas-gas': `Transforma tu hogar con el servicio de gas de {name}.`,
       'comparador-tarifas-luz-y-gas': `Optimiza tu hogar con la oferta integral de luz y gas de {name}.`,
+      'comparador-tarifas-seguros-salud': `Obtén seguros y ahorro con la oferta que te ofrecemos.`,
       default: ''
     };
     return generateSeoText(templates[offerLooking?.toLowerCase()] || templates.default, '');
@@ -97,6 +101,36 @@ export default function Lead() {
       'comparador-tarifas-gas': <TarjetaTarifaLeadGas data={infoOffer} service={offerLooking} />,
       'comparador-tarifas-luz-y-gas': <TarjetaTarifaLeadEnergiaGas data={infoOffer} service={offerLooking} />,
       'comparador-finanzas': <TarjetaTarifaLeadPrestamo data={infoOffer} service={offerLooking} />,
+      'comparador-tarifas-seguros-salud': <TarjetaTarifaLeadPrestamo data={infoOffer} service={offerLooking} />,
+    };
+    return tarjetaMap[offerLooking?.toLowerCase()] || null;
+  };
+  
+  const renderBreadDown = () => {
+    const tarjetaMap = {
+      'comparador-movil': <BreadCrumb lead={true} />,
+      'comparador-fibra': <BreadCrumb lead={true} />,
+      'comparador-tarifas-fibra-y-movil': <BreadCrumb lead={true} />,
+      'comparador-tarifas-luz': <BreadCrumb lead={true} />,
+      'comparador-tarifas-gas': <BreadCrumb lead={true} />,
+      'comparador-tarifas-luz-y-gas': <BreadCrumb lead={true} />,
+      'comparador-finanzas': <BreadCrumb lead={true} />,
+      'comparador-tarifas-seguros-salud': null,
+    };
+    return tarjetaMap[offerLooking?.toLowerCase()] || null;
+  };
+  
+  
+  const renderForm = () => {
+    const tarjetaMap = {
+      'comparador-movil': <FormLead data={infoOffer} idPlan={idPlan} landing={offerLooking} urlOffers={location.pathname} company={infoOffer.operadora} />,
+      'comparador-fibra': <FormLead data={infoOffer} idPlan={idPlan} landing={offerLooking} urlOffers={location.pathname} company={infoOffer.operadora} />,
+      'comparador-tarifas-fibra-y-movil': <FormLead data={infoOffer} idPlan={idPlan} landing={offerLooking} urlOffers={location.pathname} company={infoOffer.operadora} />,
+      'comparador-tarifas-luz': <FormLead data={infoOffer} idPlan={idPlan} landing={offerLooking} urlOffers={location.pathname} company={infoOffer.operadora} />,
+      'comparador-tarifas-gas': <FormLead data={infoOffer} idPlan={idPlan} landing={offerLooking} urlOffers={location.pathname} company={infoOffer.operadora} />,
+      'comparador-tarifas-luz-y-gas': <FormLead data={infoOffer} idPlan={idPlan} landing={offerLooking} urlOffers={location.pathname} company={infoOffer.operadora} />,
+      'comparador-finanzas': <TarjetaOfertaDirecta data={infoOffer} />,
+      'comparador-tarifas-seguros-salud': <FormLead data={infoOffer} idPlan={idPlan} landing={offerLooking} urlOffers={location.pathname} company={infoOffer.proveedor} />,
     };
     return tarjetaMap[offerLooking?.toLowerCase()] || null;
   };
@@ -115,11 +149,11 @@ export default function Lead() {
     !isLoading ? (
       <>
         <MetaData
-          titulo={`Ofertas ${offerLooking === 'comparador-finanzas' ? `${infoOffer.nombre}: ${title}` : `${infoOffer.funcion}: ${infoOffer.nombre}`} | Vuskoo`}
+          titulo={`Ofertas ${infoOffer.nombre}: ${title} | Vuskoo`}
           descripcion={descripcionLanding()}
         />
-        <HeaderLead logo={infoOffer?.logo} />
-        <BreadCrumb lead={true} />
+        {<HeaderLead logo={infoOffer?.logo} />}
+        {renderBreadDown()}
 
         <Container className='mb-5'>
           <Row className="justify-content-md-center d-flex flex-column flex-md-row">
@@ -135,11 +169,7 @@ export default function Lead() {
               </Col>
 
               <Col xs={12} md={5} style={{ order: isMobile ? 1 : 2 }} className='h-100'>
-                {offerLooking !== 'comparador-finanzas' ? (
-                  <FormLead data={infoOffer} idPlan={idPlan} landing={offerLooking} urlOffers={location.pathname} company={infoOffer.operadora} />
-                ) : (
-                  <TarjetaOfertaDirecta data={infoOffer} />
-                )}
+                {renderForm()}
               </Col>
             </Row>
 
