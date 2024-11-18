@@ -16,11 +16,7 @@ function ComparadorFibra() {
                 image={'/img/internet-telefonia/banner_fibra.png'}
                 logo={'/img/icons/router.svg'}
             >
-                {/* <FormSuscripcion
-                    text={'Introduce tu código postal'}
-                    button={'Buscar Ofertas'}
-                    politicy
-                /> */}
+                
             </Banner>
             <ContenedorProductosFibra />
             <Footer></Footer>

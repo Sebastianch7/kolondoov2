@@ -1,13 +1,8 @@
 import { React, useEffect, useState } from 'react';
 import { Container, Row, Col, Stack } from 'react-bootstrap';
 import { isMobile } from 'react-device-detect'
-import TarjetaBlogFull from '../Tarjeta/TarjetaBlogFull';
-import { CardGroup } from 'react-bootstrap';
 import TitleSection from '../Text/TitleSection';
-import { Link, useLocation } from 'react-router-dom';
-import { getBlogHome } from '../../services/ApiServices';
-import Load from '../Utils/Load'
-import TitleSectionHome from '../Text/TitleSectionHome';
+import {  useLocation } from 'react-router-dom';
 import Carousel from "react-multi-carousel";
 import { useTranslation } from 'react-i18next';
 

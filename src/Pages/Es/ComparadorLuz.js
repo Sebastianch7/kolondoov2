@@ -16,11 +16,7 @@ function ComparadorLuz() {
                 image={'/img/energia/banner_luz.png'}
                 logo={'/img/icons/luz.svg'}
             >
-                {/* <FormSuscripcion
-                    text={'Introduce tu código postal'}
-                    button={'Buscar Ofertas'}
-                    politicy
-                /> */}
+                
             </Banner>
             <ContenedorProductosLuz />
             <Footer></Footer>

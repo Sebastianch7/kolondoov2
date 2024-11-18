@@ -5,24 +5,25 @@ import TarjetaBlogFull from '../Tarjeta/TarjetaBlogFull';
 import { CardGroup } from 'react-bootstrap';
 import TitleSection from '../Text/TitleSection';
 import { Link, useLocation } from 'react-router-dom';
-import { getBlogHome } from '../../services/ApiServices';
+import { fetchDataAll } from '../../services/ApiServices';
 import Load from '../Utils/Load'
 
 function ContenedorTarjetaBlog({ children }) {
-    const [fetchBlog, setFetchBlog] = useState(null)
+    const [fetchBlog, setFetchBlog] = useState([])
     const [isLoading, setIsLoading] = useState(false)
     const [lang, setLang] = useState(null)
     const location = useLocation();
-  
+
     useEffect(() => {
         setLang(location.pathname.split('/')[1])
     }, [location])
 
     useEffect(() => {
+        if (!lang) return;
         setIsLoading(true);
         const fetchBlogList = async () => {
             try {
-                const response = await getBlogHome(lang);
+                const response = await fetchDataAll('BlogHome', lang);
                 setFetchBlog(response);
                 setIsLoading(false);
             } catch (error) {
@@ -60,14 +61,14 @@ function ContenedorTarjetaBlog({ children }) {
             {!isLoading ? <Container fluid>
                 <Container>
                     <Row>
-                        <Col md={12} xl={12} className='d-none d-md-block d-xl-block'>
+                        {!isMobile && <Col md={12} xl={12} className='d-none d-md-block d-xl-block'>
                             <CardGroup>
                                 {fetchBlog?.map((data, index) => {
                                     return <TarjetaBlogFull key={index} data={data} />;
                                 })}
                             </CardGroup>
-                        </Col>
-                        <Col md={12} xl={12} className='d-block d-md-none d-xl-none'>
+                        </Col>}
+                        {isMobile && <Col md={12} xl={12} className='d-block d-md-none d-xl-none'>
                             <Carousel className='d-block d-md-none d-xl-none carousel-blog'>
                                 {fetchBlog?.map((data, index) => {
                                     return (
@@ -87,7 +88,7 @@ function ContenedorTarjetaBlog({ children }) {
                                     );
                                 })}
                             </Carousel>
-                        </Col>
+                        </Col>}
                         <Col md={12} className='mx-auto text-center py-5'>
                             <Link to={'/es/blog'} className='btn btn-primary'>Descubre más artículos</Link>
                         </Col>

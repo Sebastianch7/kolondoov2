@@ -53,6 +53,7 @@ import ComparadorAlarmas from '../Pages/Es/ComparadorAlarmas';
 import ComparadorSegurosSalud from '../Pages/Es/ComparadorSegurosSalud';
 import ConfirmacionEmail from '../Pages/ConfirmacionEmail';
 import Simulador from '../Pages/Es/Simulador';
+import ComparadorAutoconsumo from '../Pages/Es/ComparadorAutoconsumo';
 
 function RoutesApp() {
     return (
@@ -83,6 +84,10 @@ function RoutesApp() {
                 <Route path="/es/energia/comparador-tarifas-luz" element={<ComparadorLuz />} />
                 <Route path="/es/energia/comparador-tarifas-luz/:id" element={<Lead />} />
                 <Route path="/es/energia/comparador-tarifas-luz/thank/:id" element={<ThankPage />} />
+
+                <Route path="/es/energia/comparador-tarifas-autoconsumo" element={<ComparadorAutoconsumo />} />
+                <Route path="/es/energia/comparador-tarifas-autoconsumo/:id" element={<Lead />} />
+                <Route path="/es/energia/comparador-tarifas-autoconsumo/thank/:id" element={<ThankPage />} />
 
                 <Route path="/es/energia/comparador-tarifas-gas" element={<ComparadorGas />} />
                 <Route path="/es/energia/comparador-tarifas-gas/:id" element={<Lead />} />

@@ -9,7 +9,7 @@ import TarjetaTarifa from '../Tarjeta/TarjetaTarifa';
 import NotInfoItem from '../Utils/NotInfoItem';
 import Load from '../Utils/Load';
 import TarjetaTarifaLeadEnergia from '../Tarjeta/TarjetaTarifaLeadEnergia'
-import { fetchComercializadorasLuzGas, fetchTarifasLuzGas } from '../../services/ApiServices'
+import { fetchDataAll } from '../../services/ApiServices'
 import TarjetaTarifaLeadEnergiaGas from '../Tarjeta/TarjetaTarifaLeadEnergiaGas';
 import { useLocation } from 'react-router-dom';
 
@@ -56,7 +56,7 @@ function ContenedorProductosLuzGas() {
     if (lang != null) {
       const fetchBrands = async () => {
         try {
-          const response = await fetchComercializadorasLuzGas(lang)
+          const response = await fetchDataAll('Comercializadoras/luzgas',lang)
           setBrand(response);
         } catch (error) {
           console.error("Error al obtener las marcas de operadoras:", error);
@@ -72,7 +72,7 @@ function ContenedorProductosLuzGas() {
       const fetchTariffs = async () => {
         try {
           setIsLoadInformation(true);
-          const response = await fetchTarifasLuzGas(lang)
+          const response = await fetchDataAll('TarifasGasLuz',lang)
           setFiltros(response);
           setTarifas(response);
           setIsLoadInformation(false);

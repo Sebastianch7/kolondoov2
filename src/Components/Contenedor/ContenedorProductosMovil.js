@@ -9,7 +9,7 @@ import InterSection from '../Utils/InterSection';
 import TarjetaTarifa from '../Tarjeta/TarjetaTarifa';
 import NotInfoItem from '../Utils/NotInfoItem';
 import Load from '../Utils/Load';
-import { fetchFilterMovil, fetchOperadoras, fetchTarifasMovil } from '../../services/ApiServices'
+import { fetchDataAll } from '../../services/ApiServices'
 import { useLocation } from 'react-router-dom';
 
 function ContenedorProductosMovil() {
@@ -88,8 +88,8 @@ function ContenedorProductosMovil() {
       setIsLoadFilter(false);
       const fetchData = async () => {
         try {
-          const response = await fetchFilterMovil(lang);
-          const { min_gb, max_gb, min_precio, max_precio, moneda } = response;
+          const response = await fetchDataAll('filterMovil',lang)
+          const { min_gb, max_gb, min_precio, max_precio, moneda } = response[0];
 
           setMinCapacity(parseInt(min_gb) > 0 ? parseInt(min_gb) : 0);
           setMaxCapacity(parseInt(max_gb));
@@ -114,7 +114,7 @@ function ContenedorProductosMovil() {
     if (lang != null) {
       const fetchBrands = async () => {
         try {
-          const response = await fetchOperadoras(lang);
+          const response = await fetchDataAll('Operadoras/Movil',lang)
           setBrand(response);
         } catch (error) {
           console.error("Error al obtener las marcas de operadoras:", error);
@@ -131,7 +131,7 @@ function ContenedorProductosMovil() {
       setIsLoadInformation(true);
       const fetchTariffs = async () => {
         try {
-          const response = await fetchTarifasMovil(lang)
+          const response = await fetchDataAll('TarifasMovil',lang)
           setFiltros(response);
           setTarifas(response);
           setIsLoadInformation(false);

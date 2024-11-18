@@ -1,16 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { Container, Row, Col, Button, Form } from 'react-bootstrap';
-import axios from 'axios';
 import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
 import { isMobile } from 'react-device-detect';
 import Modal from 'react-bootstrap/Modal';
-import api from '../../services/ApiServices'
+import api, { fetchDataAll } from '../../services/ApiServices'
 import InterSection from '../Utils/InterSection';
 import TarjetaTarifa from '../Tarjeta/TarjetaTarifa';
 import NotInfoItem from '../Utils/NotInfoItem';
 import Load from '../Utils/Load';
-import { fetchFilterFibra, fetchOperadorasFibra, fetchTarifasFibra } from '../../services/ApiServices'
 import { useLocation } from 'react-router-dom';
 
 function ContenedorProductosFibra() {
@@ -70,12 +68,13 @@ function ContenedorProductosFibra() {
       const fetchData = async () => {
         try {
           setIsLoadFilter(false);
-          const filterData = await fetchFilterFibra(lang);
-          setTypeMoneda(filterData.moneda)
-          setMinCapacity(filterData.minCapacity);
-          setMaxPrice(filterData.maxPrice);
-          setMinPrice(filterData.minPrice);
-          setRangePrice(filterData.rangePrice);
+          const response = await fetchDataAll('filterFibra',lang);
+          const { minCapacity, max_precio, min_precio, moneda } = response[0];
+
+          setMaxPrice(parseInt(max_precio));
+          setMinPrice(parseInt(min_precio) > 0 ? parseInt(min_precio) : 0);
+          setRangePrice([parseInt(min_precio) > 0 ? parseInt(min_precio) : 0, parseInt(max_precio)]);
+          setTypeMoneda(moneda)
           setIsLoadFilter(true);
         } catch (error) {
           console.error("Error al obtener los datos iniciales de filtros:", error);
@@ -90,8 +89,8 @@ function ContenedorProductosFibra() {
     if (lang != null) {
       const fetchBrands = async () => {
         try {
-          const brands = await fetchOperadorasFibra(lang);
-          setBrand(brands);
+          const response = await fetchDataAll('Operadoras/fibra',lang)
+          setBrand(response);
           setIsLoadFilter(true)
           setIsLoadInformation(false)
         } catch (error) {
@@ -108,7 +107,7 @@ function ContenedorProductosFibra() {
       const fetchTariffs = async () => {
         try {
           setIsLoadInformation(true);
-          const response = await fetchTarifasFibra(lang)
+          const response = await fetchDataAll('TarifasFibra',lang)
           setFiltros(response);
           setTarifas(response);
           setIsLoadInformation(false);

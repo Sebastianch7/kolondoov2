@@ -63,11 +63,7 @@ function ComparadorPrestamosCo() {
                 image={imagenLanding}
                 logo={logoLanding}
             >
-                {/* <FormSuscripcion
-                    text={'Introduce tu código postal'}
-                    button={'Buscar Ofertas'}
-                    politicy
-                /> */}
+                
             </Banner>
 
             <ContenedorPrestamos filtroCategoria={filtro} />

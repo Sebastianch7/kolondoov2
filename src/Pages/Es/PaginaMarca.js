@@ -44,11 +44,7 @@ export default function PaginaMarca() {
                 image={'/img/internet-telefonia/banner_movil.png'}
                 logo={'/img/icons/mobile.svg'}
             >
-                {/* <FormSuscripcion
-                    text={'Introduce tu código postal'}
-                    button={'Buscar Ofertas'}
-                    politicy
-                /> */}
+                
             </Banner>
             <Footer></Footer>
         </div>

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { fetchFooterWeb } from '../../services/ApiServices';
+import { fetchDataAll, fetchFooterWeb } from '../../services/ApiServices';
 
 function Footer(props) {
     const [lang, setLang] = useState('');
@@ -17,7 +17,7 @@ function Footer(props) {
         const fetchData = async () => {
             if (lang !== '') {
                 try {
-                    const response = await fetchFooterWeb(lang.trim());
+                    const response = await fetchDataAll('Footer',lang.trim());
                     setDataFooter(response);
                 } catch (error) {
                     console.error("Error al obtener el menú", error);
@@ -66,7 +66,7 @@ function Footer(props) {
                             <option value="">Cambiar ubicación</option>
                             <option value="Es">España</option>
                             <option value="Co">Colombia</option>
-                            <option value="Mx">México</option>
+                            {/* <option value="Mx">México</option> */}
                         </select>
                     </Col>
                     <Col xs={12} md={3} xl={3}>

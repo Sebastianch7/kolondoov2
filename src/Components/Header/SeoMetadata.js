@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { useLocation } from 'react-router-dom';
-import { fetchSeoMeta } from '../../services/ApiServices';
+import { fetchDataAll } from '../../services/ApiServices';
 
 const apiUrl = process.env.REACT_APP_API_URL;
 const App = ({ titulo, descripcion, url, robots ='index, follow', imagen_destacada = `${apiUrl}/img/logos/logo.svg` }) => {
@@ -18,7 +18,7 @@ const App = ({ titulo, descripcion, url, robots ='index, follow', imagen_destaca
         if (lang != null) {
           const fetchSeoData = async () => {
             try {
-              const response = await fetchSeoMeta(lang)
+              const response = await fetchDataAll('MetaDataSEO',lang)
               setDataSeo(response);
             } catch (error) {
               console.error("Error al obtener las marcas de operadoras:", error);

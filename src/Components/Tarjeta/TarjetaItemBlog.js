@@ -35,7 +35,7 @@ export default function TarjetaItemBlog({ data }) {
 
     return (
         <>
-            <Col xs={12} md={6}>
+            <Col xs={12} md={4}>
                 <Card className='m-2 tarjeta tarjeta-blog tarjeta-blog-blog border-0'>
                     <a className='w-100px' href={`/${lang}/blog/${categoria_slug}/${url_amigable}`}><Card.Img variant="top" className='img-fluid' src={`${imagen}`} alt={`${imagen}`} /></a>
                     <Card.Body className='bg-gray'>

@@ -55,7 +55,7 @@ export default function ContenedorBlogItem({ }) {
                             setBtnBack('blog')
                             setCarpeta('blog')
                             break;
-                        case 'herramientas':
+                        /* case 'herramientas':
                             switch (validarCategoria) {
                                 case 'suministros':
                                     response = await getGestionById('suministros', idBlog);
@@ -106,7 +106,7 @@ export default function ContenedorBlogItem({ }) {
                                     setRutaImagen('/img/gestiones/desktop/')
                                     break;
                             }
-                            break;
+                            break; */
                     }
 
                 }
@@ -123,7 +123,7 @@ export default function ContenedorBlogItem({ }) {
             <MetaData titulo={fetchBlog?.seo_titulo} descripcion={fetchBlog?.seo_descripcion} imagen_destacada={`${fetchBlog?.imagen}`} />
             {!load ? <Container>
                 <Row>
-                    <Col xs={12} md={8}>
+                    <Col xs={12}>
                         {fetchBlog?.imagen && <Image className='img-fluid w-100' src={`${rutaImagen ? rutaImagen : ''}${fetchBlog?.imagen}`} alt={`${fetchBlog?.alt_img ? fetchBlog?.alt_img : 'Imagen no encontrada'}`} />}
                         <TitleSection
                             left
@@ -138,9 +138,9 @@ export default function ContenedorBlogItem({ }) {
                             <Link className='font-09 btn btn-primary' to={`/es/${btnBack}`}>Volver</Link>
                         </Col>
                     </Col>
-                    <Col xs={12} md={4}>
-                        {/* <ContenedorDestacados /> */}
-                    </Col>
+                    {/* <Col xs={12} md={4}>
+                        <ContenedorDestacados />
+                    </Col> */}
                 </Row>
                 <Row>
                     <FormSuscripcion />

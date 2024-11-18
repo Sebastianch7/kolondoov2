@@ -6,7 +6,7 @@ import Modal from 'react-bootstrap/Modal';
 import InterSection from '../Utils/InterSection';
 import NotInfoItem from '../Utils/NotInfoItem';
 import Load from '../Utils/Load';
-import { fetchCategoriasCupones, fetchTipoCupones, fetchComerciosCupones, fetchTarifasCupones, fetchTarifaCupon } from '../../services/ApiServices'
+import { fetchCategoriasCupones, fetchTipoCupones, fetchComerciosCupones, fetchTarifasCupones, fetchTarifaCupon, fetchDataAll } from '../../services/ApiServices'
 import TarjetaTarifaCupon from '../Tarjeta/TarjetaTarifaCupon';
 import { Navigate, useLocation, useParams } from 'react-router-dom';
 import ModalCupon from '../modal/ModalCupon';
@@ -53,7 +53,7 @@ function ContenedorCupones(idCategoria = null) {
     if (lang != null) {
       const fetchCategoriasFiltro = async () => {
         try {
-          const response = await fetchCategoriasCupones(lang);
+          const response = await fetchDataAll('getCategoriasCupones',lang);
           setCategoriasFiltro(response)
         } catch (error) {
           console.error("Error al obtener los comercios para cupones:", error);

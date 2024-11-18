@@ -29,7 +29,7 @@ export default function ContenedorDestacados({}) {
             /> */}
             {!isLoading ?
                 fetchBlog.length > 0 &&
-                fetchBlog.map((item, index) => {
+                fetchBlog?.map((item, index) => {
                     return <TarjetaBlogMin categorias={'destacado'} key={index} data={item} />
                 })
                 :

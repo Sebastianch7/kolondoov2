@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import { Link, useLocation } from 'react-router-dom';
-import { fetchFooterWeb } from '../../services/ApiServices';
+import { fetchDataAll, fetchFooterWeb } from '../../services/ApiServices';
 
 const handleSelectChange = (event) => {
     const country = event.target.value;
@@ -36,7 +36,7 @@ function FooterCo(props) {
         const fetchData = async () => {
             if (lang != '') {
                 try {
-                    const response = await fetchFooterWeb(lang.trim())
+                    const response = await fetchDataAll('Footer',lang.trim());
                     setDataFooter(response);
                 } catch (error) {
                     console.error("Error al obtener el menu", error);

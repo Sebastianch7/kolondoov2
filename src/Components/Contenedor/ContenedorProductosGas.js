@@ -8,7 +8,7 @@ import InterSection from '../Utils/InterSection';
 import TarjetaTarifaLeadGas from '../Tarjeta/TarjetaTarifaLeadGas'
 import NotInfoItem from '../Utils/NotInfoItem';
 import Load from '../Utils/Load';
-import { fetchComercializadorasGas, fetchTarifasGas } from '../../services/ApiServices'
+import { fetchDataAll } from '../../services/ApiServices'
 import { useLocation } from 'react-router-dom';
 
 
@@ -53,7 +53,7 @@ function ContenedorProductosGas() {
     if (lang != null) {
       const fetchBrands = async () => {
         try {
-          const response = await fetchComercializadorasGas(lang)
+          const response = await fetchDataAll('Comercializadoras/gas',lang)
           setBrand(response);
         } catch (error) {
           console.error("Error al obtener las marcas de operadoras:", error);
@@ -69,7 +69,7 @@ function ContenedorProductosGas() {
       setIsLoadInformation(true);
       const fetchTariffs = async () => {
         try {
-          const response = await fetchTarifasGas(lang)
+          const response = await fetchDataAll('TarifasGas',lang)
           setFiltros(response);
           setTarifas(response);
           setIsLoadInformation(false);

@@ -5,7 +5,7 @@ import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
 import { isMobile } from 'react-device-detect';
 import Modal from 'react-bootstrap/Modal';
-import api from '../../services/ApiServices'
+import api, { fetchDataAll } from '../../services/ApiServices'
 import InterSection from '../Utils/InterSection';
 import TarjetaTarifa from '../Tarjeta/TarjetaTarifa';
 import NotInfoItem from '../Utils/NotInfoItem';
@@ -96,7 +96,7 @@ function ContenedorProductosPlanCelular() {
     if (lang != null) {
       const fetchBrands = async () => {
         try {
-          const brands = await fetchOperadorasPlanCelular(lang);
+          const brands = await fetchDataAll('OperadorasPlanCelular',lang);
           setBrand(brands);
         } catch (error) {
           console.error("Error al obtener las marcas de operadoras:", error);

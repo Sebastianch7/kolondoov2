@@ -8,7 +8,7 @@ import { useLocation, Link } from 'react-router-dom';
 import ItemMenuDesktop from '../Items/ItemMenuDesktop';
 import { isMobile } from 'react-device-detect';
 import Accordion from 'react-bootstrap/Accordion';
-import { getMenu, getMenuBlog, getMenuApi } from '../../services/ApiServices';
+import { getMenu, getMenuBlog, getMenuApi, fetchDataAll } from '../../services/ApiServices';
 
 
 function Header({ breadCrumb }) {
@@ -34,10 +34,10 @@ function Header({ breadCrumb }) {
             setIsLoadInformation(true);
     
             try {
-                const promises = [getMenuApi(lang.trim())];
+                const promises = [fetchDataAll('MenuApi',lang.trim())];
                 
                 if (lang === 'es') {
-                    promises.push(getMenuBlog(lang.trim()));
+                    promises.push(fetchDataAll('MenuBlog',lang.trim()));
                 }
     
                 const [mainMenu, blogMenu] = await Promise.all(promises);

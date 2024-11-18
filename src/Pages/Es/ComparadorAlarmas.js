@@ -3,12 +3,8 @@ import Header from '../../Components/Header/Header'
 import Footer from '../../Components/Footer/Footer'
 import { Container, Row, Col, Card, Button, Table } from 'react-bootstrap'
 import TitleSection from '../../Components/Text/TitleSection'
-import { getExtraOffer } from '../../services/ApiServices'
-import TarjetaTarifa from '../../Components/Tarjeta/TarjetaTarifa'
-import ContenedorPreguntasFrecuentes from '../../Components/Contenedor/ContenedorPreguntasFrecuentes';
-import preguntasFrecuentes from '../../Content/PreguntasFrecuentesTestVelocidad.json'
+import { fetchDataAll } from '../../services/ApiServices'
 import MetaData from '../../Components/Header/SeoMetadata';
-import { fetchTarifasAlarmas, fetchTarifasAlarmasCuotaMensual, fetchTarifasAlarmasEquipos } from '../../services/ApiServices';
 import TarjetaBannerSeguro from '../../Components/Tarjeta/TarjetaBannerSeguro';
 import ItemSegurosInfo from '../../Components/Items/ItemSegurosInfo';
 import ContenedorProductosAlarmas from '../../Components/Contenedor/ContenedorProductosAlarmas';
@@ -47,7 +43,7 @@ export default function ComparadorAlarmas() {
   useEffect(() => {
     const fetchTariffs = async () => {
       try {
-        const response = await fetchTarifasAlarmas()
+        const response = await fetchDataAll('getTarifasAlarmas','es')
         setExtraOffer(response);
         setIsLoading(false);
       } catch (error) {
@@ -61,7 +57,7 @@ export default function ComparadorAlarmas() {
   useEffect(() => {
     const fetchTariffs = async () => {
       try {
-        const response = await fetchTarifasAlarmasCuotaMensual('es')
+        const response = await fetchDataAll('getTarifasComparadorCuotaMensual','es')
         setCuotaMensual(response);
       } catch (error) {
         console.error("Error al obtener oferta extra:", error);

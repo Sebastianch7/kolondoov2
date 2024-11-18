@@ -15,7 +15,7 @@ export default function ChangeLang() {
     changeLanguage(location.pathname.split('/')[1])
   }, [])
 
-  useEffect(() => {
+  /* useEffect(() => {
     const fetchData = async () => {
       try {
         setIsLoading(true);
@@ -28,7 +28,7 @@ export default function ChangeLang() {
     };
 
     fetchData();
-  }, []);
+  }, []); */
 
   const { i18n } = useTranslation();
   const changeLanguage = (lng) => {

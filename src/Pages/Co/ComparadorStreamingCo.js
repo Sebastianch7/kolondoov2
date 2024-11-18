@@ -33,11 +33,7 @@ function ComparadorStreamingCo() {
         image={'/img/banner_streaming-co.png'}
         logo={'/img/icons/streaming.svg'}
       >
-        {/* <FormSuscripcion
-                    text={'Introduce tu código postal'}
-                    button={'Buscar Ofertas'}
-                    politicy
-                /> */}
+        
       </Banner>
       <ContenedorProductosStreaming />
       <ContenedorPorQueComparar title={'¿Por qué comparar'} titleAlt={'tarifas de Streaming'} titleThird={'es tan importante?'} dataPorQueComparar={dataPorQueComparar} />

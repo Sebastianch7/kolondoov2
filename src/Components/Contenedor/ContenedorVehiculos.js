@@ -9,7 +9,7 @@ import InterSection from '../Utils/InterSection';
 import TarjetaTarifa from '../Tarjeta/TarjetaTarifa';
 import NotInfoItem from '../Utils/NotInfoItem';
 import Load from '../Utils/Load';
-import { fetchFilterVehiculos, fetchMarcasVehiculos, fetchTarifasVehiculos, fetchFilterVehiculosChassis } from '../../services/ApiServices'
+import { fetchFilterVehiculos, fetchMarcasVehiculos, fetchTarifasVehiculos, fetchFilterVehiculosChassis, fetchDataAll } from '../../services/ApiServices'
 import TarjetaVehiculo from '../Tarjeta/TarjetaVehiculo';
 import ItemFiltroVehiculo from '../../Content/ItemFiltroVehiculo.json'
 import ItemFiltroCombustible from '../../Content/ItemFiltroCombustible.json'
@@ -101,7 +101,7 @@ function ContenedorVehiculos() {
     setIsLoadFilter(false);
     const fetchData = async () => {
       try {
-        const response = await fetchFilterVehiculosChassis(lang);
+        const response = await fetchDataAll('getValuesFilterVehiculosChassis',lang);
         setFilterChasis(response)
         setIsLoadFilter(true);
       } catch (error) {
@@ -116,7 +116,7 @@ function ContenedorVehiculos() {
   useEffect(() => {
     const fetchBrands = async () => {
       try {
-        const response = await fetchMarcasVehiculos(lang);
+        const response = await fetchDataAll('getMarcasVehiculos',lang);
         setBrand(response);
       } catch (error) {
         console.error("Error al obtener las marcas de vehiculos:", error);
@@ -131,7 +131,7 @@ function ContenedorVehiculos() {
     setIsLoadInformation(true);
     const fetchTariffs = async () => {
       try {
-        const response = await fetchTarifasVehiculos(lang)
+        const response = await fetchDataAll('getTarifasVehiculos',lang)
         console.log(response)
         setFiltros(response);
         setTarifas(response);

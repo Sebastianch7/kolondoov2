@@ -16,6 +16,7 @@ import TarjetaTarifaLeadEnergiaGas from '../../Components/Tarjeta/TarjetaTarifaL
 import TarjetaTarifaLeadPrestamo from '../../Components/Tarjeta/TarjetaTarifaLeadPrestamo';
 import TarjetaOfertaDirecta from '../../Components/Tarjeta/TarjetaOfertaDirecta';
 import { getDetailOffer } from '../../services/ApiServices';
+import TarjetaTarifaLeadAutoconsumo from '../../Components/Tarjeta/TarjetaTarifaLeadAutoconsumo';
 
 export default function Lead() {
   const { id } = useParams();
@@ -102,6 +103,7 @@ export default function Lead() {
       'comparador-tarifas-luz-y-gas': <TarjetaTarifaLeadEnergiaGas data={infoOffer} service={offerLooking} />,
       'comparador-finanzas': <TarjetaTarifaLeadPrestamo data={infoOffer} service={offerLooking} />,
       'comparador-tarifas-seguros-salud': <TarjetaTarifaLeadPrestamo data={infoOffer} service={offerLooking} />,
+      'comparador-tarifas-autoconsumo': <TarjetaTarifaLeadAutoconsumo data={infoOffer} service={offerLooking} />,
     };
     return tarjetaMap[offerLooking?.toLowerCase()] || null;
   };
@@ -116,6 +118,7 @@ export default function Lead() {
       'comparador-tarifas-luz-y-gas': <BreadCrumb lead={true} />,
       'comparador-finanzas': <BreadCrumb lead={true} />,
       'comparador-tarifas-seguros-salud': null,
+      'comparador-tarifas-autoconsumo': <BreadCrumb lead={true} />,
     };
     return tarjetaMap[offerLooking?.toLowerCase()] || null;
   };
@@ -131,6 +134,7 @@ export default function Lead() {
       'comparador-tarifas-luz-y-gas': <FormLead data={infoOffer} idPlan={idPlan} landing={offerLooking} urlOffers={location.pathname} company={infoOffer.operadora} />,
       'comparador-finanzas': <TarjetaOfertaDirecta data={infoOffer} />,
       'comparador-tarifas-seguros-salud': <FormLead data={infoOffer} idPlan={idPlan} landing={offerLooking} urlOffers={location.pathname} company={infoOffer.proveedor} />,
+      'comparador-tarifas-autoconsumo': <FormLead data={infoOffer} idPlan={idPlan} landing={offerLooking} urlOffers={location.pathname} company={infoOffer.operadora} />,
     };
     return tarjetaMap[offerLooking?.toLowerCase()] || null;
   };

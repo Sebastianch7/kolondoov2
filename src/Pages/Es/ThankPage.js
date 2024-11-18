@@ -11,6 +11,8 @@ import TarjetaTarifaLead from '../../Components/Tarjeta/TarjetaTarifaLead';
 import Header from '../../Components/Header/Header';
 import TarjetaTarifaLeadEnergiaGas from '../../Components/Tarjeta/TarjetaTarifaLeadEnergiaGas';
 import TarjetaTarifaLeadGas from '../../Components/Tarjeta/TarjetaTarifaLeadGas';
+import TarjetaTarifaLeadAutoconsumo from '../../Components/Tarjeta/TarjetaTarifaLeadAutoconsumo';
+import TarjetaTarifaLeadPrestamo from '../../Components/Tarjeta/TarjetaTarifaLeadPrestamo';
 
 export default function ThankPage() {
 
@@ -23,17 +25,6 @@ export default function ThankPage() {
   const [breadUrl, setBreadUrl] = useState(null);
 
   const [offerLooking, setOfferLooking] = useState(null)
-
-  const offerPath = {
-    'comparador-movil': 'movil',
-    'comparador-fibra': 'fibra',
-    'comparador-tarifas-fibra-y-movil': 'fibra-y-movil',
-    'comparador-fibra-movil-tv': 'fibra-movil-tv',
-    'comparador-tarifas-luz': 'luz',
-    'comparador-tarifas-gas': 'gas',
-    'comparador-tarifas-luz-y-gas': 'luz-y-gas',
-  };
-
 
   useEffect(() => {
     let locations = location.pathname.split('/');
@@ -75,6 +66,21 @@ export default function ThankPage() {
     fetchTariffs();
   }, [idPlan]);
 
+  const renderTarjeta = () => {
+    const tarjetaMap = {
+      'comparador-movil': <TarjetaTarifaLead data={infoOffer} service={offerLooking} thanks />,
+      'comparador-fibra': <TarjetaTarifaLead data={infoOffer} service={offerLooking} thanks />,
+      'comparador-tarifas-fibra-y-movil': <TarjetaTarifaLead data={infoOffer} service={offerLooking} thanks />,
+      'comparador-tarifas-luz': <TarjetaTarifaLeadEnergia data={infoOffer} service={offerLooking} thanks />,
+      'comparador-tarifas-gas': <TarjetaTarifaLeadGas data={infoOffer} service={offerLooking} thanks />,
+      'comparador-tarifas-luz-y-gas': <TarjetaTarifaLeadEnergiaGas data={infoOffer} service={offerLooking} thanks />,
+      'comparador-finanzas': <TarjetaTarifaLeadPrestamo data={infoOffer} service={offerLooking} thanks />,
+      'comparador-tarifas-seguros-salud': <TarjetaTarifaLeadPrestamo data={infoOffer} service={offerLooking} thanks />,
+      'comparador-tarifas-autoconsumo': <TarjetaTarifaLeadAutoconsumo data={infoOffer} service={offerLooking}/>,
+    };
+    return tarjetaMap[offerLooking?.toLowerCase()] || null;
+  };
+
   return (
     <>
       <Header></Header>
@@ -85,17 +91,7 @@ export default function ThankPage() {
             <h3>Muchas gracias por dejarnos tus datos.</h3>
           </Col>
           <Col xs={12} xxl={6} md={8} className='my-2' style={isMobile ? { order: 2 } : { order: 1 }}>
-            {(offerLooking?.toLowerCase() === 'comparador-movil'
-              || offerLooking?.toLowerCase() === 'comparador-fibra'
-              || offerLooking?.toLowerCase() === 'comparador-tarifas-fibra-y-movil'
-              || offerLooking?.toLowerCase() === 'comparador-fibra-movil-tv')
-              && <TarjetaTarifaLead key={0} data={infoOffer} service={offerLooking} thanks />}
-            {offerLooking?.toLowerCase() === 'comparador-tarifas-luz'
-              && <TarjetaTarifaLeadEnergia key={0} data={infoOffer} service={offerLooking} thanks />}
-            {offerLooking?.toLowerCase() === 'comparador-tarifas-gas'
-              && <TarjetaTarifaLeadGas key={0} data={infoOffer} service={offerLooking} thanks />}
-            {offerLooking?.toLowerCase() === 'comparador-tarifas-luz-y-gas'
-              && <TarjetaTarifaLeadEnergiaGas key={0} data={infoOffer} service={offerLooking} thanks />}
+          {renderTarjeta()}
           </Col>
         </Row>
       </Container>
@@ -117,9 +113,8 @@ export default function ThankPage() {
                     return <TarjetaTarifaLeadEnergia key={index} data={item} type={'luz'} TarifaCard/>
                     case 'comparador-tarifas-gas':
                     return <TarjetaTarifaLeadGas key={index} data={item} type={'gas'} TarifaCard/>
-                  default:
-                  case 'comparador-tarifas-luz-y-gas':
-                    return <TarjetaTarifaLeadEnergiaGas key={index} data={item} TarifaCard/>;
+                    case 'comparador-tarifas-autoconsumo':
+                      return <TarjetaTarifaLeadAutoconsumo key={index} data={item} TarifaCard />
                 }
               })
             }

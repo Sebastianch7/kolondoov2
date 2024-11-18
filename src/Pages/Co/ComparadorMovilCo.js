@@ -19,11 +19,7 @@ function ComparadorMovilCo() {
                 image={'/img/banner-movil-co.png'}
                 logo={'/img/icons/mobile.svg'}
             >
-                {/* <FormSuscripcion
-                    text={'Introduce tu código postal'}
-                    button={'Buscar Ofertas'}
-                    politicy
-                /> */}
+                
             </Banner>
             <ContenedorProductosMovil>
             </ContenedorProductosMovil>

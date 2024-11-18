@@ -16,11 +16,7 @@ function ComparadorGas() {
                 image={'/img/energia/banner_gas.png'}
                 logo={'/img/icons/gas.svg'}
             >
-                {/* <FormSuscripcion
-                    text={'Introduce tu código postal'}
-                    button={'Buscar Ofertas'}
-                    politicy
-                /> */}
+                
             </Banner>
             <ContenedorProductosGas />
             <Footer></Footer>

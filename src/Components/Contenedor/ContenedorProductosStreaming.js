@@ -6,7 +6,7 @@ import InterSection from '../Utils/InterSection';
 import TarjetaTarifaStreaming from '../Tarjeta/TarjetaTarifaStreaming';
 import TitleSection from '../Text/TitleSection';
 import Carousel from "react-multi-carousel";
-import { fetchStreamingOffers } from '../../services/ApiServices';
+import { fetchDataAll } from '../../services/ApiServices';
 import Load from '../Utils/Load';
 import { useLocation } from 'react-router-dom';
 
@@ -42,7 +42,7 @@ function ContenedorProductosStreaming(logo = null, landingLead = null, id = null
       setIsLoadInformation(true);
       const fetchTariffs = async () => {
         try {
-          let response = await fetchStreamingOffers(lang)
+          let response = await fetchDataAll('TarifasStreaming',lang)
           setTarifas(response);
           setIsLoadInformation(false);
         } catch (error) {

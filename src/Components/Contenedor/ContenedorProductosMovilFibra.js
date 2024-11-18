@@ -8,7 +8,7 @@ import InterSection from '../Utils/InterSection';
 import TarjetaTarifa from '../Tarjeta/TarjetaTarifa';
 import NotInfoItem from '../Utils/NotInfoItem';
 import Load from '../Utils/Load';
-import { fetchFilterMovilFibra, fetchOperadorasFibraMovil, fetchTarifasMovilFibra } from '../../services/ApiServices'
+import { fetchDataAll } from '../../services/ApiServices'
 import { useLocation } from 'react-router-dom';
 
 function ContenedorProductosMovilFibra() {
@@ -22,9 +22,6 @@ function ContenedorProductosMovilFibra() {
   // Estados para el estado de carga de filtros e información
   const [isLoadFilter, setIsLoadFilter] = useState(false);
   const [isLoadInformation, setIsLoadInformation] = useState(false);
-
-  // Estado para la marca seleccionada
-  const [selectedBrand, setSelectedBrand] = useState(null);
 
   // Estados para filtros seleccionados
   const [filterBrand, setFilterBrand] = useState([]);
@@ -82,8 +79,8 @@ function ContenedorProductosMovilFibra() {
       setIsLoadFilter(false);
       const fetchData = async () => {
         try {
-          const response = await fetchFilterMovilFibra(lang);
-          const { min_gb, max_gb, min_precio, max_precio, moneda } = response;
+          const response = await fetchDataAll('filterMovilFibra',lang)
+          const { min_gb, max_gb, min_precio, max_precio, moneda } = response[0];
 
           setMinCapacity(parseInt(min_gb) > 0 ? parseInt(min_gb) : 0);
           setMaxCapacity(parseInt(max_gb));
@@ -108,7 +105,7 @@ function ContenedorProductosMovilFibra() {
     if (lang != null) {
       const fetchBrands = async () => {
         try {
-          const response = await fetchOperadorasFibraMovil(lang);
+          const response = await fetchDataAll('OperadorasFibraMovil',lang)
           setBrand(response);
         } catch (error) {
           console.error("Error al obtener las marcas de operadoras:", error);
@@ -125,7 +122,7 @@ function ContenedorProductosMovilFibra() {
       setIsLoadInformation(true);
       const fetchTariffs = async () => {
         try {
-          const response = await fetchTarifasMovilFibra(lang)
+          const response = await fetchDataAll('TarifasFibraMovil',lang)
           setFiltros(response);
           setTarifas(response);
           setIsLoadInformation(false);

@@ -17,11 +17,7 @@ function ComparadorFibraMovil() {
                 logo={'/img/icons/router.svg'}
                 logo2={'/img/icons/mobile.svg'}
             >
-                {/* <FormSuscripcion
-                    text={'Introduce tu código postal'}
-                    button={'Buscar Ofertas'}
-                    politicy
-                /> */}
+                
             </Banner>
             <ContenedorProductosMovilFibra>
             </ContenedorProductosMovilFibra>

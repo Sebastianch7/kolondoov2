@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Header from '../../Components/Header/Header'
 import BannerImageFull from '../../Components/Banner/BannerImageFull'
-import { Container, Row, Col, Stack } from 'react-bootstrap'
+import { Container, Row, Col, Stack, Button } from 'react-bootstrap'
 import TitleSection from '../../Components/Text/TitleSection'
 import Footer from '../../Components/Footer/Footer';
 import TarjetaRaizEnergia from '../../Content/TarjetaRaizEnergia.json'
@@ -11,7 +11,6 @@ import { isMobile } from 'react-device-detect';
 import TarjetaProducto from '../../Components/Tarjeta/TarjetaProducto';
 import InterSection from '../../Components/Utils/InterSection';
 import ContenedorDescipcionTarifa from '../../Components/Contenedor/ContenedorDescipcionTarifa'
-import TarjetaTarifa from '../../Components/Tarjeta/TarjetaTarifa'
 import { getExtraOffer } from '../../services/ApiServices';
 import ContenedorComparadorLogos from '../../Components/Contenedor/ContenedorComparadorLogos';
 import ContenedorPreguntasFrecuentes from '../../Components/Contenedor/ContenedorPreguntasFrecuentes';
@@ -21,7 +20,6 @@ import ContenedorPorQueComparar from '../../Components/Contenedor/ContenedorPorQ
 import preguntasFrecuentes from '../../Content/PreguntasFrecuentesEnergia.json'
 import ItemStack from '../../Components/ItemStack';
 import MetaData from '../../Components/Header/SeoMetadata';
-import TarjetaTarifaLeadEnergia from '../../Components/Tarjeta/TarjetaTarifaLeadEnergia';
 import TarjetaTarifaLeadEnergiaGas from '../../Components/Tarjeta/TarjetaTarifaLeadEnergiaGas';
 
 const dataPorQueComparar = [
@@ -65,7 +63,7 @@ export default function RaizEnergia() {
   useEffect(() => {
     const fetchTariffs = async () => {
       try {
-        const response = await getExtraOffer('luz-y-gas')
+        const response = await getExtraOffer('luzygas')
         setExtraOffer(response);
       } catch (error) {
         console.error("Error al obtener oferta extra:", error);
@@ -75,7 +73,7 @@ export default function RaizEnergia() {
   }, []);
   return (
     <>
-    <MetaData titulo={'Comparador de Energía para Hogares: ahorra y contrata | Vuskoo'} descripcion={'Encuentra las mejores tarifas de energía. Compara precios, planes y beneficios, simplificamos tu elección para que optimices tu consumo de manera eficiente'}/>
+      <MetaData titulo={'Comparador de Energía para Hogares: ahorra y contrata | Vuskoo'} descripcion={'Encuentra las mejores tarifas de energía. Compara precios, planes y beneficios, simplificamos tu elección para que optimices tu consumo de manera eficiente'} />
       <Header breadCrumb></Header>
       <BannerImageFull
         image={'/img/bannerRaizEnergia.png'}
@@ -96,7 +94,7 @@ export default function RaizEnergia() {
           titleAlt={'Energía'}
           text1={t('es-raiz-energia-content-description')}
           text2={t('es-raiz-energia-content-description-2')}
-          left 
+          left
         />
         <ContenedorTarjeta
           cols={8}
@@ -108,7 +106,7 @@ export default function RaizEnergia() {
             :
             TarjetaRaizEnergia?.map((item, index) => {
               return (
-                <ItemStack data={item} index={index}/>
+                <ItemStack data={item} index={index} />
               );
             })
           }
@@ -127,16 +125,13 @@ export default function RaizEnergia() {
           <Col md={9}>
             {extraOffer.length > 0 &&
               extraOffer.map((item, index) => {
-                return <TarjetaTarifaLeadEnergiaGas key={index} data={item} TarifaCard/>
+                return <TarjetaTarifaLeadEnergiaGas key={index} data={item} TarifaCard />
               })
             }
           </Col>
           <Col xs={12} md={9}>
             <p className='font-09'>*Todos los precios incluyen el IVA.**Los precios están estimados en base a un consumo anual de 3.600kWh (300kWh al mes).***Los precios no incluyen costes derivados de la compensación del tope del gas.</p>
           </Col>
-          {/* <Col md={12} className='mx-auto text-center mt-md-4'>
-            <ButtonPrimary text={'Ver más ofertas'} url={'/energia/comparador-tarifas-luz-y-gas'} />
-          </Col> */}
         </Row>
       </Container>
       <ContenedorTarjetaBlog />

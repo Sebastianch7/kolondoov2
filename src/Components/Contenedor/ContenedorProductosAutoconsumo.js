@@ -7,17 +7,14 @@ import Modal from 'react-bootstrap/Modal';
 import InterSection from '../Utils/InterSection';
 import NotInfoItem from '../Utils/NotInfoItem';
 import Load from '../Utils/Load';
-import TarjetaTarifaLeadEnergia from '../Tarjeta/TarjetaTarifaLeadEnergia'
 import { fetchDataAll } from '../../services/ApiServices'
 import { useLocation } from 'react-router-dom';
+import TarjetaTarifaLeadAutoconsumo from '../Tarjeta/TarjetaTarifaLeadAutoconsumo';
 
 
-function ContenedorProductosLuz() {
+function ContenedorProductosAutoconsumo() {
   // Estados para el estado de carga de filtros e información
   const [isLoadInformation, setIsLoadInformation] = useState(false);
-
-  // Estado para la marca seleccionada
-  const [selectedBrand, setSelectedBrand] = useState(null);
 
   // Estados para filtros seleccionados
   const [filterBrand, setFilterBrand] = useState([]);
@@ -52,36 +49,36 @@ function ContenedorProductosLuz() {
   };
 
   useEffect(() => {
-    if (lang != null) {
-      const fetchBrands = async () => {
-        try {
-          const response = await fetchDataAll('Comercializadoras/luz',lang)
-          setBrand(response);
-        } catch (error) {
-          console.error("Error al obtener las marcas de operadoras:", error);
-        }
-      };
+    if (!lang) return;
+    const fetchBrands = async () => {
+      try {
+        const response = await fetchDataAll('Comercializadoras/autoconsumo',lang)
+        setBrand(response);
+      } catch (error) {
+        console.error("Error al obtener las marcas de operadoras:", error);
+      }
+    };
 
-      fetchBrands();
-    }
+    fetchBrands();
+
   }, [lang]);
 
   useEffect(() => {
-    if (lang != null) {
-      const fetchTariffs = async () => {
-        try {
-          setIsLoadInformation(true);
-          const response = await fetchDataAll('TarifasLuz',lang)
-          setFiltros(response);
-          setTarifas(response);
-          setIsLoadInformation(false);
-        } catch (error) {
-          console.error("Error al obtener las tarifas de luz:", error);
-        }
-      };
+    if (!lang) return;
+    setIsLoadInformation(true);
+    const fetchTariffs = async () => {
+      try {
+        const response = await fetchDataAll('TarifasAutoconsumo',lang)
+        setFiltros(response);
+        setTarifas(response);
+        setIsLoadInformation(false);
+      } catch (error) {
+        console.error("Error al obtener las tarifas de luz:", error);
+      }
+    };
 
-      fetchTariffs();
-    }
+    fetchTariffs();
+
   }, [brand, lang]);
 
   function setFilterBrandMulti(value) {
@@ -358,7 +355,7 @@ function ContenedorProductosLuz() {
                       return !isLoadInformation ? (
                         filtros?.length > 0 ? (
                           filtros.map((item, index) => (
-                            <TarjetaTarifaLeadEnergia key={index} data={item} TarifaCard />
+                            <TarjetaTarifaLeadAutoconsumo key={index} data={item} TarifaCard />
                           ))
                         ) : (
                           <NotInfoItem title="No se encontraron ofertas" text="Lo sentimos, no hemos encontrado ofertas con los filtros seleccionados." />
@@ -368,26 +365,6 @@ function ContenedorProductosLuz() {
                       );
                     })()}
                   </Tab>
-
-                  {/* <Tab eventKey="empresariales" title="Tarifas para empresas">
-                    {(() => {
-                      const filteredTarifas = filtros?.filter((item) => item.tarifa_empresarial === 1);
-
-                      return !isLoadInformation ? (
-                        filteredTarifas?.length > 0 ? (
-                          filteredTarifas.map((item, index) => (
-
-                            < TarjetaTarifaLeadEnergia key={index} data={item} TarifaCard />
-
-                          ))
-                        ) : (
-                          <NotInfoItem title="No se encontraron ofertas" text="Lo sentimos, no hemos encontrado ofertas con los filtros seleccionados." />
-                        )
-                      ) : (
-                        <Load />
-                      );
-                    })()}
-                  </Tab> */}
 
                 </Tabs>
 
@@ -402,4 +379,4 @@ function ContenedorProductosLuz() {
   );
 }
 
-export default ContenedorProductosLuz;
+export default ContenedorProductosAutoconsumo;

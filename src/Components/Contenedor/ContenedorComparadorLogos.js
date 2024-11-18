@@ -1,8 +1,8 @@
 import { React, useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import { Container, Row, Col, Stack, CarouselItem } from 'react-bootstrap';
+import { Container, Row, Col, } from 'react-bootstrap';
 import TitleSection from '../Text/TitleSection';
-import { fetchOperadoras, fetchComercializadoras } from '../../services/ApiServices';
+import { fetchDataAll } from '../../services/ApiServices';
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { Image } from "semantic-ui-react"
@@ -48,18 +48,17 @@ function ContenedorComparadorLogos({ subtitle }) {
     }, [location]);
 
     const { t } = useTranslation();
-    
-    let response;
-    useEffect(() => {
 
+    useEffect(() => {
+        let response;
         const fechtData = async () => {
             try {
                 switch (location.pathname.replace('/', '')) {
-                    case 'internet_y_telefonia':
-                        response = await fetchOperadoras()
+                    case 'es/internet-telefonia':
+                        response = await fetchDataAll('OperadorasAll', lang)
                         break;
-                    case 'energia':
-                        response = await fetchComercializadoras()
+                    case 'es/energia':
+                        response = await fetchDataAll('ComercializadorasAll', lang)
                         break;
                     case 'television_y_streaming':
                         response = DataStreaming;
@@ -72,7 +71,7 @@ function ContenedorComparadorLogos({ subtitle }) {
         };
 
         fechtData();
-    }, []);
+    }, [lang]);
 
     return (
         <div className=''>
@@ -114,7 +113,7 @@ function ContenedorComparadorLogos({ subtitle }) {
                                     shouldResetAutoplay
                                     showDots={false}
                                     sliderClass=""
-                                    slidesToSlide={1}
+                                    slidesToSlide={1.5}
                                     swipeable
                                 >
                                     {infoLogo?.map((data) => {

@@ -1,20 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import Header from '../../Components/Header/Header'
 import BannerImageFull from '../../Components/Banner/BannerImageFull'
-import { Container, Row, Col } from 'react-bootstrap'
+import { Container} from 'react-bootstrap'
 import TitleSection from '../../Components/Text/TitleSection'
 import Footer from '../../Components/Footer/Footer';
 import TarjetaRaizTelefonia from '../../Content/TarjetaRaizTelefoniaCo.json'
 import ContenedorTarjeta from '../../Components/Contenedor/ContenedorTarjeta';
-import ContenedorTarjetaBlog from '../../Components/Contenedor/ContenedorTarjetaBlog';
 import { isMobile } from 'react-device-detect';
-import AcordionItem from '../../Components/Acordion/AcordionItem';
 import TarjetaProducto from '../../Components/Tarjeta/TarjetaProducto';
 import InterSection from '../../Components/Utils/InterSection';
 import ContenedorDescipcionTarifa from '../../Components/Contenedor/ContenedorDescipcionTarifa'
-import TarjetaTarifa from '../../Components/Tarjeta/TarjetaTarifa'
-import { getDetailOffer, getExtraOffer } from '../../services/ApiServices';
-import ButtonPrimary from '../../Components/Button/ButtonPrimary';
+import { getExtraOffer } from '../../services/ApiServices';
 import ContenedorComparadorLogos from '../../Components/Contenedor/ContenedorComparadorLogos';
 import ContenedorPreguntasFrecuentes from '../../Components/Contenedor/ContenedorPreguntasFrecuentes';
 import { useTranslation } from 'react-i18next';
@@ -132,9 +128,9 @@ export default function RaizTelefoniaCo() {
           </Col>
         </Row> */}
       </Container>
-      <ContenedorComparadorLogos
+      {/* <ContenedorComparadorLogos
         subtitle={'Cada compañía telefónica tiene sus propias fortalezas y debilidades, lo que hace difícil elegir la ideal. La clave está en identificar qué aspectos son más importantes para usted y comparar las opciones para descubrir en qué destaca cada una. Aquí le presentamos las principales compañías y sus características distintivas. ¿Cuál se adapta mejor a sus necesidades?'}
-      />
+      /> */}
       <ContenedorPreguntasFrecuentes
         data={preguntasFrecuentes}
         image={'/img/preguntas-raiz-telefonia.png'}

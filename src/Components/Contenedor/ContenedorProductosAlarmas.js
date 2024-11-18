@@ -6,7 +6,7 @@ import InterSection from '../Utils/InterSection';
 import TarjetaTarifaStreaming from '../Tarjeta/TarjetaTarifaStreaming';
 import TitleSection from '../Text/TitleSection';
 import Carousel from "react-multi-carousel";
-import { fetchTarifasAlarmas } from '../../services/ApiServices';
+import { fetchDataAll } from '../../services/ApiServices';
 import Load from '../Utils/Load';
 import { useLocation } from 'react-router-dom';
 import TarjetaTarifaAlarma from '../Tarjeta/TarjetaTarifaAlarma';
@@ -43,7 +43,7 @@ function ContenedorProductosAlarmas(logo = null, landingLead = null, id = null) 
       setIsLoadInformation(true);
       const fetchTariffs = async () => {
         try {
-          let response = await fetchTarifasAlarmas(lang)
+          let response = await fetchDataAll('getTarifasAlarmas',lang)
           setTarifas(response);
           setIsLoadInformation(false);
         } catch (error) {
