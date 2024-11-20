@@ -23,7 +23,7 @@ function FormSuscripcion({ }) {
 
     const [checkIn, setCheckIn] = useState(false);
     const [isError, setIsError] = useState(null)
-    const [inpEmail, setInpEmail] = useState(null)
+    const [inpEmail, setInpEmail] = useState('')
     const [isSend, setIsSend] = useState(false);
     const [isValidEmail, setIsValidEmail] = useState(null)
 

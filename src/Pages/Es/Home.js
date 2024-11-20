@@ -52,11 +52,11 @@ function Home(props) {
                 />
                 <ContenedorContratacion imagen={'/img/compromiso-calidad.svg'} />
                 <ContenedorServiciosCalidad />
-                <div class="interSeccion"></div>
+                <div className="interSeccion"></div>
                 <ContenedorElegirVuskoo />
-                <div class="interSeccion"></div>
+                <div className="interSeccion"></div>
                 <ContenedorExplorar />
-                <div class="interSeccion"></div>
+                <div className="interSeccion"></div>
                 <FormSuscripcion />
             </main>
 
