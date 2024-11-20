@@ -3,7 +3,6 @@ import Header from '../../Components/Header/Header';
 import Banner from '../../Components/Banner/Banner';
 import Footer from '../../Components/Footer/Footer';
 import MetaData from '../../Components/Header/SeoMetadata';
-import ContenedorProductosPlanCelular from '../../Components/Contenedor/ContenedorProductosPlanCelular';
 import ContenedorVehiculos from '../../Components/Contenedor/ContenedorVehiculos';
 
 function ComparadorVehiculos() {

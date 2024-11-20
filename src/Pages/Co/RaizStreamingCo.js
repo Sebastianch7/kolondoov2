@@ -1,22 +1,19 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Header from '../../Components/Header/Header'
 import BannerImageFull from '../../Components/Banner/BannerImageFull'
-import { Container, Row, Col } from 'react-bootstrap'
+import { Container } from 'react-bootstrap'
 import TitleSection from '../../Components/Text/TitleSection'
 import Footer from '../../Components/Footer/Footer';
 import TarjetaRaizStreaming from '../../Content/TarjetaRaizStreamingCo.json'
 import ContenedorTarjeta from '../../Components/Contenedor/ContenedorTarjeta';
-import ContenedorTarjetaBlog from '../../Components/Contenedor/ContenedorTarjetaBlog';
 import { isMobile } from 'react-device-detect';
 import TarjetaProducto from '../../Components/Tarjeta/TarjetaProducto';
 import ContenedorDescipcionTarifa from '../../Components/Contenedor/ContenedorDescipcionTarifa'
 import ContenedorPreguntasFrecuentes from '../../Components/Contenedor/ContenedorPreguntasFrecuentes';
-import FormSuscripcion from '../../Components/Forms/FormSuscripcion';
 import ContenedorPorQueComparar from '../../Components/Contenedor/ContenedorPorQueComparar';
 import preguntasFrecuentes from '../../Content/PreguntasFrecuentesStreamingCo.json';
 import ItemStack from '../../Components/ItemStack';
 import MetaData from '../../Components/Header/SeoMetadata';
-import FooterCo from '../../Components/Footer/FooterCo';
 import FormSuscripcionCo from '../../Components/Forms/FormSuscripcionCo';
 
 const dataPorQueComparar = [

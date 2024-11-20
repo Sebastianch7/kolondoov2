@@ -1,5 +1,4 @@
 import React from 'react'
-import TitleSection from '../../Components/Text/TitleSection'
 import Header from '../../Components/Header/Header'
 import Footer from '../../Components/Footer/Footer'
 import { Container, Row, Col } from 'react-bootstrap'

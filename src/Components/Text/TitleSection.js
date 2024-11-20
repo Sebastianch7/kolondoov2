@@ -1,12 +1,10 @@
 import React from "react";
 import { Container, Row, Col, Stack } from "react-bootstrap";
 import Title from "./Title";
-import ButtonPrimary from "../Button/ButtonPrimary";
 import Subtitle from "./Subtitle";
 import { isMobile } from "react-device-detect";
 import { Link } from "react-router-dom";
 import { BsFillCalendar2Fill } from "react-icons/bs";
-import { BsFillFilePersonFill } from "react-icons/bs";
 
 function TitleSection({
   fecha,

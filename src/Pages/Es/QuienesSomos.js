@@ -3,10 +3,8 @@ import Header from '../../Components/Header/Header';
 import BannerImageFull from '../../Components/Banner/BannerImageFull';
 import TarjetaProducto from '../../Components/Tarjeta/TarjetaProducto';
 import ContenedorTarjeta from '../../Components/Contenedor/ContenedorTarjeta';
-import TitleSection from '../../Components/Text/TitleSection';
 import Footer from '../../Components/Footer/Footer';
 import ContenedorTarjetaBlog from '../../Components/Contenedor/ContenedorTarjetaBlog';
-import BannerReverse from '../../Components/Banner/BannerReverse';
 import FormSuscripcion from '../../Components/Forms/FormSuscripcion';
 import InterSection from '../../Components/Utils/InterSection';
 import TarjetaQuienesSomos from '../../Content/TarjetaQuienesSomos.json'

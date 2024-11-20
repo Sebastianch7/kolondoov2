@@ -37,7 +37,7 @@ export default function Lead() {
     setIdPlan(splitInfo[splitInfo.length - 1]);
     setOfferLooking(locations[3]);
     setBreadUrl(locations.join('/'));
-  }, [location.pathname, id]);
+  }, [location.pathname, id, breadUrl]);
 
   useEffect(() => {
     const fetchTariffs = async () => {
@@ -65,19 +65,6 @@ export default function Lead() {
     return template.replaceAll('{title}', formattedTitle).replaceAll('{name}', offerName) || defaultText;
   };
 
-  const textoLanding = () => {
-    const templates = {
-      'comparador-movil': `¡Experimenta la velocidad sin límites de {name} con el servicio de móvil con sus {title}!`,
-      'comparador-fibra': `¡Experimenta la velocidad sin límites de {name} con el servicio de móvil y fibra con sus {title}!`,
-      'comparador-tarifas-fibra-y-movil': `Conéctate al futuro con nuestra oferta imparable: {title}.`,
-      'comparador-tarifas-luz': `Ilumina tu hogar con el servicio de energía de {name}.`,
-      'comparador-tarifas-gas': `Descubre la potencia del servicio de gas de {name}.`,
-      'comparador-tarifas-luz-y-gas': `Obtén confort y ahorro con la oferta integral de luz y gas.`,
-      'comparador-tarifas-seguros-salud': `Obtén seguros y ahorro con la oferta que te ofrecemos.`,
-      default: ''
-    };
-    return generateSeoText(templates[offerLooking?.toLowerCase()] || templates.default, '');
-  };
 
   const descripcionLanding = () => {
     const templates = {

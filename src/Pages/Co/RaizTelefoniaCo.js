@@ -11,15 +11,12 @@ import TarjetaProducto from '../../Components/Tarjeta/TarjetaProducto';
 import InterSection from '../../Components/Utils/InterSection';
 import ContenedorDescipcionTarifa from '../../Components/Contenedor/ContenedorDescipcionTarifa'
 import { getExtraOffer } from '../../services/ApiServices';
-import ContenedorComparadorLogos from '../../Components/Contenedor/ContenedorComparadorLogos';
 import ContenedorPreguntasFrecuentes from '../../Components/Contenedor/ContenedorPreguntasFrecuentes';
 import { useTranslation } from 'react-i18next';
-import FormSuscripcion from '../../Components/Forms/FormSuscripcion';
 import preguntasFrecuentes from '../../Content/PreguntasFrecuentesTelefoniaCo.json'
 import ContenedorPorQueComparar from '../../Components/Contenedor/ContenedorPorQueComparar';
 import ItemStack from '../../Components/ItemStack';
 import MetaData from '../../Components/Header/SeoMetadata';
-import FooterCo from '../../Components/Footer/FooterCo';
 import FormSuscripcionCo from '../../Components/Forms/FormSuscripcionCo';
 
 const dataPorQueComparar = [
@@ -71,7 +68,7 @@ export default function RaizTelefoniaCo() {
     };
 
     fetchTariffs();
-  }, []);
+  }, [extraOffer]);
   return (
     <>
       <MetaData titulo={'Comparador de Internet y Telefonía: descubre las Ofertas | Vuskoo'} descripcion={'Encuentra las mejores ofertas en Internet y telefonía con nuestro comparador. Compara precios, planes, soluciones y beneficios para tomar decisiones informadas'}/>

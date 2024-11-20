@@ -2,7 +2,7 @@ import { React, useEffect, useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { isMobile } from "react-device-detect";
 import TitleSection from "../Text/TitleSection";
-import { Link, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
 const data = [
@@ -29,7 +29,7 @@ function ContenedorElegirVuskoo({ children }) {
 
   useEffect(() => {
     setLang(location.pathname.split("/")[1]);
-  }, [location]);
+  }, [location, lang]);
 
   const { t } = useTranslation();
 

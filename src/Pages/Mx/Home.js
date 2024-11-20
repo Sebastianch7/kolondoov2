@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import Header from '../../Components/Header/Header';
 import Banner from '../../Components/Banner/Banner';
 import ContenedorTarjetaBlog from '../../Components/Contenedor/ContenedorTarjetaBlog';
@@ -7,7 +7,6 @@ import FormSuscripcion from '../../Components/Forms/FormSuscripcion';
 import { useTranslation } from 'react-i18next';
 import MetaData from '../../Components/Header/SeoMetadata';
 import ConsentimientoCookies from '../../Components/Utils/ConsentimientoCookies';
-import { Link } from 'react-router-dom';
 
 
 function HomeMx(props) {

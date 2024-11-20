@@ -15,7 +15,7 @@ export default function Contactenos() {
                 <Row>
                     <Col sm={12} md={6} className='d-none d-md-block'>
                         <div>
-                            <img className='img-fluid' src={'/img/banner_contactenos.png'} />
+                            <img className='img-fluid' src={'/img/banner_contactenos.png'} alt='Banner contactenos' />
                         </div>
                     </Col>
                     <Col sm={12} md={6}>

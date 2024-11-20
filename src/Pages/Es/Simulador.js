@@ -1,4 +1,5 @@
 import React from 'react'
+
 export default function Simulador() {
     return (
         <>
@@ -12,6 +13,7 @@ export default function Simulador() {
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
                 className='border border-dark'
+                title="Simulador de Finanzas 1" 
             ></iframe>
 
             <h6><a href="https://app.kreditiweb.com/es/finanzas?token=8da9913634f5b3446bc1243117877ffe">https://app.kreditiweb.com/es/finanzas?token=8da9913634f5b3446bc1243117877ffe</a></h6>
@@ -24,6 +26,7 @@ export default function Simulador() {
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
                 className='border border-dark'
+                title="Simulador de Finanzas 2" 
             ></iframe>
 
             <script defer src="https://statics.app.kreditiweb.com/iframe/kw3_0_iframe.js"></script>

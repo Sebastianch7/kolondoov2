@@ -1,15 +1,15 @@
-import React, { useEffect, useState } from 'react';
-import { Container, Row, Col, Button, Form } from 'react-bootstrap';
-import Slider from 'rc-slider';
-import 'rc-slider/assets/index.css';
-import { isMobile } from 'react-device-detect';
-import Modal from 'react-bootstrap/Modal';
-import InterSection from '../Utils/InterSection';
-import TarjetaTarifa from '../Tarjeta/TarjetaTarifa';
-import NotInfoItem from '../Utils/NotInfoItem';
-import Load from '../Utils/Load';
-import { fetchDataAll } from '../../services/ApiServices'
-import { useLocation } from 'react-router-dom';
+import React, { useCallback, useEffect, useState } from "react";
+import { Container, Row, Col, Button, Form } from "react-bootstrap";
+import Slider from "rc-slider";
+import "rc-slider/assets/index.css";
+import { isMobile } from "react-device-detect";
+import Modal from "react-bootstrap/Modal";
+import InterSection from "../Utils/InterSection";
+import TarjetaTarifa from "../Tarjeta/TarjetaTarifa";
+import NotInfoItem from "../Utils/NotInfoItem";
+import Load from "../Utils/Load";
+import { fetchDataAll } from "../../services/ApiServices";
+import { useLocation } from "react-router-dom";
 
 function ContenedorProductosMovilFibraTv() {
   // Estado para filtros de precio y capacidad
@@ -23,13 +23,13 @@ function ContenedorProductosMovilFibraTv() {
   const [isLoadFilter, setIsLoadFilter] = useState(false);
   const [isLoadInformation, setIsLoadInformation] = useState(false);
 
-  // Estado para la marca seleccionada
-  const [selectedBrand, setSelectedBrand] = useState(null);
-
   // Estados para filtros seleccionados
   const [filterBrand, setFilterBrand] = useState([]);
   const [filterPrice, setFilterPrice] = useState([minPrice, maxPrice]);
-  const [filterCapacity, setFilterCapacity] = useState([minCapacity, maxCapacity]);
+  const [filterCapacity, setFilterCapacity] = useState([
+    minCapacity,
+    maxCapacity,
+  ]);
   const [filterLlamadas, setFilterLlamadas] = useState(false);
   const [filterPromo, setFilterPromo] = useState(false);
   const [filterOfertaDestacada, setFilterOfertaDestacada] = useState(false);
@@ -41,16 +41,14 @@ function ContenedorProductosMovilFibraTv() {
 
   // Estados para rangos de precio y capacidad
   const [rangePrice, setRangePrice] = useState([minPrice, maxPrice]);
-  const [rangeCapacity, setRangeCapacity] = useState([minCapacity, maxCapacity]);
-
   // Estado para el modal de filtros
   const [show, setShow] = useState(false);
-  const [lang, setLang] = useState(null)
+  const [lang, setLang] = useState(null);
   const location = useLocation();
 
   useEffect(() => {
-    setLang(location.pathname.split('/')[1])
-  }, [location])
+    setLang(location.pathname.split("/")[1]);
+  }, [location]);
   // Función para limpiar los filtros
   const cleanFilter = () => {
     setFilterLlamadas(false);
@@ -59,7 +57,6 @@ function ContenedorProductosMovilFibraTv() {
     setFilterCapacity([minCapacity, maxCapacity]);
     setFilterPrice([minPrice, maxPrice]);
     setRangePrice([minPrice, maxPrice]);
-    setRangeCapacity([minCapacity, maxCapacity]);
     setFilterOfertaDestacada(false);
     setFiltros(Tarifas);
   };
@@ -70,32 +67,32 @@ function ContenedorProductosMovilFibraTv() {
     handleFilterPrice(newRange);
   };
 
-  // Función para manejar el cambio en el rango de capacidad
-  const handleRangeChangeCapacity = (newRange) => {
-    setRangeCapacity(newRange);
-    handleFilterCapacity(newRange);
-  };
-
   // Función para obtener los datos iniciales de filtros
   useEffect(() => {
     if (lang != null) {
       setIsLoadFilter(false);
       const fetchData = async () => {
         try {
-          const response = await fetchDataAll('filterMovilFibraTv',lang)
-          const { min_gb, max_gb, min_precio, max_precio, moneda } = response[0];
+          const response = await fetchDataAll("filterMovilFibraTv", lang);
+          const { min_gb, max_gb, min_precio, max_precio, moneda } =
+            response[0];
 
           setMinCapacity(parseInt(min_gb) > 0 ? parseInt(min_gb) : 0);
           setMaxCapacity(parseInt(max_gb));
-          setRangeCapacity([parseInt(min_gb) > 0 ? parseInt(min_gb) : 0, parseInt(max_gb)]);
 
           setMaxPrice(parseInt(max_precio));
           setMinPrice(parseInt(min_precio) > 0 ? parseInt(min_precio) : 0);
-          setRangePrice([parseInt(min_precio) > 0 ? parseInt(min_precio) : 0, parseInt(max_precio)]);
-          setTypeMoneda(moneda)
+          setRangePrice([
+            parseInt(min_precio) > 0 ? parseInt(min_precio) : 0,
+            parseInt(max_precio),
+          ]);
+          setTypeMoneda(moneda);
           setIsLoadFilter(true);
         } catch (error) {
-          console.error("Error al obtener los datos iniciales de filtros:", error);
+          console.error(
+            "Error al obtener los datos iniciales de filtros:",
+            error
+          );
         }
       };
 
@@ -108,7 +105,7 @@ function ContenedorProductosMovilFibraTv() {
     if (lang != null) {
       const fetchBrands = async () => {
         try {
-          const response = await fetchDataAll('Operadoras/movilfibratv',lang)
+          const response = await fetchDataAll("Operadoras/movilfibratv", lang);
           setBrand(response);
         } catch (error) {
           console.error("Error al obtener las marcas de operadoras:", error);
@@ -125,7 +122,7 @@ function ContenedorProductosMovilFibraTv() {
       setIsLoadInformation(true);
       const fetchTariffs = async () => {
         try {
-          const response = await fetchDataAll('TarifasFibraMovilTv',lang)
+          const response = await fetchDataAll("TarifasFibraMovilTv", lang);
           setFiltros(response);
           setTarifas(response);
           setIsLoadInformation(false);
@@ -140,9 +137,9 @@ function ContenedorProductosMovilFibraTv() {
 
   function setFilterBrandMulti(value) {
     if (!filterBrand?.includes(value)) {
-      setFilterBrand([...filterBrand, value])
+      setFilterBrand([...filterBrand, value]);
     } else {
-      setFilterBrand(filterBrand.filter((item) => item !== value))
+      setFilterBrand(filterBrand.filter((item) => item !== value));
     }
   }
 
@@ -151,77 +148,89 @@ function ContenedorProductosMovilFibraTv() {
     setFilterPrice(value);
   };
 
-  // Función para manejar el filtro de capacidad
-  const handleFilterCapacity = (value) => {
-    setFilterCapacity(value);
-  };
+  // Función para filtrar por marca
+  const filterByBrand = useCallback(
+    (item) => {
+      if (filterBrand.length > 0) {
+        return filterBrand.includes(item.operadora);
+      }
+      return true;
+    },
+    [filterBrand]
+  );
+
+  // Función para filtrar por precio
+  const filterByPrice = useCallback(
+    (item) =>
+      filterPrice !== null
+        ? item.precio >= filterPrice[0] && item.precio <= filterPrice[1]
+        : true,
+    [filterPrice]
+  );
+
+  // Función para filtrar por tecnología
+  const filterByTechnology = useCallback(
+    (item) =>
+      filterLlamadas !== false
+        ? filterByFilter(filterLlamadas, item, "ilimitadas")
+        : true,
+    [filterLlamadas] // Dependencia de filterLlamadas
+  );
+
+  // Función para filtrar por promocion
+  const filterByPromo = useCallback(
+    (item) =>
+      filterPromo !== false
+        ? item.promocion !== "" && item.promocion !== null
+        : true,
+    [filterPromo]
+  );
+
+  const filterByOfertaDestacada = useCallback(
+    (item) => (filterOfertaDestacada !== false ? item.destacada === 1 : true),
+    [filterOfertaDestacada]
+  );
 
   // Función para aplicar los filtros
   useEffect(() => {
-    const resultado = Tarifas
-      .filter((item) => filterByBrand(item))
-      /* .filter((item) => filterByCapacity(item)) */
+    const resultado = Tarifas.filter((item) => filterByBrand(item))
       .filter((item) => filterByPrice(item))
       .filter((item) => filterByTechnology(item))
       .filter((item) => filterByPromo(item))
-      .filter((item) => filterByOfertaDestacada(item))
+      .filter((item) => filterByOfertaDestacada(item));
 
     setFiltros(resultado);
-  }, [filterBrand, filterPrice, filterCapacity, filterLlamadas, filterPromo, filterOfertaDestacada]);
-
-  // Función para filtrar por marca
-  function filterByBrand(item) {
-    if (filterBrand.length > 0) {
-      return filterBrand.includes(item.operadora) ? true : false;
-    } else {
-      return true;
-    }
-  }
-
-  // Función para filtrar por precio
-  const filterByPrice = (item) => filterPrice !== null ? item.precio >= filterPrice[0] && item.precio <= filterPrice[1] : true;
-
-  // Función para filtrar por tecnología
-  const filterByTechnology = (item) => filterLlamadas !== false ? filterByFilter(filterLlamadas, item, 'ilimitadas') : true;
-
-  // Función para filtrar por promocion
-  const filterByPromo = (item) => filterPromo !== false ? (item.promocion !== "" && item.promocion !== null) : true;
-
-  // Función para filtrar por capacidad
-  function filterByCapacity(item) {
-    if (filterCapacity !== null) {
-      if (item.parrilla_bloque_1.toLowerCase().includes("ilimitados") || item.parrilla_bloque_2.toLowerCase().includes("ilimitados") || item.parrilla_bloque_3.toLowerCase().includes("ilimitados") || item.parrilla_bloque_4.toLowerCase().includes("ilimitados")) {
-        return true;
-      } else {
-        return parseInt(item.parrilla_bloque_1.replace("Fibra", "").replace("Mb", "")) >= filterCapacity[0] && parseInt(item.parrilla_bloque_1.replace("Fibra", "").replace("Mb", "")) < filterCapacity[1];
-      }
-    } else {
-      return true;
-    }
-  }
-
-  function filterByOfertaDestacada(item) {
-    if (filterOfertaDestacada !== false) {
-      if (item.destacada == 1) {
-        return true;
-      } else {
-        return false;
-      }
-    } else {
-      return true;
-    }
-  }
+  }, [
+    filterBrand,
+    filterPrice,
+    filterCapacity,
+    filterLlamadas,
+    filterPromo,
+    filterOfertaDestacada,
+    Tarifas,
+    filterByBrand,
+    filterByPrice,
+    filterByTechnology,
+    filterByPromo,
+    filterByOfertaDestacada,
+  ]);
 
   // Función para filtrar por palabra clave en los bloques
   function filterByFilter(filter, item, word) {
     if (filter !== false) {
       if (item.parrilla_bloque_1?.toLowerCase().includes(word?.toLowerCase())) {
         return true;
-      } else if (item.parrilla_bloque_2?.toLowerCase().includes(word?.toLowerCase())) {
+      } else if (
+        item.parrilla_bloque_2?.toLowerCase().includes(word?.toLowerCase())
+      ) {
         return true;
-      } else if (item.parrilla_bloque_3?.toLowerCase().includes(word?.toLowerCase())) {
+      } else if (
+        item.parrilla_bloque_3?.toLowerCase().includes(word?.toLowerCase())
+      ) {
         return true;
-      } else if (item.parrilla_bloque_4?.toLowerCase().includes(word?.toLowerCase())) {
+      } else if (
+        item.parrilla_bloque_4?.toLowerCase().includes(word?.toLowerCase())
+      ) {
         return true;
       } else {
         return false;
@@ -235,12 +244,24 @@ function ContenedorProductosMovilFibraTv() {
     <>
       <section>
         <Container>
-          <Row className='justify-content-around'>
+          <Row className="justify-content-around">
             <Col xs={12} md={12} xl={3}>
               <Row>
-                {!isMobile ? <Col className='my-3 font-bold' xs={6} md={5}>Filtrar por: </Col> : <Col className='my-2' xs={6} md={5}><Button variant="light" onClick={() => setShow(true)}>Filtrar por</Button></Col>}
-                <Col className='my-2 text-center' xs={6} md={7}>
-                  <button className='btn btn-light' onClick={cleanFilter}>Limpiar filtro</button>
+                {!isMobile ? (
+                  <Col className="my-3 font-bold" xs={6} md={5}>
+                    Filtrar por:{" "}
+                  </Col>
+                ) : (
+                  <Col className="my-2" xs={6} md={5}>
+                    <Button variant="light" onClick={() => setShow(true)}>
+                      Filtrar por
+                    </Button>
+                  </Col>
+                )}
+                <Col className="my-2 text-center" xs={6} md={7}>
+                  <button className="btn btn-light" onClick={cleanFilter}>
+                    Limpiar filtro
+                  </button>
                 </Col>
                 <hr />
               </Row>
@@ -249,7 +270,14 @@ function ContenedorProductosMovilFibraTv() {
                   <Modal.Header closeButton></Modal.Header>
                   <Modal.Body>
                     <Row>
-                      {isMobile && <Col xs={12} key={filterBrand} className='my-2' md={6}>Se encontraron <span className="font-bold">{filtros?.length}</span> resultados de <span className="font-bold">{Tarifas.length}</span></Col>}
+                      {isMobile && (
+                        <Col xs={12} key={filterBrand} className="my-2" md={6}>
+                          Se encontraron{" "}
+                          <span className="font-bold">{filtros?.length}</span>{" "}
+                          resultados de{" "}
+                          <span className="font-bold">{Tarifas.length}</span>
+                        </Col>
+                      )}
                       <Col md={12}>
                         <span className="font-bold">Compañía:</span>
                       </Col>
@@ -257,20 +285,33 @@ function ContenedorProductosMovilFibraTv() {
                         brand.map((item, index) => (
                           <Col xs={4} md={6} key={item.id}>
                             <button
-                              className={`filtro-producto-logo my-2 ${filterBrand.includes(item.id) ? 'logoFocus' : ''}`}
+                              className={`filtro-producto-logo my-2 ${
+                                filterBrand.includes(item.id) ? "logoFocus" : ""
+                              }`}
                               value={item.nombre}
-                              onClick={() => setFilterBrandMulti(item.id)}>
+                              onClick={() => setFilterBrandMulti(item.id)}
+                            >
                               <img src={item.logo} alt={item.nombre} />
                             </button>
                           </Col>
                         ))}
                     </Row>
                     <Row>
-                      <div className='mt-4'>
-                        <b>{'Coste mensual'}:</b>
-                        <div className='my-4 d-flex justify-content-between'>
-                          <div>{typeMoneda}{rangePrice[0].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}</div>
-                          <div>{typeMoneda}{rangePrice[1].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}</div>
+                      <div className="mt-4">
+                        <b>{"Coste mensual"}:</b>
+                        <div className="my-4 d-flex justify-content-between">
+                          <div>
+                            {typeMoneda}
+                            {rangePrice[0]
+                              .toString()
+                              .replace(/\B(?=(\d{3})+(?!\d))/g, ".")}
+                          </div>
+                          <div>
+                            {typeMoneda}
+                            {rangePrice[1]
+                              .toString()
+                              .replace(/\B(?=(\d{3})+(?!\d))/g, ".")}
+                          </div>
                         </div>
                         <Slider
                           range
@@ -278,44 +319,46 @@ function ContenedorProductosMovilFibraTv() {
                           max={maxPrice}
                           value={rangePrice}
                           onChange={handleRangeChangePrice}
-                          className='form-input-range'
+                          className="form-input-range"
                         />
                       </div>
-                      <div className='mt-4'>
-                        <b>{'Oferta destacada'}:</b>
-                        <div className='my-2'>
+                      <div className="mt-4">
+                        <b>{"Oferta destacada"}:</b>
+                        <div className="my-2">
                           <Form.Switch
-                            className='input-check-dark mt-2 text-left'
-                            type='switch'
+                            className="input-check-dark mt-2 text-left"
+                            type="switch"
                             checked={filterOfertaDestacada}
-                            onChange={() => setFilterOfertaDestacada(!filterOfertaDestacada)}
-                            label={'Mostrar solo ofertas destacadas'}
+                            onChange={() =>
+                              setFilterOfertaDestacada(!filterOfertaDestacada)
+                            }
+                            label={"Mostrar solo ofertas destacadas"}
                             reverse
                           />
                         </div>
                       </div>
-                      <div className='my-2'>
-                        <b>{'Llamadas ilimitadas'}:</b>
-                        <div className='my-2'>
+                      <div className="my-2">
+                        <b>{"Llamadas ilimitadas"}:</b>
+                        <div className="my-2">
                           <Form.Switch
-                            className='input-check-dark mt-2 text-left'
-                            type='switch'
+                            className="input-check-dark mt-2 text-left"
+                            type="switch"
                             checked={filterLlamadas}
                             onChange={() => setFilterLlamadas(!filterLlamadas)}
-                            label={'Llamadas ilimitadas'}
+                            label={"Llamadas ilimitadas"}
                             reverse
                           />
                         </div>
                       </div>
-                      <div className='my-2'>
-                        <b>{'Promoción'}:</b>
-                        <div className='my-2'>
+                      <div className="my-2">
+                        <b>{"Promoción"}:</b>
+                        <div className="my-2">
                           <Form.Switch
-                            className='input-check-dark mt-2 text-left'
-                            type='switch'
+                            className="input-check-dark mt-2 text-left"
+                            type="switch"
                             checked={filterPromo}
                             onChange={() => setFilterPromo(!filterPromo)}
-                            label={'Tiene promoción'}
+                            label={"Tiene promoción"}
                             reverse
                           />
                         </div>
@@ -330,104 +373,143 @@ function ContenedorProductosMovilFibraTv() {
                 </Modal>
               ) : (
                 <>
-                  {
-                    ((isLoadFilter && !isLoadInformation)) ?
-                      (
-                        <>
-                          <Row>
-                            {isMobile &&
-                              <Col xs={12} key={filterBrand} className='my-2' md={6}>Se encontraron <span className="font-bold">{filtros?.length}</span> resultados de <span className="font-bold">{Tarifas.length}</span></Col>}
-                            <Col md={12}>
-                              <span className="font-bold">Compañía:</span>
+                  {isLoadFilter && !isLoadInformation ? (
+                    <>
+                      <Row>
+                        {isMobile && (
+                          <Col
+                            xs={12}
+                            key={filterBrand}
+                            className="my-2"
+                            md={6}
+                          >
+                            Se encontraron{" "}
+                            <span className="font-bold">{filtros?.length}</span>{" "}
+                            resultados de{" "}
+                            <span className="font-bold">{Tarifas.length}</span>
+                          </Col>
+                        )}
+                        <Col md={12}>
+                          <span className="font-bold">Compañía:</span>
+                        </Col>
+                        {brand?.length > 0 &&
+                          brand.map((item, index) => (
+                            <Col xs={4} md={6} key={item.id}>
+                              <button
+                                className={`filtro-producto-logo my-2 ${
+                                  filterBrand.includes(item.id)
+                                    ? "logoFocus"
+                                    : ""
+                                }`}
+                                value={item.nombre}
+                                onClick={() => setFilterBrandMulti(item.id)}
+                              >
+                                <img src={item.logo} alt={item.nombre} />
+                              </button>
                             </Col>
-                            {brand?.length > 0 &&
-                              brand.map((item, index) => (
-                                <Col xs={4} md={6} key={item.id}>
-                                  <button
-                                    className={`filtro-producto-logo my-2 ${filterBrand.includes(item.id) ? 'logoFocus' : ''}`}
-                                    value={item.nombre}
-                                    onClick={() => setFilterBrandMulti(item.id)}>
-                                    <img src={item.logo} alt={item.nombre} />
-                                  </button>
-                                </Col>
-                              ))}
-                          </Row>
-                          <Row>
-                            <div className='mt-4'>
-                              <b>{'Coste mensual'}:</b>
-                              <div className='my-4 d-flex justify-content-between'>
-                                <div>{typeMoneda}{rangePrice[0].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}</div>
-                                <div>{typeMoneda}{rangePrice[1].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}</div>
-                              </div>
-                              <Slider
-                                range
-                                min={minPrice}
-                                max={maxPrice}
-                                value={rangePrice}
-                                onChange={handleRangeChangePrice}
-                                className='form-input-range'
-                              />
+                          ))}
+                      </Row>
+                      <Row>
+                        <div className="mt-4">
+                          <b>{"Coste mensual"}:</b>
+                          <div className="my-4 d-flex justify-content-between">
+                            <div>
+                              {typeMoneda}
+                              {rangePrice[0]
+                                .toString()
+                                .replace(/\B(?=(\d{3})+(?!\d))/g, ".")}
                             </div>
-                            <div className='mt-4'>
-                              <b>{'Oferta destacada'}:</b>
-                              <div className='my-2'>
-                                <Form.Switch
-                                  className='input-check-dark mt-2 text-left'
-                                  type='switch'
-                                  checked={filterOfertaDestacada}
-                                  onChange={() => setFilterOfertaDestacada(!filterOfertaDestacada)}
-                                  label={'Mostrar solo ofertas destacadas'}
-                                  reverse
-                                />
-                              </div>
+                            <div>
+                              {typeMoneda}
+                              {rangePrice[1]
+                                .toString()
+                                .replace(/\B(?=(\d{3})+(?!\d))/g, ".")}
                             </div>
-                            <div className='my-2'>
-                              <b>{'Llamadas ilimitadas'}:</b>
-                              <div className='my-2'>
-                                <Form.Switch
-                                  className='input-check-dark mt-2 text-left'
-                                  type='switch'
-                                  checked={filterLlamadas}
-                                  onChange={() => setFilterLlamadas(!filterLlamadas)}
-                                  label={'Llamadas ilimitadas'}
-                                  reverse
-                                />
-                              </div>
-                            </div>
-                            <div className='my-2'>
-                              <b>{'Promoción'}:</b>
-                              <div className='my-2'>
-                                <Form.Switch
-                                  className='input-check-dark mt-2 text-left'
-                                  type='switch'
-                                  checked={filterPromo}
-                                  onChange={() => setFilterPromo(!filterPromo)}
-                                  label={'Tiene promoción'}
-                                  reverse
-                                />
-                              </div>
-                            </div>
-                          </Row>
-                        </>
-                      )
-                      : <Load />
-                  }
+                          </div>
+                          <Slider
+                            range
+                            min={minPrice}
+                            max={maxPrice}
+                            value={rangePrice}
+                            onChange={handleRangeChangePrice}
+                            className="form-input-range"
+                          />
+                        </div>
+                        <div className="mt-4">
+                          <b>{"Oferta destacada"}:</b>
+                          <div className="my-2">
+                            <Form.Switch
+                              className="input-check-dark mt-2 text-left"
+                              type="switch"
+                              checked={filterOfertaDestacada}
+                              onChange={() =>
+                                setFilterOfertaDestacada(!filterOfertaDestacada)
+                              }
+                              label={"Mostrar solo ofertas destacadas"}
+                              reverse
+                            />
+                          </div>
+                        </div>
+                        <div className="my-2">
+                          <b>{"Llamadas ilimitadas"}:</b>
+                          <div className="my-2">
+                            <Form.Switch
+                              className="input-check-dark mt-2 text-left"
+                              type="switch"
+                              checked={filterLlamadas}
+                              onChange={() =>
+                                setFilterLlamadas(!filterLlamadas)
+                              }
+                              label={"Llamadas ilimitadas"}
+                              reverse
+                            />
+                          </div>
+                        </div>
+                        <div className="my-2">
+                          <b>{"Promoción"}:</b>
+                          <div className="my-2">
+                            <Form.Switch
+                              className="input-check-dark mt-2 text-left"
+                              type="switch"
+                              checked={filterPromo}
+                              onChange={() => setFilterPromo(!filterPromo)}
+                              label={"Tiene promoción"}
+                              reverse
+                            />
+                          </div>
+                        </div>
+                      </Row>
+                    </>
+                  ) : (
+                    <Load />
+                  )}
                 </>
               )}
             </Col>
             <Col md={12} xl={8}>
               <Row>
-                <Col key={filterBrand} className='my-2' md={6}>Mostrando: <span className="font-bold">{filtros?.length}</span> resultados de <span className="font-bold">{Tarifas.length}</span></Col>
+                <Col key={filterBrand} className="my-2" md={6}>
+                  Mostrando:{" "}
+                  <span className="font-bold">{filtros?.length}</span>{" "}
+                  resultados de{" "}
+                  <span className="font-bold">{Tarifas.length}</span>
+                </Col>
               </Row>
               <Row>
-                <div className='pruebaPos'>
-                  {(isLoadFilter && !isLoadInformation) ? (
+                <div className="pruebaPos">
+                  {isLoadFilter && !isLoadInformation ? (
                     filtros?.length > 0 ? (
                       filtros?.map((item, index) => (
                         <TarjetaTarifa key={index} data={item} />
                       ))
                     ) : (
-                      <NotInfoItem key={0} title={'No se encontraron ofertas'} text={'Lo sentimos, no hemos encontrado ofertas con los filtros seleccionados.'} />
+                      <NotInfoItem
+                        key={0}
+                        title={"No se encontraron ofertas"}
+                        text={
+                          "Lo sentimos, no hemos encontrado ofertas con los filtros seleccionados."
+                        }
+                      />
                     )
                   ) : (
                     <Load></Load>

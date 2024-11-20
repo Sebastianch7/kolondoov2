@@ -49,8 +49,6 @@ import RaizStreamingCo from '../Pages/Co/RaizStreamingCo';
 import RaizFinanzasCo from '../Pages/Co/RaizFinanzasCo';
 import RaizFinanzas from '../Pages/Es/RaizFinanzas';
 import ComparadorPrestamosCo from '../Pages/Co/ComparadorPrestamosCo';
-import ComparadorAlarmas from '../Pages/Es/ComparadorAlarmas';
-import ComparadorSegurosSalud from '../Pages/Es/ComparadorSegurosSalud';
 import ConfirmacionEmail from '../Pages/ConfirmacionEmail';
 import Simulador from '../Pages/Es/Simulador';
 import ComparadorAutoconsumo from '../Pages/Es/ComparadorAutoconsumo';
@@ -125,8 +123,6 @@ function RoutesApp() {
                 <Route path="/es/herramientas/precio-de-la-luz-hoy" element={<HerramientaLuz />} />
                 <Route path="/es/herramientas/test-de-velocidad" element={<HerramientaTest />} />
 
-                {/* <Route path="/es/seguros/alarmas" element={<ComparadorAlarmas />} />
-                <Route path="/es/seguros/salud" element={<ComparadorSegurosSalud />} /> */}
                 <Route path="/es/seguros/comparador-tarifas-seguros-salud/:id" element={<Lead />} />
 
                 <Route path="/es/contactanos" element={<Contactenos />} />

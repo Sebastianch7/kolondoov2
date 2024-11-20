@@ -20,7 +20,7 @@ export default function Blog() {
         let locations = pathname.split('/');
         setCategoria(locations[3]);
         setIsLoading(false)
-    }, [])
+    }, [location.pathname])
 
     return (
         <>

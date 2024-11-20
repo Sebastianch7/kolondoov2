@@ -1,5 +1,4 @@
 import React from 'react'
-import TitleSection from '../../Components/Text/TitleSection'
 import Header from '../../Components/Header/Header'
 import Footer from '../../Components/Footer/Footer'
 import { Container, Row, Col } from 'react-bootstrap'
@@ -42,13 +41,13 @@ export default function PoliticaCookies() {
                                         <td>OptanonConsent</td>
                                         <td>Esta cookie es establecida por la solución de cumplimiento de cookies de OneTrust. Almacena información sobre las categorías de cookies que utiliza el sitio y si los visitantes han dado o retirado su consentimiento para el uso de cada categoría. Esto permite a los propietarios de sitios web evitar que las cookies de cada categoría se instalen en el navegador de los usuarios, cuando no se da el consentimiento. La cookie tiene una vida útil normal de un año, de modo que los visitantes que vuelvan al sitio recordarán sus preferencias. No contiene información que pueda identificar al visitante del sitio</td>
                                         <td>1 año</td>
-                                        <td><a href="https://www.onetrust.es/politica-de-privacidad/" target="_blank">Pol.Priv.</a></td>
+                                        <td><a href="https://www.onetrust.es/politica-de-privacidad/" target="_blank"  rel="noreferrer" >Pol.Priv.</a></td>
                                     </tr>
                                     <tr>
                                         <td>OptanonAlertBoxClosed</td>
                                         <td>Esta cookie la instalan los sitios web que utilizan determinadas versiones de la solución de cumplimiento de la ley de cookies de OneTrust.  Se instala después de que los visitantes hayan visto un aviso de información sobre cookies y, en algunos casos, sólo cuando cierran activamente el aviso.  Permite que el sitio web no muestre el mensaje más de una vez a un usuario.  La cookie tiene una duración de un año y no contiene información personal</td>
                                         <td>1 año</td>
-                                        <td><a href="https://www.onetrust.es/politica-de-privacidad/" target="_blank">Pol.Priv.</a></td>
+                                        <td><a href="https://www.onetrust.es/politica-de-privacidad/" target="_blank"  rel="noreferrer" >Pol.Priv.</a></td>
                                     </tr>
                                     <tr>
                                         <td>XSRF-TOKEN</td>
@@ -83,19 +82,19 @@ export default function PoliticaCookies() {
                                         <td>_gat_UA</td>
                                         <td>Se trata de una cookie de tipo patrón establecida por Google Analytics, en la que el elemento de patrón del nombre contiene el número de identidad único de la cuenta o del sitio web al que se refiere. Se utiliza para limitar la cantidad de datos registrados por Google en los sitios web de gran volumen de tráfico</td>
                                         <td>1 minuto</td>
-                                        <td><a href="https://policies.google.com/privacy?hl=es" target="_blank">Pol.Priv.</a></td>
+                                        <td><a href="https://policies.google.com/privacy?hl=es" target="_blank"  rel="noreferrer" >Pol.Priv.</a></td>
                                     </tr>
                                     <tr>
                                         <td>_gid</td>
                                         <td>Se usa para distinguir a los usuarios</td>
                                         <td>24 horas</td>
-                                        <td><a href="https://policies.google.com/privacy?hl=es" target="_blank">Pol.Priv.</a></td>
+                                        <td><a href="https://policies.google.com/privacy?hl=es" target="_blank"  rel="noreferrer" >Pol.Priv.</a></td>
                                     </tr>
                                     <tr>
                                         <td>_ga</td>
                                         <td>Se usa para distinguir a los usuarios</td>
                                         <td>2 años</td>
-                                        <td><a href="https://policies.google.com/privacy?hl=es" target="_blank">Pol.Priv.</a></td>
+                                        <td><a href="https://policies.google.com/privacy?hl=es" target="_blank"  rel="noreferrer" >Pol.Priv.</a></td>
                                     </tr>
                                 </tbody>
                             </table>

@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Header from '../../Components/Header/Header'
 import BannerImageFull from '../../Components/Banner/BannerImageFull'
-import { Container, Row, Col } from 'react-bootstrap'
+import { Container } from 'react-bootstrap'
 import TitleSection from '../../Components/Text/TitleSection'
 import Footer from '../../Components/Footer/Footer';
 import TarjetaRaizStreaming from '../../Content/TarjetaRaizStreaming.json'
