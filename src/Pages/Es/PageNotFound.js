@@ -1,9 +1,7 @@
 import React from 'react'
 import Header from '../../Components/Header/Header'
 import { Container, Row, Col } from 'react-bootstrap'
-import Load from '../../Components/Utils/Load'
 import { Link } from 'react-router-dom'
-import InterSection from '../../Components/Utils/InterSection'
 import MetaData from '../../Components/Header/SeoMetadata';
 
 export default function PageNotFound() {
@@ -17,7 +15,7 @@ export default function PageNotFound() {
                         <Col xs={12} className='text-left'>
                             <h1 className='title-404'>404</h1>
                             <h2>Página no encontrada</h2>
-                            <h4>No podmeos encontrar la página solicitada.</h4>
+                            <h4>No podemos encontrar la página solicitada.</h4>
                             <Link className='btn btn-primary mt-5' to={'/'}>Volver a vuskoo</Link>
                         </Col>
                     </Col>

@@ -49,60 +49,47 @@ export default function TarjetaTarifaLeadAutoconsumo({ data, TarifaCard }) {
                             <div className='tarjeta-tarifa-item-title'>
                                 <img src={logo} alt={logo} />
                                 {((promocion !== null && promocion !== '') && isMobile === false) && <span className={`align-middle text-promotion ${destacada === 1 && 'color-primary'}`}><b>Promoción: </b>{promocion}</span>}
-                                {isMobile && <Link className='btn btn-dark btn-primary-small' to={landing_link === null ? `/${lang}${landingLead}${slug_tarifa}-${id}` : landing_link}><BsArrowRight /></Link>}
+                                {isMobile && <Link className='btn btn-dark btn-primary-small' to={landing_link == null ? `/${lang}${landingLead}${slug_tarifa}-${id}` : landing_link}><BsArrowRight /></Link>}
                             </div>
                         </Col>}
-                        <Col md={8}>
+                        <Col md={9}>
                             <Row>
-                                <Col xs={12}>
+                                <Col md={6} xs={6}>
+                                    <h6>Potencia</h6>
                                     <Row className='d-flex'>
-                                        <Col xs={12} md={6} className='d-flex align-items-center'>
-                                            <h6>Potencia</h6>
-                                        </Col>
-                                        <Col xs={12} md={6}>
-                                            <ItemTarifaLuz title={'Valle'} value={data?.luz_precio_potencia_valle} extension={'€/kW'} />
-                                            <ItemTarifaLuz title={'Punta'} value={data?.luz_precio_potencia_punta} extension={'€/kW'} />
-                                        </Col>
+                                        <ItemTarifaLuz title={'Valle'} value={data?.luz_precio_potencia_valle} extension={'€/kW'} />
+                                        <ItemTarifaLuz title={'Punta'} value={data?.luz_precio_potencia_punta} extension={'€/kW'} />
                                     </Row>
                                 </Col>
-                                <Col xs={12}>
+                                <Col md={6} xs={6}>
+                                    <h6>Energía</h6>
                                     {parseInt(luz_precio_energia_24h) !== 0 ?
                                         <Row className='d-flex'>
-                                            <Col xs={12} md={6} className='d-flex align-items-center'>
-                                                <h6>Energia</h6>
-                                            </Col>
-                                            <Col xs={12} md={6}>
-                                                <ItemTarifaLuz title={'Valle'} value={data?.luz_precio_energia_punta} extension={'€/kWh'} />
-                                                <ItemTarifaLuz title={'LLano'} value={data?.luz_precio_energia_llano} extension={'€/kWh'} />
-                                                <ItemTarifaLuz title={'Punta'} value={data?.luz_precio_energia_punta} extension={'€/kWh'} />
-                                            </Col>
+                                            <ItemTarifaLuz title={'Valle'} value={data?.luz_precio_energia_punta} extension={'€/kWh'} />
+                                            <ItemTarifaLuz title={'LLano'} value={data?.luz_precio_energia_llano} extension={'€/kWh'} />
+                                            <ItemTarifaLuz title={'Punta'} value={data?.luz_precio_energia_punta} extension={'€/kWh'} />
                                         </Row>
                                         :
                                         <Row className='d-flex'>
-                                            <Col xs={12} md={6} className='d-flex align-items-center'>
-                                                <h6>Energía</h6>
-                                            </Col>
-                                            <Col xs={12} md={6}>
-                                                <ItemTarifaLuz title={'24h'} value={data?.luz_precio_energia_24h} extension={'€/kWh'} />
-                                            </Col>
+                                            <ItemTarifaLuz title={'24h'} value={data?.luz_precio_energia_24h} extension={'€/kWh'} />
                                         </Row>
                                     }
                                 </Col>
                                 <Col xs={12}>
-                                    <Row className='d-flex'>
-                                        <Col xs={12} md={6} className='d-flex align-items-center'>
-                                            <h6>Precio de excedentes</h6>
+                                    <Row className='d-flex mt-3'>
+                                        <Col xs={12} md={6}>
+                                            <h6>Compensación por excedentes</h6>
                                         </Col>
                                         <Col xs={12} md={6}>
-                                            <ItemTarifaLuz value={data?.excedente} />
+                                            <h6>Incluye batería virtual</h6>
                                         </Col>
                                     </Row>
                                 </Col>
                                 {data?.bateria_virtual == 1 &&
                                     <Col xs={12}>
-                                        <Row className='d-flex'>
-                                            <Col xs={12} md={6} className='d-flex align-items-center'>
-                                                <h6>Incluye batería virtual</h6>
+                                        <Row>
+                                            <Col xs={12} md={6}>
+                                                <ItemTarifaLuz value={data?.excedente} />
                                             </Col>
                                             <Col xs={12} md={6}>
                                                 <ItemTarifaLuz value={data?.precio_bateria_virtual} />
@@ -112,7 +99,7 @@ export default function TarjetaTarifaLeadAutoconsumo({ data, TarifaCard }) {
                                 }
                             </Row>
                         </Col>
-                        <Col md={4}>
+                        <Col md={3}>
                             <Row>
                                 <ItemTarifaServicio cant={precio} service={''} design={"small"} money={'€'} indexada={luz_indexada} />
                                 {!isMobile && TarifaCard && (
