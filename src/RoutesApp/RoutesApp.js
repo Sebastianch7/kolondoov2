@@ -52,6 +52,7 @@ import ComparadorPrestamosCo from '../Pages/Co/ComparadorPrestamosCo';
 import ConfirmacionEmail from '../Pages/ConfirmacionEmail';
 import Simulador from '../Pages/Es/Simulador';
 import ComparadorAutoconsumo from '../Pages/Es/ComparadorAutoconsumo';
+import ThankPageNetwork from '../Pages/Es/ThankPageNetwork';
 
 function RoutesApp() {
     return (
@@ -70,6 +71,8 @@ function RoutesApp() {
                 <Route path="/en" element={<Home />} />
                 <Route path="/mx" element={<HomeMx />} />
                 <Route path="/co" element={<HomeCo />} />
+
+                <Route path="/es/lead/thank" element={<ThankPageNetwork />} />
                 
                 <Route path="/verificacion-de-cuenta/:mail" element={<ConfirmacionEmail />} />
 

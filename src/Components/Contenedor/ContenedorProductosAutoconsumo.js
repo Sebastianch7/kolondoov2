@@ -450,8 +450,6 @@ function ContenedorProductosAutoconsumo() {
                     title="Tarifas para particulares"
                   >
                     {(() => {
-                      /* const filteredTarifas = filtros?.filter((item) => item.tarifa_empresarial === 2); */
-
                       return !isLoadInformation ? (
                         filtros?.length > 0 ? (
                           filtros.map((item, index) => (
