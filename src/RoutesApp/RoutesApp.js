@@ -49,12 +49,11 @@ import RaizStreamingCo from '../Pages/Co/RaizStreamingCo';
 import RaizFinanzasCo from '../Pages/Co/RaizFinanzasCo';
 import RaizFinanzas from '../Pages/Es/RaizFinanzas';
 import ComparadorPrestamosCo from '../Pages/Co/ComparadorPrestamosCo';
-import ComparadorAlarmas from '../Pages/Es/ComparadorAlarmas';
-import ComparadorSegurosSalud from '../Pages/Es/ComparadorSegurosSalud';
 import ConfirmacionEmail from '../Pages/ConfirmacionEmail';
-import Simulador from '../Pages/Es/Simulador';
 import ComparadorAutoconsumo from '../Pages/Es/ComparadorAutoconsumo';
 import ThankPageNetwork from '../Pages/Es/ThankPageNetwork';
+import SimuladorSolicitudFinanciacion from '../Pages/Es/SimuladorSolicitudFinanciacion';
+import SimuladorSolicitudPrestamo from '../Pages/Es/SimuladorSolicitudPrestamo';
 
 function RoutesApp() {
     return (
@@ -156,7 +155,8 @@ function RoutesApp() {
                 <Route path="/es/finanzas/comparador-finanzas/soluciones-de-deuda" element={<ComparadorPrestamos />} />
                 <Route path="/:lang/finanzas/comparador-finanzas/microcreditos/:id" element={<Lead />} />
                 <Route path="/:lang/finanzas/comparador-finanzas/soluciones-de-deuda/:id" element={<Lead />} />
-                <Route path="/es/finanzas/comparador-finanzas/simulador" element={<Simulador />} />
+                <Route path="/es/finanzas/comparador-finanzas/solicitud-financiacion" element={<SimuladorSolicitudFinanciacion />} />
+                <Route path="/es/finanzas/comparador-finanzas/solicitud-prestamo" element={<SimuladorSolicitudPrestamo />} />
 
                 {/* MX */}
                 <Route path="/mx/planes-celulares-telefonia-internet-y-tv/comparador-planes-celular" element={<ComparadorPlanesCelular />} />

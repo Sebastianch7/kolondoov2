@@ -32,6 +32,9 @@ function ContenedorProductosLuz() {
   const [filtros, setFiltros] = useState([]);
   const [brand, setBrand] = useState([]);
 
+  const [countParticulares, setCountParticulares] = useState(0);
+  const [countEmpresarial, setCountEmpresarial] = useState(0);
+
   // Estado para el modal de filtros
   const [show, setShow] = useState(false);
   const [lang, setLang] = useState(null)
@@ -75,6 +78,8 @@ function ContenedorProductosLuz() {
           setFiltros(response);
           setTarifas(response);
           setIsLoadInformation(false);
+          setCountEmpresarial(response?.filter((item) => item.tarifa_empresarial === 1).length)
+          setCountParticulares(response?.filter((item) => item.tarifa_empresarial === 2).length)
         } catch (error) {
           console.error("Error al obtener las tarifas de luz:", error);
         }
@@ -102,6 +107,8 @@ function ContenedorProductosLuz() {
       .filter((item) => filterByluzIndexada(item))
 
     setFiltros(resultado);
+    setCountEmpresarial(resultado?.filter((item) => item.tarifa_empresarial === 1).length)
+    setCountParticulares(resultado?.filter((item) => item.tarifa_empresarial === 2).length)
   }, [filterBrand, filterPrice, filterTramo, filterPermanencia, filterPromo, filterLuzIndexada]);
 
   function filterByBrand(item) {
@@ -351,47 +358,59 @@ function ContenedorProductosLuz() {
                   id="tabs_filtros"
                   className="mb-3"
                 >
-                  <Tab eventKey="particulares" title="Tarifas para particulares">
-                    {(() => {
-                      
+                  {countParticulares > 0 &&
+                    <Tab eventKey="particulares"
+                      title={
+                        <>
+                          Tarifas para particulares <span className="badge bg-secundary color-dark ms-2">{countParticulares}</span>
+                        </>
+                      }
 
-                      return !isLoadInformation ? (
-                        filtros?.length > 0 ? (
-                          filtros.map((item, index) => (
-                            <TarjetaTarifaLeadEnergia key={index} data={item} TarifaCard />
-                          ))
+                    >
+                      {(() => {
+
+                        const filteredTarifas = filtros?.filter((item) => item.tarifa_empresarial === 2);
+
+                        return !isLoadInformation ? (
+                          filteredTarifas?.length > 0 ? (
+                            filteredTarifas.map((item, index) => (
+                              <TarjetaTarifaLeadEnergia key={index} data={item} TarifaCard />
+                            ))
+                          ) : (
+                            <NotInfoItem title="No se encontraron ofertas" text="Lo sentimos, no hemos encontrado ofertas con los filtros seleccionados." />
+                          )
                         ) : (
-                          <NotInfoItem title="No se encontraron ofertas" text="Lo sentimos, no hemos encontrado ofertas con los filtros seleccionados." />
-                        )
-                      ) : (
-                        <Load />
-                      );
-                    })()}
-                  </Tab>
+                          <Load />
+                        );
+                      })()}
+                    </Tab>}
 
-                  {/* <Tab eventKey="empresariales" title="Tarifas para empresas">
-                    {(() => {
-                      const filteredTarifas = filtros?.filter((item) => item.tarifa_empresarial === 1);
+                  {countEmpresarial > 0 &&
+                    < Tab eventKey="empresariales" title={
+                      <>
+                        Tarifas para empresas <span className="badge bg-secundary color-dark ms-2">{countEmpresarial}</span>
+                      </>
+                    }>
+                      {(() => {
+                        const filteredTarifas = filtros?.filter((item) => item.tarifa_empresarial === 1);
 
-                      return !isLoadInformation ? (
-                        filteredTarifas?.length > 0 ? (
-                          filteredTarifas.map((item, index) => (
+                        return !isLoadInformation ? (
+                          filteredTarifas?.length > 0 ? (
+                            filteredTarifas.map((item, index) => (
 
-                            < TarjetaTarifaLeadEnergia key={index} data={item} TarifaCard />
+                              < TarjetaTarifaLeadEnergia key={index} data={item} TarifaCard />
 
-                          ))
+                            ))
+                          ) : (
+                            <NotInfoItem title="No se encontraron ofertas" text="Lo sentimos, no hemos encontrado ofertas con los filtros seleccionados." />
+                          )
                         ) : (
-                          <NotInfoItem title="No se encontraron ofertas" text="Lo sentimos, no hemos encontrado ofertas con los filtros seleccionados." />
-                        )
-                      ) : (
-                        <Load />
-                      );
-                    })()}
-                  </Tab> */}
+                          <Load />
+                        );
+                      })()}
+                    </Tab>}
 
                 </Tabs>
-
-
               </Row>
             </Col>
           </Row>

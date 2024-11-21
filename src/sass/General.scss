@@ -1851,6 +1851,8 @@ b {
   background-color: white;
   color: $colorPrimary;
   margin-bottom: 0px;
+  display: flex;
+  justify-content: space-around;
 }
 
 #tabs_filtros-tab-empresariales.nav-link.active{

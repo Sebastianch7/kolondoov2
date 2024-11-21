@@ -75,28 +75,56 @@ export default function TarjetaTarifaLeadAutoconsumo({ data, TarifaCard }) {
                                         </Row>
                                     }
                                 </Col>
-                                <Col xs={12}>
-                                    <Row className='d-flex mt-3'>
-                                        <Col xs={12} md={6}>
-                                            <h6>Compensación por excedentes</h6>
+                                {!isMobile && (
+                                    <>
+                                        <Col xs={12}>
+                                            <Row className="d-flex mt-3">
+                                                <Col xs={12} md={6}>
+                                                    <h6>Compensación por excedentes</h6>
+                                                </Col>
+                                                {data?.bateria_virtual === 1 && (
+                                                    <Col xs={12} md={6}>
+                                                        <h6>Incluye batería virtual</h6>
+                                                    </Col>
+                                                )}
+                                            </Row>
                                         </Col>
-                                        <Col xs={12} md={6}>
-                                            <h6>Incluye batería virtual</h6>
+                                        <Col xs={12}>
+                                            <Row>
+                                                <Col xs={12} md={6}>
+                                                    <ItemTarifaLuz value={data?.excedente} />
+                                                </Col>
+                                                {data?.bateria_virtual === 1 && (
+                                                    <Col xs={12} md={6}>
+                                                        <ItemTarifaLuz value={data?.precio_bateria_virtual} />
+                                                    </Col>
+                                                )}
+                                            </Row>
                                         </Col>
-                                    </Row>
-                                </Col>
-                                {data?.bateria_virtual == 1 &&
-                                    <Col xs={12}>
-                                        <Row>
-                                            <Col xs={12} md={6}>
-                                                <ItemTarifaLuz value={data?.excedente} />
-                                            </Col>
-                                            <Col xs={12} md={6}>
-                                                <ItemTarifaLuz value={data?.precio_bateria_virtual} />
-                                            </Col>
-                                        </Row>
-                                    </Col>
-                                }
+                                    </>
+                                )}
+                                {isMobile && (
+                                    <>
+                                        <Col xs={12}>
+                                            <Row className="d-flex my-2 mb-md-0">
+                                                <Col xs={12} md={6}>
+                                                    <h6>Compensación por excedentes</h6>
+                                                    <ItemTarifaLuz value={data?.excedente} />
+                                                </Col>
+                                            </Row>
+                                        </Col>
+                                        {data?.bateria_virtual === 1 && <Col xs={12}>
+                                            <Row className="d-flex my-2 mb-md-0">
+                                                <Col xs={12} md={6}>
+                                                    <h6>Incluye batería virtual</h6>
+                                                </Col>
+                                                <Col xs={12} md={6}>
+                                                    <ItemTarifaLuz value={data?.precio_bateria_virtual} />
+                                                </Col>
+                                            </Row>
+                                        </Col>}
+                                    </>
+                                )}
                             </Row>
                         </Col>
                         <Col md={3}>

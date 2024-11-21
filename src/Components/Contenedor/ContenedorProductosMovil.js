@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Container, Row, Col, Button, Form } from 'react-bootstrap';
+import { Container, Row, Col, Button, Form, Tabs, Tab } from 'react-bootstrap';
 import axios from 'axios';
 import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
@@ -39,6 +39,9 @@ function ContenedorProductosMovil() {
   const [Tarifas, setTarifas] = useState([]);
   const [filtros, setFiltros] = useState([]);
   const [brand, setBrand] = useState([]);
+
+  const [countParticulares, setCountParticulares] = useState(0);
+  const [countEmpresarial, setCountEmpresarial] = useState(0);
 
   // Estados para rangos de precio y capacidad
   const [rangePrice, setRangePrice] = useState([minPrice, maxPrice]);
@@ -88,7 +91,7 @@ function ContenedorProductosMovil() {
       setIsLoadFilter(false);
       const fetchData = async () => {
         try {
-          const response = await fetchDataAll('filterMovil',lang)
+          const response = await fetchDataAll('filterMovil', lang)
           const { min_gb, max_gb, min_precio, max_precio, moneda } = response[0];
 
           setMinCapacity(parseInt(min_gb) > 0 ? parseInt(min_gb) : 0);
@@ -114,7 +117,7 @@ function ContenedorProductosMovil() {
     if (lang != null) {
       const fetchBrands = async () => {
         try {
-          const response = await fetchDataAll('Operadoras/Movil',lang)
+          const response = await fetchDataAll('Operadoras/Movil', lang)
           setBrand(response);
         } catch (error) {
           console.error("Error al obtener las marcas de operadoras:", error);
@@ -131,10 +134,12 @@ function ContenedorProductosMovil() {
       setIsLoadInformation(true);
       const fetchTariffs = async () => {
         try {
-          const response = await fetchDataAll('TarifasMovil',lang)
+          const response = await fetchDataAll('TarifasMovil', lang)
           setFiltros(response);
           setTarifas(response);
           setIsLoadInformation(false);
+          setCountEmpresarial(response?.filter((item) => item.tarifa_empresarial === 1).length)
+          setCountParticulares(response?.filter((item) => item.tarifa_empresarial === 2).length)
         } catch (error) {
           console.error("Error al obtener las tarifas de móvil:", error);
         }
@@ -169,7 +174,6 @@ function ContenedorProductosMovil() {
       .filter((item) => filterByBrand(item))
       .filter((item) => filterByCapacity(item))
       .filter((item) => filterByPrice(item))
-      //.filter((item) => filterByTechnology(item))
       .filter((item) => filterByMessage(item))
       .filter((item) => filterByRoaming(item))
       .filter((item) => filterByPromo(item))
@@ -177,6 +181,8 @@ function ContenedorProductosMovil() {
       .filter((item) => filterByOfertaDestacada(item))
 
     setFiltros(resultado);
+    setCountEmpresarial(resultado?.filter((item) => item.tarifa_empresarial === 1).length)
+    setCountParticulares(resultado?.filter((item) => item.tarifa_empresarial === 2).length)
   }, [filterBrand, filterPrice, filterCapacity, filterMessage, filterRoaming, filterPromo, filterRed5g, filterOfertaDestacada]);
 
   // Función para filtrar por marca
@@ -190,9 +196,6 @@ function ContenedorProductosMovil() {
 
   // Función para filtrar por precio
   const filterByPrice = (item) => filterPrice !== null ? item.precio >= filterPrice[0] && item.precio <= filterPrice[1] : true;
-
-  // Función para filtrar por tecnología
-  const filterByTechnology = (item) => filterTechnology !== false ? filterByFilter(filterTechnology, item, '5G!') : true;
 
   // Función para filtrar por mensajes
   const filterByMessage = (item) => filterMessage !== false ? filterByFilter(filterMessage, item, 'SMS incluidos') : true;
@@ -531,24 +534,69 @@ function ContenedorProductosMovil() {
                 <Col key={filterBrand} className='my-2' md={6}>Mostrando: <span className="font-bold">{filtros?.length}</span> resultados de <span className="font-bold">{Tarifas.length}</span></Col>
               </Row>
               <Row>
-                <div className='pruebaPos'>
-                  {(isLoadFilter && !isLoadInformation) ? (
-                    filtros?.length > 0 ? (
-                      filtros?.map((item, index) => (
-                        <TarjetaTarifa key={index} data={item} />
-                      ))
-                    ) : (
-                      <NotInfoItem key={0} title={'No se encontraron ofertas'} text={'Lo sentimos, no hemos encontrado ofertas con los filtros seleccionados.'} />
-                    )
-                  ) : (
-                    <Load></Load>
-                  )}
-                </div>
+                <Tabs
+                  defaultActiveKey="particulares"
+                  id="tabs_filtros"
+                  className="mb-3"
+                >
+                  {countParticulares > 0 &&
+                    <Tab eventKey="particulares"
+                      title={
+                        <>
+                          Tarifas para particulares <span className="badge bg-secundary color-dark ms-2">{countParticulares}</span>
+                        </>
+                      }
+
+                    >
+                      {(() => {
+
+                        const filteredTarifas = filtros?.filter((item) => item.tarifa_empresarial === 2);
+
+                        return !isLoadInformation ? (
+                          filteredTarifas?.length > 0 ? (
+                            filteredTarifas.map((item, index) => (
+                              <TarjetaTarifa key={index} data={item} TarifaCard />
+                            ))
+                          ) : (
+                            <NotInfoItem title="No se encontraron ofertas" text="Lo sentimos, no hemos encontrado ofertas con los filtros seleccionados." />
+                          )
+                        ) : (
+                          <Load />
+                        );
+                      })()}
+                    </Tab>}
+
+                  {countEmpresarial > 0 &&
+                    < Tab eventKey="empresariales" title={
+                      <>
+                        Tarifas para empresas <span className="badge bg-secundary color-dark ms-2">{countEmpresarial}</span>
+                      </>
+                    }>
+                      {(() => {
+                        const filteredTarifas = filtros?.filter((item) => item.tarifa_empresarial === 1);
+
+                        return !isLoadInformation ? (
+                          filteredTarifas?.length > 0 ? (
+                            filteredTarifas.map((item, index) => (
+
+                              < TarjetaTarifa key={index} data={item} TarifaCard />
+
+                            ))
+                          ) : (
+                            <NotInfoItem title="No se encontraron ofertas" text="Lo sentimos, no hemos encontrado ofertas con los filtros seleccionados." />
+                          )
+                        ) : (
+                          <Load />
+                        );
+                      })()}
+                    </Tab>}
+
+                </Tabs>
               </Row>
             </Col>
           </Row>
-        </Container>
-      </section>
+        </Container >
+      </section >
       <InterSection></InterSection>
     </>
   );

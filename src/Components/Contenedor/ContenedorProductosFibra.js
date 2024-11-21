@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Container, Row, Col, Button, Form } from 'react-bootstrap';
+import { Container, Row, Col, Button, Form, Tabs, Tab } from 'react-bootstrap';
 import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
 import { isMobile } from 'react-device-detect';
@@ -33,6 +33,9 @@ function ContenedorProductosFibra() {
   const [Tarifas, setTarifas] = useState([]);
   const [filtros, setFiltros] = useState([]);
   const [brand, setBrand] = useState([]);
+
+  const [countParticulares, setCountParticulares] = useState(0);
+  const [countEmpresarial, setCountEmpresarial] = useState(0);
 
   // Estados para rangos de precio y capacidad
   const [rangePrice, setRangePrice] = useState([minPrice, maxPrice]);
@@ -68,7 +71,7 @@ function ContenedorProductosFibra() {
       const fetchData = async () => {
         try {
           setIsLoadFilter(false);
-          const response = await fetchDataAll('filterFibra',lang);
+          const response = await fetchDataAll('filterFibra', lang);
           const { minCapacity, max_precio, min_precio, moneda } = response[0];
 
           setMaxPrice(parseInt(max_precio));
@@ -89,7 +92,7 @@ function ContenedorProductosFibra() {
     if (lang != null) {
       const fetchBrands = async () => {
         try {
-          const response = await fetchDataAll('Operadoras/fibra',lang)
+          const response = await fetchDataAll('Operadoras/fibra', lang)
           setBrand(response);
           setIsLoadFilter(true)
           setIsLoadInformation(false)
@@ -107,10 +110,12 @@ function ContenedorProductosFibra() {
       const fetchTariffs = async () => {
         try {
           setIsLoadInformation(true);
-          const response = await fetchDataAll('TarifasFibra',lang)
+          const response = await fetchDataAll('TarifasFibra', lang)
           setFiltros(response);
           setTarifas(response);
           setIsLoadInformation(false);
+          setCountEmpresarial(response?.filter((item) => item.tarifa_empresarial === 1).length)
+          setCountParticulares(response?.filter((item) => item.tarifa_empresarial === 2).length)
         } catch (error) {
           console.error("Error al obtener las tarifas de fibra:", error);
         }
@@ -142,6 +147,8 @@ function ContenedorProductosFibra() {
       .filter((item) => filterByPromo(item))
       .filter((item) => filterByOfertaDestacada(item))
     setFiltros(resultado);
+    setCountEmpresarial(resultado?.filter((item) => item.tarifa_empresarial === 1).length)
+    setCountParticulares(resultado?.filter((item) => item.tarifa_empresarial === 2).length)
   }, [filterBrand, filterPrice, filterPromo, filterOfertaDestacada]);
 
   // Función para filtrar por marca
@@ -371,22 +378,67 @@ function ContenedorProductosFibra() {
             </Col>
             <Col md={12} xl={8}>
               <Row>
-                <Col key={filterBrand} className='my-2' xl={6}>Mostrando: <span className="font-bold">{filtros?.length}</span> resultados de <span className="font-bold">{Tarifas.length}</span></Col>
+                <Col key={filterBrand} className='my-2' md={6}>Mostrando: <span className="font-bold">{filtros?.length}</span> resultados de <span className="font-bold">{Tarifas.length}</span></Col>
               </Row>
               <Row>
-                <div className='pruebaPos'>
-                  {!isLoadInformation ? (
-                    filtros?.length > 0 ? (
-                      filtros?.map((item, index) => (
-                        <TarjetaTarifa key={index} data={item} />
-                      ))
-                    ) : (
-                      <NotInfoItem key={0} title={'No se encontraron ofertas'} text={'Lo sentimos, no hemos encontrado ofertas con los filtros seleccionados.'} />
-                    )
-                  ) : (
-                    <Load></Load>
-                  )}
-                </div>
+                <Tabs
+                  defaultActiveKey="particulares"
+                  id="tabs_filtros"
+                  className="mb-3"
+                >
+                  {countParticulares > 0 &&
+                    <Tab eventKey="particulares"
+                      title={
+                        <>
+                          Tarifas para particulares <span className="badge bg-secundary color-dark ms-2">{countParticulares}</span>
+                        </>
+                      }
+
+                    >
+                      {(() => {
+
+                        const filteredTarifas = filtros?.filter((item) => item.tarifa_empresarial === 2);
+
+                        return !isLoadInformation ? (
+                          filteredTarifas?.length > 0 ? (
+                            filteredTarifas.map((item, index) => (
+                              <TarjetaTarifa key={index} data={item} TarifaCard />
+                            ))
+                          ) : (
+                            <NotInfoItem title="No se encontraron ofertas" text="Lo sentimos, no hemos encontrado ofertas con los filtros seleccionados." />
+                          )
+                        ) : (
+                          <Load />
+                        );
+                      })()}
+                    </Tab>}
+
+                  {countEmpresarial > 0 &&
+                    < Tab eventKey="empresariales" title={
+                      <>
+                        Tarifas para empresas <span className="badge bg-secundary color-dark ms-2">{countEmpresarial}</span>
+                      </>
+                    }>
+                      {(() => {
+                        const filteredTarifas = filtros?.filter((item) => item.tarifa_empresarial === 1);
+
+                        return !isLoadInformation ? (
+                          filteredTarifas?.length > 0 ? (
+                            filteredTarifas.map((item, index) => (
+
+                              < TarjetaTarifa key={index} data={item} TarifaCard />
+
+                            ))
+                          ) : (
+                            <NotInfoItem title="No se encontraron ofertas" text="Lo sentimos, no hemos encontrado ofertas con los filtros seleccionados." />
+                          )
+                        ) : (
+                          <Load />
+                        );
+                      })()}
+                    </Tab>}
+
+                </Tabs>
               </Row>
             </Col>
           </Row>

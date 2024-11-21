@@ -8,7 +8,6 @@ import InterSection from '../Utils/InterSection';
 import TarjetaTarifa from '../Tarjeta/TarjetaTarifa';
 import NotInfoItem from '../Utils/NotInfoItem';
 import Load from '../Utils/Load';
-import TarjetaTarifaLeadEnergia from '../Tarjeta/TarjetaTarifaLeadEnergia'
 import { fetchDataAll } from '../../services/ApiServices'
 import TarjetaTarifaLeadEnergiaGas from '../Tarjeta/TarjetaTarifaLeadEnergiaGas';
 import { useLocation } from 'react-router-dom';
@@ -31,6 +30,9 @@ function ContenedorProductosLuzGas() {
   const [Tarifas, setTarifas] = useState([]);
   const [filtros, setFiltros] = useState([]);
   const [brand, setBrand] = useState([]);
+
+  const [countParticulares, setCountParticulares] = useState(0);
+  const [countEmpresarial, setCountEmpresarial] = useState(0);
 
   // Estado para el modal de filtros
   const [show, setShow] = useState(false);
@@ -76,6 +78,8 @@ function ContenedorProductosLuzGas() {
           setFiltros(response);
           setTarifas(response);
           setIsLoadInformation(false);
+          setCountEmpresarial(response?.filter((item) => item.tarifa_empresarial === 1).length)
+          setCountParticulares(response?.filter((item) => item.tarifa_empresarial === 2).length)
         } catch (error) {
           console.error("Error al obtener las tarifas de luz:", error);
         }
@@ -105,6 +109,8 @@ function ContenedorProductosLuzGas() {
       .filter((item) => filterByluzIndexada(item))
 
     setFiltros(resultado);
+    setCountEmpresarial(resultado?.filter((item) => item.tarifa_empresarial === 1).length)
+    setCountParticulares(resultado?.filter((item) => item.tarifa_empresarial === 2).length)
   }, [filterBrand, filterPrice, filterTramo, filterPermanencia, filterGas, filterPromo, filterLuzIndexada]);
 
   function filterByBrand(item) {
@@ -377,42 +383,58 @@ function ContenedorProductosLuzGas() {
                   id="tabs_filtros"
                   className="mb-3"
                 >
-                  <Tab eventKey="particulares" title="Tarifas para particulares">
+                  {countParticulares > 0 &&
+                    <Tab eventKey="particulares"
+                      title={
+                        <>
+                          Tarifas para particulares <span className="badge bg-secundary color-dark ms-2">{countParticulares}</span>
+                        </>
+                      }
 
-                    {(() => {
-                      return !isLoadInformation ? (
-                        filtros?.length > 0 ? (
+                    >
+                      {(() => {
 
-                          filtros.map((item, index) => (
-                            <TarjetaTarifaLeadEnergiaGas key={index} data={item} TarifaCard />
-                          ))
+                        const filteredTarifas = filtros?.filter((item) => item.tarifa_empresarial === 2);
+
+                        return !isLoadInformation ? (
+                          filteredTarifas?.length > 0 ? (
+                            filteredTarifas.map((item, index) => (
+                              <TarjetaTarifaLeadEnergiaGas key={index} data={item} TarifaCard />
+                            ))
+                          ) : (
+                            <NotInfoItem title="No se encontraron ofertas" text="Lo sentimos, no hemos encontrado ofertas con los filtros seleccionados." />
+                          )
                         ) : (
+                          <Load />
+                        );
+                      })()}
+                    </Tab>}
 
-                          <NotInfoItem title="No se encontraron ofertas" text="Lo sentimos, no hemos encontrado ofertas con los filtros seleccionados." />
-                        )
-                      ) : (
-                        <Load />
-                      );
-                    })()}
-                  </Tab>
+                  {countEmpresarial > 0 &&
+                    < Tab eventKey="empresariales" title={
+                      <>
+                        Tarifas para empresas <span className="badge bg-secundary color-dark ms-2">{countEmpresarial}</span>
+                      </>
+                    }>
+                      {(() => {
+                        const filteredTarifas = filtros?.filter((item) => item.tarifa_empresarial === 1);
 
-                  {/* <Tab eventKey="empresariales" title="Tarifas para empresas">
-                    {(() => {
-                      const filteredTarifas = filtros?.filter((item) => item.tarifa_empresarial === 1);
+                        return !isLoadInformation ? (
+                          filteredTarifas?.length > 0 ? (
+                            filteredTarifas.map((item, index) => (
 
-                      return !isLoadInformation ? (
-                        filteredTarifas?.length > 0 ? (
-                          filteredTarifas.map((item, index) => (
-                            <TarjetaTarifaLeadEnergiaGas key={index} data={item} TarifaCard />
-                          ))
+                              < TarjetaTarifaLeadEnergiaGas key={index} data={item} TarifaCard />
+
+                            ))
+                          ) : (
+                            <NotInfoItem title="No se encontraron ofertas" text="Lo sentimos, no hemos encontrado ofertas con los filtros seleccionados." />
+                          )
                         ) : (
-                          <NotInfoItem title="No se encontraron ofertas" text="Lo sentimos, no hemos encontrado ofertas con los filtros seleccionados." />
-                        )
-                      ) : (
-                        <Load />
-                      );
-                    })()}
-                  </Tab> */}
+                          <Load />
+                        );
+                      })()}
+                    </Tab>}
+
                 </Tabs>
               </Row>
             </Col>
