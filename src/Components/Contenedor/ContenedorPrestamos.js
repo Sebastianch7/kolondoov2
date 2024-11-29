@@ -8,11 +8,7 @@ import NotInfoItem from '../Utils/NotInfoItem';
 import Load from '../Utils/Load';
 import InterSection from '../Utils/InterSection';
 
-function ContenedorPrestamos({ logo = null, landingLead = null, id = null, filtroCategoria }) {
-  // Estado para filtros de precio y capacidad
-  const [minPrice, setMinPrice] = useState(0);
-  const [maxPrice, setMaxPrice] = useState(1000);
-
+function ContenedorPrestamos({ logo = null, landingLead = null, id = null, filtroCategoria }) {  
   // Estados para el estado de carga de filtros e información
   const [isLoading, setIsLoading] = useState({ filter: false, information: false });
 

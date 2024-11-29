@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Container, Row, Col, Button, Form, Tabs, Tab } from 'react-bootstrap';
+import { Container, Row, Col, Button, Form, Tabs, Tab, TabContainer, Nav, TabContent, TabPane } from 'react-bootstrap';
 import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
 import { isMobile } from 'react-device-detect';
@@ -62,6 +62,25 @@ function ContenedorProductosMovilFibra() {
     setRangeCapacity([minCapacity, maxCapacity]);
     setFilterOfertaDestacada(false);
     setFiltros(Tarifas);
+  };
+
+  const renderTarifas = (filtro, tipo) => {
+    const filteredTarifas = filtros?.filter((item) => item.tarifa_empresarial === filtro);
+
+    return !isLoadInformation ? (
+      filteredTarifas?.length > 0 ? (
+        filteredTarifas.map((item, index) => (
+          <TarjetaTarifa key={index} data={item} TarifaCard />
+        ))
+      ) : (
+        <NotInfoItem
+          title={`No se encontraron ofertas para ${tipo}`}
+          text="Lo sentimos, no hemos encontrado ofertas con los filtros seleccionados."
+        />
+      )
+    ) : (
+      <Load />
+    );
   };
 
   // Función para manejar el cambio en el rango de precio
@@ -454,64 +473,32 @@ function ContenedorProductosMovilFibra() {
                 <Col key={filterBrand} className='my-2' md={6}>Mostrando: <span className="font-bold">{filtros?.length}</span> resultados de <span className="font-bold">{Tarifas.length}</span></Col>
               </Row>
               <Row>
-                <Tabs
-                  defaultActiveKey="particulares"
-                  id="tabs_filtros"
-                  className="mb-3"
-                >
-                  {countParticulares > 0 &&
-                    <Tab eventKey="particulares"
-                      title={
-                        <>
-                          Tarifas para particulares <span className="badge bg-secundary color-dark ms-2">{countParticulares}</span>
-                        </>
-                      }
+                <TabContainer defaultActiveKey="particulares" id="tabs_filtros">
+                  <Nav variant="tabs" className="mb-3">
+                    <Nav.Item>
+                      <Nav.Link eventKey="particulares">
+                        Tarifas para particulares{' '}
+                        <span className="badge bg-secondary ms-2">{countParticulares}</span>
+                      </Nav.Link>
+                    </Nav.Item>
+                    <Nav.Item>
+                      <Nav.Link eventKey="empresariales">
+                        Tarifas para empresas{' '}
+                        <span className="badge bg-secondary ms-2">{countEmpresarial}</span>
+                      </Nav.Link>
+                    </Nav.Item>
+                  </Nav>
 
-                    >
-                      {(() => {
+                  <TabContent>
+                    <TabPane eventKey="particulares">
+                      {renderTarifas(2, 'particulares')}
+                    </TabPane>
 
-                        const filteredTarifas = filtros?.filter((item) => item.tarifa_empresarial === 2);
-
-                        return !isLoadInformation ? (
-                          filteredTarifas?.length > 0 ? (
-                            filteredTarifas.map((item, index) => (
-                              <TarjetaTarifa key={index} data={item} TarifaCard />
-                            ))
-                          ) : (
-                            <NotInfoItem title="No se encontraron ofertas" text="Lo sentimos, no hemos encontrado ofertas con los filtros seleccionados." />
-                          )
-                        ) : (
-                          <Load />
-                        );
-                      })()}
-                    </Tab>}
-
-                  {countEmpresarial > 0 &&
-                    < Tab eventKey="empresariales" title={
-                      <>
-                        Tarifas para empresas <span className="badge bg-secundary color-dark ms-2">{countEmpresarial}</span>
-                      </>
-                    }>
-                      {(() => {
-                        const filteredTarifas = filtros?.filter((item) => item.tarifa_empresarial === 1);
-
-                        return !isLoadInformation ? (
-                          filteredTarifas?.length > 0 ? (
-                            filteredTarifas.map((item, index) => (
-
-                              < TarjetaTarifa key={index} data={item} TarifaCard />
-
-                            ))
-                          ) : (
-                            <NotInfoItem title="No se encontraron ofertas" text="Lo sentimos, no hemos encontrado ofertas con los filtros seleccionados." />
-                          )
-                        ) : (
-                          <Load />
-                        );
-                      })()}
-                    </Tab>}
-
-                </Tabs>
+                    <TabPane eventKey="empresariales">
+                      {renderTarifas(1, 'empresariales')}
+                    </TabPane>
+                  </TabContent>
+                </TabContainer>
               </Row>
             </Col>
           </Row>

@@ -35,6 +35,14 @@ function ComparadorPrestamos() {
                 setLogoLanding('/img/icons/unificadores.png')
                 setFiltro(5)
                 break;
+            case 'prestamos':
+                setTitle('Préstamos');
+                setTitleLanding('Comparador de préstamos')
+                setSubtitleLanding('¡Te ayudamos a encontrar el mejor crédito que mejor se adapte a ti!')
+                setImagenLanding('/img/banner-prestamos-es.png')
+                setLogoLanding('/img/icons/prestamos.png')
+                setFiltro(6)
+                break;
             default:
                 setTitle(null);
                 break;
@@ -44,7 +52,7 @@ function ComparadorPrestamos() {
 
     return (
         <div>
-            <MetaData titulo={'Comparador de préstamos | Vuskoo'} descripcion={'Compara las diferentes compañías para préstamos'} />
+            <MetaData titulo={`${titleLanding} | Vuskoo`} descripcion={'Compara las diferentes compañías para préstamos'} />
             <Header breadCrumb></Header>
             <Banner
                 title={titleLanding}
@@ -52,7 +60,7 @@ function ComparadorPrestamos() {
                 image={imagenLanding}
                 logo={logoLanding}
             >
-                
+
             </Banner>
 
             <ContenedorPrestamos filtroCategoria={filtro} />
